@@ -3,14 +3,15 @@
 Static math lessons site for Laura Miron (math teacher, Liceul William Shakespeare, Timișoara).
 Classes 5-8 (gimnaziu) and 9-12 (liceu). Romanian by default, English switch.
 
-- Live: https://parameciul.github.io/matematica/
-- Repo: https://github.com/parameciul/matematica (public, GitHub Pages from `main`, root folder)
+- Live: https://lauramiron.pages.dev/
+- Repo: https://github.com/parameciul/matematica (public)
+- Hosting: Cloudflare Pages, project `lauramiron`, deploys from `main`
 - Design: `docs/superpowers/specs/2026-09-14-math-lessons-site-design.md`
 
 ## Rules
 
 - Plain HTML/CSS/JS. No build step, no npm dependencies.
-- **All `href`/`src` must be relative (never start with `/`).** The live site is under `/matematica/`.
+- **All `href`/`src` must be relative (never start with `/`).** The site must work at any base path (local preview, a custom domain, a sub-folder). Cloudflare Pages redirects `page.html` to `page` and keeps the `?query`; relative links still resolve.
 - Romanian text must use comma-below diacritics: `ș ț Ș Ț` (not cedilla `ş ţ`).
 - Inside HTML, write `&lt;` and `&gt;` for `<` and `>`, also inside formulas. Write `&amp;` for `&` (for example in `\begin{cases}`).
 - Formulas: `$...$` inline, `$$...$$` on their own line (KaTeX).
@@ -50,9 +51,13 @@ Do not open the HTML files directly from disk: `fetch` of `data/lessons.json` fa
 
 GitHub CLI: `C:\Program Files\GitHub CLI\gh.exe` (logged in as `parameciul`).
 
+Cloudflare Pages is connected to the GitHub repo. Every push to `main` deploys.
+Build settings: framework preset `None`, build command `node tests/validate.mjs`, build output directory `/`.
+If the tests fail on Cloudflare, the deploy stops and the old site stays live.
+A push to another branch gets a preview link: `https://<branch>.lauramiron.pages.dev/`.
+
 1. `node tests/validate.mjs`
 2. `git add -A` and `git commit -m "<what changed>"`
 3. `git push`
-4. GitHub Pages rebuilds in about 1 minute. Check status:
-   `gh api repos/parameciul/matematica/pages/builds/latest --jq .status` (wait for `built`)
-5. Open the live URL and check the changed page.
+4. Cloudflare deploys in about 1 minute. Build logs: Cloudflare dashboard, Workers & Pages, `lauramiron`, Deployments.
+5. Open https://lauramiron.pages.dev/ and check the changed page.
