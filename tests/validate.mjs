@@ -5,7 +5,7 @@ import { join, dirname, relative, extname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import vm from 'node:vm';
 
-const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
+const ROOT = process.env.SITE_ROOT || join(dirname(fileURLToPath(import.meta.url)), '..');
 const errors = [];
 const fail = (msg) => errors.push(msg);
 const read = (p) => readFileSync(join(ROOT, p), 'utf8');
@@ -133,7 +133,14 @@ for (const f of codeFiles) {
   if (extname(f) === '.css' && /url\(\s*["']?\/(?!\/)/.test(src)) fail(`${f}: uses an absolute url(/...). Use relative paths.`);
 }
 
-// 5. Internal links point to files that exist
+// 5. Romanian diacritics use comma-below (ș ț), not the look-alike cedilla letters (ş ţ)
+for (const f of [...codeFiles, 'data/lessons.json']) {
+  if (existsSync(join(ROOT, f)) && /[şţŞŢ]/.test(read(f))) {
+    fail(`${f}: uses cedilla letters (ş ţ). Use comma-below letters (ș ț).`);
+  }
+}
+
+// 6. Internal links point to files that exist
 for (const f of files.filter((x) => extname(x) === '.html')) {
   const src = read(f);
   for (const m of src.matchAll(/(?:href|src)\s*=\s*"([^"]+)"/g)) {

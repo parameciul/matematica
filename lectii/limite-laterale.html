@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Limite laterale – Matematică cu Laura Miron</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231d3c8f'/%3E%3Ctext x='16' y='23' font-size='21' text-anchor='middle' fill='white' font-family='Georgia,serif'%3E%CF%80%3C/text%3E%3C/svg%3E">
+  <script>document.documentElement.classList.add('js')</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,700;0,800;1,400&family=Caveat:wght@600&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.18.1/dist/katex.min.css" integrity="sha384-1vdNCNel6Tx/NQa8IR1mGOGKsbGreCkOPfbtPPnUURJ5Tu2PRVfQ/7KLZC+Pi1p1" crossorigin="anonymous">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.18.1/dist/katex.min.js" integrity="sha384-ycJ6GAwiS15LoUPipwJOrWTvkUHl/YqELValBwI5I4awP1EeEQJYarj+w85ntcz7" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.18.1/dist/contrib/auto-render.min.js" integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous"></script>
+  <script defer src="../assets/js/i18n.js"></script>
+  <script defer src="../assets/js/site.js"></script>
+  <script defer src="../assets/js/lectie.js"></script>
+</head>
+<body data-root="../">
+  <a class="skip" href="#lesson" data-i18n="a11y.skip">Sari la conținut</a>
+  <header id="site-header" class="site-header"></header>
+
+  <main class="wrap">
+    <div class="page" id="lesson" data-id="limite-laterale">
+
+      <article class="lesson-body" data-lang="ro" lang="ro">
+        <p>Urmărește videoclipul. Apoi citește rezumatul și încearcă exercițiul.</p>
+
+        <h2>Pe scurt</h2>
+        <p>Când $x$ se apropie de un punct $a$, poate veni din două direcții.</p>
+        <p><strong>Limita la stânga</strong>, pentru $x &lt; a$:</p>
+        <p>$$l_s(a) = \lim_{\substack{x \to a \\ x &lt; a}} f(x)$$</p>
+        <p><strong>Limita la dreapta</strong>, pentru $x &gt; a$:</p>
+        <p>$$l_d(a) = \lim_{\substack{x \to a \\ x &gt; a}} f(x)$$</p>
+
+        <div class="retine">
+          <p class="retine-title">Reține</p>
+          <p>Funcția $f$ are limită în punctul $a$ dacă și numai dacă limitele laterale există și sunt egale: $l_s(a) = l_d(a)$. Atunci limita funcției în $a$ este această valoare comună.</p>
+        </div>
+
+        <h2>Exercițiu</h2>
+        <ol class="exercises">
+          <li>
+            <p>Fie funcția $f : \mathbb{R} \to \mathbb{R}$,</p>
+            <p>$$f(x) = \begin{cases} x + 1, &amp; x &lt; 1 \\ 3x, &amp; x \geq 1 \end{cases}$$</p>
+            <p>Are funcția limită în punctul $a = 1$?</p>
+            <details class="solution"><summary>Vezi rezolvarea</summary><p>$l_s(1) = \lim\limits_{\substack{x \to 1 \\ x &lt; 1}} (x + 1) = 2$ și $l_d(1) = \lim\limits_{\substack{x \to 1 \\ x &gt; 1}} 3x = 3$. Pentru că $2 \neq 3$, funcția nu are limită în punctul $1$.</p></details>
+          </li>
+        </ol>
+      </article>
+
+      <article class="lesson-body" data-lang="en" lang="en">
+        <p>Watch the video. Then read the summary and try the exercise.</p>
+
+        <h2>In short</h2>
+        <p>When $x$ gets close to a point $a$, it can come from two directions.</p>
+        <p>The <strong>left-hand limit</strong>, for $x &lt; a$:</p>
+        <p>$$\lim_{x \to a^-} f(x)$$</p>
+        <p>The <strong>right-hand limit</strong>, for $x &gt; a$:</p>
+        <p>$$\lim_{x \to a^+} f(x)$$</p>
+        <p>In Romanian textbooks these are written $l_s(a)$ (left) and $l_d(a)$ (right).</p>
+
+        <div class="retine">
+          <p class="retine-title">Remember</p>
+          <p>The function $f$ has a limit at the point $a$ if and only if both one-sided limits exist and are equal. The limit is then this common value.</p>
+        </div>
+
+        <h2>Exercise</h2>
+        <ol class="exercises">
+          <li>
+            <p>Let $f : \mathbb{R} \to \mathbb{R}$,</p>
+            <p>$$f(x) = \begin{cases} x + 1, &amp; x &lt; 1 \\ 3x, &amp; x \geq 1 \end{cases}$$</p>
+            <p>Does the function have a limit at the point $a = 1$?</p>
+            <details class="solution"><summary>Show solution</summary><p>$\lim\limits_{x \to 1^-} (x + 1) = 2$ and $\lim\limits_{x \to 1^+} 3x = 3$. Because $2 \neq 3$, the function has no limit at the point $1$.</p></details>
+          </li>
+        </ol>
+      </article>
+
+    </div>
+  </main>
+
+  <footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>

@@ -1,0 +1,67 @@
+{
+  "lessons": [
+    {
+      "id": "fractii-ordinare",
+      "grade": 5,
+      "chapter": { "ro": "Fracții ordinare", "en": "Common fractions" },
+      "title": { "ro": "Fracții ordinare: noțiuni de bază", "en": "Common fractions: the basics" },
+      "type": "text",
+      "youtube": null,
+      "order": 1
+    },
+    {
+      "id": "amplificarea-si-simplificarea-fractiilor",
+      "grade": 5,
+      "chapter": { "ro": "Fracții ordinare", "en": "Common fractions" },
+      "title": { "ro": "Amplificarea și simplificarea fracțiilor", "en": "Expanding and simplifying fractions" },
+      "type": "text",
+      "youtube": null,
+      "order": 2
+    },
+    {
+      "id": "proportii",
+      "grade": 6,
+      "chapter": { "ro": "Rapoarte și proporții", "en": "Ratios and proportions" },
+      "title": { "ro": "Proporții. Proprietatea fundamentală" },
+      "type": "text+video",
+      "youtube": "puM8IiXIGWk",
+      "order": 1
+    },
+    {
+      "id": "teorema-lui-pitagora",
+      "grade": 7,
+      "chapter": { "ro": "Relații metrice în triunghiul dreptunghic", "en": "Metric relations in the right triangle" },
+      "title": { "ro": "Teorema lui Pitagora", "en": "The Pythagorean theorem" },
+      "type": "text",
+      "youtube": null,
+      "order": 1
+    },
+    {
+      "id": "functia-de-gradul-intai",
+      "grade": 9,
+      "chapter": { "ro": "Funcții", "en": "Functions" },
+      "title": { "ro": "Funcția de gradul I", "en": "The linear function" },
+      "type": "text",
+      "youtube": null,
+      "order": 1
+    },
+    {
+      "id": "logaritmi",
+      "grade": 10,
+      "chapter": { "ro": "Mulțimi de numere", "en": "Sets of numbers" },
+      "title": { "ro": "Logaritmi: definiție și proprietăți", "en": "Logarithms: definition and properties" },
+      "type": "text+video",
+      "youtube": "xcnQlSlGY6w",
+      "order": 1
+    },
+    {
+      "id": "limite-laterale",
+      "grade": 11,
+      "chapter": { "ro": "Limite de funcții", "en": "Limits of functions" },
+      "title": { "ro": "Limite laterale", "en": "One-sided limits" },
+      "type": "video",
+      "youtube": "wOOLLvq9TV4",
+      "order": 1
+    }
+  ]
+}

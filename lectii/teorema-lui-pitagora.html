@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Teorema lui Pitagora – Matematică cu Laura Miron</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231d3c8f'/%3E%3Ctext x='16' y='23' font-size='21' text-anchor='middle' fill='white' font-family='Georgia,serif'%3E%CF%80%3C/text%3E%3C/svg%3E">
+  <script>document.documentElement.classList.add('js')</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,700;0,800;1,400&family=Caveat:wght@600&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.18.1/dist/katex.min.css" integrity="sha384-1vdNCNel6Tx/NQa8IR1mGOGKsbGreCkOPfbtPPnUURJ5Tu2PRVfQ/7KLZC+Pi1p1" crossorigin="anonymous">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.18.1/dist/katex.min.js" integrity="sha384-ycJ6GAwiS15LoUPipwJOrWTvkUHl/YqELValBwI5I4awP1EeEQJYarj+w85ntcz7" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.18.1/dist/contrib/auto-render.min.js" integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous"></script>
+  <script defer src="../assets/js/i18n.js"></script>
+  <script defer src="../assets/js/site.js"></script>
+  <script defer src="../assets/js/lectie.js"></script>
+</head>
+<body data-root="../">
+  <a class="skip" href="#lesson" data-i18n="a11y.skip">Sari la conținut</a>
+  <header id="site-header" class="site-header"></header>
+
+  <main class="wrap">
+    <div class="page" id="lesson" data-id="teorema-lui-pitagora">
+
+      <article class="lesson-body" data-lang="ro" lang="ro">
+        <p>Un <strong>triunghi dreptunghic</strong> are un unghi drept, adică de $90^\circ$. Laturile lui au nume speciale:</p>
+        <ul>
+          <li><strong>ipotenuza</strong> este latura opusă unghiului drept; este cea mai lungă latură;</li>
+          <li><strong>catetele</strong> sunt celelalte două laturi; ele formează unghiul drept.</li>
+        </ul>
+
+        <figure class="fig">
+          <svg viewBox="0 0 230 175" role="img" aria-label="Triunghiul dreptunghic ABC, cu unghiul drept în A, catetele 3 și 4, ipotenuza 5">
+            <polygon class="shape" points="40,145 40,37 184,145"/>
+            <polyline class="mark" points="40,131 54,131 54,145"/>
+            <text x="24" y="162">A</text>
+            <text x="24" y="36">B</text>
+            <text x="190" y="162">C</text>
+            <text class="hand" x="16" y="98">3</text>
+            <text class="hand" x="106" y="170">4</text>
+            <text class="hand" x="120" y="82">5</text>
+          </svg>
+          <figcaption>În triunghiul $ABC$, $m(\sphericalangle A) = 90^\circ$. Ipotenuza este $BC$, catetele sunt $AB$ și $AC$.</figcaption>
+        </figure>
+
+        <div class="retine">
+          <p class="retine-title">Teorema lui Pitagora</p>
+          <p>Într-un triunghi dreptunghic, pătratul ipotenuzei este egal cu suma pătratelor catetelor:</p>
+          <p>$$BC^2 = AB^2 + AC^2$$</p>
+        </div>
+
+        <h2>Exemplu</h2>
+        <p>În figura de mai sus, $AB = 3$ cm și $AC = 4$ cm. Calculăm ipotenuza:</p>
+        <p>$$BC^2 = 3^2 + 4^2 = 9 + 16 = 25 \Rightarrow BC = \sqrt{25} = 5 \text{ cm}$$</p>
+
+        <h2>Reciproca teoremei lui Pitagora</h2>
+        <p>Dacă într-un triunghi $ABC$ avem $BC^2 = AB^2 + AC^2$, atunci triunghiul este dreptunghic, cu unghiul drept în $A$.</p>
+
+        <h2>Exerciții</h2>
+        <ol class="exercises">
+          <li>
+            <p>Catetele unui triunghi dreptunghic au 6 cm și 8 cm. Află ipotenuza.</p>
+            <details class="solution"><summary>Vezi rezolvarea</summary><p>$BC^2 = 6^2 + 8^2 = 36 + 64 = 100$, deci $BC = 10$ cm.</p></details>
+          </li>
+          <li>
+            <p>În triunghiul $ABC$ cu $m(\sphericalangle A) = 90^\circ$ avem $BC = 13$ cm și $AB = 5$ cm. Află $AC$.</p>
+            <details class="solution"><summary>Vezi rezolvarea</summary><p>$AC^2 = BC^2 - AB^2 = 169 - 25 = 144$, deci $AC = 12$ cm.</p></details>
+          </li>
+          <li>
+            <p>Un triunghi are laturile de 7 cm, 24 cm și 25 cm. Este triunghi dreptunghic?</p>
+            <details class="solution"><summary>Vezi rezolvarea</summary><p>$7^2 + 24^2 = 49 + 576 = 625 = 25^2$. Din reciproca teoremei lui Pitagora, triunghiul este dreptunghic.</p></details>
+          </li>
+        </ol>
+      </article>
+
+      <article class="lesson-body" data-lang="en" lang="en">
+        <p>A <strong>right triangle</strong> has one right angle, that is, an angle of $90^\circ$. Its sides have special names:</p>
+        <ul>
+          <li>the <strong>hypotenuse</strong> is the side opposite the right angle; it is the longest side;</li>
+          <li>the <strong>legs</strong> are the other two sides; they form the right angle.</li>
+        </ul>
+
+        <figure class="fig">
+          <svg viewBox="0 0 230 175" role="img" aria-label="Right triangle ABC with the right angle at A, legs 3 and 4, hypotenuse 5">
+            <polygon class="shape" points="40,145 40,37 184,145"/>
+            <polyline class="mark" points="40,131 54,131 54,145"/>
+            <text x="24" y="162">A</text>
+            <text x="24" y="36">B</text>
+            <text x="190" y="162">C</text>
+            <text class="hand" x="16" y="98">3</text>
+            <text class="hand" x="106" y="170">4</text>
+            <text class="hand" x="120" y="82">5</text>
+          </svg>
+          <figcaption>In triangle $ABC$, $\angle A = 90^\circ$. The hypotenuse is $BC$; the legs are $AB$ and $AC$.</figcaption>
+        </figure>
+
+        <div class="retine">
+          <p class="retine-title">The Pythagorean theorem</p>
+          <p>In a right triangle, the square of the hypotenuse equals the sum of the squares of the legs:</p>
+          <p>$$BC^2 = AB^2 + AC^2$$</p>
+        </div>
+
+        <h2>Example</h2>
+        <p>In the figure above, $AB = 3$ cm and $AC = 4$ cm. We calculate the hypotenuse:</p>
+        <p>$$BC^2 = 3^2 + 4^2 = 9 + 16 = 25 \Rightarrow BC = \sqrt{25} = 5 \text{ cm}$$</p>
+
+        <h2>The converse of the Pythagorean theorem</h2>
+        <p>If a triangle $ABC$ has $BC^2 = AB^2 + AC^2$, then the triangle is a right triangle, with the right angle at $A$.</p>
+
+        <h2>Exercises</h2>
+        <ol class="exercises">
+          <li>
+            <p>The legs of a right triangle are 6 cm and 8 cm. Find the hypotenuse.</p>
+            <details class="solution"><summary>Show solution</summary><p>$BC^2 = 6^2 + 8^2 = 36 + 64 = 100$, so $BC = 10$ cm.</p></details>
+          </li>
+          <li>
+            <p>In triangle $ABC$ with $\angle A = 90^\circ$, $BC = 13$ cm and $AB = 5$ cm. Find $AC$.</p>
+            <details class="solution"><summary>Show solution</summary><p>$AC^2 = BC^2 - AB^2 = 169 - 25 = 144$, so $AC = 12$ cm.</p></details>
+          </li>
+          <li>
+            <p>A triangle has sides of 7 cm, 24 cm and 25 cm. Is it a right triangle?</p>
+            <details class="solution"><summary>Show solution</summary><p>$7^2 + 24^2 = 49 + 576 = 625 = 25^2$. By the converse of the Pythagorean theorem, it is a right triangle.</p></details>
+          </li>
+        </ol>
+      </article>
+
+    </div>
+  </main>
+
+  <footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>

@@ -3,7 +3,7 @@
   "private": true,
   "description": "Math lessons for classes 5-12 by Laura Miron",
   "scripts": {
-    "test": "node tests/validate.mjs",
+    "test": "node tests/validate.mjs && node --test tests/validate.test.mjs",
     "serve": "python -m http.server 8000"
   }
 }
