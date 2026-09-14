@@ -1,0 +1,9 @@
+{
+  "name": "matematica",
+  "private": true,
+  "description": "Math lessons for classes 5-12 by Laura Miron",
+  "scripts": {
+    "test": "node tests/validate.mjs",
+    "serve": "python -m http.server 8000"
+  }
+}
