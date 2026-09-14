@@ -10,7 +10,7 @@ import { spawnSync } from 'node:child_process';
 
 const REPO = join(dirname(fileURLToPath(import.meta.url)), '..');
 const VALIDATOR = join(REPO, 'tests', 'validate.mjs');
-const SITE_ENTRIES = ['index.html', 'clasa.html', '.nojekyll', 'assets', 'data', 'lectii'];
+const SITE_ENTRIES = ['index.html', 'clasa.html', '.nojekyll', 'assets', 'data', 'lectii', 'docs/lesson-template.html'];
 
 function run(root) {
   const res = spawnSync(process.execPath, [VALIDATOR], {
@@ -161,4 +161,23 @@ test('link to a missing page fails', () => {
 test('cedilla letters instead of Romanian comma-below letters fail', () => {
   const result = withBrokenSite((dir) => editLessons(dir, (l) => { l[0].title.ro = 'Fracţii'; }));
   expectFailure(result, /cedilla/);
+});
+
+test('missing lesson template fails', () => {
+  const result = withBrokenSite((dir) => unlinkSync(join(dir, 'docs', 'lesson-template.html')));
+  expectFailure(result, /Missing lesson template/);
+});
+
+test('lesson template without the id placeholder fails', () => {
+  const result = withBrokenSite((dir) =>
+    editFile(dir, 'docs/lesson-template.html', (s) => s.replace('data-id="LESSON_ID"', 'data-id="x"')),
+  );
+  expectFailure(result, /lesson-template\.html: must contain data-id="LESSON_ID"/);
+});
+
+test('lesson with a different KaTeX version than the template fails', () => {
+  const result = withBrokenSite((dir) =>
+    editFile(dir, 'lectii/fractii-ordinare.html', (s) => s.replaceAll('katex@0.18.1/', 'katex@0.16.0/')),
+  );
+  expectFailure(result, /fractii-ordinare\.html: must load KaTeX 0\.18\.1/);
 });

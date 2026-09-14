@@ -41,7 +41,22 @@ for (const f of REQUIRED_FILES) {
   if (!existsSync(join(ROOT, f))) fail(`Missing required file: ${f}`);
 }
 
-// 2. Lesson data
+// 2. Lesson template: new lessons are copied from it, so it must stay complete
+const TEMPLATE = 'docs/lesson-template.html';
+let katexVersion = null;
+if (!existsSync(join(ROOT, TEMPLATE))) {
+  fail(`Missing lesson template: ${TEMPLATE}`);
+} else {
+  const tpl = read(TEMPLATE);
+  for (const needle of ['data-root="../"', 'data-id="LESSON_ID"', 'data-lang="ro"', '../assets/js/lectie.js', '../assets/css/style.css']) {
+    if (!tpl.includes(needle)) fail(`${TEMPLATE}: must contain ${needle}`);
+  }
+  const m = tpl.match(/katex@(\d+\.\d+\.\d+)\//);
+  if (m) katexVersion = m[1];
+  else fail(`${TEMPLATE}: must load KaTeX from cdn.jsdelivr.net/npm/katex@<version>/`);
+}
+
+// 3. Lesson data
 let lessons = [];
 if (existsSync(join(ROOT, 'data/lessons.json'))) {
   try {
@@ -78,6 +93,7 @@ for (const [i, l] of lessons.entries()) {
   if (!html.includes(`data-id="${l.id}"`)) fail(`${file}: must contain data-id="${l.id}"`);
   if (!html.includes('data-lang="ro"')) fail(`${file}: must contain an article with data-lang="ro"`);
   if (!html.includes('data-root="../"')) fail(`${file}: body must have data-root="../"`);
+  if (katexVersion && !html.includes(`katex@${katexVersion}/`)) fail(`${file}: must load KaTeX ${katexVersion}, like ${TEMPLATE}`);
 }
 
 // Every lesson file must be listed in lessons.json
@@ -89,7 +105,7 @@ if (existsSync(join(ROOT, 'lectii'))) {
   }
 }
 
-// 3. Translations
+// 4. Translations
 let dict = null;
 if (existsSync(join(ROOT, 'assets/js/i18n.js'))) {
   try {
@@ -125,7 +141,7 @@ if (dict && dict.ro && dict.en) {
   }
 }
 
-// 4. Relative paths only (the live site is served from a subpath)
+// 5. Relative paths only (the live site is served from a subpath)
 for (const f of codeFiles) {
   const src = read(f);
   const bad = src.match(/(?:href|src)\s*=\s*["']\/(?!\/)/g);
@@ -133,14 +149,14 @@ for (const f of codeFiles) {
   if (extname(f) === '.css' && /url\(\s*["']?\/(?!\/)/.test(src)) fail(`${f}: uses an absolute url(/...). Use relative paths.`);
 }
 
-// 5. Romanian diacritics use comma-below (ș ț), not the look-alike cedilla letters (ş ţ)
+// 6. Romanian diacritics use comma-below (ș ț), not the look-alike cedilla letters (ş ţ)
 for (const f of [...codeFiles, 'data/lessons.json']) {
   if (existsSync(join(ROOT, f)) && /[şţŞŢ]/.test(read(f))) {
     fail(`${f}: uses cedilla letters (ş ţ). Use comma-below letters (ș ț).`);
   }
 }
 
-// 6. Internal links point to files that exist
+// 7. Internal links point to files that exist
 for (const f of files.filter((x) => extname(x) === '.html')) {
   const src = read(f);
   for (const m of src.matchAll(/(?:href|src)\s*=\s*"([^"]+)"/g)) {
