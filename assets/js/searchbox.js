@@ -36,6 +36,8 @@
     list.hidden = true;
     input.setAttribute('aria-expanded', 'false');
     setActive(-1);
+    options = [];
+    list.textContent = '';
   }
 
   function addOption(id, href, className) {

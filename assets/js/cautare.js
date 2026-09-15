@@ -14,6 +14,7 @@
     const form = el('form', 'search-form');
     form.action = 'cautare.html';
     form.setAttribute('role', 'search');
+    form.setAttribute('aria-label', t('search.title'));
     const label = el('label', 'sr-only', t('search.label'));
     label.htmlFor = 'search-page-q';
     const input = el('input');
