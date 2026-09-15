@@ -43,16 +43,26 @@ def pandoc_html(source):
     return result.stdout
 
 
+def _drop_dangling_backslash(tex):
+    # pandoc can end a formula with a control space "\ "; once stripped, a lone "\" would break KaTeX.
+    # An even number of trailing backslashes is a real line break "\\" and stays.
+    tex = tex.strip()
+    trailing = len(tex) - len(tex.rstrip('\\'))
+    if trailing % 2 == 1:
+        tex = tex[:-1].rstrip()
+    return tex
+
+
 def math_to_dollars(html):
     def replace(match):
         tex = match.group(2).strip()
         if match.group(1) == 'inline':
             if tex.startswith('\\(') and tex.endswith('\\)'):
                 tex = tex[2:-2]
-            return f'${tex.strip()}$'
+            return f'${_drop_dangling_backslash(tex)}$'
         if tex.startswith('\\[') and tex.endswith('\\]'):
             tex = tex[2:-2]
-        return f'$${tex.strip()}$$'
+        return f'$${_drop_dangling_backslash(tex)}$$'
     return MATH_RE.sub(replace, html)
 
 

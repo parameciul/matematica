@@ -39,3 +39,18 @@ def test_converts_a_real_docx_with_formulas(tmp_path):
     assert '$a^{2} &lt; b$' in html
     assert '$$\\frac{1}{2}$$' in html
     assert 'class="math' not in html
+
+
+def test_trailing_control_space_does_not_leave_a_backslash():
+    html = '<p><span class="math inline">\\(\\left| x \\right|\\ \\)</span></p>'
+    assert docx_to_html.math_to_dollars(html) == '<p>$\\left| x \\right|$</p>'
+
+
+def test_trailing_control_space_in_display_math():
+    html = '<p><span class="math display">\\[f(x) = x\\ \\]</span></p>'
+    assert docx_to_html.math_to_dollars(html) == '<p>$$f(x) = x$$</p>'
+
+
+def test_a_real_line_break_at_the_end_stays():
+    html = '<p><span class="math display">\\[a \\\\ \\]</span></p>'
+    assert docx_to_html.math_to_dollars(html) == '<p>$$a \\\\$$</p>'
