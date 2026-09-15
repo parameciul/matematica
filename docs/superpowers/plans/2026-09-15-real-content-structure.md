@@ -519,8 +519,9 @@ def make_pdf(path, pages, author='Someone'):
     doc = pymupdf.open()
     for lines in pages:
         page = doc.new_page(width=595, height=842)
+        # Lines 12pt apart, like real worksheets: a removal must not touch the lines above and below.
         for i, line in enumerate(lines):
-            page.insert_text((72, 72 + 20 * i), line, fontname='helv', fontsize=11)
+            page.insert_text((72, 72 + 12 * i), line, fontname='helv', fontsize=11)
     doc.set_metadata({'author': author, 'title': 'Draft'})
     doc.save(str(path))
     return path
@@ -540,10 +541,11 @@ def test_deletes_pages_and_keeps_the_rest_in_order(tmp_path):
 
 
 def test_whiteout_with_context_removes_only_the_class_suffix(tmp_path):
-    src = make_pdf(tmp_path / 'in.pdf', [['Clasa a IX-a R2 - Anul scolar', 'Exercise R2 stays']])
+    src = make_pdf(tmp_path / 'in.pdf', [['Title above', 'Clasa a IX-a R2 - Anul scolar', 'Exercise R2 stays']])
     out = tmp_path / 'out.pdf'
     counts = clean_pdf.clean(src, out, whiteouts=['R2@IX-a R2'])
     text = page_texts(out)[0]
+    assert 'Title above' in text
     assert 'Clasa a IX-a' in text and '- Anul scolar' in text
     assert 'IX-a R2' not in text
     assert 'Exercise R2 stays' in text
@@ -551,11 +553,12 @@ def test_whiteout_with_context_removes_only_the_class_suffix(tmp_path):
 
 
 def test_whiteout_span_removes_from_start_to_the_next_end_on_the_line(tmp_path):
-    src = make_pdf(tmp_path / 'in.pdf', [['Matematica * 16.09.2026 * pagina 1 din 2']])
+    src = make_pdf(tmp_path / 'in.pdf', [['Line above', 'Matematica * 16.09.2026 * pagina 1 din 2', 'Line below']])
     out = tmp_path / 'out.pdf'
     clean_pdf.clean(src, out, whiteouts=['16.09.2026...*'])
     text = page_texts(out)[0]
     assert '16.09.2026' not in text
+    assert 'Line above' in text and 'Line below' in text
     assert 'Matematica *' in text and 'pagina 1 din 2' in text
     assert text.count('*') == 1
 
@@ -670,6 +673,13 @@ def _same_line(a, b):
     return abs((a.y0 + a.y1) / 2 - (b.y0 + b.y1) / 2) < 3
 
 
+def _band(rect):
+    # Only the middle of a text line: its own letters cross the band, letters of the lines above and below do not.
+    middle = (rect.y0 + rect.y1) / 2
+    half = (rect.y1 - rect.y0) * 0.2
+    return pymupdf.Rect(rect.x0, middle - half, rect.x1, middle + half)
+
+
 def find_rects(page, pattern):
     if '...' in pattern:
         start, end = pattern.split('...', 1)
@@ -695,8 +705,7 @@ def find_line_rects(page, text):
         center = pymupdf.Point((hit.x0 + hit.x1) / 2, (hit.y0 + hit.y1) / 2)
         for line in lines:
             if center in line:
-                # 1pt smaller in height, so letters of the lines above and below stay.
-                rects.append(pymupdf.Rect(line.x0, line.y0 + 1, line.x1, line.y1 - 1))
+                rects.append(line)
     return rects
 
 
@@ -723,7 +732,7 @@ def clean(source, output, delete_pages=(), whiteouts=(), whiteout_lines=()):
             counts[f'--whiteout-line {text}'] += len(found)
             rects.extend(found)
         for rect in rects:
-            page.add_redact_annot(rect, fill=False)  # no box is drawn: the text goes, the background stays
+            page.add_redact_annot(_band(rect), fill=False)  # no box is drawn: the text goes, the background stays
         if rects:
             page.apply_redactions(images=pymupdf.PDF_REDACT_IMAGE_NONE, graphics=pymupdf.PDF_REDACT_LINE_ART_NONE)
     missing = [label for label, n in counts.items() if n == 0]
