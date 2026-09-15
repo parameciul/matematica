@@ -271,3 +271,7 @@ test('material page with a different KaTeX version than the template fails', () 
     /sample-material\.html: must load KaTeX 0\.18\.1/,
   );
 });
+
+test('missing search page fails', () => {
+  expectFailure(withSite((dir) => unlinkSync(join(dir, 'cautare.html'))), /Missing required file: cautare\.html/);
+});

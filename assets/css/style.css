@@ -979,6 +979,119 @@ a:hover {
   font-weight: 700;
 }
 
+/* Search: header dropdown and search page */
+
+.search-list {
+  position: absolute;
+  top: calc(100% + 0.35rem);
+  right: 0;
+  z-index: 30;
+  width: min(28rem, calc(100vw - 2rem));
+  max-height: min(70vh, 30rem);
+  margin: 0;
+  padding: 0.35rem;
+  overflow-y: auto;
+  list-style: none;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  background: var(--sheet);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
+}
+
+@media (max-width: 60rem) {
+  .search-list {
+    left: 0;
+    width: auto;
+  }
+}
+
+.search-option {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: baseline;
+  gap: 0.1rem 0.6rem;
+  padding: 0.5rem 0.6rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.search-option:hover,
+.search-all:hover {
+  background: var(--paper);
+}
+
+.search-list [aria-selected="true"] {
+  background: var(--paper);
+  outline: 2px solid var(--ink);
+  outline-offset: -2px;
+}
+
+.search-title {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.search-where {
+  grid-column: 2;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.search-all {
+  padding: 0.55rem 0.6rem;
+  border-radius: 4px;
+  font-weight: 700;
+  color: var(--ink);
+  text-align: center;
+  cursor: pointer;
+}
+
+.search-none {
+  padding: 0.6rem;
+  color: var(--muted);
+}
+
+.search-heading {
+  margin: 0 0 1rem;
+  font-size: clamp(1.8rem, 1.3rem + 2vw, 2.5rem);
+  line-height: 1.15;
+}
+
+.search-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  max-width: 50rem;
+  margin: 0 0 1rem;
+}
+
+.search-form input,
+.search-form select {
+  min-height: 2.75rem;
+  padding: 0.4rem 0.9rem;
+  border: 1.5px solid var(--rule);
+  border-radius: 999px;
+  background: var(--sheet);
+  color: var(--text);
+  font: inherit;
+}
+
+.search-form input {
+  flex: 1 1 16rem;
+}
+
+.search-form input:focus,
+.search-form select:focus {
+  border-color: var(--ink);
+  outline: 3px solid var(--ink);
+  outline-offset: 1px;
+}
+
+.search-count {
+  margin: 0 0 0.75rem;
+  color: var(--muted);
+}
+
 /* Footer */
 
 .site-footer .wrap {

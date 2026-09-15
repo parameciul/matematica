@@ -289,4 +289,9 @@
     setTitle,
     onLangChange: (fn) => listeners.push(fn),
   };
+
+  // The header search dropdown lives in its own file and needs window.Site, so it loads after this script.
+  const searchScript = document.createElement('script');
+  searchScript.src = `${root}assets/js/searchbox.js`;
+  document.body.appendChild(searchScript);
 })();

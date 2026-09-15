@@ -23,13 +23,16 @@ const TEMPLATE = 'docs/material-template.html';
 const REQUIRED_FILES = [
   'index.html',
   'clasa.html',
+  'cautare.html',
   '.nojekyll',
   'assets/css/style.css',
   'assets/js/i18n.js',
   'assets/js/catalog.js',
   'assets/js/site.js',
+  'assets/js/searchbox.js',
   'assets/js/home.js',
   'assets/js/clasa.js',
+  'assets/js/cautare.js',
   'assets/js/material.js',
   'data/materials.json',
 ];
