@@ -7,6 +7,14 @@
         "ro": "Numere reale. Modulul. Partea întreagă și partea fracționară",
         "en": "Real numbers. Absolute value. Integer and fractional part"
       }
+    },
+    {
+      "id": "recapitulare-initiala-gimnaziu",
+      "grade": 9,
+      "title": {
+        "ro": "Recapitulare inițială: materia de gimnaziu",
+        "en": "Start-of-year review: middle school math"
+      }
     }
   ],
   "materials": [
@@ -40,6 +48,22 @@
       "keywords": {
         "ro": ["modul", "ecuații cu modul", "inecuații cu modul", "partea întreagă", "partea fracționară", "probleme pe niveluri"],
         "en": ["absolute value", "absolute value equations", "absolute value inequalities", "integer part", "fractional part", "problems by level"]
+      }
+    },
+    {
+      "id": "fisa-recapitulativa-gimnaziu-test-initial",
+      "topic": "recapitulare-initiala-gimnaziu",
+      "kind": "fisa-recapitulativa",
+      "title": {
+        "ro": "Fișă recapitulativă: pregătire pentru testul inițial (model Evaluare Națională)",
+        "en": "Review worksheet: getting ready for the initial test (National Evaluation format)"
+      },
+      "published": "2026-09-13",
+      "pdf": "materiale/pdf/fisa-recapitulativa-gimnaziu-test-initial.pdf",
+      "youtube": null,
+      "keywords": {
+        "ro": ["test inițial", "evaluare națională", "calcul algebric", "procente", "probabilități", "geometrie"],
+        "en": ["initial test", "national evaluation", "algebra", "percentages", "probability", "geometry"]
       }
     }
   ]
