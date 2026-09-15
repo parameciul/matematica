@@ -158,27 +158,71 @@
     document.title = text ? `${text} – ${t('site.title')}` : t('site.title');
   }
 
+  const SEARCH_ICON = '<svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="m20 20-3.8-3.8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>';
+
   function buildHeader() {
     const header = document.getElementById('site-header');
     if (!header) return;
+    const gradeLinks = [5, 6, 7, 8, 9, 10, 11, 12]
+      .map((g) => `<a href="${root}clasa.html?c=${g}" data-grade-link="${g}"${g === 9 ? ' class="gap"' : ''}>${g}</a>`)
+      .join('');
     header.innerHTML = `
-      <div class="wrap">
+      <div class="wrap header-bar">
         <a class="brand" href="${root}index.html">
           <span class="brand-name" data-i18n="site.title"></span>
           <span class="brand-school" data-i18n="site.school"></span>
         </a>
-        <nav class="main-nav" data-nav>
-          <a href="${root}index.html#gimnaziu" data-i18n="level.gimnaziu"></a>
-          <a href="${root}index.html#liceu" data-i18n="level.liceu"></a>
+        <nav class="grade-nav" id="grade-nav" data-nav>
+          <span class="grade-nav-label" aria-hidden="true" data-i18n="nav.gradesLabel"></span>
+          ${gradeLinks}
         </nav>
-        <div class="lang" role="group" data-lang-group>
-          <button type="button" data-lang-btn="ro" lang="ro" aria-label="Română">RO</button>
-          <button type="button" data-lang-btn="en" lang="en" aria-label="English">EN</button>
+        <form class="search" id="site-search" role="search" action="${root}cautare.html">
+          <label class="sr-only" for="site-search-input" data-i18n="search.label"></label>
+          ${SEARCH_ICON}
+          <input id="site-search-input" name="q" type="search" autocomplete="off" spellcheck="false" enterkeyhint="search">
+        </form>
+        <div class="header-tools">
+          <button type="button" class="icon-btn" data-toggle="search" aria-controls="site-search" aria-expanded="false">${SEARCH_ICON}<span class="sr-only" data-i18n="search.open"></span></button>
+          <button type="button" class="icon-btn" data-toggle="grades" aria-controls="grade-nav" aria-expanded="false"><span data-i18n="nav.grades"></span></button>
+          <div class="lang" role="group" data-lang-group>
+            <button type="button" data-lang-btn="ro" lang="ro" aria-label="Română">RO</button>
+            <button type="button" data-lang-btn="en" lang="en" aria-label="English">EN</button>
+          </div>
         </div>
       </div>`;
+
     header.querySelectorAll('[data-lang-btn]').forEach((btn) => {
       btn.addEventListener('click', () => changeLang(btn.getAttribute('data-lang-btn')));
     });
+    header.querySelectorAll('[data-toggle]').forEach((btn) => {
+      btn.addEventListener('click', () => togglePanel(header, btn.getAttribute('data-toggle')));
+    });
+    header.addEventListener('keydown', (event) => {
+      const open = header.getAttribute('data-open');
+      if (event.key !== 'Escape' || !open) return;
+      togglePanel(header, open);
+      header.querySelector(`[data-toggle="${open}"]`).focus();
+    });
+    const form = header.querySelector('#site-search');
+    form.addEventListener('submit', (event) => {
+      if (!form.elements.q.value.trim()) event.preventDefault();
+    });
+
+    // Anchors must land below the sticky header: CSS reads its height from --header-h.
+    const setHeight = () => document.documentElement.style.setProperty('--header-h', `${header.offsetHeight}px`);
+    setHeight();
+    if (typeof ResizeObserver === 'function') new ResizeObserver(setHeight).observe(header);
+  }
+
+  // On narrow screens the grade links and the search box are panels opened by a button.
+  function togglePanel(header, which) {
+    const next = header.getAttribute('data-open') === which ? '' : which;
+    if (next) header.setAttribute('data-open', next);
+    else header.removeAttribute('data-open');
+    header.querySelectorAll('[data-toggle]').forEach((btn) => {
+      btn.setAttribute('aria-expanded', String(btn.getAttribute('data-toggle') === next));
+    });
+    if (next === 'search') header.querySelector('#site-search-input').focus();
   }
 
   function buildFooter() {
@@ -197,7 +241,12 @@
       btn.setAttribute('aria-pressed', String(btn.getAttribute('data-lang-btn') === lang));
     });
     const nav = document.querySelector('[data-nav]');
-    if (nav) nav.setAttribute('aria-label', t('nav.label'));
+    if (nav) nav.setAttribute('aria-label', t('nav.gradesLabel'));
+    document.querySelectorAll('[data-grade-link]').forEach((a) => {
+      a.setAttribute('aria-label', gradeName(Number(a.getAttribute('data-grade-link'))));
+    });
+    const input = document.getElementById('site-search-input');
+    if (input) input.placeholder = t('search.placeholder');
     const group = document.querySelector('[data-lang-group]');
     if (group) group.setAttribute('aria-label', t('lang.label'));
     const year = document.querySelector('[data-year]');

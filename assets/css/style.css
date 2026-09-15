@@ -144,47 +144,149 @@ a:hover {
   border: 0;
 }
 
-/* Header */
+/* Header: stays at the top while the page scrolls */
 
-.site-header .wrap {
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  border-bottom: 1px solid var(--rule);
+  background: var(--sheet);
+}
+
+.header-bar {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 0.75rem 1.5rem;
-  padding-block: 1rem;
+  gap: 0.5rem 1.25rem;
+  padding-block: 0.55rem;
 }
 
 .brand {
   display: flex;
   flex-direction: column;
   margin-right: auto;
-  line-height: 1.25;
+  line-height: 1.2;
   text-decoration: none;
 }
 
 .brand-name {
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   font-weight: 800;
   color: var(--ink);
 }
 
 .brand-school {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   color: var(--muted);
 }
 
-.main-nav {
+.grade-nav {
   display: flex;
-  gap: 1.25rem;
+  align-items: center;
+  gap: 0.1rem;
 }
 
-.main-nav a {
-  font-weight: 700;
+.grade-nav-label {
+  display: none;
+}
+
+.grade-nav a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.5rem;
+  min-height: 2.5rem;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  font-family: var(--hand);
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 1;
   text-decoration: none;
 }
 
-.main-nav a:hover {
-  text-decoration: underline;
+.grade-nav a.gap {
+  margin-left: 0.6rem;
+}
+
+.grade-nav a:hover {
+  border-color: var(--rule);
+}
+
+.grade-nav a[aria-current] {
+  border-color: var(--red);
+}
+
+.search {
+  position: relative;
+  width: 15rem;
+}
+
+.search input {
+  width: 100%;
+  min-height: 2.5rem;
+  padding: 0.35rem 0.9rem 0.35rem 2.3rem;
+  border: 1.5px solid var(--rule);
+  border-radius: 999px;
+  background: var(--paper);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.95rem;
+}
+
+.search input::placeholder {
+  color: var(--muted);
+  opacity: 1;
+}
+
+.search input:focus {
+  border-color: var(--ink);
+  outline: 3px solid var(--ink);
+  outline-offset: 1px;
+}
+
+.search-icon {
+  width: 1.05rem;
+  height: 1.05rem;
+}
+
+.search > .search-icon {
+  position: absolute;
+  top: 50%;
+  left: 0.8rem;
+  transform: translateY(-50%);
+  color: var(--muted);
+  pointer-events: none;
+}
+
+.header-tools {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.icon-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  min-width: 2.5rem;
+  min-height: 2.5rem;
+  padding: 0.25rem 0.75rem;
+  border: 1.5px solid var(--rule);
+  border-radius: 999px;
+  background: var(--sheet);
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.icon-btn[aria-expanded="true"] {
+  border-color: var(--ink);
+  background: var(--paper);
 }
 
 .lang {
@@ -211,6 +313,51 @@ a:hover {
 .lang button[aria-pressed="true"] {
   background: var(--ink);
   color: var(--sheet);
+}
+
+@media (max-width: 60rem) {
+  .brand-school {
+    display: none;
+  }
+
+  .icon-btn {
+    display: inline-flex;
+  }
+
+  .grade-nav,
+  .search {
+    display: none;
+    order: 10;
+    width: 100%;
+  }
+
+  .site-header[data-open="grades"] .grade-nav {
+    display: flex;
+    flex-wrap: wrap;
+    padding-block: 0.25rem 0.5rem;
+  }
+
+  .site-header[data-open="search"] .search {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .grade-nav-label {
+    display: inline;
+    margin-right: 0.5rem;
+    font-weight: 700;
+  }
+}
+
+@media (max-width: 24rem) {
+  .brand-name {
+    font-size: 1rem;
+  }
+
+  .lang button {
+    min-width: 2.4rem;
+    padding-inline: 0.55rem;
+  }
 }
 
 /* The page body carries the notebook's red margin line. */
