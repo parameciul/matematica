@@ -1,105 +1,101 @@
-// Class page: lists the lessons of one grade (?c=5..12), grouped by chapter.
+// Grade page (?c=5..12&tip=<group>): topics with their materials, newest first, grouped by school year.
 (function () {
   const container = document.getElementById('class-page');
-  const grade = Number(new URLSearchParams(window.location.search).get('c'));
+  const params = new URLSearchParams(window.location.search);
+  const grade = Number(params.get('c'));
   const validGrade = Number.isInteger(grade) && grade >= 5 && grade <= 12;
-  let lessons = null;
+  const el = Site.el;
+  let group = params.get('tip') || '';
+  let data = null;
   let failed = false;
+  let jumped = false;
 
-  function el(tag, className, text) {
-    const node = document.createElement(tag);
-    if (className) node.className = className;
-    if (text !== undefined) node.textContent = text;
-    return node;
+  function head() {
+    const box = el('div', 'class-head');
+    const num = el('span', 'num is-current', String(grade));
+    num.setAttribute('aria-hidden', 'true');
+    box.appendChild(num);
+    const titles = el('div');
+    titles.appendChild(el('h1', null, Site.gradeName(grade)));
+    titles.appendChild(el('p', null, t(Site.levelKey(grade))));
+    box.appendChild(titles);
+    return box;
   }
 
-  function kindLabel(type) {
-    if (type === 'text') return t('type.text');
-    if (type === 'video') return t('type.video');
-    return t('type.textvideo');
+  function topicCard(entry) {
+    const section = el('section', 'topic');
+    section.id = entry.topic.id;
+    const title = el('h3', 'topic-title', Site.pick(entry.topic.title));
+    title.id = `${entry.topic.id}-title`;
+    section.setAttribute('aria-labelledby', title.id);
+    section.appendChild(title);
+    section.appendChild(el('p', 'topic-updated', t('common.updated').replace('{date}', Site.formatDate(entry.latest))));
+    const list = el('ul', 'material-list');
+    entry.materials.forEach((m) => list.appendChild(Site.materialRow(m, entry.topic)));
+    section.appendChild(list);
+    return section;
   }
 
-  function gradeSwitch() {
-    const nav = el('nav', 'grade-switch');
-    nav.setAttribute('aria-label', t('class.chooseGrade'));
-    for (let g = 5; g <= 12; g++) {
-      const a = el('a', g === 9 ? 'gap' : null, String(g));
-      a.href = `clasa.html?c=${g}`;
-      a.setAttribute('aria-label', Site.gradeName(g));
-      if (g === grade) a.setAttribute('aria-current', 'page');
-      nav.appendChild(a);
-    }
-    return nav;
+  function pickGroup(next) {
+    group = next;
+    Site.setParam('tip', group);
+    render();
+    const button = container.querySelector(`[data-group="${group}"]`);
+    if (button) button.focus();
   }
 
-  function lessonItem(lesson) {
-    const li = el('li');
-    const a = el('a');
-    a.href = `lectii/${lesson.id}.html`;
-    a.appendChild(el('span', 'lesson-title', Site.pick(lesson.title)));
-    const kind = lesson.type === 'text+video' ? 'textvideo' : lesson.type;
-    a.appendChild(el('span', `kind kind-${kind}`, kindLabel(lesson.type)));
-    li.appendChild(a);
-    return li;
+  function message(key) {
+    container.appendChild(el('p', 'message', t(key)));
   }
 
   function render() {
     container.textContent = '';
-    container.appendChild(gradeSwitch());
-
     if (!validGrade) {
       Site.setTitle('');
-      container.appendChild(el('p', 'message', t('class.notfound')));
+      message('class.notfound');
       return;
     }
-
-    const head = el('div', 'class-head');
-    const num = el('span', 'num is-current', String(grade));
-    num.setAttribute('aria-hidden', 'true');
-    head.appendChild(num);
-    const titles = el('div');
-    titles.appendChild(el('h1', null, Site.gradeName(grade)));
-    titles.appendChild(el('p', null, t(Site.levelKey(grade))));
-    head.appendChild(titles);
-    container.appendChild(head);
+    Site.markGrade(grade, true);
     Site.setTitle(Site.gradeName(grade));
+    container.appendChild(head());
+    if (failed) return message('error.load');
+    if (!data) return message('common.loading');
 
-    if (failed) {
-      container.appendChild(el('p', 'message', t('error.load')));
-      return;
-    }
-    if (!lessons) {
-      container.appendChild(el('p', 'message', t('common.loading')));
-      return;
-    }
+    const entries = Catalog.gradeTopics(data, grade);
+    if (!entries.length) return message('class.empty');
 
-    const mine = lessons.filter((l) => l.grade === grade).sort((a, b) => a.order - b.order);
-    if (!mine.length) {
-      container.appendChild(el('p', 'message', t('class.empty')));
-      return;
-    }
+    const groups = Catalog.groupsPresent(entries);
+    const active = groups.includes(group) ? group : '';
+    if (groups.length > 1) container.appendChild(Site.filterBar(groups, active, pickGroup));
 
-    const chapters = new Map();
-    mine.forEach((l) => {
-      if (!chapters.has(l.chapter.ro)) chapters.set(l.chapter.ro, { chapter: l.chapter, items: [] });
-      chapters.get(l.chapter.ro).items.push(l);
-    });
-
-    chapters.forEach(({ chapter, items }) => {
-      const section = el('section', 'chapter');
-      section.appendChild(el('h2', null, Site.pick(chapter)));
-      const list = el('ul', 'lesson-list');
-      items.forEach((l) => list.appendChild(lessonItem(l)));
-      section.appendChild(list);
-      container.appendChild(section);
+    Catalog.bySchoolYear(Catalog.filterEntries(entries, active)).forEach((year, index) => {
+      const details = el('details', 'year');
+      details.open = index === 0;
+      const summary = el('summary');
+      summary.appendChild(el('h2', null, t('class.year').replace('{year}', Catalog.schoolYearLabel(year.year))));
+      details.appendChild(summary);
+      year.entries.forEach((e) => details.appendChild(topicCard(e)));
+      container.appendChild(details);
     });
   }
 
+  // Links like clasa.html?c=9#<topic-id> point into content that exists only after the data loads.
+  function jumpToTopic() {
+    if (jumped || !window.location.hash) return;
+    jumped = true;
+    const target = document.getElementById(decodeURIComponent(window.location.hash.slice(1)));
+    if (!target) return;
+    const details = target.closest('details');
+    if (details) details.open = true;
+    target.scrollIntoView();
+  }
+
   render();
-  Site.loadLessons().then(
-    (data) => {
-      lessons = data;
+  Site.loadData().then(
+    (loaded) => {
+      data = loaded;
       render();
+      jumpToTopic();
     },
     () => {
       failed = true;

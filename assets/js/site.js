@@ -1,10 +1,8 @@
-// Shared page shell: header, footer, language switch, lesson data and math rendering.
+// Shared page shell: header, footer, language switch, material data, list rows, filters and math rendering.
 (function () {
   const root = document.body.getAttribute('data-root') || '';
   const listeners = [];
-  let lessonsPromise = null;
-
-  const ROMAN = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII'];
+  let dataPromise = null;
 
   // Returns the text for the current language, falling back to Romanian.
   function pick(obj) {
@@ -13,37 +11,129 @@
   }
 
   function gradeName(grade) {
-    return getLang() === 'ro' ? `Clasa a ${ROMAN[grade]}-a` : `Grade ${grade}`;
+    return getLang() === 'ro' ? `Clasa a ${Catalog.ROMAN[grade]}-a` : `Grade ${grade}`;
   }
 
   function levelKey(grade) {
     return grade <= 8 ? 'level.gimnaziu' : 'level.liceu';
   }
 
-  // Romanian uses "de" before the noun for 20+ (except when the last two digits are 01-19).
-  function lessonCount(n) {
-    if (n === 0) return t('count.zero');
-    if (n === 1) return t('count.one');
+  // Romanian puts "de" before the noun for 20 and more (except when the last two digits are 01-19).
+  function plural(n, prefix) {
+    if (n === 1) return t(`${prefix}.one`);
     const rest = n % 100;
-    const text = getLang() === 'ro' && (rest === 0 || rest >= 20) ? t('count.many') : t('count.few');
-    return text.replace('{n}', String(n));
+    const form = getLang() === 'ro' && n !== 0 && (rest === 0 || rest >= 20) ? 'many' : 'few';
+    return t(`${prefix}.${form}`).replace('{n}', String(n));
   }
 
-  function loadLessons() {
-    if (!lessonsPromise) {
-      lessonsPromise = fetch(`${root}data/lessons.json`, { cache: 'no-cache' })
-        .then((res) => {
-          if (!res.ok) throw new Error(`HTTP ${res.status}`);
-          return res.json();
-        })
-        .then((data) => data.lessons);
+  function countLabel(n) {
+    return n === 0 ? t('count.zero') : plural(n, 'count');
+  }
+
+  function kindLabel(kind) {
+    return t(`kind.${kind}`);
+  }
+
+  function groupLabel(group) {
+    return t(`group.${group}`);
+  }
+
+  function formatDate(iso, style) {
+    return Catalog.formatDate(iso, getLang(), style);
+  }
+
+  function materialUrl(id) {
+    return `${root}materiale/${id}.html`;
+  }
+
+  function gradeUrl(grade, topicId) {
+    return `${root}clasa.html?c=${grade}${topicId ? `#${topicId}` : ''}`;
+  }
+
+  // Extra words that find a kind in search: its name and its group name, in both languages.
+  function searchLabels() {
+    const labels = {};
+    Catalog.KINDS.forEach((kind) => {
+      const group = Catalog.groupOf(kind);
+      labels[kind] = ['ro', 'en'].flatMap((lang) => [I18N[lang][`kind.${kind}`], I18N[lang][`group.${group}`]]);
+    });
+    return labels;
+  }
+
+  function loadData() {
+    if (!dataPromise) {
+      dataPromise = fetch(`${root}data/materials.json`, { cache: 'no-cache' }).then((res) => {
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return res.json();
+      });
     }
-    return lessonsPromise;
+    return dataPromise;
   }
 
-  function renderMath(el) {
+  function el(tag, className, text) {
+    const node = document.createElement(tag);
+    if (className) node.className = className;
+    if (text !== undefined) node.textContent = text;
+    return node;
+  }
+
+  // One material in a list: type, title, optional grade and topic, date and the "new" label.
+  function materialRow(material, topic, options) {
+    const opts = options || {};
+    const li = el('li', 'm-row');
+    const a = el('a', 'm-link');
+    a.href = materialUrl(material.id);
+    a.appendChild(el('span', `badge badge-${Catalog.groupOf(material.kind)}`, kindLabel(material.kind)));
+    a.appendChild(el('span', 'm-title', pick(material.title)));
+    const meta = el('span', 'm-meta');
+    const where = [];
+    if (opts.grade && topic) where.push(gradeName(topic.grade));
+    if (opts.topic && topic) where.push(pick(topic.title));
+    if (where.length) meta.appendChild(el('span', 'm-where', where.join(' · ')));
+    const time = el('time', 'm-date', formatDate(material.published));
+    time.dateTime = material.published;
+    meta.appendChild(time);
+    if (Catalog.isNew(material.published, Catalog.todayIso())) meta.appendChild(el('span', 'new', t('common.new')));
+    a.appendChild(meta);
+    li.appendChild(a);
+    return li;
+  }
+
+  // Filter buttons: "All" plus one button per group. onPick receives the group ('' for all).
+  function filterBar(groups, active, onPick) {
+    const bar = el('div', 'filters');
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', t('class.filter'));
+    ['', ...groups].forEach((group) => {
+      const btn = el('button', 'chip', group ? groupLabel(group) : t('class.all'));
+      btn.type = 'button';
+      btn.setAttribute('data-group', group);
+      btn.setAttribute('aria-pressed', String(group === active));
+      btn.addEventListener('click', () => onPick(group));
+      bar.appendChild(btn);
+    });
+    return bar;
+  }
+
+  // Changes one query parameter in the address bar without reloading, so the view can be shared.
+  function setParam(name, value) {
+    const url = new URL(window.location.href);
+    if (value) url.searchParams.set(name, value);
+    else url.searchParams.delete(name);
+    window.history.replaceState(null, '', url);
+  }
+
+  // Marks the grade in the menu: aria-current="page" on its grade page, "true" on its material pages.
+  function markGrade(grade, isPage) {
+    document.querySelectorAll('[data-grade-link]').forEach((a) => {
+      if (Number(a.getAttribute('data-grade-link')) === grade) a.setAttribute('aria-current', isPage ? 'page' : 'true');
+      else a.removeAttribute('aria-current');
+    });
+  }
+
+  function renderMath(node) {
     if (typeof window.renderMathInElement !== 'function') return;
-    window.renderMathInElement(el, {
+    window.renderMathInElement(node, {
       delimiters: [
         { left: '$$', right: '$$', display: true },
         { left: '$', right: '$', display: false },
@@ -55,12 +145,12 @@
   }
 
   function applyI18n(scope) {
-    const el = scope || document;
-    el.querySelectorAll('[data-i18n]').forEach((node) => {
-      node.textContent = t(node.getAttribute('data-i18n'));
+    const node = scope || document;
+    node.querySelectorAll('[data-i18n]').forEach((item) => {
+      item.textContent = t(item.getAttribute('data-i18n'));
     });
-    el.querySelectorAll('[data-grade-name]').forEach((node) => {
-      node.textContent = gradeName(Number(node.getAttribute('data-grade-name')));
+    node.querySelectorAll('[data-grade-name]').forEach((item) => {
+      item.textContent = gradeName(Number(item.getAttribute('data-grade-name')));
     });
   }
 
@@ -131,8 +221,20 @@
     pick,
     gradeName,
     levelKey,
-    lessonCount,
-    loadLessons,
+    plural,
+    countLabel,
+    kindLabel,
+    groupLabel,
+    formatDate,
+    materialUrl,
+    gradeUrl,
+    searchLabels,
+    loadData,
+    el,
+    materialRow,
+    filterBar,
+    setParam,
+    markGrade,
     renderMath,
     applyI18n,
     setTitle,
