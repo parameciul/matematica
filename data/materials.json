@@ -1,4 +1,30 @@
 {
-  "topics": [],
-  "materials": []
+  "topics": [
+    {
+      "id": "numere-reale-modul-parte-intreaga",
+      "grade": 9,
+      "title": {
+        "ro": "Numere reale. Modulul. Partea întreagă și partea fracționară",
+        "en": "Real numbers. Absolute value. Integer and fractional part"
+      }
+    }
+  ],
+  "materials": [
+    {
+      "id": "teorie-numere-reale-modul-parte-intreaga",
+      "topic": "numere-reale-modul-parte-intreaga",
+      "kind": "teorie",
+      "title": {
+        "ro": "Teorie sintetizată: numere reale, modul, partea întreagă și partea fracționară",
+        "en": "Theory summary: real numbers, absolute value, integer and fractional part"
+      },
+      "published": "2026-09-14",
+      "pdf": "materiale/pdf/teorie-numere-reale-modul-parte-intreaga.pdf",
+      "youtube": null,
+      "keywords": {
+        "ro": ["modul", "valoare absolută", "intervale", "inecuații", "partea întreagă", "partea fracționară", "numere iraționale"],
+        "en": ["absolute value", "modulus", "intervals", "inequalities", "integer part", "floor", "fractional part", "irrational numbers"]
+      }
+    }
+  ]
 }
