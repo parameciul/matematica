@@ -25,6 +25,22 @@
         "ro": ["modul", "valoare absolută", "intervale", "inecuații", "partea întreagă", "partea fracționară", "numere iraționale"],
         "en": ["absolute value", "modulus", "intervals", "inequalities", "integer part", "floor", "fractional part", "irrational numbers"]
       }
+    },
+    {
+      "id": "fisa-lucru-numere-reale-modul-parte-intreaga",
+      "topic": "numere-reale-modul-parte-intreaga",
+      "kind": "fisa-lucru",
+      "title": {
+        "ro": "Fișă de lucru: numere reale, modul, partea întreagă și partea fracționară",
+        "en": "Worksheet: real numbers, absolute value, integer and fractional part"
+      },
+      "published": "2026-09-14",
+      "pdf": "materiale/pdf/fisa-lucru-numere-reale-modul-parte-intreaga.pdf",
+      "youtube": null,
+      "keywords": {
+        "ro": ["modul", "ecuații cu modul", "inecuații cu modul", "partea întreagă", "partea fracționară", "probleme pe niveluri"],
+        "en": ["absolute value", "absolute value equations", "absolute value inequalities", "integer part", "fractional part", "problems by level"]
+      }
     }
   ]
 }
