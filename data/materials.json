@@ -15,6 +15,14 @@
         "ro": "Recapitulare inițială: materia de gimnaziu",
         "en": "Start-of-year review: middle school math"
       }
+    },
+    {
+      "id": "recapitulare-clasa-a-v-a",
+      "grade": 6,
+      "title": {
+        "ro": "Recapitularea materiei clasei a V-a",
+        "en": "Review of grade 5 math"
+      }
     }
   ],
   "materials": [
@@ -80,6 +88,22 @@
       "keywords": {
         "ro": ["evaluare inițială", "inecuații", "ecuația de gradul al II-lea", "funcția de gradul I", "trigonometrie", "geometrie analitică"],
         "en": ["initial assessment", "inequalities", "quadratic equation", "linear function", "trigonometry", "analytic geometry"]
+      }
+    },
+    {
+      "id": "quiz-recapitulare-clasa-a-v-a",
+      "topic": "recapitulare-clasa-a-v-a",
+      "kind": "quiz",
+      "title": {
+        "ro": "Quiz pe echipe: recapitularea clasei a V-a",
+        "en": "Team quiz: review of grade 5 (in Romanian)"
+      },
+      "published": "2026-09-15",
+      "pdf": null,
+      "youtube": null,
+      "keywords": {
+        "ro": ["quiz", "videoproiector", "joc pe echipe", "algebră", "geometrie"],
+        "en": ["quiz", "projector", "team game", "algebra", "geometry"]
       }
     }
   ]
