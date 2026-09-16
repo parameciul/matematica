@@ -83,7 +83,12 @@
     const li = el('li', 'm-row');
     const a = el('a', 'm-link');
     a.href = materialUrl(material.id);
-    a.appendChild(el('span', `badge badge-${Catalog.groupOf(material.kind)}`, kindLabel(material.kind)));
+    const badges = el('span', 'm-badges');
+    if (opts.grade && topic) {
+      badges.appendChild(el('span', `m-grade m-grade-${Catalog.groupOf(material.kind)}`, String(topic.grade)));
+    }
+    badges.appendChild(el('span', `badge badge-${Catalog.groupOf(material.kind)}`, kindLabel(material.kind)));
+    a.appendChild(badges);
     a.appendChild(el('span', 'm-title', pick(material.title)));
     const meta = el('span', 'm-meta');
     const where = [];

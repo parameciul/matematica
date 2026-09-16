@@ -633,6 +633,44 @@ a:hover {
   white-space: nowrap;
 }
 
+.m-badges {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.m-grade {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.55rem;
+  padding: 0 0.4rem;
+  border-radius: 999px;
+  background: var(--b-lectii-bg);
+  color: var(--b-lectii-fg);
+  font-family: var(--hand);
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+.m-grade-fise {
+  background: var(--b-fise-bg);
+  color: var(--b-fise-fg);
+}
+
+.m-grade-teste {
+  background: var(--b-teste-bg);
+  color: var(--b-teste-fg);
+}
+
+.m-grade-jocuri {
+  background: var(--b-jocuri-bg);
+  color: var(--b-jocuri-fg);
+}
+
 .badge-fise {
   background: var(--b-fise-bg);
   color: var(--b-fise-fg);
