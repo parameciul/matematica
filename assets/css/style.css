@@ -566,6 +566,17 @@ a:hover {
     align-items: baseline;
     column-gap: 0.75rem;
   }
+
+  /* Rows that also name the grade and the topic carry too much meta text for a
+     third column: it would take all the width and squeeze the title to a sliver.
+     Those rows drop to two columns and put the meta under the title. */
+  .m-link:has(.m-where) {
+    grid-template-columns: 11.5rem minmax(0, 1fr);
+  }
+
+  .m-link:has(.m-where) .m-meta {
+    grid-column: 2;
+  }
 }
 
 .m-link:hover {
@@ -584,6 +595,7 @@ a:hover {
   font-size: 1.05rem;
   font-weight: 700;
   color: var(--ink);
+  overflow-wrap: break-word;
 }
 
 .m-meta {
