@@ -105,6 +105,22 @@
         "ro": ["quiz", "videoproiector", "joc pe echipe", "algebră", "geometrie"],
         "en": ["quiz", "projector", "team game", "algebra", "geometry"]
       }
+    },
+    {
+      "id": "joc-mesajul-secret",
+      "topic": "recapitulare-clasa-a-v-a",
+      "kind": "joc",
+      "title": {
+        "ro": "Joc: Mesajul secret (numere naturale și fracții)",
+        "en": "Game: The secret message (natural numbers and fractions)"
+      },
+      "published": "2026-09-15",
+      "pdf": "materiale/pdf/joc-mesajul-secret.pdf",
+      "youtube": null,
+      "keywords": {
+        "ro": ["joc de recapitulare", "numere naturale", "fracții", "puteri", "procente", "media aritmetică"],
+        "en": ["review game", "natural numbers", "fractions", "powers", "percentages", "arithmetic mean"]
+      }
     }
   ]
 }
