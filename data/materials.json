@@ -65,6 +65,22 @@
         "ro": ["test inițial", "evaluare națională", "calcul algebric", "procente", "probabilități", "geometrie"],
         "en": ["initial test", "national evaluation", "algebra", "percentages", "probability", "geometry"]
       }
+    },
+    {
+      "id": "fisa-recapitulare-evaluare-initiala",
+      "topic": "recapitulare-initiala-gimnaziu",
+      "kind": "fisa-recapitulativa",
+      "title": {
+        "ro": "Fișă de recapitulare și evaluare inițială (profil matematică-informatică)",
+        "en": "Review and initial assessment worksheet (mathematics and computer science track)"
+      },
+      "published": "2026-09-13",
+      "pdf": "materiale/pdf/fisa-recapitulare-evaluare-initiala.pdf",
+      "youtube": null,
+      "keywords": {
+        "ro": ["evaluare inițială", "inecuații", "ecuația de gradul al II-lea", "funcția de gradul I", "trigonometrie", "geometrie analitică"],
+        "en": ["initial assessment", "inequalities", "quadratic equation", "linear function", "trigonometry", "analytic geometry"]
+      }
     }
   ]
 }
