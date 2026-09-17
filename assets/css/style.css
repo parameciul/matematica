@@ -11,6 +11,8 @@
   --ink-hover: #132a69;
   --red: #cf3a2f;
   --marker: #fff0a0;
+  --marker-soft: #fffaea;
+  --marker-edge: #ffd94a;
   --rule: #d4dce8;
   --fill: #c9d6f3;
   --brand-marker: #fff0a0;
@@ -45,6 +47,8 @@
   --ink-hover: #d2e0ff;
   --red: #ff8b80;
   --marker: rgba(255, 226, 110, 0.16);
+  --marker-soft: rgba(255, 226, 110, 0.1);
+  --marker-edge: rgba(255, 217, 74, 0.75);
   --rule: rgba(255, 255, 255, 0.14);
   --fill: rgba(169, 197, 255, 0.3);
   --brand-marker: rgba(255, 217, 74, 0.5);
@@ -70,6 +74,8 @@
     --ink-hover: #d2e0ff;
     --red: #ff8b80;
     --marker: rgba(255, 226, 110, 0.16);
+    --marker-soft: rgba(255, 226, 110, 0.1);
+    --marker-edge: rgba(255, 217, 74, 0.75);
     --rule: rgba(255, 255, 255, 0.14);
     --fill: rgba(169, 197, 255, 0.3);
     --brand-marker: rgba(255, 217, 74, 0.5);
@@ -1057,8 +1063,9 @@ html:not(.js) .theme-btn {
   max-width: 50rem;
   margin: 0 0 1rem;
   padding: 0.6rem 0.9rem;
+  border-left: 5px solid var(--marker-edge);
   border-radius: 4px;
-  background: var(--marker);
+  background: var(--marker-soft);
 }
 
 .material-actions .note {
@@ -1147,11 +1154,15 @@ html:not(.js) .theme-btn {
   margin: 0;
 }
 
+/* Highlighted boxes cover a lot of page, so they take the pale fill and put the
+   strong yellow in the edge. Full-strength yellow over that much area shouts.
+   The small "Nou" badge keeps the strong yellow: a dab should stay a dab. */
 .retine {
   margin: 1.25rem 0;
   padding: 0.75rem 1rem;
+  border-left: 5px solid var(--marker-edge);
   border-radius: 4px;
-  background: var(--marker);
+  background: var(--marker-soft);
 }
 
 .retine-title {
