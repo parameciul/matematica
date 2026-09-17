@@ -5,9 +5,9 @@ Math lessons for grades 5–12.
 
 Site: https://lauramiron.pages.dev/
 
-- Lessons list: `data/lessons.json`
-- Lesson pages: `lectii/`
+- Materials list: `data/materials.json`
+- Material pages: `materiale/`
 - Tests: `node tests/validate.mjs`
 - Local preview: `python -m http.server 8000`, then open http://localhost:8000/
 
-See `CLAUDE.md` for how to add a lesson and deploy.
+See `AGENTS.md` for how to add a material and deploy.
