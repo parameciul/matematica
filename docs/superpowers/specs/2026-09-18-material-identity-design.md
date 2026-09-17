@@ -64,9 +64,16 @@ gets a new uid and its own set of files, side by side with the first.
 
 - Format: four or more digits, `^[1-9][0-9]{3,}$`. The first material gets
   `1001`.
-- Next uid = highest uid ever used + 1, where "ever used" includes retired ones.
+- `data/materials.json` gets a top-level counter, `"nextUid": 1012`. The tool
+  takes that number, then raises the counter by one. The counter only ever goes
+  up.
 - A retired uid is never reused. This is what makes an old URL safe: it can
   never start pointing at a different material.
+- The counter is used instead of "highest uid in the file plus one", because a
+  hand edit, a bad merge or the other session in this working tree can drop a
+  row; the highest number would then fall back and hand out a uid twice. The
+  validator guards the counter: `nextUid` must be larger than every uid in
+  `materials` and in `retired`.
 
 ### 4. Re-import means a new material
 
@@ -83,6 +90,27 @@ The human decides afterwards:
 - keep both, because they are genuinely different materials, or
 - `node tools/material.mjs delete <old-uid> --replaced-by <new-uid>`, which
   retires the old one and adds a 301 redirect to the new URL.
+
+### 4b. The second copy is hidden from Google until one is deleted
+
+A re-import gives two URLs with the same slug, the same `title`, the same
+`description` and the same `keywords`. For a reader that is two entries on the
+grade page, which is what was asked for. For Google it is duplicate content on a
+site built around one canonical URL per material per language, and Google may
+pick the wrong one.
+
+So the newer copy carries a `"supersedes": "<old-uid>"` field, and while that
+field is set the generator treats its two pages as noindex pages: `noindex,
+follow`, no `max-image-preview` block, and left out of `sitemap.xml`. The pages
+still render and are still linked from the grade page, so the two copies can be
+compared side by side.
+
+`material.mjs delete <old-uid> --replaced-by <new-uid>` removes `supersedes`
+from the survivor in the same run, so the moment the old copy goes the new one
+becomes indexable and inherits the old URL through the 301.
+
+The validator checks that `supersedes` names a uid that is either live or
+retired, and that a material with `supersedes` set is noindex on both pages.
 
 ### 5. Delete and retire
 
@@ -151,11 +179,11 @@ applied later if it is ever needed.
 
 | File | Change |
 |------|--------|
-| `data/materials.json` | `id` becomes `slug` + `uid` on all 11 materials; new `retired: []`; optional `aliases`; `import` block |
+| `data/materials.json` | `id` becomes `slug` + `uid` on all 11 materials; new `nextUid` and `retired: []`; optional `aliases`, `supersedes` and `import` block |
 | files on disk | 11 RO pages, 10 EN pages, 10 PDFs renamed with `git mv` to `<slug>-<uid>` |
-| `tools/build_pages.mjs` | every path use of `material.id` becomes `<slug>-<uid>`; `data-id` becomes `uid`; new `_redirects` output, covered by `--check` |
+| `tools/build_pages.mjs` | every path use of `material.id` becomes `<slug>-<uid>`; `data-id` becomes `uid`; `supersedes` makes a page noindex; new `_redirects` output, covered by `--check` |
 | `assets/js/catalog.js` | `relatedMaterials` and every other join keyed by `uid` |
-| `assets/js/site.js` | reads `data-id` as the uid |
+| `assets/js/material.js` | line 9 reads `data-id`, now a uid, and looks the material up by `uid` |
 | `tests/validate.mjs` | new rules, see below |
 | `tools/material.mjs` | new tool: `new`, `delete`, `list` |
 | `tools/migrate_uids.mjs` | one-shot migration, deleted after it runs |
@@ -166,6 +194,9 @@ applied later if it is ever needed.
 
 - `uid` present, matches `^[1-9][0-9]{3,}$`, unique across `materials`.
 - No `uid` appears both in `materials` and in `retired`.
+- `nextUid` is larger than every uid in `materials` and in `retired`.
+- `supersedes`, when present, names a live or retired uid, and both pages of
+  that material are noindex.
 - `slug` matches the existing id pattern.
 - Every file in `materiale/`, `en/materiale/` and `materiale/pdf/` is named
   exactly `<slug>-<uid>` for a material in the data, and every material has the
@@ -181,12 +212,26 @@ applied later if it is ever needed.
 Each phase ends green: `node tests/validate.mjs`, `npm test` and
 `python -m pytest tools -q` all pass, then a commit.
 
-**Phase 1 - data model and migration.**
+`node tests/validate.mjs` is the Cloudflare build command, so a commit on `main`
+with a failing validator stops the deploy and freezes the live site on the old
+build. Red-then-green therefore happens inside one phase, on a branch, and only
+the green result reaches `main`.
+
+**Phase 1 - data model and migration.** On a branch.
 Write the new validator rules and the new tests first, so they fail, then the
-migration script: assign `1001`-`1011` in current data order, `git mv` the 31
-files, rewrite `data/materials.json`, add each old name as an `alias` so the
-present URLs keep working, teach `build_pages.mjs` the new names and the
-`_redirects` output, regenerate, run the tests. Delete the migration script.
+migration script: assign `1001`-`1011` in current data order, set
+`"nextUid": 1012`, `git mv` the 31 files, rewrite `data/materials.json`, add
+each old name as an `alias` so the present URLs keep working, teach
+`build_pages.mjs` the new names and the `_redirects` output, regenerate, run the
+tests. Delete the migration script.
+
+Before merging Phase 1, check the redirects on the real platform: push the
+branch, open `https://<branch>.lauramiron.pages.dev/`, and request one old
+extensionless URL (`/materiale/joc-mesajul-secret`) plus its PDF. Both must
+answer 301 to the new `-<uid>` name. The whole alias strategy rests on that, and
+no local test can prove it. Cloudflare documents 301, 302, 303, 307 and 308 for
+`_redirects` (302 is the default, 410 is not supported), so the rules use an
+explicit `301`.
 
 **Phase 2 - `tools/material.mjs`.**
 `list`, `new` (allocates the uid, adds the entry with the required fields, makes
@@ -210,4 +255,7 @@ affects the article output.
 - **Side-by-side duplicates are visible to students.** A re-imported material
   shows twice on the grade page until one is deleted. That is the accepted cost
   of never overwriting an article; `material.mjs list` makes the pair easy to
-  spot.
+  spot, and section 4b keeps the second copy out of Google in the meantime.
+- **Forgotten duplicates.** Nothing forces a decision, so a `supersedes` pair
+  can sit there for months with one copy invisible to search. `material.mjs
+  list` marks such pairs so they are easy to find.
