@@ -31,6 +31,14 @@
         "ro": "Recapitulare: vectori și geometrie analitică (clasa a X-a)",
         "en": "Review: vectors and analytic geometry (grade 10)"
       }
+    },
+    {
+      "id": "recapitulare-initiala-clasele-v-vii",
+      "grade": 8,
+      "title": {
+        "ro": "Recapitulare inițială: materia claselor a V-a – a VII-a",
+        "en": "Start-of-year review: grades 5-7 math"
+      }
     }
   ],
   "materials": [
@@ -144,6 +152,22 @@
       "keywords": {
         "ro": ["vectori", "geometrie analitică", "dreaptă", "pantă", "coliniari", "produs scalar", "mediatoare", "recapitulare", "BAC"],
         "en": ["vectors", "analytic geometry", "line", "slope", "collinear", "dot product", "perpendicular bisector", "review", "baccalaureate"]
+      }
+    },
+    {
+      "id": "fisa-recapitulativa-clasele-v-vii-test-initial",
+      "topic": "recapitulare-initiala-clasele-v-vii",
+      "kind": "fisa-recapitulativa",
+      "title": {
+        "ro": "Fișă recapitulativă: clasele a V-a – a VII-a, pregătire pentru testul inițial",
+        "en": "Review worksheet: grades 5-7, getting ready for the initial test"
+      },
+      "published": "2026-09-17",
+      "pdf": "materiale/pdf/fisa-recapitulativa-clasele-v-vii-test-initial.pdf",
+      "youtube": null,
+      "keywords": {
+        "ro": ["test inițial", "divizibilitate", "fracții", "radicali", "ecuații", "sisteme de ecuații", "probabilități", "triunghiuri", "patrulatere", "asemănare", "relații metrice"],
+        "en": ["initial test", "divisibility", "fractions", "square roots", "equations", "systems of equations", "probability", "triangles", "quadrilaterals", "similarity", "metric relations"]
       }
     }
   ]
