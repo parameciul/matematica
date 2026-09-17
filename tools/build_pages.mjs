@@ -180,7 +180,13 @@ function renderHead(opts) {
   lines.push(`<link rel="icon" href="${base}favicon.svg" type="image/svg+xml">`);
   lines.push('<link rel="icon" href="' + base + 'favicon.ico" sizes="48x48">');
   lines.push(`<link rel="apple-touch-icon" href="${base}apple-touch-icon.png">`);
-  lines.push(`<script>document.documentElement.classList.add('js')</script>`);
+  // Inline and before the stylesheet: the saved theme must be on <html> for the
+  // first paint, or the page flashes light and then jumps to the chalkboard.
+  lines.push('<script>'
+    + "document.documentElement.classList.add('js');"
+    + "try{var t=localStorage.getItem('matematica.theme');"
+    + "if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}"
+    + '</script>');
   lines.push('<link rel="preconnect" href="https://fonts.googleapis.com">');
   lines.push('<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>');
   lines.push(`<link rel="stylesheet" href="${FONTS}">`);

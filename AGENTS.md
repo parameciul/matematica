@@ -28,6 +28,7 @@ Grades 5-12. Romanian by default, with an English switch. Plain HTML/CSS/JS: no 
   - `favicon.ico`, `apple-touch-icon.png` and `assets/img/og-image.png`, rendered from those two SVG files with pymupdf plus pillow;
   - `assets/img/brand/`: the white and one-colour variants, for dark, printed or coloured backgrounds.
   Change one and you must change the others by hand. The `.png` and `.ico` files never update themselves when the SVG changes.
+- Theme: the reader switches light/dark with the header button. The choice lives in `localStorage['matematica.theme']` and is read by an inline script in the page head, before the stylesheet, so the page never paints the wrong theme first. The dark colours are written twice in `assets/css/style.css`: once for `:root[data-theme="dark"]` (the reader chose) and once for `:root:not([data-theme="light"])` inside the `prefers-color-scheme` query (the system decides). CSS cannot share one block across a media query; the validator fails if the two copies drift apart.
 - `.github/workflows/opencode.yml`: a comment `/oc` or `/opencode` on a GitHub issue or PR starts opencode.
 
 Content is sorted per grade, never per school class (9R2, 6E2). Topics hold materials. The newest materials show first, with their publish date. Search runs in the browser and ignores diacritics. DOCX files, answers and class marks are never published.
@@ -54,6 +55,7 @@ Content is sorted per grade, never per school class (9R2, 6E2). Topics hold mate
 - Pages and `data/materials.json` contain no answers and no class marks:
   - class names (`IX-a R2`), class codes (`6E2`), school weeks (`S2:`), exact dates (`16.09.2026`);
   - answer headings (răspunsuri și indicații, barem de evaluare, indicații de rezolvare).
+- Never write `<digit><capital><digit>` next to each other in SVG path data (`14.5A8.5`, `1.6M6.9`). The class-code rule reads path data as text and sees a class code like `9R2`. Put a space before the command letter.
 - A quiz is a full standalone HTML page with `<html lang="ro">`, `"pdf": null` and a link back to `../clasa-<grade>.html`.
 
 ## SEO rules

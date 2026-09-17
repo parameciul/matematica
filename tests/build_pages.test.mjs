@@ -274,3 +274,22 @@ test('every page header carries the brand mark next to the site name', (t) => {
     assert.match(html, /<span class="brand-school"[^>]*>[^<]*<\/span><\/span><\/a>/, `${file}: wrapper closes before the link`);
   }
 });
+
+test('every page can switch theme without a flash of the wrong one', (t) => {
+  const dir = makeRoot(t, { pages: stdPages() });
+  const site = buildSite(dir);
+  for (const file of ['index.html', 'en/index.html', 'clasa-6.html', 'materiale/teorie-reale.html']) {
+    const html = site.get(file);
+    const head = html.slice(0, html.indexOf('</head>'));
+    // The saved choice is read in the head, before the first paint, or the page
+    // paints light and then jumps to dark.
+    assert.match(head, /matematica\.theme/, `${file}: reads the saved theme in the head`);
+    assert.match(head, /setAttribute\('data-theme'/, `${file}: sets data-theme in the head`);
+    assert.ok(head.indexOf('matematica.theme') < head.indexOf('style.css'),
+      `${file}: the theme script must come before the stylesheet`);
+    // The button itself sits with the other header tools.
+    assert.match(html, /<button[^>]*data-theme-toggle/, `${file}: the theme button`);
+    assert.match(html, /<div class="header-tools">[\s\S]*data-theme-toggle[\s\S]*<div class="lang"/,
+      `${file}: the button sits in the header tools, before the language switch`);
+  }
+});

@@ -13,6 +13,18 @@
     + '<path d="M33 45l4-23 6 13 8-15 2 25"/>'
     + '</g></svg>';
 
+  // Both icons ship in the markup; CSS shows the one that offers the other theme.
+  const THEME_ICONS =
+    '<svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">'
+    + '<path d="M20 14.5 A8.5 8.5 0 0 1 9.5 4 a8.5 8.5 0 1 0 10.5 10.5 Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>'
+    + '</svg>'
+    + '<svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false">'
+    + '<circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2"/>'
+    + '<g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">'
+    + '<path d="M12 2.5 v2.2 M12 19.3 v2.2 M2.5 12 h2.2 M19.3 12 h2.2"/>'
+    + '<path d="M5.3 5.3 l1.6 1.6 M17.1 17.1 l1.6 1.6 M18.7 5.3 l-1.6 1.6 M6.9 17.1 l-1.6 1.6"/>'
+    + '</g></svg>';
+
   function escapeHtml(text) {
     return String(text)
       .replace(/&/g, '&amp;')
@@ -63,6 +75,10 @@
       `<div class="header-tools">` +
       `<button type="button" class="icon-btn" data-toggle="search" aria-controls="site-search" aria-expanded="false">${SEARCH_ICON}<span class="sr-only" data-i18n="search.open">${escapeHtml(text('search.open'))}</span></button>` +
       `<button type="button" class="icon-btn" data-toggle="grades" aria-controls="grade-nav" aria-expanded="false"><span data-i18n="nav.grades">${escapeHtml(text('nav.grades'))}</span></button>` +
+      `<button type="button" class="theme-btn" data-theme-toggle aria-pressed="false">` +
+      THEME_ICONS +
+      `<span class="sr-only" data-i18n="theme.dark">${escapeHtml(text('theme.dark'))}</span>` +
+      `</button>` +
       `<div class="lang" role="group" aria-label="${escapeHtml(text('lang.label'))}" data-lang-group>` +
       langSwitch +
       `</div>` +

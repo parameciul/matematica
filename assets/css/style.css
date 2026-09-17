@@ -30,9 +30,37 @@
   color-scheme: light;
 }
 
-/* Dark mode: the chalkboard. */
+/* Dark mode: the chalkboard. Two doors into it: the reader's own choice, and
+   the system setting when the reader has not chosen light here. The colours are
+   spelled out twice because CSS cannot share one block across a media query.
+   The validator fails if the two copies drift apart. */
+
+:root[data-theme="dark"] {
+  --paper: #1d2925;
+  --grid: rgba(255, 255, 255, 0.045);
+  --sheet: #22302b;
+  --text: #e8ece7;
+  --muted: #b1bab3;
+  --ink: #a9c5ff;
+  --ink-hover: #d2e0ff;
+  --red: #ff8b80;
+  --marker: rgba(255, 226, 110, 0.16);
+  --rule: rgba(255, 255, 255, 0.14);
+  --fill: rgba(169, 197, 255, 0.3);
+  --brand-marker: rgba(255, 217, 74, 0.5);
+  --b-lectii-bg: rgba(169, 197, 255, 0.18);
+  --b-lectii-fg: #c9d9ff;
+  --b-fise-bg: rgba(120, 210, 160, 0.16);
+  --b-fise-fg: #a8e6c1;
+  --b-teste-bg: rgba(255, 139, 128, 0.16);
+  --b-teste-fg: #ffb3ab;
+  --b-jocuri-bg: rgba(255, 190, 110, 0.16);
+  --b-jocuri-fg: #ffd09a;
+  color-scheme: dark;
+}
+
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --paper: #1d2925;
     --grid: rgba(255, 255, 255, 0.045);
     --sheet: #22302b;
@@ -302,6 +330,59 @@ a:hover {
 .icon-btn[aria-expanded="true"] {
   border-color: var(--ink);
   background: var(--paper);
+}
+
+/* Theme switch. It only works with JavaScript, so it stays hidden without it
+   rather than sitting there doing nothing. */
+
+.theme-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.5rem;
+  min-height: 2.5rem;
+  padding: 0;
+  border: 1.5px solid var(--rule);
+  border-radius: 999px;
+  background: var(--sheet);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+html:not(.js) .theme-btn {
+  display: none;
+}
+
+.theme-btn:hover {
+  border-color: var(--ink);
+}
+
+.theme-icon {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+/* The moon offers the chalkboard; the sun offers the paper back. */
+.theme-icon-sun {
+  display: none;
+}
+
+:root[data-theme="dark"] .theme-icon-sun {
+  display: block;
+}
+
+:root[data-theme="dark"] .theme-icon-moon {
+  display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme-icon-sun {
+    display: block;
+  }
+
+  :root:not([data-theme="light"]) .theme-icon-moon {
+    display: none;
+  }
 }
 
 .lang {

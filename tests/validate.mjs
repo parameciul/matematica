@@ -435,6 +435,26 @@ if (exists('_headers')) {
   }
 }
 
+// Dark mode has two doors: the system setting, and the reader's own choice.
+// The colours are spelled out twice because CSS cannot share a block across a
+// media query, so check that neither copy has drifted from the other.
+{
+  const css = read('assets/css/style.css');
+  const blockOf = (re, what) => {
+    const m = css.match(re);
+    if (!m) {
+      fail(`assets/css/style.css: missing the ${what} dark block`);
+      return null;
+    }
+    return (m[1].match(/--[a-z-]+(?=\s*:)/g) || []).sort().join(',');
+  };
+  const chosen = blockOf(/:root\[data-theme="dark"\]\s*\{([^}]*)\}/, 'chosen');
+  const system = blockOf(/:root:not\(\[data-theme="light"\]\)\s*\{([^}]*)\}/, 'system');
+  if (chosen && system && chosen !== system) {
+    fail('assets/css/style.css: the two dark blocks set different variables; keep them in sync');
+  }
+}
+
 if (errors.length) {
   console.error(`FAIL: ${errors.length} problem(s)`);
   for (const e of errors) console.error(`  - ${e}`);

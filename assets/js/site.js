@@ -197,10 +197,14 @@
     };
   }
 
+  const THEME_KEY = 'matematica.theme';
+
   function buildHeader() {
     const header = document.getElementById('site-header');
-    if (!header || header.firstElementChild) return;
-    header.innerHTML = window.Shell.headerHtml(shellOpts());
+    if (!header) return;
+    // Generated pages already carry the header markup. Only a page without it
+    // needs building, but every page still needs its buttons wired up.
+    if (!header.firstElementChild) header.innerHTML = window.Shell.headerHtml(shellOpts());
     header.querySelectorAll('[data-toggle]').forEach((btn) => {
       btn.addEventListener('click', () => togglePanel(header, btn.getAttribute('data-toggle')));
     });
@@ -219,6 +223,36 @@
     const setHeight = () => document.documentElement.style.setProperty('--header-h', `${header.offsetHeight}px`);
     setHeight();
     if (typeof ResizeObserver === 'function') new ResizeObserver(setHeight).observe(header);
+
+    setupTheme(header);
+  }
+
+  // Light or dark. No choice yet means the system decides; one click makes it
+  // the reader's own and it lasts on this device.
+  function setupTheme(header) {
+    const btn = header.querySelector('[data-theme-toggle]');
+    if (!btn) return;
+    const root = document.documentElement;
+    const system = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+    const isDark = () => {
+      const chosen = root.getAttribute('data-theme');
+      if (chosen === 'dark' || chosen === 'light') return chosen === 'dark';
+      return !!(system && system.matches);
+    };
+    const sync = () => btn.setAttribute('aria-pressed', String(isDark()));
+    btn.addEventListener('click', () => {
+      const next = isDark() ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try {
+        window.localStorage.setItem(THEME_KEY, next);
+      } catch (e) {
+        // Storage can be blocked (private mode); the choice then lasts for this page only.
+      }
+      sync();
+    });
+    // Until the reader chooses, follow the system if it changes under us.
+    if (system && system.addEventListener) system.addEventListener('change', sync);
+    sync();
   }
 
   // On narrow screens the grade links and the search box are panels opened by a button.
