@@ -364,7 +364,7 @@ a:hover {
 
 .page {
   position: relative;
-  padding-block: 1.5rem 3.5rem;
+  padding-block: 0.5rem 0;
   padding-left: var(--margin-x);
 }
 
@@ -567,7 +567,7 @@ a:hover {
 }
 
 .about {
-  max-width: 42rem;
+  max-width: 50rem;
   margin-top: 1.25rem;
 }
 
@@ -578,6 +578,7 @@ a:hover {
 
 .about p {
   margin: 0;
+  font-size: 1.05rem;
 }
 
 /* Lists of materials (home, grade page, search, related) */
