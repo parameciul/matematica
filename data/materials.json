@@ -201,6 +201,22 @@
         "ro": ["geometrie", "segmente", "unghiuri", "unități de măsură", "perimetre", "arii", "volume"],
         "en": ["geometry", "segments", "angles", "measurement units", "perimeters", "areas", "volumes"]
       }
+    },
+    {
+      "id": "teorie-vectori-geometrie-analitica",
+      "topic": "recapitulare-vectori-geometrie-analitica",
+      "kind": "teorie",
+      "title": {
+        "ro": "Teorie sintetizată: vectori și geometrie analitică",
+        "en": "Theory summary: vectors and analytic geometry"
+      },
+      "published": "2026-09-17",
+      "pdf": "materiale/pdf/teorie-vectori-geometrie-analitica.pdf",
+      "youtube": null,
+      "keywords": {
+        "ro": ["vectori", "geometrie analitică", "ecuația dreptei", "panta", "distanța dintre două puncte", "produs scalar", "bacalaureat"],
+        "en": ["vectors", "analytic geometry", "equation of a line", "slope", "distance between two points", "dot product", "baccalaureate"]
+      }
     }
   ]
 }

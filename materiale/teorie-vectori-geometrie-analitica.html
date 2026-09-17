@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Teorie sintetizată: vectori și geometrie analitică – Matematică cu Laura Miron</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231d3c8f'/%3E%3Ctext x='16' y='23' font-size='21' text-anchor='middle' fill='white' font-family='Georgia,serif'%3E%CF%80%3C/text%3E%3C/svg%3E">
+  <script>document.documentElement.classList.add('js')</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,700;0,800;1,400&family=Caveat:wght@600&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.18.1/dist/katex.min.css" integrity="sha384-1vdNCNel6Tx/NQa8IR1mGOGKsbGreCkOPfbtPPnUURJ5Tu2PRVfQ/7KLZC+Pi1p1" crossorigin="anonymous">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.18.1/dist/katex.min.js" integrity="sha384-ycJ6GAwiS15LoUPipwJOrWTvkUHl/YqELValBwI5I4awP1EeEQJYarj+w85ntcz7" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.18.1/dist/contrib/auto-render.min.js" integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous"></script>
+  <script defer src="../assets/js/i18n.js"></script>
+  <script defer src="../assets/js/catalog.js"></script>
+  <script defer src="../assets/js/site.js"></script>
+  <script defer src="../assets/js/material.js"></script>
+</head>
+<body data-root="../">
+  <a class="skip" href="#material" data-i18n="a11y.skip">Sari la conținut</a>
+  <header id="site-header" class="site-header"></header>
+
+  <main class="wrap">
+    <div class="page" id="material" data-id="teorie-vectori-geometrie-analitica">
+
+      <article class="material-body" data-lang="ro" lang="ro">
+        <p><strong>Profil:</strong> Matematică-Informatică | <strong>Pondere Bacalaureat:</strong> Subiectul I, Exercițiul 5</p>
+
+        <h2>1. Vectori în plan (sistemul cartezian)</h2>
+        <p>Fie punctele $A\left( x_{A},y_{A} \right)$ și $B\left( x_{B},y_{B} \right)$ și vectorii de poziție $\overrightarrow{r_{A}} = x_{A}\overrightarrow{i} + y_{A}\overrightarrow{j}$, $\overrightarrow{r_{B}} = x_{B}\overrightarrow{i} + y_{B}\overrightarrow{j}$.</p>
+        <ul>
+          <li><p><strong>Vectorul liber</strong> $\overrightarrow{AB}$<strong>:</strong></p></li>
+        </ul>
+        <p>$$\overrightarrow{AB} = \left( x_{B} - x_{A} \right)\overrightarrow{i} + \left( y_{B} - y_{A} \right)\overrightarrow{j}$$</p>
+        <ul>
+          <li><p><strong>Lungimea (modulul) unui vector</strong> $\overrightarrow{v} = a\overrightarrow{i} + b\overrightarrow{j}$<strong>:</strong></p></li>
+        </ul>
+        <p>$$|\overrightarrow{v}| = \sqrt{a^{2} + b^{2}}$$</p>
+        <ul>
+          <li><p><strong>Distanța dintre două puncte</strong> $A$ <strong>și</strong> $B$<strong>:</strong></p></li>
+        </ul>
+        <p>$$AB = |\overrightarrow{AB}| = \sqrt{\left( x_{B} - x_{A} \right)^{2} + \left( y_{B} - y_{A} \right)^{2}}$$</p>
+        <ul>
+          <li><p><strong>Suma și diferența vectorilor:</strong></p></li>
+        </ul>
+        <p>$$\overrightarrow{u} = a_{1}\overrightarrow{i} + b_{1}\overrightarrow{j},\quad\overrightarrow{v} = a_{2}\overrightarrow{i} + b_{2}\overrightarrow{j}$$</p>
+        <p>$$\overrightarrow{u} \pm \overrightarrow{v} = \left( a_{1} \pm a_{2} \right)\overrightarrow{i} + \left( b_{1} \pm b_{2} \right)\overrightarrow{j}$$</p>
+        <ul>
+          <li><p><strong>Înmulțirea cu un scalar:</strong></p></li>
+        </ul>
+        <p>$$\alpha \cdot \overrightarrow{u} = \left( \alpha a_{1} \right)\overrightarrow{i} + \left( \alpha b_{1} \right)\overrightarrow{j}$$</p>
+        <ul>
+          <li><p><strong>Condiția de coliniaritate a doi vectori:</strong></p></li>
+        </ul>
+        <p>$$\overrightarrow{u}||\overrightarrow{v} &lt; = &gt; \frac{a_{1}}{a_{2}} = \frac{b_{1}}{b_{2}} &lt; = &gt; a_{1}b_{2} - a_{2}b_{1} = 0$$</p>
+        <ul>
+          <li><p><strong>Produsul scalar:</strong></p></li>
+        </ul>
+        <p>$$\overrightarrow{u} \cdot \overrightarrow{v} = |\overrightarrow{u}| \cdot |\overrightarrow{v}| \cdot \cos(\theta) = a_{1}a_{2} + b_{1}b_{2}$$</p>
+        <ul>
+          <li><p><strong>Cosinusul unghiului dintre doi vectori:</strong></p></li>
+        </ul>
+        <p>$$\cos(\theta) = \frac{a_{1}a_{2} + b_{1}b_{2}}{\sqrt{a_{1}^{2} + b_{1}^{2}} \cdot \sqrt{a_{2}^{2} + b_{2}^{2}}}$$</p>
+        <ul>
+          <li><p><strong>Condiția de perpendicularitate a doi vectori:</strong></p></li>
+        </ul>
+        <p>$$\overrightarrow{u}\bot\overrightarrow{v} &lt; = &gt; \overrightarrow{u} \cdot \overrightarrow{v} = 0 &lt; = &gt; a_{1}a_{2} + b_{1}b_{2} = 0$$</p>
+
+        <h2>2. Puncte remarcabile și segmente</h2>
+        <ul>
+          <li><p><strong>Mijlocul</strong> $M$ <strong>al segmentului</strong> $\lbrack AB\rbrack$<strong>:</strong></p></li>
+        </ul>
+        <p>$$x_{M} = \frac{x_{A} + x_{B}}{2},\quad y_{M} = \frac{y_{A} + y_{B}}{2} = &gt; \overrightarrow{r_{M}} = \frac{\overrightarrow{r_{A}} + \overrightarrow{r_{B}}}{2}$$</p>
+        <ul>
+          <li><p><strong>Punctul</strong> $M$ <strong>care împarte</strong> $\lbrack AB\rbrack$ <strong>în raportul</strong> $k = \frac{MA}{MB}$<strong>:</strong></p></li>
+        </ul>
+        <p>$$x_{M} = \frac{x_{A} + kx_{B}}{1 + k},\quad y_{M} = \frac{y_{A} + ky_{B}}{1 + k} = &gt; \overrightarrow{r_{M}} = \frac{\overrightarrow{r_{A}} + k\overrightarrow{r_{B}}}{1 + k}$$</p>
+        <ul>
+          <li><p><strong>Centrul de greutate</strong> $G$ <strong>al</strong> $\bigtriangleup ABC$<strong>:</strong></p></li>
+        </ul>
+        <p>$$x_{G} = \frac{x_{A} + x_{B} + x_{C}}{3},\quad y_{G} = \frac{y_{A} + y_{B} + y_{C}}{3} = &gt; \overrightarrow{r_{G}} = \frac{\overrightarrow{r_{A}} + \overrightarrow{r_{B}} + \overrightarrow{r_{C}}}{3}$$</p>
+
+        <h2>3. Ecuațiile dreptei în plan</h2>
+        <ul>
+          <li><p><strong>Panta unei drepte (</strong>$m$<strong>):</strong></p>
+            <ul>
+              <li><p>Prin unghiul $\alpha$ făcut cu axa $Ox$: $m = {tg}(\alpha)$</p></li>
+              <li><p>Prin două puncte $A$ și $B$: $m = \frac{y_{B} - y_{A}}{x_{B} - x_{A}}$ (unde $x_{A} \neq x_{B}$)</p></li>
+            </ul>
+          </li>
+          <li><p><strong>Forme ale ecuației dreptei:</strong></p>
+            <ul>
+              <li><p><strong>Explicită:</strong> $y = mx + n$ ($m$ = panta, $n$ = tăietura pe axa $Oy$)</p></li>
+              <li><p><strong>Generală:</strong> $aX + bY + c = 0$ (panta $m = - \frac{a}{b}$)</p></li>
+              <li><p><strong>Prin punct</strong> $A\left( x_{0},y_{0} \right)$ <strong>și pantă</strong> $m$<strong>:</strong></p></li>
+            </ul>
+          </li>
+        </ul>
+        <p>$$y - y_{0} = m\left( x - x_{0} \right)$$</p>
+        <ul>
+          <li><p><strong>Prin două puncte</strong> $A\left( x_{A},y_{A} \right)$ <strong>și</strong> $B\left( x_{B},y_{B} \right)$<strong>:</strong></p></li>
+        </ul>
+        <p>$$\frac{x - x_{A}}{x_{B} - x_{A}} = \frac{y - y_{A}}{y_{B} - y_{A}}\quad$$</p>
+        <ul>
+          <li><p><strong>Prin tăieturi (intersecțiile cu axele):</strong> $\frac{x}{a} + \frac{y}{b} = 1$</p></li>
+        </ul>
+
+        <h2>4. Poziții relative a două drepte</h2>
+        <p>Fie $d_{1}:y = m_{1}x + n_{1}$ și $d_{2}:y = m_{2}x + n_{2}$ (sau în forma generală $a_{1}x + b_{1}y + c_{1} = 0$, $a_{2}x + b_{2}y + c_{2} = 0$):</p>
+        <ul>
+          <li><p><strong>Paralelism:</strong></p></li>
+        </ul>
+        <p>$$d_{1}||d_{2} &lt; = &gt; m_{1} = m_{2} &lt; = &gt; \frac{a_{1}}{a_{2}} = \frac{b_{1}}{b_{2}} \neq \frac{c_{1}}{c_{2}}$$</p>
+        <ul>
+          <li><p><strong>Perpendicularitate:</strong></p></li>
+        </ul>
+        <p>$$d_{1}\bot d_{2} &lt; = &gt; m_{1} \cdot m_{2} = - 1 &lt; = &gt; a_{1}a_{2} + b_{1}b_{2} = 0$$</p>
+        <ul>
+          <li><p><strong>Identice (Coincid):</strong></p></li>
+        </ul>
+        <p>$$d_{1} \equiv d_{2} &lt; = &gt; m_{1} = m_{2}\text{~și~}n_{1} = n_{2} &lt; = &gt; \frac{a_{1}}{a_{2}} = \frac{b_{1}}{b_{2}} = \frac{c_{1}}{c_{2}}$$</p>
+        <ul>
+          <li><p><strong>Secante (Intersecție într-un punct):</strong></p></li>
+        </ul>
+        <p>$$m_{1} \neq m_{2} &lt; = &gt; \text{Sistemul~format~din~ecuațiile~celor~două~drepte~are~soluție~unică.}$$</p>
+
+        <h2>5. Distanțe și arii</h2>
+        <ul>
+          <li><p><strong>Distanța de la un punct</strong> $P\left( x_{0},y_{0} \right)$ <strong>la o dreaptă</strong> $d:aX + bY + c = 0$<strong>:</strong></p></li>
+        </ul>
+        <p>$${dist}(P,d) = \frac{|ax_{0} + by_{0} + c|}{\sqrt{a^{2} + b^{2}}}$$</p>
+
+        <h2>6. Idei și strategii frecvente la BAC (Subiectul I, Ex. 5)</h2>
+        <table>
+          <thead>
+            <tr>
+              <th><strong>Tip de problemă</strong></th>
+              <th><strong>Strategie de rezolvare</strong></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Dreaptă paralelă cu</strong> $d$ <strong>prin</strong> $A$</td>
+              <td>Scrii panta $m_{d}$. Panta dreptei căutate este $m = m_{d}$. Aplici $y - y_{A} = m\left( x - x_{A} \right)$.</td>
+            </tr>
+            <tr>
+              <td><strong>Dreaptă perpendiculară pe</strong> $d$ <strong>prin</strong> $A$</td>
+              <td>Calculezi $m_{d}$. Panta căutată este $m = - \frac{1}{m_{d}}$. Aplici $y - y_{A} = m\left( x - x_{A} \right)$.</td>
+            </tr>
+            <tr>
+              <td><strong>Simetricul punctului</strong> $A$ <strong>față de</strong> $B$</td>
+              <td>Punctul $B$ este mijlocul segmentului $\lbrack AA&#39;\rbrack$. Aplici $x_{B} = \frac{x_{A} + x_{A&#39;}}{2}$, $y_{B} = \frac{y_{A} + y_{A&#39;}}{2}$.</td>
+            </tr>
+            <tr>
+              <td><strong>Simetricul punctului</strong> $A$ <strong>față de o dreaptă</strong> $d$</td>
+              <td><p>1. Construiești $d&#39;\bot d$ prin $A$.</p>
+              <p>2. Afli $M = d \cap d&#39;$ (proiecția lui $A$).</p>
+              <p>3. $M$ este mijlocul lui $\lbrack AA&#39;\rbrack$.</p></td>
+            </tr>
+            <tr>
+              <td><strong>Calculul înălțimii din</strong> $A$ <strong>în</strong> $\bigtriangleup ABC$</td>
+              <td><p>1. Calculezi panta $m_{BC}$.</p>
+              <p>2. Panta înălțimii este $m_{h_{A}} = - \frac{1}{m_{BC}}$.</p>
+              <p>3. Scrii ecuația $y - y_{A} = m_{h_{A}}\left( x - x_{A} \right)$.</p></td>
+            </tr>
+            <tr>
+              <td><strong>Echilibrul de vectori (Paralelogram)</strong></td>
+              <td>$ABCD$ paralelogram $\overrightarrow{AB} = \overrightarrow{DC} &lt; = &gt; \overrightarrow{r_{A}} + \overrightarrow{r_{C}} = \overrightarrow{r_{B}} + \overrightarrow{r_{D}}$.</td>
+            </tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="material-body" data-lang="en" lang="en">
+        <p><strong>Track:</strong> Mathematics and Computer Science | <strong>Baccalaureate exam:</strong> Part I, Exercise 5</p>
+
+        <h2>1. Vectors in the plane (the Cartesian system)</h2>
+        <p>Consider the points $A\left( x_{A},y_{A} \right)$ and $B\left( x_{B},y_{B} \right)$ and the position vectors $\overrightarrow{r_{A}} = x_{A}\overrightarrow{i} + y_{A}\overrightarrow{j}$, $\overrightarrow{r_{B}} = x_{B}\overrightarrow{i} + y_{B}\overrightarrow{j}$.</p>
+        <ul>
+          <li><p><strong>The free vector</strong> $\overrightarrow{AB}$<strong>:</strong></p></li>
+        </ul>
+        <p>$$\overrightarrow{AB} = \left( x_{B} - x_{A} \right)\overrightarrow{i} + \left( y_{B} - y_{A} \right)\overrightarrow{j}$$</p>
+        <ul>
+          <li><p><strong>The length (magnitude) of a vector</strong> $\overrightarrow{v} = a\overrightarrow{i} + b\overrightarrow{j}$<strong>:</strong></p></li>
+        </ul>
+        <p>$$|\overrightarrow{v}| = \sqrt{a^{2} + b^{2}}$$</p>
+        <ul>
+          <li><p><strong>The distance between two points</strong> $A$ <strong>and</strong> $B$<strong>:</strong></p></li>
+        </ul>
+        <p>$$AB = |\overrightarrow{AB}| = \sqrt{\left( x_{B} - x_{A} \right)^{2} + \left( y_{B} - y_{A} \right)^{2}}$$</p>
+        <ul>
+          <li><p><strong>The sum and difference of vectors:</strong></p></li>
+        </ul>
+        <p>$$\overrightarrow{u} = a_{1}\overrightarrow{i} + b_{1}\overrightarrow{j},\quad\overrightarrow{v} = a_{2}\overrightarrow{i} + b_{2}\overrightarrow{j}$$</p>
+        <p>$$\overrightarrow{u} \pm \overrightarrow{v} = \left( a_{1} \pm a_{2} \right)\overrightarrow{i} + \left( b_{1} \pm b_{2} \right)\overrightarrow{j}$$</p>
+        <ul>
+          <li><p><strong>Multiplication by a scalar:</strong></p></li>
+        </ul>
+        <p>$$\alpha \cdot \overrightarrow{u} = \left( \alpha a_{1} \right)\overrightarrow{i} + \left( \alpha b_{1} \right)\overrightarrow{j}$$</p>
+        <ul>
+          <li><p><strong>The collinearity condition for two vectors:</strong></p></li>
+        </ul>
+        <p>$$\overrightarrow{u}||\overrightarrow{v} &lt; = &gt; \frac{a_{1}}{a_{2}} = \frac{b_{1}}{b_{2}} &lt; = &gt; a_{1}b_{2} - a_{2}b_{1} = 0$$</p>
+        <ul>
+          <li><p><strong>The dot product:</strong></p></li>
+        </ul>
+        <p>$$\overrightarrow{u} \cdot \overrightarrow{v} = |\overrightarrow{u}| \cdot |\overrightarrow{v}| \cdot \cos(\theta) = a_{1}a_{2} + b_{1}b_{2}$$</p>
+        <ul>
+          <li><p><strong>The cosine of the angle between two vectors:</strong></p></li>
+        </ul>
+        <p>$$\cos(\theta) = \frac{a_{1}a_{2} + b_{1}b_{2}}{\sqrt{a_{1}^{2} + b_{1}^{2}} \cdot \sqrt{a_{2}^{2} + b_{2}^{2}}}$$</p>
+        <ul>
+          <li><p><strong>The perpendicularity condition for two vectors:</strong></p></li>
+        </ul>
+        <p>$$\overrightarrow{u}\bot\overrightarrow{v} &lt; = &gt; \overrightarrow{u} \cdot \overrightarrow{v} = 0 &lt; = &gt; a_{1}a_{2} + b_{1}b_{2} = 0$$</p>
+
+        <h2>2. Special points and segments</h2>
+        <ul>
+          <li><p><strong>The midpoint</strong> $M$ <strong>of the segment</strong> $\lbrack AB\rbrack$<strong>:</strong></p></li>
+        </ul>
+        <p>$$x_{M} = \frac{x_{A} + x_{B}}{2},\quad y_{M} = \frac{y_{A} + y_{B}}{2} = &gt; \overrightarrow{r_{M}} = \frac{\overrightarrow{r_{A}} + \overrightarrow{r_{B}}}{2}$$</p>
+        <ul>
+          <li><p><strong>The point</strong> $M$ <strong>dividing</strong> $\lbrack AB\rbrack$ <strong>in the ratio</strong> $k = \frac{MA}{MB}$<strong>:</strong></p></li>
+        </ul>
+        <p>$$x_{M} = \frac{x_{A} + kx_{B}}{1 + k},\quad y_{M} = \frac{y_{A} + ky_{B}}{1 + k} = &gt; \overrightarrow{r_{M}} = \frac{\overrightarrow{r_{A}} + k\overrightarrow{r_{B}}}{1 + k}$$</p>
+        <ul>
+          <li><p><strong>The centroid</strong> $G$ <strong>of</strong> $\bigtriangleup ABC$<strong>:</strong></p></li>
+        </ul>
+        <p>$$x_{G} = \frac{x_{A} + x_{B} + x_{C}}{3},\quad y_{G} = \frac{y_{A} + y_{B} + y_{C}}{3} = &gt; \overrightarrow{r_{G}} = \frac{\overrightarrow{r_{A}} + \overrightarrow{r_{B}} + \overrightarrow{r_{C}}}{3}$$</p>
+
+        <h2>3. Equations of a line in the plane</h2>
+        <ul>
+          <li><p><strong>The slope of a line (</strong>$m$<strong>):</strong></p>
+            <ul>
+              <li><p>From the angle $\alpha$ formed with the $Ox$ axis: $m = {tg}(\alpha)$</p></li>
+              <li><p>Through two points $A$ and $B$: $m = \frac{y_{B} - y_{A}}{x_{B} - x_{A}}$ (where $x_{A} \neq x_{B}$)</p></li>
+            </ul>
+          </li>
+          <li><p><strong>Forms of the equation of a line:</strong></p>
+            <ul>
+              <li><p><strong>Explicit:</strong> $y = mx + n$ ($m$ = the slope, $n$ = the $Oy$ intercept)</p></li>
+              <li><p><strong>General:</strong> $aX + bY + c = 0$ (slope $m = - \frac{a}{b}$)</p></li>
+              <li><p><strong>Through the point</strong> $A\left( x_{0},y_{0} \right)$ <strong>with slope</strong> $m$<strong>:</strong></p></li>
+            </ul>
+          </li>
+        </ul>
+        <p>$$y - y_{0} = m\left( x - x_{0} \right)$$</p>
+        <ul>
+          <li><p><strong>Through two points</strong> $A\left( x_{A},y_{A} \right)$ <strong>and</strong> $B\left( x_{B},y_{B} \right)$<strong>:</strong></p></li>
+        </ul>
+        <p>$$\frac{x - x_{A}}{x_{B} - x_{A}} = \frac{y - y_{A}}{y_{B} - y_{A}}\quad$$</p>
+        <ul>
+          <li><p><strong>Intercept form (intersections with the axes):</strong> $\frac{x}{a} + \frac{y}{b} = 1$</p></li>
+        </ul>
+
+        <h2>4. Relative positions of two lines</h2>
+        <p>Let $d_{1}:y = m_{1}x + n_{1}$ and $d_{2}:y = m_{2}x + n_{2}$ (or, in general form, $a_{1}x + b_{1}y + c_{1} = 0$, $a_{2}x + b_{2}y + c_{2} = 0$):</p>
+        <ul>
+          <li><p><strong>Parallel lines:</strong></p></li>
+        </ul>
+        <p>$$d_{1}||d_{2} &lt; = &gt; m_{1} = m_{2} &lt; = &gt; \frac{a_{1}}{a_{2}} = \frac{b_{1}}{b_{2}} \neq \frac{c_{1}}{c_{2}}$$</p>
+        <ul>
+          <li><p><strong>Perpendicular lines:</strong></p></li>
+        </ul>
+        <p>$$d_{1}\bot d_{2} &lt; = &gt; m_{1} \cdot m_{2} = - 1 &lt; = &gt; a_{1}a_{2} + b_{1}b_{2} = 0$$</p>
+        <ul>
+          <li><p><strong>Coincident lines:</strong></p></li>
+        </ul>
+        <p>$$d_{1} \equiv d_{2} &lt; = &gt; m_{1} = m_{2}\text{~and~}n_{1} = n_{2} &lt; = &gt; \frac{a_{1}}{a_{2}} = \frac{b_{1}}{b_{2}} = \frac{c_{1}}{c_{2}}$$</p>
+        <ul>
+          <li><p><strong>Intersecting lines (intersection at one point):</strong></p></li>
+        </ul>
+        <p>$$m_{1} \neq m_{2} &lt; = &gt; \text{The~system~of~the~two~line~equations~has~a~unique~solution.}$$</p>
+
+        <h2>5. Distances and areas</h2>
+        <ul>
+          <li><p><strong>The distance from a point</strong> $P\left( x_{0},y_{0} \right)$ <strong>to a line</strong> $d:aX + bY + c = 0$<strong>:</strong></p></li>
+        </ul>
+        <p>$${dist}(P,d) = \frac{|ax_{0} + by_{0} + c|}{\sqrt{a^{2} + b^{2}}}$$</p>
+
+        <h2>6. Frequent ideas and strategies for the BAC (Part I, Exercise 5)</h2>
+        <table>
+          <thead>
+            <tr>
+              <th><strong>Problem type</strong></th>
+              <th><strong>Solution strategy</strong></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Line parallel to</strong> $d$ <strong>through</strong> $A$</td>
+              <td>Find the slope $m_{d}$. The slope of the required line is $m = m_{d}$. Apply $y - y_{A} = m\left( x - x_{A} \right)$.</td>
+            </tr>
+            <tr>
+              <td><strong>Line perpendicular to</strong> $d$ <strong>through</strong> $A$</td>
+              <td>Compute $m_{d}$. The required slope is $m = - \frac{1}{m_{d}}$. Apply $y - y_{A} = m\left( x - x_{A} \right)$.</td>
+            </tr>
+            <tr>
+              <td><strong>Reflection of the point</strong> $A$ <strong>with respect to</strong> $B$</td>
+              <td>The point $B$ is the midpoint of the segment $\lbrack AA&#39;\rbrack$. Apply $x_{B} = \frac{x_{A} + x_{A&#39;}}{2}$, $y_{B} = \frac{y_{A} + y_{A&#39;}}{2}$.</td>
+            </tr>
+            <tr>
+              <td><strong>Reflection of the point</strong> $A$ <strong>across a line</strong> $d$</td>
+              <td><p>1. Construct $d&#39;\bot d$ through $A$.</p>
+              <p>2. Find $M = d \cap d&#39;$ (the projection of $A$).</p>
+              <p>3. $M$ is the midpoint of $\lbrack AA&#39;\rbrack$.</p></td>
+            </tr>
+            <tr>
+              <td><strong>Computing the altitude from</strong> $A$ <strong>in</strong> $\bigtriangleup ABC$</td>
+              <td><p>1. Compute the slope $m_{BC}$.</p>
+              <p>2. The slope of the altitude is $m_{h_{A}} = - \frac{1}{m_{BC}}$.</p>
+              <p>3. Write the equation $y - y_{A} = m_{h_{A}}\left( x - x_{A} \right)$.</p></td>
+            </tr>
+            <tr>
+              <td><strong>Vector equilibrium (Parallelogram)</strong></td>
+              <td>$ABCD$ is a parallelogram $\overrightarrow{AB} = \overrightarrow{DC} &lt; = &gt; \overrightarrow{r_{A}} + \overrightarrow{r_{C}} = \overrightarrow{r_{B}} + \overrightarrow{r_{D}}$.</td>
+            </tr>
+          </tbody>
+        </table>
+      </article>
+
+    </div>
+  </main>
+
+  <footer id="site-footer" class="site-footer"></footer>
+</body>
+</html>
