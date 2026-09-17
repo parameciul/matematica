@@ -52,7 +52,7 @@ function addSample(dir) {
       },
       pdf: SAMPLE_PDF,
       youtube: null,
-      keywords: { ro: ['test'], en: ['test'] },
+      keywords: { ro: ['test', 'clasa a 9-a', 'clasa 9'], en: ['test', 'grade 9'] },
     });
   });
   mkdirSync(join(dir, 'materiale', 'pdf'), { recursive: true });

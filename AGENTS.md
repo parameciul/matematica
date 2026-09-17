@@ -11,7 +11,8 @@ Grades 5-12. Romanian by default, with an English switch. Plain HTML/CSS/JS: no 
 
 - `data/materials.json`: all content.
   - `topics`: `id`, `grade` (5-12), `title` (`ro` + `en`).
-  - `materials`: `id`, `topic`, `kind`, `title` (`ro` + `en`), `published` (YYYY-MM-DD), optional `updated` (YYYY-MM-DD, not before `published`), `description` (`ro` + `en`, 70-160 characters each), `pdf` (or `null`), `youtube` (`null` or `{ "id", "uploaded", "duration" }`), optional `keywords` (`ro` + `en` lists).
+  - `grades`: per-grade `intro` (`ro` + `en`, 60-100 words naming the year's chapters; first sentence 70-160 characters, used as the grade meta description). Required for grades 5-12.
+  - `materials`: `id`, `topic`, `kind`, `title` (`ro` + `en`), `published` (YYYY-MM-DD), optional `updated` (YYYY-MM-DD, not before `published`), `description` (`ro` + `en`, 70-160 characters each), `pdf` (or `null`), `youtube` (`null` or `{ "id", "uploaded", "duration" }`), optional `keywords` (`ro` + `en` lists; when present, `ro` must include `clasa a <N>-a` and `en` must include `grade <N>`).
   - Kinds: `lectie`, `teorie`, `fisa-lucru`, `fisa-recapitulativa`, `test`, `joc`, `quiz`.
 - `materiale/<id>.html`: the Romanian page (one `ro` `<article>`). `en/materiale/<id>.html`: the English page (one `en` `<article>`). The quiz has only a Romanian page.
 - `materiale/pdf/<id>.pdf`: the clean Romanian PDF of the material.
@@ -55,6 +56,10 @@ Content is sorted per grade, never per school class (9R2, 6E2). Topics hold mate
 - Never edit generated parts of a page (everything outside `<article>`, plus the quiz `<!-- seo -->` block). Run `node tools/build_pages.mjs` instead.
 - `SITE_URL` absolute URLs (canonical, `og:*`, hreflang, sitemap, JSON-LD) are the one allowed exception to "relative paths only".
 - How to write a `description`: one sentence for students, main topic words plus the grade, 70-160 characters, no class marks.
+- Romanian grade titles carry both numeral forms (`clasa a 6-a` + `Clasa a VI-a`); the visible H1 stays Roman-only. The grade meta description is the first sentence of the grade `intro`.
+- Indexable pages carry `<meta name="robots" content="max-image-preview:large, max-snippet:-1, max-video-preview:-1">` plus `og:image:width` (1200, or 480 for video thumbnails), `og:image:height` (630, or 360) and `og:image:alt`. Noindex pages carry `noindex, follow` and none of the above.
+- `_headers` sets `Cache-Control: public, max-age=86400` for `/assets/*` and `/materiale/pdf/*`, and `X-Robots-Tag: noindex` for `https://:version.:project.pages.dev/*` (previews only; never add the single-label variant, it would noindex production).
+- Search Console / Bing verification: paste the code into `GOOGLE_SITE_VERIFICATION` / `BING_SITE_VERIFICATION` in `tools/build_pages.mjs` and regenerate.
 
 ## Add a YouTube video
 

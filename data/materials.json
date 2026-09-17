@@ -41,6 +41,56 @@
       }
     }
   ],
+  "grades": {
+    "5": {
+      "intro": {
+        "ro": "Materiale de matematică pentru clasa a 5-a (Clasa a V-a): numere naturale, fracții ordinare și fracții zecimale, elemente de geometrie și unități de măsură. Găsești aici teorie pe scurt, fișe de lucru cu exerciții pe niveluri, teste de verificare și jocuri pentru fixarea noțiunilor. Pagina grupează materialele pe teme și ani școlari, de la primele lecții până la recapitulările de final de an.",
+        "en": "Math materials for Grade 5: natural numbers, ordinary and decimal fractions, basic geometry and measurement units. Here you will find short theory summaries, leveled worksheets, check-up tests and games that fix the key ideas. The page groups everything by topic and school year, from the first lessons to the end-of-year reviews. Use them at home, at your own pace, or in class with your classmates."
+      }
+    },
+    "6": {
+      "intro": {
+        "ro": "Materiale de matematică pentru clasa a 6-a (Clasa a VI-a): numere naturale și fracții, rapoarte și proporții, unghiuri și triunghiuri. Găsești aici teorie sintetică, fișe de lucru cu exerciții gradate, teste și jocuri pe echipe pentru orele de recapitulare. Materialele sunt grupate pe teme și ani școlari, ca să găsești repede lecția potrivită. Le poți folosi acasă, în ritmul tău, sau la clasă, împreună cu colegii.",
+        "en": "Math materials for Grade 6: review of grade 5, natural numbers and fractions, ratios and proportions, angles and triangles. Here you will find concise theory, graded worksheets, tests and team games for review lessons. Everything is grouped by topic and school year, so you can quickly find the right lesson. Use them at home, at your own pace, or in class with your classmates."
+      }
+    },
+    "7": {
+      "intro": {
+        "ro": "Materiale de matematică pentru clasa a 7-a (Clasa a VII-a): mulțimi, numere raționale, ecuații de gradul I, patrulatere și asemănarea triunghiurilor. Găsești aici teorie clară, fișe de lucru cu exerciții pe niveluri, teste de verificare și recapitulări pentru teze. Pagina grupează materialele pe teme și ani școlari, ca să recapitulezi ușor înainte de lucrări. Le poți folosi acasă, în ritmul tău, ori la clasă.",
+        "en": "Math materials for Grade 7: sets, rational numbers, first-degree equations, quadrilaterals and similar triangles. Here you will find clear theory, leveled worksheets, check-up tests and reviews for exams. The page groups the materials by topic and school year, so you can easily revise before tests. Use them at home, at your own pace, or in class with your classmates throughout the year."
+      }
+    },
+    "8": {
+      "intro": {
+        "ro": "Materiale de matematică pentru clasa a 8-a (Clasa a VIII-a): numere reale și intervale, funcții, ecuații și sisteme de ecuații, geometrie în spațiu. Găsești aici teorie sintetică, fișe de lucru cu exerciții gradate, teste în format de Evaluare Națională și recapitulări finale. Pagina grupează materialele pe teme și ani școlari, de la recapitularea inițială până la pregătirea examenului. Le poți folosi acasă, în ritmul tău, pe tot parcursul anului.",
+        "en": "Math materials for Grade 8: real numbers and intervals, functions, equations and systems of equations, solid geometry. Here you will find concise theory, graded worksheets, tests in National Evaluation format and final reviews. The page groups the materials by topic and school year, from the start-of-year review to the exam preparation. Use them at home, at your own pace, throughout the year."
+      }
+    },
+    "9": {
+      "intro": {
+        "ro": "Materiale de matematică pentru clasa a 9-a (Clasa a IX-a): numere reale, modul și partea întreagă, ecuații de gradul al II-lea și elemente de trigonometrie. Găsești aici teorie sintetică, fișe de lucru cu exerciții pe niveluri, fișe recapitulative și teste pentru începutul liceului. Pagina grupează materialele pe teme și ani școlari, de la recapitularea de gimnaziu până la lecțiile noi. Le poți folosi acasă, în ritmul tău, pe tot parcursul anului.",
+        "en": "Math materials for Grade 9: real numbers, absolute value and integer part, functions, quadratic equations and basic trigonometry. Here you will find concise theory, leveled worksheets, review sheets and tests for the start of high school. The page groups the materials by topic and school year, from the middle-school review to the new lessons. Use them at home, at your own pace, throughout the year."
+      }
+    },
+    "10": {
+      "intro": {
+        "ro": "Materiale de matematică pentru clasa a 10-a (Clasa a X-a): puteri și radicali, logaritmi, trigonometrie, vectori și geometrie analitică. Găsești aici teorie sintetică, fișe de lucru cu exerciții gradate, fișe recapitulative și teste pentru bacalaureat și teze. Pagina grupează materialele pe teme și ani școlari, ca să recapitulezi ușor materia anilor anteriori. Le poți folosi acasă, în ritmul tău, pe tot parcursul anului.",
+        "en": "Math materials for Grade 10: powers and radicals, logarithms, trigonometry, vectors and analytic geometry. Here you will find concise theory, graded worksheets, review sheets and tests for exams and theses. The page groups the materials by topic and school year, so you can easily revise earlier years. Use them at home, at your own pace, or in class with your classmates throughout the year."
+      }
+    },
+    "11": {
+      "intro": {
+        "ro": "Materiale de matematică pentru clasa a 11-a (Clasa a XI-a): matrice și determinanți, șiruri și limite de funcții, vectori și geometrie analitică. Găsești aici teorie sintetică, fișe de lucru cu exerciții pe niveluri, fișe recapitulative și teste pentru teze și examen. Pagina grupează materialele pe teme și ani școlari, de la recapitularea clasei a X-a până la lecțiile noi. Le poți folosi acasă, în ritmul tău, pe tot parcursul anului.",
+        "en": "Math materials for Grade 11: matrices and determinants, sequences and limits of functions, vectors and analytic geometry, baccalaureate reviews. Here you will find concise theory, leveled worksheets, review sheets and tests for theses and the exam. The page groups the materials by topic and school year, from the grade 10 review to the new lessons. Use them at home, at your own pace, throughout the year."
+      }
+    },
+    "12": {
+      "intro": {
+        "ro": "Materiale de matematică pentru clasa a 12-a (Clasa a XII-a): grupuri și inele, primitive și integrale definite, funcții, probabilități și bacalaureat. Găsești aici teorie sintetică, fișe de lucru cu exerciții pe niveluri, teste și fișe recapitulative finale. Pagina grupează materialele pe teme și ani școlari, de la recapitularea materiei anterioare până la modelele de examen. Le poți folosi acasă, în ritmul tău, până la examen.",
+        "en": "Math materials for Grade 12: groups and rings, antiderivatives and definite integrals, functions and their study, probability and baccalaureate reviews. Here you will find concise theory, leveled worksheets, tests and final review sheets. The page groups the materials by topic and school year, from the review of earlier content to exam models. Use them at home, at your own pace, until the exam."
+      }
+    }
+  },
   "materials": [
     {
       "id": "teorie-numere-reale-modul-parte-intreaga",
@@ -58,8 +108,8 @@
       "pdf": "materiale/pdf/teorie-numere-reale-modul-parte-intreaga.pdf",
       "youtube": null,
       "keywords": {
-        "ro": ["modul", "valoare absolută", "intervale", "inecuații", "partea întreagă", "partea fracționară", "numere iraționale"],
-        "en": ["absolute value", "modulus", "intervals", "inequalities", "integer part", "floor", "fractional part", "irrational numbers"]
+        "ro": ["modul", "valoare absolută", "intervale", "inecuații", "partea întreagă", "partea fracționară", "numere iraționale", "clasa a 9-a", "clasa 9"],
+        "en": ["absolute value", "modulus", "intervals", "inequalities", "integer part", "floor", "fractional part", "irrational numbers", "grade 9"]
       }
     },
     {
@@ -78,8 +128,8 @@
       "pdf": "materiale/pdf/fisa-lucru-numere-reale-modul-parte-intreaga.pdf",
       "youtube": null,
       "keywords": {
-        "ro": ["modul", "ecuații cu modul", "inecuații cu modul", "partea întreagă", "partea fracționară", "probleme pe niveluri"],
-        "en": ["absolute value", "absolute value equations", "absolute value inequalities", "integer part", "fractional part", "problems by level"]
+        "ro": ["modul", "ecuații cu modul", "inecuații cu modul", "partea întreagă", "partea fracționară", "probleme pe niveluri", "clasa a 9-a", "clasa 9"],
+        "en": ["absolute value", "absolute value equations", "absolute value inequalities", "integer part", "fractional part", "problems by level", "grade 9"]
       }
     },
     {
@@ -98,8 +148,8 @@
       "pdf": "materiale/pdf/fisa-recapitulativa-gimnaziu-test-initial.pdf",
       "youtube": null,
       "keywords": {
-        "ro": ["test inițial", "evaluare națională", "calcul algebric", "procente", "probabilități", "geometrie"],
-        "en": ["initial test", "national evaluation", "algebra", "percentages", "probability", "geometry"]
+        "ro": ["test inițial", "evaluare națională", "calcul algebric", "procente", "probabilități", "geometrie", "clasa a 9-a", "clasa 9"],
+        "en": ["initial test", "national evaluation", "algebra", "percentages", "probability", "geometry", "grade 9"]
       }
     },
     {
@@ -118,8 +168,8 @@
       "pdf": "materiale/pdf/fisa-recapitulare-evaluare-initiala.pdf",
       "youtube": null,
       "keywords": {
-        "ro": ["evaluare inițială", "inecuații", "ecuația de gradul al II-lea", "funcția de gradul I", "trigonometrie", "geometrie analitică"],
-        "en": ["initial assessment", "inequalities", "quadratic equation", "linear function", "trigonometry", "analytic geometry"]
+        "ro": ["evaluare inițială", "inecuații", "ecuația de gradul al II-lea", "funcția de gradul I", "trigonometrie", "geometrie analitică", "clasa a 9-a", "clasa 9"],
+        "en": ["initial assessment", "inequalities", "quadratic equation", "linear function", "trigonometry", "analytic geometry", "grade 9"]
       }
     },
     {
@@ -138,8 +188,8 @@
       "pdf": null,
       "youtube": null,
       "keywords": {
-        "ro": ["quiz", "videoproiector", "joc pe echipe", "algebră", "geometrie"],
-        "en": ["quiz", "projector", "team game", "algebra", "geometry"]
+        "ro": ["quiz", "videoproiector", "joc pe echipe", "algebră", "geometrie", "clasa a 6-a", "clasa 6"],
+        "en": ["quiz", "projector", "team game", "algebra", "geometry", "grade 6"]
       }
     },
     {
@@ -158,8 +208,8 @@
       "pdf": "materiale/pdf/joc-mesajul-secret.pdf",
       "youtube": null,
       "keywords": {
-        "ro": ["joc de recapitulare", "numere naturale", "fracții", "puteri", "procente", "media aritmetică"],
-        "en": ["review game", "natural numbers", "fractions", "powers", "percentages", "arithmetic mean"]
+        "ro": ["joc de recapitulare", "numere naturale", "fracții", "puteri", "procente", "media aritmetică", "clasa a 6-a", "clasa 6"],
+        "en": ["review game", "natural numbers", "fractions", "powers", "percentages", "arithmetic mean", "grade 6"]
       }
     },
     {
@@ -178,8 +228,8 @@
       "pdf": "materiale/pdf/fisa-recapitulativa-geometrie-clasa-a-x-a.pdf",
       "youtube": null,
       "keywords": {
-        "ro": ["vectori", "geometrie analitică", "dreaptă", "pantă", "coliniari", "produs scalar", "mediatoare", "recapitulare", "BAC"],
-        "en": ["vectors", "analytic geometry", "line", "slope", "collinear", "dot product", "perpendicular bisector", "review", "baccalaureate"]
+        "ro": ["vectori", "geometrie analitică", "dreaptă", "pantă", "coliniari", "produs scalar", "mediatoare", "recapitulare", "BAC", "clasa a 11-a", "clasa 11"],
+        "en": ["vectors", "analytic geometry", "line", "slope", "collinear", "dot product", "perpendicular bisector", "review", "baccalaureate", "grade 11"]
       }
     },
     {
@@ -198,8 +248,8 @@
       "pdf": "materiale/pdf/fisa-recapitulativa-clasele-v-vii-test-initial.pdf",
       "youtube": null,
       "keywords": {
-        "ro": ["test inițial", "divizibilitate", "fracții", "radicali", "ecuații", "sisteme de ecuații", "probabilități", "triunghiuri", "patrulatere", "asemănare", "relații metrice"],
-        "en": ["initial test", "divisibility", "fractions", "square roots", "equations", "systems of equations", "probability", "triangles", "quadrilaterals", "similarity", "metric relations"]
+        "ro": ["test inițial", "divizibilitate", "fracții", "radicali", "ecuații", "sisteme de ecuații", "probabilități", "triunghiuri", "patrulatere", "asemănare", "relații metrice", "clasa a 8-a", "clasa 8"],
+        "en": ["initial test", "divisibility", "fractions", "square roots", "equations", "systems of equations", "probability", "triangles", "quadrilaterals", "similarity", "metric relations", "grade 8"]
       }
     },
     {
@@ -218,8 +268,8 @@
       "pdf": "materiale/pdf/fisa-recapitulativa-1-numere-naturale-fractii.pdf",
       "youtube": null,
       "keywords": {
-        "ro": ["numere naturale", "puteri", "divizibilitate", "fracții", "procente", "organizarea datelor"],
-        "en": ["natural numbers", "powers", "divisibility", "fractions", "percentages", "data organization"]
+        "ro": ["numere naturale", "puteri", "divizibilitate", "fracții", "procente", "organizarea datelor", "clasa a 6-a", "clasa 6"],
+        "en": ["natural numbers", "powers", "divisibility", "fractions", "percentages", "data organization", "grade 6"]
       }
     },
     {
@@ -238,8 +288,8 @@
       "pdf": "materiale/pdf/fisa-recapitulativa-2-geometrie-unitati-masura.pdf",
       "youtube": null,
       "keywords": {
-        "ro": ["geometrie", "segmente", "unghiuri", "unități de măsură", "perimetre", "arii", "volume"],
-        "en": ["geometry", "segments", "angles", "measurement units", "perimeters", "areas", "volumes"]
+        "ro": ["geometrie", "segmente", "unghiuri", "unități de măsură", "perimetre", "arii", "volume", "clasa a 6-a", "clasa 6"],
+        "en": ["geometry", "segments", "angles", "measurement units", "perimeters", "areas", "volumes", "grade 6"]
       }
     },
     {
@@ -258,8 +308,8 @@
       "pdf": "materiale/pdf/teorie-vectori-geometrie-analitica.pdf",
       "youtube": null,
       "keywords": {
-        "ro": ["vectori", "geometrie analitică", "ecuația dreptei", "panta", "distanța dintre două puncte", "produs scalar", "bacalaureat"],
-        "en": ["vectors", "analytic geometry", "equation of a line", "slope", "distance between two points", "dot product", "baccalaureate"]
+        "ro": ["vectori", "geometrie analitică", "ecuația dreptei", "panta", "distanța dintre două puncte", "produs scalar", "bacalaureat", "clasa a 11-a", "clasa 11"],
+        "en": ["vectors", "analytic geometry", "equation of a line", "slope", "distance between two points", "dot product", "baccalaureate", "grade 11"]
       }
     }
   ]

@@ -2,6 +2,11 @@
 # Internal files are public but must not be indexed.
 # NOTE: keep one rule per file below: a splat in the middle of a path
 # such as /*.md may not match, so the files are listed explicitly.
+# Branch and deploy previews must not be indexed; production stays indexable.
+# The two-label placeholder matches only <branch>.<project>.pages.dev,
+# never the production host (audit F6).
+https://:version.:project.pages.dev/*
+  X-Robots-Tag: noindex
 /docs/*
   X-Robots-Tag: noindex
 /tests/*
@@ -22,6 +27,12 @@
   X-Robots-Tag: noindex
 /package-lock.json
   X-Robots-Tag: noindex
+# Static assets and PDFs cache for one day in the browser (audit F4).
+# Safe without content hashing: an edit goes live within a day.
+/assets/*
+  Cache-Control: public, max-age=86400
+/materiale/pdf/*
+  Cache-Control: public, max-age=86400
 /materiale/pdf/fisa-lucru-numere-reale-modul-parte-intreaga.pdf
   Link: <https://lauramiron.pages.dev/materiale/fisa-lucru-numere-reale-modul-parte-intreaga>; rel="canonical"
 /materiale/pdf/fisa-recapitulare-evaluare-initiala.pdf

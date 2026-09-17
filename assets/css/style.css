@@ -793,6 +793,26 @@ a:hover {
   color: var(--muted);
 }
 
+/* "More / less" toggle for long grade intros: a small inline link-button. */
+.lead-toggle {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.9em;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.lead-toggle:hover {
+  color: var(--ink-hover);
+  text-decoration-thickness: 2px;
+}
+
 .year {
   max-width: 50rem;
   margin-top: 1.5rem;

@@ -22,6 +22,11 @@
     return getLang() === 'ro' ? `Clasa a ${Catalog.ROMAN[grade]}-a` : `Grade ${grade}`;
   }
 
+  // Numeric grade form students type. Mirrors gradeNumericOf in tools/build_pages.mjs.
+  function gradeNumeric(grade) {
+    return getLang() === 'ro' ? `clasa a ${grade}-a` : `Grade ${grade}`;
+  }
+
   function levelKey(grade) {
     return grade <= 8 ? 'level.gimnaziu' : 'level.liceu';
   }
@@ -273,6 +278,7 @@
     changeLang,
     pick,
     gradeName,
+    gradeNumeric,
     levelKey,
     plural,
     countLabel,

@@ -37,8 +37,16 @@ const KATEX_RENDER = {
 
 const FONTS = 'https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,700;0,800;1,400&family=Caveat:wght@600&display=swap';
 export const OG_IMAGE = `${SITE_URL}assets/img/og-image.png`;
-// Profiles for the home page Person JSON-LD. Empty now; add the YouTube channel later.
+// Profiles for the home page Person JSON-LD. Empty now: no public
+// teacher profiles (school staff page, YouTube channel) exist yet (audit F5).
+// Add URLs here only when they exist.
 const PROFILES = [];
+
+// Search-engine verification tokens (audit F1). Empty until the property is
+// verified: paste the code from Search Console / Bing Webmaster Tools here and
+// regenerate. When set, renderHead emits the meta tag.
+export const GOOGLE_SITE_VERIFICATION = '';
+export const BING_SITE_VERIFICATION = '';
 
 export function esc(text) {
   return Shell.escapeHtml(text);
@@ -54,6 +62,19 @@ export function canonicalFor(file) {
 
 export function gradeNameOf(grade, lang) {
   return lang === 'en' ? `Grade ${grade}` : `Clasa a ${Catalog.ROMAN[grade]}-a`;
+}
+
+// Numeric grade form students type ("clasa a 6-a"). English already uses
+// digits in gradeNameOf, so both helpers agree there (audit F2).
+export function gradeNumericOf(grade, lang) {
+  return lang === 'en' ? `Grade ${grade}` : `clasa a ${grade}-a`;
+}
+
+// First sentence of a text: used as the grade meta description (audit F3).
+// Splits on sentence-ending punctuation followed by whitespace.
+export function firstSentence(text) {
+  const m = String(text || '').trim().match(/^.*?[.!?…](?=\s|$)/s);
+  return (m ? m[0] : String(text || '').trim()).trim();
 }
 
 // Titles that already name a class ("clasa", "clasele", "grade") skip the grade part.
@@ -120,7 +141,13 @@ function renderHead(opts) {
     `<title>${esc(opts.title)}</title>`,
   ];
   if (opts.description) lines.push(`<meta name="description" content="${esc(opts.description)}">`);
-  if (opts.noindex) lines.push('<meta name="robots" content="noindex, follow">');
+  if (opts.noindex) {
+    lines.push('<meta name="robots" content="noindex, follow">');
+  } else {
+    lines.push('<meta name="robots" content="max-image-preview:large, max-snippet:-1, max-video-preview:-1">');
+  }
+  if (GOOGLE_SITE_VERIFICATION) lines.push(`<meta name="google-site-verification" content="${esc(GOOGLE_SITE_VERIFICATION)}">`);
+  if (BING_SITE_VERIFICATION) lines.push(`<meta name="msvalidate.01" content="${esc(BING_SITE_VERIFICATION)}">`);
   lines.push(`<link rel="canonical" href="${canonical}">`);
   if (opts.altFile) {
     const alt = canonicalFor(opts.altFile);
@@ -137,6 +164,13 @@ function renderHead(opts) {
   if (opts.description) lines.push(`<meta property="og:description" content="${esc(opts.description)}">`);
   lines.push(`<meta property="og:url" content="${canonical}">`);
   lines.push(`<meta property="og:image" content="${esc(opts.ogImage || OG_IMAGE)}">`);
+  const ogIsDefault = !opts.ogImage || opts.ogImage === OG_IMAGE;
+  lines.push(`<meta property="og:image:width" content="${esc(String(opts.ogImageWidth || (ogIsDefault ? '1200' : '480')))}">`);
+  lines.push(`<meta property="og:image:height" content="${esc(String(opts.ogImageHeight || (ogIsDefault ? '630' : '360')))}">`);
+  const ogAltDefault = opts.lang === 'en'
+    ? 'Math materials for grades 5–12 – Laura Miron'
+    : 'Materiale de matematică pentru clasele V–XII – Laura Miron';
+  lines.push(`<meta property="og:image:alt" content="${esc(opts.ogImageAlt || ogAltDefault)}">`);
   lines.push(`<meta property="og:locale" content="${ogLocale}">`);
   if (opts.altFile) lines.push(`<meta property="og:locale:alternate" content="${ogAlt}">`);
   lines.push('<meta property="og:site_name" content="Laura Miron">');
@@ -244,14 +278,17 @@ ${main}
 }
 
 function webSiteLd(lang, dict) {
+  const org = {
+    '@type': 'EducationalOrganization',
+    name: 'Liceul William Shakespeare',
+    url: SITE_URL,
+    logo: OG_IMAGE,
+    address: { '@type': 'PostalAddress', addressLocality: 'Timișoara', addressCountry: 'RO' },
+  };
   const person = {
     ...personLd(),
     jobTitle: lang === 'en' ? 'Math teacher' : 'Profesoară de matematică',
-    worksFor: {
-      '@type': 'EducationalOrganization',
-      name: 'Liceul William Shakespeare',
-      address: { '@type': 'PostalAddress', addressLocality: 'Timișoara', addressCountry: 'RO' },
-    },
+    worksFor: { ...org },
   };
   if (PROFILES.length) person.sameAs = [...PROFILES];
   return [
@@ -264,6 +301,7 @@ function webSiteLd(lang, dict) {
       description: dict['seo.home.description'],
     },
     { '@context': 'https://schema.org', ...person },
+    { '@context': 'https://schema.org', ...org },
   ];
 }
 
@@ -338,8 +376,14 @@ function renderGradePage({ data, grade, lang, dict, assetBase, pageRoot, selfFil
   const entries = Catalog.gradeTopics(data, grade, lang);
   const empty = entries.length === 0;
   const name = gradeNameOf(grade, lang);
-  const title = dict['seo.grade.title'].replace('{grade}', name);
-  const description = dict['seo.grade.description'].replace('{grade}', name);
+  const numName = gradeNumericOf(grade, lang);
+  const fill = (s) => String(s).replace('{gradeNum}', numName).replace('{grade}', name);
+  const title = fill(dict['seo.grade.title']);
+  // Per-grade intro (audit F3): unique body text naming the year's chapters.
+  // Falls back to the generic template when the grades block has no entry.
+  const gradeIntro = data.grades && data.grades[String(grade)] && data.grades[String(grade)].intro;
+  const intro = (gradeIntro && (gradeIntro[lang] || gradeIntro.ro)) || fill(dict['seo.grade.intro']);
+  const description = empty ? fill(dict['seo.grade.description']) : firstSentence(intro);
   const blocks = Catalog.bySchoolYear(entries).map((year, index) => {
     const cards = year.entries.map((e) => topicCard({ entry: e, lang, dict, matBase: 'materiale/', root: assetBase })).join('\n    ');
     return `<details class="year"${index === 0 ? ' open' : ''}>\n` +
@@ -351,7 +395,7 @@ function renderGradePage({ data, grade, lang, dict, assetBase, pageRoot, selfFil
         <span class="num is-current" aria-hidden="true">${grade}</span>
         <div><h1>${esc(name)}</h1>
         <p>${esc(dict[grade <= 8 ? 'level.gimnaziu' : 'level.liceu'])}</p>
-        <p class="lead">${esc(dict['seo.grade.intro'].replace('{grade}', name))}</p></div>
+        <p class="lead">${esc(intro)}</p></div>
       </div>
     ${blocks || `<p class="message">${esc(dict['class.empty'])}</p>`}
     </div>`;
@@ -360,7 +404,7 @@ function renderGradePage({ data, grade, lang, dict, assetBase, pageRoot, selfFil
     title,
     description,
     file: selfFile,
-    altFile: empty ? null : altFile,
+    altFile,
     noindex: empty || undefined,
     ogImage: OG_IMAGE,
     assetBase,
@@ -388,7 +432,7 @@ function renderGradePage({ data, grade, lang, dict, assetBase, pageRoot, selfFil
     lang,
     head,
     bodyAttrs: ` data-root="${assetBase}" data-page-root="${pageRoot}" data-grade="${grade}"`,
-    header: headerFor({ lang, dict, pageRoot, selfFile, altFile: empty ? null : altFile }),
+    header: headerFor({ lang, dict, pageRoot, selfFile, altFile }),
     main,
     footer: Shell.footerHtml({ dict, year: new Date().getFullYear() }),
   });
@@ -515,6 +559,9 @@ function renderMaterialPage({ data, material, topic, lang, dict, assetBase, page
     noindex,
     ogType: 'article',
     ogImage: video ? thumbFor(video) : OG_IMAGE,
+    ogImageWidth: video ? '480' : '1200',
+    ogImageHeight: video ? '360' : '630',
+    ogImageAlt: video ? materialTitle : undefined,
     published: material.published,
     assetBase,
     katex: true,
@@ -707,6 +754,11 @@ function renderHeaders(data) {
     '# Internal files are public but must not be indexed.',
     '# NOTE: keep one rule per file below: a splat in the middle of a path',
     '# such as /*.md may not match, so the files are listed explicitly.',
+    '# Branch and deploy previews must not be indexed; production stays indexable.',
+    '# The two-label placeholder matches only <branch>.<project>.pages.dev,',
+    '# never the production host (audit F6).',
+    'https://:version.:project.pages.dev/*',
+    '  X-Robots-Tag: noindex',
     '/docs/*',
     '  X-Robots-Tag: noindex',
     '/tests/*',
@@ -727,6 +779,12 @@ function renderHeaders(data) {
     '  X-Robots-Tag: noindex',
     '/package-lock.json',
     '  X-Robots-Tag: noindex',
+    '# Static assets and PDFs cache for one day in the browser (audit F4).',
+    '# Safe without content hashing: an edit goes live within a day.',
+    '/assets/*',
+    '  Cache-Control: public, max-age=86400',
+    '/materiale/pdf/*',
+    '  Cache-Control: public, max-age=86400',
   ];
   // A PDF is a copy of the Romanian article: its ranking goes to the page.
   const topics = new Map(data.topics.map((t) => [t.id, t]));
@@ -750,12 +808,16 @@ export function renderQuizPage(html, material, topic) {
   const block = `<!-- seo -->
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(description)}">
+<meta name="robots" content="max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <link rel="canonical" href="${canonical}">
 <meta property="og:type" content="article">
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(description)}">
 <meta property="og:url" content="${canonical}">
 <meta property="og:image" content="${OG_IMAGE}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="${esc(title)}">
 <meta property="og:locale" content="ro_RO">
 <meta property="og:site_name" content="Laura Miron">
 <meta property="article:published_time" content="${material.published}">
@@ -825,13 +887,14 @@ export function buildSite(root) {
     for (const lang of ['ro', 'en']) {
       const dict = I18N[lang];
       const selfFile = lang === 'en' ? `en/clasa-${grade}.html` : `clasa-${grade}.html`;
-      const altFile = lang === 'en' ? `clasa-${grade}.html` : `en/clasa-${grade}.html`;
-      set(selfFile, renderGradePage({
-        data, grade, lang, dict,
-        assetBase: lang === 'en' ? '../' : '',
-        pageRoot: '',
-        selfFile, altFile,
-      }));
+    const altFile = lang === 'en' ? `clasa-${grade}.html` : `en/clasa-${grade}.html`;
+    set(selfFile, renderGradePage({
+      data, grade, lang, dict,
+      assetBase: lang === 'en' ? '../' : '',
+      pageRoot: '',
+      selfFile,
+      altFile,
+    }));
     }
   }
 

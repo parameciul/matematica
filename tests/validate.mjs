@@ -7,7 +7,7 @@ import { join, dirname, extname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createRequire } from 'node:module';
 import vm from 'node:vm';
-import { buildSite, KATEX_VERSION } from '../tools/build_pages.mjs';
+import { buildSite, esc, KATEX_VERSION } from '../tools/build_pages.mjs';
 
 const require = createRequire(import.meta.url);
 const Catalog = require('../assets/js/catalog.js');
@@ -172,6 +172,17 @@ for (const [i, m] of materials.entries()) {
       && ['ro', 'en'].every((lang) => m.keywords[lang] === undefined || (Array.isArray(m.keywords[lang]) && m.keywords[lang].every(isText)));
     if (!ok) fail(`${where}: keywords must be { "ro": [text], "en": [text] }`);
   }
+  // Grade forms in keywords (audit F2): the Arabic form students type.
+  // Only checked when the list exists; keywords stay optional per AGENTS.md.
+  const gradeOf = topics.find((t) => t.id === m.topic)?.grade;
+  if (gradeOf) {
+    if (m.keywords && m.keywords.ro !== undefined && !m.keywords.ro.includes(`clasa a ${gradeOf}-a`)) {
+      fail(`${where}: keywords.ro must include "clasa a ${gradeOf}-a" (audit F2)`);
+    }
+    if (m.keywords && m.keywords.en !== undefined && !m.keywords.en.includes(`grade ${gradeOf}`)) {
+      fail(`${where}: keywords.en must include "grade ${gradeOf}" (audit F2)`);
+    }
+  }
 
   const expectedPdf = `materiale/pdf/${m.id}.pdf`;
   if (m.kind === 'quiz' && m.pdf !== null) {
@@ -225,6 +236,36 @@ for (const [i, m] of materials.entries()) {
   const plain = Catalog.normalize(html.replace(/<[^>]+>/g, ' ')).replace(/\s+/g, ' ');
   for (const phrase of ANSWER_HEADINGS) {
     if (plain.includes(phrase)) fail(`${page}: contains "${phrase}". Published materials must not include answers.`);
+  }
+}
+
+// Per-grade intros (audit F3): unique body text naming the year's chapters.
+// The grade page shows the intro and uses its first sentence as the meta description.
+if (!data) {
+  // Invalid JSON is already reported above; nothing more to check here.
+} else if (data.grades === undefined) {
+  fail('data/materials.json: "grades" with per-grade intro.ro / intro.en is required (audit F3)');
+} else if (!data.grades || typeof data.grades !== 'object' || Array.isArray(data.grades)) {
+  fail('data/materials.json: "grades" must be an object keyed by grade (5-12)');
+} else {
+  for (let g = 5; g <= 12; g++) {
+    const entry = data.grades[String(g)];
+    const where = `grades.${g}`;
+    if (!entry || typeof entry !== 'object') { fail(`${where}: intro is required`); continue; }
+    for (const lang of ['ro', 'en']) {
+      const intro = entry.intro && entry.intro[lang];
+      if (!isText(intro)) { fail(`${where}: intro.${lang} is required`); continue; }
+      const words = intro.trim().split(/\s+/).length;
+      if (words < 60 || words > 100) fail(`${where}: intro.${lang} must be 60-100 words (is ${words})`);
+      const first = (intro.trim().match(/^.*?[.!?…](?=\s|$)/s) || [intro.trim()])[0].trim();
+      const len = [...first].length;
+      if (len < 70 || len > 160) fail(`${where}: intro.${lang} first sentence must be 70-160 characters (is ${len})`);
+      checkClassMarks(`${where} intro.${lang}`, intro);
+      if (/[şţŞŢ]/.test(intro)) fail(`${where} intro.${lang}: uses cedilla letters (ş ţ). Use comma-below letters (ș ț).`);
+    }
+  }
+  for (const key of Object.keys(data.grades)) {
+    if (!/^([5-9]|1[0-2])$/.test(key)) fail(`grades.${key}: unknown grade (must be 5-12)`);
   }
 }
 
@@ -309,6 +350,74 @@ for (const f of files.filter((x) => extname(x) === '.html')) {
     if (/^(https?:|mailto:|tel:|#|data:)/.test(url) || url.includes('${')) continue;
     const path = url.split(/[?#]/)[0];
     if (path && !existsSync(join(ROOT, dirname(f), path))) fail(`${f}: link to missing file "${url}"`);
+  }
+}
+
+// 8. SEO head tags and headers (audit Phase 3)
+for (const f of files.filter((x) => extname(x) === '.html')) {
+  const src = read(f);
+  if (!src.includes('<head')) continue;
+  if (src.includes('noindex')) {
+    if (src.includes('max-image-preview')) fail(`${f}: noindex page must not contain max-image-preview`);
+  } else {
+    if (!src.includes('max-image-preview:large, max-snippet:-1, max-video-preview:-1')) {
+      fail(`${f}: indexable page must contain robots max-image-preview:large, max-snippet:-1, max-video-preview:-1`);
+    }
+    for (const tag of ['og:image:width', 'og:image:height', 'og:image:alt']) {
+      if (!src.includes(tag)) fail(`${f}: indexable page must contain ${tag}`);
+    }
+  }
+}
+for (const f of ['index.html', 'en/index.html']) {
+  if (exists(f)) {
+    const src = read(f);
+    if (!src.includes('"EducationalOrganization"')) fail(`${f}: must contain an EducationalOrganization node (audit F5)`);
+    if (!src.includes('"logo"')) fail(`${f}: EducationalOrganization must have a logo`);
+  }
+}
+if (exists('_headers')) {
+  const h = read('_headers');
+  if (!h.includes('/assets/*') || !h.includes('Cache-Control: public, max-age=86400')) {
+    fail('_headers: must set "Cache-Control: public, max-age=86400" for /assets/* (audit F4)');
+  }
+  if (!h.includes('/materiale/pdf/*') || !h.includes('Cache-Control: public, max-age=86400')) {
+    fail('_headers: must set "Cache-Control: public, max-age=86400" for /materiale/pdf/* (audit F4)');
+  }
+  if (!h.includes('https://:version.:project.pages.dev/*')) {
+    fail('_headers: must noindex preview deployments with "https://:version.:project.pages.dev/*" (audit F6)');
+  }
+  if (/^https:\/\/:project\.pages\.dev\/\*$/m.test(h)) {
+    fail('_headers: must not noindex "https://:project.pages.dev/*" — that would noindex production');
+  }
+}
+// Grade titles carry both numeral forms (audit F2); descriptions are unique (audit F3).
+{
+  const seen = new Map();
+  for (let g = 5; g <= 12; g++) {
+    for (const f of [`clasa-${g}.html`, `en/clasa-${g}.html`]) {
+      if (!exists(f)) continue;
+      const src = read(f);
+      const title = (src.match(/<title>([\s\S]*?)<\/title>/) || [, ''])[1];
+      if (f === `clasa-${g}.html`) {
+        if (!title.includes(`clasa a ${g}-a`) || !title.includes(`a ${Catalog.ROMAN[g]}-a`)) {
+          fail(`${f}: title must contain both "clasa a ${g}-a" and "a ${Catalog.ROMAN[g]}-a" (audit F2)`);
+        }
+      } else if (!title.includes(`Grade ${g}`)) {
+        fail(`${f}: title must contain "Grade ${g}"`);
+      }
+      const desc = (src.match(/<meta name="description" content="([^"]*)"/) || [, null])[1];
+      if (desc && !src.includes('noindex')) {
+        if (seen.has(desc)) fail(`${f}: description duplicates ${seen.get(desc)} (audit F3)`);
+        else seen.set(desc, f);
+      }
+      // The full intro stays in the server HTML even though the browser
+      // collapses it behind a "more" button (SEO: crawlers see everything).
+      if (data && data.grades && data.grades[String(g)] && data.grades[String(g)].intro) {
+        const lang = f.startsWith('en/') ? 'en' : 'ro';
+        const intro = data.grades[String(g)].intro[lang] || data.grades[String(g)].intro.ro;
+        if (intro && !src.includes(esc(intro))) fail(`${f}: must contain the full grade intro in the HTML`);
+      }
+    }
   }
 }
 

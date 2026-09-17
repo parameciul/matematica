@@ -139,7 +139,7 @@ test('hreflang pairs exist only when both pages are indexable', (t) => {
   const site = buildSite(dir);
   assert.match(site.get('clasa-9.html'), /rel="alternate" hreflang="ro"/);
   assert.match(site.get('clasa-9.html'), /rel="alternate" hreflang="x-default"/);
-  assert.doesNotMatch(site.get('clasa-5.html'), /rel="alternate" hreflang/);
+  assert.match(site.get('clasa-5.html'), /rel="alternate" hreflang="en"/);
   assert.doesNotMatch(site.get('cautare.html'), /rel="alternate" hreflang/);
   assert.doesNotMatch(site.get('materiale/quiz-recap.html'), /rel="alternate" hreflang/);
 });
