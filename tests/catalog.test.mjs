@@ -167,3 +167,45 @@ test('formatDate writes Romanian and English dates', () => {
   assert.equal(C.formatDate('2026-09-14', 'en', 'long'), '14 September 2026');
   assert.equal(C.formatDate('nope', 'ro', 'short'), '');
 });
+
+test('hasArticleContent is false for empty articles', () => {
+  assert.equal(C.hasArticleContent(''), false);
+  assert.equal(C.hasArticleContent('\n        \n      '), false);
+  assert.equal(C.hasArticleContent('<!-- conținut --> '), false);
+  assert.equal(C.hasArticleContent('<p></p>\n<h2> </h2>'), false);
+  assert.equal(C.hasArticleContent('<p>&nbsp;</p><br>'), false);
+  assert.equal(C.hasArticleContent(undefined), false);
+});
+
+test('hasArticleContent is true for text or media', () => {
+  assert.equal(C.hasArticleContent('<h2>Nivel 1</h2>'), true);
+  assert.equal(C.hasArticleContent('$x^2$'), true);
+  assert.equal(C.hasArticleContent('<!-- nota --><p>Text</p>'), true);
+  assert.equal(C.hasArticleContent('<p><img src="../assets/fig.png" alt=""></p>'), true);
+  assert.equal(C.hasArticleContent('<svg viewBox="0 0 10 10"></svg>'), true);
+});
+
+const page = (ro, en) => [{ lang: 'ro', filled: ro }, { lang: 'en', filled: en }];
+
+test('pickArticle shows the article of the current language', () => {
+  assert.deepEqual(C.pickArticle(page(true, true), 'ro', true), { index: 0, note: null });
+  assert.deepEqual(C.pickArticle(page(true, true), 'en', true), { index: 1, note: null });
+  assert.deepEqual(C.pickArticle(page(true, false), 'ro', true), { index: 0, note: null });
+});
+
+test('pickArticle treats an empty article as missing and shows Romanian with a note', () => {
+  assert.deepEqual(C.pickArticle(page(true, false), 'en', true), { index: 0, note: 'fallback' });
+  assert.deepEqual(C.pickArticle(page(true, false), 'en', false), { index: 0, note: 'fallback' });
+  assert.deepEqual(C.pickArticle(page(false, true), 'ro', true), { index: 1, note: 'fallback' });
+});
+
+test('pickArticle shows no article and the PDF note when every article is empty', () => {
+  assert.deepEqual(C.pickArticle(page(false, false), 'ro', true), { index: -1, note: 'pdfOnly' });
+  assert.deepEqual(C.pickArticle(page(false, false), 'en', true), { index: -1, note: 'pdfOnly' });
+  assert.deepEqual(C.pickArticle([], 'en', true), { index: -1, note: 'pdfOnly' });
+});
+
+test('pickArticle shows no note when every article is empty and there is no PDF (yet)', () => {
+  assert.deepEqual(C.pickArticle(page(false, false), 'ro', false), { index: -1, note: null });
+  assert.deepEqual(C.pickArticle([], 'ro', false), { index: -1, note: null });
+});

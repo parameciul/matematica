@@ -17,7 +17,7 @@ Catalog/ordering/search logic lives in `assets/js/catalog.js` (no DOM code so no
 ## Commands (verified on this machine, Node 24 / Python 3.13)
 
 - `node tests/validate.mjs` — site validator; this is the Cloudflare build command, a failure stops the deploy. Must print `PASS`.
-- `node --test "tests/*.test.mjs"` — 58 tests, both suites. **`npm test` misses `tests/catalog.test.mjs`**, and the directory form `node --test tests/` errors on this setup; use the quoted glob.
+- `node --test "tests/*.test.mjs"` — 64 tests, both suites. **`npm test` misses `tests/catalog.test.mjs`**, and the directory form `node --test tests/` errors on this setup; use the quoted glob.
 - `python -m pytest tools -q` — 17 tests for the Python helper tools.
 - Local preview: `python -m http.server 8000`, then http://localhost:8000/. Never open HTML straight from disk — `fetch` of `data/materials.json` fails on `file://`.
 
@@ -41,7 +41,7 @@ For each material, do these steps in this order: convert, page, Romanian article
 python tools/docx_to_html.py "<DOCX path>" -o .work/<id>/ro.html
 ```
 
-Needs pandoc. If it prints a `WARNING` about `$` signs, replace each literal `$` in the text with `&#36;`. **Only `.docx`/`.doc` sources are converted; PDFs are NEVER converted** — PDF→HTML conversion loses too much of the math, so if no DOCX exists **skip this step entirely**: create the page with **no HTML version** and attach only the source PDF.
+Needs pandoc. If it prints a `WARNING` about `$` signs, replace each literal `$` in the text with `&#36;`. **Only `.docx`/`.doc` sources are converted; PDFs are NEVER converted** — PDF→HTML conversion loses too much of the math, so if no DOCX exists **skip this step entirely**: create the page with **no HTML version** (keep both `<article>` elements, but empty; the page then shows a note that the material is only available as a PDF) and attach only the source PDF.
 
 **2. Create the page**
 

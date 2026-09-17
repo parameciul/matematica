@@ -174,6 +174,27 @@
       .map((h) => ({ material: h.material, topic: h.topic }));
   }
 
+  // True when an article's HTML shows something: text or media. Comments, empty tags and spaces do not count.
+  function hasArticleContent(html) {
+    const src = String(html || '').replace(/<!--[\s\S]*?-->/g, '');
+    if (/<(img|svg|iframe|video|canvas)\b/i.test(src)) return true;
+    const text = src.replace(/<[^>]*>/g, '').replace(/&nbsp;|&#160;|&#xa0;/gi, ' ');
+    return text.trim().length > 0;
+  }
+
+  // Which article a material page shows for a language, and which note goes above it.
+  // articles: [{ lang, filled }] in page order. An empty article counts as missing.
+  // note: 'fallback' when another language is shown, 'pdfOnly' when nothing can be shown but there is a PDF.
+  function pickArticle(articles, lang, hasPdf) {
+    const find = (l) => articles.findIndex((a) => a.filled && (l === undefined || a.lang === l));
+    const exact = find(lang);
+    if (exact >= 0) return { index: exact, note: null };
+    let index = find('ro');
+    if (index < 0) index = find();
+    if (index >= 0) return { index, note: 'fallback' };
+    return { index: -1, note: hasPdf ? 'pdfOnly' : null };
+  }
+
   function formatDate(iso, lang, style) {
     const m = DATE_RE.exec(String(iso));
     if (!m) return '';
@@ -192,7 +213,7 @@
     groupOf, isValidDate, todayIso, isNew, schoolYearOf, schoolYearLabel,
     topicMaterials, gradeTopics, filterEntries, groupsPresent, bySchoolYear,
     latestMaterials, gradeSummary, findMaterial, relatedMaterials,
-    normalize, search, formatDate,
+    normalize, search, formatDate, hasArticleContent, pickArticle,
   };
   if (typeof module === 'object' && module.exports) module.exports = api;
   if (typeof window !== 'undefined') window.Catalog = api;

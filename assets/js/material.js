@@ -8,16 +8,20 @@
   const el = Site.el;
   const articles = Array.from(main.querySelectorAll('article[data-lang]'));
   const firstArticle = articles[0] || null;
+  const pages = articles.map((a) => ({
+    lang: a.getAttribute('data-lang'),
+    filled: Catalog.hasArticleContent(a.innerHTML),
+  }));
 
   const head = el('div', 'material-head');
-  const fallbackNote = el('p', 'note');
+  const articleNote = el('p', 'note');
   const pdfNote = el('p', 'note');
   const related = el('aside', 'related');
-  fallbackNote.hidden = true;
+  articleNote.hidden = true;
   pdfNote.hidden = true;
   related.hidden = true;
   main.insertBefore(head, firstArticle);
-  main.insertBefore(fallbackNote, firstArticle);
+  main.insertBefore(articleNote, firstArticle);
   main.insertBefore(pdfNote, firstArticle);
   main.appendChild(related);
 
@@ -62,8 +66,8 @@
     a.target = '_blank';
     a.rel = 'noopener';
     link.appendChild(a);
-    main.insertBefore(box, fallbackNote);
-    main.insertBefore(link, fallbackNote);
+    main.insertBefore(box, articleNote);
+    main.insertBefore(link, articleNote);
     video = { box, link: a };
   }
 
@@ -105,11 +109,10 @@
 
   function render() {
     const lang = getLang();
-    const exact = articles.find((a) => a.getAttribute('data-lang') === lang);
-    const shown = exact || articles.find((a) => a.getAttribute('data-lang') === 'ro') || firstArticle;
-    articles.forEach((a) => a.classList.toggle('is-active', a === shown));
-    fallbackNote.hidden = Boolean(exact);
-    fallbackNote.textContent = t('material.fallback');
+    const pick = Catalog.pickArticle(pages, lang, Boolean(found && found.material.pdf));
+    articles.forEach((a, i) => a.classList.toggle('is-active', i === pick.index));
+    articleNote.hidden = !pick.note;
+    articleNote.textContent = pick.note === 'pdfOnly' ? t('material.pdfOnly') : t('material.fallback');
 
     head.textContent = '';
     if (failed || found === null) {
