@@ -31,7 +31,7 @@
     section.appendChild(title);
     section.appendChild(el('p', 'topic-updated', t('common.updated').replace('{date}', Site.formatDate(entry.latest))));
     const list = el('ul', 'material-list');
-    entry.materials.forEach((m) => list.appendChild(Site.materialRow(m, entry.topic)));
+    entry.materials.forEach((m) => list.appendChild(Site.materialRow(m, entry.topic, { topic: true })));
     section.appendChild(list);
     return section;
   }
