@@ -285,6 +285,37 @@ test('a quiz page without a link back fails', () => {
   );
 });
 
+test('a quiz page without the seo block fails', () => {
+  expectFailure(
+    withSite((dir) => {
+      makeQuiz(dir, '<a href="../clasa.html?c=9">Înapoi</a>');
+      editFile(dir, SAMPLE_PAGE, (s) => s.replace(/<!-- seo -->[\s\S]*<!-- \/seo -->\n?/, ''));
+    }),
+    /must contain the <!-- seo --> block/,
+  );
+});
+
+test('an English page for the quiz fails', () => {
+  expectFailure(
+    withSite((dir) => {
+      makeQuiz(dir, '<a href="../clasa.html?c=9">Înapoi</a>');
+      writeFileSync(join(dir, 'en', 'materiale', `${SAMPLE}.html`), '<p>x</p>');
+    }),
+    /the quiz is Romanian only and must not have an English page/,
+  );
+});
+
+test('missing generated SEO files fail', () => {
+  const deleted = ['robots.txt', 'sitemap.xml', '_headers', '404.html', 'en/404.html', 'favicon.svg', 'assets/img/og-image.png'];
+  const result = withSite((dir) => {
+    for (const f of deleted) unlinkSync(join(dir, f));
+  });
+  assert.equal(result.code, 1, `expected failure, got:\n${result.out}`);
+  for (const f of deleted) {
+    assert.match(result.out, new RegExp(`Missing required file: ${f.replace(/[./]/g, (c) => `\\${c}`)}`));
+  }
+});
+
 test('absolute path fails', () => {
   expectFailure(
     withSite((dir) => editFile(dir, 'assets/css/style.css', (s) => `${s}\n.x{background:url(/assets/img/x.png);}\n`)),
