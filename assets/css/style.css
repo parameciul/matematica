@@ -1147,7 +1147,9 @@ a:hover {
 }
 
 #search-page {
-  max-width: 50rem;
+  /* + margin-x: .page's left padding sits inside the border box,
+     so the content stays 50rem like .year on grade pages. */
+  max-width: calc(50rem + var(--margin-x));
 }
 
 .search-heading {
