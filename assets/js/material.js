@@ -54,7 +54,7 @@
   function renderRelated(material, topic) {
     if (!related) return;
     related.textContent = '';
-    const others = Catalog.relatedMaterials(data, material.id);
+    const others = Catalog.relatedMaterials(data, material.id, getLang());
     if (others.length) {
       related.appendChild(el('h2', null, t('material.related')));
       const list = el('ul', 'material-list');

@@ -68,18 +68,26 @@
     return new Map(data.topics.map((t) => [t.id, t]));
   }
 
-  function topicMaterials(data, topicId) {
-    return newestFirst(data.materials.filter((m) => m.topic === topicId), (m) => m.published);
+  // The quiz is Romanian only (no en/materiale/ page), so English listings
+  // leave it out: following such a link would switch the page language to
+  // Romanian without the user asking for it.
+  function visibleMaterials(materials, lang) {
+    if (lang === 'en') return materials.filter((m) => m.kind !== 'quiz');
+    return materials;
+  }
+
+  function topicMaterials(data, topicId, lang) {
+    return newestFirst(visibleMaterials(data.materials.filter((m) => m.topic === topicId), lang), (m) => m.published);
   }
 
   function entry(topic, materials) {
     return { topic, materials, latest: materials.length ? materials[0].published : null };
   }
 
-  function gradeTopics(data, grade) {
+  function gradeTopics(data, grade, lang) {
     const entries = data.topics
       .filter((t) => t.grade === grade)
-      .map((t) => entry(t, topicMaterials(data, t.id)))
+      .map((t) => entry(t, topicMaterials(data, t.id, lang)))
       .filter((e) => e.materials.length > 0);
     return newestFirst(entries, (e) => e.latest);
   }
@@ -107,18 +115,18 @@
     return Array.from(years, ([year, list]) => ({ year, entries: list })).sort((a, b) => b.year - a.year);
   }
 
-  function latestMaterials(data, count) {
+  function latestMaterials(data, count, lang) {
     const topics = topicMap(data);
-    return newestFirst(data.materials, (m) => m.published)
+    return newestFirst(visibleMaterials(data.materials, lang), (m) => m.published)
       .slice(0, count)
       .map((material) => ({ material, topic: topics.get(material.topic) }));
   }
 
-  function gradeSummary(data) {
+  function gradeSummary(data, lang) {
     const topics = topicMap(data);
     const summary = {};
     for (let g = 5; g <= 12; g++) summary[g] = { count: 0, latest: null };
-    data.materials.forEach((m) => {
+    visibleMaterials(data.materials, lang).forEach((m) => {
       const topic = topics.get(m.topic);
       if (!topic || !summary[topic.grade]) return;
       const s = summary[topic.grade];
@@ -134,10 +142,10 @@
     return { material, topic: topicMap(data).get(material.topic) || null };
   }
 
-  function relatedMaterials(data, id) {
+  function relatedMaterials(data, id, lang) {
     const found = findMaterial(data, id);
     if (!found) return [];
-    return topicMaterials(data, found.material.topic).filter((m) => m.id !== id);
+    return topicMaterials(data, found.material.topic, lang).filter((m) => m.id !== id);
   }
 
   function normalize(text) {
@@ -155,7 +163,7 @@
     const topics = topicMap(data);
     const labels = opts.labels || {};
     const hits = [];
-    data.materials.forEach((material) => {
+    visibleMaterials(data.materials, opts.lang).forEach((material) => {
       const topic = topics.get(material.topic);
       if (!topic) return;
       if (opts.grade && topic.grade !== opts.grade) return;
@@ -211,7 +219,7 @@
   const api = {
     ROMAN, KINDS, GROUPS, GROUP_ORDER, NEW_DAYS,
     groupOf, isValidDate, todayIso, isNew, schoolYearOf, schoolYearLabel,
-    topicMaterials, gradeTopics, filterEntries, groupsPresent, bySchoolYear,
+    visibleMaterials, topicMaterials, gradeTopics, filterEntries, groupsPresent, bySchoolYear,
     latestMaterials, gradeSummary, findMaterial, relatedMaterials,
     normalize, search, formatDate, hasArticleContent, pickArticle,
   };

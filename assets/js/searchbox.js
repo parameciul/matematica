@@ -61,7 +61,7 @@
       close();
       return;
     }
-    const results = Catalog.search(data, query, { labels: Site.searchLabels() });
+    const results = Catalog.search(data, query, { labels: Site.searchLabels(), lang: getLang() });
     list.textContent = '';
     options = [];
     setActive(-1);

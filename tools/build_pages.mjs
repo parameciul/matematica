@@ -268,7 +268,7 @@ function webSiteLd(lang, dict) {
 }
 
 function renderHome({ data, lang, dict, assetBase, pageRoot, selfFile, altFile }) {
-  const summary = Catalog.gradeSummary(data);
+  const summary = Catalog.gradeSummary(data, lang);
   const tiles = (grades) => grades.map((g) => {
     const s = summary[g] || { count: 0, latest: null };
     const updated = s.latest
@@ -278,7 +278,7 @@ function renderHome({ data, lang, dict, assetBase, pageRoot, selfFile, altFile }
       `<span class="tile-name" data-grade-name="${g}">${esc(gradeNameOf(g, lang))}</span>` +
       `<span class="tile-count" data-count="${g}">${esc(countLabel(dict, lang, s.count))}</span>${updated}</a></li>`;
   }).join('\n          ');
-  const newest = Catalog.latestMaterials(data, 6)
+  const newest = Catalog.latestMaterials(data, 6, lang)
     .map(({ material, topic }) => materialRow({ material, topic, lang, dict, matBase: 'materiale/', root: assetBase, showGrade: true, showTopic: true }))
     .join('\n        ');
   const main = `    <div class="page">
@@ -335,7 +335,7 @@ function renderHome({ data, lang, dict, assetBase, pageRoot, selfFile, altFile }
 }
 
 function renderGradePage({ data, grade, lang, dict, assetBase, pageRoot, selfFile, altFile }) {
-  const entries = Catalog.gradeTopics(data, grade);
+  const entries = Catalog.gradeTopics(data, grade, lang);
   const empty = entries.length === 0;
   const name = gradeNameOf(grade, lang);
   const title = dict['seo.grade.title'].replace('{grade}', name);
@@ -439,7 +439,7 @@ function renderMaterialPage({ data, material, topic, lang, dict, assetBase, page
     note = `<p class="note">${esc(dict['material.pdfNote'])}</p>`;
   }
 
-  const others = Catalog.relatedMaterials(data, material.id);
+  const others = Catalog.relatedMaterials(data, material.id, lang);
   const relatedRows = others
     .map((m) => materialRow({ material: m, topic, lang, dict, matBase: '', root: assetBase, showGrade: false, showTopic: false }))
     .join('\n        ');
@@ -805,6 +805,7 @@ export function buildSite(root) {
 
   const summary = Catalog.gradeSummary(data);
   const newestOverall = data.materials.map(lastmodOf).sort().at(-1);
+  const newestOverallEn = Catalog.visibleMaterials(data.materials, 'en').map(lastmodOf).sort().at(-1) || newestOverall;
 
   // Home pages.
   for (const lang of ['ro', 'en']) {
@@ -890,13 +891,17 @@ export function buildSite(root) {
   const indexable = [];
   const push = (file, lastmod, altFile) => indexable.push({ file, lastmod, altFile });
   push('index.html', newestOverall, 'en/index.html');
-  push('en/index.html', newestOverall, 'index.html');
+  push('en/index.html', newestOverallEn, 'index.html');
   for (let grade = 5; grade <= 12; grade++) {
-    const entries = Catalog.gradeTopics(data, grade);
-    if (!entries.length) continue;
-    const lastmod = entries.map((e) => e.latest).sort().at(-1);
-    push(`clasa-${grade}.html`, lastmod, `en/clasa-${grade}.html`);
-    push(`en/clasa-${grade}.html`, lastmod, `clasa-${grade}.html`);
+    const entriesRo = Catalog.gradeTopics(data, grade, 'ro');
+    const entriesEn = Catalog.gradeTopics(data, grade, 'en');
+    if (!entriesRo.length && !entriesEn.length) continue;
+    const lastmodRo = entriesRo.length ? entriesRo.map((e) => e.latest).sort().at(-1) : null;
+    const lastmodEn = entriesEn.length ? entriesEn.map((e) => e.latest).sort().at(-1) : null;
+    // The hreflang pair exists only when both grade pages list materials.
+    const pair = entriesRo.length > 0 && entriesEn.length > 0;
+    if (entriesRo.length) push(`clasa-${grade}.html`, lastmodRo, pair ? `en/clasa-${grade}.html` : null);
+    if (entriesEn.length) push(`en/clasa-${grade}.html`, lastmodEn, pair ? `clasa-${grade}.html` : null);
   }
   for (const material of data.materials) {
     if (material.kind === 'quiz') {

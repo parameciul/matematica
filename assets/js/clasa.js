@@ -62,7 +62,7 @@
     if (failed) return message('error.load');
     if (!data) return message('common.loading');
 
-    const entries = Catalog.gradeTopics(data, grade);
+    const entries = Catalog.gradeTopics(data, grade, getLang());
     if (!entries.length) return message('class.empty');
 
     const groups = Catalog.groupsPresent(entries);

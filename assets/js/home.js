@@ -6,7 +6,7 @@
   let failed = false;
 
   function renderTiles() {
-    const summary = data ? Catalog.gradeSummary(data) : null;
+    const summary = data ? Catalog.gradeSummary(data, getLang()) : null;
     document.querySelectorAll('[data-count]').forEach((node) => {
       const s = summary && summary[Number(node.getAttribute('data-count'))];
       node.textContent = s ? Site.countLabel(s.count) : '';
@@ -28,7 +28,7 @@
       box.appendChild(Site.el('p', 'message', t('common.loading')));
       return;
     }
-    const items = Catalog.latestMaterials(data, NEWEST);
+    const items = Catalog.latestMaterials(data, NEWEST, getLang());
     if (!items.length) {
       box.appendChild(Site.el('p', 'message', t('home.newEmpty')));
       return;

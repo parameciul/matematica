@@ -68,7 +68,7 @@
       return;
     }
 
-    const found = Catalog.search(data, query, { labels: Site.searchLabels(), grade: grade || undefined });
+    const found = Catalog.search(data, query, { labels: Site.searchLabels(), grade: grade || undefined, lang: getLang() });
     const groups = Catalog.GROUP_ORDER.filter((g) => found.some((r) => Catalog.groupOf(r.material.kind) === g));
     const active = groups.includes(group) ? group : '';
     container.appendChild(searchForm(active));

@@ -3,7 +3,12 @@
   const root = document.body.getAttribute('data-root') || '';
   // Links to pages in the same language. On English pages under en/ this points
   // at the en/ folder, while data-root still points at the site root for assets.
-  const pageRoot = document.body.getAttribute('data-page-root') || root;
+  // data-page-root is intentionally "" on en/index.html, en/clasa-N.html and
+  // en/cautare.html (same folder), so a missing attribute (null) must fall back
+  // to root, but an empty string must stay empty: "" || root would wrongly
+  // become "../" and every material link would resolve to the Romanian page.
+  const pageRootAttr = document.body.getAttribute('data-page-root');
+  const pageRoot = pageRootAttr === null ? root : pageRootAttr;
   const listeners = [];
   let dataPromise = null;
 
@@ -46,6 +51,7 @@
   }
 
   // The quiz exists only in Romanian, so it always links to the Romanian page.
+  // English listings leave the quiz out entirely (see Catalog.visibleMaterials).
   function materialUrl(material) {
     const id = typeof material === 'string' ? material : material.id;
     const kind = typeof material === 'string' ? '' : material.kind;
