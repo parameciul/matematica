@@ -169,6 +169,38 @@
         "ro": ["test inițial", "divizibilitate", "fracții", "radicali", "ecuații", "sisteme de ecuații", "probabilități", "triunghiuri", "patrulatere", "asemănare", "relații metrice"],
         "en": ["initial test", "divisibility", "fractions", "square roots", "equations", "systems of equations", "probability", "triangles", "quadrilaterals", "similarity", "metric relations"]
       }
+    },
+    {
+      "id": "fisa-recapitulativa-1-numere-naturale-fractii",
+      "topic": "recapitulare-clasa-a-v-a",
+      "kind": "fisa-recapitulativa",
+      "title": {
+        "ro": "Fișă recapitulativă 1: numere naturale și fracții",
+        "en": "Review worksheet 1: natural numbers and fractions"
+      },
+      "published": "2026-09-17",
+      "pdf": "materiale/pdf/fisa-recapitulativa-1-numere-naturale-fractii.pdf",
+      "youtube": null,
+      "keywords": {
+        "ro": ["numere naturale", "puteri", "divizibilitate", "fracții", "procente", "organizarea datelor"],
+        "en": ["natural numbers", "powers", "divisibility", "fractions", "percentages", "data organization"]
+      }
+    },
+    {
+      "id": "fisa-recapitulativa-2-geometrie-unitati-masura",
+      "topic": "recapitulare-clasa-a-v-a",
+      "kind": "fisa-recapitulativa",
+      "title": {
+        "ro": "Fișă recapitulativă 2: geometrie și unități de măsură",
+        "en": "Review worksheet 2: geometry and measurement units"
+      },
+      "published": "2026-09-17",
+      "pdf": "materiale/pdf/fisa-recapitulativa-2-geometrie-unitati-masura.pdf",
+      "youtube": null,
+      "keywords": {
+        "ro": ["geometrie", "segmente", "unghiuri", "unități de măsură", "perimetre", "arii", "volume"],
+        "en": ["geometry", "segments", "angles", "measurement units", "perimeters", "areas", "volumes"]
+      }
     }
   ]
 }
