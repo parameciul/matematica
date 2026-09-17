@@ -23,6 +23,14 @@
         "ro": "Recapitularea materiei clasei a V-a",
         "en": "Review of grade 5 math"
       }
+    },
+    {
+      "id": "recapitulare-vectori-geometrie-analitica",
+      "grade": 11,
+      "title": {
+        "ro": "Recapitulare: vectori și geometrie analitică (clasa a X-a)",
+        "en": "Review: vectors and analytic geometry (grade 10)"
+      }
     }
   ],
   "materials": [
@@ -120,6 +128,22 @@
       "keywords": {
         "ro": ["joc de recapitulare", "numere naturale", "fracții", "puteri", "procente", "media aritmetică"],
         "en": ["review game", "natural numbers", "fractions", "powers", "percentages", "arithmetic mean"]
+      }
+    },
+    {
+      "id": "fisa-recapitulativa-geometrie-clasa-a-x-a",
+      "topic": "recapitulare-vectori-geometrie-analitica",
+      "kind": "fisa-recapitulativa",
+      "title": {
+        "ro": "Fișă recapitulativă: geometrie (clasa a X-a)",
+        "en": "Review worksheet: geometry (grade 10)"
+      },
+      "published": "2026-09-17",
+      "pdf": "materiale/pdf/fisa-recapitulativa-geometrie-clasa-a-x-a.pdf",
+      "youtube": null,
+      "keywords": {
+        "ro": ["vectori", "geometrie analitică", "dreaptă", "pantă", "coliniari", "produs scalar", "mediatoare", "recapitulare", "BAC"],
+        "en": ["vectors", "analytic geometry", "line", "slope", "collinear", "dot product", "perpendicular bisector", "review", "baccalaureate"]
       }
     }
   ]
