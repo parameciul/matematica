@@ -39,7 +39,6 @@
   }
 
   function render() {
-    Site.setTitle('');
     renderTiles();
     renderNewest();
   }

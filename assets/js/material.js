@@ -1,98 +1,58 @@
-// Material page: adds breadcrumb, type, title, date, PDF button, video and related materials,
-// and shows the article for the current language.
+// Material page: the static page already holds the breadcrumb, title, date, PDF
+// button, video and related materials. The script below only re-renders the
+// related list (so "new" labels stay fresh), marks the grade in the menu and
+// renders the math. There is one article per page, in the page language.
 (function () {
   const main = document.getElementById('material');
   if (!main) return;
 
   const id = main.getAttribute('data-id');
   const el = Site.el;
-  const articles = Array.from(main.querySelectorAll('article[data-lang]'));
-  const firstArticle = articles[0] || null;
-  const pages = articles.map((a) => ({
-    lang: a.getAttribute('data-lang'),
-    filled: Catalog.hasArticleContent(a.innerHTML),
-  }));
-
-  const head = el('div', 'material-head');
-  const articleNote = el('p', 'note');
-  const pdfNote = el('p', 'note');
-  const related = el('aside', 'related');
-  articleNote.hidden = true;
-  pdfNote.hidden = true;
-  related.hidden = true;
-  main.insertBefore(head, firstArticle);
-  main.insertBefore(articleNote, firstArticle);
-  main.insertBefore(pdfNote, firstArticle);
-  main.appendChild(related);
+  const article = main.querySelector('article[data-lang]');
+  const related = document.getElementById('material-related');
 
   let data = null;
   let found; // undefined while loading, null when the id is not in the list
   let failed = false;
-  let video = null;
 
-  function crumbs(topic) {
-    const nav = el('nav', 'crumbs');
-    nav.setAttribute('aria-label', t('material.crumbs'));
-    const list = el('ol');
-    [
-      [t('common.home'), `${Site.root}index.html`],
-      [Site.gradeName(topic.grade), Site.gradeUrl(topic.grade)],
-      [Site.pick(topic.title), Site.gradeUrl(topic.grade, topic.id)],
-    ].forEach(([label, href]) => {
-      const item = el('li');
-      const link = el('a', null, label);
-      link.href = href;
-      item.appendChild(link);
-      list.appendChild(item);
-    });
-    nav.appendChild(list);
-    return nav;
+  function videoUrl(videoId) {
+    return `https://www.youtube.com/watch?v=${encodeURIComponent(videoId)}`;
   }
 
+  // The generator writes the video frame statically. Only build it when it is
+  // missing, inserting it above the article like the static page does.
   function ensureVideo(material) {
-    if (!material.youtube || video) return;
-    const videoId = encodeURIComponent(material.youtube);
-    const box = el('div', 'video');
-    const iframe = el('iframe');
-    iframe.src = `https://www.youtube-nocookie.com/embed/${videoId}`;
-    iframe.loading = 'lazy';
-    iframe.allow = 'accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
-    iframe.referrerPolicy = 'strict-origin-when-cross-origin';
-    iframe.allowFullscreen = true;
-    box.appendChild(iframe);
-    const link = el('p', 'video-link');
-    const a = el('a');
-    a.href = `https://www.youtube.com/watch?v=${videoId}`;
-    a.target = '_blank';
-    a.rel = 'noopener';
-    link.appendChild(a);
-    main.insertBefore(box, articleNote);
-    main.insertBefore(link, articleNote);
-    video = { box, link: a };
-  }
-
-  function renderHead(material, topic) {
-    head.appendChild(crumbs(topic));
-    head.appendChild(el('span', `badge badge-${Catalog.groupOf(material.kind)}`, Site.kindLabel(material.kind)));
-    head.appendChild(el('h1', null, Site.pick(material.title)));
-    const meta = el('p', 'material-meta');
-    const time = el('time', null, Site.formatDate(material.published, 'long'));
-    time.dateTime = material.published;
-    const [before, after] = t('material.published').split('{date}');
-    meta.append(before, time, after);
-    head.appendChild(meta);
-    if (material.pdf) {
-      const actions = el('p', 'material-actions');
-      const link = el('a', 'button', t('material.pdf'));
-      link.href = `${Site.root}${material.pdf}`;
+    if (!material.youtube) return;
+    const videoId = typeof material.youtube === 'string' ? material.youtube : material.youtube.id;
+    if (!videoId) return;
+    let box = main.querySelector('.video');
+    let link = main.querySelector('.video-link a');
+    if (!box) {
+      box = el('div', 'video');
+      const iframe = el('iframe');
+      iframe.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(videoId)}`;
+      iframe.loading = 'lazy';
+      iframe.allow = 'accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+      iframe.allowFullscreen = true;
+      box.appendChild(iframe);
+      const line = el('p', 'video-link');
+      link = el('a');
+      link.href = videoUrl(videoId);
       link.target = '_blank';
       link.rel = 'noopener';
-      actions.appendChild(link);
-      head.appendChild(actions);
+      line.appendChild(link);
+      main.insertBefore(box, article);
+      main.insertBefore(line, article);
     }
+    const title = `${t('material.video')}: ${Site.pick(material.title)}`;
+    const frame = box.querySelector('iframe');
+    if (frame && !frame.title) frame.title = title;
+    if (link && !link.textContent) link.textContent = t('material.openYoutube');
   }
 
   function renderRelated(material, topic) {
+    if (!related) return;
     related.textContent = '';
     const others = Catalog.relatedMaterials(data, material.id);
     if (others.length) {
@@ -104,47 +64,34 @@
     const back = el('a', 'more', t('material.allGrade').replace('{grade}', Site.gradeName(topic.grade)));
     back.href = Site.gradeUrl(topic.grade);
     related.appendChild(el('p')).appendChild(back);
-    related.hidden = false;
   }
 
   function render() {
-    const lang = getLang();
-    const pick = Catalog.pickArticle(pages, lang, Boolean(found && found.material.pdf));
-    articles.forEach((a, i) => a.classList.toggle('is-active', i === pick.index));
-    articleNote.hidden = !pick.note;
-    articleNote.textContent = pick.note === 'pdfOnly' ? t('material.pdfOnly') : t('material.fallback');
-
-    head.textContent = '';
     if (failed || found === null) {
-      head.appendChild(el('p', 'message', failed ? t('error.load') : t('material.notfound')));
-      pdfNote.hidden = true;
-      related.hidden = true;
-      Site.setTitle('');
+      const message = el('p', 'message', failed ? t('error.load') : t('material.notfound'));
+      const head = document.getElementById('material-head');
+      if (head) {
+        head.textContent = '';
+        head.appendChild(message);
+      } else {
+        main.insertBefore(message, main.firstChild);
+      }
       return;
     }
     if (found === undefined) return;
 
     const { material, topic } = found;
     Site.markGrade(topic.grade, false);
-    Site.setTitle(Site.pick(material.title));
-    renderHead(material, topic);
-    pdfNote.textContent = t('material.pdfNote');
-    pdfNote.hidden = !(material.pdf && lang !== 'ro');
-    if (video) {
-      video.box.querySelector('iframe').title = `${t('material.video')}: ${Site.pick(material.title)}`;
-      video.link.textContent = t('material.openYoutube');
-    }
+    ensureVideo(material);
     renderRelated(material, topic);
   }
 
-  render();
   Site.renderMath(main);
   Site.loadData().then(
     (loaded) => {
       data = loaded;
       const match = Catalog.findMaterial(loaded, id);
       found = match && match.topic ? match : null;
-      if (found) ensureVideo(found.material);
       render();
     },
     () => {
@@ -152,5 +99,4 @@
       render();
     },
   );
-  Site.onLangChange(render);
 })();

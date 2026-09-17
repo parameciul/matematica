@@ -54,6 +54,12 @@
       'material.pdfOnly': 'Materialul este disponibil doar ca PDF.',
       'material.video': 'Videoclipul lecției',
       'material.openYoutube': 'Deschide videoclipul pe YouTube',
+      'material.readRomanian': 'Citește versiunea în română',
+      'seo.home.title': 'Materiale de matematică pentru clasele V–XII | Laura Miron',
+      'seo.home.description': 'Materiale gratuite de matematică pentru clasele V–XII: teorie, fișe de lucru, teste și jocuri, de prof. Laura Miron.',
+      'seo.grade.title': 'Materiale de matematică pentru {grade} | Laura Miron',
+      'seo.grade.description': 'Toate materialele de matematică pentru {grade}: teorie, fișe de lucru, teste și jocuri, de prof. Laura Miron.',
+      'seo.grade.intro': 'Teorie, fișe de lucru, teste și jocuri pentru {grade}, grupate pe teme și ani școlari.',
       'search.label': 'Caută materiale',
       'search.placeholder': 'Caută: modul, fișă, test…',
       'search.open': 'Caută',
@@ -123,6 +129,12 @@
       'material.pdfOnly': 'This material is only available as a PDF.',
       'material.video': 'Lesson video',
       'material.openYoutube': 'Open the video on YouTube',
+      'material.readRomanian': 'Read the Romanian version',
+      'seo.home.title': 'Math materials for grades 5–12 | Laura Miron',
+      'seo.home.description': 'Free math materials for grades 5–12: theory, worksheets, tests and games, by teacher Laura Miron.',
+      'seo.grade.title': 'Math materials for {grade} | Laura Miron',
+      'seo.grade.description': 'All math materials for {grade}: theory, worksheets, tests and games, by teacher Laura Miron.',
+      'seo.grade.intro': 'Theory, worksheets, tests and games for {grade}, grouped by topic and school year.',
       'search.label': 'Search materials',
       'search.placeholder': 'Search: absolute value, worksheet…',
       'search.open': 'Search',
@@ -144,7 +156,13 @@
   const STORAGE_KEY = 'matematica.lang';
   let current = null;
 
+  // The page language comes from <html lang>: Romanian and English live on
+  // separate URLs, so Google sees each language. localStorage is only a fallback.
   function getLang() {
+    if (typeof document !== 'undefined') {
+      const htmlLang = document.documentElement && document.documentElement.lang;
+      if (htmlLang === 'en' || htmlLang === 'ro') return htmlLang;
+    }
     if (current) return current;
     let saved = null;
     try {

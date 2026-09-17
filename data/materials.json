@@ -51,6 +51,10 @@
         "en": "Theory summary: real numbers, absolute value, integer and fractional part"
       },
       "published": "2026-09-14",
+      "description": {
+        "ro": "Teorie de clasa a IX-a: numere reale, modul, intervale, partea întreagă și partea fracționară, cu definiții și proprietăți.",
+        "en": "Grade 9 theory: real numbers, absolute value, intervals, integer and fractional part, with definitions and properties."
+      },
       "pdf": "materiale/pdf/teorie-numere-reale-modul-parte-intreaga.pdf",
       "youtube": null,
       "keywords": {
@@ -67,6 +71,10 @@
         "en": "Worksheet: real numbers, absolute value, integer and fractional part"
       },
       "published": "2026-09-14",
+      "description": {
+        "ro": "Fișă de lucru pentru clasa a IX-a, cu exerciții pe niveluri: modul, ecuații și inecuații, partea întreagă și partea fracționară.",
+        "en": "Grade 9 worksheet with leveled exercises: absolute value, equations and inequalities, integer and fractional part."
+      },
       "pdf": "materiale/pdf/fisa-lucru-numere-reale-modul-parte-intreaga.pdf",
       "youtube": null,
       "keywords": {
@@ -83,6 +91,10 @@
         "en": "Review worksheet: getting ready for the initial test (National Evaluation format)"
       },
       "published": "2026-09-13",
+      "description": {
+        "ro": "Fișă recapitulativă pentru clasa a IX-a: pregătire pentru testul inițial, în format de Evaluare Națională, cu algebră și geometrie.",
+        "en": "Review worksheet for grade 9: getting ready for the initial test in National Evaluation format, with algebra and geometry."
+      },
       "pdf": "materiale/pdf/fisa-recapitulativa-gimnaziu-test-initial.pdf",
       "youtube": null,
       "keywords": {
@@ -99,6 +111,10 @@
         "en": "Review and initial assessment worksheet (mathematics and computer science track)"
       },
       "published": "2026-09-13",
+      "description": {
+        "ro": "Fișă de recapitulare și evaluare inițială pentru clasa a IX-a, matematică-informatică: funcții, trigonometrie și geometrie.",
+        "en": "Review and initial assessment worksheet for grade 9, math track: functions, trigonometry and analytic geometry."
+      },
       "pdf": "materiale/pdf/fisa-recapitulare-evaluare-initiala.pdf",
       "youtube": null,
       "keywords": {
@@ -115,6 +131,10 @@
         "en": "Team quiz: review of grade 5 (in Romanian)"
       },
       "published": "2026-09-15",
+      "description": {
+        "ro": "Quiz pe echipe pentru clasa a VI-a: recapitularea materiei clasei a V-a, de proiectat cu videoproiectorul în clasă.",
+        "en": "Team quiz for grade 6: review of grade 5 math for the classroom projector (in Romanian)."
+      },
       "pdf": null,
       "youtube": null,
       "keywords": {
@@ -131,6 +151,10 @@
         "en": "Game: The secret message (natural numbers and fractions)"
       },
       "published": "2026-09-15",
+      "description": {
+        "ro": "Joc de recapitulare pentru clasa a VI-a: mesajul secret, cu numere naturale, fracții, puteri, procente și media aritmetică.",
+        "en": "Review game for grade 6: the secret message, with natural numbers, fractions, powers, percentages and averages."
+      },
       "pdf": "materiale/pdf/joc-mesajul-secret.pdf",
       "youtube": null,
       "keywords": {
@@ -147,6 +171,10 @@
         "en": "Review worksheet: geometry (grade 10)"
       },
       "published": "2026-09-17",
+      "description": {
+        "ro": "Fișă recapitulativă de geometrie pentru clasa a XI-a: vectori, ecuația dreptei, coliniaritate și produs scalar, pentru BAC.",
+        "en": "Geometry review worksheet for grade 11: vectors, line equations, collinearity and dot product, for the baccalaureate."
+      },
       "pdf": "materiale/pdf/fisa-recapitulativa-geometrie-clasa-a-x-a.pdf",
       "youtube": null,
       "keywords": {
@@ -163,6 +191,10 @@
         "en": "Review worksheet: grades 5-7, getting ready for the initial test"
       },
       "published": "2026-09-17",
+      "description": {
+        "ro": "Fișă recapitulativă pentru clasa a VIII-a: materia claselor a V-a – a VII-a, pregătire pentru testul inițial, algebră și geometrie.",
+        "en": "Review worksheet for grade 8: grades 5-7 math to get ready for the initial test, with algebra and geometry."
+      },
       "pdf": "materiale/pdf/fisa-recapitulativa-clasele-v-vii-test-initial.pdf",
       "youtube": null,
       "keywords": {
@@ -179,6 +211,10 @@
         "en": "Review worksheet 1: natural numbers and fractions"
       },
       "published": "2026-09-17",
+      "description": {
+        "ro": "Fișă recapitulativă pentru clasa a VI-a: numere naturale, puteri, divizibilitate, fracții, procente și organizarea datelor.",
+        "en": "Review worksheet for grade 6: natural numbers, powers, divisibility, fractions, percentages and data organization."
+      },
       "pdf": "materiale/pdf/fisa-recapitulativa-1-numere-naturale-fractii.pdf",
       "youtube": null,
       "keywords": {
@@ -195,6 +231,10 @@
         "en": "Review worksheet 2: geometry and measurement units"
       },
       "published": "2026-09-17",
+      "description": {
+        "ro": "Fișă recapitulativă pentru clasa a VI-a: geometrie și unități de măsură — segmente, unghiuri, perimetre, arii și volume.",
+        "en": "Review worksheet for grade 6: geometry and measurement units — segments, angles, perimeters, areas and volumes."
+      },
       "pdf": "materiale/pdf/fisa-recapitulativa-2-geometrie-unitati-masura.pdf",
       "youtube": null,
       "keywords": {
@@ -211,6 +251,10 @@
         "en": "Theory summary: vectors and analytic geometry"
       },
       "published": "2026-09-17",
+      "description": {
+        "ro": "Teorie sintetizată pentru clasa a XI-a: vectori și geometrie analitică — ecuația dreptei, panta, distanțe și produs scalar.",
+        "en": "Theory summary for grade 11: vectors and analytic geometry — line equations, slope, distances and dot product."
+      },
       "pdf": "materiale/pdf/teorie-vectori-geometrie-analitica.pdf",
       "youtube": null,
       "keywords": {

@@ -73,12 +73,12 @@
       list.appendChild(none);
     } else {
       results.slice(0, MAX_RESULTS).forEach(({ material, topic }, i) => {
-        const node = addOption(`site-search-option-${i}`, Site.materialUrl(material.id), 'search-option');
+        const node = addOption(`site-search-option-${i}`, Site.materialUrl(material), 'search-option');
         node.appendChild(Site.el('span', `badge badge-${Catalog.groupOf(material.kind)}`, Site.kindLabel(material.kind)));
         node.appendChild(Site.el('span', 'search-title', Site.pick(material.title)));
         node.appendChild(Site.el('span', 'search-where', `${Site.gradeName(topic.grade)} · ${Site.pick(topic.title)}`));
       });
-      const all = addOption('site-search-all', `${Site.root}cautare.html?q=${encodeURIComponent(query)}`, 'search-all');
+      const all = addOption('site-search-all', `${Site.pageRoot}cautare.html?q=${encodeURIComponent(query)}`, 'search-all');
       all.textContent = t('search.all').replace('{n}', String(results.length));
     }
     list.hidden = false;

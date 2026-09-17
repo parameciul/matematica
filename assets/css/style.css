@@ -297,7 +297,8 @@ a:hover {
   background: var(--sheet);
 }
 
-.lang button {
+.lang button,
+.lang a {
   min-width: 2.75rem;
   min-height: 2.25rem;
   padding: 0.25rem 0.8rem;
@@ -308,9 +309,13 @@ a:hover {
   font-size: 0.9rem;
   font-weight: 700;
   cursor: pointer;
+  text-decoration: none;
+  display: inline-grid;
+  place-items: center;
 }
 
-.lang button[aria-pressed="true"] {
+.lang button[aria-pressed="true"],
+.lang a[aria-current] {
   background: var(--ink);
   color: var(--sheet);
 }
@@ -354,7 +359,8 @@ a:hover {
     font-size: 1rem;
   }
 
-  .lang button {
+  .lang button,
+  .lang a {
     min-width: 2.4rem;
     padding-inline: 0.55rem;
   }
@@ -927,10 +933,6 @@ a:hover {
   padding: 0.6rem 0.9rem;
   border-radius: 4px;
   background: var(--marker);
-}
-
-.js article[data-lang]:not(.is-active) {
-  display: none;
 }
 
 .material-body {

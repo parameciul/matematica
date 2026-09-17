@@ -1,8 +1,10 @@
-// Grade page (?c=5..12&tip=<group>): topics with their materials, newest first, grouped by school year.
+// Grade page (clasa-N.html, data-grade="5"..="12", ?tip=<group>): topics with their
+// materials, newest first, grouped by school year. The static page already holds
+// the same content; the script below re-renders it so counts and dates stay fresh.
 (function () {
   const container = document.getElementById('class-page');
   const params = new URLSearchParams(window.location.search);
-  const grade = Number(params.get('c'));
+  const grade = Number(document.body.getAttribute('data-grade'));
   const validGrade = Number.isInteger(grade) && grade >= 5 && grade <= 12;
   const el = Site.el;
   let group = params.get('tip') || '';
@@ -18,6 +20,7 @@
     const titles = el('div');
     titles.appendChild(el('h1', null, Site.gradeName(grade)));
     titles.appendChild(el('p', null, t(Site.levelKey(grade))));
+    titles.appendChild(el('p', 'lead', t('seo.grade.intro').replace('{grade}', Site.gradeName(grade))));
     box.appendChild(titles);
     return box;
   }
@@ -51,12 +54,10 @@
   function render() {
     container.textContent = '';
     if (!validGrade) {
-      Site.setTitle('');
       message('class.notfound');
       return;
     }
     Site.markGrade(grade, true);
-    Site.setTitle(Site.gradeName(grade));
     container.appendChild(head());
     if (failed) return message('error.load');
     if (!data) return message('common.loading');

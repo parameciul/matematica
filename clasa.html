@@ -3,30 +3,39 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Matematică cu Laura Miron</title>
+  <meta name="robots" content="noindex, follow">
+  <title>Clasa – Matematică cu Laura Miron</title>
+  <link rel="canonical" href="https://lauramiron.pages.dev/clasa">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="icon" href="favicon.ico" sizes="48x48">
-  <link rel="apple-touch-icon" href="apple-touch-icon.png">
-  <script>document.documentElement.classList.add('js')</script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,700;0,800;1,400&family=Caveat:wght@600&display=swap">
-  <link rel="stylesheet" href="assets/css/style.css">
-  <script defer src="assets/js/i18n.js"></script>
-  <script defer src="assets/js/catalog.js"></script>
-  <script defer src="assets/js/site.js"></script>
-  <script defer src="assets/js/clasa.js"></script>
 </head>
-<body data-root="">
-  <a class="skip" href="#content" data-i18n="a11y.skip">Sari la conținut</a>
-  <header id="site-header" class="site-header"></header>
-
-  <main id="content" class="wrap">
-    <div class="page" id="class-page" aria-live="polite">
-      <noscript><p class="message">Pentru lista de materiale, activează JavaScript. / Please enable JavaScript to see the materials.</p></noscript>
-    </div>
-  </main>
-
-  <footer id="site-footer" class="site-footer"></footer>
+<body>
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var c = Number(params.get('c'));
+      var target = 'index.html';
+      if (Number.isInteger(c) && c >= 5 && c <= 12) {
+        target = 'clasa-' + c + '.html';
+        var rest = new URLSearchParams(params);
+        rest.delete('c');
+        var query = rest.toString();
+        if (query) target += '?' + query;
+      }
+      window.location.replace(target + window.location.hash);
+    })();
+  </script>
+  <noscript>
+    <h1>Alege clasa / Choose a grade</h1>
+    <ul>
+      <li><a href="clasa-5.html">Clasa a V-a / Grade 5</a></li>
+      <li><a href="clasa-6.html">Clasa a VI-a / Grade 6</a></li>
+      <li><a href="clasa-7.html">Clasa a VII-a / Grade 7</a></li>
+      <li><a href="clasa-8.html">Clasa a VIII-a / Grade 8</a></li>
+      <li><a href="clasa-9.html">Clasa a IX-a / Grade 9</a></li>
+      <li><a href="clasa-10.html">Clasa a X-a / Grade 10</a></li>
+      <li><a href="clasa-11.html">Clasa a XI-a / Grade 11</a></li>
+      <li><a href="clasa-12.html">Clasa a XII-a / Grade 12</a></li>
+    </ul>
+  </noscript>
 </body>
 </html>

@@ -1,6 +1,9 @@
 // Shared page shell: header, footer, language switch, material data, list rows, filters and math rendering.
 (function () {
   const root = document.body.getAttribute('data-root') || '';
+  // Links to pages in the same language. On English pages under en/ this points
+  // at the en/ folder, while data-root still points at the site root for assets.
+  const pageRoot = document.body.getAttribute('data-page-root') || root;
   const listeners = [];
   let dataPromise = null;
 
@@ -42,12 +45,16 @@
     return Catalog.formatDate(iso, getLang(), style);
   }
 
-  function materialUrl(id) {
-    return `${root}materiale/${id}.html`;
+  // The quiz exists only in Romanian, so it always links to the Romanian page.
+  function materialUrl(material) {
+    const id = typeof material === 'string' ? material : material.id;
+    const kind = typeof material === 'string' ? '' : material.kind;
+    if (kind === 'quiz') return `${root}materiale/${id}.html`;
+    return `${pageRoot}materiale/${id}.html`;
   }
 
   function gradeUrl(grade, topicId) {
-    return `${root}clasa.html?c=${grade}${topicId ? `#${topicId}` : ''}`;
+    return `${pageRoot}clasa-${grade}.html${topicId ? `#${topicId}` : ''}`;
   }
 
   // Extra words that find a kind in search: its name and its group name, in both languages.
@@ -82,7 +89,7 @@
     const opts = options || {};
     const li = el('li', 'm-row');
     const a = el('a', 'm-link');
-    a.href = materialUrl(material.id);
+    a.href = materialUrl(material);
     const badges = el('span', 'm-badges');
     if (opts.grade && topic) {
       badges.appendChild(el('span', `m-grade m-grade-${Catalog.groupOf(material.kind)}`, String(topic.grade)));
@@ -163,42 +170,26 @@
     document.title = text ? `${text} – ${t('site.title')}` : t('site.title');
   }
 
-  const SEARCH_ICON = '<svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="m20 20-3.8-3.8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>';
+  // The static pages already contain the header and footer. Only build them when
+  // they are missing, with the same markup the generator writes (Shell.headerHtml).
+  function shellOpts() {
+    const lang = getLang();
+    const other = lang === 'en' ? 'ro' : 'en';
+    const alt = document.querySelector(`link[rel="alternate"][hreflang="${other}"]`);
+    return {
+      pageRoot,
+      lang,
+      selfHref: '#',
+      altHref: alt ? alt.getAttribute('href') : '#',
+      dict: window.I18N ? window.I18N[lang] : {},
+      grades: [5, 6, 7, 8, 9, 10, 11, 12].map((n) => ({ n, name: gradeName(n) })),
+    };
+  }
 
   function buildHeader() {
     const header = document.getElementById('site-header');
-    if (!header) return;
-    const gradeLinks = [5, 6, 7, 8, 9, 10, 11, 12]
-      .map((g) => `<a href="${root}clasa.html?c=${g}" data-grade-link="${g}"${g === 9 ? ' class="gap"' : ''}>${g}</a>`)
-      .join('');
-    header.innerHTML = `
-      <div class="wrap header-bar">
-        <a class="brand" href="${root}index.html">
-          <span class="brand-name" data-i18n="site.title"></span>
-          <span class="brand-school" data-i18n="site.school"></span>
-        </a>
-        <nav class="grade-nav" id="grade-nav" data-nav>
-          <span class="grade-nav-label" aria-hidden="true" data-i18n="nav.gradesLabel"></span>
-          ${gradeLinks}
-        </nav>
-        <form class="search" id="site-search" role="search" action="${root}cautare.html">
-          <label class="sr-only" for="site-search-input" data-i18n="search.label"></label>
-          ${SEARCH_ICON}
-          <input id="site-search-input" name="q" type="search" autocomplete="off" spellcheck="false" enterkeyhint="search">
-        </form>
-        <div class="header-tools">
-          <button type="button" class="icon-btn" data-toggle="search" aria-controls="site-search" aria-expanded="false">${SEARCH_ICON}<span class="sr-only" data-i18n="search.open"></span></button>
-          <button type="button" class="icon-btn" data-toggle="grades" aria-controls="grade-nav" aria-expanded="false"><span data-i18n="nav.grades"></span></button>
-          <div class="lang" role="group" data-lang-group>
-            <button type="button" data-lang-btn="ro" lang="ro" aria-label="Română">RO</button>
-            <button type="button" data-lang-btn="en" lang="en" aria-label="English">EN</button>
-          </div>
-        </div>
-      </div>`;
-
-    header.querySelectorAll('[data-lang-btn]').forEach((btn) => {
-      btn.addEventListener('click', () => changeLang(btn.getAttribute('data-lang-btn')));
-    });
+    if (!header || header.firstElementChild) return;
+    header.innerHTML = window.Shell.headerHtml(shellOpts());
     header.querySelectorAll('[data-toggle]').forEach((btn) => {
       btn.addEventListener('click', () => togglePanel(header, btn.getAttribute('data-toggle')));
     });
@@ -232,19 +223,20 @@
 
   function buildFooter() {
     const footer = document.getElementById('site-footer');
-    if (!footer) return;
-    footer.innerHTML = `
-      <div class="wrap">
-        <p>© <span data-year></span> Laura Miron. <span data-i18n="footer.text"></span></p>
-      </div>`;
+    if (!footer || footer.firstElementChild) return;
+    footer.innerHTML = window.Shell.footerHtml({ dict: window.I18N ? window.I18N[getLang()] : {} });
   }
 
   function refreshShell() {
     const lang = getLang();
     document.documentElement.lang = lang;
-    document.querySelectorAll('[data-lang-btn]').forEach((btn) => {
-      btn.setAttribute('aria-pressed', String(btn.getAttribute('data-lang-btn') === lang));
-    });
+    // The language switch is a plain link. Keep the current search and anchor,
+    // so a filtered grade page opens the same view in the other language.
+    const altLink = document.querySelector('.lang a[hreflang]:not([aria-current])');
+    if (altLink) {
+      const base = altLink.getAttribute('href').split(/[?#]/)[0];
+      altLink.setAttribute('href', `${base}${window.location.search}${window.location.hash}`);
+    }
     const nav = document.querySelector('[data-nav]');
     if (nav) nav.setAttribute('aria-label', t('nav.gradesLabel'));
     document.querySelectorAll('[data-grade-link]').forEach((a) => {
@@ -261,9 +253,8 @@
 
   function changeLang(lang) {
     if (lang === getLang()) return;
-    setLang(lang);
-    refreshShell();
-    listeners.forEach((fn) => fn(lang));
+    const other = document.querySelector('.lang a[hreflang]:not([aria-current])');
+    if (other) window.location.href = other.getAttribute('href');
   }
 
   buildHeader();
@@ -272,6 +263,8 @@
 
   window.Site = {
     root,
+    pageRoot,
+    changeLang,
     pick,
     gradeName,
     levelKey,
