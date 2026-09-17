@@ -52,7 +52,7 @@ The source files are in `D:\Projects\Website-Content\`. Never change them. Put w
 1. **Convert the Word file (DOCX only).**
    `python tools/docx_to_html.py "<DOCX path>" -o .work/<id>/ro.html`
    - It needs pandoc. If it warns about `$` signs, write each literal `$` in the text as `&#36;`.
-   - Never convert a PDF to HTML: the math breaks. If there is no DOCX, skip steps 1, 3 and 4. Keep both `<article>` elements on the page (the validator needs them), but leave them empty. The page then shows only the title and the PDF button.
+   - Never convert a PDF to HTML: the math breaks. If there is no DOCX, skip steps 1, 3 and 4. Keep both `<article>` elements on the page (the validator needs them), but leave them empty. The page then shows the title, the PDF button and a note that the material is only available as a PDF.
 2. **Create the page.** Copy `docs/material-template.html` to `materiale/<id>.html`. Replace `MATERIAL_ID` with the id and `TITLE` with the Romanian title. Delete the template comment and the sample content in both `<article>` elements.
 3. **Write the Romanian article** from `.work/<id>/ro.html`:
    - Remove the title block at the top. The page shows the title from the data.
