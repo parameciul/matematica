@@ -1,0 +1,24 @@
+# Cloudflare Pages headers.
+# Internal files are public but must not be indexed.
+# NOTE: keep one rule per file below: a splat in the middle of a path
+# such as /*.md may not match, so the files are listed explicitly.
+/docs/*
+  X-Robots-Tag: noindex
+/tests/*
+  X-Robots-Tag: noindex
+/tools/*
+  X-Robots-Tag: noindex
+/data/*
+  X-Robots-Tag: noindex
+/.github/*
+  X-Robots-Tag: noindex
+/AGENTS.md
+  X-Robots-Tag: noindex
+/CLAUDE.md
+  X-Robots-Tag: noindex
+/README.md
+  X-Robots-Tag: noindex
+/package.json
+  X-Robots-Tag: noindex
+/package-lock.json
+  X-Robots-Tag: noindex

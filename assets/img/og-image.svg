@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#1d3c8f"/>
+  <rect x="90" y="195" width="240" height="240" rx="48" fill="#ffffff"/>
+  <path d="M145 265h130" fill="none" stroke="#1d3c8f" stroke-width="22" stroke-linecap="round"/>
+  <path d="M180 265l-8 115" fill="none" stroke="#1d3c8f" stroke-width="22" stroke-linecap="round"/>
+  <path d="M240 265l8 115" fill="none" stroke="#1d3c8f" stroke-width="22" stroke-linecap="round"/>
+  <text x="380" y="292" font-family="DejaVu Sans, Verdana, sans-serif" font-size="72" font-weight="bold" fill="#ffffff">Matematică cu</text>
+  <text x="380" y="374" font-family="DejaVu Sans, Verdana, sans-serif" font-size="72" font-weight="bold" fill="#ffffff">Laura Miron</text>
+  <text x="382" y="442" font-family="DejaVu Sans, Verdana, sans-serif" font-size="38" fill="#c9d6f3">Materiale de matematică</text>
+  <text x="382" y="490" font-family="DejaVu Sans, Verdana, sans-serif" font-size="38" fill="#c9d6f3">Clasele V–XII</text>
+</svg>

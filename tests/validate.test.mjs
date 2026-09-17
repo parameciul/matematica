@@ -10,7 +10,7 @@ import { spawnSync } from 'node:child_process';
 
 const REPO = join(dirname(fileURLToPath(import.meta.url)), '..');
 const VALIDATOR = join(REPO, 'tests', 'validate.mjs');
-const SITE_ENTRIES = ['index.html', 'clasa.html', 'cautare.html', '.nojekyll', 'assets', 'data', 'materiale', 'docs/material-template.html'];
+const SITE_ENTRIES = ['index.html', 'clasa.html', 'cautare.html', '.nojekyll', 'favicon.svg', 'favicon.ico', 'apple-touch-icon.png', 'assets', 'data', 'materiale', 'docs/material-template.html'];
 const SAMPLE = 'sample-material';
 const SAMPLE_PAGE = `materiale/${SAMPLE}.html`;
 const SAMPLE_PDF = `materiale/pdf/${SAMPLE}.pdf`;
