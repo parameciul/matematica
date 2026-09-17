@@ -22,6 +22,12 @@ Grades 5-12. Romanian by default, with an English switch. Plain HTML/CSS/JS: no 
 - `assets/js/catalog.js`: catalog, sort and search logic. It has no DOM code, so the node tests can `require` it.
 - `assets/js/i18n.js`: all UI text, including the `seo.*` page titles and descriptions.
 - `tools/`: `docx_to_html.py` (needs pandoc) and `clean_pdf.py` (needs pymupdf).
+- Brand mark: Laura Miron's initials in handwriting over a highlighter stroke. It lives in several places, and nothing regenerates them for you:
+  - the header, inline in `assets/js/shell.js` (`BRAND_MARK`), transparent, coloured by `--ink` and `--brand-marker`;
+  - `favicon.svg` and `assets/img/og-image.svg`, hand-written SVG;
+  - `favicon.ico`, `apple-touch-icon.png` and `assets/img/og-image.png`, rendered from those two SVG files with pymupdf plus pillow;
+  - `assets/img/brand/`: the white and one-colour variants, for dark, printed or coloured backgrounds.
+  Change one and you must change the others by hand. The `.png` and `.ico` files never update themselves when the SVG changes.
 - `.github/workflows/opencode.yml`: a comment `/oc` or `/opencode` on a GitHub issue or PR starts opencode.
 
 Content is sorted per grade, never per school class (9R2, 6E2). Topics hold materials. The newest materials show first, with their publish date. Search runs in the browser and ignores diacritics. DOCX files, answers and class marks are never published.

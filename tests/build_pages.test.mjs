@@ -255,3 +255,22 @@ test('--check passes on a fresh tree and spots a stale file', (t) => {
   const rebuilt = buildSite(dir);
   assert.notEqual(rebuilt.get('index.html'), readFileSync(join(dir, 'index.html'), 'utf8'));
 });
+
+test('every page header carries the brand mark next to the site name', (t) => {
+  const dir = makeRoot(t, { pages: stdPages() });
+  const site = buildSite(dir);
+  for (const file of ['index.html', 'en/index.html', 'clasa-6.html', 'en/clasa-6.html']) {
+    const html = site.get(file);
+    assert.match(html, /<a class="brand"[^>]*><svg class="brand-mark"/, `${file}: mark comes first in the brand link`);
+    // The two handwritten strokes, kept byte for byte so a redraw is deliberate.
+    assert.match(html, /M25 13c-3 11-6 21-9 31 7 0 13-2 18-6/, `${file}: the L stroke`);
+    assert.match(html, /M33 45l4-23 6 13 8-15 2 25/, `${file}: the M stroke`);
+    // The highlighter uses its own variable, not the faint page highlighter.
+    assert.match(html, /stroke="var\(--brand-marker\)"/, `${file}: the highlighter`);
+    // Decoration only: the link text already names the site.
+    assert.match(html, /<svg class="brand-mark"[^>]*aria-hidden="true"/, `${file}: mark is aria-hidden`);
+    // Both title lines stack in one column beside the mark.
+    assert.match(html, /<span class="brand-text"><span class="brand-name"/, `${file}: brand text wrapper`);
+    assert.match(html, /<span class="brand-school"[^>]*>[^<]*<\/span><\/span><\/a>/, `${file}: wrapper closes before the link`);
+  }
+});

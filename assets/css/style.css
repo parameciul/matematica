@@ -13,6 +13,7 @@
   --marker: #fff0a0;
   --rule: #d4dce8;
   --fill: #c9d6f3;
+  --brand-marker: #fff0a0;
   --b-lectii-bg: #e3ebfb;
   --b-lectii-fg: #1d3c8f;
   --b-fise-bg: #e1f2e8;
@@ -43,6 +44,7 @@
     --marker: rgba(255, 226, 110, 0.16);
     --rule: rgba(255, 255, 255, 0.14);
     --fill: rgba(169, 197, 255, 0.3);
+    --brand-marker: rgba(255, 217, 74, 0.5);
     --b-lectii-bg: rgba(169, 197, 255, 0.18);
     --b-lectii-fg: #c9d9ff;
     --b-fise-bg: rgba(120, 210, 160, 0.16);
@@ -164,10 +166,23 @@ a:hover {
 
 .brand {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  gap: 0.55rem;
   margin-right: auto;
   line-height: 1.2;
   text-decoration: none;
+  color: var(--ink);
+}
+
+.brand-mark {
+  flex: none;
+  width: 2.25rem;
+  height: 2.25rem;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
 }
 
 .brand-name {
@@ -323,6 +338,11 @@ a:hover {
 @media (max-width: 60rem) {
   .brand-school {
     display: none;
+  }
+
+  .brand-mark {
+    width: 1.9rem;
+    height: 1.9rem;
   }
 
   .icon-btn {
@@ -901,6 +921,10 @@ a:hover {
 }
 
 .material-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
   margin: 0 0 1.5rem;
 }
 
@@ -948,11 +972,16 @@ a:hover {
 }
 
 .note {
+  display: inline-block;
   max-width: 50rem;
   margin: 0 0 1rem;
   padding: 0.6rem 0.9rem;
   border-radius: 4px;
   background: var(--marker);
+}
+
+.material-actions .note {
+  margin: 0;
 }
 
 .material-body {

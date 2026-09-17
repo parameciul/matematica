@@ -421,6 +421,20 @@ if (exists('_headers')) {
   }
 }
 
+// The brand mark borrows the header ink for its letters, but the highlighter
+// under them needs its own colour: the page highlighter is nearly invisible on
+// the dark theme, so a shared variable would hide half the logo there.
+{
+  const css = read('assets/css/style.css');
+  const markerDefs = (css.match(/--brand-marker\s*:/g) || []).length;
+  if (markerDefs < 2) {
+    fail(`assets/css/style.css: --brand-marker must be set for the light and the dark theme (found ${markerDefs})`);
+  }
+  for (const rule of ['.brand-mark', '.brand-text']) {
+    if (!css.includes(`${rule} {`)) fail(`assets/css/style.css: missing a rule for ${rule}`);
+  }
+}
+
 if (errors.length) {
   console.error(`FAIL: ${errors.length} problem(s)`);
   for (const e of errors) console.error(`  - ${e}`);

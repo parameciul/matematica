@@ -454,8 +454,13 @@ function renderMaterialPage({ data, material, topic, lang, dict, assetBase, page
     `<li><a href="${pageRoot}clasa-${topic.grade}.html">${esc(gradeName)}</a></li>` +
     `<li><a href="${pageRoot}clasa-${topic.grade}.html#${topic.id}">${esc(topicTitle)}</a></li>` +
     `</ol></nav>`;
+  const pdfNote = (material.pdf && lang !== 'ro')
+    ? ` <span class="note">${esc(dict['material.pdfNote'])}</span>`
+    : (!filled && material.pdf)
+    ? ` <span class="note">${esc(dict['material.pdfOnly'])}</span>`
+    : '';
   const pdfButton = material.pdf
-    ? `<p class="material-actions"><a class="button" href="${assetBase}${material.pdf}" target="_blank" rel="noopener">${esc(dict['material.pdf'])}</a></p>`
+    ? `<p class="material-actions"><a class="button" href="${assetBase}${material.pdf}" target="_blank" rel="noopener">${esc(dict['material.pdf'])}</a>${pdfNote}</p>`
     : '';
   const headBlock = `<div id="material-head">${crumbs}\n` +
     `      <span class="badge badge-${Catalog.groupOf(material.kind)}">${esc(dict[`kind.${material.kind}`] || material.kind)}</span>\n` +
@@ -477,10 +482,6 @@ function renderMaterialPage({ data, material, topic, lang, dict, assetBase, page
   if (!filled && lang !== 'ro') {
     const roHref = `../../materiale/${material.id}.html`;
     note = `<p class="note">${esc(dict['material.fallback'])} <a href="${roHref}">${esc(dict['material.readRomanian'])}</a></p>`;
-  } else if (!filled && material.pdf) {
-    note = `<p class="note">${esc(dict['material.pdfOnly'])}</p>`;
-  } else if (material.pdf && lang !== 'ro') {
-    note = `<p class="note">${esc(dict['material.pdfNote'])}</p>`;
   }
 
   const others = Catalog.relatedMaterials(data, material.id, lang);
