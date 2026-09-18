@@ -190,6 +190,8 @@ before: a timer run against old tools would fail every 10 minutes.
 - Commit messages name the uids, e.g.
   `Show material 1012 (scheduled 2026-09-21 08:00)` or
   `Admin: hide 1004, schedule 1012 for 2026-09-21 08:00`.
+- Commit messages, the payload and the logs never hold an admin's email
+  address: the repo and its Actions logs are public.
 - A failed run makes no commit. GitHub emails the repo owner.
 
 **Builds.** A Cloudflare build starts only on a push that changed something:
@@ -209,7 +211,7 @@ builds. Actions minutes are free for a public repo.
 
 ### 5.1 Where it lives
 
-- It uses a fixed, random-looking folder at the site root: `r448755dkp/`.
+- It uses a fixed, random-looking folder at the site root: `tm25mlg/`.
   The name has no "admin" in it. `AGENTS.md` records it. Below, `<folder>`
   means this name.
 - It is not linked from any page, not in `sitemap.xml` and not in
@@ -217,8 +219,11 @@ builds. Actions minutes are free for a public repo.
   it `X-Robots-Tag: noindex` and `Cache-Control: no-store`.
 - **Cloudflare Access** protects the folder: one self-hosted application
   covering `lauramiron.pages.dev/<folder>` and
-  `*.lauramiron.pages.dev/<folder>` (previews). The policy allows one email
-  address, and login is by a one-time PIN sent to that email. Access runs at
+  `*.lauramiron.pages.dev/<folder>` (previews). The site has **two
+  administrators**. The policy allows exactly their two email addresses, and
+  login is by a one-time PIN sent to the address that asks for it. The
+  addresses live only in the Access policy and in the `ADMIN_EMAILS` secret,
+  never in the repo. Access runs at
   the edge before Pages, so the page is never served to anybody else.
 - The name is readable in the public repo. That is fine: the lock is Access,
   not the secret name. The secret name only keeps scanners and students from
@@ -263,7 +268,8 @@ Files: `functions/<folder>/api/_middleware.js`, `functions/<folder>/api/material
   - it verifies the RS256 signature with WebCrypto against
     `<ACCESS_TEAM_DOMAIN>/cdn-cgi/access/certs`;
   - it checks the issuer, the audience (`ACCESS_AUD`) and the expiry;
-  - it checks that the email is `ADMIN_EMAIL`.
+  - it checks that the email is one of `ADMIN_EMAILS` (a comma-separated
+    list, compared without case).
   - If any check fails, it answers `403`.
   - This is a second lock behind Access. It still holds if the Access
     application misses a hostname.
@@ -276,7 +282,7 @@ Files: `functions/<folder>/api/_middleware.js`, `functions/<folder>/api/material
 - `POST api/save` takes `{ changes: [{ uid, state, visibleFrom? }] }`:
   - it checks the shape (digits-only uid, known state, offset date-time);
   - it sends a `repository_dispatch` of type `material-visibility` with the
-    changes, the user's email and the branch (`DATA_BRANCH`);
+    changes and the branch (`DATA_BRANCH`), and no email address;
   - it answers `202`.
   - The Action checks everything again, against the real data.
 - Cloudflare Pages secrets (production and preview):
@@ -284,7 +290,7 @@ Files: `functions/<folder>/api/_middleware.js`, `functions/<folder>/api/material
     with Contents read and write;
   - `ACCESS_TEAM_DOMAIN`;
   - `ACCESS_AUD`;
-  - `ADMIN_EMAIL`;
+  - `ADMIN_EMAILS` (the two admin addresses, comma-separated);
   - `DATA_BRANCH` (a plain variable, not a secret).
 
 ## 6. Validator (`tests/validate.mjs`)
@@ -315,7 +321,8 @@ manual:
 1. **Cloudflare Zero Trust** (free, up to 50 users):
    - create the team;
    - create the Access application for the admin folder (5.1);
-   - add the one-email policy with the one-time PIN login;
+   - add the policy that allows the two admin emails, with the one-time PIN
+     login;
    - copy the AUD tag.
 2. **GitHub:** create the fine-grained token (5.3).
 3. **Cloudflare Pages settings:**
@@ -352,7 +359,8 @@ Unit tests (`npm test`):
 - **Validator:** each new rule fails on a bad fixture.
 - **Admin API:**
   - JWT checks with a test RSA key made by Node WebCrypto: valid, expired,
-    wrong audience, wrong issuer, wrong email, missing header;
+    wrong audience, wrong issuer, missing header;
+  - both admin emails pass (in any letter case); a third email fails;
   - `save` builds the right dispatch request (with a mocked `fetch`);
   - `save` rejects a bad payload.
 
@@ -363,7 +371,8 @@ Before the merge to `main`, on a preview branch (static parts only):
 1. `_redirects` wins over the static file (section 2), in both URL forms.
 2. A hidden test material is missing from every page, the search and the
    public JSON.
-3. Access asks for the email code on the preview admin URL.
+3. Access asks for the email code on the preview admin URL. Both admin
+   addresses get a code; another address does not.
 
 After the merge (all materials still visible, so the public sees no change),
 on a test branch with `DATA_BRANCH` set to it in the preview environment:
@@ -393,7 +402,8 @@ on a test branch with `DATA_BRANCH` set to it in the preview environment:
 
 - Hiding a material automatically at a later time. It was not asked for.
   Hiding is manual.
-- More than one admin user.
+- More than two admin users, or roles. Both admins can do everything. A third
+  admin only needs a new address in the Access policy and in `ADMIN_EMAILS`.
 - Protecting against a reader of the public GitHub repo (accepted risk).
 - A request-time gate or a Cloudflare Worker timer. Either can be added later
   if the GitHub timer proves too late.
