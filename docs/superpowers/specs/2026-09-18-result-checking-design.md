@@ -23,8 +23,12 @@ A material gets result checking only when its source document has answers.
 
 - **The answers may live on the site for now.** The owner accepted this.
   A student who looks for the results file can read it. Hiding the answers is
-  a later step (see "Later"). Warning: anything committed to the public repo
-  stays in its git history, also after we hide it later.
+  a later step (see "Later").
+- **Both new folders are in the public GitHub repo.** Cloudflare Access hides
+  `tm25mlg/raspunsuri/` on the site, not on GitHub: anyone can read the
+  results, the solution hints and the barem at
+  `github.com/parameciul/matematica`. Anything committed there stays in the
+  git history, also after we hide it later.
 - **The check runs in the browser.** Public pages still never run a
   Cloudflare Function.
 - **The check compares the value, not the letter.** The answer key says
@@ -53,13 +57,30 @@ Samples: `Clasa 9R2/Fisa de lucru - Numere reale, modul, parte intreaga.docx`
   "Demonstrație…") and discussions ("discutați după m").
 - **Sub-items a), b) often have their own results.**
 - **Romanian decimals use a comma** (`0,7`), and commas also separate values.
-- **The geometry key (1007) has wrong results.** Checked by hand: 14 of the
-  50 results do not match a correct solution, and often not even the hint
-  printed under them (18, 22, 24, 36, 37, 38, 39, 40, 41, 45, 46, 47, 48, 50).
-  Example: 18 says $\sqrt{13}$, the hint and the correct answer give $3$.
-  If we used this key as it is, a student with a right answer would see red.
-  So **every result is checked at import**, and a doubtful result gets no
-  check button until the teacher fixes it (see 2.3).
+- **The geometry key (1007) has wrong results.** If we used it as it is, a
+  student with a right answer would see red. So **every result is checked at
+  import**, and a doubtful result gets no check button until the teacher
+  fixes it (see 2.3). What we found (the teacher confirms before any fix):
+
+  | Exercise | The key says | A correct solution gives | How we saw it |
+  |---|---|---|---|
+  | 18 | $m_a = \sqrt{13}$ | $3$ | the hint gives 3 |
+  | 22 | area $8$ | $10$ | the hint computes $\Delta = 20$ |
+  | 24 | $m = 1$ | no $m > 0$ ($m = -3$) | the hint gets $4m = -12$ |
+  | 36 | $P(-1, 1)$ | $P(-\frac{1}{3}, -\frac{7}{3})$ | the hint says so |
+  | 37 | $H(1, 2)$ | $H(\frac{3}{2}, \frac{5}{2})$ | calculation |
+  | 38 | $A'(-3, 7)$ | $A'(\frac{13}{5}, \frac{21}{5})$ | calculation (the hint's $M(-1, 6)$ is not on $d$) |
+  | 39 | $C(3,3)$ or $C(-5,-5)$ | $C(\frac{7}{2}, \frac{7}{2})$ or $C(-\frac{1}{2}, -\frac{1}{2})$ | calculation |
+  | 40 | mixed text | $M(0, 0)$ ($M(2, 0)$ is $A$ itself) | the key contradicts itself |
+  | 41 | $a \in (-1, \frac{1}{3})$ | $a < -\frac{1}{5}$, $a \neq -\sqrt{7}$ | the hint gives $a < -\frac{1}{5}$ |
+  | 45 | $m = 2$ | $m = 0$ | the hint gives $m = 0$ |
+  | 46 | $a = 2$, $b = 3$ | $a = 2\sqrt{2}$, $b = 3\sqrt{2}$ | the hint gives $a^2 = 8$ |
+  | 47 | $7x + 52y - 23 = 0$, $64x - 7y + 3 = 0$ | $14x - 112y + 23 = 0$, $64x + 8y + 3 = 0$ | calculation |
+  | 48 | $13$ | $\sqrt{181}$ | the hint gives $\sqrt{181}$ |
+  | 50 | $B(2, 2)$, $C(3, -1)$ | $B(0, 2)$, $C(\frac{13}{5}, -\frac{1}{5})$ | calculation |
+
+  Exercise 35 has the right result but an empty hint ("Rezolvăm sistemul: .").
+  The numbers sheet (1002) looked right in the results we checked.
 
 ## 1. Data
 
@@ -172,12 +193,18 @@ removed between a number and a letter (`3*x` = `3x`); nothing else. The
 import lists the usual equivalent forms in `accept` (for a line: general
 form, explicit form, the same with the signs flipped).
 
-Values of options (`choice`): the page reads the TeX of the option from the
-KaTeX `annotation` element, drops the `a) ` label and the `$` signs, and turns
-the TeX into the typed form (`\frac{5}{2}` → `(5)/(2)`, `\sqrt{20}` →
-`sqrt(20)`, `\text{3,7}` → `3,7`, `\infty` → `inf`, `\cup` → `U`, `\{` → `{`,
-`\left`/`\right` removed). An option made of words carries a `data-value`
-attribute, and the page uses it instead.
+Values of options (`choice`): every `<li>` of a checked `<ul class="choices">`
+carries its value in the typed form, in a `data-value` attribute. The page
+sends that value; it never reads the rendered math.
+
+```html
+<ul class="choices">
+  <li data-value="2^2">a) $2^{2}$</li>
+  <li data-value="2^14">b) $2^{14}$</li>
+  <li data-value="2^9">c) $2^{9}$</li>
+  <li data-value="2^8">d) $2^{8}$</li>
+</ul>
+```
 
 If the student's answer cannot be read for its kind, the page says so and
 shows an example. That is not a wrong answer and is not saved.
@@ -251,8 +278,9 @@ After both articles are written (steps 2 and 3), when
      and a `note` that says what disagrees. Never change the key quietly:
      the teacher decides.
    - Proofs: `why: "proof"`. Answers in words or discussions: `why: "open"`.
-4. **Mark the articles.** Add `data-ex` to every `check: true` item, in the
-   Romanian and in the English article.
+4. **Mark the articles.** Add `data-ex` to every `check: true` item, and
+   `data-value` to every option of a `choice` item, in the Romanian and in
+   the English article.
 5. **Save:** `node tools/results.mjs save <uid>` (2.4).
 
 ### 2.4 `tools/results.mjs`
@@ -266,7 +294,8 @@ A new tool next to `material.mjs`. Node only, no dependencies.
   - `check: false` items have a known `why`; `review` items have a `note`;
   - the `data-ex` set of the Romanian and of the English page equals the set
     of `check: true` keys;
-  - for a `choice` item, exactly one option on each page equals the result;
+  - for a `choice` item, every option on each page has a `data-value`, and
+    exactly one of them equals the result;
   - the answer section has no class marks.
 
   If all is well it writes `data/results/<name>.json` (adds `uid`, raises
@@ -301,9 +330,11 @@ For a material with `results`, `tools/build_pages.mjs` adds, outside the
 article:
 
 - `data-name="<name>"` and `data-results="<version>"` on `<main id="material">`;
-- a short note above the article: "La această fișă îți poți verifica
-  rezultatele: apasă «Verifică» lângă un exercițiu. Răspunsurile tale rămân
-  doar pe acest dispozitiv." and a button "Șterge răspunsurile mele";
+- a short note above the article and a reset button, in the page language,
+  from the `check.note` and `check.reset` keys of `assets/js/i18n.js`
+  (Romanian: "La această fișă îți poți verifica rezultatele: apasă
+  «Verifică» lângă un exercițiu. Răspunsurile tale rămân doar pe acest
+  dispozitiv." and "Șterge răspunsurile mele");
 - `answers.js` and `check.js` after `material.js`.
 
 A material without `results` gets none of this.
@@ -361,8 +392,9 @@ A material without `results` gets none of this.
 - Same buttons, same `data-ex`, same results file.
 - The UI text comes from `assets/js/i18n.js` (`check.*` keys in `ro` and
   `en`). True/False still save `A`/`F`.
-- `text` answers are math and do not change with the language. An option
-  made of words keeps the same `data-value` in both articles.
+- `text` answers are math and do not change with the language. Options keep
+  the same `data-value` in both articles, also when their words are
+  translated.
 
 ### 3.6 Other files
 
@@ -426,7 +458,7 @@ Rules of the project: tests for the happy path and the edge cases; run
   - separators: `3; -4; 0,7` is three values; `-3, 7` is two values;
   - `list` order matters; `set` order and repeats do not; `∅` = `{}`;
   - intervals: brackets matter; `inf`/`∞`; unions in any order;
-  - `text` clean-up; TeX of options to the typed form;
+  - `text` clean-up; `choice` values as numbers and as text;
   - answers that cannot be read, for each kind.
 - `tools/test_docx_to_html.py`: `split_answers` with both sample headings,
   with cedilla, in lower case, with no heading, and with a heading word
