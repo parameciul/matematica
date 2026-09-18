@@ -86,17 +86,17 @@ Each material has exactly one of three states:
 
 ### 1.3 The publish date
 
-`published` becomes the day the material **first** became visible:
+`published` stays required on every material, as today. The generator, the
+sitemap, the JSON-LD and the browser sort all read it, so it never goes
+missing.
 
-- A material created hidden or scheduled has no `published` field yet. The
-  validator allows a missing `published` only while the material is hidden or
-  scheduled.
-- When a scheduled material is revealed, `published` is set to the Romania
-  date of its `visibleFrom`.
-- When a hidden material without `published` is shown by hand, `published` is
-  set to today's Romania date.
-- A material that was visible, then hidden, then shown again keeps its
-  original `published` date.
+- `new` sets `published` to today, whatever the state.
+- When a **scheduled** material becomes visible, `published` is updated:
+  - by the timer: to the Romania date of its `visibleFrom`;
+  - by hand (`set --visible`, or the admin checkbox), before its time: to
+    today's Romania date.
+- A **hidden** material that is shown again keeps its `published` date. This
+  covers "visible, then hidden, then shown again".
 
 ## 2. What the generator does with a material that is not visible
 
@@ -113,8 +113,7 @@ uses the visible list only:
 
 The page of a not-visible material is still generated, because its article
 lives in that file. It gets `noindex, follow` (the quiz: in its `<!-- seo -->`
-block). If it has no `published` yet, the page has no "published on" line and
-no `datePublished` / `article:published_time`.
+block).
 
 `_redirects` gets `302` lines for every not-visible material, so its URLs lead
 to the grade page instead of the material:
@@ -296,7 +295,13 @@ Files: `functions/<folder>/api/_middleware.js`, `functions/<folder>/api/material
 - `visibleFrom` has the shape `YYYY-MM-DDTHH:MM:00±HH:MM` and its offset
   matches Europe/Bucharest.
 - `hidden` and `visibleFrom` never appear together.
-- `published` may be missing only on a hidden or scheduled material.
+- `published` stays required on every material (section 1.3).
+- The path `data/materials.json` in the validator's required-file list
+  (`tests/validate.mjs:55`) becomes `data/materials.source.json`. The test
+  fixtures that write `data/materials.json`
+  (`tests/build_pages.test.mjs:77,137,257,262,270`,
+  `tests/material.test.mjs:31`, `tests/validate.test.mjs:32`) change the same
+  way.
 - The class-mark and answer checks cover both JSON files and the admin page.
 - `_routes.json` exists and includes only the admin API path.
 - The existing `--check` staleness rule covers the generated
