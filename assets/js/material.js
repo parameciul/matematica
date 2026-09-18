@@ -6,13 +6,13 @@
   const main = document.getElementById('material');
   if (!main) return;
 
-  const id = main.getAttribute('data-id');
+  const uid = main.getAttribute('data-id');
   const el = Site.el;
   const article = main.querySelector('article[data-lang]');
   const related = document.getElementById('material-related');
 
   let data = null;
-  let found; // undefined while loading, null when the id is not in the list
+  let found; // undefined while loading, null when the uid is not in the list
   let failed = false;
 
   function videoUrl(videoId) {
@@ -54,7 +54,7 @@
   function renderRelated(material, topic) {
     if (!related) return;
     related.textContent = '';
-    const others = Catalog.relatedMaterials(data, material.id, getLang());
+    const others = Catalog.relatedMaterials(data, material.uid, getLang());
     if (others.length) {
       related.appendChild(el('h2', null, t('material.related')));
       const list = el('ul', 'material-list');
@@ -90,7 +90,7 @@
   Site.loadData().then(
     (loaded) => {
       data = loaded;
-      const match = Catalog.findMaterial(loaded, id);
+      const match = Catalog.findMaterial(loaded, uid);
       found = match && match.topic ? match : null;
       render();
     },

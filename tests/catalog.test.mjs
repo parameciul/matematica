@@ -17,18 +17,18 @@ function sampleData() {
       { id: 'geo', grade: 11, title: { ro: 'Vectori', en: 'Vectors' } },
     ],
     materials: [
-      { id: 'fisa-recap', topic: 'recap', kind: 'fisa-recapitulativa', title: { ro: 'Fișă recapitulativă', en: 'Review worksheet' }, published: '2026-09-13' },
-      { id: 'test-recap', topic: 'recap', kind: 'test', title: { ro: 'Test inițial', en: 'Initial test' }, published: '2026-09-13' },
-      { id: 'teorie-reale', topic: 'reale', kind: 'teorie', title: { ro: 'Teorie sintetizată', en: 'Theory summary' }, published: '2026-09-14', keywords: { ro: ['parte întreagă'], en: ['floor'] } },
-      { id: 'fisa-reale', topic: 'reale', kind: 'fisa-lucru', title: { ro: 'Fișă de lucru: modul', en: 'Worksheet: absolute value' }, published: '2026-09-14' },
-      { id: 'functii-vechi', topic: 'vechi', kind: 'teorie', title: { ro: 'Funcția de gradul I', en: 'Linear function' }, published: '2025-10-02' },
-      { id: 'geo-teorie', topic: 'geo', kind: 'teorie', title: { ro: 'Vectori în plan', en: 'Vectors in the plane' }, published: '2026-09-12' },
+      { slug: 'fisa-recap', uid: '1001', topic: 'recap', kind: 'fisa-recapitulativa', title: { ro: 'Fișă recapitulativă', en: 'Review worksheet' }, published: '2026-09-13' },
+      { slug: 'test-recap', uid: '1002', topic: 'recap', kind: 'test', title: { ro: 'Test inițial', en: 'Initial test' }, published: '2026-09-13' },
+      { slug: 'teorie-reale', uid: '1003', topic: 'reale', kind: 'teorie', title: { ro: 'Teorie sintetizată', en: 'Theory summary' }, published: '2026-09-14', keywords: { ro: ['parte întreagă'], en: ['floor'] } },
+      { slug: 'fisa-reale', uid: '1004', topic: 'reale', kind: 'fisa-lucru', title: { ro: 'Fișă de lucru: modul', en: 'Worksheet: absolute value' }, published: '2026-09-14' },
+      { slug: 'functii-vechi', uid: '1005', topic: 'vechi', kind: 'teorie', title: { ro: 'Funcția de gradul I', en: 'Linear function' }, published: '2025-10-02' },
+      { slug: 'geo-teorie', uid: '1006', topic: 'geo', kind: 'teorie', title: { ro: 'Vectori în plan', en: 'Vectors in the plane' }, published: '2026-09-12' },
     ],
   };
 }
 
 const LABELS = { teorie: ['Teorie', 'Theory', 'Lecții și teorie', 'Lessons and theory'] };
-const ids = (list) => list.map((x) => (x.material || x).id);
+const ids = (list) => list.map((x) => (x.material || x).slug);
 
 test('groupOf maps every kind to its filter group', () => {
   assert.equal(C.groupOf('lectie'), 'lectii');
@@ -81,8 +81,8 @@ test('gradeTopics sorts topics by their newest material and drops empty topics',
 
 test('gradeTopics keeps file order for topics with the same newest date', () => {
   const data = sampleData();
-  data.materials.find((m) => m.id === 'teorie-reale').published = '2026-09-13';
-  data.materials.find((m) => m.id === 'fisa-reale').published = '2026-09-13';
+  data.materials.find((m) => m.uid === '1003').published = '2026-09-13';
+  data.materials.find((m) => m.uid === '1004').published = '2026-09-13';
   assert.deepEqual(C.gradeTopics(data, 9).map((e) => e.topic.id), ['recap', 'reale', 'vechi']);
 });
 
@@ -121,10 +121,24 @@ test('gradeSummary counts materials and finds the last update per grade', () => 
 
 test('findMaterial and relatedMaterials', () => {
   const data = sampleData();
-  assert.equal(C.findMaterial(data, 'fisa-reale').topic.id, 'reale');
+  assert.equal(C.findMaterial(data, '1004').topic.id, 'reale');
   assert.equal(C.findMaterial(data, 'nope'), null);
-  assert.deepEqual(ids(C.relatedMaterials(data, 'fisa-reale')), ['teorie-reale']);
+  assert.deepEqual(ids(C.relatedMaterials(data, '1004')), ['teorie-reale']);
   assert.deepEqual(C.relatedMaterials(data, 'nope'), []);
+});
+
+test('nameOf, parseName and isUid', () => {
+  assert.equal(C.nameOf({ slug: 'fisa-recapitulativa-1', uid: '1234' }), 'fisa-recapitulativa-1-1234');
+  assert.deepEqual(C.parseName('fisa-recapitulativa-1-1234'), { slug: 'fisa-recapitulativa-1', uid: '1234' });
+  assert.deepEqual(C.parseName('teorie-veche'), null);
+  assert.deepEqual(C.parseName('x-12'), null);
+  assert.deepEqual(C.parseName('123'), null);
+  assert.deepEqual(C.parseName('teorie-1001'), { slug: 'teorie', uid: '1001' });
+  assert.equal(C.isUid('1004'), true);
+  assert.equal(C.isUid('0999'), false);
+  assert.equal(C.isUid('100'), false);
+  assert.equal(C.isUid('10000'), true);
+  assert.equal(C.isUid('12a3'), false);
 });
 
 test('normalize removes diacritics, also the cedilla look-alikes', () => {

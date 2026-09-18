@@ -11,6 +11,28 @@
   const GROUP_ORDER = ['lectii', 'fise', 'teste', 'jocuri'];
   const NEW_DAYS = 14;
   const DATE_RE = /^(\d{4})-(\d{2})-(\d{2})$/;
+  // A uid is the material identity: four or more digits, never starting with 0.
+  const UID_RE = /^[1-9][0-9]{3,}$/;
+
+  function isUid(v) {
+    return typeof v === 'string' && UID_RE.test(v);
+  }
+
+  // The path-shaped name of a material is always <slug>-<uid>.
+  function nameOf(material) {
+    return `${material.slug}-${material.uid}`;
+  }
+
+  // Parsing rule: the uid is the last dash-separated part when it is digits;
+  // everything before it is the slug. Returns null when the name has no uid.
+  function parseName(name) {
+    const text = String(name);
+    const i = text.lastIndexOf('-');
+    if (i < 0) return null;
+    const uid = text.slice(i + 1);
+    if (!isUid(uid)) return null;
+    return { slug: text.slice(0, i), uid };
+  }
 
   function groupOf(kind) {
     return GROUP_ORDER.find((g) => GROUPS[g].includes(kind)) || null;
@@ -136,16 +158,16 @@
     return summary;
   }
 
-  function findMaterial(data, id) {
-    const material = data.materials.find((m) => m.id === id);
+  function findMaterial(data, uid) {
+    const material = data.materials.find((m) => m.uid === uid);
     if (!material) return null;
     return { material, topic: topicMap(data).get(material.topic) || null };
   }
 
-  function relatedMaterials(data, id, lang) {
-    const found = findMaterial(data, id);
+  function relatedMaterials(data, uid, lang) {
+    const found = findMaterial(data, uid);
     if (!found) return [];
-    return topicMaterials(data, found.material.topic, lang).filter((m) => m.id !== id);
+    return topicMaterials(data, found.material.topic, lang).filter((m) => m.uid !== uid);
   }
 
   function normalize(text) {
@@ -217,7 +239,8 @@
   }
 
   const api = {
-    ROMAN, KINDS, GROUPS, GROUP_ORDER, NEW_DAYS,
+    ROMAN, KINDS, GROUPS, GROUP_ORDER, NEW_DAYS, UID_RE,
+    isUid, nameOf, parseName,
     groupOf, isValidDate, todayIso, isNew, schoolYearOf, schoolYearLabel,
     visibleMaterials, topicMaterials, gradeTopics, filterEntries, groupsPresent, bySchoolYear,
     latestMaterials, gradeSummary, findMaterial, relatedMaterials,
