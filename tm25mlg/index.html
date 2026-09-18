@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Materiale: vizibilitate</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <script>try{var t=localStorage.getItem('matematica.theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    /* The admin page is Romanian-only: there is no English admin page to switch to. */
+    .site-header .lang { display: none; }
+    .admin-row { display: grid; gap: .35rem; padding: .6rem 0; border-top: 1px solid var(--line); }
+    .admin-row .row-top { display: flex; flex-wrap: wrap; gap: .4rem; align-items: baseline; }
+    .admin-row .row-title { font-weight: 700; }
+    .admin-row .row-uid { color: var(--muted); font-size: .85rem; }
+    .admin-row .row-controls { display: flex; flex-wrap: wrap; gap: .6rem 1rem; align-items: center; }
+    .admin-row label { display: inline-flex; gap: .35rem; align-items: center; }
+    .admin-row input[type="datetime-local"] { font: inherit; padding: .3rem .4rem; }
+    .admin-search-input { font: inherit; padding: .4rem .6rem; min-width: min(100%, 18rem); }
+    .state { display: inline-block; padding: .1rem .6rem; border-radius: 999px; font-size: .85rem; border: 1px solid var(--line); }
+    .state-visible { background: #e6f4ea; color: #14532d; border-color: #bbe5c7; }
+    .state-hidden { background: #fdecea; color: #7a271a; border-color: #f5c6c0; }
+    .state-scheduled { background: #fff4d6; color: #6b4e00; border-color: #ecd48a; }
+    .admin-bar { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; margin: 1rem 0; }
+    .admin-status { min-height: 1.5em; }
+    details.grade { margin: 1rem 0; }
+    details.grade > summary { cursor: pointer; }
+    details.grade > summary h2 { display: inline; }
+  </style>
+</head>
+<body data-root="../">
+  <header id="site-header" class="site-header"></header>
+
+  <main id="content" class="wrap">
+    <div class="page">
+      <h1>Materiale: vizibilitate</h1>
+      <p class="note">Alege ce se vede pe site. Nimic nu se trimite până nu apeși Salvează: o salvare pornește o singură publicare.</p>
+      <div class="admin-bar" role="search">
+        <label for="admin-search">Caută</label>
+        <input class="admin-search-input" type="search" id="admin-search" placeholder="Caută după titlu sau cod…" autocomplete="off">
+      </div>
+      <div class="admin-bar">
+        <div class="filters" role="group" aria-label="Arată" id="admin-filter">
+          <button class="chip" type="button" data-filter="" aria-pressed="true">Toate</button>
+          <button class="chip" type="button" data-filter="visible" aria-pressed="false">Vizibile</button>
+          <button class="chip" type="button" data-filter="hidden" aria-pressed="false">Ascunse</button>
+          <button class="chip" type="button" data-filter="scheduled" aria-pressed="false">Programate</button>
+        </div>
+      </div>
+      <div class="admin-bar">
+        <button class="button" type="button" id="admin-save" disabled>Salvează</button>
+        <span class="admin-status" id="admin-status" aria-live="polite">Se încarcă lista…</span>
+      </div>
+      <div id="admin-list"></div>
+    </div>
+  </main>
+
+  <footer id="site-footer" class="site-footer"></footer>
+  <script defer src="../assets/js/i18n.js"></script>
+  <script defer src="../assets/js/catalog.js"></script>
+  <script defer src="../assets/js/shell.js"></script>
+  <script defer src="../assets/js/site.js"></script>
+  <script defer src="../assets/js/visibility.js"></script>
+  <script defer src="admin.js"></script>
+</body>
+</html>

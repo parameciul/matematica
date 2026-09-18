@@ -33,6 +33,11 @@ https://:version.:project.pages.dev/*
   Cache-Control: public, max-age=86400
 /materiale/pdf/*
   Cache-Control: public, max-age=86400
+# The admin page is behind Cloudflare Access, and still stays out of
+# search results and caches even if the Access application misses a host.
+/tm25mlg/*
+  X-Robots-Tag: noindex
+  Cache-Control: no-store
 /materiale/pdf/fisa-lucru-numere-reale-modul-parte-intreaga-1002.pdf
   Link: <https://lauramiron.pages.dev/materiale/fisa-lucru-numere-reale-modul-parte-intreaga-1002>; rel="canonical"
 /materiale/pdf/fisa-recapitulare-evaluare-initiala-1004.pdf

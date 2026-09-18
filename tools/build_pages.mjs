@@ -1,8 +1,15 @@
-// Static page generator: writes every page shell from data/materials.json.
+// Static page generator: writes every page shell from data/materials.source.json.
 // There is still no build step on Cloudflare: the output is committed, and
 // tests/validate.mjs fails when a committed file is out of date, so a future
 // page cannot skip SEO. Hand-written content lives only inside <article>
 // elements (and the quiz page body).
+//
+// Visibility is resolved at build time: the generator splits the source into
+// visible and not-visible (hidden or scheduled) materials from the data only
+// and never compares visibleFrom with the clock, so the committed output is
+// deterministic. Every public listing uses the visible list only; the page of
+// a not-visible material is still generated (its article lives in that file)
+// but gets noindex plus 302 redirects to its grade page.
 //
 // Run: node tools/build_pages.mjs          writes the files
 //      node tools/build_pages.mjs --check  lists stale files and exits 1
@@ -15,6 +22,12 @@ import vm from 'node:vm';
 const require = createRequire(import.meta.url);
 const Catalog = require('../assets/js/catalog.js');
 const Shell = require('../assets/js/shell.js');
+const Visibility = require('../assets/js/visibility.js');
+
+// The admin page folder at the site root. The name has no "admin" in it; it
+// is not linked from any page, not in sitemap.xml and not in robots.txt.
+// AGENTS.md records it. The lock is Cloudflare Access, not the secret name.
+export const ADMIN_FOLDER = 'tm25mlg';
 
 // The one place the public address lives. A custom domain later = a one-line change.
 export const SITE_URL = 'https://lauramiron.pages.dev/';
@@ -95,7 +108,7 @@ function loadI18N(root) {
 }
 
 export function loadSiteData(root) {
-  return JSON.parse(readFileSync(join(root, 'data', 'materials.json'), 'utf8'));
+  return JSON.parse(readFileSync(join(root, 'data', 'materials.source.json'), 'utf8'));
 }
 
 function readIfExists(root, file) {
@@ -446,7 +459,10 @@ function renderGradePage({ data, grade, lang, dict, assetBase, pageRoot, selfFil
 
 function renderMaterialPage({ data, material, topic, lang, dict, assetBase, pageRoot, selfFile, pairFile, articleHtml }) {
   const filled = Catalog.hasArticleContent(articleHtml || '');
-  const noindex = (!filled || material.supersedes) || undefined;
+  // A not-visible material (hidden or scheduled) keeps its page, because the
+  // article lives in that file, but the page stays out of search until the
+  // timer or an admin save reveals it.
+  const noindex = (!filled || material.supersedes || !Visibility.isVisible(material)) || undefined;
   const title = materialPageTitle(material, topic, lang);
   const description = material.description[lang] || material.description.ro;
   const video = material.youtube || null;
@@ -792,8 +808,14 @@ function renderHeaders(data) {
     '  Cache-Control: public, max-age=86400',
     '/materiale/pdf/*',
     '  Cache-Control: public, max-age=86400',
+    `# The admin page is behind Cloudflare Access, and still stays out of`,
+    `# search results and caches even if the Access application misses a host.`,
+    `/${ADMIN_FOLDER}/*`,
+    '  X-Robots-Tag: noindex',
+    '  Cache-Control: no-store',
   ];
   // A PDF is a copy of the Romanian article: its ranking goes to the page.
+  // Only visible materials get a canonical line: a hidden PDF has no page.
   const pdfs = data.materials.filter((m) => m.pdf).map(Catalog.nameOf).sort();
   for (const name of pdfs) {
     lines.push(`/${`materiale/pdf/${name}.pdf`}`);
@@ -837,17 +859,41 @@ function renderRedirects(data) {
     if (!target) continue;
     add(`${retired.slug}-${retired.uid}`, target);
   }
-  return lines.join('\n') + '\n';
+  // Not-visible materials (hidden or scheduled): 302 every URL to the grade
+  // page, so a shared link leads somewhere useful instead of a noindex page.
+  // The quiz has only the Romanian lines. A 302 rule also keeps the source
+  // data (which holds hidden titles) away from curious readers.
+  const hiddenLines = [
+    '# Not-visible materials (hidden or scheduled): 302 to their grade page.',
+    '# Visibility is resolved at build time, so these lines change only when',
+    '# a material is hidden, scheduled or revealed.',
+  ];
+  const grades = new Map((data.topics || []).map((t) => [t.id, t.grade]));
+  for (const material of data.materials) {
+    if (Visibility.isVisible(material)) continue;
+    const grade = grades.get(material.topic);
+    if (!grade) continue;
+    const name = Catalog.nameOf(material);
+    hiddenLines.push(`/materiale/${name} /clasa-${grade} 302`);
+    hiddenLines.push(`/materiale/${name}.html /clasa-${grade} 302`);
+    if (material.kind !== 'quiz') {
+      hiddenLines.push(`/en/materiale/${name} /en/clasa-${grade} 302`);
+      hiddenLines.push(`/en/materiale/${name}.html /en/clasa-${grade} 302`);
+    }
+    if (material.pdf) hiddenLines.push(`/materiale/pdf/${name}.pdf /clasa-${grade} 302`);
+  }
+  hiddenLines.push('/data/materials.source.json / 302');
+  return lines.concat(hiddenLines).join('\n') + '\n';
 }
 
 // The quiz keeps its own design. The generator owns only the head block
 // between <!-- seo --> and <!-- /seo -->, and normalizes the back link.
-export function renderQuizPage(html, material, topic) {
+export function renderQuizPage(html, material, topic, opts) {
   const title = `${material.title.ro} | Laura Miron`;
   const description = material.description.ro;
   const canonical = `${SITE_URL}materiale/${Catalog.nameOf(material)}`;
   const gradeUrl = `${SITE_URL}clasa-${topic.grade}`;
-  const robots = material.supersedes
+  const robots = (material.supersedes || (opts && opts.noindex))
     ? '<meta name="robots" content="noindex, follow">'
     : '<meta name="robots" content="max-image-preview:large, max-snippet:-1, max-video-preview:-1">';
   const block = `<!-- seo -->
@@ -910,9 +956,18 @@ export function buildSite(root) {
   const out = new Map();
   const set = (file, content) => out.set(file, content);
 
-  const summary = Catalog.gradeSummary(data);
-  const newestOverall = data.materials.map(lastmodOf).sort().at(-1);
-  const newestOverallEn = Catalog.visibleMaterials(data.materials, 'en').map(lastmodOf).sort().at(-1) || newestOverall;
+  // Every public listing uses the visible list only, so hidden titles never
+  // reach a student's browser, not even through site search. The material
+  // pages below still loop over all materials.
+  const publicData = { topics: data.topics, grades: data.grades, materials: Visibility.visibleOnly(data.materials) };
+
+  // The public copy the browser fetches (site.js, search). Visible materials
+  // only, no nextUid, no retired.
+  set('data/materials.json', `${JSON.stringify({ topics: data.topics, grades: data.grades, materials: publicData.materials }, null, 2)}\n`);
+
+  const summary = Catalog.gradeSummary(publicData);
+  const newestOverall = publicData.materials.map(lastmodOf).sort().at(-1);
+  const newestOverallEn = Catalog.visibleMaterials(publicData.materials, 'en').map(lastmodOf).sort().at(-1) || newestOverall;
 
   // Home pages.
   for (const lang of ['ro', 'en']) {
@@ -920,7 +975,7 @@ export function buildSite(root) {
     const selfFile = lang === 'en' ? 'en/index.html' : 'index.html';
     const altFile = lang === 'en' ? 'index.html' : 'en/index.html';
     set(selfFile, renderHome({
-      data, lang, dict,
+      data: publicData, lang, dict,
       assetBase: lang === 'en' ? '../' : '',
       pageRoot: '',
       selfFile, altFile,
@@ -934,7 +989,7 @@ export function buildSite(root) {
       const selfFile = lang === 'en' ? `en/clasa-${grade}.html` : `clasa-${grade}.html`;
     const altFile = lang === 'en' ? `clasa-${grade}.html` : `en/clasa-${grade}.html`;
     set(selfFile, renderGradePage({
-      data, grade, lang, dict,
+      data: publicData, grade, lang, dict,
       assetBase: lang === 'en' ? '../' : '',
       pageRoot: '',
       selfFile,
@@ -944,6 +999,8 @@ export function buildSite(root) {
   }
 
   // Material pages, with the one-time migration of the English article.
+  // Every material gets its page, visible or not: the article lives in that
+  // file. Not-visible pages are noindex (plus the 302 lines in _redirects).
   for (const material of data.materials) {
     const name = Catalog.nameOf(material);
     const topic = topics.get(material.topic);
@@ -951,7 +1008,7 @@ export function buildSite(root) {
     if (material.kind === 'quiz') {
       const file = `materiale/${name}.html`;
       const html = readIfExists(root, file);
-      if (html !== null) set(file, renderQuizPage(html, material, topic));
+      if (html !== null) set(file, renderQuizPage(html, material, topic, { noindex: !Visibility.isVisible(material) || undefined }));
       continue;
     }
     const roHtml = readIfExists(root, `materiale/${name}.html`);
@@ -968,7 +1025,7 @@ export function buildSite(root) {
       const selfFile = `${inEnFolder ? 'en/' : ''}materiale/${name}.html`;
       const altFile = `${inEnFolder ? '' : 'en/'}materiale/${name}.html`;
       set(selfFile, renderMaterialPage({
-        data, material, topic, lang, dict,
+        data: publicData, material, topic, lang, dict,
         assetBase: inEnFolder ? '../../' : '../',
         pageRoot: '../',
         selfFile,
@@ -994,7 +1051,7 @@ export function buildSite(root) {
   set('404.html', notFoundPage({ lang: 'ro' }));
   set('en/404.html', notFoundPage({ lang: 'en' }));
   set('robots.txt', renderRobots());
-  set('_headers', renderHeaders(data));
+  set('_headers', renderHeaders(publicData));
   set('_redirects', renderRedirects(data));
 
   // Sitemap: indexable pages only.
@@ -1003,8 +1060,8 @@ export function buildSite(root) {
   push('index.html', newestOverall, 'en/index.html');
   push('en/index.html', newestOverallEn, 'index.html');
   for (let grade = 5; grade <= 12; grade++) {
-    const entriesRo = Catalog.gradeTopics(data, grade, 'ro');
-    const entriesEn = Catalog.gradeTopics(data, grade, 'en');
+    const entriesRo = Catalog.gradeTopics(publicData, grade, 'ro');
+    const entriesEn = Catalog.gradeTopics(publicData, grade, 'en');
     if (!entriesRo.length && !entriesEn.length) continue;
     const lastmodRo = entriesRo.length ? entriesRo.map((e) => e.latest).sort().at(-1) : null;
     const lastmodEn = entriesEn.length ? entriesEn.map((e) => e.latest).sort().at(-1) : null;
@@ -1013,7 +1070,7 @@ export function buildSite(root) {
     if (entriesRo.length) push(`clasa-${grade}.html`, lastmodRo, pair ? `en/clasa-${grade}.html` : null);
     if (entriesEn.length) push(`en/clasa-${grade}.html`, lastmodEn, pair ? `clasa-${grade}.html` : null);
   }
-  for (const material of data.materials) {
+  for (const material of publicData.materials) {
     // A superseded copy is hidden from search until its duplicate is deleted.
     if (material.supersedes) continue;
     const name = Catalog.nameOf(material);

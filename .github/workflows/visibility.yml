@@ -1,0 +1,141 @@
+name: material-visibility
+
+# The timer and the save path for hidden and scheduled materials. Visibility
+# is resolved at build time: a material shows only when a new version of the
+# site is published, by this job or by a normal push. Scheduled materials show
+# 1-3 minutes after their time, sometimes up to about 15 minutes late on a
+# busy GitHub day. They never show early.
+#
+# GitHub runs schedule and repository_dispatch only from the workflow file on
+# main. The workflow runs the tools of the branch it checks out, so this file
+# reaches main together with the new material.mjs commands, never before.
+
+on:
+  schedule:
+    # Every 10 minutes. Runs with nothing to do make no commit and no build.
+    - cron: '*/10 * * * *'
+  repository_dispatch:
+    types: [material-visibility]
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch to reveal on (default: main). A test branch can be tried without touching production.'
+        required: false
+        default: 'main'
+
+# Timer runs share a group and never cancel each other. Admin saves
+# (repository_dispatch) each get their own group from the run id: GitHub keeps
+# only one pending run per group and drops the others, which would lose a save.
+concurrency:
+  group: ${{ github.event_name == 'repository_dispatch' && format('save-{0}', github.run_id) || 'material-visibility-timer' }}
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Pick the branch
+        id: pick
+        env:
+          EVENT: ${{ github.event_name }}
+          DISPATCH_BRANCH: ${{ github.event.client_payload.branch }}
+          INPUT_BRANCH: ${{ inputs.branch }}
+        run: |
+          BRANCH="main"
+          if [ "$EVENT" = "repository_dispatch" ]; then
+            BRANCH="$DISPATCH_BRANCH"
+          elif [ "$EVENT" = "workflow_dispatch" ]; then
+            BRANCH="$INPUT_BRANCH"
+          fi
+          case "$BRANCH" in
+            ""|"main") BRANCH="main" ;;
+          esac
+          echo "branch=$BRANCH" >> "$GITHUB_OUTPUT"
+
+      - name: Check out the branch
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ steps.pick.outputs.branch }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+
+      - name: Apply the admin save
+        if: github.event_name == 'repository_dispatch'
+        run: node tools/material.mjs apply --from-env PAYLOAD | tee apply.log
+        env:
+          # The payload reaches the script through an environment variable,
+          # never through string interpolation in the shell.
+          PAYLOAD: ${{ toJson(github.event.client_payload) }}
+
+      - name: Reveal due materials
+        run: node tools/material.mjs reveal --wait-minutes 10 | tee reveal.log
+
+      - name: Run the checks
+        run: npm test
+
+      - name: Commit and push when something changed
+        env:
+          EVENT: ${{ github.event_name }}
+          BRANCH: ${{ steps.pick.outputs.branch }}
+          # The payload reaches the script through an environment variable,
+          # never through string interpolation in the shell.
+          PAYLOAD: ${{ toJson(github.event.client_payload) }}
+        run: |
+          build_msg() {
+            MSG=""
+            if [ -f apply.log ]; then
+              MSG="$(grep '^Admin:' apply.log | head -1)"
+            fi
+            if [ -f reveal.log ]; then
+              SHOWS="$(grep '^Show material' reveal.log || true)"
+              if [ -n "$SHOWS" ]; then
+                SHOWS="$(echo "$SHOWS" | tr '\n' ';' | sed 's/;$//; s/;/; /g')"
+                MSG="${MSG:+$MSG; }$SHOWS"
+              fi
+            fi
+            if [ -z "$MSG" ]; then
+              MSG="Reveal scheduled materials"
+            fi
+          }
+          push_loop() {
+            for i in 1 2 3 4 5; do
+              if git push origin "HEAD:$BRANCH"; then
+                return 0
+              fi
+              # A rejected push means the timer and a save raced: fetch,
+              # reset, run the command again and retry. apply and reveal are
+              # idempotent, so a re-run is safe.
+              git fetch origin "$BRANCH"
+              git reset --hard "origin/$BRANCH"
+              rm -f apply.log reveal.log
+              if [ "$EVENT" = "repository_dispatch" ]; then
+                node tools/material.mjs apply --from-env PAYLOAD | tee apply.log
+              fi
+              node tools/material.mjs reveal --wait-minutes 10 | tee reveal.log
+              npm test
+              git add -A
+              if ! git status --short | grep -q .; then
+                return 0
+              fi
+              build_msg
+              git -c user.name="github-actions[bot]" -c user.email="github-actions[bot]@users.noreply.github.com" commit -m "$MSG"
+            done
+            echo "Push kept failing after 5 tries."
+            return 1
+          }
+          if git status --short | grep -q .; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add -A
+            build_msg
+            git commit -m "$MSG"
+            push_loop
+          else
+            echo "Nothing to do."
+          fi

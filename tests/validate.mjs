@@ -7,10 +7,11 @@ import { join, dirname, extname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createRequire } from 'node:module';
 import vm from 'node:vm';
-import { buildSite, esc, KATEX_VERSION } from '../tools/build_pages.mjs';
+import { buildSite, esc, KATEX_VERSION, ADMIN_FOLDER } from '../tools/build_pages.mjs';
 
 const require = createRequire(import.meta.url);
 const Catalog = require('../assets/js/catalog.js');
+const Visibility = require('../assets/js/visibility.js');
 
 const ROOT = process.env.SITE_ROOT || join(dirname(fileURLToPath(import.meta.url)), '..');
 const errors = [];
@@ -45,6 +46,7 @@ const REQUIRED_FILES = [
   'assets/css/style.css',
   'assets/js/i18n.js',
   'assets/js/catalog.js',
+  'assets/js/visibility.js',
   'assets/js/shell.js',
   'assets/js/site.js',
   'assets/js/searchbox.js',
@@ -52,7 +54,14 @@ const REQUIRED_FILES = [
   'assets/js/clasa.js',
   'assets/js/cautare.js',
   'assets/js/material.js',
-  'data/materials.json',
+  'data/materials.source.json',
+  '_routes.json',
+  `${ADMIN_FOLDER}/index.html`,
+  `${ADMIN_FOLDER}/admin.js`,
+  'functions/tm25mlg/api/_middleware.js',
+  'functions/tm25mlg/api/materials.js',
+  'functions/tm25mlg/api/save.js',
+  '.github/workflows/visibility.yml',
 ];
 for (let g = 5; g <= 12; g++) {
   REQUIRED_FILES.push(`clasa-${g}.html`, `en/clasa-${g}.html`);
@@ -100,17 +109,19 @@ try {
   fail(`tools/build_pages.mjs failed: ${e.message}`);
 }
 
-// 3. Data
+// 3. Data: the source of truth. The public data/materials.json is generated
+// from it (visible materials only) and is checked separately below.
+const SOURCE = 'data/materials.source.json';
 let data = null;
-if (exists('data/materials.json')) {
-  const raw = read('data/materials.json');
+if (exists(SOURCE)) {
+  const raw = read(SOURCE);
   try {
     data = JSON.parse(raw);
-    if (!Array.isArray(data.topics)) fail('data/materials.json: "topics" must be an array');
-    if (!Array.isArray(data.materials)) fail('data/materials.json: "materials" must be an array');
-    checkClassMarks('data/materials.json', raw);
+    if (!Array.isArray(data.topics)) fail(`${SOURCE}: "topics" must be an array`);
+    if (!Array.isArray(data.materials)) fail(`${SOURCE}: "materials" must be an array`);
+    checkClassMarks(SOURCE, raw);
   } catch (e) {
-    fail(`data/materials.json is not valid JSON: ${e.message}`);
+    fail(`${SOURCE} is not valid JSON: ${e.message}`);
   }
 }
 const topics = data && Array.isArray(data.topics) ? data.topics : [];
@@ -204,6 +215,19 @@ for (const [i, m] of materials.entries()) {
   } else if (m.supersedes !== undefined) {
     superseding.push(m);
   }
+  // Visibility: exactly one of three states. Default is visible, so old
+  // entries carry neither field. hidden is only ever true, visibleFrom is an
+  // ISO date-time with minutes and the Europe/Bucharest offset, and the two
+  // never appear together.
+  if (m.hidden !== undefined && m.hidden !== true) {
+    fail(`${where}: hidden must be true when present (default is visible)`);
+  }
+  if (m.visibleFrom !== undefined && !Visibility.isValidVisibleFrom(m.visibleFrom)) {
+    fail(`${where}: visibleFrom must be "YYYY-MM-DDTHH:MM:00±HH:MM" with the Europe/Bucharest offset (was "${m.visibleFrom}")`);
+  }
+  if (m.hidden !== undefined && m.visibleFrom !== undefined) {
+    fail(`${where}: hidden and visibleFrom never appear together`);
+  }
   if (m.aliases !== undefined) {
     const ok = Array.isArray(m.aliases)
       && m.aliases.every((a) => isText(a) && ID_RE.test(a));
@@ -278,7 +302,7 @@ for (const m of materials) {
 // not "highest uid + 1", so a dropped row can never hand out a uid twice.
 const retired = data ? (data.retired === undefined ? [] : data.retired) : [];
 if (data && !Array.isArray(retired)) {
-  fail('data/materials.json: "retired" must be an array');
+  fail('data/materials.source.json: "retired" must be an array');
 }
 const retiredUids = new Set();
 if (Array.isArray(retired)) {
@@ -295,18 +319,18 @@ if (Array.isArray(retired)) {
     }
   }
   for (const uid of retiredUids) {
-    if (materialUids.has(uid)) fail(`data/materials.json: uid "${uid}" appears both in materials and in retired`);
+    if (materialUids.has(uid)) fail(`data/materials.source.json: uid "${uid}" appears both in materials and in retired`);
   }
 }
 
 // The counter only ever goes up and must stay ahead of every uid that exists.
 const nextUid = data ? data.nextUid : undefined;
 if (data && !Number.isInteger(nextUid)) {
-  fail('data/materials.json: "nextUid" counter must be a number');
+  fail('data/materials.source.json: "nextUid" counter must be a number');
 } else if (data) {
   const taken = [...materialUids, ...retiredUids].map(Number);
   if (taken.some((n) => nextUid <= n)) {
-    fail(`data/materials.json: nextUid (${nextUid}) must be larger than every uid in materials and retired (max ${Math.max(...taken)})`);
+    fail(`data/materials.source.json: nextUid (${nextUid}) must be larger than every uid in materials and retired (max ${Math.max(...taken)})`);
   }
 }
 
@@ -321,6 +345,98 @@ for (const m of superseding) {
     const html = read(page);
     if (!html.includes('noindex, follow')) fail(`${page}: superseded material must be noindex`);
     if (html.includes('max-image-preview')) fail(`${page}: a noindex page must not contain max-image-preview`);
+  }
+}
+
+// A not-visible material (hidden or scheduled) keeps its page, because the
+// article lives in that file, but the page stays noindex until it is revealed.
+for (const m of materials) {
+  if (Visibility.isVisible(m)) continue;
+  const name = `${m.slug}-${m.uid}`;
+  for (const page of m.kind === 'quiz' ? [`materiale/${name}.html`] : [`materiale/${name}.html`, `en/materiale/${name}.html`]) {
+    if (!exists(page)) continue;
+    const html = read(page);
+    if (!html.includes('noindex, follow')) fail(`${page}: not-visible material must be noindex`);
+    if (html.includes('max-image-preview')) fail(`${page}: a noindex page must not contain max-image-preview`);
+  }
+}
+
+// The public copy the browser fetches: visible materials only, no nextUid,
+// no retired. The --check staleness rule above already pins it byte for byte
+// to the generator output; these rules name the failure when it drifts.
+if (exists('data/materials.json')) {
+  const raw = read('data/materials.json');
+  try {
+    const pub = JSON.parse(raw);
+    if (!Array.isArray(pub.materials)) {
+      fail('data/materials.json: "materials" must be an array');
+    } else {
+      const visibleUids = new Set(materials.filter((m) => Visibility.isVisible(m)).map((m) => m.uid));
+      for (const m of pub.materials) {
+        if (!visibleUids.has(m.uid)) fail(`data/materials.json: material ${m.uid} is not visible and must not reach the browser`);
+      }
+      for (const m of materials) {
+        if (Visibility.isVisible(m) && !pub.materials.some((x) => x.uid === m.uid)) {
+          fail(`data/materials.json: visible material ${m.uid} is missing`);
+        }
+      }
+    }
+    if (pub.nextUid !== undefined) fail('data/materials.json: must not contain nextUid (it is generated from the source)');
+    if (pub.retired !== undefined) fail('data/materials.json: must not contain retired (it is generated from the source)');
+    checkClassMarks('data/materials.json', raw);
+  } catch (e) {
+    fail(`data/materials.json is not valid JSON: ${e.message}`);
+  }
+}
+
+// _routes.json sends only the admin API to Functions. Public pages never run
+// a Function, so the request quota never touches the public site.
+if (exists('_routes.json')) {
+  try {
+    const routes = JSON.parse(read('_routes.json'));
+    const include = routes && routes.include;
+    const only = Array.isArray(include) && include.length === 1 && include[0] === `/${ADMIN_FOLDER}/api/*`;
+    if (!only) fail(`_routes.json: include must be exactly ["/${ADMIN_FOLDER}/api/*"]`);
+    if (routes.exclude !== undefined && !(Array.isArray(routes.exclude) && routes.exclude.length === 0)) {
+      fail('_routes.json: exclude must be empty');
+    }
+  } catch (e) {
+    fail(`_routes.json is not valid JSON: ${e.message}`);
+  }
+}
+
+// Every not-visible material 302s to its grade page; the source data (which
+// holds hidden titles) 302s to the home page.
+if (exists('_redirects')) {
+  const redirects = read('_redirects');
+  const gradeOf = new Map(topics.map((t) => [t.id, t.grade]));
+  for (const m of materials) {
+    if (Visibility.isVisible(m)) continue;
+    const name = `${m.slug}-${m.uid}`;
+    const grade = gradeOf.get(m.topic);
+    const lines = [`/materiale/${name} /clasa-${grade} 302`, `/materiale/${name}.html /clasa-${grade} 302`];
+    if (m.kind !== 'quiz') {
+      lines.push(`/en/materiale/${name} /en/clasa-${grade} 302`, `/en/materiale/${name}.html /en/clasa-${grade} 302`);
+    }
+    if (m.pdf) lines.push(`/materiale/pdf/${name}.pdf /clasa-${grade} 302`);
+    for (const line of lines) {
+      if (!redirects.includes(line)) fail(`_redirects: missing "${line}" for not-visible material ${name}`);
+    }
+  }
+  if (!redirects.includes('/data/materials.source.json / 302')) {
+    fail('_redirects: missing "/data/materials.source.json / 302"');
+  }
+}
+
+// Pages and the data files contain no answers and no class marks. The admin
+// page is covered too: it lists every material with its state.
+for (const f of [`${ADMIN_FOLDER}/index.html`, `${ADMIN_FOLDER}/admin.js`]) {
+  if (!exists(f)) continue;
+  const src = read(f);
+  checkClassMarks(f, src);
+  const plain = Catalog.normalize(src.replace(/<[^>]+>/g, ' ')).replace(/\s+/g, ' ');
+  for (const phrase of ANSWER_HEADINGS) {
+    if (plain.includes(phrase)) fail(`${f}: contains "${phrase}". Published materials must not include answers.`);
   }
 }
 
@@ -342,9 +458,9 @@ for (const m of materials) {
 if (!data) {
   // Invalid JSON is already reported above; nothing more to check here.
 } else if (data.grades === undefined) {
-  fail('data/materials.json: "grades" with per-grade intro.ro / intro.en is required (audit F3)');
+  fail('data/materials.source.json: "grades" with per-grade intro.ro / intro.en is required (audit F3)');
 } else if (!data.grades || typeof data.grades !== 'object' || Array.isArray(data.grades)) {
-  fail('data/materials.json: "grades" must be an object keyed by grade (5-12)');
+  fail('data/materials.source.json: "grades" must be an object keyed by grade (5-12)');
 } else {
   for (let g = 5; g <= 12; g++) {
     const entry = data.grades[String(g)];
@@ -374,7 +490,7 @@ if (exists('materiale')) {
     if (name === 'pdf') continue;
     if (extname(name) !== '.html') { fail(`materiale/${name}: only material pages (.html) and the pdf folder belong here`); continue; }
     const base = name.slice(0, -5);
-    if (!Catalog.parseName(base) || !byName.has(base)) fail(`materiale/${name}: not a <slug>-<uid> name listed in data/materials.json`);
+    if (!Catalog.parseName(base) || !byName.has(base)) fail(`materiale/${name}: not a <slug>-<uid> name listed in data/materials.source.json`);
   }
 }
 // en/materiale/ holds only listed materials, never the quiz (it is Romanian only)
@@ -383,14 +499,14 @@ if (exists('en/materiale')) {
     if (extname(name) !== '.html') { fail(`en/materiale/${name}: only material pages (.html) belong here`); continue; }
     const base = name.slice(0, -5);
     const material = Catalog.parseName(base) && byName.get(base);
-    if (!material) fail(`en/materiale/${name}: not a <slug>-<uid> name listed in data/materials.json`);
+    if (!material) fail(`en/materiale/${name}: not a <slug>-<uid> name listed in data/materials.source.json`);
     else if (material.kind === 'quiz') fail(`en/materiale/${name}: the quiz is Romanian only and must not have an English page`);
   }
 }
 if (exists('materiale/pdf')) {
   for (const name of readdirSync(join(ROOT, 'materiale', 'pdf'))) {
     const key = `materiale/pdf/${name}`;
-    if (!listedPdfs.has(key)) fail(`${key}: not listed in data/materials.json`);
+    if (!listedPdfs.has(key)) fail(`${key}: not listed in data/materials.source.json`);
     else if (!Catalog.parseName(name.slice(0, -4))) fail(`${key}: file name must be <slug>-<uid>.pdf`);
   }
 }
@@ -440,7 +556,7 @@ for (const f of codeFiles) {
 }
 
 // 6. Romanian diacritics use comma-below (ș ț), not the look-alike cedilla letters (ş ţ)
-for (const f of [...codeFiles, 'data/materials.json']) {
+for (const f of [...codeFiles, 'data/materials.source.json', 'data/materials.json']) {
   if (exists(f) && /[şţŞŢ]/.test(read(f))) fail(`${f}: uses cedilla letters (ş ţ). Use comma-below letters (ș ț).`);
 }
 

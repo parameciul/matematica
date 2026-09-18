@@ -28,7 +28,7 @@ function makeRoot(t) {
   return dir;
 }
 
-const dataFile = (dir) => join(dir, 'data', 'materials.json');
+const dataFile = (dir) => join(dir, 'data', 'materials.source.json');
 const readData = (dir) => JSON.parse(readFileSync(dataFile(dir), 'utf8'));
 
 test('list shows live materials and the nextUid counter', (t) => {
@@ -103,6 +103,134 @@ test('new validates the flags before touching the data', (t) => {
   const published = readData(dir);
   assert.equal(published.materials.length, 11);
   assert.equal(published.nextUid, 1012);
+});
+
+test('new --hidden creates a hidden material', (t) => {
+  const dir = makeRoot(t);
+  const before = readData(dir);
+  const res = run(dir, ['new', '--hidden', '--slug', 'fisa-ascunsa', '--topic', before.topics.at(-1).id,
+    '--title-ro', 'Fișă ascunsă', '--title-en', 'Hidden worksheet',
+    '--desc-ro', 'Fișă de lucru ascunsă pentru testarea comenzii de creare, cu exerciții pentru clasa potrivită.',
+    '--desc-en', 'Hidden worksheet for testing the creation command, with exercises for the right grade level.']);
+  assert.equal(res.code, 0, res.out);
+  const m = readData(dir).materials.find((x) => x.slug === 'fisa-ascunsa');
+  assert.ok(m);
+  assert.equal(m.hidden, true);
+  assert.ok(!('visibleFrom' in m));
+  const v = spawnSync(process.execPath, [join(REPO, 'tests', 'validate.mjs')], { env: { ...process.env, SITE_ROOT: dir }, encoding: 'utf8' });
+  assert.equal(v.status, 0, `${v.stdout}${v.stderr}`);
+});
+
+test('new --visible-from creates a scheduled material', (t) => {
+  const dir = makeRoot(t);
+  const before = readData(dir);
+  const res = run(dir, ['new', '--visible-from', '2030-09-21 08:00', '--slug', 'fisa-programata', '--topic', before.topics.at(-1).id,
+    '--title-ro', 'Fișă programată', '--title-en', 'Scheduled worksheet',
+    '--desc-ro', 'Fișă de lucru programată pentru testarea comenzii de creare, cu exerciții pentru clasa potrivită.',
+    '--desc-en', 'Scheduled worksheet for testing the creation command, with exercises for the right grade.']);
+  assert.equal(res.code, 0, res.out);
+  const m = readData(dir).materials.find((x) => x.slug === 'fisa-programata');
+  assert.ok(m);
+  assert.equal(m.visibleFrom, '2030-09-21T08:00:00+03:00');
+  assert.ok(!('hidden' in m));
+  const v = spawnSync(process.execPath, [join(REPO, 'tests', 'validate.mjs')], { env: { ...process.env, SITE_ROOT: dir }, encoding: 'utf8' });
+  assert.equal(v.status, 0, `${v.stdout}${v.stderr}`);
+});
+
+test('new refuses --hidden together with --visible-from', (t) => {
+  const dir = makeRoot(t);
+  const res = run(dir, ['new', '--hidden', '--visible-from', '2030-09-21 08:00', '--slug', 'x', '--topic', readData(dir).topics[0].id,
+    '--title-ro', 'A', '--title-en', 'B',
+    '--desc-ro', 'Fișă de lucru pentru testarea comenzii de creare, suficient de lungă pentru validator.',
+    '--desc-en', 'Worksheet for testing the creation command, long enough to satisfy the validator.']);
+  assert.equal(res.code, 1);
+  assert.match(res.out, /never appear together/);
+});
+
+test('set moves a material in every direction', (t) => {
+  const dir = makeRoot(t);
+  const uid = readData(dir).materials[0].uid;
+  const published = readData(dir).materials[0].published;
+  assert.equal(run(dir, ['set', uid, '--hidden']).code, 0);
+  assert.equal(readData(dir).materials[0].hidden, true);
+  assert.equal(run(dir, ['set', uid, '--visible']).code, 0);
+  const shown = readData(dir).materials[0];
+  assert.ok(!('hidden' in shown));
+  // Hidden, then shown again, keeps the publish date.
+  assert.equal(shown.published, published);
+  assert.equal(run(dir, ['set', uid, '--visible-from', '2030-09-21 08:00']).code, 0);
+  const scheduled = readData(dir).materials[0];
+  assert.equal(scheduled.visibleFrom, '2030-09-21T08:00:00+03:00');
+  assert.ok(!('hidden' in scheduled));
+  // Showing a scheduled material before its time refreshes the publish date.
+  assert.equal(run(dir, ['set', uid, '--visible']).code, 0);
+  const early = readData(dir).materials[0];
+  assert.ok(!('visibleFrom' in early));
+  assert.match(early.published, /^\d{4}-\d{2}-\d{2}$/);
+  const v = spawnSync(process.execPath, [join(REPO, 'tests', 'validate.mjs')], { env: { ...process.env, SITE_ROOT: dir }, encoding: 'utf8' });
+  assert.equal(v.status, 0, `${v.stdout}${v.stderr}`);
+});
+
+test('set needs exactly one flag and a real time', (t) => {
+  const dir = makeRoot(t);
+  const uid = readData(dir).materials[0].uid;
+  assert.equal(run(dir, ['set', uid]).code, 1);
+  assert.equal(run(dir, ['set', uid, '--visible', '--hidden']).code, 1);
+  assert.equal(run(dir, ['set', uid, '--visible-from', 'ieri']).code, 1);
+  assert.equal(run(dir, ['set', '9999', '--hidden']).code, 1);
+});
+
+test('apply writes everything or nothing', (t) => {
+  const dir = makeRoot(t);
+  const d0 = readData(dir);
+  const [a, b] = [d0.materials[0].uid, d0.materials[1].uid];
+  process.env.MAT_TEST_BAD = JSON.stringify([{ uid: a, state: 'hidden' }, { uid: '9999', state: 'visible' }]);
+  try {
+    const bad = run(dir, ['apply', '--from-env', 'MAT_TEST_BAD']);
+    assert.equal(bad.code, 1);
+    assert.match(bad.out, /unknown uid/);
+    assert.ok(!('hidden' in readData(dir).materials[0]));
+    process.env.MAT_TEST_OK = JSON.stringify({ changes: [{ uid: a, state: 'hidden' }, { uid: b, state: 'scheduled', visibleFrom: '2030-09-21T08:00:00+03:00' }], branch: 'main' });
+    const ok = run(dir, ['apply', '--from-env', 'MAT_TEST_OK']);
+    assert.equal(ok.code, 0, ok.out);
+    assert.equal(readData(dir).materials[0].hidden, true);
+    assert.equal(readData(dir).materials[1].visibleFrom, '2030-09-21T08:00:00+03:00');
+  } finally {
+    delete process.env.MAT_TEST_BAD;
+    delete process.env.MAT_TEST_OK;
+  }
+});
+
+test('reveal shows due materials with the Romania date of their time', (t) => {
+  const dir = makeRoot(t);
+  const uid = readData(dir).materials[0].uid;
+  assert.equal(run(dir, ['set', uid, '--visible-from', '2030-01-15 08:00']).code, 0);
+  assert.equal(readData(dir).materials[0].visibleFrom, '2030-01-15T08:00:00+02:00');
+  const early = run(dir, ['reveal', '--now', '2030-01-01T00:00:00Z']);
+  assert.equal(early.code, 0, early.out);
+  assert.match(early.out, /nothing due/);
+  assert.equal(readData(dir).materials[0].visibleFrom, '2030-01-15T08:00:00+02:00');
+  const due = run(dir, ['reveal', '--now', '2030-01-15T06:00:01Z']);
+  assert.equal(due.code, 0, due.out);
+  assert.match(due.out, new RegExp(`Show material ${uid}`));
+  const m = readData(dir).materials[0];
+  assert.ok(!('visibleFrom' in m));
+  assert.equal(m.published, '2030-01-15');
+});
+
+test('reveal --wait-minutes also takes a material due inside the window', (t) => {
+  const dir = makeRoot(t);
+  const d0 = readData(dir);
+  const [a, b] = [d0.materials[0].uid, d0.materials[1].uid];
+  assert.equal(run(dir, ['set', a, '--visible-from', '2030-01-15 08:00']).code, 0);
+  assert.equal(run(dir, ['set', b, '--visible-from', '2030-01-15 08:05']).code, 0);
+  // With a fixed clock the wait jumps forward instead of sleeping.
+  const res = run(dir, ['reveal', '--now', '2030-01-15T06:00:01Z', '--wait-minutes', '10']);
+  assert.equal(res.code, 0, res.out);
+  assert.match(res.out, new RegExp(`Show material ${a}`));
+  assert.match(res.out, new RegExp(`Show material ${b}`));
+  assert.equal(readData(dir).materials[0].published, '2030-01-15');
+  assert.equal(readData(dir).materials[1].published, '2030-01-15');
 });
 
 test('delete retires the uid, removes files and the work folder', (t) => {

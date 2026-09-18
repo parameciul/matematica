@@ -9,21 +9,28 @@ Grades 5-12. Romanian by default, with an English switch. Plain HTML/CSS/JS: no 
 
 ## Structure
 
-- `data/materials.json`: all content.
+- `data/materials.source.json`: all content. The truth: tools, the validator and the admin read and write this file.
   - `topics`: `id`, `grade` (5-12), `title` (`ro` + `en`).
   - `grades`: per-grade `intro` (`ro` + `en`, 60-100 words naming the year's chapters; first sentence 70-160 characters, used as the grade meta description). Required for grades 5-12.
   - `materials`: each material owns a `slug` + `uid`. The `uid` is its permanent identity: assigned once, never reused, 4+ digits not starting with 0. The material name is `<slug>-<uid>` and names every file: `materiale/<name>.html`, `en/materiale/<name>.html`, `materiale/pdf/<name>.pdf`, `.work/<name>/`. `retired` lists deleted materials (`uid`, `slug`, `removed`, `replacedBy`); `aliases` maps old names to the material; `import: { "date", "workflow" }` records which version of the add-material workflow produced the article. Material fields: `id`/`name` are derived, never stored.
   - `materials` entry fields: `slug`, `uid`, `topic`, `kind`, `title` (`ro` + `en`), `published` (YYYY-MM-DD), optional `updated` (YYYY-MM-DD, not before `published`), `description` (`ro` + `en`, 70-160 characters each), `pdf` (or `null`), `youtube` (`null` or `{ "id", "uploaded", "duration" }`), optional `supersedes` (uid of the copy this one replaced) and optional `keywords` (`ro` + `en` lists; when present, `ro` must include `clasa a <N>-a` and `en` must include `grade <N>`).
+  - Visibility: exactly one of three states. Default is visible (neither field, old entries need no edit). `"hidden": true` hides the material until someone shows it. `"visibleFrom": "2026-09-21T08:00:00+03:00"` schedules it: not on the site, the timer shows it at that instant (Romania wall-clock time with the explicit Europe/Bucharest offset, `+03:00` in summer, `+02:00` in winter). `hidden` and `visibleFrom` never appear together. `published` stays required on every material.
   - Kinds: `lectie`, `teorie`, `fisa-lucru`, `fisa-recapitulativa`, `test`, `joc`, `quiz`.
+- `data/materials.json`: generated public copy (`{ topics, grades, materials }`, visible materials only, no `nextUid`, no `retired`). The browser (`site.js`, search) fetches this path. Never edit it: the generator writes it.
+- Visibility is resolved at build time: the generator decides from the data only and never checks the clock, so the committed output stays deterministic. A not-visible material is missing from every listing (home, grade pages, related lists, public JSON, sitemap, `_headers`) but keeps its page as `noindex, follow`, with `302` lines in `_redirects` to its grade page. A material shows only when a new version of the site is published: by the timer, by an admin save, or by a normal push.
 - `materiale/<name>.html`: the Romanian page (one `ro` `<article>`). `en/materiale/<name>.html`: the English page (one `en` `<article>`). The quiz has only a Romanian page.
 - `materiale/pdf/<name>.pdf`: the clean Romanian PDF of the material.
 - `clasa-5.html` … `clasa-12.html` (+ `en/` mirrors): one grade page per file. `clasa.html` is a small noindex forwarder for old `clasa.html?c=N` links.
-- `tools/build_pages.mjs`: the static page generator (no dependencies). It writes every page shell from `data/materials.json`: `index.html`, `en/`, `clasa-N.html`, material pages, `cautare.html`, `clasa.html`, both `404.html` files, `sitemap.xml`, `robots.txt` and `_headers`. The output is committed; there is no build step on Cloudflare. `node tools/build_pages.mjs --check` lists stale files.
+- `tools/build_pages.mjs`: the static page generator (no dependencies). It writes every page shell from `data/materials.source.json`: `index.html`, `en/`, `clasa-N.html`, material pages, `cautare.html`, `clasa.html`, both `404.html` files, `data/materials.json`, `sitemap.xml`, `robots.txt`, `_headers` and `_redirects`. The output is committed; there is no build step on Cloudflare. `node tools/build_pages.mjs --check` lists stale files.
 - `assets/js/shell.js`: header/footer markup shared by the browser (`site.js`) and the generator. DOM-free, like `catalog.js`.
 - `assets/js/catalog.js`: catalog, sort and search logic. It has no DOM code, so the node tests can `require` it.
+- `assets/js/visibility.js`: visibility states and Romania wall-clock time (scheduling, DST gap/overlap). DOM-free, like `catalog.js`; the tools, the generator, the validator and the admin page share it.
+- `tm25mlg/`: the admin page (see below). Not linked, not in the sitemap, locked by Cloudflare Access. It reuses the site header and footer (built at runtime by `site.js`, same search box and theme switch; the language switch is hidden, the page is Romanian-only). The local preview has no Functions: the page reads `../data/materials.source.json` read-only and saving stays disabled there.
+- `functions/tm25mlg/api/`: the admin API (`_middleware.js`, `materials.js`, `save.js`). `_routes.json` sends only `/tm25mlg/api/*` to Functions; public pages never run one.
+- `.github/workflows/visibility.yml`: the timer (every 10 minutes) and the admin save path.
 - `assets/js/i18n.js`: all UI text, including the `seo.*` page titles and descriptions.
 - `tools/`: `material.mjs` (list, new, delete — see below), `docx_to_html.py` (needs pandoc) and `clean_pdf.py` (needs pymupdf).
-- `tools/material.mjs`: `list`, `new` and `delete` commands around `data/materials.json`. The `new` command takes the uid from `nextUid` and raises it; `delete` moves a material to `retired` and regenerates the redirects, so an old URL can never be handed to a different material. Node only, no dependencies.
+- `tools/material.mjs`: `list`, `new`, `delete`, `set`, `apply` and `reveal` commands around `data/materials.source.json` (see "Hide or schedule a material"). The `new` command takes the uid from `nextUid` and raises it; `delete` moves a material to `retired` and regenerates the redirects, so an old URL can never be handed to a different material. Node only, no dependencies.
 - Brand mark: Laura Miron's initials in handwriting over a highlighter stroke. It lives in several places, and nothing regenerates them for you:
   - the header, inline in `assets/js/shell.js` (`BRAND_MARK`), transparent, coloured by `--ink` and `--brand-marker`;
   - `favicon.svg` and `assets/img/og-image.svg`, hand-written SVG;
@@ -52,11 +59,11 @@ Content is sorted per grade, never per school class (9R2, 6E2). Topics hold mate
 - Material pages load the same KaTeX version as `tools/build_pages.mjs` (`KATEX_VERSION`).
 - Every key in `assets/js/i18n.js` exists in `ro` and in `en`. Every `data-i18n` or `t('...')` key on a page exists.
 - Every material has `title.ro`, `title.en`, `description.ro` and `description.en`. Its Romanian page has an `ro` article, its English page an `en` article (the quiz has neither: it is a standalone page).
-- Every file in `materiale/`, `en/materiale/` and `materiale/pdf/` is listed in `data/materials.json`. `en/materiale/` never holds the quiz.
+- Every file in `materiale/`, `en/materiale/` and `materiale/pdf/` is listed in `data/materials.source.json`. `en/materiale/` never holds the quiz.
 - `node tools/build_pages.mjs --check` must report nothing stale: never edit generated parts of a page (everything outside `<article>`, plus the quiz `<!-- seo -->` block). Regenerate instead.
-- Every file in `materiale/` and `materiale/pdf/` is listed in `data/materials.json`.
+- Every file in `materiale/` and `materiale/pdf/` is listed in `data/materials.source.json`.
 - A material's identity is its `uid`, never its name. Names are `<slug>-<uid>` and may collide across versions (`fisa-recapitulativa-1`); add/drop the `-<uid>` form when the data or the files change. A deleted material is `retired`, never re-created under the same `uid`.
-- Pages and `data/materials.json` contain no answers and no class marks:
+- Pages and `data/materials.source.json` contain no answers and no class marks:
   - class names (`IX-a R2`), class codes (`6E2`), school weeks (`S2:`), exact dates (`16.09.2026`);
   - answer headings (răspunsuri și indicații, barem de evaluare, indicații de rezolvare).
 - Never write `<digit><capital><digit>` next to each other in SVG path data (`14.5A8.5`, `1.6M6.9`). The class-code rule reads path data as text and sees a class code like `9R2`. Put a space before the command letter.
@@ -79,7 +86,7 @@ Content is sorted per grade, never per school class (9R2, 6E2). Topics hold mate
    `Invoke-RestMethod "https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=<id>&format=json"`
 2. Read the upload date and duration (no API key needed):
    `$h = (Invoke-WebRequest "https://www.youtube.com/watch?v=<id>").Content; [regex]::Match($h,'itemprop="uploadDate" content="([^"]+)"').Groups[1].Value; [regex]::Match($h,'itemprop="duration" content="([^"]+)"').Groups[1].Value`
-3. Set `"youtube": { "id": "<11 chars>", "uploaded": "<ISO date or date-time>", "duration": "PT7M31S" }` in `data/materials.json`, run the generator, and check the static player and the `VideoObject` on the page.
+3. Set `"youtube": { "id": "<11 chars>", "uploaded": "<ISO date or date-time>", "duration": "PT7M31S" }` in `data/materials.source.json`, run the generator, and check the static player and the `VideoObject` on the page.
 4. Put the material page URL in the first line of the video description.
 
 ## Add a material
@@ -88,7 +95,7 @@ The source files are in `D:\Projects\Website-Content\`. Never change them. Put w
 
 1. **Create the material.**
    `node tools/material.mjs new "<DOCX path>" --slug <slug> --topic <topic-id> --kind teorie --title-ro "…" --title-en "…" --desc-ro "…" --desc-en "…"`
-   - `new` takes the uid from `nextUid` and raises it, adds the material to `data/materials.json`, converts the DOCX to `.work/<name>/ro.html`, saves the source path plus its sha256 in `.work/sources/<uid>.json` (git-ignored, never published) and regenerates the site.
+   - `new` takes the uid from `nextUid` and raises it, adds the material to `data/materials.source.json`, converts the DOCX to `.work/<name>/ro.html`, saves the source path plus its sha256 in `.work/sources/<uid>.json` (git-ignored, never published) and regenerates the site.
    - `--slug` uses lowercase letters, digits and dashes. `--topic` must exist (add a new topic at the end of `topics` first, only if necessary). `--kind` is one of `lectie, teorie, fisa-lucru, fisa-recapitulativa, test, joc, quiz`. `--desc-ro` and `--desc-en` are 70-160 characters each (see "SEO rules").
    - If the clean PDF already exists, pass `--pdf "<PDF path>"` and it is copied to `materiale/pdf/<name>.pdf`.
    - If there is no DOCX (only a PDF), run `new` without the path (or with `-`); `.work/<name>/` is still made, the pages get empty articles and show the title, the PDF button and a note that the material is only available as a PDF.
@@ -115,7 +122,7 @@ The source files are in `D:\Projects\Website-Content\`. Never change them. Put w
    - If a pattern is not found, run `python tools/clean_pdf.py "<PDF path>" --lines` and copy the exact text (dashes and spaces matter).
    - Look at every `.work/<name>/pdf/page-N.png`: correct page count, no class marks, no answers, no cut letters.
    - The "Numele și prenumele … Data" line stays in the PDF (students fill it in). A grade such as `Clasa: a VIII-a` may stay; a class code such as `8E2` may not.
-   - If you did not pass `--pdf` to `new`, set the material's `pdf` field in `data/materials.json` to `"materiale/pdf/<name>.pdf"`.
+   - If you did not pass `--pdf` to `new`, set the material's `pdf` field in `data/materials.source.json` to `"materiale/pdf/<name>.pdf"`.
 5. **Run the generator again.** `node tools/build_pages.mjs` fills the page shells (title, breadcrumb, related materials).
 6. **Check.**
    - `npm test` and `python -m pytest tools -q` must pass.
@@ -130,7 +137,7 @@ The source files are in `D:\Projects\Website-Content\`. Never change them. Put w
 
 1. `node tools/material.mjs list` to find the uid (the `uid`, not the name).
 2. `node tools/material.mjs delete <uid>`
-   - Removes the material from `data/materials.json`, deletes `materiale/<name>.html`, `en/materiale/<name>.html`, `materiale/pdf/<name>.pdf` and `.work/<name>/`, appends `{ "uid", "slug", "removed", "replacedBy": null }` to `retired` and regenerates the site.
+   - Removes the material from `data/materials.source.json`, deletes `materiale/<name>.html`, `en/materiale/<name>.html`, `materiale/pdf/<name>.pdf` and `.work/<name>/`, appends `{ "uid", "slug", "removed", "replacedBy": null }` to `retired` and regenerates the site.
    - The uid is never reused; `list` keeps showing it under RETIRED.
    - Without `--replaced-by` there is no redirect: the old URLs 404.
 3. If the material replaced an earlier copy, delete the old one with
@@ -140,10 +147,18 @@ The source files are in `D:\Projects\Website-Content\`. Never change them. Put w
 
 When the workflow improves, an old material may be worth importing again. A re-import is a **new material with a new uid**: run `new` again on the same source and a fresh `<slug>-<uid>` is created. Nothing is overwritten — not the hand-written article, not the English translation — so no diff is needed.
 
-1. `new` the source again, then write the article as above. In `data/materials.json`, set `"supersedes": <uid of the old copy>` on the new material.
+1. `new` the source again, then write the article as above. In `data/materials.source.json`, set `"supersedes": <uid of the old copy>` on the new material.
 2. The new page is `noindex, follow` until the duplicated copy disappears, so it never competes with the indexable old one.
 3. Delete the old copy: `node tools/material.mjs delete <old uid> --replaced-by <new uid>`. The old URLs 301 to the new one, the `supersedes` marker is cleared from the survivor, and the new page becomes indexable again.
 4. `node tools/material.mjs list` marks the pair `(dup: delete the old copy when ready)` so a re-import waiting for its deletion is easy to spot.
+
+## Hide or schedule a material
+
+- `node tools/material.mjs new … --hidden` creates a hidden material. `new … --visible-from "2026-09-21 08:00"` creates a scheduled one (Romania wall-clock time, whatever the device zone; a spring-gap time like `2027-03-28 03:30` is rejected, an autumn-overlap time like `2026-10-25 03:30` takes the first occurrence).
+- `node tools/material.mjs set <uid> --visible | --hidden | --visible-from "YYYY-MM-DD HH:MM"` changes one material and regenerates the site. Showing a scheduled material early refreshes its `published` to today; showing a hidden one keeps its date; revealing a scheduled one sets `published` to the Romania date of its `visibleFrom`.
+- `node tools/material.mjs reveal --wait-minutes 10` is what the timer runs. `reveal --now <ISO>` fixes the clock for tests.
+- `node tools/material.mjs list` shows each material as visible, hidden, or scheduled with its Romania time.
+- The admin page (`tm25mlg/`, locked by Cloudflare Access with a one-time email code, usable from a phone) lists every material with its state and saves all changes at once through `POST tm25mlg/api/save`, which sends a `repository_dispatch` that `.github/workflows/visibility.yml` applies. The page and the API never hold the admin email addresses; they live only in the Access policy and the `ADMIN_EMAILS` secret. Cloudflare Pages secrets (production and preview): `GITHUB_TOKEN` (fine-grained, Contents read+write on this repo), `ACCESS_TEAM_DOMAIN`, `ACCESS_AUD` (per environment, the AUD tag of that environment's Access application), `ADMIN_EMAILS`, and the plain variable `DATA_BRANCH` (`main` in production, a test branch in preview).
 
 ## Deploy
 
@@ -151,6 +166,7 @@ Cloudflare Pages project `lauramiron` deploys every push to `main` in about 1 mi
 Build settings: preset `None`, build command `node tests/validate.mjs`, output directory `/`. If the validator fails, the deploy stops and the old site stays live.
 A push to another branch gets a preview at `https://<branch>.lauramiron.pages.dev/`.
 GitHub CLI: `C:\Program Files\GitHub CLI\gh.exe` (logged in as `parameciul`).
+The timer and admin saves push to `main` by themselves, so run `git pull` before local work.
 
 1. `npm test` and `python -m pytest tools -q` must pass.
 2. `git add -A`, then `git commit -m "<what changed>"`, then `git push`.

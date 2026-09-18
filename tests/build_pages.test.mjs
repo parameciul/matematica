@@ -74,7 +74,7 @@ function makeRoot(t, { materials, pages } = {}) {
   const data = dataFixture();
   if (materials) data.materials = materials;
   mkdirSync(join(dir, 'data'), { recursive: true });
-  writeFileSync(join(dir, 'data', 'materials.json'), JSON.stringify(data, null, 2));
+  writeFileSync(join(dir, 'data', 'materials.source.json'), JSON.stringify(data, null, 2));
   for (const [file, content] of Object.entries(pages || {})) {
     mkdirSync(join(dir, dirname(file)), { recursive: true });
     writeFileSync(join(dir, file), content);
@@ -134,7 +134,7 @@ test('head escapes & " < in titles and descriptions', (t) => {
   const edited = dataFixture();
   edited.materials[0].title.ro = 'Teorie "avansată" & <modul>';
   edited.materials[0].description.ro = 'Descriere cu <b>etichete</b> & "ghilimele", suficient de lungă pentru testul generatorului.';
-  writeFileSync(join(dir, 'data', 'materials.json'), JSON.stringify(edited, null, 2));
+  writeFileSync(join(dir, 'data', 'materials.source.json'), JSON.stringify(edited, null, 2));
   const page = buildSite(dir).get(`materiale/${mname('teorie-reale')}.html`);
   assert.match(page, /<title>Teorie &quot;avansată&quot; &amp; &lt;modul&gt; – Clasa a IX-a \| Laura Miron<\/title>/);
   assert.doesNotMatch(page, /<title>Teorie "avansată"/);
@@ -254,20 +254,92 @@ test('_redirects 301s aliases and retired names, only files the target has', (t)
   // A retired material with a replacement redirects to the survivor.
   const data = dataFixture();
   data.retired = [{ uid: '1000', slug: 'veche-fisa', removed: '2026-09-01', replacedBy: '1001' }];
-  writeFileSync(join(dir, 'data', 'materials.json'), JSON.stringify(data, null, 2));
+  writeFileSync(join(dir, 'data', 'materials.source.json'), JSON.stringify(data, null, 2));
   const after = buildSite(dir).get('_redirects');
   assert.match(after, /\/materiale\/veche-fisa-1000 \/materiale\/teorie-reale-1001 301/);
   // Without a replacement there is no line: the old URL falls to the 404 page.
   data.retired = [{ uid: '1000', slug: 'veche-fisa', removed: '2026-09-01', replacedBy: null }];
-  writeFileSync(join(dir, 'data', 'materials.json'), JSON.stringify(data, null, 2));
+  writeFileSync(join(dir, 'data', 'materials.source.json'), JSON.stringify(data, null, 2));
   assert.doesNotMatch(buildSite(dir).get('_redirects'), /veche-fisa/);
+});
+
+test('a hidden material is missing from every listing but keeps a noindex page', (t) => {
+  const materials = dataFixture().materials;
+  materials[0].hidden = true;
+  const dir = makeRoot(t, { materials, pages: stdPages() });
+  const site = buildSite(dir);
+  const name = mname('teorie-reale');
+  assert.doesNotMatch(site.get('index.html'), new RegExp(name));
+  assert.doesNotMatch(site.get('en/index.html'), new RegExp(name));
+  assert.doesNotMatch(site.get('clasa-9.html'), new RegExp(name));
+  assert.doesNotMatch(site.get('en/clasa-9.html'), new RegExp(name));
+  const related = site.get(`materiale/${mname('lectie-video')}.html`);
+  assert.doesNotMatch(related, new RegExp(`${name}\\.html`));
+  const pub = JSON.parse(site.get('data/materials.json'));
+  assert.ok(Array.isArray(pub.topics) && Array.isArray(pub.materials));
+  assert.ok(!('nextUid' in pub) && !('retired' in pub));
+  assert.ok(!pub.materials.some((m) => m.uid === UID['teorie-reale']));
+  assert.ok(pub.materials.some((m) => m.uid === UID['lectie-video']));
+  assert.doesNotMatch(site.get('sitemap.xml'), new RegExp(name));
+  assert.doesNotMatch(site.get('_headers'), new RegExp(`${name}\\.pdf`));
+  assert.match(site.get(`materiale/${name}.html`), /noindex, follow/);
+  assert.match(site.get(`en/materiale/${name}.html`), /noindex, follow/);
+  const redirects = site.get('_redirects');
+  assert.match(redirects, new RegExp(`/materiale/${name} /clasa-9 302`));
+  assert.match(redirects, new RegExp(`/materiale/${name}\\.html /clasa-9 302`));
+  assert.match(redirects, new RegExp(`/en/materiale/${name} /en/clasa-9 302`));
+  assert.match(redirects, new RegExp(`/en/materiale/${name}\\.html /en/clasa-9 302`));
+  assert.match(redirects, new RegExp(`/materiale/pdf/${name}\\.pdf /clasa-9 302`));
+  assert.match(redirects, /\/data\/materials\.source\.json \/ 302/);
+});
+
+test('a scheduled material stays hidden even when its time is long past', (t) => {
+  // At build time "has visibleFrom" means "not revealed yet": the generator
+  // never compares visibleFrom with the clock, so the output is deterministic.
+  const materials = dataFixture().materials;
+  materials[1].visibleFrom = '2020-01-15T08:00:00+02:00';
+  const dir = makeRoot(t, { materials, pages: stdPages() });
+  const site = buildSite(dir);
+  const name = mname('lectie-video');
+  assert.doesNotMatch(site.get('index.html'), new RegExp(name));
+  assert.doesNotMatch(site.get('clasa-9.html'), new RegExp(name));
+  assert.ok(!JSON.parse(site.get('data/materials.json')).materials.some((m) => m.uid === UID['lectie-video']));
+  assert.doesNotMatch(site.get('sitemap.xml'), new RegExp(name));
+  assert.match(site.get(`materiale/${name}.html`), /noindex, follow/);
+  assert.deepEqual([...buildSite(dir)], [...buildSite(dir)]);
+});
+
+test('a hidden quiz keeps only Romanian 302 lines and a noindex seo block', (t) => {
+  const materials = dataFixture().materials;
+  materials[2].hidden = true;
+  const dir = makeRoot(t, { materials, pages: stdPages() });
+  const site = buildSite(dir);
+  const name = mname('quiz-recap');
+  const redirects = site.get('_redirects');
+  assert.match(redirects, new RegExp(`/materiale/${name} /clasa-6 302`));
+  assert.match(redirects, new RegExp(`/materiale/${name}\\.html /clasa-6 302`));
+  assert.doesNotMatch(redirects, /en\/materiale\/quiz-recap/);
+  assert.doesNotMatch(redirects, /pdf\/quiz-recap/);
+  assert.match(site.get(`materiale/${name}.html`), /noindex, follow/);
+  assert.doesNotMatch(site.get('sitemap.xml'), new RegExp(name));
+});
+
+test('a topic with no visible material is not shown', (t) => {
+  const materials = dataFixture().materials;
+  materials[0].hidden = true;
+  materials[1].hidden = true;
+  const dir = makeRoot(t, { materials, pages: stdPages() });
+  const site = buildSite(dir);
+  assert.doesNotMatch(site.get('clasa-9.html'), /id="reale"/);
+  assert.match(site.get('clasa-9.html'), /noindex, follow/);
+  assert.doesNotMatch(site.get('sitemap.xml'), /clasa-9/);
 });
 
 test('a supersedes material is noindex on both pages and stays out of the sitemap', (t) => {
   const dir = makeRoot(t, { pages: stdPages() });
   const materials = dataFixture().materials;
   materials[1].supersedes = '1001';
-  writeFileSync(join(dir, 'data', 'materials.json'), JSON.stringify({ nextUid: 1012, retired: [], topics: dataFixture().topics, materials }, null, 2));
+  writeFileSync(join(dir, 'data', 'materials.source.json'), JSON.stringify({ nextUid: 1012, retired: [], topics: dataFixture().topics, materials }, null, 2));
   const site = buildSite(dir);
   const ro = site.get(`materiale/${mname('lectie-video')}.html`);
   const en = site.get(`en/materiale/${mname('lectie-video')}.html`);

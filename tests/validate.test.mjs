@@ -29,7 +29,7 @@ function run(root) {
 }
 
 function editData(dir, fn) {
-  const file = join(dir, 'data', 'materials.json');
+  const file = join(dir, 'data', 'materials.source.json');
   const data = JSON.parse(readFileSync(file, 'utf8'));
   fn(data);
   writeFileSync(file, JSON.stringify(data, null, 2));
@@ -103,7 +103,7 @@ test('a copy with a sample material passes', () => {
 });
 
 test('invalid JSON fails', () => {
-  expectFailure(withSite((dir) => writeFileSync(join(dir, 'data', 'materials.json'), '{')), /not valid JSON/);
+  expectFailure(withSite((dir) => writeFileSync(join(dir, 'data', 'materials.source.json'), '{')), /not valid JSON/);
 });
 
 test('topic grade outside 5-12 fails', () => {
@@ -154,6 +154,66 @@ test('a superseded material whose page is still indexable fails', () => {
   expectFailure(
     withSite((dir) => editData(dir, (d) => { d.materials[0].supersedes = d.materials[1].uid; })),
     /superseded material must be noindex/,
+  );
+});
+
+test('hidden that is not true fails', () => {
+  expectFailure(withSite((dir) => editData(dir, (d) => { sample(d).hidden = 'yes'; })), /hidden must be true/);
+});
+
+test('visibleFrom with a bad shape fails', () => {
+  expectFailure(withSite((dir) => editData(dir, (d) => { sample(d).visibleFrom = '2026-09-21 08:00'; })), /visibleFrom must be/);
+});
+
+test('visibleFrom with the wrong offset fails', () => {
+  expectFailure(withSite((dir) => editData(dir, (d) => { sample(d).visibleFrom = '2026-09-21T08:00:00+02:00'; })), /visibleFrom must be/);
+});
+
+test('visibleFrom in the spring gap fails', () => {
+  expectFailure(withSite((dir) => editData(dir, (d) => { sample(d).visibleFrom = '2027-03-28T03:30:00+03:00'; })), /visibleFrom must be/);
+});
+
+test('hidden and visibleFrom together fail', () => {
+  expectFailure(
+    withSite((dir) => editData(dir, (d) => { sample(d).hidden = true; sample(d).visibleFrom = '2026-09-21T08:00:00+03:00'; })),
+    /never appear together/,
+  );
+});
+
+test('a hidden material whose page is still indexable fails', () => {
+  // The empty-article sample pages are already noindex; hide a real, filled
+  // material instead so its indexable pages trigger the rule.
+  expectFailure(
+    withSite((dir) => editData(dir, (d) => { d.materials[0].hidden = true; })),
+    /not-visible material must be noindex/,
+  );
+});
+
+test('a hidden material without 302 lines fails', () => {
+  expectFailure(
+    withSite((dir) => editData(dir, (d) => { d.materials[0].hidden = true; })),
+    /_redirects: missing/,
+  );
+});
+
+test('a public JSON holding a hidden material fails', () => {
+  expectFailure(
+    withSite((dir) => editData(dir, (d) => { d.materials[0].hidden = true; })),
+    /must not reach the browser/,
+  );
+});
+
+test('_routes.json with another route fails', () => {
+  expectFailure(
+    withSite((dir) => writeFileSync(join(dir, '_routes.json'), JSON.stringify({ version: 1, include: ['/tm25mlg/api/*', '/*'], exclude: [] }))),
+    /include must be exactly/,
+  );
+});
+
+test('a class code on the admin page fails', () => {
+  expectFailure(
+    withSite((dir) => editFile(dir, 'tm25mlg/index.html', (s) => s.replace('Materiale: vizibilitate', 'Materiale 9R2'))),
+    /class code like "9R2"/,
   );
 });
 
@@ -263,11 +323,11 @@ test('missing English material page fails', () => {
 });
 
 test('material page not in the data fails', () => {
-  expectFailure(withSite((dir) => writeFileSync(join(dir, 'materiale', 'extra.html'), '<p>x</p>')), /materiale\/extra\.html: not a <slug>-<uid> name listed in data\/materials\.json/);
+  expectFailure(withSite((dir) => writeFileSync(join(dir, 'materiale', 'extra.html'), '<p>x</p>')), /materiale\/extra\.html: not a <slug>-<uid> name listed in data\/materials\.source\.json/);
 });
 
 test('English material page not in the data fails', () => {
-  expectFailure(withSite((dir) => writeFileSync(join(dir, 'en', 'materiale', 'extra.html'), '<p>x</p>')), /en\/materiale\/extra\.html: not a <slug>-<uid> name listed in data\/materials\.json/);
+  expectFailure(withSite((dir) => writeFileSync(join(dir, 'en', 'materiale', 'extra.html'), '<p>x</p>')), /en\/materiale\/extra\.html: not a <slug>-<uid> name listed in data\/materials\.source\.json/);
 });
 
 test('material page with the wrong data-id fails', () => {

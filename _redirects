@@ -31,3 +31,7 @@
 /materiale/teorie-vectori-geometrie-analitica /materiale/teorie-vectori-geometrie-analitica-1011 301
 /en/materiale/teorie-vectori-geometrie-analitica /en/materiale/teorie-vectori-geometrie-analitica-1011 301
 /materiale/pdf/teorie-vectori-geometrie-analitica.pdf /materiale/pdf/teorie-vectori-geometrie-analitica-1011.pdf 301
+# Not-visible materials (hidden or scheduled): 302 to their grade page.
+# Visibility is resolved at build time, so these lines change only when
+# a material is hidden, scheduled or revealed.
+/data/materials.source.json / 302
