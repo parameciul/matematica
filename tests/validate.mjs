@@ -7,7 +7,7 @@ import { join, dirname, extname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createRequire } from 'node:module';
 import vm from 'node:vm';
-import { buildSite, esc, KATEX_VERSION, ADMIN_FOLDER } from '../tools/build_pages.mjs';
+import { buildSite, esc, KATEX_VERSION, ADMIN_FOLDER, FONTS } from '../tools/build_pages.mjs';
 
 const require = createRequire(import.meta.url);
 const Catalog = require('../assets/js/catalog.js');
@@ -58,6 +58,7 @@ const REQUIRED_FILES = [
   '_routes.json',
   `${ADMIN_FOLDER}/index.html`,
   `${ADMIN_FOLDER}/admin.js`,
+  `${ADMIN_FOLDER}/admin.css`,
   'functions/tm25mlg/api/_middleware.js',
   'functions/tm25mlg/api/materials.js',
   'functions/tm25mlg/api/save.js',
@@ -428,9 +429,28 @@ if (exists('_redirects')) {
   }
 }
 
+// The admin page is written by hand, not by the generator, so its head could
+// drift from the site: it must carry the same theme script and fonts. Without
+// the js class the theme button stays hidden.
+if (exists(`${ADMIN_FOLDER}/index.html`)) {
+  const f = `${ADMIN_FOLDER}/index.html`;
+  const html = read(f);
+  const head = html.slice(0, html.indexOf('</head>'));
+  if (!head.includes("document.documentElement.classList.add('js')")) {
+    fail(`${f}: the head must add the "js" class like the generated pages, or the theme button stays hidden`);
+  }
+  const theme = head.indexOf('matematica.theme');
+  if (theme < 0 || theme > head.indexOf('style.css')) {
+    fail(`${f}: the head must read the saved theme before the stylesheet`);
+  }
+  if (!head.includes(`<link rel="stylesheet" href="${FONTS}">`)) {
+    fail(`${f}: the head must load the site fonts (FONTS in tools/build_pages.mjs)`);
+  }
+}
+
 // Pages and the data files contain no answers and no class marks. The admin
 // page is covered too: it lists every material with its state.
-for (const f of [`${ADMIN_FOLDER}/index.html`, `${ADMIN_FOLDER}/admin.js`]) {
+for (const f of [`${ADMIN_FOLDER}/index.html`, `${ADMIN_FOLDER}/admin.js`, `${ADMIN_FOLDER}/admin.css`]) {
   if (!exists(f)) continue;
   const src = read(f);
   checkClassMarks(f, src);

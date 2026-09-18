@@ -212,7 +212,7 @@ test('_routes.json with another route fails', () => {
 
 test('a class code on the admin page fails', () => {
   expectFailure(
-    withSite((dir) => editFile(dir, 'tm25mlg/index.html', (s) => s.replace('Materiale: vizibilitate', 'Materiale 9R2'))),
+    withSite((dir) => editFile(dir, 'tm25mlg/index.html', (s) => s.replace('Materiale: ce se vede pe site</h1>', 'Materiale 9R2</h1>'))),
     /class code like "9R2"/,
   );
 });
@@ -477,4 +477,17 @@ test('missing search page fails', () => {
 
 test('missing English grade page fails', () => {
   expectFailure(withSite((dir) => unlinkSync(join(dir, 'en', 'clasa-9.html'))), /Missing required file: en\/clasa-9\.html/);
+});
+
+test('an admin page without the site head fails', () => {
+  // Without the js class the theme button stays hidden; without the fonts the
+  // grade numerals and the body text fall back to system fonts.
+  expectFailure(
+    withSite((dir) => editFile(dir, 'tm25mlg/index.html', (s) => s.replace("document.documentElement.classList.add('js');", ''))),
+    /tm25mlg\/index\.html: the head must add the "js" class/,
+  );
+  expectFailure(
+    withSite((dir) => editFile(dir, 'tm25mlg/index.html', (s) => s.replace(/<link rel="stylesheet" href="https:\/\/fonts\.googleapis\.com[^>]*>\n/, ''))),
+    /tm25mlg\/index\.html: the head must load the site fonts/,
+  );
 });

@@ -48,7 +48,7 @@ const KATEX_RENDER = {
   integrity: 'sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz',
 };
 
-const FONTS = 'https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,700;0,800;1,400&family=Caveat:wght@600&display=swap';
+export const FONTS = 'https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,700;0,800;1,400&family=Caveat:wght@600&display=swap';
 export const OG_IMAGE = `${SITE_URL}assets/img/og-image.png`;
 // Profiles for the home page Person JSON-LD. Empty now: no public
 // teacher profiles (school staff page, YouTube channel) exist yet (audit F5).
