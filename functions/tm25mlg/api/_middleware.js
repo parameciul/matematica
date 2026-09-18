@@ -39,9 +39,11 @@ export function clearCertCache() {
   certCache = { at: 0, keys: null };
 }
 
-async function accessCerts(teamDomain, fetchImpl) {
+// fresh: skip the cache. Access rotates its signing keys, so a token signed
+// with a key the cache does not know yet triggers one fresh download.
+async function accessCerts(teamDomain, fetchImpl, fresh) {
   const now = Date.now();
-  if (certCache.keys && now - certCache.at < 5 * 60 * 1000) return certCache.keys;
+  if (!fresh && certCache.keys && now - certCache.at < 5 * 60 * 1000) return certCache.keys;
   const res = await (fetchImpl || fetch)(`https://${teamDomain}/cdn-cgi/access/certs`);
   if (!res.ok) throw new Error(`certs HTTP ${res.status}`);
   const json = await res.json();
@@ -53,7 +55,12 @@ async function accessCerts(teamDomain, fetchImpl) {
 // Checks the Cf-Access-Jwt-Assertion header: RS256 signature, issuer,
 // audience, expiry and admin email. Returns { ok, email? / message? }.
 export async function authorize(request, env, fetchImpl) {
-  const teamDomain = String((env && env.ACCESS_TEAM_DOMAIN) || '').trim();
+  // The team domain may be pasted as "team.cloudflareaccess.com" or as a full
+  // URL with a trailing slash: keep only the host.
+  const teamDomain = String((env && env.ACCESS_TEAM_DOMAIN) || '')
+    .trim()
+    .replace(/^https?:\/\//i, '')
+    .replace(/\/+$/, '');
   const aud = String((env && env.ACCESS_AUD) || '').trim();
   const emails = String((env && env.ADMIN_EMAILS) || '')
     .split(',')
@@ -68,13 +75,16 @@ export async function authorize(request, env, fetchImpl) {
   if (!parsed || !parsed.header || parsed.header.alg !== 'RS256') {
     return { ok: false, message: 'Bad login token' };
   }
-  let keys;
+  const findKey = async (fresh) => {
+    const keys = await accessCerts(teamDomain, fetchImpl, fresh);
+    return keys.find((k) => k && k.kid === parsed.header.kid) || null;
+  };
+  let jwk;
   try {
-    keys = await accessCerts(teamDomain, fetchImpl);
+    jwk = (await findKey(false)) || (await findKey(true));
   } catch (e) {
     return { ok: false, message: 'Cannot check the login token' };
   }
-  const jwk = keys.find((k) => k && k.kid === parsed.header.kid) || null;
   if (!jwk) return { ok: false, message: 'Unknown login key' };
   let key;
   try {

@@ -149,6 +149,28 @@ test('an unknown key and a wrong algorithm fail', async () => {
   assert.match(alg.message, /Bad login token/);
 });
 
+test('the team domain may be pasted as a full URL', async () => {
+  clearCertCache();
+  const env = { ...ENV, ACCESS_TEAM_DOMAIN: `https://${TEAM}/` };
+  const res = await authorize(requestWith(await tokenFor({})), env, certsFetch());
+  assert.deepEqual(res, { ok: true, email: 'ana@example.ro' });
+});
+
+test('a new signing key is fetched again instead of waiting for the cache', async () => {
+  clearCertCache();
+  let calls = 0;
+  const rotating = async () => {
+    calls += 1;
+    const { pub } = await testKeys();
+    // The first answer holds only an old key; Access then rotates to the test key.
+    const keys = calls === 1 ? [{ ...pub, kid: 'old-key' }] : [pub];
+    return { ok: true, json: async () => ({ keys }) };
+  };
+  const res = await authorize(requestWith(await tokenFor({})), ENV, rotating);
+  assert.deepEqual(res, { ok: true, email: 'ana@example.ro' });
+  assert.equal(calls, 2);
+});
+
 test('missing secrets refuse everything', async () => {
   const res = await authorize(requestWith('x.y.z'), {}, certsFetch());
   assert.equal(res.ok, false);
@@ -196,6 +218,9 @@ test('save builds the right dispatch request', async () => {
   assert.equal(seen.url, 'https://api.github.com/repos/parameciul/matematica/dispatches');
   assert.equal(seen.opts.method, 'POST');
   assert.match(seen.opts.headers.Authorization, /^Bearer /);
+  // GitHub answers 403 to a request without a User-Agent, and the Workers
+  // fetch sends none by itself.
+  assert.ok(seen.opts.headers['User-Agent'], 'a User-Agent header is set');
   const body = JSON.parse(seen.opts.body);
   assert.equal(body.event_type, 'material-visibility');
   assert.deepEqual(body.client_payload, { changes, branch: 'main' });
@@ -254,6 +279,7 @@ test('materials returns the fresh source file of the data branch', async () => {
   const fakeFetch = async (url, opts) => {
     assert.match(url, /contents\/data\/materials\.source\.json\?ref=main/);
     assert.match(opts.headers.Authorization, /^Bearer /);
+    assert.ok(opts.headers['User-Agent'], 'a User-Agent header is set');
     return { ok: true, json: async () => ({ content: Buffer.from(source, 'utf8').toString('base64') }) };
   };
   const res = await fetchSource(ENV, fakeFetch);

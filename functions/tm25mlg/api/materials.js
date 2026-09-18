@@ -2,6 +2,7 @@
 // branch, straight from the GitHub contents API. Never the deployed copy,
 // which can lag by a minute. Plain JavaScript, no npm dependencies.
 const REPO = 'parameciul/matematica';
+const USER_AGENT = 'lauramiron-admin';
 const SOURCE_PATH = 'data/materials.source.json';
 
 function b64ToText(b64) {
@@ -24,6 +25,9 @@ export async function fetchSource(env, fetchImpl) {
         Accept: 'application/vnd.github+json',
         Authorization: `Bearer ${token}`,
         'X-GitHub-Api-Version': '2022-11-28',
+        // GitHub answers 403 to a request without a User-Agent, and the
+        // Workers fetch sends none by itself.
+        'User-Agent': USER_AGENT,
       },
     });
   } catch (e) {

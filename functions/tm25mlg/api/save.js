@@ -4,6 +4,7 @@
 // Action checks everything again against the real data. Plain JavaScript,
 // no npm dependencies.
 const REPO = 'parameciul/matematica';
+const USER_AGENT = 'lauramiron-admin';
 const UID_RE = /^[1-9][0-9]{3,}$/;
 const VISIBLE_FROM_RE = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:00[+-]\d{2}:\d{2}$/;
 const STATES = ['visible', 'hidden', 'scheduled'];
@@ -36,6 +37,9 @@ export async function sendDispatch(env, changes, branch, fetchImpl) {
         Authorization: `Bearer ${token}`,
         'Content-Type': 'application/json',
         'X-GitHub-Api-Version': '2022-11-28',
+        // GitHub answers 403 to a request without a User-Agent, and the
+        // Workers fetch sends none by itself.
+        'User-Agent': USER_AGENT,
       },
       body: JSON.stringify({
         event_type: 'material-visibility',
