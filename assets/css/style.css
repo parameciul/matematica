@@ -99,6 +99,10 @@
 
 html {
   -webkit-text-size-adjust: 100%;
+  /* Keep the centered page (and its red margin line) in the same place whether
+     or not the page is long enough to scroll: without this, the vertical
+     scrollbar appearing on long pages shifts .wrap sideways on desktop. */
+  scrollbar-gutter: stable;
 }
 
 body {
