@@ -118,8 +118,14 @@
       + '</div>'
       + '<div class="admin-controls">'
       + `<label class="admin-check"><input type="checkbox" data-visible${row.checked ? ' checked' : ''}> Vizibil</label>`
-      + `<label class="admin-when"><span>Apare singur la</span><input type="datetime-local" step="60" data-when value="${esc(row.when)}"></label>`
-      + `<button class="chip" type="button" data-clear${row.when ? '' : ' hidden'}>Șterge data</button>`
+      + '<div class="admin-when">'
+      + `<label for="when-${esc(uid)}">Apare singur la</label>`
+      // The date and its clear button stay on one line.
+      + '<span class="admin-when-field">'
+      + `<input id="when-${esc(uid)}" type="datetime-local" step="60" data-when value="${esc(row.when)}">`
+      + `<button class="chip" type="button" data-clear${row.when ? '' : ' disabled'}>Șterge data</button>`
+      + '</span>'
+      + '</div>'
       + '</div>'
       + '<p class="admin-row-note" data-row-note hidden></p>'
       + '</div>'
@@ -213,7 +219,8 @@
     var next = el.querySelector('[data-next]');
     var note = el.querySelector('[data-row-note]');
     var dirty = isDirty(row);
-    el.querySelector('[data-clear]').hidden = !row.when;
+    // Always there, so the rows keep one layout; usable only with a date.
+    el.querySelector('[data-clear]').disabled = busy || !row.when;
     if (dirty) el.setAttribute('data-dirty', '');
     else el.removeAttribute('data-dirty');
     next.hidden = !dirty;
@@ -373,6 +380,11 @@
     listEl.querySelectorAll('input, button').forEach(function (control) {
       control.disabled = on;
     });
+    if (!on) {
+      rows.forEach(function (_row, uid) {
+        refreshRow(uid);
+      });
+    }
   }
 
   function stopPolling() {
