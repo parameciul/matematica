@@ -316,10 +316,11 @@ function cmdApply({ flags }) {
   for (const change of changes) applyState(findLive(d, change.uid), change);
   save(d);
   writeSite(ROOT);
+  // The workflow uses this line as the commit message, e.g.
+  // "Admin: hide 1004, schedule 1012 for 2026-09-21 08:00".
   const summary = changes.map((c) => {
-    const m = findLive(d, c.uid);
-    const state = Visibility.stateOf(m);
-    return `${c.uid} ${state === 'scheduled' ? `for ${Visibility.formatRoTime(m.visibleFrom)}` : state}`;
+    if (c.state === 'scheduled') return `schedule ${c.uid} for ${Visibility.formatWall(c.visibleFrom)}`;
+    return `${c.state === 'hidden' ? 'hide' : 'show'} ${c.uid}`;
   }).join(', ');
   console.log(`Admin: ${summary || 'no changes'}`);
 }
@@ -341,7 +342,7 @@ async function cmdReveal({ flags }) {
       if (m.visibleFrom === undefined || m.visibleFrom === null) continue;
       const atMs = Visibility.visibleFromMs(m.visibleFrom);
       if (Number.isNaN(atMs) || atMs > at) continue;
-      const when = Visibility.formatRoTime(m.visibleFrom);
+      const when = Visibility.formatWall(m.visibleFrom);
       const roDate = Visibility.roDateOfVisibleFrom(m.visibleFrom);
       delete m.visibleFrom;
       // A scheduled material shows with the Romania date of its visibleFrom.
@@ -372,6 +373,7 @@ async function cmdReveal({ flags }) {
   }
   save(d);
   writeSite(ROOT);
+  // The workflow uses these lines in the commit message.
   for (const r of revealed) console.log(`Show material ${r.uid} (scheduled ${r.when})`);
 }
 

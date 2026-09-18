@@ -193,6 +193,8 @@ test('apply writes everything or nothing', (t) => {
     process.env.MAT_TEST_OK = JSON.stringify({ changes: [{ uid: a, state: 'hidden' }, { uid: b, state: 'scheduled', visibleFrom: '2030-09-21T08:00:00+03:00' }], branch: 'main' });
     const ok = run(dir, ['apply', '--from-env', 'MAT_TEST_OK']);
     assert.equal(ok.code, 0, ok.out);
+    // The workflow uses this line as the commit message.
+    assert.match(ok.out, new RegExp(`^Admin: hide ${a}, schedule ${b} for 2030-09-21 08:00$`, 'm'));
     assert.equal(readData(dir).materials[0].hidden, true);
     assert.equal(readData(dir).materials[1].visibleFrom, '2030-09-21T08:00:00+03:00');
   } finally {
@@ -212,7 +214,8 @@ test('reveal shows due materials with the Romania date of their time', (t) => {
   assert.equal(readData(dir).materials[0].visibleFrom, '2030-01-15T08:00:00+02:00');
   const due = run(dir, ['reveal', '--now', '2030-01-15T06:00:01Z']);
   assert.equal(due.code, 0, due.out);
-  assert.match(due.out, new RegExp(`Show material ${uid}`));
+  // The workflow uses this line in the commit message.
+  assert.match(due.out, new RegExp(`^Show material ${uid} \\(scheduled 2030-01-15 08:00\\)$`, 'm'));
   const m = readData(dir).materials[0];
   assert.ok(!('visibleFrom' in m));
   assert.equal(m.published, '2030-01-15');

@@ -77,6 +77,8 @@ test('a device in another time zone gives the same result', () => {
 test('Romania date helpers read the wall part, not the device zone', () => {
   assert.equal(V.roDateOfVisibleFrom('2026-09-21T08:00:00+03:00'), '2026-09-21');
   assert.equal(V.formatRoTime('2026-09-21T08:00:00+03:00'), '21.09.2026 08:00');
+  assert.equal(V.formatWall('2026-10-25T03:30:00+03:00'), '2026-10-25 03:30');
+  assert.equal(V.formatWall('not a time'), '');
   assert.equal(V.visibleFromToInput('2026-09-21T08:00:00+03:00'), '2026-09-21T08:00');
   assert.equal(V.roDateOfVisibleFrom('nope'), null);
 });

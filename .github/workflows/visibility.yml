@@ -53,6 +53,14 @@ jobs:
             ""|"main") BRANCH="main" ;;
           esac
           echo "branch=$BRANCH" >> "$GITHUB_OUTPUT"
+          # Only the timer waits for a material due in the next 10 minutes.
+          # An admin save must not sit waiting, and a manual run before a
+          # material's time must change nothing.
+          if [ "$EVENT" = "schedule" ]; then
+            echo "reveal=--wait-minutes 10" >> "$GITHUB_OUTPUT"
+          else
+            echo "reveal=" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Check out the branch
         uses: actions/checkout@v6
@@ -65,16 +73,24 @@ jobs:
         with:
           node-version: 24
 
+      # The logs go to the runner's temp folder, never into the checkout: a
+      # stray file there would be committed and start a build for nothing.
       - name: Apply the admin save
         if: github.event_name == 'repository_dispatch'
-        run: node tools/material.mjs apply --from-env PAYLOAD | tee apply.log
+        run: |
+          set -o pipefail
+          node tools/material.mjs apply --from-env PAYLOAD | tee "$RUNNER_TEMP/apply.log"
         env:
           # The payload reaches the script through an environment variable,
           # never through string interpolation in the shell.
           PAYLOAD: ${{ toJson(github.event.client_payload) }}
 
       - name: Reveal due materials
-        run: node tools/material.mjs reveal --wait-minutes 10 | tee reveal.log
+        env:
+          REVEAL_ARGS: ${{ steps.pick.outputs.reveal }}
+        run: |
+          set -o pipefail
+          node tools/material.mjs reveal $REVEAL_ARGS | tee "$RUNNER_TEMP/reveal.log"
 
       - name: Run the checks
         run: npm test
@@ -83,17 +99,21 @@ jobs:
         env:
           EVENT: ${{ github.event_name }}
           BRANCH: ${{ steps.pick.outputs.branch }}
+          REVEAL_ARGS: ${{ steps.pick.outputs.reveal }}
           # The payload reaches the script through an environment variable,
           # never through string interpolation in the shell.
           PAYLOAD: ${{ toJson(github.event.client_payload) }}
         run: |
+          set -o pipefail
+          APPLY_LOG="$RUNNER_TEMP/apply.log"
+          REVEAL_LOG="$RUNNER_TEMP/reveal.log"
           build_msg() {
             MSG=""
-            if [ -f apply.log ]; then
-              MSG="$(grep '^Admin:' apply.log | head -1)"
+            if [ -f "$APPLY_LOG" ]; then
+              MSG="$(grep '^Admin:' "$APPLY_LOG" | head -1 || true)"
             fi
-            if [ -f reveal.log ]; then
-              SHOWS="$(grep '^Show material' reveal.log || true)"
+            if [ -f "$REVEAL_LOG" ]; then
+              SHOWS="$(grep '^Show material' "$REVEAL_LOG" || true)"
               if [ -n "$SHOWS" ]; then
                 SHOWS="$(echo "$SHOWS" | tr '\n' ';' | sed 's/;$//; s/;/; /g')"
                 MSG="${MSG:+$MSG; }$SHOWS"
@@ -113,12 +133,12 @@ jobs:
               # idempotent, so a re-run is safe.
               git fetch origin "$BRANCH"
               git reset --hard "origin/$BRANCH"
-              rm -f apply.log reveal.log
+              rm -f "$APPLY_LOG" "$REVEAL_LOG"
               if [ "$EVENT" = "repository_dispatch" ]; then
-                node tools/material.mjs apply --from-env PAYLOAD | tee apply.log
+                node tools/material.mjs apply --from-env PAYLOAD | tee "$APPLY_LOG" || return 1
               fi
-              node tools/material.mjs reveal --wait-minutes 10 | tee reveal.log
-              npm test
+              node tools/material.mjs reveal $REVEAL_ARGS | tee "$REVEAL_LOG" || return 1
+              npm test || return 1
               git add -A
               if ! git status --short | grep -q .; then
                 return 0

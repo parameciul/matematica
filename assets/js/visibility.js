@@ -147,6 +147,14 @@
     return `${m[3]}.${m[2]}.${m[1]} ${m[4]}:${m[5]}`;
   }
 
+  // "2026-09-21T08:00:00+03:00" -> "2026-09-21 08:00", the Romania wall-clock
+  // form the CLI takes, for commit messages and logs.
+  function formatWall(value) {
+    const m = VISIBLE_FROM_RE.exec(String(value || ''));
+    if (!m) return '';
+    return `${m[1]}-${m[2]}-${m[3]} ${m[4]}:${m[5]}`;
+  }
+
   // "2026-09-21T08:00:00+03:00" -> "2026-09-21T08:00" for <input type="datetime-local">.
   function visibleFromToInput(value) {
     const m = VISIBLE_FROM_RE.exec(String(value || ''));
@@ -202,6 +210,7 @@
     todayInRomania,
     roDateOfVisibleFrom,
     formatRoTime,
+    formatWall,
     visibleFromToInput,
     stateOf,
     isVisible,
