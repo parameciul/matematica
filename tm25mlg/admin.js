@@ -1,142 +1,197 @@
 // Admin page: every material with its state, in one place. Changes stay on
 // the page until Salvează sends them all at once, so one save costs one
-// build. Romanian UI, no dependencies besides window.Visibility.
+// build. Romanian UI. The state and Romania-time rules live in the DOM-free
+// window.Visibility (assets/js/visibility.js); the list reuses the site's
+// labels and styles through window.Site and window.Catalog.
 (function () {
   'use strict';
 
   var V = window.Visibility;
-  var ROMAN = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII'];
-  var KIND = {
-    lectie: 'Lecție',
-    teorie: 'Teorie',
-    'fisa-lucru': 'Fișă de lucru',
-    'fisa-recapitulativa': 'Fișă recapitulativă',
-    test: 'Test',
-    joc: 'Joc',
-    quiz: 'Quiz',
-  };
   var POLL_EVERY = 20000;
   var POLL_FOR = 5 * 60 * 1000;
+
+  // The API sits in this page's folder (<folder>/api/). The URL is built from
+  // the path, so "/tm25mlg" without its trailing slash still reaches it.
+  var PAGE_DIR = location.pathname.replace(/\/index\.html$/, '').replace(/\/?$/, '/');
+  var API = PAGE_DIR + 'api/';
+  // The local preview (python -m http.server) has no Functions: the list then
+  // comes read-only from the source file on disk.
+  var IS_LOCAL = /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname);
+  var LOCAL_SOURCE = PAGE_DIR + '../data/materials.source.json';
 
   var listEl = document.getElementById('admin-list');
   var searchEl = document.getElementById('admin-search');
   var filterEl = document.getElementById('admin-filter');
+  var countEl = document.getElementById('admin-count');
   var saveEl = document.getElementById('admin-save');
+  var resetEl = document.getElementById('admin-reset');
   var statusEl = document.getElementById('admin-status');
 
-  // uid -> { state, visibleFrom }. The last saved state, from the API.
-  var originals = new Map();
-  // uid -> { slug, title, kind, grade, topicTitle } for rendering and search.
-  var metas = new Map();
+  // uid -> { m, topic, orig: { state, visibleFrom }, checked, when }.
+  // orig is the last saved state; checked and when are what the row says now.
+  var rows = new Map();
+  // The topics in data-file order, for the same tie order as the grade pages.
+  var topicOrder = [];
+  var readOnly = false;
+  var busy = false;
   var pollTimer = null;
-  // True when the list came from the local source file instead of the API:
-  // the local preview has no Functions, so saving stays disabled there.
-  var localMode = false;
-
-  function norm(s) {
-    return String(s || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
-  }
 
   function esc(s) {
-    return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    return window.Shell.escapeHtml(s == null ? '' : s);
   }
 
-  function gradeName(grade) {
-    return `Clasa a ${ROMAN[grade]}-a`;
+  function status(text, kind) {
+    statusEl.textContent = text;
+    if (kind) statusEl.setAttribute('data-kind', kind);
+    else statusEl.removeAttribute('data-kind');
   }
 
-  function chipText(state, visibleFrom) {
-    if (state === 'hidden') return 'Ascuns';
-    if (state === 'scheduled') return `Programat: ${V.formatRoTime(visibleFrom)}`;
+  function stateLabel(s) {
+    if (s.state === 'hidden') return 'Ascuns';
+    if (s.state === 'scheduled') return `Programat: ${V.formatRoTime(s.visibleFrom)}`;
     return 'Vizibil';
   }
 
-  function status(text) {
-    statusEl.textContent = text;
+  // "1 modificare", "5 modificări", "20 de modificări".
+  function changesLabel(n) {
+    if (n === 1) return '1 modificare';
+    var rest = n % 100;
+    return rest === 0 || rest >= 20 ? `${n} de modificări` : `${n} modificări`;
   }
 
-  function rowOf(uid) {
-    return listEl.querySelector(`.admin-row[data-uid="${uid}"]`);
+  function wanted(row) {
+    return V.rowChange(row.checked, row.when);
   }
 
-  // What the row controls say now: a set date means scheduled, otherwise the
-  // checkbox decides between visible and hidden.
-  function desired(uid) {
-    var row = rowOf(uid);
-    var when = row.querySelector('[data-when]').value.trim();
-    if (when) {
-      var iso = V.wallToVisibleFrom(when);
-      if (!iso) return { error: 'Data nu este un moment real din România. Verifică ziua și ora.' };
-      return { state: 'scheduled', visibleFrom: iso };
-    }
-    return row.querySelector('[data-visible]').checked ? { state: 'visible' } : { state: 'hidden' };
+  function isDirty(row) {
+    var found = wanted(row);
+    return !found.error && !V.isSameState(found, row.orig);
   }
 
-  function collectChanges() {
+  function pendingChanges() {
     var changes = [];
-    var errors = [];
-    originals.forEach(function (orig, uid) {
-      var found = desired(uid);
+    var errors = 0;
+    rows.forEach(function (row, uid) {
+      var found = wanted(row);
       if (found.error) {
-        errors.push(found.error);
+        errors += 1;
         return;
       }
-      var was = orig.visibleFrom || null;
-      var now = found.visibleFrom || null;
-      if (found.state !== orig.state || now !== was) {
-        var change = { uid, state: found.state };
-        if (found.visibleFrom) change.visibleFrom = found.visibleFrom;
-        changes.push(change);
-      }
+      if (V.isSameState(found, row.orig)) return;
+      var change = { uid: uid, state: found.state };
+      if (found.visibleFrom) change.visibleFrom = found.visibleFrom;
+      changes.push(change);
     });
-    return { changes, errors };
+    return { changes: changes, errors: errors };
   }
 
-  function showRowErrors(bad) {
-    originals.forEach(function (_orig, uid) {
-      var row = rowOf(uid);
-      if (!row) return;
-      var note = row.querySelector('[data-row-error]');
-      var found = bad ? desired(uid) : null;
-      if (found && found.error) {
-        note.textContent = found.error;
-        note.hidden = false;
-      } else {
-        note.textContent = '';
-        note.hidden = true;
-      }
-    });
+  // --- Rendering -----------------------------------------------------------
+
+  function searchText(row) {
+    var m = row.m;
+    return window.Catalog.normalize([
+      m.title && m.title.ro, m.title && m.title.en, m.slug, m.uid,
+      row.topic.title && row.topic.title.ro, window.Site.gradeName(row.topic.grade),
+      window.Site.kindLabel(m.kind), stateLabel(row.orig),
+    ].join(' '));
   }
 
-  function refreshSave() {
-    var found = collectChanges();
-    showRowErrors(found.errors.length > 0);
-    if (found.errors.length) {
-      saveEl.disabled = true;
-      saveEl.textContent = 'Salvează';
-      return;
-    }
-    var n = found.changes.length;
-    saveEl.disabled = n === 0;
-    saveEl.textContent = n === 0 ? 'Salvează' : `Salvează (${n} modificări)`;
+  function rowHtml(uid, row) {
+    var m = row.m;
+    var group = window.Catalog.groupOf(m.kind);
+    var title = (m.title && m.title.ro) || m.slug;
+    // Only a visible material has a page to open: the others 302 to their grade page.
+    var titleHtml = row.orig.state === 'visible'
+      ? `<a class="m-title" href="${esc(window.Site.materialUrl(m))}" target="_blank" rel="noopener">${esc(title)}</a>`
+      : `<span class="m-title">${esc(title)}</span>`;
+    return `<li class="m-row admin-row" data-uid="${esc(uid)}">`
+      + '<div class="admin-item">'
+      + `<span class="m-badges"><span class="badge badge-${esc(group)}">${esc(window.Site.kindLabel(m.kind))}</span></span>`
+      + '<div class="admin-main">'
+      + titleHtml
+      + '<span class="m-meta">'
+      + `<span class="admin-state" data-state="${esc(row.orig.state)}">${esc(stateLabel(row.orig))}</span>`
+      + '<span class="admin-next" data-next hidden></span>'
+      + `<span>cod ${esc(uid)}</span>`
+      + `<time class="m-date" datetime="${esc(m.published)}">${esc(window.Site.formatDate(m.published))}</time>`
+      + '</span>'
+      + '</div>'
+      + '<div class="admin-controls">'
+      + `<label class="admin-check"><input type="checkbox" data-visible${row.checked ? ' checked' : ''}> Vizibil</label>`
+      + `<label class="admin-when"><span>Apare singur la</span><input type="datetime-local" step="60" data-when value="${esc(row.when)}"></label>`
+      + `<button class="chip" type="button" data-clear${row.when ? '' : ' hidden'}>Șterge data</button>`
+      + '</div>'
+      + '<p class="admin-row-note" data-row-note hidden></p>'
+      + '</div>'
+      + '</li>';
   }
 
-  function applyView() {
-    var q = norm(searchEl.value);
+  // Grades in order, then topics and materials, newest first. The first
+  // grade block is open. The search and the filter pick rows by the saved
+  // state, so a row never vanishes while it is being edited.
+  function renderList() {
+    var q = window.Catalog.normalize(searchEl.value.trim());
     var only = selectedFilter();
-    listEl.querySelectorAll('.admin-row').forEach(function (row) {
-      var hitQ = !q || norm(row.getAttribute('data-search')).includes(q);
-      var hitF = !only || row.getAttribute('data-state') === only;
-      row.hidden = !(hitQ && hitF);
+    var byGrade = new Map();
+    var shown = 0;
+    rows.forEach(function (row, uid) {
+      if (only && row.orig.state !== only) return;
+      if (q && !searchText(row).includes(q)) return;
+      shown += 1;
+      var grade = row.topic.grade;
+      if (!byGrade.has(grade)) byGrade.set(grade, []);
+      byGrade.get(grade).push(uid);
     });
-    listEl.querySelectorAll('[data-topic]').forEach(function (section) {
-      var any = Array.from(section.querySelectorAll('.admin-row')).some((r) => !r.hidden);
-      section.hidden = !any;
+    // Newest first, like the grade pages: the sort is stable, so equal dates
+    // keep their order in the data file.
+    var newestFirst = function (a, b) {
+      if (a.date === b.date) return 0;
+      return a.date < b.date ? 1 : -1;
+    };
+    var html = '';
+    var first = true;
+    Array.from(byGrade.keys()).sort(function (a, b) { return a - b; }).forEach(function (grade) {
+      var uids = byGrade.get(grade);
+      var byTopic = new Map();
+      topicOrder.forEach(function (topic) {
+        if (topic.grade === grade) byTopic.set(topic.id, { topic: topic, uids: [] });
+      });
+      uids.forEach(function (uid) {
+        byTopic.get(rows.get(uid).topic.id).uids.push(uid);
+      });
+      var entries = Array.from(byTopic.values())
+        .filter(function (entry) { return entry.uids.length; })
+        .map(function (entry) {
+          var sorted = entry.uids
+            .map(function (uid) { return { uid: uid, date: rows.get(uid).m.published }; })
+            .sort(newestFirst);
+          return { topic: entry.topic, uids: sorted.map(function (x) { return x.uid; }), date: sorted[0].date };
+        })
+        .sort(newestFirst);
+      // With a search or a filter, every matching grade opens.
+      var open = first || q || only;
+      first = false;
+      html += `<details class="year admin-grade"${open ? ' open' : ''}>`
+        + `<summary><h2>${esc(window.Site.gradeName(grade))}</h2>`
+        + `<span class="admin-grade-count">${esc(window.Site.countLabel(uids.length))}</span></summary>`;
+      entries.forEach(function (entry) {
+        html += '<section class="topic">'
+          + `<h3 class="topic-title">${esc((entry.topic.title && entry.topic.title.ro) || entry.topic.id)}</h3>`
+          + '<ul class="material-list">';
+        entry.uids.forEach(function (uid) {
+          html += rowHtml(uid, rows.get(uid));
+        });
+        html += '</ul></section>';
+      });
+      html += '</details>';
     });
-    listEl.querySelectorAll('details.grade').forEach(function (block) {
-      var any = Array.from(block.querySelectorAll('.admin-row')).some((r) => !r.hidden);
-      block.hidden = !any;
+    listEl.innerHTML = html || '<p class="message">Niciun material nu se potrivește.</p>';
+    listEl.removeAttribute('aria-busy');
+    countEl.textContent = shown ? window.Site.plural(shown, 'count') : '';
+    rows.forEach(function (_row, uid) {
+      refreshRow(uid);
     });
+    refreshSave();
   }
 
   function selectedFilter() {
@@ -144,100 +199,148 @@
     return active ? active.getAttribute('data-filter') : '';
   }
 
-  function rowHtml(uid, meta, orig) {
-    var chip = chipText(orig.state, orig.visibleFrom);
-    var when = orig.state === 'scheduled' ? V.visibleFromToInput(orig.visibleFrom) : '';
-    var open = orig.state === 'visible'
-      ? `<a href="../materiale/${meta.slug}-${uid}.html" target="_blank" rel="noopener">Deschide</a>`
-      : '';
-    var search = `${meta.title} ${uid} ${meta.topicTitle} ${gradeName(meta.grade)} ${KIND[meta.kind] || meta.kind}`;
-    return `<div class="admin-row" data-uid="${uid}" data-state="${orig.state}" data-search="${esc(search)}">`
-      + `<div class="row-top"><span class="row-title">${esc(meta.title)}</span>`
-      + `<span class="badge">${esc(KIND[meta.kind] || meta.kind)}</span>`
-      + `<span class="state state-${orig.state}">${esc(chip)}</span>`
-      + `<span class="row-uid">cod ${uid}</span>${open}</div>`
-      + `<div class="row-controls"><label><input type="checkbox" data-visible${orig.state === 'visible' ? ' checked' : ''}> Vizibil</label>`
-      + `<label>Afișează de la <input type="datetime-local" step="60" data-when value="${esc(when)}"></label>`
-      + `<button class="chip" type="button" data-clear>Șterge data</button></div>`
-      + `<p class="note" data-row-error hidden></p></div>`;
+  function rowEl(uid) {
+    return listEl.querySelector(`.admin-row[data-uid="${uid}"]`);
   }
 
-  function render(data) {
-    var topics = new Map((data.topics || []).map((t) => [t.id, t]));
-    originals = new Map();
-    metas = new Map();
+  // The pending state and the note of one row, updated in place so the
+  // control keeps its focus.
+  function refreshRow(uid) {
+    var el = rowEl(uid);
+    if (!el) return;
+    var row = rows.get(uid);
+    var found = wanted(row);
+    var next = el.querySelector('[data-next]');
+    var note = el.querySelector('[data-row-note]');
+    var dirty = isDirty(row);
+    el.querySelector('[data-clear]').hidden = !row.when;
+    if (dirty) el.setAttribute('data-dirty', '');
+    else el.removeAttribute('data-dirty');
+    next.hidden = !dirty;
+    next.textContent = dirty ? `→ ${stateLabel(found)}` : '';
+    note.hidden = true;
+    note.removeAttribute('data-kind');
+    if (found.error) {
+      note.textContent = found.error;
+      note.setAttribute('data-kind', 'error');
+      note.hidden = false;
+    } else if (dirty && found.state === 'scheduled' && V.visibleFromMs(found.visibleFrom) <= Date.now()) {
+      note.textContent = 'Ora a trecut deja: materialul apare imediat după salvare.';
+      note.hidden = false;
+    }
+  }
+
+  function refreshSave() {
+    var found = pendingChanges();
+    var n = found.changes.length;
+    saveEl.textContent = n ? `Salvează (${changesLabel(n)})` : 'Salvează';
+    saveEl.disabled = busy || readOnly || n === 0 || found.errors > 0;
+    resetEl.hidden = busy || (n === 0 && found.errors === 0);
+    if (busy) return;
+    if (found.errors) status('Un rând are o oră care nu există. Corectează-l ca să poți salva.', 'error');
+    else if (readOnly) status('Previzualizare locală: poți încerca butoanele, dar salvarea merge doar pe site.');
+    else if (n) status('Modificările nu sunt salvate încă.');
+    else status('Totul este salvat.');
+  }
+
+  // --- Row controls --------------------------------------------------------
+
+  function onRowInput(event) {
+    var target = event.target;
+    var el = target.closest('.admin-row');
+    if (!el || busy) return;
+    var uid = el.getAttribute('data-uid');
+    var row = rows.get(uid);
+    var box = el.querySelector('[data-visible]');
+    var when = el.querySelector('[data-when]');
+    if (target === box) {
+      // Visible now wins over a date: the material shows at the next save.
+      row.checked = box.checked;
+      if (box.checked) {
+        row.when = '';
+        when.value = '';
+      }
+    } else if (target === when) {
+      row.when = when.value;
+      // A date means "hidden until then".
+      if (row.when) {
+        row.checked = false;
+        box.checked = false;
+      }
+    } else {
+      return;
+    }
+    refreshRow(uid);
+    refreshSave();
+  }
+
+  function onRowClick(event) {
+    var btn = event.target.closest('[data-clear]');
+    if (!btn || busy) return;
+    var el = btn.closest('.admin-row');
+    var uid = el.getAttribute('data-uid');
+    var row = rows.get(uid);
+    row.when = '';
+    el.querySelector('[data-when]').value = '';
+    // Without a date, a visible material stays visible and any other one stays hidden.
+    row.checked = row.orig.state === 'visible';
+    el.querySelector('[data-visible]').checked = row.checked;
+    refreshRow(uid);
+    refreshSave();
+  }
+
+  // --- Data ----------------------------------------------------------------
+
+  function setData(data) {
+    topicOrder = data.topics || [];
+    var topics = new Map(topicOrder.map(function (t) { return [t.id, t]; }));
+    rows = new Map();
     (data.materials || []).forEach(function (m) {
       var topic = topics.get(m.topic);
       if (!topic) return;
-      originals.set(m.uid, {
-        state: V.stateOf(m),
-        visibleFrom: m.visibleFrom || null,
-      });
-      metas.set(m.uid, {
-        slug: m.slug,
-        title: (m.title && m.title.ro) || m.slug,
-        kind: m.kind,
-        grade: topic.grade,
-        topicTitle: (topic.title && topic.title.ro) || m.topic,
-        published: m.published || '',
+      var orig = { state: V.stateOf(m), visibleFrom: m.visibleFrom || null };
+      rows.set(m.uid, {
+        m: m,
+        topic: topic,
+        orig: orig,
+        checked: orig.state === 'visible',
+        when: orig.state === 'scheduled' ? V.visibleFromToInput(orig.visibleFrom) : '',
       });
     });
-    var byGrade = new Map();
-    metas.forEach(function (meta, uid) {
-      if (!byGrade.has(meta.grade)) byGrade.set(meta.grade, []);
-      byGrade.get(meta.grade).push(uid);
-    });
-    var grades = Array.from(byGrade.keys()).sort((a, b) => a - b);
-    var html = '';
-    var first = true;
-    grades.forEach(function (grade) {
-      var uids = byGrade.get(grade).sort((a, b) => {
-        var pa = metas.get(a).published;
-        var pb = metas.get(b).published;
-        if (pa === pb) return Number(b) - Number(a);
-        return pa < pb ? 1 : -1;
-      });
-      var byTopic = new Map();
-      uids.forEach(function (uid) {
-        var meta = metas.get(uid);
-        if (!byTopic.has(meta.topicTitle)) byTopic.set(meta.topicTitle, []);
-        byTopic.get(meta.topicTitle).push(uid);
-      });
-      html += `<details class="grade"${first ? ' open' : ''}><summary><h2>${esc(gradeName(grade))}</h2></summary>`;
-      first = false;
-      byTopic.forEach(function (topicUids, topicTitle) {
-        html += `<section data-topic><h3>${esc(topicTitle)}</h3>`;
-        topicUids.forEach(function (uid) {
-          html += rowHtml(uid, metas.get(uid), originals.get(uid));
-        });
-        html += '</section>';
-      });
-      html += '</details>';
-    });
-    listEl.innerHTML = html || '<p class="message">Niciun material.</p>';
-    listEl.querySelectorAll('.admin-row').forEach(function (row) {
-      row.querySelector('[data-visible]').addEventListener('change', refreshSave);
-      row.querySelector('[data-when]').addEventListener('change', refreshSave);
-      row.querySelector('[data-when]').addEventListener('input', refreshSave);
-      row.querySelector('[data-clear]').addEventListener('click', function () {
-        row.querySelector('[data-when]').value = '';
-        refreshSave();
-      });
-    });
-    refreshSave();
-    applyView();
   }
 
-  async function fetchJson(url) {
+  // fetch with the Access session in mind: an expired session answers with a
+  // redirect to the Access login, which a script cannot follow.
+  async function call(url, opts) {
     var res;
     try {
-      res = await fetch(url, { cache: 'no-store' });
+      res = await fetch(url, Object.assign({ cache: 'no-store', redirect: 'manual', credentials: 'same-origin' }, opts || {}));
     } catch (e) {
-      return null;
+      return { network: true };
     }
-    if (!res.ok) return null;
+    if (res.type === 'opaqueredirect' || res.status === 0) return { expired: true };
+    var text = '';
     try {
-      return await res.json();
+      text = await res.text();
+    } catch (e) {
+      text = '';
+    }
+    return { status: res.status, ok: res.ok, text: text };
+  }
+
+  function callError(r, action) {
+    if (r.expired) return 'Autentificarea a expirat. Reîncarcă pagina și cere un cod nou.';
+    if (r.network) return `${action}: nu există conexiune. Verifică internetul și încearcă din nou.`;
+    if (r.status === 403) return `${action}: acces refuzat. Reîncarcă pagina și autentifică-te cu adresa de administrator.`;
+    // The API answers errors in plain text; an HTML page (a 404) says nothing useful.
+    var detail = r.text && r.text.trim().charAt(0) !== '<' ? ` (${r.text.trim().slice(0, 200)})` : '';
+    return `${action}: serverul a răspuns ${r.status}${detail}.`;
+  }
+
+  function parse(text) {
+    try {
+      var data = JSON.parse(text);
+      return data && Array.isArray(data.materials) ? data : null;
     } catch (e) {
       return null;
     }
@@ -245,19 +348,31 @@
 
   async function load() {
     status('Se încarcă lista…');
-    // The API runs on Cloudflare Functions, so the local preview has none:
-    // fall back to the source file on disk, read-only.
-    var data = await fetchJson('api/materials');
-    localMode = !data;
-    if (!data) data = await fetchJson('../data/materials.source.json');
+    var r = await call(API + 'materials');
+    var data = r.ok ? parse(r.text) : null;
+    // Only a missing API (404) means the local preview; any other error is shown.
+    if (!data && IS_LOCAL && r.status === 404) {
+      var local = await call(LOCAL_SOURCE);
+      data = local.ok ? parse(local.text) : null;
+      readOnly = !!data;
+    }
     if (!data) {
-      status('Lista nu s-a încărcat. Verifică conexiunea și reîncarcă pagina.');
+      listEl.removeAttribute('aria-busy');
+      listEl.innerHTML = '<p class="message">Lista nu s-a încărcat.</p>';
+      status(r.ok ? 'Lista nu s-a încărcat: datele primite nu sunt valide.' : callError(r, 'Lista nu s-a încărcat'), 'error');
       return;
     }
-    render(data);
-    status(localMode
-      ? 'Previzualizare locală: lista se vede, dar salvarea funcționează doar pe site.'
-      : 'Alege ce se vede, apoi apasă Salvează.');
+    setData(data);
+    renderList();
+  }
+
+  function setBusy(on) {
+    busy = on;
+    if (on) listEl.setAttribute('inert', '');
+    else listEl.removeAttribute('inert');
+    listEl.querySelectorAll('input, button').forEach(function (control) {
+      control.disabled = on;
+    });
   }
 
   function stopPolling() {
@@ -267,32 +382,34 @@
     }
   }
 
+  // After a save, the data branch is read again every 20 seconds for up to 5
+  // minutes, until every change is in it.
   async function poll(changes, start) {
-    var res;
-    try {
-      res = await fetch('api/materials', { cache: 'no-store' });
-    } catch (e) {
-      res = null;
-    }
-    if (res && res.ok) {
-      var data = await res.json();
-      var byUid = new Map((data.materials || []).map((m) => [m.uid, m]));
-      var done = changes.every(function (c) {
-        var m = byUid.get(c.uid);
-        if (!m) return false;
-        if (V.stateOf(m) !== c.state) return false;
-        if (c.state === 'scheduled' && m.visibleFrom !== c.visibleFrom) return false;
-        return true;
+    var r = await call(API + 'materials');
+    var data = r.ok ? parse(r.text) : null;
+    if (data) {
+      var byUid = new Map(data.materials.map(function (m) { return [m.uid, m]; }));
+      var now = Date.now();
+      var landed = changes.every(function (c) {
+        return V.changeLanded(c, byUid.get(c.uid), now);
       });
-      if (done) {
-        render(data);
-        status('Gata: modificările sunt în date. Site-ul se actualizează în aproximativ un minut.');
+      if (landed) {
+        setBusy(false);
+        setData(data);
+        renderList();
+        status('Gata: modificările sunt salvate. Site-ul se actualizează în aproximativ un minut.');
         return;
       }
+    } else if (r.expired) {
+      setBusy(false);
+      refreshSave();
+      status(callError(r, 'Verificarea'), 'error');
+      return;
     }
     if (Date.now() - start > POLL_FOR) {
-      status('Modificările nu au apărut încă. Verifică GitHub Actions.');
+      setBusy(false);
       refreshSave();
+      status('Modificările nu au apărut după 5 minute. Verifică GitHub Actions (material-visibility), apoi reîncarcă pagina.', 'error');
       return;
     }
     pollTimer = setTimeout(function () {
@@ -301,49 +418,64 @@
   }
 
   async function save() {
-    if (localMode) {
-      status('Salvarea funcționează doar pe site, nu în previzualizarea locală.');
+    if (readOnly) {
+      status('Salvarea merge doar pe site, nu în previzualizarea locală.', 'error');
       return;
     }
-    var found = collectChanges();
-    if (found.errors.length) {
-      status(found.errors[0]);
-      return;
-    }
-    if (!found.changes.length) return;
+    var found = pendingChanges();
+    if (found.errors || !found.changes.length || busy) return;
     stopPolling();
-    saveEl.disabled = true;
+    setBusy(true);
+    refreshSave();
     status('Se salvează…');
-    var res;
-    try {
-      res = await fetch('api/save', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ changes: found.changes }),
-      });
-    } catch (e) {
-      status('Salvarea nu a pornit. Verifică conexiunea și încearcă din nou.');
+    var r = await call(API + 'save', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ changes: found.changes }),
+    });
+    if (r.status !== 202) {
+      setBusy(false);
       refreshSave();
+      status(callError(r, 'Salvarea nu a pornit'), 'error');
       return;
     }
-    if (res.status !== 202) {
-      status(`Salvarea nu a pornit (eroare ${res.status}). Încearcă din nou.`);
-      refreshSave();
-      return;
-    }
-    status('Salvat. Se așteaptă publicarea…');
+    status('Salvat. Se publică modificările (1-3 minute)…');
     poll(found.changes, Date.now());
   }
 
-  searchEl.addEventListener('input', applyView);
+  function reset() {
+    rows.forEach(function (row) {
+      row.checked = row.orig.state === 'visible';
+      row.when = row.orig.state === 'scheduled' ? V.visibleFromToInput(row.orig.visibleFrom) : '';
+    });
+    renderList();
+  }
+
+  // --- Wiring --------------------------------------------------------------
+
+  document.getElementById('admin-search-form').addEventListener('submit', function (event) {
+    event.preventDefault();
+  });
+  searchEl.addEventListener('input', renderList);
   filterEl.querySelectorAll('[data-filter]').forEach(function (btn) {
     btn.addEventListener('click', function () {
       filterEl.querySelectorAll('[data-filter]').forEach(function (other) {
         other.setAttribute('aria-pressed', String(other === btn));
       });
-      applyView();
+      renderList();
     });
   });
+  listEl.addEventListener('change', onRowInput);
+  listEl.addEventListener('input', onRowInput);
+  listEl.addEventListener('click', onRowClick);
   saveEl.addEventListener('click', save);
+  resetEl.addEventListener('click', reset);
+  // Unsaved changes live only on this page: ask before leaving it.
+  window.addEventListener('beforeunload', function (event) {
+    if (!busy && pendingChanges().changes.length) {
+      event.preventDefault();
+      event.returnValue = '';
+    }
+  });
   load();
 })();

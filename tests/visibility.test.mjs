@@ -94,3 +94,36 @@ test('changeError accepts good changes and names the bad ones', () => {
   assert.match(V.changeError({ uid: '1001', state: 'scheduled', visibleFrom: '2027-03-28T03:30:00+03:00' }, known), /visibleFrom/);
   assert.match(V.changeError({ uid: '1001', state: 'visible', visibleFrom: '2026-09-21T08:00:00+03:00' }, known), /only with state "scheduled"/);
 });
+
+test('an admin row: a date means scheduled, otherwise the checkbox decides', () => {
+  assert.deepEqual(V.rowChange(true, ''), { state: 'visible' });
+  assert.deepEqual(V.rowChange(false, ''), { state: 'hidden' });
+  assert.deepEqual(V.rowChange(false, '2026-09-21T08:00'), { state: 'scheduled', visibleFrom: '2026-09-21T08:00:00+03:00' });
+  assert.deepEqual(V.rowChange(false, '  '), { state: 'hidden' });
+  assert.match(V.rowChange(false, '2027-03-28T03:30').error, /România/);
+});
+
+test('an admin row differs from the saved state only when the data would change', () => {
+  const scheduled = { state: 'scheduled', visibleFrom: '2026-09-21T08:00:00+03:00' };
+  assert.equal(V.isSameState({ state: 'visible' }, { state: 'visible', visibleFrom: null }), true);
+  assert.equal(V.isSameState(scheduled, { ...scheduled }), true);
+  assert.equal(V.isSameState(scheduled, { state: 'scheduled', visibleFrom: '2026-09-21T09:00:00+03:00' }), false);
+  assert.equal(V.isSameState({ state: 'hidden' }, { state: 'visible' }), false);
+});
+
+test('a saved change has landed when the data shows it', () => {
+  const now = Date.parse('2026-09-18T10:00:00+03:00');
+  assert.equal(V.changeLanded({ uid: '1', state: 'hidden' }, { uid: '1', hidden: true }, now), true);
+  assert.equal(V.changeLanded({ uid: '1', state: 'hidden' }, { uid: '1' }, now), false);
+  assert.equal(V.changeLanded({ uid: '1', state: 'visible' }, { uid: '1' }, now), true);
+  assert.equal(V.changeLanded({ uid: '1', state: 'hidden' }, undefined, now), false);
+  const later = { uid: '1', state: 'scheduled', visibleFrom: '2026-09-21T08:00:00+03:00' };
+  assert.equal(V.changeLanded(later, { uid: '1', visibleFrom: later.visibleFrom }, now), true);
+  assert.equal(V.changeLanded(later, { uid: '1', visibleFrom: '2026-09-22T08:00:00+03:00' }, now), false);
+  assert.equal(V.changeLanded(later, { uid: '1' }, now), false, 'not due yet, so visible means not saved');
+  // A time already past shows at once: the same workflow run reveals it.
+  const past = { uid: '1', state: 'scheduled', visibleFrom: '2026-09-18T09:00:00+03:00' };
+  assert.equal(V.changeLanded(past, { uid: '1' }, now), true);
+  assert.equal(V.changeLanded(past, { uid: '1', visibleFrom: past.visibleFrom }, now), true);
+  assert.equal(V.changeLanded(past, { uid: '1', hidden: true }, now), false);
+});

@@ -197,6 +197,38 @@
     return `state must be "visible", "hidden" or "scheduled" (was "${change.state}")`;
   }
 
+  // What an admin row asks for. A date means scheduled; without one, the
+  // "Vizibil" checkbox decides. `when` is the datetime-local value in Romania
+  // wall-clock time. Returns { state, visibleFrom? } or { error } (Romanian,
+  // shown on the admin page).
+  function rowChange(checked, when) {
+    const wall = String(when || '').trim();
+    if (wall) {
+      const visibleFrom = wallToVisibleFrom(wall);
+      if (!visibleFrom) return { error: 'Ora aleasă nu există în România (trecerea la ora de vară). Alege altă oră.' };
+      return { state: 'scheduled', visibleFrom };
+    }
+    return checked ? { state: 'visible' } : { state: 'hidden' };
+  }
+
+  // True when two { state, visibleFrom? } describe the same data.
+  function isSameState(a, b) {
+    if (a.state !== b.state) return false;
+    return a.state !== 'scheduled' || a.visibleFrom === b.visibleFrom;
+  }
+
+  // True when a saved change is in the data (the admin page polls for it).
+  // A scheduled time that has already passed is revealed by the same
+  // workflow run, so a visible material counts for it too.
+  function changeLanded(change, material, nowMs) {
+    if (!material) return false;
+    const state = stateOf(material);
+    if (change.state !== 'scheduled') return state === change.state;
+    if (state === 'scheduled') return material.visibleFrom === change.visibleFrom;
+    const due = visibleFromMs(change.visibleFrom) <= nowMs;
+    return due && state === 'visible';
+  }
+
   const api = {
     VISIBLE_FROM_RE,
     parseWall,
@@ -216,6 +248,9 @@
     isVisible,
     visibleOnly,
     changeError,
+    rowChange,
+    isSameState,
+    changeLanded,
   };
   if (typeof module === 'object' && module.exports) module.exports = api;
   if (typeof window !== 'undefined') window.Visibility = api;

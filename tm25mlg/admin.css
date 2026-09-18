@@ -1,0 +1,209 @@
+/* Admin page: the site's own list, filter and grade-block styles, plus the
+   visibility controls. Colours come only from the tokens in style.css, so the
+   light paper and the dark chalkboard both work without a second copy here. */
+
+/* The admin page is Romanian only: there is no English page to switch to. */
+.site-header .lang {
+  display: none;
+}
+
+/* One grade per block, like the school years on a grade page. */
+.admin-grade > summary h2 {
+  font-size: 1.5rem;
+  color: var(--text);
+}
+
+.admin-grade > summary .admin-grade-count {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.admin-item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.35rem;
+  padding: 0.75rem 1rem;
+}
+
+@media (min-width: 40rem) {
+  .admin-item {
+    grid-template-columns: 11.5rem minmax(0, 1fr);
+    align-items: baseline;
+    column-gap: 0.75rem;
+  }
+
+  .admin-controls,
+  .admin-row-note {
+    grid-column: 2;
+  }
+}
+
+.admin-main {
+  display: grid;
+  gap: 0.2rem;
+}
+
+a.m-title {
+  text-decoration: none;
+}
+
+a.m-title:hover {
+  text-decoration: underline;
+}
+
+/* The state: a dot plus a word, so it never reads as one more kind badge. */
+.admin-state {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--text);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.admin-state::before {
+  content: "";
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background: var(--dot, var(--muted));
+}
+
+.admin-state[data-state="visible"] {
+  --dot: var(--b-fise-fg);
+}
+
+.admin-state[data-state="hidden"] {
+  --dot: var(--red);
+}
+
+.admin-state[data-state="scheduled"] {
+  --dot: var(--b-jocuri-fg);
+}
+
+.admin-next {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0 0.45rem;
+  border-radius: 3px;
+  background: var(--marker);
+  color: var(--text);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* A row with a change that is not saved yet: the highlighter edge. */
+.admin-row[data-dirty] {
+  background: var(--marker-soft);
+  box-shadow: inset 5px 0 0 var(--marker-edge);
+}
+
+.admin-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  margin-top: 0.3rem;
+}
+
+.admin-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 2.5rem;
+  padding: 0.2rem 0.95rem;
+  border: 1.5px solid var(--rule);
+  border-radius: 999px;
+  background: var(--sheet);
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.admin-check:hover,
+.admin-check:has(input:checked) {
+  border-color: var(--ink);
+}
+
+.admin-check input {
+  width: 1.1rem;
+  height: 1.1rem;
+  margin: 0;
+  accent-color: var(--ink);
+}
+
+.admin-when {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.5rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.admin-when input {
+  min-height: 2.5rem;
+  padding: 0.3rem 0.8rem;
+  border: 1.5px solid var(--rule);
+  border-radius: 999px;
+  background: var(--sheet);
+  color: var(--text);
+  font: inherit;
+}
+
+.admin-when input:focus {
+  border-color: var(--ink);
+  outline: 3px solid var(--ink);
+  outline-offset: 1px;
+}
+
+.admin-row-note {
+  margin: 0.2rem 0 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.admin-row-note[data-kind="error"] {
+  color: var(--red);
+  font-weight: 700;
+}
+
+/* Save bar: always in reach, also at the bottom of a long list on a phone. */
+.admin-bar {
+  position: sticky;
+  bottom: 0;
+  z-index: 5;
+  margin-top: 2rem;
+  border-top: 1px solid var(--rule);
+  background: var(--paper);
+}
+
+.admin-bar-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem 0.75rem;
+  padding-block: 0.6rem;
+}
+
+.admin-status {
+  flex: 1 1 16rem;
+  margin: 0;
+  color: var(--muted);
+}
+
+.admin-status[data-kind="error"] {
+  color: var(--red);
+  font-weight: 700;
+}
+
+.admin-bar .button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.admin-bar .button:disabled:hover {
+  background: var(--ink);
+}
