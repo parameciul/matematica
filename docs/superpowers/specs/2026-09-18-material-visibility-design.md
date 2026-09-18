@@ -274,7 +274,8 @@ Files: `functions/<folder>/api/_middleware.js`, `functions/<folder>/api/material
   - This is a second lock behind Access. It still holds if the Access
     application misses a hostname.
 - The data branch comes from the `DATA_BRANCH` variable: `main` in the
-  production environment, the test branch in the preview environment.
+  production environment, the test branch `task/admin-test` in the preview
+  environment. If `DATA_BRANCH` is missing, the API refuses to save.
   Cloudflare Pages lets the two environments hold different values.
 - `GET api/materials` returns the fresh `data/materials.source.json` of
   `DATA_BRANCH` from the GitHub contents API. It does not use the deployed
@@ -289,7 +290,9 @@ Files: `functions/<folder>/api/_middleware.js`, `functions/<folder>/api/material
   - `GITHUB_TOKEN`: a fine-grained token for `parameciul/matematica` only,
     with Contents read and write;
   - `ACCESS_TEAM_DOMAIN`;
-  - `ACCESS_AUD`;
+  - `ACCESS_AUD`, per environment: the AUD tag of the production admin
+    application in Production, the AUD tag of the preview application in
+    Preview (each Access application has its own tag);
   - `ADMIN_EMAILS` (the two admin addresses, comma-separated);
   - `DATA_BRANCH` (a plain variable, not a secret).
 
