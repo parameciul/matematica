@@ -74,6 +74,9 @@ gets a new uid and its own set of files, side by side with the first.
   row; the highest number would then fall back and hand out a uid twice. The
   validator guards the counter: `nextUid` must be larger than every uid in
   `materials` and in `retired`.
+- `uid` is stored as a string and `nextUid` as a number. Every tool and the
+  validator compare and sort uids as numbers (`Number(uid)`), never as strings,
+  so `"10000"` still sorts after `"9999"`.
 
 ### 4. Re-import means a new material
 
