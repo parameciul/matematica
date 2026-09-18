@@ -237,8 +237,8 @@ function countLabel(dict, lang, n) {
 // matBase points at the same-language materiale/ folder ('' or 'materiale/').
 function materialRow({ material, topic, lang, dict, matBase, root, showGrade, showTopic }) {
   const group = Catalog.groupOf(material.kind);
-  const id = material.id;
-  const href = material.kind === 'quiz' ? `${root}materiale/${id}.html` : `${matBase}${id}.html`;
+  const name = Catalog.nameOf(material);
+  const href = material.kind === 'quiz' ? `${root}materiale/${name}.html` : `${matBase}${name}.html`;
   const title = material.title[lang] || material.title.ro;
   const badges = `${showGrade ? `<span class="m-grade m-grade-${group}">${topic.grade}</span>` : ''}` +
     `<span class="badge badge-${group}">${esc(dict[`kind.${material.kind}`] || material.kind)}</span>`;
@@ -446,7 +446,7 @@ function renderGradePage({ data, grade, lang, dict, assetBase, pageRoot, selfFil
 
 function renderMaterialPage({ data, material, topic, lang, dict, assetBase, pageRoot, selfFile, pairFile, articleHtml }) {
   const filled = Catalog.hasArticleContent(articleHtml || '');
-  const noindex = !filled || undefined;
+  const noindex = (!filled || material.supersedes) || undefined;
   const title = materialPageTitle(material, topic, lang);
   const description = material.description[lang] || material.description.ro;
   const video = material.youtube || null;
@@ -486,11 +486,11 @@ function renderMaterialPage({ data, material, topic, lang, dict, assetBase, page
 
   let note = '';
   if (!filled && lang !== 'ro') {
-    const roHref = `../../materiale/${material.id}.html`;
+    const roHref = `../../materiale/${Catalog.nameOf(material)}.html`;
     note = `<p class="note">${esc(dict['material.fallback'])} <a href="${roHref}">${esc(dict['material.readRomanian'])}</a></p>`;
   }
 
-  const others = Catalog.relatedMaterials(data, material.id, lang);
+  const others = Catalog.relatedMaterials(data, material.uid, lang);
   const relatedRows = others
     .map((m) => materialRow({ material: m, topic, lang, dict, matBase: '', root: assetBase, showGrade: false, showTopic: false }))
     .join('\n        ');
@@ -498,7 +498,7 @@ function renderMaterialPage({ data, material, topic, lang, dict, assetBase, page
     `${others.length ? `<h2>${esc(dict['material.related'])}</h2>\n        <ul class="material-list">\n        ${relatedRows}\n        </ul>\n        ` : ''}` +
     `<p><a class="more" href="${pageRoot}clasa-${topic.grade}.html">${esc(dict['material.allGrade'].replace('{grade}', gradeName))}</a></p></aside>`;
 
-  const main = `    <div class="page" id="material" data-id="${material.id}">
+  const main = `    <div class="page" id="material" data-id="${material.uid}">
       ${headBlock}
       ${videoBlock}
       ${note}
@@ -794,13 +794,48 @@ function renderHeaders(data) {
     '  Cache-Control: public, max-age=86400',
   ];
   // A PDF is a copy of the Romanian article: its ranking goes to the page.
-  const topics = new Map(data.topics.map((t) => [t.id, t]));
-  const pdfs = data.materials.filter((m) => m.pdf).map((m) => m.id).sort();
-  for (const id of pdfs) {
-    const topic = topics.get(data.materials.find((m) => m.id === id).topic);
-    void topic;
-    lines.push(`/${`materiale/pdf/${id}.pdf`}`);
-    lines.push(`  Link: <${SITE_URL}materiale/${id}>; rel="canonical"`);
+  const pdfs = data.materials.filter((m) => m.pdf).map(Catalog.nameOf).sort();
+  for (const name of pdfs) {
+    lines.push(`/${`materiale/pdf/${name}.pdf`}`);
+    lines.push(`  Link: <${SITE_URL}materiale/${name}>; rel="canonical"`);
+  }
+  return lines.join('\n') + '\n';
+}
+
+// Cloudflare _redirects: 301 everything that used to live elsewhere to the name
+// that owns it now. Old names come from a material's aliases (pre-uid names,
+// future slug renames) and from retired entries whose replacement exists.
+// Cloudflare supports 301/302/303/307/308 but not 410, so a retired material
+// without a replacement gets no line and falls to the normal 404 page.
+function renderRedirects(data) {
+  const seen = new Set();
+  const lines = [
+    '# Old material names, 301 to their current path.',
+    '# Format: <from> <to> 301',
+  ];
+  const add = (oldName, material) => {
+    const name = Catalog.nameOf(material);
+    const targets = [`/materiale/${oldName} /materiale/${name} 301`];
+    if (material.kind !== 'quiz') {
+      targets.push(`/en/materiale/${oldName} /en/materiale/${name} 301`);
+      if (material.pdf) {
+        targets.push(`/materiale/pdf/${oldName}.pdf /materiale/pdf/${name}.pdf 301`);
+      }
+    }
+    for (const target of targets) {
+      if (seen.has(target)) continue;
+      seen.add(target);
+      lines.push(target);
+    }
+  };
+  for (const material of data.materials) {
+    for (const alias of material.aliases || []) add(alias, material);
+  }
+  for (const retired of data.retired || []) {
+    if (!retired.replacedBy) continue;
+    const target = data.materials.find((m) => m.uid === retired.replacedBy);
+    if (!target) continue;
+    add(`${retired.slug}-${retired.uid}`, target);
   }
   return lines.join('\n') + '\n';
 }
@@ -810,12 +845,15 @@ function renderHeaders(data) {
 export function renderQuizPage(html, material, topic) {
   const title = `${material.title.ro} | Laura Miron`;
   const description = material.description.ro;
-  const canonical = `${SITE_URL}materiale/${material.id}`;
+  const canonical = `${SITE_URL}materiale/${Catalog.nameOf(material)}`;
   const gradeUrl = `${SITE_URL}clasa-${topic.grade}`;
+  const robots = material.supersedes
+    ? '<meta name="robots" content="noindex, follow">'
+    : '<meta name="robots" content="max-image-preview:large, max-snippet:-1, max-video-preview:-1">';
   const block = `<!-- seo -->
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(description)}">
-<meta name="robots" content="max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+${robots}
 <link rel="canonical" href="${canonical}">
 <meta property="og:type" content="article">
 <meta property="og:title" content="${esc(title)}">
@@ -907,16 +945,17 @@ export function buildSite(root) {
 
   // Material pages, with the one-time migration of the English article.
   for (const material of data.materials) {
+    const name = Catalog.nameOf(material);
     const topic = topics.get(material.topic);
     if (!topic) continue;
     if (material.kind === 'quiz') {
-      const file = `materiale/${material.id}.html`;
+      const file = `materiale/${name}.html`;
       const html = readIfExists(root, file);
       if (html !== null) set(file, renderQuizPage(html, material, topic));
       continue;
     }
-    const roHtml = readIfExists(root, `materiale/${material.id}.html`);
-    const enHtml = readIfExists(root, `en/materiale/${material.id}.html`);
+    const roHtml = readIfExists(root, `materiale/${name}.html`);
+    const enHtml = readIfExists(root, `en/materiale/${name}.html`);
     const roArticle = readArticle(roHtml, 'ro') || '';
     // The English article migrates once from the Romanian file; afterwards
     // the en/ file is the source of truth.
@@ -926,8 +965,8 @@ export function buildSite(root) {
     for (const lang of ['ro', 'en']) {
       const dict = I18N[lang];
       const inEnFolder = lang === 'en';
-      const selfFile = `${inEnFolder ? 'en/' : ''}materiale/${material.id}.html`;
-      const altFile = `${inEnFolder ? '' : 'en/'}materiale/${material.id}.html`;
+      const selfFile = `${inEnFolder ? 'en/' : ''}materiale/${name}.html`;
+      const altFile = `${inEnFolder ? '' : 'en/'}materiale/${name}.html`;
       set(selfFile, renderMaterialPage({
         data, material, topic, lang, dict,
         assetBase: inEnFolder ? '../../' : '../',
@@ -956,6 +995,7 @@ export function buildSite(root) {
   set('en/404.html', notFoundPage({ lang: 'en' }));
   set('robots.txt', renderRobots());
   set('_headers', renderHeaders(data));
+  set('_redirects', renderRedirects(data));
 
   // Sitemap: indexable pages only.
   const indexable = [];
@@ -974,17 +1014,20 @@ export function buildSite(root) {
     if (entriesEn.length) push(`en/clasa-${grade}.html`, lastmodEn, pair ? `clasa-${grade}.html` : null);
   }
   for (const material of data.materials) {
+    // A superseded copy is hidden from search until its duplicate is deleted.
+    if (material.supersedes) continue;
+    const name = Catalog.nameOf(material);
     if (material.kind === 'quiz') {
-      push(`materiale/${material.id}.html`, lastmodOf(material), null);
+      push(`materiale/${name}.html`, lastmodOf(material), null);
       continue;
     }
-    const roArticle = readArticle(readIfExists(root, `materiale/${material.id}.html`), 'ro') || '';
-    const enHtml = readIfExists(root, `en/materiale/${material.id}.html`);
-    const enArticle = enHtml === null ? readArticle(readIfExists(root, `materiale/${material.id}.html`), 'en') || '' : readArticle(enHtml, 'en') || '';
+    const roArticle = readArticle(readIfExists(root, `materiale/${name}.html`), 'ro') || '';
+    const enHtml = readIfExists(root, `en/materiale/${name}.html`);
+    const enArticle = enHtml === null ? readArticle(readIfExists(root, `materiale/${name}.html`), 'en') || '' : readArticle(enHtml, 'en') || '';
     void roArticle;
-    push(`materiale/${material.id}.html`, lastmodOf(material), Catalog.hasArticleContent(enArticle) ? `en/materiale/${material.id}.html` : null);
+    push(`materiale/${name}.html`, lastmodOf(material), Catalog.hasArticleContent(enArticle) ? `en/materiale/${name}.html` : null);
     if (Catalog.hasArticleContent(enArticle)) {
-      push(`en/materiale/${material.id}.html`, lastmodOf(material), `materiale/${material.id}.html`);
+      push(`en/materiale/${name}.html`, lastmodOf(material), `materiale/${name}.html`);
     }
   }
   void summary;

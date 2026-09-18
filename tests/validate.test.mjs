@@ -14,9 +14,11 @@ const VALIDATOR = join(REPO, 'tests', 'validate.mjs');
 // Local work files that are not part of the site.
 const SKIP = [/\.git([/\\]|$)/, /\.work([/\\]|$)/, /__pycache__/, /\.pytest_cache/, /SEO Improvements plan\.md$/];
 const SAMPLE = 'sample-material';
-const SAMPLE_PAGE = `materiale/${SAMPLE}.html`;
-const SAMPLE_EN_PAGE = `en/materiale/${SAMPLE}.html`;
-const SAMPLE_PDF = `materiale/pdf/${SAMPLE}.pdf`;
+const SAMPLE_UID = '9901';
+const SAMPLE_NAME = `${SAMPLE}-${SAMPLE_UID}`;
+const SAMPLE_PAGE = `materiale/${SAMPLE_NAME}.html`;
+const SAMPLE_EN_PAGE = `en/materiale/${SAMPLE_NAME}.html`;
+const SAMPLE_PDF = `materiale/pdf/${SAMPLE_NAME}.pdf`;
 
 function run(root) {
   const res = spawnSync(process.execPath, [VALIDATOR], {
@@ -33,7 +35,7 @@ function editData(dir, fn) {
   writeFileSync(file, JSON.stringify(data, null, 2));
 }
 
-const sample = (data) => data.materials.find((m) => m.id === SAMPLE);
+const sample = (data) => data.materials.find((m) => m.uid === SAMPLE_UID);
 
 // One extra topic, material, pages and PDF, so the tests do not depend on the
 // real content. The pages are written by the generator, like real ones.
@@ -41,7 +43,8 @@ function addSample(dir) {
   editData(dir, (data) => {
     data.topics.push({ id: 'sample-topic', grade: 9, title: { ro: 'Temă de test', en: 'Test topic' } });
     data.materials.push({
-      id: SAMPLE,
+      slug: SAMPLE,
+      uid: SAMPLE_UID,
       topic: 'sample-topic',
       kind: 'teorie',
       title: { ro: 'Material de test', en: 'Test material' },
@@ -54,6 +57,7 @@ function addSample(dir) {
       youtube: null,
       keywords: { ro: ['test', 'clasa a 9-a', 'clasa 9'], en: ['test', 'grade 9'] },
     });
+    data.nextUid = Number(SAMPLE_UID) + 1;
   });
   mkdirSync(join(dir, 'materiale', 'pdf'), { recursive: true });
   writeFileSync(join(dir, SAMPLE_PDF), '%PDF-1.4\n%%EOF\n');
@@ -110,12 +114,64 @@ test('duplicate topic id fails', () => {
   expectFailure(withSite((dir) => editData(dir, (d) => { d.topics.push({ ...d.topics.at(-1) }); })), /duplicate topic id/);
 });
 
-test('duplicate material id fails', () => {
-  expectFailure(withSite((dir) => editData(dir, (d) => { d.materials.push({ ...sample(d) }); })), /duplicate material id/);
+test('duplicate material uid fails', () => {
+  expectFailure(withSite((dir) => editData(dir, (d) => { d.materials.push({ ...sample(d) }); })), /duplicate uid/);
 });
 
-test('id with capitals or diacritics fails', () => {
-  expectFailure(withSite((dir) => editData(dir, (d) => { sample(d).id = 'Fracții'; })), /id must be lowercase/);
+test('uid that starts with zero or is too short fails', () => {
+  expectFailure(withSite((dir) => editData(dir, (d) => { sample(d).uid = '0999'; })), /uid must be 4 or more digits/);
+});
+
+test('slug with capitals or diacritics fails', () => {
+  expectFailure(withSite((dir) => editData(dir, (d) => { sample(d).slug = 'Fracții'; })), /slug must be lowercase/);
+});
+
+test('nextUid behind an existing uid fails', () => {
+  expectFailure(withSite((dir) => editData(dir, (d) => { d.nextUid = Number(SAMPLE_UID); })), /must be larger than every uid/);
+});
+
+test('a uid in both materials and retired fails', () => {
+  expectFailure(
+    withSite((dir) => editData(dir, (d) => { d.retired.push({ uid: SAMPLE_UID, slug: SAMPLE, removed: '2026-09-01', replacedBy: null }); })),
+    /appears both in materials and in retired/,
+  );
+});
+
+test('retired row without a real removal date fails', () => {
+  expectFailure(
+    withSite((dir) => editData(dir, (d) => { d.retired.push({ uid: '9888', slug: 'veche-fisa', removed: 'ieri', replacedBy: null }); })),
+    /removed must be a real date/,
+  );
+});
+
+test('supersedes naming an unknown uid fails', () => {
+  expectFailure(withSite((dir) => editData(dir, (d) => { sample(d).supersedes = '9999'; })), /does not name a live or retired uid/);
+});
+
+test('a superseded material whose page is still indexable fails', () => {
+  // The empty-article sample pages are already noindex; supersede a real,
+  // filled material instead so its indexable pages trigger the rule.
+  expectFailure(
+    withSite((dir) => editData(dir, (d) => { d.materials[0].supersedes = d.materials[1].uid; })),
+    /superseded material must be noindex/,
+  );
+});
+
+test('an alias equal to a live material name fails', () => {
+  expectFailure(
+    withSite((dir) => editData(dir, (d) => { sample(d).aliases = [`${d.materials[1].slug}-${d.materials[1].uid}`]; })),
+    /equals a live material name/,
+  );
+});
+
+test('an alias claimed by two materials fails', () => {
+  expectFailure(
+    withSite((dir) => editData(dir, (d) => {
+      sample(d).aliases = ['vechi-nume-1234'];
+      d.materials.push({ ...sample(d), uid: '9903', slug: 'second-sample', aliases: ['vechi-nume-1234'] });
+    })),
+    /claimed by both/,
+  );
 });
 
 test('missing English material title fails', () => {
@@ -182,12 +238,12 @@ test('quiz with a PDF fails', () => {
   expectFailure(withSite((dir) => editData(dir, (d) => { sample(d).kind = 'quiz'; })), /pdf must be null for a quiz/);
 });
 
-test('PDF path that does not match the id fails', () => {
-  expectFailure(withSite((dir) => editData(dir, (d) => { sample(d).pdf = 'materiale/pdf/other.pdf'; })), /pdf must be "materiale\/pdf\/sample-material\.pdf" or null/);
+test('PDF path that does not match the name fails', () => {
+  expectFailure(withSite((dir) => editData(dir, (d) => { sample(d).pdf = 'materiale/pdf/other.pdf'; })), new RegExp(`pdf must be "materiale\\/pdf\\/${SAMPLE_NAME}\\.pdf" or null`));
 });
 
 test('missing PDF file fails', () => {
-  expectFailure(withSite((dir) => unlinkSync(join(dir, SAMPLE_PDF))), /missing file materiale\/pdf\/sample-material\.pdf/);
+  expectFailure(withSite((dir) => unlinkSync(join(dir, SAMPLE_PDF))), new RegExp(`missing file materiale\\/pdf\\/${SAMPLE_NAME}\\.pdf`));
 });
 
 test('PDF file that is not a PDF fails', () => {
@@ -199,25 +255,25 @@ test('PDF file not in the data fails', () => {
 });
 
 test('missing material page fails', () => {
-  expectFailure(withSite((dir) => unlinkSync(join(dir, SAMPLE_PAGE))), /missing file materiale\/sample-material\.html/);
+  expectFailure(withSite((dir) => unlinkSync(join(dir, SAMPLE_PAGE))), new RegExp(`missing file materiale\\/${SAMPLE_NAME}\\.html`));
 });
 
 test('missing English material page fails', () => {
-  expectFailure(withSite((dir) => unlinkSync(join(dir, SAMPLE_EN_PAGE))), /missing file en\/materiale\/sample-material\.html/);
+  expectFailure(withSite((dir) => unlinkSync(join(dir, SAMPLE_EN_PAGE))), new RegExp(`missing file en\\/materiale\\/${SAMPLE_NAME}\\.html`));
 });
 
 test('material page not in the data fails', () => {
-  expectFailure(withSite((dir) => writeFileSync(join(dir, 'materiale', 'extra.html'), '<p>x</p>')), /materiale\/extra\.html: not listed/);
+  expectFailure(withSite((dir) => writeFileSync(join(dir, 'materiale', 'extra.html'), '<p>x</p>')), /materiale\/extra\.html: not a <slug>-<uid> name listed in data\/materials\.json/);
 });
 
 test('English material page not in the data fails', () => {
-  expectFailure(withSite((dir) => writeFileSync(join(dir, 'en', 'materiale', 'extra.html'), '<p>x</p>')), /en\/materiale\/extra\.html: not listed/);
+  expectFailure(withSite((dir) => writeFileSync(join(dir, 'en', 'materiale', 'extra.html'), '<p>x</p>')), /en\/materiale\/extra\.html: not a <slug>-<uid> name listed in data\/materials\.json/);
 });
 
 test('material page with the wrong data-id fails', () => {
   expectFailure(
-    withSite((dir) => editFile(dir, SAMPLE_PAGE, (s) => s.replace(`data-id="${SAMPLE}"`, 'data-id="other"'))),
-    /must contain data-id="sample-material"/,
+    withSite((dir) => editFile(dir, SAMPLE_PAGE, (s) => s.replace(`data-id="${SAMPLE_UID}"`, 'data-id="other"'))),
+    new RegExp(`must contain data-id="${SAMPLE_UID}"`),
   );
 });
 
@@ -299,14 +355,14 @@ test('an English page for the quiz fails', () => {
   expectFailure(
     withSite((dir) => {
       makeQuiz(dir, '<a href="../clasa.html?c=9">Înapoi</a>');
-      writeFileSync(join(dir, 'en', 'materiale', `${SAMPLE}.html`), '<p>x</p>');
+      writeFileSync(join(dir, 'en', 'materiale', `${SAMPLE_NAME}.html`), '<p>x</p>');
     }),
     /the quiz is Romanian only and must not have an English page/,
   );
 });
 
 test('missing generated SEO files fail', () => {
-  const deleted = ['robots.txt', 'sitemap.xml', '_headers', '404.html', 'en/404.html', 'favicon.svg', 'assets/img/og-image.png'];
+  const deleted = ['robots.txt', 'sitemap.xml', '_headers', '_redirects', '404.html', 'en/404.html', 'favicon.svg', 'assets/img/og-image.png'];
   const result = withSite((dir) => {
     for (const f of deleted) unlinkSync(join(dir, f));
   });
@@ -351,7 +407,7 @@ test('cedilla letters instead of comma-below letters fail', () => {
 test('material page with a different KaTeX version than the generator fails', () => {
   expectFailure(
     withSite((dir) => editFile(dir, SAMPLE_PAGE, (s) => s.replaceAll('katex@0.18.1/', 'katex@0.16.0/'))),
-    /sample-material\.html: is out of date|must load KaTeX 0\.18\.1/,
+    new RegExp(`${SAMPLE_NAME}\\.html: is out of date|must load KaTeX 0\\.18\\.1`),
   );
 });
 

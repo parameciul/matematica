@@ -16,41 +16,49 @@ const DESC = {
   en: 'Test description for the static page generator, with theory and exercises for students.',
 };
 
+// Fixed uids per fixture material, so the file names are stable across tests.
+const UID = { 'teorie-reale': '1001', 'lectie-video': '1002', 'quiz-recap': '1003' };
+const mname = (slug) => `${slug}-${UID[slug]}`;
+
 function dataFixture() {
   return {
+    nextUid: 1012,
+    retired: [],
     topics: [
       { id: 'reale', grade: 9, title: { ro: 'Numere reale', en: 'Real numbers' } },
       { id: 'recap6', grade: 6, title: { ro: 'Recapitulare', en: 'Review' } },
     ],
     materials: [
       {
-        id: 'teorie-reale', topic: 'reale', kind: 'teorie',
+        slug: 'teorie-reale', uid: '1001', topic: 'reale', kind: 'teorie',
         title: { ro: 'Teorie: modul', en: 'Theory: absolute value' },
         published: '2026-09-14', description: DESC,
-        pdf: 'materiale/pdf/teorie-reale.pdf', youtube: null,
+        pdf: `materiale/pdf/${mname('teorie-reale')}.pdf`, youtube: null,
+        aliases: ['teorie-reale'],
       },
       {
-        id: 'lectie-video', topic: 'reale', kind: 'lectie',
+        slug: 'lectie-video', uid: '1002', topic: 'reale', kind: 'lectie',
         title: { ro: 'Lecție video: modul', en: 'Video lesson: absolute value' },
         published: '2026-09-15', description: DESC,
         pdf: null,
         youtube: { id: 'dQw4w9WgXcQ', uploaded: '2026-09-01T10:00:00Z', duration: 'PT7M31S' },
       },
       {
-        id: 'quiz-recap', topic: 'recap6', kind: 'quiz',
+        slug: 'quiz-recap', uid: '1003', topic: 'recap6', kind: 'quiz',
         title: { ro: 'Quiz: recapitulare', en: 'Quiz: review (in Romanian)' },
         published: '2026-09-15', description: DESC,
         pdf: null, youtube: null,
+        aliases: ['quiz-recap'],
       },
     ],
   };
 }
 
-const articlePage = (id, roInner, enInner) => `<!doctype html>
+const articlePage = (uid, roInner, enInner) => `<!doctype html>
 <html lang="ro">
 <head><title>old</title></head>
 <body data-root="../">
-<div class="page" id="material" data-id="${id}">
+<div class="page" id="material" data-id="${uid}">
 <article class="material-body" data-lang="ro" lang="ro">${roInner}</article>
 ${enInner === null ? '' : `<article class="material-body" data-lang="en" lang="en">${enInner}</article>`}
 </div>
@@ -76,9 +84,9 @@ function makeRoot(t, { materials, pages } = {}) {
 
 function stdPages() {
   return {
-    'materiale/teorie-reale.html': articlePage('teorie-reale', '<p>RO $x^2$</p>', '<p>EN $x^2$</p>'),
-    'materiale/lectie-video.html': articlePage('lectie-video', '<p>RO video</p>', '<p>EN video</p>'),
-    'materiale/quiz-recap.html': '<!doctype html>\n<html lang="ro">\n<head>\n<!-- seo -->\n<!-- /seo -->\n</head>\n<body><a href="../clasa.html?c=6">back</a></body>\n</html>\n',
+    [`materiale/${mname('teorie-reale')}.html`]: articlePage('1001', '<p>RO $x^2$</p>', '<p>EN $x^2$</p>'),
+    [`materiale/${mname('lectie-video')}.html`]: articlePage('1002', '<p>RO video</p>', '<p>EN video</p>'),
+    [`materiale/${mname('quiz-recap')}.html`]: '<!doctype html>\n<html lang="ro">\n<head>\n<!-- seo -->\n<!-- /seo -->\n</head>\n<body><a href="../clasa.html?c=6">back</a></body>\n</html>\n',
   };
 }
 
@@ -127,7 +135,7 @@ test('head escapes & " < in titles and descriptions', (t) => {
   edited.materials[0].title.ro = 'Teorie "avansată" & <modul>';
   edited.materials[0].description.ro = 'Descriere cu <b>etichete</b> & "ghilimele", suficient de lungă pentru testul generatorului.';
   writeFileSync(join(dir, 'data', 'materials.json'), JSON.stringify(edited, null, 2));
-  const page = buildSite(dir).get('materiale/teorie-reale.html');
+  const page = buildSite(dir).get(`materiale/${mname('teorie-reale')}.html`);
   assert.match(page, /<title>Teorie &quot;avansată&quot; &amp; &lt;modul&gt; – Clasa a IX-a \| Laura Miron<\/title>/);
   assert.doesNotMatch(page, /<title>Teorie "avansată"/);
   const resource = ldBlocks(page).find((b) => b['@type'] === 'LearningResource');
@@ -141,7 +149,7 @@ test('hreflang pairs exist only when both pages are indexable', (t) => {
   assert.match(site.get('clasa-9.html'), /rel="alternate" hreflang="x-default"/);
   assert.match(site.get('clasa-5.html'), /rel="alternate" hreflang="en"/);
   assert.doesNotMatch(site.get('cautare.html'), /rel="alternate" hreflang/);
-  assert.doesNotMatch(site.get('materiale/quiz-recap.html'), /rel="alternate" hreflang/);
+  assert.doesNotMatch(site.get(`materiale/${mname('quiz-recap')}.html`), /rel="alternate" hreflang/);
 });
 
 test('an empty grade gets noindex and stays out of the sitemap', (t) => {
@@ -156,26 +164,26 @@ test('an empty grade gets noindex and stays out of the sitemap', (t) => {
 
 test('an empty English article means noindex and no sitemap entry', (t) => {
   const pages = stdPages();
-  pages['materiale/teorie-reale.html'] = articlePage('teorie-reale', '<p>RO</p>', '');
+  pages[`materiale/${mname('teorie-reale')}.html`] = articlePage('1001', '<p>RO</p>', '');
   const dir = makeRoot(t, { pages });
   const site = buildSite(dir);
-  assert.match(site.get('en/materiale/teorie-reale.html'), /noindex/);
-  assert.match(site.get('en/materiale/teorie-reale.html'), /Read the Romanian version/);
-  assert.doesNotMatch(site.get('materiale/teorie-reale.html'), /rel="alternate" hreflang/);
-  assert.doesNotMatch(site.get('sitemap.xml'), /en\/materiale\/teorie-reale/);
+  assert.match(site.get(`en/materiale/${mname('teorie-reale')}.html`), /noindex/);
+  assert.match(site.get(`en/materiale/${mname('teorie-reale')}.html`), /Read the Romanian version/);
+  assert.doesNotMatch(site.get(`materiale/${mname('teorie-reale')}.html`), /rel="alternate" hreflang/);
+  assert.doesNotMatch(site.get('sitemap.xml'), /en\/materiale\/teorie-reale-1001/);
 });
 
 test('JSON-LD parses, and VideoObject exists only with a video', (t) => {
   const dir = makeRoot(t, { pages: stdPages() });
   const site = buildSite(dir);
-  const withVideo = ldBlocks(site.get('materiale/lectie-video.html'));
+  const withVideo = ldBlocks(site.get(`materiale/${mname('lectie-video')}.html`));
   const video = withVideo.find((b) => b['@type'] === 'VideoObject');
   assert.ok(video);
   assert.equal(video.thumbnailUrl, 'https://i.ytimg.com/vi/dQw4w9WgXcQ/hqdefault.jpg');
   assert.equal(video.uploadDate, '2026-09-01T10:00:00Z');
   assert.equal(video.duration, 'PT7M31S');
-  assert.match(site.get('materiale/lectie-video.html'), /youtube-nocookie\.com\/embed\/dQw4w9WgXcQ/);
-  const withoutVideo = ldBlocks(site.get('materiale/teorie-reale.html'));
+  assert.match(site.get(`materiale/${mname('lectie-video')}.html`), /youtube-nocookie\.com\/embed\/dQw4w9WgXcQ/);
+  const withoutVideo = ldBlocks(site.get(`materiale/${mname('teorie-reale')}.html`));
   assert.ok(withoutVideo.find((b) => b['@type'] === 'LearningResource'));
   assert.equal(withoutVideo.find((b) => b['@type'] === 'VideoObject'), undefined);
 });
@@ -201,48 +209,86 @@ test('article HTML is kept byte for byte', (t) => {
   const roInner = '\n      <h2>Secțiune</h2>\n      <p>Formulă $x^2$ &amp; text.</p>\n    ';
   const enInner = '\n      <h2>Section</h2>\n      <p>Formula $x^2$ &amp; text.</p>\n    ';
   const dir = makeRoot(t, {
-    pages: { ...stdPages(), 'materiale/teorie-reale.html': articlePage('teorie-reale', roInner, enInner) },
+    pages: { ...stdPages(), [`materiale/${mname('teorie-reale')}.html`]: articlePage('1001', roInner, enInner) },
   });
   const site = buildSite(dir);
-  const ro = site.get('materiale/teorie-reale.html').match(/<article[^>]*data-lang="ro"[^>]*>([\s\S]*?)<\/article>/);
-  const en = site.get('en/materiale/teorie-reale.html').match(/<article[^>]*data-lang="en"[^>]*>([\s\S]*?)<\/article>/);
+  const ro = site.get(`materiale/${mname('teorie-reale')}.html`).match(/<article[^>]*data-lang="ro"[^>]*>([\s\S]*?)<\/article>/);
+  const en = site.get(`en/materiale/${mname('teorie-reale')}.html`).match(/<article[^>]*data-lang="en"[^>]*>([\s\S]*?)<\/article>/);
   assert.equal(ro[1], roInner);
   assert.equal(en[1], enInner);
-  assert.doesNotMatch(site.get('materiale/teorie-reale.html'), /data-lang="en"/);
+  assert.doesNotMatch(site.get(`materiale/${mname('teorie-reale')}.html`), /data-lang="en"/);
 });
 
 test('the migration splits a two-article file', (t) => {
   const dir = makeRoot(t, {
     // No en/ file: the English article migrates once from the Romanian file.
-    pages: { 'materiale/teorie-reale.html': articlePage('teorie-reale', '<p>RO701</p>', '<p>EN702</p>') },
+    pages: { [`materiale/${mname('teorie-reale')}.html`]: articlePage('1001', '<p>RO701</p>', '<p>EN702</p>') },
   });
   const before = buildSite(dir);
-  assert.match(before.get('en/materiale/teorie-reale.html'), /EN702/);
-  assert.doesNotMatch(before.get('materiale/teorie-reale.html'), /EN702/);
+  assert.match(before.get(`en/materiale/${mname('teorie-reale')}.html`), /EN702/);
+  assert.doesNotMatch(before.get(`materiale/${mname('teorie-reale')}.html`), /EN702/);
   // Afterwards the en/ file is the source of truth.
   writeSite(dir);
-  writeFileSync(join(dir, 'en', 'materiale', 'teorie-reale.html'),
-    readFileSync(join(dir, 'en', 'materiale', 'teorie-reale.html'), 'utf8').replace('EN702', 'EN703'));
+  writeFileSync(join(dir, 'en', 'materiale', `${mname('teorie-reale')}.html`),
+    readFileSync(join(dir, 'en', 'materiale', `${mname('teorie-reale')}.html`), 'utf8').replace('EN702', 'EN703'));
   const after = buildSite(dir);
-  assert.match(after.get('en/materiale/teorie-reale.html'), /EN703/);
+  assert.match(after.get(`en/materiale/${mname('teorie-reale')}.html`), /EN703/);
 });
 
 test('_headers gives every PDF the canonical of its page', (t) => {
   const dir = makeRoot(t, { pages: stdPages() });
   const headers = buildSite(dir).get('_headers');
-  assert.match(headers, /\/materiale\/pdf\/teorie-reale\.pdf\n  Link: <https:\/\/lauramiron\.pages\.dev\/materiale\/teorie-reale>; rel="canonical"/);
+  assert.match(headers, /\/materiale\/pdf\/teorie-reale-1001\.pdf\n  Link: <https:\/\/lauramiron\.pages\.dev\/materiale\/teorie-reale-1001>; rel="canonical"/);
   assert.match(headers, /X-Robots-Tag: noindex/);
+});
+
+test('_redirects 301s aliases and retired names, only files the target has', (t) => {
+  const dir = makeRoot(t, { pages: stdPages() });
+  const redirects = buildSite(dir).get('_redirects');
+  assert.match(redirects, /\/materiale\/teorie-reale \/materiale\/teorie-reale-1001 301/);
+  assert.match(redirects, /\/en\/materiale\/teorie-reale \/en\/materiale\/teorie-reale-1001 301/);
+  assert.match(redirects, /\/materiale\/pdf\/teorie-reale\.pdf \/materiale\/pdf\/teorie-reale-1001\.pdf 301/);
+  assert.match(redirects, /\/materiale\/quiz-recap \/materiale\/quiz-recap-1003 301/);
+  assert.doesNotMatch(redirects, /en\/materiale\/quiz-recap/);
+  assert.doesNotMatch(redirects, /pdf\/quiz-recap/);
+  // A retired material with a replacement redirects to the survivor.
+  const data = dataFixture();
+  data.retired = [{ uid: '1000', slug: 'veche-fisa', removed: '2026-09-01', replacedBy: '1001' }];
+  writeFileSync(join(dir, 'data', 'materials.json'), JSON.stringify(data, null, 2));
+  const after = buildSite(dir).get('_redirects');
+  assert.match(after, /\/materiale\/veche-fisa-1000 \/materiale\/teorie-reale-1001 301/);
+  // Without a replacement there is no line: the old URL falls to the 404 page.
+  data.retired = [{ uid: '1000', slug: 'veche-fisa', removed: '2026-09-01', replacedBy: null }];
+  writeFileSync(join(dir, 'data', 'materials.json'), JSON.stringify(data, null, 2));
+  assert.doesNotMatch(buildSite(dir).get('_redirects'), /veche-fisa/);
+});
+
+test('a supersedes material is noindex on both pages and stays out of the sitemap', (t) => {
+  const dir = makeRoot(t, { pages: stdPages() });
+  const materials = dataFixture().materials;
+  materials[1].supersedes = '1001';
+  writeFileSync(join(dir, 'data', 'materials.json'), JSON.stringify({ nextUid: 1012, retired: [], topics: dataFixture().topics, materials }, null, 2));
+  const site = buildSite(dir);
+  const ro = site.get(`materiale/${mname('lectie-video')}.html`);
+  const en = site.get(`en/materiale/${mname('lectie-video')}.html`);
+  assert.match(ro, /noindex, follow/);
+  assert.match(en, /noindex, follow/);
+  assert.doesNotMatch(ro, /max-image-preview/);
+  assert.doesNotMatch(en, /max-image-preview/);
+  assert.doesNotMatch(site.get('sitemap.xml'), /lectie-video-1002/);
+  // The older half is untouched and stays indexable.
+  assert.doesNotMatch(site.get(`materiale/${mname('teorie-reale')}.html`), /noindex/);
 });
 
 test('the quiz keeps its body and gets the seo block plus the grade back-link', (t) => {
   const dir = makeRoot(t, { pages: stdPages() });
   const site = buildSite(dir);
-  const quiz = site.get('materiale/quiz-recap.html');
+  const quiz = site.get(`materiale/${mname('quiz-recap')}.html`);
   assert.match(quiz, /<!-- seo -->/);
   assert.match(quiz, /<a href="\.\.\/clasa-6\.html">back<\/a>/);
   assert.doesNotMatch(quiz, /clasa\.html\?c=/);
-  assert.match(site.get('sitemap.xml'), new RegExp(`<loc>${SITE_URL}materiale/quiz-recap</loc>`));
-  assert.ok(!site.has('en/materiale/quiz-recap.html'));
+  assert.match(site.get('sitemap.xml'), new RegExp(`<loc>${SITE_URL}materiale/quiz-recap-1003</loc>`));
+  assert.ok(!site.has(`en/materiale/${mname('quiz-recap')}.html`));
 });
 
 test('--check passes on a fresh tree and spots a stale file', (t) => {
@@ -278,7 +324,7 @@ test('every page header carries the brand mark next to the site name', (t) => {
 test('every page can switch theme without a flash of the wrong one', (t) => {
   const dir = makeRoot(t, { pages: stdPages() });
   const site = buildSite(dir);
-  for (const file of ['index.html', 'en/index.html', 'clasa-6.html', 'materiale/teorie-reale.html']) {
+  for (const file of ['index.html', 'en/index.html', 'clasa-6.html', `materiale/${mname('teorie-reale')}.html`]) {
     const html = site.get(file);
     const head = html.slice(0, html.indexOf('</head>'));
     // The saved choice is read in the head, before the first paint, or the page

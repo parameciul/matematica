@@ -20,6 +20,7 @@ const read = (p) => readFileSync(join(ROOT, p), 'utf8');
 const isText = (v) => typeof v === 'string' && v.trim().length > 0;
 
 const ID_RE = /^[a-z0-9]+(-[a-z0-9]+)*$/;
+const UID_RE = /^[1-9][0-9]{3,}$/;
 const YT_RE = /^[A-Za-z0-9_-]{11}$/;
 const YT_DURATION_RE = /^PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?$/;
 const YT_UPLOADED_RE = /^(\d{4}-\d{2}-\d{2})(?:T\d{2}:\d{2}(?::\d{2})?(?:Z|[+-]\d{2}:?\d{2})?)?$/;
@@ -35,6 +36,7 @@ const REQUIRED_FILES = [
   'robots.txt',
   'sitemap.xml',
   '_headers',
+  '_redirects',
   '.nojekyll',
   'favicon.svg',
   'favicon.ico',
@@ -126,14 +128,26 @@ for (const [i, t] of topics.entries()) {
   if (!t.title || !isText(t.title.en)) fail(`${where}: title.en is required`);
 }
 
-const materialIds = new Set();
+const materialUids = new Set();
+const materialNames = new Set();
 const listedPdfs = new Set();
+const superseding = [];
 for (const [i, m] of materials.entries()) {
-  const where = `material #${i} (${m && m.id})`;
+  const where = `material #${i}`;
   if (!m || typeof m !== 'object') { fail(`${where}: must be an object`); continue; }
-  if (!isText(m.id) || !ID_RE.test(m.id)) fail(`${where}: id must be lowercase letters, digits and dashes`);
-  if (materialIds.has(m.id)) fail(`${where}: duplicate material id`);
-  materialIds.add(m.id);
+  if (!isText(m.uid) || !UID_RE.test(m.uid)) {
+    fail(`${where}: uid must be 4 or more digits, not starting with 0`);
+  } else if (materialUids.has(m.uid)) {
+    fail(`${where}: duplicate uid "${m.uid}"`);
+  } else {
+    materialUids.add(m.uid);
+  }
+  if (!isText(m.slug) || !ID_RE.test(m.slug)) {
+    fail(`${where}: slug must be lowercase letters, digits and dashes`);
+  }
+  const name = `${m.slug || '?'}-${m.uid || '?'}`;
+  if (materialNames.has(name)) fail(`${where}: duplicate material name "${name}"`);
+  materialNames.add(name);
   if (!topicIds.has(m.topic)) fail(`${where}: topic "${m.topic}" does not exist`);
   if (!Catalog.KINDS.includes(m.kind)) fail(`${where}: kind must be one of ${Catalog.KINDS.join(', ')}`);
   if (!m.title || !isText(m.title.ro)) fail(`${where}: title.ro is required`);
@@ -183,8 +197,20 @@ for (const [i, m] of materials.entries()) {
       fail(`${where}: keywords.en must include "grade ${gradeOf}" (audit F2)`);
     }
   }
+  // A superseded copy is the newer half of a re-import pair: it stays visible
+  // on the site but is noindex until the old copy is deleted.
+  if (m.supersedes !== undefined && !UID_RE.test(String(m.supersedes || ''))) {
+    fail(`${where}: supersedes must be a uid like "1005"`);
+  } else if (m.supersedes !== undefined) {
+    superseding.push(m);
+  }
+  if (m.aliases !== undefined) {
+    const ok = Array.isArray(m.aliases)
+      && m.aliases.every((a) => isText(a) && ID_RE.test(a));
+    if (!ok) fail(`${where}: aliases must be a list of path names (lowercase letters, digits and dashes)`);
+  }
 
-  const expectedPdf = `materiale/pdf/${m.id}.pdf`;
+  const expectedPdf = `materiale/pdf/${name}.pdf`;
   if (m.kind === 'quiz' && m.pdf !== null) {
     fail(`${where}: pdf must be null for a quiz`);
   } else if (m.pdf !== null) {
@@ -198,7 +224,7 @@ for (const [i, m] of materials.entries()) {
     }
   }
 
-  const page = `materiale/${m.id}.html`;
+  const page = `materiale/${name}.html`;
   if (!exists(page)) { fail(`${where}: missing file ${page}`); continue; }
   const html = read(page);
   const topic = topics.find((t) => t.id === m.topic);
@@ -211,7 +237,7 @@ for (const [i, m] of materials.entries()) {
       fail(`${page}: must contain the <!-- seo --> block written by tools/build_pages.mjs`);
     }
   } else {
-    if (!html.includes(`data-id="${m.id}"`)) fail(`${page}: must contain data-id="${m.id}"`);
+    if (!html.includes(`data-id="${m.uid}"`)) fail(`${page}: must contain data-id="${m.uid}"`);
     if (!html.includes('data-lang="ro"')) fail(`${page}: must contain an article with data-lang="ro"`);
     if (html.includes('data-lang="en"')) fail(`${page}: the English article lives in en/${page}`);
     if (!html.includes('data-root="../"')) fail(`${page}: body must have data-root="../"`);
@@ -236,6 +262,78 @@ for (const [i, m] of materials.entries()) {
   const plain = Catalog.normalize(html.replace(/<[^>]+>/g, ' ')).replace(/\s+/g, ' ');
   for (const phrase of ANSWER_HEADINGS) {
     if (plain.includes(phrase)) fail(`${page}: contains "${phrase}". Published materials must not include answers.`);
+  }
+}
+
+// Every file must be named exactly <slug>-<uid> for a material in the data.
+// byName also powers the alias checks below.
+const byName = new Map();
+for (const m of materials) {
+  if (isText(m.uid) && UID_RE.test(m.uid) && isText(m.slug) && ID_RE.test(m.slug)) {
+    byName.set(`${m.slug}-${m.uid}`, m);
+  }
+}
+
+// Retired materials: a retired uid is never reused, and nextUid is a counter,
+// not "highest uid + 1", so a dropped row can never hand out a uid twice.
+const retired = data ? (data.retired === undefined ? [] : data.retired) : [];
+if (data && !Array.isArray(retired)) {
+  fail('data/materials.json: "retired" must be an array');
+}
+const retiredUids = new Set();
+if (Array.isArray(retired)) {
+  for (const [i, r] of retired.entries()) {
+    const where = `retired #${i}`;
+    if (!r || typeof r !== 'object') { fail(`${where}: must be an object`); continue; }
+    if (!isText(r.uid) || !UID_RE.test(r.uid)) fail(`${where}: uid must be 4 or more digits, not starting with 0`);
+    else if (retiredUids.has(r.uid)) fail(`${where}: duplicate retired uid "${r.uid}"`);
+    retiredUids.add(r.uid);
+    if (!isText(r.slug) || !ID_RE.test(r.slug)) fail(`${where}: slug must be lowercase letters, digits and dashes`);
+    if (!Catalog.isValidDate(r.removed)) fail(`${where}: removed must be a real date YYYY-MM-DD`);
+    if (r.replacedBy !== null && r.replacedBy !== undefined && !UID_RE.test(String(r.replacedBy || ''))) {
+      fail(`${where}: replacedBy must be a uid or null`);
+    }
+  }
+  for (const uid of retiredUids) {
+    if (materialUids.has(uid)) fail(`data/materials.json: uid "${uid}" appears both in materials and in retired`);
+  }
+}
+
+// The counter only ever goes up and must stay ahead of every uid that exists.
+const nextUid = data ? data.nextUid : undefined;
+if (data && !Number.isInteger(nextUid)) {
+  fail('data/materials.json: "nextUid" counter must be a number');
+} else if (data) {
+  const taken = [...materialUids, ...retiredUids].map(Number);
+  if (taken.some((n) => nextUid <= n)) {
+    fail(`data/materials.json: nextUid (${nextUid}) must be larger than every uid in materials and retired (max ${Math.max(...taken)})`);
+  }
+}
+
+// supersedes names a real uid, and both pages of the newer copy stay noindex.
+for (const m of superseding) {
+  const name = `${m.slug}-${m.uid}`;
+  if (!materialUids.has(m.supersedes) && !retiredUids.has(m.supersedes)) {
+    fail(`material ${name}: supersedes "${m.supersedes}" does not name a live or retired uid`);
+  }
+  for (const page of m.kind === 'quiz' ? [`materiale/${name}.html`] : [`materiale/${name}.html`, `en/materiale/${name}.html`]) {
+    if (!exists(page)) continue;
+    const html = read(page);
+    if (!html.includes('noindex, follow')) fail(`${page}: superseded material must be noindex`);
+    if (html.includes('max-image-preview')) fail(`${page}: a noindex page must not contain max-image-preview`);
+  }
+}
+
+// An alias is an old name of the same material: it must not equal a live name,
+// and two materials must never claim the same alias.
+const aliasOwner = new Map();
+for (const m of materials) {
+  const name = `${m.slug}-${m.uid}`;
+  if (!byName.has(name)) continue;
+  for (const alias of m.aliases || []) {
+    if (byName.has(alias)) fail(`material ${name}: alias "${alias}" equals a live material name`);
+    if (aliasOwner.has(alias)) fail(`alias "${alias}" is claimed by both ${aliasOwner.get(alias)} and ${name}`);
+    aliasOwner.set(alias, name);
   }
 }
 
@@ -269,27 +367,31 @@ if (!data) {
   }
 }
 
-// Every file in materiale/ must be listed in the data
+// Every file in materiale/, en/materiale/ and materiale/pdf/ is named exactly
+// <slug>-<uid> for a material in the data.
 if (exists('materiale')) {
   for (const name of readdirSync(join(ROOT, 'materiale'))) {
     if (name === 'pdf') continue;
     if (extname(name) !== '.html') { fail(`materiale/${name}: only material pages (.html) and the pdf folder belong here`); continue; }
-    if (!materialIds.has(name.slice(0, -5))) fail(`materiale/${name}: not listed in data/materials.json`);
+    const base = name.slice(0, -5);
+    if (!Catalog.parseName(base) || !byName.has(base)) fail(`materiale/${name}: not a <slug>-<uid> name listed in data/materials.json`);
   }
 }
 // en/materiale/ holds only listed materials, never the quiz (it is Romanian only)
-const kindOf = new Map(materials.map((m) => [m.id, m.kind]));
 if (exists('en/materiale')) {
   for (const name of readdirSync(join(ROOT, 'en', 'materiale'))) {
     if (extname(name) !== '.html') { fail(`en/materiale/${name}: only material pages (.html) belong here`); continue; }
-    const id = name.slice(0, -5);
-    if (!materialIds.has(id)) fail(`en/materiale/${name}: not listed in data/materials.json`);
-    else if (kindOf.get(id) === 'quiz') fail(`en/materiale/${name}: the quiz is Romanian only and must not have an English page`);
+    const base = name.slice(0, -5);
+    const material = Catalog.parseName(base) && byName.get(base);
+    if (!material) fail(`en/materiale/${name}: not a <slug>-<uid> name listed in data/materials.json`);
+    else if (material.kind === 'quiz') fail(`en/materiale/${name}: the quiz is Romanian only and must not have an English page`);
   }
 }
 if (exists('materiale/pdf')) {
   for (const name of readdirSync(join(ROOT, 'materiale', 'pdf'))) {
-    if (!listedPdfs.has(`materiale/pdf/${name}`)) fail(`materiale/pdf/${name}: not listed in data/materials.json`);
+    const key = `materiale/pdf/${name}`;
+    if (!listedPdfs.has(key)) fail(`${key}: not listed in data/materials.json`);
+    else if (!Catalog.parseName(name.slice(0, -4))) fail(`${key}: file name must be <slug>-<uid>.pdf`);
   }
 }
 

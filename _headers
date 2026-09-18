@@ -33,23 +33,23 @@ https://:version.:project.pages.dev/*
   Cache-Control: public, max-age=86400
 /materiale/pdf/*
   Cache-Control: public, max-age=86400
-/materiale/pdf/fisa-lucru-numere-reale-modul-parte-intreaga.pdf
-  Link: <https://lauramiron.pages.dev/materiale/fisa-lucru-numere-reale-modul-parte-intreaga>; rel="canonical"
-/materiale/pdf/fisa-recapitulare-evaluare-initiala.pdf
-  Link: <https://lauramiron.pages.dev/materiale/fisa-recapitulare-evaluare-initiala>; rel="canonical"
-/materiale/pdf/fisa-recapitulativa-1-numere-naturale-fractii.pdf
-  Link: <https://lauramiron.pages.dev/materiale/fisa-recapitulativa-1-numere-naturale-fractii>; rel="canonical"
-/materiale/pdf/fisa-recapitulativa-2-geometrie-unitati-masura.pdf
-  Link: <https://lauramiron.pages.dev/materiale/fisa-recapitulativa-2-geometrie-unitati-masura>; rel="canonical"
-/materiale/pdf/fisa-recapitulativa-clasele-v-vii-test-initial.pdf
-  Link: <https://lauramiron.pages.dev/materiale/fisa-recapitulativa-clasele-v-vii-test-initial>; rel="canonical"
-/materiale/pdf/fisa-recapitulativa-geometrie-clasa-a-x-a.pdf
-  Link: <https://lauramiron.pages.dev/materiale/fisa-recapitulativa-geometrie-clasa-a-x-a>; rel="canonical"
-/materiale/pdf/fisa-recapitulativa-gimnaziu-test-initial.pdf
-  Link: <https://lauramiron.pages.dev/materiale/fisa-recapitulativa-gimnaziu-test-initial>; rel="canonical"
-/materiale/pdf/joc-mesajul-secret.pdf
-  Link: <https://lauramiron.pages.dev/materiale/joc-mesajul-secret>; rel="canonical"
-/materiale/pdf/teorie-numere-reale-modul-parte-intreaga.pdf
-  Link: <https://lauramiron.pages.dev/materiale/teorie-numere-reale-modul-parte-intreaga>; rel="canonical"
-/materiale/pdf/teorie-vectori-geometrie-analitica.pdf
-  Link: <https://lauramiron.pages.dev/materiale/teorie-vectori-geometrie-analitica>; rel="canonical"
+/materiale/pdf/fisa-lucru-numere-reale-modul-parte-intreaga-1002.pdf
+  Link: <https://lauramiron.pages.dev/materiale/fisa-lucru-numere-reale-modul-parte-intreaga-1002>; rel="canonical"
+/materiale/pdf/fisa-recapitulare-evaluare-initiala-1004.pdf
+  Link: <https://lauramiron.pages.dev/materiale/fisa-recapitulare-evaluare-initiala-1004>; rel="canonical"
+/materiale/pdf/fisa-recapitulativa-1-numere-naturale-fractii-1009.pdf
+  Link: <https://lauramiron.pages.dev/materiale/fisa-recapitulativa-1-numere-naturale-fractii-1009>; rel="canonical"
+/materiale/pdf/fisa-recapitulativa-2-geometrie-unitati-masura-1010.pdf
+  Link: <https://lauramiron.pages.dev/materiale/fisa-recapitulativa-2-geometrie-unitati-masura-1010>; rel="canonical"
+/materiale/pdf/fisa-recapitulativa-clasele-v-vii-test-initial-1008.pdf
+  Link: <https://lauramiron.pages.dev/materiale/fisa-recapitulativa-clasele-v-vii-test-initial-1008>; rel="canonical"
+/materiale/pdf/fisa-recapitulativa-geometrie-clasa-a-x-a-1007.pdf
+  Link: <https://lauramiron.pages.dev/materiale/fisa-recapitulativa-geometrie-clasa-a-x-a-1007>; rel="canonical"
+/materiale/pdf/fisa-recapitulativa-gimnaziu-test-initial-1003.pdf
+  Link: <https://lauramiron.pages.dev/materiale/fisa-recapitulativa-gimnaziu-test-initial-1003>; rel="canonical"
+/materiale/pdf/joc-mesajul-secret-1006.pdf
+  Link: <https://lauramiron.pages.dev/materiale/joc-mesajul-secret-1006>; rel="canonical"
+/materiale/pdf/teorie-numere-reale-modul-parte-intreaga-1001.pdf
+  Link: <https://lauramiron.pages.dev/materiale/teorie-numere-reale-modul-parte-intreaga-1001>; rel="canonical"
+/materiale/pdf/teorie-vectori-geometrie-analitica-1011.pdf
+  Link: <https://lauramiron.pages.dev/materiale/teorie-vectori-geometrie-analitica-1011>; rel="canonical"

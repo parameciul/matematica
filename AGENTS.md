@@ -12,16 +12,18 @@ Grades 5-12. Romanian by default, with an English switch. Plain HTML/CSS/JS: no 
 - `data/materials.json`: all content.
   - `topics`: `id`, `grade` (5-12), `title` (`ro` + `en`).
   - `grades`: per-grade `intro` (`ro` + `en`, 60-100 words naming the year's chapters; first sentence 70-160 characters, used as the grade meta description). Required for grades 5-12.
-  - `materials`: `id`, `topic`, `kind`, `title` (`ro` + `en`), `published` (YYYY-MM-DD), optional `updated` (YYYY-MM-DD, not before `published`), `description` (`ro` + `en`, 70-160 characters each), `pdf` (or `null`), `youtube` (`null` or `{ "id", "uploaded", "duration" }`), optional `keywords` (`ro` + `en` lists; when present, `ro` must include `clasa a <N>-a` and `en` must include `grade <N>`).
+  - `materials`: each material owns a `slug` + `uid`. The `uid` is its permanent identity: assigned once, never reused, 4+ digits not starting with 0. The material name is `<slug>-<uid>` and names every file: `materiale/<name>.html`, `en/materiale/<name>.html`, `materiale/pdf/<name>.pdf`, `.work/<name>/`. `retired` lists deleted materials (`uid`, `slug`, `removed`, `replacedBy`); `aliases` maps old names to the material; `import: { "date", "workflow" }` records which version of the add-material workflow produced the article. Material fields: `id`/`name` are derived, never stored.
+  - `materials` entry fields: `slug`, `uid`, `topic`, `kind`, `title` (`ro` + `en`), `published` (YYYY-MM-DD), optional `updated` (YYYY-MM-DD, not before `published`), `description` (`ro` + `en`, 70-160 characters each), `pdf` (or `null`), `youtube` (`null` or `{ "id", "uploaded", "duration" }`), optional `supersedes` (uid of the copy this one replaced) and optional `keywords` (`ro` + `en` lists; when present, `ro` must include `clasa a <N>-a` and `en` must include `grade <N>`).
   - Kinds: `lectie`, `teorie`, `fisa-lucru`, `fisa-recapitulativa`, `test`, `joc`, `quiz`.
-- `materiale/<id>.html`: the Romanian page (one `ro` `<article>`). `en/materiale/<id>.html`: the English page (one `en` `<article>`). The quiz has only a Romanian page.
-- `materiale/pdf/<id>.pdf`: the clean Romanian PDF of the material.
+- `materiale/<name>.html`: the Romanian page (one `ro` `<article>`). `en/materiale/<name>.html`: the English page (one `en` `<article>`). The quiz has only a Romanian page.
+- `materiale/pdf/<name>.pdf`: the clean Romanian PDF of the material.
 - `clasa-5.html` … `clasa-12.html` (+ `en/` mirrors): one grade page per file. `clasa.html` is a small noindex forwarder for old `clasa.html?c=N` links.
 - `tools/build_pages.mjs`: the static page generator (no dependencies). It writes every page shell from `data/materials.json`: `index.html`, `en/`, `clasa-N.html`, material pages, `cautare.html`, `clasa.html`, both `404.html` files, `sitemap.xml`, `robots.txt` and `_headers`. The output is committed; there is no build step on Cloudflare. `node tools/build_pages.mjs --check` lists stale files.
 - `assets/js/shell.js`: header/footer markup shared by the browser (`site.js`) and the generator. DOM-free, like `catalog.js`.
 - `assets/js/catalog.js`: catalog, sort and search logic. It has no DOM code, so the node tests can `require` it.
 - `assets/js/i18n.js`: all UI text, including the `seo.*` page titles and descriptions.
-- `tools/`: `docx_to_html.py` (needs pandoc) and `clean_pdf.py` (needs pymupdf).
+- `tools/`: `material.mjs` (list, new, delete — see below), `docx_to_html.py` (needs pandoc) and `clean_pdf.py` (needs pymupdf).
+- `tools/material.mjs`: `list`, `new` and `delete` commands around `data/materials.json`. The `new` command takes the uid from `nextUid` and raises it; `delete` moves a material to `retired` and regenerates the redirects, so an old URL can never be handed to a different material. Node only, no dependencies.
 - Brand mark: Laura Miron's initials in handwriting over a highlighter stroke. It lives in several places, and nothing regenerates them for you:
   - the header, inline in `assets/js/shell.js` (`BRAND_MARK`), transparent, coloured by `--ink` and `--brand-marker`;
   - `favicon.svg` and `assets/img/og-image.svg`, hand-written SVG;
@@ -38,6 +40,7 @@ Content is sorted per grade, never per school class (9R2, 6E2). Topics hold mate
 - `node tests/validate.mjs`: the site validator. It must print `PASS`. Cloudflare runs it as the build command.
 - `npm test`: the validator and all JS tests. Do not use `node --test tests/` (it fails on this machine).
 - `python -m pytest tools -q`: tests for the Python tools.
+- `node tools/material.mjs list`: what exists. It marks `supersedes` pairs, so a re-imported copy waiting for its old one to be deleted is easy to spot.
 - Local preview: `python -m http.server 8000`, then open http://localhost:8000/. Do not open the HTML files from disk: `fetch` of `data/materials.json` fails on `file://`.
 
 ## Rules (the validator fails on these)
@@ -52,6 +55,7 @@ Content is sorted per grade, never per school class (9R2, 6E2). Topics hold mate
 - Every file in `materiale/`, `en/materiale/` and `materiale/pdf/` is listed in `data/materials.json`. `en/materiale/` never holds the quiz.
 - `node tools/build_pages.mjs --check` must report nothing stale: never edit generated parts of a page (everything outside `<article>`, plus the quiz `<!-- seo -->` block). Regenerate instead.
 - Every file in `materiale/` and `materiale/pdf/` is listed in `data/materials.json`.
+- A material's identity is its `uid`, never its name. Names are `<slug>-<uid>` and may collide across versions (`fisa-recapitulativa-1`); add/drop the `-<uid>` form when the data or the files change. A deleted material is `retired`, never re-created under the same `uid`.
 - Pages and `data/materials.json` contain no answers and no class marks:
   - class names (`IX-a R2`), class codes (`6E2`), school weeks (`S2:`), exact dates (`16.09.2026`);
   - answer headings (răspunsuri și indicații, barem de evaluare, indicații de rezolvare).
@@ -80,16 +84,17 @@ Content is sorted per grade, never per school class (9R2, 6E2). Topics hold mate
 
 ## Add a material
 
-The source files are in `D:\Projects\Website-Content\`. Never change them. Put work files in `.work/<id>/` (git ignores it).
+The source files are in `D:\Projects\Website-Content\`. Never change them. Put work files in `.work/<name>/` (git ignores it). `"import": { "date", "workflow" }` records which version of this workflow produced the article; bump `WORKFLOW` at the top of `tools/material.mjs` whenever a change here affects the article output.
 
-1. **Convert the Word file (DOCX only).**
-   `python tools/docx_to_html.py "<DOCX path>" -o .work/<id>/ro.html`
-   - It needs pandoc. If it warns about `$` signs, write each literal `$` in the text as `&#36;`.
-   - Never convert a PDF to HTML: the math breaks. If there is no DOCX, skip steps 1, 3 and 4. The generator creates both pages with empty articles; the pages then show the title, the PDF button and a note that the material is only available as a PDF.
-2. **Add the data.** Add a new topic (only if necessary) at the end of `topics`, and the material at the end of `materials` in `data/materials.json`. Use 2-space indentation. Every material needs `description.ro` and `description.en` (see "SEO rules"). If the material has a video, check that it exists and allows embedding:
-   `Invoke-RestMethod "https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=<id>&format=json"`
-3. **Create the pages.** `node tools/build_pages.mjs` creates `materiale/<id>.html` and `en/materiale/<id>.html` with empty articles.
-4. **Write the Romanian article** in `materiale/<id>.html`, **only inside `<article>`**, from `.work/<id>/ro.html`:
+1. **Create the material.**
+   `node tools/material.mjs new "<DOCX path>" --slug <slug> --topic <topic-id> --kind teorie --title-ro "…" --title-en "…" --desc-ro "…" --desc-en "…"`
+   - `new` takes the uid from `nextUid` and raises it, adds the material to `data/materials.json`, converts the DOCX to `.work/<name>/ro.html`, saves the source path plus its sha256 in `.work/sources/<uid>.json` (git-ignored, never published) and regenerates the site.
+   - `--slug` uses lowercase letters, digits and dashes. `--topic` must exist (add a new topic at the end of `topics` first, only if necessary). `--kind` is one of `lectie, teorie, fisa-lucru, fisa-recapitulativa, test, joc, quiz`. `--desc-ro` and `--desc-en` are 70-160 characters each (see "SEO rules").
+   - If the clean PDF already exists, pass `--pdf "<PDF path>"` and it is copied to `materiale/pdf/<name>.pdf`.
+   - If there is no DOCX (only a PDF), run `new` without the path (or with `-`); `.work/<name>/` is still made, the pages get empty articles and show the title, the PDF button and a note that the material is only available as a PDF.
+   - `docx_to_html.py` needs pandoc. If it warns about `$` signs, write each literal `$` in the text as `&#36;`. Never convert a PDF to HTML: the math breaks.
+   - If the material has a video, follow "Add a YouTube video" afterwards.
+2. **Write the Romanian article** in `materiale/<name>.html`, **only inside `<article>`**, from `.work/<name>/ro.html`:
    - Remove the title block at the top. The page shows the title from the data.
    - Remove all class-specific text: class and unit lines, "Competențe specifice …", school-year lines, header and footer text (school, teacher, page numbers), the "Numele și prenumele … Clasa … Data" line, and the labels "(În clasă …)", "(Tema …)", "(Temă …)".
    - Remove all answers: everything from "RĂSPUNSURI ȘI INDICAȚII" or "BAREM DE EVALUARE ȘI INDICAȚII DE REZOLVARE" to the end, and every page for the teacher only ("pagină destinată profesorului").
@@ -102,23 +107,43 @@ The source files are in `D:\Projects\Website-Content\`. Never change them. Put w
    - Tables stay tables. Use `<thead>` when the first row is a header. Delete empty `<p></p>` and `style="width…"`. Answer cells stay empty.
    - Keep every `$…$` and `$$…$$` exactly as converted. Never retype a formula.
    - Indent two spaces per level.
-4. **Write the English article.** Translate the text into clear English for ages 11-18. Use `docs/translation-glossary.md`. Keep the same structure: headings, lists, tables and exercise numbers. Formulas stay identical, also decimal commas like `$2,5$`. Only the words in `\text{...}` change (`\text{dacă }` → `\text{if }`).
-5. **Make the clean PDF.**
-   `python tools/clean_pdf.py "<PDF path>" materiale/pdf/<id>.pdf <options> --render .work/<id>/pdf`
+3. **Write the English article.** Translate the text into clear English for ages 11-18. Use `docs/translation-glossary.md`. Keep the same structure: headings, lists, tables and exercise numbers. Formulas stay identical, also decimal commas like `$2,5$`. Only the words in `\text{...}` change (`\text{dacă }` → `\text{if }`).
+4. **Make the clean PDF.**
+   `python tools/clean_pdf.py "<PDF path>" materiale/pdf/<name>.pdf <options> --render .work/<name>/pdf`
    - Options (`--delete-pages`, `--whiteout`, `--whiteout-line`) are explained at the top of `tools/clean_pdf.py`.
    - The exit code must be `0`.
    - If a pattern is not found, run `python tools/clean_pdf.py "<PDF path>" --lines` and copy the exact text (dashes and spaces matter).
-   - Look at every `.work/<id>/pdf/page-N.png`: correct page count, no class marks, no answers, no cut letters.
+   - Look at every `.work/<name>/pdf/page-N.png`: correct page count, no class marks, no answers, no cut letters.
    - The "Numele și prenumele … Data" line stays in the PDF (students fill it in). A grade such as `Clasa: a VIII-a` may stay; a class code such as `8E2` may not.
-6. **Run the generator again.** `node tools/build_pages.mjs` fills the page shells (title, breadcrumb, related materials).
-7. **Check.**
+   - If you did not pass `--pdf` to `new`, set the material's `pdf` field in `data/materials.json` to `"materiale/pdf/<name>.pdf"`.
+5. **Run the generator again.** `node tools/build_pages.mjs` fills the page shells (title, breadcrumb, related materials).
+6. **Check.**
    - `npm test` and `python -m pytest tools -q` must pass.
-   - Open `materiale/<id>.html` and `en/materiale/<id>.html` in the local preview. The browser keeps old files: first run `await fetch('<changed file>', {cache: 'reload'})` in the console for each changed file, always also for `data/materials.json`.
+   - Open `materiale/<name>.html` and `en/materiale/<name>.html` in the local preview. The browser keeps old files: first run `await fetch('<changed file>', {cache: 'reload'})` in the console for each changed file, always also for `data/materials.json`.
    - `document.querySelectorAll('.katex-error').length` must be `0`, in RO and in EN.
    - Both pages have the right `<title>`, `description`, canonical, hreflang and JSON-LD (view source, without JS).
    - The page and the clean PDF have the same sections and exercises, and no answers.
    - "Deschide PDF" opens the clean PDF. The topic link in the breadcrumb opens the grade page at the topic.
    - The grade page shows the material under its topic, newest first.
+
+## Delete a material
+
+1. `node tools/material.mjs list` to find the uid (the `uid`, not the name).
+2. `node tools/material.mjs delete <uid>`
+   - Removes the material from `data/materials.json`, deletes `materiale/<name>.html`, `en/materiale/<name>.html`, `materiale/pdf/<name>.pdf` and `.work/<name>/`, appends `{ "uid", "slug", "removed", "replacedBy": null }` to `retired` and regenerates the site.
+   - The uid is never reused; `list` keeps showing it under RETIRED.
+   - Without `--replaced-by` there is no redirect: the old URLs 404.
+3. If the material replaced an earlier copy, delete the old one with
+   `node tools/material.mjs delete <uid> --replaced-by <uid>` and the old URLs 301 to the new material (see "Import a material again").
+
+## Import a material again
+
+When the workflow improves, an old material may be worth importing again. A re-import is a **new material with a new uid**: run `new` again on the same source and a fresh `<slug>-<uid>` is created. Nothing is overwritten — not the hand-written article, not the English translation — so no diff is needed.
+
+1. `new` the source again, then write the article as above. In `data/materials.json`, set `"supersedes": <uid of the old copy>` on the new material.
+2. The new page is `noindex, follow` until the duplicated copy disappears, so it never competes with the indexable old one.
+3. Delete the old copy: `node tools/material.mjs delete <old uid> --replaced-by <new uid>`. The old URLs 301 to the new one, the `supersedes` marker is cleared from the survivor, and the new page becomes indexable again.
+4. `node tools/material.mjs list` marks the pair `(dup: delete the old copy when ready)` so a re-import waiting for its deletion is easy to spot.
 
 ## Deploy
 

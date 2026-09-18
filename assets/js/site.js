@@ -58,10 +58,10 @@
   // The quiz exists only in Romanian, so it always links to the Romanian page.
   // English listings leave the quiz out entirely (see Catalog.visibleMaterials).
   function materialUrl(material) {
-    const id = typeof material === 'string' ? material : material.id;
     const kind = typeof material === 'string' ? '' : material.kind;
-    if (kind === 'quiz') return `${root}materiale/${id}.html`;
-    return `${pageRoot}materiale/${id}.html`;
+    const name = typeof material === 'string' ? material : Catalog.nameOf(material);
+    if (kind === 'quiz') return `${root}materiale/${name}.html`;
+    return `${pageRoot}materiale/${name}.html`;
   }
 
   function gradeUrl(grade, topicId) {
