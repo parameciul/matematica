@@ -171,6 +171,36 @@ test('a new signing key is fetched again instead of waiting for the cache', asyn
   assert.equal(calls, 2);
 });
 
+test('made-up key ids do not download the certs on every request', async () => {
+  clearCertCache();
+  let calls = 0;
+  const counting = async () => {
+    calls += 1;
+    const { pub } = await testKeys();
+    return { ok: true, json: async () => ({ keys: [pub] }) };
+  };
+  for (let i = 0; i < 5; i++) {
+    const res = await authorize(requestWith(await tokenFor({}, { kid: `made-up-${i}` })), ENV, counting);
+    assert.match(res.message, /Unknown login key/);
+  }
+  // One normal download plus one forced download, then the throttle holds.
+  assert.equal(calls, 2);
+  const good = await authorize(requestWith(await tokenFor({})), ENV, counting);
+  assert.equal(good.ok, true);
+  assert.equal(calls, 2);
+});
+
+test('a token that is not valid yet fails', async () => {
+  clearCertCache();
+  const now = Math.floor(Date.now() / 1000);
+  const later = await authorize(requestWith(await tokenFor({ nbf: now + 600 })), ENV, certsFetch());
+  assert.equal(later.ok, false);
+  assert.match(later.message, /not valid yet/);
+  // A few seconds of clock drift is fine.
+  const drift = await authorize(requestWith(await tokenFor({ nbf: now + 5 })), ENV, certsFetch());
+  assert.equal(drift.ok, true);
+});
+
 test('missing secrets refuse everything', async () => {
   const res = await authorize(requestWith('x.y.z'), {}, certsFetch());
   assert.equal(res.ok, false);
@@ -203,6 +233,17 @@ test('shapeError accepts good changes and names the bad ones', () => {
   assert.match(shapeError({ uid: '1005', state: 'soon' }), /state must be/);
   assert.match(shapeError({ uid: '1005', state: 'scheduled' }), /visibleFrom/);
   assert.match(shapeError({ uid: '1005', state: 'visible', visibleFrom: '2026-09-21T08:00:00+03:00' }), /only with state "scheduled"/);
+});
+
+test('shapeError refuses every time the workflow would refuse', () => {
+  // The same rules as material.mjs apply: a save the API accepts must never
+  // fail later in the workflow while the admin page waits.
+  assert.match(shapeError({ uid: '1005', state: 'scheduled', visibleFrom: '2026-02-30T25:00:00+09:00' }), /visibleFrom/);
+  // Spring gap: 03:30 does not exist in Romania on 2027-03-28.
+  assert.match(shapeError({ uid: '1005', state: 'scheduled', visibleFrom: '2027-03-28T03:30:00+03:00' }), /visibleFrom/);
+  // Winter time with the summer offset.
+  assert.match(shapeError({ uid: '1005', state: 'scheduled', visibleFrom: '2026-12-01T08:00:00+03:00' }), /visibleFrom/);
+  assert.match(shapeError({ uid: '1005', state: 'visible', visibleFrom: null }), /only with state "scheduled"/);
 });
 
 test('save builds the right dispatch request', async () => {
@@ -248,9 +289,38 @@ test('save answers 202 on success and refuses a bad payload', async () => {
     assert.match(await bad.text(), /state must be/);
     const noBranch = await onRequestPost({
       env: { ...ENV, DATA_BRANCH: '' },
-      request: new Request('https://site/tm25mlg/api/save', { method: 'POST', body: '{}' }),
+      request: new Request('https://site/tm25mlg/api/save', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}' }),
     });
     assert.equal(noBranch.status, 500);
+  } finally {
+    globalThis.fetch = realFetch;
+  }
+});
+
+test('save refuses a cross-site request before it sends anything', async () => {
+  const realFetch = globalThis.fetch;
+  let sent = 0;
+  globalThis.fetch = async () => {
+    sent += 1;
+    return { status: 204 };
+  };
+  const body = JSON.stringify({ changes: [{ uid: '1004', state: 'hidden' }] });
+  const post = (headers) => onRequestPost({
+    env: ENV,
+    request: new Request('https://site/tm25mlg/api/save', { method: 'POST', headers, body }),
+  });
+  try {
+    // A form or a no-cors fetch from another site can send only a simple type.
+    assert.equal((await post({ 'Content-Type': 'text/plain' })).status, 415);
+    assert.equal((await post({})).status, 415);
+    assert.equal((await post({ 'Content-Type': 'application/json', 'Sec-Fetch-Site': 'cross-site' })).status, 403);
+    assert.equal((await post({ 'Content-Type': 'application/json', 'Sec-Fetch-Site': 'same-site' })).status, 403);
+    assert.equal((await post({ 'Content-Type': 'application/json', Origin: 'https://evil.example' })).status, 403);
+    assert.equal(sent, 0, 'no dispatch for a refused request');
+    // The admin page itself: same origin.
+    const own = await post({ 'Content-Type': 'application/json; charset=utf-8', 'Sec-Fetch-Site': 'same-origin', Origin: 'https://site' });
+    assert.equal(own.status, 202);
+    assert.equal(sent, 1);
   } finally {
     globalThis.fetch = realFetch;
   }
@@ -280,7 +350,9 @@ test('materials returns the fresh source file of the data branch', async () => {
     assert.match(url, /contents\/data\/materials\.source\.json\?ref=main/);
     assert.match(opts.headers.Authorization, /^Bearer /);
     assert.ok(opts.headers['User-Agent'], 'a User-Agent header is set');
-    return { ok: true, json: async () => ({ content: Buffer.from(source, 'utf8').toString('base64') }) };
+    // The raw file: the JSON form has an empty "content" past 1 MB.
+    assert.equal(opts.headers.Accept, 'application/vnd.github.raw+json');
+    return { ok: true, text: async () => source };
   };
   const res = await fetchSource(ENV, fakeFetch);
   assert.equal(res.ok, true);
@@ -293,4 +365,6 @@ test('materials refuses without a data branch and reports GitHub errors', async 
   const down = await fetchSource(ENV, async () => ({ ok: false, status: 404 }));
   assert.equal(down.ok, false);
   assert.equal(down.status, 502);
+  const empty = await fetchSource(ENV, async () => ({ ok: true, text: async () => '' }));
+  assert.deepEqual(empty, { ok: false, status: 502, message: 'GitHub sent an empty file' });
 });

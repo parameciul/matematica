@@ -32,18 +32,28 @@ function parseJwt(token) {
   }
 }
 
-let certCache = { at: 0, keys: null };
+const CACHE_FOR = 5 * 60 * 1000;
+// At most one forced download per this time: a stream of tokens with made-up
+// key ids must not turn into a stream of certs downloads.
+const REFETCH_EVERY = 30 * 1000;
+
+let certCache = { at: 0, keys: null, forcedAt: 0 };
 
 // Test hook: forget the cached Access signing keys.
 export function clearCertCache() {
-  certCache = { at: 0, keys: null };
+  certCache = { at: 0, keys: null, forcedAt: 0 };
 }
 
 // fresh: skip the cache. Access rotates its signing keys, so a token signed
-// with a key the cache does not know yet triggers one fresh download.
+// with a key the cache does not know yet triggers one fresh download (at
+// most one per REFETCH_EVERY).
 async function accessCerts(teamDomain, fetchImpl, fresh) {
   const now = Date.now();
-  if (!fresh && certCache.keys && now - certCache.at < 5 * 60 * 1000) return certCache.keys;
+  if (certCache.keys) {
+    if (!fresh && now - certCache.at < CACHE_FOR) return certCache.keys;
+    if (fresh && now - certCache.forcedAt < REFETCH_EVERY) return certCache.keys;
+  }
+  if (fresh) certCache.forcedAt = now;
   const res = await (fetchImpl || fetch)(`https://${teamDomain}/cdn-cgi/access/certs`);
   if (!res.ok) throw new Error(`certs HTTP ${res.status}`);
   const json = await res.json();
@@ -53,7 +63,7 @@ async function accessCerts(teamDomain, fetchImpl, fresh) {
 }
 
 // Checks the Cf-Access-Jwt-Assertion header: RS256 signature, issuer,
-// audience, expiry and admin email. Returns { ok, email? / message? }.
+// audience, expiry, not-before and admin email. Returns { ok, email? / message? }.
 export async function authorize(request, env, fetchImpl) {
   // The team domain may be pasted as "team.cloudflareaccess.com" or as a full
   // URL with a trailing slash: keep only the host.
@@ -107,6 +117,11 @@ export async function authorize(request, env, fetchImpl) {
   const nowSec = Math.floor(Date.now() / 1000);
   if (typeof body.exp !== 'number' || body.exp <= nowSec) {
     return { ok: false, message: 'Login expired' };
+  }
+  // A token that is not valid yet. One minute of leeway for clock drift
+  // between Access and this Function.
+  if (typeof body.nbf === 'number' && body.nbf > nowSec + 60) {
+    return { ok: false, message: 'Login not valid yet' };
   }
   const audiences = Array.isArray(body.aud) ? body.aud : [body.aud];
   if (!audiences.includes(aud)) return { ok: false, message: 'Wrong login audience' };

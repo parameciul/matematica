@@ -5,13 +5,6 @@ const REPO = 'parameciul/matematica';
 const USER_AGENT = 'lauramiron-admin';
 const SOURCE_PATH = 'data/materials.source.json';
 
-function b64ToText(b64) {
-  const bin = atob(String(b64 || '').replace(/\s/g, ''));
-  const bytes = new Uint8Array(bin.length);
-  for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
-  return new TextDecoder().decode(bytes);
-}
-
 export async function fetchSource(env, fetchImpl) {
   const branch = String((env && env.DATA_BRANCH) || '').trim();
   const token = String((env && env.GITHUB_TOKEN) || '').trim();
@@ -22,7 +15,9 @@ export async function fetchSource(env, fetchImpl) {
   try {
     res = await (fetchImpl || fetch)(url, {
       headers: {
-        Accept: 'application/vnd.github+json',
+        // The raw file itself: no base64 step, and no empty "content" once
+        // the file grows past 1 MB (the JSON form stops there).
+        Accept: 'application/vnd.github.raw+json',
         Authorization: `Bearer ${token}`,
         'X-GitHub-Api-Version': '2022-11-28',
         // GitHub answers 403 to a request without a User-Agent, and the
@@ -34,17 +29,14 @@ export async function fetchSource(env, fetchImpl) {
     return { ok: false, status: 502, message: 'GitHub is unreachable' };
   }
   if (!res.ok) return { ok: false, status: 502, message: `GitHub said ${res.status}` };
-  let json;
+  let text;
   try {
-    json = await res.json();
+    text = await res.text();
   } catch (e) {
     return { ok: false, status: 502, message: 'GitHub sent bad data' };
   }
-  try {
-    return { ok: true, text: b64ToText(json.content) };
-  } catch (e) {
-    return { ok: false, status: 502, message: 'GitHub sent bad data' };
-  }
+  if (!String(text || '').trim()) return { ok: false, status: 502, message: 'GitHub sent an empty file' };
+  return { ok: true, text };
 }
 
 export async function onRequestGet(context) {

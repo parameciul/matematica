@@ -3,26 +3,33 @@
 // with the changes and the branch (DATA_BRANCH), and no email address. The
 // Action checks everything again against the real data. Plain JavaScript,
 // no npm dependencies.
+import Visibility from '../../../assets/js/visibility.js';
+
 const REPO = 'parameciul/matematica';
 const USER_AGENT = 'lauramiron-admin';
 const UID_RE = /^[1-9][0-9]{3,}$/;
-const VISIBLE_FROM_RE = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:00[+-]\d{2}:\d{2}$/;
-const STATES = ['visible', 'hidden', 'scheduled'];
 
+// The same rules as the workflow (Visibility.changeError, used by
+// material.mjs apply), so a save the API accepts is never refused later,
+// after the admin page has waited minutes for it.
 export function shapeError(change) {
   if (!change || typeof change !== 'object') return 'must be an object';
   if (typeof change.uid !== 'string' || !UID_RE.test(change.uid)) return 'uid must be a uid like "1005"';
-  if (change.state === 'visible' || change.state === 'hidden') {
-    if (change.visibleFrom !== undefined) return 'visibleFrom goes only with state "scheduled"';
-    return null;
-  }
-  if (change.state === 'scheduled') {
-    if (typeof change.visibleFrom !== 'string' || !VISIBLE_FROM_RE.test(change.visibleFrom)) {
-      return 'visibleFrom must be an offset date-time like "2026-09-21T08:00:00+03:00"';
-    }
-    return null;
-  }
-  return `state must be one of ${STATES.join(', ')}`;
+  return Visibility.changeError(change);
+}
+
+// The admin page posts JSON from its own origin. A cross-site form or a
+// no-cors fetch can send only a "simple" content type, and the browser marks
+// it with Sec-Fetch-Site and Origin. Both are refused, whatever SameSite
+// setting the Access cookie has.
+export function crossSiteError(request) {
+  const type = String(request.headers.get('Content-Type') || '').toLowerCase();
+  if (!type.startsWith('application/json')) return { status: 415, message: 'Content-Type must be application/json' };
+  const site = request.headers.get('Sec-Fetch-Site');
+  if (site && site !== 'same-origin') return { status: 403, message: 'Cross-site request' };
+  const origin = request.headers.get('Origin');
+  if (origin && origin !== new URL(request.url).origin) return { status: 403, message: 'Cross-site request' };
+  return null;
 }
 
 export async function sendDispatch(env, changes, branch, fetchImpl) {
@@ -55,6 +62,8 @@ export async function sendDispatch(env, changes, branch, fetchImpl) {
 
 export async function onRequestPost(context) {
   const env = context.env || {};
+  const crossSite = crossSiteError(context.request);
+  if (crossSite) return new Response(crossSite.message, { status: crossSite.status });
   const branch = String(env.DATA_BRANCH || '').trim();
   if (!branch) return new Response('DATA_BRANCH is not set', { status: 500 });
   let body;
