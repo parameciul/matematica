@@ -93,16 +93,17 @@ test('new copies a PDF and keeps the file-listing rules happy', (t) => {
 
 test('new validates the flags before touching the data', (t) => {
   const dir = makeRoot(t);
+  const before = readData(dir);
   const badSlug = run(dir, ['new', '--slug', 'Fracții', '--topic', 'x']);
   assert.equal(badSlug.code, 1);
   assert.match(badSlug.out, /--slug must be lowercase/);
-  const badDesc = run(dir, ['new', '--slug', 'ok-slug', '--topic', readData(dir).topics[0].id,
+  const badDesc = run(dir, ['new', '--slug', 'ok-slug', '--topic', before.topics[0].id,
     '--title-ro', 'A', '--title-en', 'B', '--desc-ro', 'scurt', '--desc-en', 'short']);
   assert.equal(badDesc.code, 1);
   assert.match(badDesc.out, /--desc-ro must be 70-160 characters/);
   const published = readData(dir);
-  assert.equal(published.materials.length, 11);
-  assert.equal(published.nextUid, 1012);
+  assert.equal(published.materials.length, before.materials.length);
+  assert.equal(published.nextUid, before.nextUid);
 });
 
 test('new --hidden creates a hidden material', (t) => {
@@ -333,8 +334,11 @@ test('delete retires the uid, removes files and the work folder', (t) => {
 test('delete --replaced-by 301s the old name and clears supersedes on the survivor', (t) => {
   const dir = makeRoot(t);
   const d0 = readData(dir);
-  // Simulate a re-import: the newer copy supersedes the old one.
-  const survivor = d0.materials[d0.materials.length - 1];
+  // Simulate a re-import: the newer copy supersedes the old one. The survivor
+  // needs a PDF so the test also covers the PDF redirect line (materials
+  // without a PDF get no PDF line: only files the target has are redirected).
+  const survivor = [...d0.materials].reverse().find((m) => m.pdf);
+  assert.ok(survivor, 'the fixture data needs a material with a PDF');
   survivor.supersedes = d0.materials[0].uid;
   writeFileSync(dataFile(dir), JSON.stringify(d0, null, 2));
   writeSite(dir);

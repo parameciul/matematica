@@ -2,14 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://lauramiron.pages.dev/</loc>
-    <lastmod>2026-09-17</lastmod>
+    <lastmod>2026-09-20</lastmod>
     <xhtml:link rel="alternate" hreflang="ro" href="https://lauramiron.pages.dev/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://lauramiron.pages.dev/en/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://lauramiron.pages.dev/"/>
   </url>
   <url>
     <loc>https://lauramiron.pages.dev/en/</loc>
-    <lastmod>2026-09-17</lastmod>
+    <lastmod>2026-09-20</lastmod>
     <xhtml:link rel="alternate" hreflang="ro" href="https://lauramiron.pages.dev/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://lauramiron.pages.dev/en/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://lauramiron.pages.dev/"/>
@@ -44,14 +44,14 @@
   </url>
   <url>
     <loc>https://lauramiron.pages.dev/clasa-9</loc>
-    <lastmod>2026-09-14</lastmod>
+    <lastmod>2026-09-20</lastmod>
     <xhtml:link rel="alternate" hreflang="ro" href="https://lauramiron.pages.dev/clasa-9"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://lauramiron.pages.dev/en/clasa-9"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://lauramiron.pages.dev/clasa-9"/>
   </url>
   <url>
     <loc>https://lauramiron.pages.dev/en/clasa-9</loc>
-    <lastmod>2026-09-14</lastmod>
+    <lastmod>2026-09-20</lastmod>
     <xhtml:link rel="alternate" hreflang="ro" href="https://lauramiron.pages.dev/clasa-9"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://lauramiron.pages.dev/en/clasa-9"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://lauramiron.pages.dev/clasa-9"/>
@@ -213,5 +213,19 @@
     <xhtml:link rel="alternate" hreflang="ro" href="https://lauramiron.pages.dev/materiale/teorie-vectori-geometrie-analitica-1011"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://lauramiron.pages.dev/en/materiale/teorie-vectori-geometrie-analitica-1011"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://lauramiron.pages.dev/materiale/teorie-vectori-geometrie-analitica-1011"/>
+  </url>
+  <url>
+    <loc>https://lauramiron.pages.dev/materiale/fisa-lucru-modulul-unui-numar-real-1012</loc>
+    <lastmod>2026-09-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://lauramiron.pages.dev/materiale/fisa-lucru-modulul-unui-numar-real-1012"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lauramiron.pages.dev/en/materiale/fisa-lucru-modulul-unui-numar-real-1012"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lauramiron.pages.dev/materiale/fisa-lucru-modulul-unui-numar-real-1012"/>
+  </url>
+  <url>
+    <loc>https://lauramiron.pages.dev/en/materiale/fisa-lucru-modulul-unui-numar-real-1012</loc>
+    <lastmod>2026-09-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://lauramiron.pages.dev/materiale/fisa-lucru-modulul-unui-numar-real-1012"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lauramiron.pages.dev/en/materiale/fisa-lucru-modulul-unui-numar-real-1012"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lauramiron.pages.dev/materiale/fisa-lucru-modulul-unui-numar-real-1012"/>
   </url>
 </urlset>

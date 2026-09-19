@@ -607,8 +607,29 @@
         "date": "2026-09-18",
         "workflow": 2
       }
+    },
+    {
+      "slug": "fisa-lucru-modulul-unui-numar-real",
+      "uid": "1012",
+      "topic": "numere-reale-modul-parte-intreaga",
+      "kind": "fisa-lucru",
+      "title": {
+        "ro": "Fișă de lucru: modulul unui număr real",
+        "en": "Worksheet: absolute value of a real number"
+      },
+      "published": "2026-09-20",
+      "description": {
+        "ro": "Fișă de lucru pentru clasa a IX-a cu 15 exerciții despre modul: calcul, proprietăți și ecuații cu modul.",
+        "en": "Grade 9 worksheet with 15 exercises on absolute value: evaluation, properties and equations with absolute value."
+      },
+      "pdf": null,
+      "youtube": null,
+      "import": {
+        "date": "2026-09-20",
+        "workflow": 2
+      }
     }
   ],
-  "nextUid": 1012,
+  "nextUid": 1013,
   "retired": []
 }
