@@ -14,6 +14,9 @@ on:
   schedule:
     # Every 10 minutes. Runs with nothing to do make no commit and no build.
     - cron: '*/10 * * * *'
+    # Once a week: also switch the schedule on again (see "Keep the timer
+    # switched on"). Keep this line equal to the check in that step.
+    - cron: '23 4 * * 1'
   repository_dispatch:
     types: [material-visibility]
   workflow_dispatch:
@@ -35,7 +38,21 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      # Only for "Keep the timer switched on".
+      actions: write
     steps:
+      # GitHub switches a schedule off after 60 days without activity in the
+      # repo, and a summer with nothing scheduled makes no commit. Switching
+      # the workflow on again once a week restarts that count. If the timer
+      # ever stops anyway: GitHub, Actions, material-visibility, Enable workflow.
+      - name: Keep the timer switched on
+        if: github.event_name == 'schedule' && github.event.schedule == '23 4 * * 1'
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: gh api --method PUT "repos/$REPO/actions/workflows/visibility.yml/enable"
+
       - name: Pick the branch
         id: pick
         env:
@@ -92,10 +109,23 @@ jobs:
           set -o pipefail
           node tools/material.mjs reveal $REVEAL_ARGS | tee "$RUNNER_TEMP/reveal.log"
 
+      # Most timer runs change nothing: they skip the checks and the commit.
+      - name: See what changed
+        id: changes
+        run: |
+          if git status --short | grep -q .; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "Nothing to do."
+          fi
+
       - name: Run the checks
+        if: steps.changes.outputs.changed == 'true'
         run: npm test
 
       - name: Commit and push when something changed
+        if: steps.changes.outputs.changed == 'true'
         env:
           EVENT: ${{ github.event_name }}
           BRANCH: ${{ steps.pick.outputs.branch }}
