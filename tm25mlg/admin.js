@@ -35,6 +35,12 @@
   var readOnly = false;
   var busy = false;
   var pollTimer = null;
+  // The grade blocks the admin opened, kept across re-renders (filter,
+  // search, reset, save). null until the first plain render.
+  var openGrades = null;
+  // True when the last render had no search and no filter: only then do the
+  // open blocks show the admin's choice (a search opens every block).
+  var lastPlain = false;
 
   function esc(s) {
     return window.Shell.escapeHtml(s == null ? '' : s);
@@ -52,15 +58,13 @@
     return 'Vizibil';
   }
 
-  // "1 modificare", "5 modificări", "20 de modificări".
+  // "1 modificare", "5 modificări", "20 de modificări": the site's plural rule.
   function changesLabel(n) {
-    if (n === 1) return '1 modificare';
-    var rest = n % 100;
-    return rest === 0 || rest >= 20 ? `${n} de modificări` : `${n} modificări`;
+    return window.Site.plural(n, 'changes');
   }
 
   function wanted(row) {
-    return V.rowChange(row.checked, row.when);
+    return V.rowChange(row.checked, row.when, row.orig);
   }
 
   function isDirty(row) {
@@ -132,12 +136,20 @@
       + '</li>';
   }
 
-  // Grades in order, then topics and materials, newest first. The first
-  // grade block is open. The search and the filter pick rows by the saved
-  // state, so a row never vanishes while it is being edited.
+  // Grades in order, then topics and materials, newest first. At first only
+  // the first grade block is open; later the blocks the admin opened stay
+  // open. The search and the filter pick rows by the saved state, so a row
+  // never vanishes while it is being edited.
   function renderList() {
     var q = window.Catalog.normalize(searchEl.value.trim());
     var only = selectedFilter();
+    if (lastPlain) {
+      openGrades = new Set();
+      listEl.querySelectorAll('details[data-grade]').forEach(function (block) {
+        if (block.open) openGrades.add(Number(block.getAttribute('data-grade')));
+      });
+    }
+    lastPlain = !q && !only;
     var byGrade = new Map();
     var shown = 0;
     rows.forEach(function (row, uid) {
@@ -175,9 +187,9 @@
         })
         .sort(newestFirst);
       // With a search or a filter, every matching grade opens.
-      var open = first || q || only;
+      var open = q || only || (openGrades ? openGrades.has(grade) : first);
       first = false;
-      html += `<details class="year admin-grade"${open ? ' open' : ''}>`
+      html += `<details class="year admin-grade" data-grade="${grade}"${open ? ' open' : ''}>`
         + `<summary><h2>${esc(window.Site.gradeName(grade))}</h2>`
         + `<span class="admin-grade-count">${esc(window.Site.countLabel(uids.length))}</span></summary>`;
       entries.forEach(function (entry) {
@@ -338,9 +350,11 @@
   function callError(r, action) {
     if (r.expired) return 'Autentificarea a expirat. Reîncarcă pagina și cere un cod nou.';
     if (r.network) return `${action}: nu există conexiune. Verifică internetul și încearcă din nou.`;
-    if (r.status === 403) return `${action}: acces refuzat. Reîncarcă pagina și autentifică-te cu adresa de administrator.`;
     // The API answers errors in plain text; an HTML page (a 404) says nothing useful.
     var detail = r.text && r.text.trim().charAt(0) !== '<' ? ` (${r.text.trim().slice(0, 200)})` : '';
+    // A 403 is also a setup problem ("Access is not configured"): the reason
+    // tells it apart from a wrong account.
+    if (r.status === 403) return `${action}: acces refuzat${detail}. Reîncarcă pagina și autentifică-te cu adresa de administrator.`;
     return `${action}: serverul a răspuns ${r.status}${detail}.`;
   }
 

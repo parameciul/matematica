@@ -199,11 +199,17 @@
 
   // What an admin row asks for. A date means scheduled; without one, the
   // "Vizibil" checkbox decides. `when` is the datetime-local value in Romania
-  // wall-clock time. Returns { state, visibleFrom? } or { error } (Romanian,
-  // shown on the admin page).
-  function rowChange(checked, when) {
+  // wall-clock time; `orig` is the saved { state, visibleFrom }. Returns
+  // { state, visibleFrom? } or { error } (Romanian, shown on the admin page).
+  function rowChange(checked, when, orig) {
     const wall = String(when || '').trim();
     if (wall) {
+      // The saved time, unchanged, stays exactly as stored. An autumn-overlap
+      // time has two offsets: converting it back would move a stored second
+      // occurrence (+02:00) one hour earlier and mark the row as changed.
+      if (orig && orig.state === 'scheduled' && wall.replace(' ', 'T') === visibleFromToInput(orig.visibleFrom)) {
+        return { state: 'scheduled', visibleFrom: orig.visibleFrom };
+      }
       const visibleFrom = wallToVisibleFrom(wall);
       if (!visibleFrom) return { error: 'Ora aleasă nu există în România (trecerea la ora de vară). Alege altă oră.' };
       return { state: 'scheduled', visibleFrom };

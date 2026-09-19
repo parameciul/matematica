@@ -17,6 +17,7 @@ import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createRequire } from 'node:module';
+import { createHash } from 'node:crypto';
 import vm from 'node:vm';
 
 const require = createRequire(import.meta.url);
@@ -886,6 +887,21 @@ function renderRedirects(data) {
   return lines.concat(hiddenLines).join('\n') + '\n';
 }
 
+// The admin page is written by hand. The generator owns only the ?v= hash on
+// its links to the shared files in assets/. /assets/* is cached for a day,
+// while the admin page and admin.js are no-store: without the hash, a browser
+// pairs a new admin.js with yesterday's visibility.js and the page breaks.
+// The hash reads the text with LF line ends, so it is the same on every OS.
+export function renderAdminPage(html, root) {
+  return html.replace(/\b(src|href)="(\.\.\/assets\/[^"?#]+)(?:\?v=[0-9a-f]*)?"/g, (all, attr, path) => {
+    const abs = join(root, ...path.slice(3).split('/'));
+    if (!existsSync(abs)) return all;
+    const text = readFileSync(abs, 'utf8').replace(/\r\n/g, '\n');
+    const hash = createHash('sha256').update(text).digest('hex').slice(0, 10);
+    return `${attr}="${path}?v=${hash}"`;
+  });
+}
+
 // The quiz keeps its own design. The generator owns only the head block
 // between <!-- seo --> and <!-- /seo -->, and normalizes the back link.
 export function renderQuizPage(html, material, topic, opts) {
@@ -1053,6 +1069,9 @@ export function buildSite(root) {
   set('robots.txt', renderRobots());
   set('_headers', renderHeaders(publicData));
   set('_redirects', renderRedirects(data));
+  const adminFile = `${ADMIN_FOLDER}/index.html`;
+  const adminHtml = readIfExists(root, adminFile);
+  if (adminHtml !== null) set(adminFile, renderAdminPage(adminHtml, root));
 
   // Sitemap: indexable pages only.
   const indexable = [];

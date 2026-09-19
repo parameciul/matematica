@@ -103,6 +103,19 @@ test('an admin row: a date means scheduled, otherwise the checkbox decides', () 
   assert.match(V.rowChange(false, '2027-03-28T03:30').error, /România/);
 });
 
+test('an admin row keeps a saved autumn-overlap time exactly as stored', () => {
+  // 03:30 on 2026-10-25 happens twice; the stored value is the second one.
+  const second = { state: 'scheduled', visibleFrom: '2026-10-25T03:30:00+02:00' };
+  const row = V.rowChange(false, V.visibleFromToInput(second.visibleFrom), second);
+  assert.deepEqual(row, second);
+  assert.equal(V.isSameState(row, second), true, 'an untouched row is not a change');
+  // A new time is converted as usual, and without the saved state too.
+  assert.deepEqual(V.rowChange(false, '2026-10-25T04:30', second), { state: 'scheduled', visibleFrom: '2026-10-25T04:30:00+02:00' });
+  assert.deepEqual(V.rowChange(false, '2026-10-25T03:30'), { state: 'scheduled', visibleFrom: '2026-10-25T03:30:00+03:00' });
+  // A hidden or visible saved state never lends its (missing) time.
+  assert.deepEqual(V.rowChange(false, '2026-10-25T03:30', { state: 'hidden', visibleFrom: null }), { state: 'scheduled', visibleFrom: '2026-10-25T03:30:00+03:00' });
+});
+
 test('an admin row differs from the saved state only when the data would change', () => {
   const scheduled = { state: 'scheduled', visibleFrom: '2026-09-21T08:00:00+03:00' };
   assert.equal(V.isSameState({ state: 'visible' }, { state: 'visible', visibleFrom: null }), true);

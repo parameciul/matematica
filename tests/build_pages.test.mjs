@@ -374,6 +374,30 @@ test('--check passes on a fresh tree and spots a stale file', (t) => {
   assert.notEqual(rebuilt.get('index.html'), readFileSync(join(dir, 'index.html'), 'utf8'));
 });
 
+test('the admin page links to the shared assets with their content hash', (t) => {
+  const page = '<head>\n<link rel="stylesheet" href="../assets/css/style.css">\n'
+    + '<script defer src="../assets/js/i18n.js?v=0000000000"></script>\n'
+    + '<script defer src="admin.js"></script>\n'
+    + '<link rel="icon" href="../favicon.svg">\n</head>\n';
+  const dir = makeRoot(t, { pages: { 'tm25mlg/index.html': page, 'assets/css/style.css': 'body{}\n' } });
+  const first = buildSite(dir).get('tm25mlg/index.html');
+  const css = first.match(/style\.css\?v=([0-9a-f]{10})"/);
+  const js = first.match(/i18n\.js\?v=([0-9a-f]{10})"/);
+  assert.ok(css && js, first);
+  assert.notEqual(js[1], '0000000000');
+  // The admin page's own no-store files and the icons keep plain links.
+  assert.match(first, /src="admin\.js"/);
+  assert.match(first, /href="\.\.\/favicon\.svg"/);
+  // Line ends do not change the hash, so Windows and Linux agree.
+  writeFileSync(join(dir, 'assets', 'css', 'style.css'), 'body{}\r\n');
+  assert.equal(buildSite(dir).get('tm25mlg/index.html'), first);
+  // A changed asset gives a new hash, so the committed page goes stale.
+  writeFileSync(join(dir, 'assets', 'css', 'style.css'), 'body{color:red}\n');
+  const second = buildSite(dir).get('tm25mlg/index.html');
+  assert.notEqual(second.match(/style\.css\?v=([0-9a-f]{10})"/)[1], css[1]);
+  assert.equal(second.match(/i18n\.js\?v=([0-9a-f]{10})"/)[1], js[1]);
+});
+
 test('every page header carries the brand mark next to the site name', (t) => {
   const dir = makeRoot(t, { pages: stdPages() });
   const site = buildSite(dir);
