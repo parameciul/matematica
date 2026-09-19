@@ -76,8 +76,13 @@ export async function authorize(request, env, fetchImpl) {
     .split(',')
     .map((s) => s.trim().toLowerCase())
     .filter(Boolean);
-  if (!teamDomain || !aud || !emails.length) {
-    return { ok: false, message: 'Access is not configured' };
+  // Name the empty settings (never their values), so the admin page tells
+  // which one to add in Cloudflare Pages for this environment.
+  const missing = [['ACCESS_TEAM_DOMAIN', teamDomain], ['ACCESS_AUD', aud], ['ADMIN_EMAILS', emails.length]]
+    .filter(([, value]) => !value)
+    .map(([name]) => name);
+  if (missing.length) {
+    return { ok: false, message: `Access is not configured: ${missing.join(', ')} missing` };
   }
   const token = request.headers.get('Cf-Access-Jwt-Assertion');
   if (!token) return { ok: false, message: 'Missing Access login' };

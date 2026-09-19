@@ -207,6 +207,16 @@ test('missing secrets refuse everything', async () => {
   assert.match(res.message, /not configured/);
 });
 
+test('the refusal names the empty settings, never the values', async () => {
+  const all = await authorize(requestWith('x.y.z'), {}, certsFetch());
+  assert.equal(all.message, 'Access is not configured: ACCESS_TEAM_DOMAIN, ACCESS_AUD, ADMIN_EMAILS missing');
+  const one = await authorize(requestWith('x.y.z'), { ...ENV, ACCESS_AUD: '  ' }, certsFetch());
+  assert.equal(one.message, 'Access is not configured: ACCESS_AUD missing');
+  const emails = await authorize(requestWith('x.y.z'), { ...ENV, ADMIN_EMAILS: ' , ' }, certsFetch());
+  assert.equal(emails.message, 'Access is not configured: ADMIN_EMAILS missing');
+  assert.ok(!one.message.includes(TEAM), 'no setting value in the message');
+});
+
 test('onRequest answers 403 or passes to the route', async () => {
   clearCertCache();
   const realFetch = globalThis.fetch;
