@@ -224,16 +224,82 @@ test('reveal shows due materials with the Romania date of their time', (t) => {
 test('reveal --wait-minutes also takes a material due inside the window', (t) => {
   const dir = makeRoot(t);
   const d0 = readData(dir);
-  const [a, b] = [d0.materials[0].uid, d0.materials[1].uid];
+  const [a, b, c] = [d0.materials[0].uid, d0.materials[1].uid, d0.materials[2].uid];
   assert.equal(run(dir, ['set', a, '--visible-from', '2030-01-15 08:00']).code, 0);
   assert.equal(run(dir, ['set', b, '--visible-from', '2030-01-15 08:05']).code, 0);
+  // Inside 10 minutes of b, but not of the start: the window must not slide.
+  assert.equal(run(dir, ['set', c, '--visible-from', '2030-01-15 08:11']).code, 0);
   // With a fixed clock the wait jumps forward instead of sleeping.
   const res = run(dir, ['reveal', '--now', '2030-01-15T06:00:01Z', '--wait-minutes', '10']);
   assert.equal(res.code, 0, res.out);
   assert.match(res.out, new RegExp(`Show material ${a}`));
   assert.match(res.out, new RegExp(`Show material ${b}`));
-  assert.equal(readData(dir).materials[0].published, '2030-01-15');
-  assert.equal(readData(dir).materials[1].published, '2030-01-15');
+  assert.doesNotMatch(res.out, new RegExp(`Show material ${c}`));
+  const after = readData(dir);
+  assert.equal(after.materials[0].published, '2030-01-15');
+  assert.equal(after.materials[1].published, '2030-01-15');
+  assert.equal(after.materials[2].visibleFrom, '2030-01-15T08:11:00+02:00');
+});
+
+// A material with an `updated` date must still pass the validator once it
+// shows with a later publish date, or the timer could never commit.
+function giveUpdated(dir, index, date) {
+  const d = readData(dir);
+  d.materials[index].updated = date;
+  if (d.materials[index].published > date) d.materials[index].published = date;
+  writeFileSync(dataFile(dir), `${JSON.stringify(d, null, 2)}\n`);
+  writeSite(dir);
+  return d.materials[index].uid;
+}
+
+function validates(dir) {
+  const v = spawnSync(process.execPath, [join(REPO, 'tests', 'validate.mjs')], { env: { ...process.env, SITE_ROOT: dir }, encoding: 'utf8' });
+  assert.equal(v.status, 0, `${v.stdout}${v.stderr}`);
+}
+
+test('reveal drops an updated date that falls before the new publish date', (t) => {
+  const dir = makeRoot(t);
+  const uid = giveUpdated(dir, 0, '2026-09-10');
+  assert.equal(run(dir, ['set', uid, '--visible-from', '2030-02-01 08:00']).code, 0);
+  const res = run(dir, ['reveal', '--now', '2030-02-01T06:00:01Z']);
+  assert.equal(res.code, 0, res.out);
+  const m = readData(dir).materials[0];
+  assert.equal(m.published, '2030-02-01');
+  assert.ok(!('updated' in m));
+  validates(dir);
+});
+
+test('showing a scheduled material early drops an older updated date', (t) => {
+  const dir = makeRoot(t);
+  const uid = giveUpdated(dir, 0, '2026-09-10');
+  assert.equal(run(dir, ['set', uid, '--visible-from', '2030-02-01 08:00']).code, 0);
+  assert.equal(run(dir, ['set', uid, '--visible']).code, 0);
+  const m = readData(dir).materials[0];
+  assert.ok(m.published > '2026-09-10');
+  assert.ok(!('updated' in m));
+  validates(dir);
+});
+
+test('an updated date after the new publish date stays', (t) => {
+  const dir = makeRoot(t);
+  const uid = giveUpdated(dir, 0, '2031-05-01');
+  assert.equal(run(dir, ['set', uid, '--visible-from', '2030-02-01 08:00']).code, 0);
+  assert.equal(run(dir, ['reveal', '--now', '2030-02-01T06:00:01Z']).code, 0);
+  const m = readData(dir).materials[0];
+  assert.equal(m.published, '2030-02-01');
+  assert.equal(m.updated, '2031-05-01');
+  validates(dir);
+});
+
+test('hiding and showing again keeps both dates', (t) => {
+  const dir = makeRoot(t);
+  const uid = giveUpdated(dir, 0, '2026-09-10');
+  const published = readData(dir).materials[0].published;
+  assert.equal(run(dir, ['set', uid, '--hidden']).code, 0);
+  assert.equal(run(dir, ['set', uid, '--visible']).code, 0);
+  const m = readData(dir).materials[0];
+  assert.equal(m.published, published);
+  assert.equal(m.updated, '2026-09-10');
 });
 
 test('delete retires the uid, removes files and the work folder', (t) => {

@@ -239,6 +239,15 @@ function cmdDelete({ pos, flags }) {
   console.log(`retired ${name} (uid ${uid})${replacedBy ? `, redirected to ${replacedBy}` : ''}; pages regenerated`);
 }
 
+// A scheduled material that shows gets a new publish date. An older `updated`
+// date would then fall before `published`, which the validator rejects, and
+// the timer could never commit: the new publish date already covers that
+// update, so the field goes.
+function republish(material, date) {
+  material.published = date;
+  if (material.updated !== undefined && material.updated < date) delete material.updated;
+}
+
 // One state change on data already loaded: the publish-date rules from the
 // design apply here, so set, apply and reveal all share them.
 // - to scheduled: hidden is removed, published stays;
@@ -251,7 +260,7 @@ function applyState(material, change) {
     const wasScheduled = material.visibleFrom !== undefined && material.visibleFrom !== null;
     delete material.hidden;
     delete material.visibleFrom;
-    if (wasScheduled) material.published = today();
+    if (wasScheduled) republish(material, today());
   } else if (change.state === 'hidden') {
     material.hidden = true;
     delete material.visibleFrom;
@@ -326,15 +335,18 @@ function cmdApply({ flags }) {
 }
 
 // Reveals every scheduled material whose visibleFrom is now or in the past.
-// With --wait-minutes N, a visibleFrom within the next N minutes is waited
-// for and revealed too. --now fixes the clock for the tests (the wait then
-// jumps the clock instead of sleeping).
+// With --wait-minutes N, a visibleFrom within N minutes of the start is
+// waited for and revealed too. The deadline is fixed at the start: a sliding
+// window would chain one material to the next and hold the earlier ones back
+// until the last wait ends. --now fixes the clock for the tests (the wait
+// then jumps the clock instead of sleeping).
 async function cmdReveal({ flags }) {
   const waitMinutes = flags['wait-minutes'] === undefined ? 0 : Number(flags['wait-minutes']);
   if (!Number.isFinite(waitMinutes) || waitMinutes < 0) fail('--wait-minutes must be 0 or more');
   let now = flags['now'] === undefined ? Date.now() : Date.parse(flags['now']);
   if (Number.isNaN(now)) fail(`--now must be a date-time (was "${flags['now']}")`);
   const fixedClock = flags['now'] !== undefined;
+  const deadline = now + waitMinutes * 60000;
   const d = data();
   const revealed = [];
   const revealDue = (at) => {
@@ -346,7 +358,7 @@ async function cmdReveal({ flags }) {
       const roDate = Visibility.roDateOfVisibleFrom(m.visibleFrom);
       delete m.visibleFrom;
       // A scheduled material shows with the Romania date of its visibleFrom.
-      if (roDate) m.published = roDate;
+      if (roDate) republish(m, roDate);
       revealed.push({ uid: m.uid, when });
     }
   };
@@ -357,7 +369,7 @@ async function cmdReveal({ flags }) {
     for (const m of d.materials || []) {
       if (m.visibleFrom === undefined || m.visibleFrom === null) continue;
       const atMs = Visibility.visibleFromMs(m.visibleFrom);
-      if (!Number.isNaN(atMs) && atMs > now && atMs <= now + waitMinutes * 60000 && atMs < next) next = atMs;
+      if (!Number.isNaN(atMs) && atMs > now && atMs <= deadline && atMs < next) next = atMs;
     }
     if (next === Infinity) break;
     if (fixedClock) {
