@@ -205,7 +205,8 @@ builds. Actions minutes are free for a public repo.
 - GitHub may start a scheduled run late or drop it under load. The reveal is
   then late, never early.
 - GitHub disables scheduled workflows in a repo with no activity for 60 days.
-  Normal use keeps the repo active.
+  A summer break can be longer, so a weekly run (Monday 04:23 UTC) switches
+  the workflow on again through the GitHub API.
 
 ## 5. The admin page
 
