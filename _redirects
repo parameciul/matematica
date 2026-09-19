@@ -34,9 +34,4 @@
 # Not-visible materials (hidden or scheduled): 302 to their grade page.
 # Visibility is resolved at build time, so these lines change only when
 # a material is hidden, scheduled or revealed.
-/materiale/fisa-recapitulativa-1-numere-naturale-fractii-1009 /clasa-6 302
-/materiale/fisa-recapitulativa-1-numere-naturale-fractii-1009.html /clasa-6 302
-/en/materiale/fisa-recapitulativa-1-numere-naturale-fractii-1009 /en/clasa-6 302
-/en/materiale/fisa-recapitulativa-1-numere-naturale-fractii-1009.html /en/clasa-6 302
-/materiale/pdf/fisa-recapitulativa-1-numere-naturale-fractii-1009.pdf /clasa-6 302
 /data/materials.source.json / 302

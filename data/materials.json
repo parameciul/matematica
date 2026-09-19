@@ -473,6 +473,51 @@
       "topic": "recapitulare-clasa-a-v-a",
       "kind": "fisa-recapitulativa",
       "title": {
+        "ro": "Fișă recapitulativă 1: numere naturale și fracții",
+        "en": "Review worksheet 1: natural numbers and fractions"
+      },
+      "published": "2026-09-17",
+      "description": {
+        "ro": "Fișă recapitulativă pentru clasa a VI-a: numere naturale, puteri, divizibilitate, fracții, procente și organizarea datelor.",
+        "en": "Review worksheet for grade 6: natural numbers, powers, divisibility, fractions, percentages and data organization."
+      },
+      "pdf": "materiale/pdf/fisa-recapitulativa-1-numere-naturale-fractii-1009.pdf",
+      "youtube": null,
+      "keywords": {
+        "ro": [
+          "numere naturale",
+          "puteri",
+          "divizibilitate",
+          "fracții",
+          "procente",
+          "organizarea datelor",
+          "clasa a 6-a",
+          "clasa 6"
+        ],
+        "en": [
+          "natural numbers",
+          "powers",
+          "divisibility",
+          "fractions",
+          "percentages",
+          "data organization",
+          "grade 6"
+        ]
+      },
+      "slug": "fisa-recapitulativa-1-numere-naturale-fractii",
+      "uid": "1009",
+      "aliases": [
+        "fisa-recapitulativa-1-numere-naturale-fractii"
+      ],
+      "import": {
+        "date": "2026-09-18",
+        "workflow": 2
+      }
+    },
+    {
+      "topic": "recapitulare-clasa-a-v-a",
+      "kind": "fisa-recapitulativa",
+      "title": {
         "ro": "Fișă recapitulativă 2: geometrie și unități de măsură",
         "en": "Review worksheet 2: geometry and measurement units"
       },
