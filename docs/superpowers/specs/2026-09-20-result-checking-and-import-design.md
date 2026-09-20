@@ -23,8 +23,12 @@ Builds on: `2026-09-18-material-visibility-design.md` (the admin page in `tm25ml
    network.
 
 Points 3 and 4 change the "Add a material" workflow, not only result
-checking. They share one `WORKFLOW` bump (`2` → `3`) with the answer split
-below. Bump it once, not three times.
+checking. There is **one** `WORKFLOW` bump (`2` → `3`) for all of this work,
+not three. It rides with the answer split, in phase 2. `AGENTS.md` bumps
+`WORKFLOW` "whenever a change here affects the article output": the answer
+split does (`ro.html` stops holding the answer section), while making a PDF
+does not touch the article at all. So phase 1 (the PDF) leaves `WORKFLOW`
+at `2`.
 
 ## Problem
 
@@ -390,8 +394,9 @@ in the source` / `answers: none`.
   `null` when there are none.
 - `ro.html` never holds the answer section. Step 2 of "Add a material" still
   checks that no answer is left.
-- `WORKFLOW` goes from `2` to `3`. That one bump covers the answer split, the
-  separate answers file and the generated PDF (4).
+- `WORKFLOW` goes from `2` to `3`, here and nowhere else. The bump belongs to
+  this phase because the answer split changes the article output; the
+  generated PDF of phase 1 does not, so phase 1 leaves `WORKFLOW` at `2`.
 
 ### 2.5 Write the results (a new step in "Add a material")
 
@@ -446,6 +451,13 @@ A new tool next to `material.mjs`. Node only, no dependencies.
   converts again and writes only `.work/<name>/answers.html`. When that file
   has no `answers` block (imported with `WORKFLOW` 2), it runs the search of
   2.1 again on the recorded source path. Then continue with 2.5.
+
+  **When the record is missing**, `extract` stops and asks for
+  `--source <DOCX path>` (plus `--answers-docx <path>` when the sibling
+  search finds nothing). `.work/sources/` is git-ignored, and on this machine
+  it holds `1012` only: every material imported before the record existed,
+  and every fresh clone, needs the flag once. `extract` then writes the
+  record, so the next run needs no flags.
 - `open <uid>`: copies the published results and answer key back to
   `.work/<name>/` to fix a result (for example when the teacher corrected a
   `review` item). Edit, then `save`.
@@ -662,6 +674,10 @@ changed. Use it after LibreOffice is updated or the DOCX is corrected. With
 `--pdf <path>` it copies a teacher-made file instead and sets
 `import.pdf` to `"source"`.
 
+Same gap as `results.mjs extract`: `.work/sources/<uid>.json` is git-ignored
+and today exists for `1012` only. Without it, `pdf <uid>` stops and asks for
+`--source <DOCX path>`, then writes the record for next time.
+
 ## 5. Validator (`tests/validate.mjs`)
 
 New rules:
@@ -746,7 +762,9 @@ Rules of the project: tests for the happy path and the edge cases; run
   both files and the field; `version` goes up only on a change; each failed
   check blocks the save; `choice` with 0 or 2 matching options fails; two
   `data-ex` with the same value fail; a `hint` with only `ro` fails;
-  `extract` warns on a changed sha256; `open` then `save` changes nothing.
+  `extract` warns on a changed sha256; `extract` with no
+  `.work/sources/<uid>.json` stops and names `--source`, and with `--source`
+  it works and writes the record; `open` then `save` changes nothing.
 - `tests/material.test.mjs`:
   - `new` finds a sibling answers file, and `--answers-docx` beats it;
   - two matching sibling files stop the import;
@@ -757,6 +775,8 @@ Rules of the project: tests for the happy path and the edge cases; run
   - a source whose clean pass finds a class mark leaves `pdf` null **and
     leaves no file in `materiale/pdf/`**;
   - a sibling search ignores a `.~lock.…docx#` file in the same folder;
+  - `pdf <uid>` with no `.work/sources/<uid>.json` stops and names
+    `--source`; with `--source` it works and writes the record;
   - `delete` removes both result files and the PDF.
 - `tests/validate.test.mjs`: one failing fixture per new rule, and one
   passing fixture.
@@ -807,11 +827,13 @@ Each phase ends with passing tests and its own commit (another session shares
 this working tree).
 
 1. **PDF from DOCX:** `docx_to_pdf.py`, `material.mjs new/pdf`, the
-   `import.pdf` key, the validator rule, `WORKFLOW` 3, `AGENTS.md`. `1012`
-   gets its PDF. This phase stands alone and can ship first.
+   `import.pdf` key, the validator rule, `AGENTS.md`. `1012` gets its PDF.
+   `WORKFLOW` stays at `2`: the article output does not change. This phase
+   stands alone and can ship first.
 2. **Keep the answers:** `split_answers`, `--answers-only`, the answers
    search in `new`, the `answers` block in `.work/sources/`, `results.mjs`,
-   `answers.js`, the validator rules, `AGENTS.md`, and `1002` + `1012` done.
+   `answers.js`, the validator rules, `WORKFLOW` 3, `AGENTS.md`, and
+   `1002` + `1012` done.
    Nothing changes for students yet, except that the results files are on the
    site.
 3. **Student check:** `check.js`, CSS, i18n keys, the generator shell,
