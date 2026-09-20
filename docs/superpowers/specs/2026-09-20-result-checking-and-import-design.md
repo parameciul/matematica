@@ -1,6 +1,6 @@
 # Result checking, separate answer files, and generated PDFs
 
-Status: design, waiting for review. No code yet.
+Status: implemented (phases 1–4, commits 8adc208, 2622d40, 6603666, 853193e). Two deviations from the measurements: LibreOffice font subsets vary per run (not only the trailer /ID), so `clean_pdf.py` fixes the /ID and `material.mjs` keeps the committed PDF when a remake holds the same document; `docx_to_pdf.py` uses a persistent per-machine profile (a fresh one varies more).
 Builds on: `2026-09-18-material-visibility-design.md` (the admin page in `tm25mlg/`).
 
 ## What this covers
