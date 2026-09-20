@@ -326,6 +326,152 @@ test('a generated import.pdf passes', () => {
   assert.equal(result.code, 0, result.out);
 });
 
+const SAMPLE_RESULTS = `data/results/${SAMPLE_NAME}.json`;
+const SAMPLE_KEY = `tm25mlg/raspunsuri/${SAMPLE_NAME}.html`;
+
+function writeResults(dir, items, version = 1) {
+  mkdirSync(join(dir, 'data', 'results'), { recursive: true });
+  mkdirSync(join(dir, 'tm25mlg', 'raspunsuri'), { recursive: true });
+  writeFileSync(join(dir, SAMPLE_RESULTS), JSON.stringify({ uid: SAMPLE_UID, version, items }, null, 2));
+  writeFileSync(join(dir, SAMPLE_KEY), '<p><strong>1.</strong> $4$.</p>');
+}
+
+const ONE_CHECK = { 1: { kind: 'number', show: '$4$', accept: ['4'] } };
+
+test('results without both files fails', () => {
+  expectFailure(
+    withSite((dir) => {
+      editData(dir, (d) => { sample(d).results = { version: 1, checks: 0 }; });
+      writeSite(dir);
+    }),
+    /needs both data\/results/,
+  );
+});
+
+test('a results file without a field fails', () => {
+  expectFailure(
+    withSite((dir) => writeResults(dir, ONE_CHECK)),
+    /has no "results" field/,
+  );
+});
+
+test('results with a bad shape fails', () => {
+  expectFailure(
+    withSite((dir) => {
+      writeResults(dir, ONE_CHECK);
+      editData(dir, (d) => { sample(d).results = { version: 0, checks: -1 }; });
+      writeSite(dir);
+    }),
+    /must be { "version"/,
+  );
+});
+
+test('a results version that does not match fails', () => {
+  expectFailure(
+    withSite((dir) => {
+      writeResults(dir, ONE_CHECK, 2);
+      editData(dir, (d) => { sample(d).results = { version: 1, checks: 1 }; });
+      writeSite(dir);
+    }),
+    /does not match "results"/,
+  );
+});
+
+test('a checks count that does not match fails', () => {
+  expectFailure(
+    withSite((dir) => {
+      writeResults(dir, ONE_CHECK);
+      editData(dir, (d) => { sample(d).results = { version: 1, checks: 2 }; });
+      writeSite(dir);
+    }),
+    /but the file holds 1 check:true/,
+  );
+});
+
+test('a results accept that cannot be read fails', () => {
+  expectFailure(
+    withSite((dir) => {
+      writeResults(dir, { 1: { kind: 'number', show: '$x$', accept: ['nu știu'] } });
+      editData(dir, (d) => { sample(d).results = { version: 1, checks: 1 }; });
+      writeSite(dir);
+    }),
+    /cannot be read as number/,
+  );
+});
+
+test('a review item without a note fails', () => {
+  expectFailure(
+    withSite((dir) => {
+      writeResults(dir, { 1: { check: false, why: 'review', show: '$x$' } });
+      editData(dir, (d) => { sample(d).results = { version: 1, checks: 0 }; });
+      writeSite(dir);
+    }),
+    /needs a note/,
+  );
+});
+
+test('a hint with only ro fails', () => {
+  expectFailure(
+    withSite((dir) => {
+      writeResults(dir, { 1: { kind: 'number', show: '$4$', accept: ['4'], hint: { ro: 'ordinea' } } });
+      editData(dir, (d) => { sample(d).results = { version: 1, checks: 1 }; });
+      writeSite(dir);
+    }),
+    /hint needs both ro and en/,
+  );
+});
+
+test('data-ex missing on the page fails', () => {
+  expectFailure(
+    withSite((dir) => {
+      writeResults(dir, ONE_CHECK);
+      editData(dir, (d) => { sample(d).results = { version: 1, checks: 1 }; });
+      writeSite(dir);
+    }),
+    /data-ex is missing 1/,
+  );
+});
+
+test('data-ex without results fails', () => {
+  expectFailure(
+    withSite((dir) => {
+      editFile(dir, SAMPLE_PAGE, addToArticle('<p data-ex="1">x</p>'));
+      writeSite(dir);
+    }),
+    /data-ex has no result for 1/,
+  );
+});
+
+test('a quiz with results fails', () => {
+  expectFailure(
+    withSite((dir) => {
+      writeResults(dir, ONE_CHECK);
+      editData(dir, (d) => { sample(d).kind = 'quiz'; sample(d).pdf = null; sample(d).results = { version: 1, checks: 1 }; });
+      unlinkSync(join(dir, SAMPLE_PDF));
+      writeSite(dir);
+    }),
+    /a quiz never has results/,
+  );
+});
+
+test('an answer heading in the data fails', () => {
+  expectFailure(
+    withSite((dir) => editData(dir, (d) => { sample(d).title.ro = 'Fișă cu răspunsuri și indicații de verificare'; })),
+    /must not include answers/,
+  );
+});
+
+test('a material with results passes', () => {
+  const result = withSite((dir) => {
+    writeResults(dir, ONE_CHECK);
+    editData(dir, (d) => { sample(d).results = { version: 1, checks: 1 }; });
+    editFile(dir, SAMPLE_PAGE, addToArticle('<p data-ex="1">x</p>'));
+    editFile(dir, SAMPLE_EN_PAGE, addToArticle('<p data-ex="1">x</p>'));
+    writeSite(dir);
+  });
+  assert.equal(result.code, 0, result.out);
+});
+
 test('missing material page fails', () => {
   expectFailure(withSite((dir) => unlinkSync(join(dir, SAMPLE_PAGE))), new RegExp(`missing file materiale\\/${SAMPLE_NAME}\\.html`));
 });

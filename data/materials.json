@@ -183,6 +183,10 @@
       "import": {
         "date": "2026-09-18",
         "workflow": 2
+      },
+      "results": {
+        "version": 1,
+        "checks": 30
       }
     },
     {
@@ -628,6 +632,10 @@
         "date": "2026-09-20",
         "workflow": 2,
         "pdf": "generated"
+      },
+      "results": {
+        "version": 1,
+        "checks": 19
       }
     }
   ]

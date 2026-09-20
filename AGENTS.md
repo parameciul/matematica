@@ -31,6 +31,10 @@ Grades 5-12. Romanian by default, with an English switch. Plain HTML/CSS/JS: no 
 - `assets/js/i18n.js`: all UI text, including the `seo.*` page titles and descriptions.
 - `tools/`: `material.mjs` (list, new, delete — see below), `docx_to_html.py` (needs pandoc), `docx_to_pdf.py` (needs LibreOffice) and `clean_pdf.py` (needs pymupdf).
 - `tools/material.mjs`: `list`, `new`, `delete`, `pdf`, `set`, `apply` and `reveal` commands around `data/materials.source.json` (see "Hide or schedule a material" and "Remake a PDF"). The `new` command takes the uid from `nextUid` and raises it; `delete` moves a material to `retired` and regenerates the redirects, so an old URL can never be handed to a different material. Node only, no dependencies.
+- `tools/results.mjs`: `save`, `extract` and `open` commands around the checked exercises (see "Check the results"). Node only, no dependencies.
+- `assets/js/answers.js`: answer reading and comparison. It has no DOM code, so the node tests can `require` it. It never uses `eval`.
+- `data/results/<name>.json`: one result per exercise, plus how to check it (`{ uid, version, items }`; `accept` values are written the way a student types them). The material page, the admin page and the tools read it. A material has `results: { version, checks }` in `data/materials.source.json` exactly when this file and `tm25mlg/raspunsuri/<name>.html` both exist. A quiz never has results.
+- `tm25mlg/raspunsuri/<name>.html`: the full answer key as HTML (results, solution hints, barem), read by the admin results page only.
 - Brand mark: Laura Miron's initials in handwriting over a highlighter stroke. It lives in several places, and nothing regenerates them for you:
   - the header, inline in `assets/js/shell.js` (`BRAND_MARK`), transparent, coloured by `--ink` and `--brand-marker`;
   - `favicon.svg` and `assets/img/og-image.svg`, hand-written SVG;
@@ -40,7 +44,7 @@ Grades 5-12. Romanian by default, with an English switch. Plain HTML/CSS/JS: no 
 - Theme: the reader switches light/dark with the header button. The choice lives in `localStorage['matematica.theme']` and is read by an inline script in the page head, before the stylesheet, so the page never paints the wrong theme first. The dark colours are written twice in `assets/css/style.css`: once for `:root[data-theme="dark"]` (the reader chose) and once for `:root:not([data-theme="light"])` inside the `prefers-color-scheme` query (the system decides). CSS cannot share one block across a media query; the validator fails if the two copies drift apart.
 - `.github/workflows/opencode.yml`: a comment `/oc` or `/opencode` on a GitHub issue or PR starts opencode.
 
-Content is sorted per grade, never per school class (9R2, 6E2). Topics hold materials. The newest materials show first, with their publish date. Search runs in the browser and ignores diacritics. DOCX files, answers and class marks are never published.
+Content is sorted per grade, never per school class (9R2, 6E2). Topics hold materials. The newest materials show first, with their publish date. Search runs in the browser and ignores diacritics. DOCX files and class marks are never published. Answers are published only in `data/results/` and `tm25mlg/raspunsuri/`; never in material pages, PDFs or the materials JSON files.
 
 ## Commands
 
@@ -97,6 +101,7 @@ The source files are in `D:\Projects\Website-Content\`. Never change them. Put w
    `node tools/material.mjs new "<DOCX path>" --slug <slug> --topic <topic-id> --kind teorie --title-ro "…" --title-en "…" --desc-ro "…" --desc-en "…"`
    - `new` takes the uid from `nextUid` and raises it, adds the material to `data/materials.source.json`, converts the DOCX to `.work/<name>/ro.html`, saves the source path plus its sha256 in `.work/sources/<uid>.json` (git-ignored, never published) and regenerates the site.
    - `--slug` uses lowercase letters, digits and dashes. `--topic` must exist (add a new topic at the end of `topics` first, only if necessary). `--kind` is one of `lectie, teorie, fisa-lucru, fisa-recapitulativa, test, joc, quiz`. `--desc-ro` and `--desc-en` are 70-160 characters each (see "SEO rules").
+   - `new` looks for answers and writes `.work/<name>/answers.html`: `--answers-docx <path>` wins, then a sibling file next to the source (`<stem> - raspunsuri.docx`, also `rezolvari`, `solutii`, `barem`), then a section at the end of the source DOCX. `--no-answers` skips all three. `ro.html` never holds the answer section.
    - If the clean PDF already exists, pass `--pdf "<PDF path>"` and it is copied to `materiale/pdf/<name>.pdf`.
    - Without `--pdf`, the PDF is made from the DOCX and cleaned automatically (LibreOffice converts to `.work/<name>/generated.pdf`, `clean_pdf.py` clears it into `materiale/pdf/<name>.pdf` and renders every page to `.work/<name>/pdf/` for the look-over). Pass `--no-pdf` for no PDF at all (a `joc` or a `quiz`).
    - If there is no DOCX (only a PDF), run `new` without the path (or with `-`); `.work/<name>/` is still made, the pages get empty articles and show the title, the PDF button and a note that the material is only available as a PDF.
@@ -116,7 +121,8 @@ The source files are in `D:\Projects\Website-Content\`. Never change them. Put w
    - Keep every `$…$` and `$$…$$` exactly as converted. Never retype a formula.
    - Indent two spaces per level.
 3. **Write the English article.** Translate the text into clear English for ages 11-18. Use `docs/translation-glossary.md`. Keep the same structure: headings, lists, tables and exercise numbers. Formulas stay identical, also decimal commas like `$2,5$`. Only the words in `\text{...}` change (`\text{dacă }` → `\text{if }`).
-4. **Make the clean PDF.**
+4. **Write the results** (when `.work/<name>/answers.html` exists; see "Check the results").
+5. **Make the clean PDF.**
    `python tools/clean_pdf.py "<PDF path>" materiale/pdf/<name>.pdf <options> --render .work/<name>/pdf`
    - Options (`--delete-pages`, `--whiteout`, `--whiteout-line`) are explained at the top of `tools/clean_pdf.py`.
    - The exit code must be `0`.
@@ -126,8 +132,8 @@ The source files are in `D:\Projects\Website-Content\`. Never change them. Put w
    - If you did not pass `--pdf` to `new`, set the material's `pdf` field in `data/materials.source.json` to `"materiale/pdf/<name>.pdf"`.
    - A class mark or an answer heading in the generated PDF stops `new`: `pdf` stays `null`, no file is left behind, and you run `clean_pdf.py` by hand with the right `--whiteout` options.
    - A remake is byte-stable: `clean_pdf.py` fixes the trailer `/ID`, and a remake that holds the same document (same text, fonts and images) keeps the committed file, so reruns show no false change in git.
-5. **Run the generator again.** `node tools/build_pages.mjs` fills the page shells (title, breadcrumb, related materials).
-6. **Check.**
+6. **Run the generator again.** `node tools/build_pages.mjs` fills the page shells (title, breadcrumb, related materials).
+7. **Check.**
    - `npm test` and `python -m pytest tools -q` must pass.
    - Open `materiale/<name>.html` and `en/materiale/<name>.html` in the local preview. The browser keeps old files: first run `await fetch('<changed file>', {cache: 'reload'})` in the console for each changed file, always also for `data/materials.json`.
    - `document.querySelectorAll('.katex-error').length` must be `0`, in RO and in EN.
@@ -136,11 +142,30 @@ The source files are in `D:\Projects\Website-Content\`. Never change them. Put w
    - "Deschide PDF" opens the clean PDF. The topic link in the breadcrumb opens the grade page at the topic.
    - The grade page shows the material under its topic, newest first.
 
+## Check the results
+
+After both articles are written, when `.work/<name>/answers.html` exists:
+
+1. **Clean the answer key** in `.work/<name>/answers.html`, like the article: remove header and footer text, class marks, names, school weeks, and any leftover title or "pentru profesor" line. Keep every `$…$` exactly as converted.
+2. **Write `.work/<name>/results.json`** (`{ items }`, without `uid` and `version`): one item per numbered exercise, and one per sub-item when the sub-items have their own results. Read the **final value** out of a worked line: for `1. a) $7 + 5 - 8 = 4$` the item is `1a` with `accept: ["4"]`, and `show` keeps the whole line. `accept` values are written the way a student types them (`;` between values, `∅` for the empty set).
+3. **Check every result.** Solve the exercise yourself. Compare your answer with the key and with the hint under it.
+   - All three agree: a kind (`number`, `list`, `set`, `interval`, `text`, `choice`, `truefalse`) and `accept`.
+   - They disagree, or the key is unclear: `check: false`, `why: "review"`, and a `note` that says what disagrees. Never change the key quietly: the teacher decides.
+   - Proofs: `why: "proof"`. Answers in words, discussions or a piecewise formula: `why: "open"`.
+4. **Mark the articles.** Add `data-ex` to every `check: true` item, and `data-value` to every option of a `choice` item, in the Romanian and in the English article. Split a paragraph that holds two checkable sub-items.
+5. **Save:** `node tools/results.mjs save <uid>`. It writes `data/results/<name>.json` (raising `version` only when the content changed), copies the key to `tm25mlg/raspunsuri/<name>.html`, sets `results` in `data/materials.source.json` and runs the generator.
+
+For a material imported before this feature: `node tools/results.mjs extract <uid>` converts the source again and writes only `.work/<name>/answers.html` (with `--source <DOCX path>` when the record is missing), then continue above.
+
+## Fix a result
+
+`node tools/results.mjs open <uid>` copies the published results and answer key back to `.work/<name>/`. Edit, then `save`.
+
 ## Delete a material
 
 1. `node tools/material.mjs list` to find the uid (the `uid`, not the name).
 2. `node tools/material.mjs delete <uid>`
-   - Removes the material from `data/materials.source.json`, deletes `materiale/<name>.html`, `en/materiale/<name>.html`, `materiale/pdf/<name>.pdf` and `.work/<name>/`, appends `{ "uid", "slug", "removed", "replacedBy": null }` to `retired` and regenerates the site.
+   - Removes the material from `data/materials.source.json`, deletes `materiale/<name>.html`, `en/materiale/<name>.html`, `materiale/pdf/<name>.pdf`, `data/results/<name>.json`, `tm25mlg/raspunsuri/<name>.html` and `.work/<name>/`, appends `{ "uid", "slug", "removed", "replacedBy": null }` to `retired` and regenerates the site.
    - The uid is never reused; `list` keeps showing it under RETIRED.
    - Without `--replaced-by` there is no redirect: the old URLs 404.
 3. If the material replaced an earlier copy, delete the old one with

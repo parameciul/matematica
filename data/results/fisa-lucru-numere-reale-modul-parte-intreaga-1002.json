@@ -1,0 +1,276 @@
+{
+  "uid": "1002",
+  "version": 1,
+  "items": {
+    "1": {
+      "kind": "number",
+      "show": "$7 + 5 - 8 = 4$",
+      "accept": [
+        "4"
+      ]
+    },
+    "2": {
+      "check": false,
+      "why": "proof",
+      "show": "deci suma este $\\left( 3 - \\sqrt{5} \\right) + \\left( \\sqrt{5} - 2 \\right) = 1$"
+    },
+    "3": {
+      "kind": "list",
+      "show": "$\\left\\lbrack \\text{3,7} \\right\\rbrack = 3$; $\\left\\lbrack - \\text{3,7} \\right\\rbrack = - 4$; $\\left\\{ \\text{3,7} \\right\\} = \\text{0,7}$; $\\left\\{ - \\text{3,7} \\right\\} = \\text{0,3}$",
+      "accept": [
+        "3; -4; 0,7; 0,3"
+      ]
+    },
+    "4": {
+      "kind": "list",
+      "show": "$\\left\\lbrack \\sqrt{20} \\right\\rbrack = 4$; $\\left\\lbrack - \\sqrt{20} \\right\\rbrack = - 5$; $\\left\\{ \\sqrt{20} \\right\\} = 2\\sqrt{5} - 4$",
+      "accept": [
+        "4; -5; 2√5 - 4"
+      ]
+    },
+    "6": {
+      "check": false,
+      "why": "proof",
+      "show": "$|x - 3| = 3 - x$ și $|x + 1| = x + 1$, deci suma este $4$"
+    },
+    "7": {
+      "kind": "set",
+      "show": "$S = \\{ - 3,\\ 7\\}$",
+      "accept": [
+        "{-3; 7}"
+      ]
+    },
+    "9": {
+      "kind": "interval",
+      "show": "$x \\in \\lbrack - 2,\\  - 1)$",
+      "accept": [
+        "[-2; -1)"
+      ]
+    },
+    "11": {
+      "check": false,
+      "why": "proof",
+      "show": "$N = \\left( \\sqrt{2} - 1 \\right) + \\left( \\sqrt{3} - \\sqrt{2} \\right) + \\left( 2 - \\sqrt{3} \\right) = 1 \\in {\\mathbb{N}}$"
+    },
+    "12": {
+      "check": false,
+      "why": "proof",
+      "show": "$|x - 1| + |x - 4| = (x - 1) + (4 - x) = 3$"
+    },
+    "13": {
+      "kind": "number",
+      "show": "$S = 3 \\cdot 1 + 5 \\cdot 2 + 2 \\cdot 3 = 19$",
+      "accept": [
+        "19"
+      ]
+    },
+    "16": {
+      "kind": "set",
+      "show": "$S = \\{\\frac{2}{3},\\ 4\\}$",
+      "accept": [
+        "{2/3; 4}"
+      ]
+    },
+    "17": {
+      "kind": "set",
+      "show": "$S = \\{\\frac{4}{3}\\}$",
+      "accept": [
+        "{4/3}"
+      ]
+    },
+    "18": {
+      "kind": "set",
+      "show": "$S = \\{ 0,\\ 3\\}$",
+      "accept": [
+        "{0; 3}"
+      ]
+    },
+    "19": {
+      "kind": "interval",
+      "show": "$S = \\lbrack\\frac{5}{2},\\ 4)$",
+      "accept": [
+        "[5/2; 4)"
+      ]
+    },
+    "20": {
+      "kind": "interval",
+      "show": "$S = ( - \\infty,\\ 1) \\cup (4,\\  + \\infty)$",
+      "accept": [
+        "(-inf; 1) U (4; +inf)"
+      ]
+    },
+    "22": {
+      "kind": "interval",
+      "show": "$S = \\lbrack - 1,\\ 3)$",
+      "accept": [
+        "[-1; 3)"
+      ]
+    },
+    "23": {
+      "check": false,
+      "why": "proof",
+      "show": "$|x + 2y| \\leq |x - 2| + 2|y + 1| \\leq 1 + 2 \\cdot 2 = 5$"
+    },
+    "25": {
+      "kind": "set",
+      "show": "$S = \\{ - 2,\\ 0,\\ 4,\\ 6\\}$",
+      "accept": [
+        "{-2; 0; 4; 6}"
+      ]
+    },
+    "26": {
+      "kind": "set",
+      "show": "$S = \\{ - \\frac{1}{3},\\ \\frac{1}{3},\\ 1\\}$",
+      "accept": [
+        "{-1/3; 1/3; 1}"
+      ]
+    },
+    "27": {
+      "kind": "set",
+      "show": "$S = \\{\\frac{5}{2},\\ 3\\}$",
+      "accept": [
+        "{5/2; 3}"
+      ]
+    },
+    "28": {
+      "kind": "interval",
+      "show": "$S = \\lbrack 1,\\  + \\infty)$",
+      "accept": [
+        "[1; +inf)"
+      ]
+    },
+    "5a": {
+      "kind": "truefalse",
+      "show": "F ($a = 1$, $b = - 1$: $0 \\neq 2$)",
+      "accept": [
+        "F"
+      ]
+    },
+    "5b": {
+      "kind": "truefalse",
+      "show": "A",
+      "accept": [
+        "A"
+      ]
+    },
+    "5c": {
+      "kind": "truefalse",
+      "show": "F ($x = - 1$: $\\sqrt{1} = 1 \\neq - 1$)",
+      "accept": [
+        "F"
+      ]
+    },
+    "5d": {
+      "kind": "truefalse",
+      "show": "A ($2 \\in {\\mathbb{Z}}$)",
+      "accept": [
+        "A"
+      ]
+    },
+    "5e": {
+      "kind": "truefalse",
+      "show": "F ($x = \\text{0,5}$: $1 \\neq 0$)",
+      "accept": [
+        "F"
+      ]
+    },
+    "8a": {
+      "kind": "set",
+      "show": "$S = \\varnothing$",
+      "accept": [
+        "∅"
+      ]
+    },
+    "8b": {
+      "kind": "set",
+      "show": "$S = \\{ 2\\}$",
+      "accept": [
+        "{2}"
+      ]
+    },
+    "10a": {
+      "kind": "interval",
+      "show": "$S = \\lbrack - 2,\\ 4\\rbrack$",
+      "accept": [
+        "[-2; 4]"
+      ]
+    },
+    "10b": {
+      "kind": "interval",
+      "show": "$S = ( - \\infty,\\ 3)$",
+      "accept": [
+        "(-inf; 3)"
+      ]
+    },
+    "14a": {
+      "check": false,
+      "why": "proof",
+      "show": "$|a + b| \\leq |a| + |b| \\leq 1 + 1 = 2$"
+    },
+    "14b": {
+      "check": false,
+      "why": "proof",
+      "show": "$|ab| = |a| \\cdot |b| \\leq 1 \\cdot 1 = 1$"
+    },
+    "15a": {
+      "check": false,
+      "why": "proof",
+      "show": "$\\lbrack x\\rbrack + \\lbrack - x\\rbrack = k - k - 1 = - 1$"
+    },
+    "15b": {
+      "kind": "number",
+      "show": "$1 + ( - 2) + \\left( \\sqrt{3} - 1 \\right) + \\left( 2 - \\sqrt{3} \\right) = 0$",
+      "accept": [
+        "0"
+      ]
+    },
+    "21a": {
+      "kind": "interval",
+      "show": "$A = ( - 2,\\ 1\\rbrack \\cup \\lbrack 3,\\ 6)$",
+      "accept": [
+        "(-2; 1] U [3; 6)"
+      ]
+    },
+    "21b": {
+      "kind": "set",
+      "show": "$A \\cap {\\mathbb{Z}} = \\{ - 1,\\ 0,\\ 1,\\ 3,\\ 4,\\ 5\\}$",
+      "accept": [
+        "{-1; 0; 1; 3; 4; 5}"
+      ]
+    },
+    "24a": {
+      "check": false,
+      "why": "proof",
+      "show": "$E(x) \\geq \\left| (1 - x) + (x + 2) \\right| = 3$, cu egalitate dacă $x \\in \\lbrack - 2,\\ 1\\rbrack$"
+    },
+    "24b": {
+      "check": false,
+      "why": "open",
+      "show": "$m &lt; 3$: nicio soluție; $m = 3$: o infinitate de soluții; $m &gt; 3$: două soluții"
+    },
+    "29a": {
+      "check": false,
+      "why": "proof",
+      "show": "dacă $f \\in \\lbrack 0,\\ \\frac{1}{2})$, ambii membri sunt $2k$; dacă $f \\in \\lbrack\\frac{1}{2},\\ 1)$, ambii membri sunt $2k + 1$"
+    },
+    "29b": {
+      "kind": "interval",
+      "show": "$S = \\lbrack\\frac{5}{2},\\ 3)$",
+      "accept": [
+        "[5/2; 3)"
+      ]
+    },
+    "30a": {
+      "check": false,
+      "why": "proof",
+      "show": "$n \\in \\{ k^{2},\\ k^{2} + 1,\\ \\ldots,\\ k^{2} + 2k\\}$: $2k + 1$ numere"
+    },
+    "30b": {
+      "kind": "number",
+      "show": "$S = 1 \\cdot 3 + 2 \\cdot 5 + 3 \\cdot 7 + \\ldots + 9 \\cdot 19 = 615$",
+      "accept": [
+        "615"
+      ]
+    }
+  }
+}

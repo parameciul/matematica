@@ -68,7 +68,7 @@ test('new allocates the next uid, adds the entry and regenerates the pages', (t)
   assert.equal(after.nextUid, before.nextUid + 1);
   assert.equal(m.pdf, null);
   assert.equal(m.youtube, null);
-  assert.deepEqual(m.import, { date: m.import.date, workflow: 2 });
+  assert.deepEqual(m.import, { date: m.import.date, workflow: 3 });
   assert.ok(existsSync(join(dir, '.work', `fisa-parabole-${before.nextUid}`)));
   assert.match(res.out, /pages regenerated/);
   // The new material passes the validator: run it against the copied site.
@@ -102,14 +102,30 @@ function hasLibreOffice() {
   return false;
 }
 
+// DOCX fixtures for the import tests. makeDocxParas takes [bold, text] pairs.
+// Skips the test when python-docx is missing.
+function makeDocxParas(t, target, paragraphs) {
+  const pars = paragraphs.map(([bold, text]) => `[${bold ? 'True' : 'False'}, ${JSON.stringify(text)}]`).join(', ');
+  const res = spawnSync('python', ['-c',
+    'import docx\n'
+    + `doc = docx.Document()\nparagraphs = [${pars}]\n`
+    + 'for p in paragraphs:\n'
+    + '    par = doc.add_paragraph()\n'
+    + '    run = par.add_run(p[1])\n'
+    + '    run.bold = p[0]\n'
+    + `doc.save(${JSON.stringify(target)})\n`],
+    { encoding: 'utf8' });
+  if (res.status !== 0) {
+    t.skip(`python-docx failed: ${(res.stderr || '').trim().slice(0, 200)}`);
+    return null;
+  }
+  return target;
+}
+
 // A one-paragraph DOCX for the PDF tests. Skips when python-docx is missing.
 function makeDocx(t, dir, text) {
   const target = join(dir, `fixture-${Date.now()}.docx`);
-  const res = spawnSync('python', ['-c',
-    'import sys, docx\n'
-    + `doc = docx.Document()\ndoc.add_paragraph(${JSON.stringify(text)})\ndoc.save(${JSON.stringify(target)})\n`],
-    { encoding: 'utf8' });
-  if (res.status !== 0) t.skip(`python-docx is not installed: ${res.stderr.trim().slice(0, 120)}`);
+  if (!makeDocxParas(t, target, [[false, text]])) return null;
   return target;
 }
 
@@ -119,11 +135,127 @@ const NEW_FLAGS = (topic) => ['--slug', 'fisa-ggomery', '--topic', topic,
   '--desc-ro', 'Fișă de lucru generată din DOCX pentru testarea comenzii de creare, cu exerciții pentru clasa potrivită.',
   '--desc-en', 'Worksheet generated from DOCX for testing the creation command, with exercises for the right grade.'];
 
+const ANSWER_FLAGS = (topic) => ['--no-pdf', '--slug', 'fisa-raspunsuri', '--topic', topic,
+  '--title-ro', 'Fișă cu răspunsuri pentru testarea comenzii de creare a materialelor noi.',
+  '--title-en', 'Worksheet with answers for testing the material creation command.',
+  '--desc-ro', 'Fișă de lucru cu răspunsuri pentru testarea comenzii de creare, cu exerciții pentru clasa potrivită.',
+  '--desc-en', 'Worksheet with answers for testing the creation command, with exercises for the right grade.'];
+
+function contentDocx(t, dir, name, paragraphs) {
+  const content = join(dir, 'content');
+  mkdirSync(content, { recursive: true });
+  const target = join(content, name);
+  if (!makeDocxParas(t, target, paragraphs)) return null;
+  return target;
+}
+
+test('new finds a sibling answers file', (t) => {
+  const dir = makeRoot(t);
+  const before = readData(dir);
+  const docx = contentDocx(t, dir, 'Fisa de lucru.docx', [[true, '1. Exercițiu']]);
+  if (!docx) return;
+  const sibling = contentDocx(t, dir, 'Fisa de lucru - raspunsuri.docx', [[true, 'Răspunsuri'], [false, '1. Patru']]);
+  if (!sibling) return;
+  const res = run(dir, ['new', docx, ...ANSWER_FLAGS(before.topics.at(-1).id)]);
+  assert.equal(res.code, 0, res.out);
+  assert.match(res.out, /answers: sibling file/);
+  const uid = String(before.nextUid);
+  assert.ok(existsSync(join(dir, '.work', `fisa-raspunsuri-${uid}`, 'answers.html')));
+  const record = JSON.parse(readFileSync(join(dir, '.work', 'sources', `${uid}.json`), 'utf8'));
+  assert.equal(record.answers.from, 'sibling');
+  assert.equal(record.answers.source, sibling);
+});
+
+test('new --answers-docx beats the sibling file', (t) => {
+  const dir = makeRoot(t);
+  const before = readData(dir);
+  const docx = contentDocx(t, dir, 'Fisa de lucru.docx', [[true, '1. Exercițiu']]);
+  if (!docx) return;
+  if (!contentDocx(t, dir, 'Fisa de lucru - raspunsuri.docx', [[true, 'Răspunsuri'], [false, '1. Patru']])) return;
+  const flag = contentDocx(t, dir, 'Cheia.docx', [[true, 'Cheie'], [false, '1. Cinci']]);
+  if (!flag) return;
+  const res = run(dir, ['new', docx, '--answers-docx', flag, ...ANSWER_FLAGS(before.topics.at(-1).id)]);
+  assert.equal(res.code, 0, res.out);
+  const uid = String(before.nextUid);
+  const record = JSON.parse(readFileSync(join(dir, '.work', 'sources', `${uid}.json`), 'utf8'));
+  assert.equal(record.answers.from, 'flag');
+  assert.equal(record.answers.source, flag);
+  assert.match(readFileSync(join(dir, '.work', `fisa-raspunsuri-${uid}`, 'answers.html'), 'utf8'), /Cinci/);
+});
+
+test('two matching sibling files stop the import', (t) => {
+  const dir = makeRoot(t);
+  const before = readData(dir);
+  const docx = contentDocx(t, dir, 'Fisa de lucru.docx', [[true, '1. Exercițiu']]);
+  if (!docx) return;
+  if (!contentDocx(t, dir, 'Fisa de lucru - raspunsuri.docx', [[true, 'Răspunsuri']])) return;
+  if (!contentDocx(t, dir, 'Fisa de lucru - barem.docx', [[true, 'Barem']])) return;
+  const res = run(dir, ['new', docx, ...ANSWER_FLAGS(before.topics.at(-1).id)]);
+  assert.equal(res.code, 1);
+  assert.match(res.out, /--answers-docx/);
+});
+
+test('new writes answers.html from a section when there is no sibling', (t) => {
+  const dir = makeRoot(t);
+  const before = readData(dir);
+  const docx = contentDocx(t, dir, 'Fisa de lucru.docx',
+    [[true, '1. Exercițiu'], [true, 'Răspunsuri'], [false, '1. Patru']]);
+  if (!docx) return;
+  const res = run(dir, ['new', docx, ...ANSWER_FLAGS(before.topics.at(-1).id)]);
+  assert.equal(res.code, 0, res.out);
+  assert.match(res.out, /answers: section in the source/);
+  const uid = String(before.nextUid);
+  assert.ok(existsSync(join(dir, '.work', `fisa-raspunsuri-${uid}`, 'answers.html')));
+  assert.ok(!readFileSync(join(dir, '.work', `fisa-raspunsuri-${uid}`, 'ro.html'), 'utf8').includes('Răspunsuri'));
+  const record = JSON.parse(readFileSync(join(dir, '.work', 'sources', `${uid}.json`), 'utf8'));
+  assert.equal(record.answers.from, 'embedded');
+  assert.equal(record.answers.source, docx);
+});
+
+test('new --no-answers skips the sibling file', (t) => {
+  const dir = makeRoot(t);
+  const before = readData(dir);
+  const docx = contentDocx(t, dir, 'Fisa de lucru.docx', [[true, '1. Exercițiu']]);
+  if (!docx) return;
+  if (!contentDocx(t, dir, 'Fisa de lucru - raspunsuri.docx', [[true, 'Răspunsuri']])) return;
+  const res = run(dir, ['new', docx, '--no-answers', ...ANSWER_FLAGS(before.topics.at(-1).id)]);
+  assert.equal(res.code, 0, res.out);
+  assert.match(res.out, /answers: skipped/);
+  const uid = String(before.nextUid);
+  assert.ok(!existsSync(join(dir, '.work', `fisa-raspunsuri-${uid}`, 'answers.html')));
+});
+
+test('a sibling search ignores lock files', (t) => {
+  const dir = makeRoot(t);
+  const before = readData(dir);
+  const docx = contentDocx(t, dir, 'Fisa de lucru.docx', [[true, '1. Exercițiu']]);
+  if (!docx) return;
+  writeFileSync(join(dir, 'content', '~$Fisa de lucru - raspunsuri.docx'), 'x');
+  const res = run(dir, ['new', docx, ...ANSWER_FLAGS(before.topics.at(-1).id)]);
+  assert.equal(res.code, 0, res.out);
+  assert.match(res.out, /answers: none/);
+});
+
+test('delete removes both result files', (t) => {
+  const dir = makeRoot(t);
+  const target = readData(dir).materials.find((m) => m.uid === '1002');
+  const name = `${target.slug}-${target.uid}`;
+  for (const f of [`data/results/${name}.json`, `tm25mlg/raspunsuri/${name}.html`]) {
+    assert.ok(existsSync(join(dir, f)), `${f} should exist before the delete`);
+  }
+  const res = run(dir, ['delete', '1002']);
+  assert.equal(res.code, 0, res.out);
+  for (const f of [`data/results/${name}.json`, `tm25mlg/raspunsuri/${name}.html`]) {
+    assert.ok(!existsSync(join(dir, f)), `${f} should be gone`);
+  }
+});
+
 test('new without --pdf makes the PDF from the DOCX', (t) => {
   if (!hasLibreOffice()) t.skip('LibreOffice is not installed');
   const dir = makeRoot(t);
   const before = readData(dir);
   const docx = makeDocx(t, dir, 'Exercițiu de probă pentru generarea PDF-ului materialului.');
+  if (!docx) return;
   const res = run(dir, ['new', docx, ...NEW_FLAGS(before.topics.at(-1).id)]);
   assert.equal(res.code, 0, res.out);
   const m = readData(dir).materials.find((x) => x.slug === 'fisa-ggomery');
@@ -165,6 +297,7 @@ test('a class mark in the generated PDF leaves pdf null and no file behind', (t)
   const dir = makeRoot(t);
   const before = readData(dir);
   const docx = makeDocx(t, dir, 'Clasa a IX-a R2, exercițiu de probă cu cod de clasă.');
+  if (!docx) return;
   const res = run(dir, ['new', docx, ...NEW_FLAGS(before.topics.at(-1).id)]);
   assert.equal(res.code, 0, res.out);
   assert.match(res.out, /no PDF: clean_pdf\.py found/);
@@ -180,6 +313,7 @@ test('pdf remakes the PDF from the recorded source', (t) => {
   const dir = makeRoot(t);
   const before = readData(dir);
   const docx = makeDocx(t, dir, 'Exercițiu de probă pentru refacerea PDF-ului materialului.');
+  if (!docx) return;
   const created = run(dir, ['new', docx, ...NEW_FLAGS(before.topics.at(-1).id)]);
   assert.equal(created.code, 0, created.out);
   const uid = String(before.nextUid);

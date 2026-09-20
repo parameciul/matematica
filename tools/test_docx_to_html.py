@@ -54,3 +54,61 @@ def test_trailing_control_space_in_display_math():
 def test_a_real_line_break_at_the_end_stays():
     html = '<p><span class="math display">\\[a \\\\ \\]</span></p>'
     assert docx_to_html.math_to_dollars(html) == '<p>$$a \\\\$$</p>'
+
+
+def test_split_answers_cuts_the_section_off():
+    main = ('<p><strong>1.</strong> Text $x$.</p>\n'
+            '<p><strong>RĂSPUNSURI ȘI INDICAȚII</strong></p>\n'
+            '<p><strong>1.</strong> $4$.</p>\n')
+    kept, answers = docx_to_html.split_answers(main)
+    assert 'RĂSPUNSURI' not in kept and '$x$' in kept
+    assert answers.startswith('<p><strong>RĂSPUNSURI')
+    assert '$4$' in answers
+
+
+def test_split_answers_matches_barem_and_ignores_case_and_cedilla():
+    html = '<p>Exercise</p>\n<p><strong>barem de evaluare şi indicaţii</strong></p>\n<p>Key</p>\n'
+    kept, answers = docx_to_html.split_answers(html)
+    assert kept == '<p>Exercise</p>\n'
+    assert answers is not None and 'Key' in answers
+
+
+def test_split_answers_ignores_a_heading_word_inside_an_exercise():
+    html = ('<p><strong>1.</strong> Scrieți răspunsuri complete și indicații pe scurt.</p>\n'
+            '<p><strong>2.</strong> Alt exercițiu.</p>\n')
+    kept, answers = docx_to_html.split_answers(html)
+    assert answers is None and kept == html
+
+
+def test_split_answers_without_a_heading_returns_the_file_unchanged():
+    html = '<p><strong>1.</strong> Text.</p>\n'
+    kept, answers = docx_to_html.split_answers(html)
+    assert answers is None and kept == html
+
+
+def test_answers_only_drops_the_title_block(tmp_path):
+    html = ('<p><strong>Răspunsuri – Fișă de lucru: Modulul</strong></p>\n'
+            '<p><em>Clasa a IX-a · pentru profesor</em></p>\n'
+            '<p><strong>I. Calculul modulului</strong></p>\n'
+            '<p><strong>1.</strong> a) $4$.</p>\n')
+    kept, dropped = docx_to_html.drop_title_block(html)
+    assert kept.startswith('<p><strong>I. Calculul')
+    assert len(dropped) == 2
+    assert '$4$' in kept
+
+
+def test_answers_only_keeps_everything_without_a_section_number():
+    html = '<p><strong>Răspunsuri</strong></p>\n<p>Toate rezolvările în cuvinte.</p>\n'
+    kept, dropped = docx_to_html.drop_title_block(html)
+    assert kept == html and dropped == []
+
+
+def test_answers_only_refuses_too_many_leading_blocks():
+    html = ''.join(f'<p>Intro {i}</p>\n' for i in range(6)) + '<p><strong>1.</strong> $4$.</p>\n'
+    with pytest.raises(ValueError, match='not an answers file'):
+        docx_to_html.drop_title_block(html)
+
+
+def test_exercise_numbers_lists_the_numbered_exercises():
+    html = '<p><strong>1.</strong> a</p>\n<p><strong>2.</strong> b</p>\n<p><strong>2.</strong> c</p>\n'
+    assert docx_to_html.exercise_numbers(html) == [1, 2]

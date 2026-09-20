@@ -1,0 +1,178 @@
+{
+  "uid": "1012",
+  "version": 1,
+  "items": {
+    "2": {
+      "check": false,
+      "why": "proof",
+      "show": "$a = \\left( 4 - 2\\sqrt{3} \\right) + \\left( 2\\sqrt{3} - 3 \\right) = 1 \\in {\\mathbb{N}}$"
+    },
+    "3": {
+      "check": false,
+      "why": "proof",
+      "show": "$|x - 2| = 2 - x$ și $|x + 3| = x + 3$, deci suma este $5$"
+    },
+    "4": {
+      "check": false,
+      "why": "open",
+      "show": "$E(x) = \\left\\{ \\begin{aligned} & - 3x - 1,\\text{ dacă }x \\in ( - \\infty,\\  - 2) \\\\ & x + 7,\\text{ dacă }x \\in \\lbrack - 2,\\ 3) \\\\ & 3x + 1,\\text{ dacă }x \\in \\lbrack 3,\\  + \\infty) \\end{aligned} \\right.$"
+    },
+    "5": {
+      "check": false,
+      "why": "proof",
+      "show": "$N = \\left( \\sqrt{2} - 1 \\right) + \\left( 3 - \\sqrt{2} \\right) = 2$"
+    },
+    "7": {
+      "kind": "list",
+      "show": "$x = 4$, $y = 2$",
+      "accept": [
+        "4; 2"
+      ],
+      "hint": {
+        "ro": "în ordinea $x$; $y$",
+        "en": "in the order $x$; $y$"
+      }
+    },
+    "8": {
+      "check": false,
+      "why": "proof",
+      "show": "$|x - 2| = x - 2$ și $|x - 5| = 5 - x$; suma este $3$"
+    },
+    "10": {
+      "check": false,
+      "why": "proof",
+      "show": "$- 1 \\leq x \\leq 3 \\Rightarrow - 2 \\leq 3x + 1 \\leq 10$, deci $|3x + 1| \\leq 10$"
+    },
+    "1a": {
+      "kind": "number",
+      "show": "$7 + 5 - 8 = 4$",
+      "accept": [
+        "4"
+      ]
+    },
+    "1b": {
+      "kind": "number",
+      "show": "$\\left( \\sqrt{5} - 2 \\right) + \\left( 3 - \\sqrt{5} \\right) = 1$",
+      "accept": [
+        "1"
+      ]
+    },
+    "1c": {
+      "kind": "number",
+      "show": "$\\left( \\sqrt{2} - 1 \\right) + \\left( \\sqrt{3} - \\sqrt{2} \\right) + \\left( 2 - \\sqrt{3} \\right) = 1$",
+      "accept": [
+        "1"
+      ]
+    },
+    "6a": {
+      "kind": "interval",
+      "show": "$x \\in \\lbrack 5,\\  + \\infty)$",
+      "accept": [
+        "[5; +inf)"
+      ]
+    },
+    "6b": {
+      "kind": "interval",
+      "show": "$x \\in ( - \\infty,\\  - 3\\rbrack$",
+      "accept": [
+        "(-inf; -3]"
+      ]
+    },
+    "9a": {
+      "kind": "set",
+      "show": "$A = \\left\\{ - 2,\\  - 1,\\ 0,\\ 1,\\ 2,\\ 3 \\right\\}$",
+      "accept": [
+        "{-2; -1; 0; 1; 2; 3}"
+      ]
+    },
+    "9b": {
+      "kind": "interval",
+      "show": "$B = ( - \\infty,\\  - 5) \\cup (1,\\  + \\infty)$",
+      "accept": [
+        "(-inf; -5) U (1; +inf)"
+      ]
+    },
+    "11a": {
+      "kind": "set",
+      "show": "$S = \\left\\{ - 2,\\ 8 \\right\\}$",
+      "accept": [
+        "{-2; 8}"
+      ]
+    },
+    "11b": {
+      "kind": "set",
+      "show": "$S = \\left\\{ - 4,\\ 3 \\right\\}$",
+      "accept": [
+        "{-4; 3}"
+      ]
+    },
+    "11c": {
+      "kind": "set",
+      "show": "$S = \\varnothing$",
+      "accept": [
+        "∅"
+      ]
+    },
+    "11d": {
+      "kind": "set",
+      "show": "$S = \\left\\{ 1,\\ 5 \\right\\}$",
+      "accept": [
+        "{1; 5}"
+      ]
+    },
+    "12a": {
+      "kind": "set",
+      "show": "$S = \\left\\{ - 4,\\  -\\frac{2}{3} \\right\\}$",
+      "accept": [
+        "{-4; -2/3}"
+      ]
+    },
+    "12b": {
+      "kind": "set",
+      "show": "$S = \\left\\{ 5 \\right\\}$",
+      "accept": [
+        "{5}"
+      ]
+    },
+    "13a": {
+      "kind": "set",
+      "show": "$S = \\left\\{ 0,\\ 4 \\right\\}$",
+      "accept": [
+        "{0; 4}"
+      ]
+    },
+    "13b": {
+      "kind": "set",
+      "show": "$S = \\left\\{ - 2,\\ 0,\\ 4,\\ 6 \\right\\}$",
+      "accept": [
+        "{-2; 0; 4; 6}"
+      ]
+    },
+    "14a": {
+      "kind": "set",
+      "show": "$S = \\left\\{ - 3,\\  - 2,\\ 2,\\ 3 \\right\\}$",
+      "accept": [
+        "{-3; -2; 2; 3}"
+      ]
+    },
+    "14b": {
+      "kind": "set",
+      "show": "$S = \\left\\{ 1,\\ 4 \\right\\}$",
+      "accept": [
+        "{1; 4}"
+      ]
+    },
+    "15b": {
+      "kind": "interval",
+      "show": "$S = \\lbrack 1,\\ 5\\rbrack$",
+      "accept": [
+        "[1; 5]"
+      ]
+    },
+    "15a": {
+      "check": false,
+      "why": "proof",
+      "show": "$E(x) = |x - 1| + |5 - x| \\geq |x - 1 + 5 - x| = 4$"
+    }
+  }
+}

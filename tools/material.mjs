@@ -12,6 +12,7 @@ import { spawnSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { createRequire } from 'node:module';
 import { writeSite } from './build_pages.mjs';
+import { resolveAnswers } from './results.mjs';
 
 const ROOT = process.env.SITE_ROOT || join(dirname(fileURLToPath(import.meta.url)), '..');
 const DATA = join(ROOT, 'data', 'materials.source.json');
@@ -19,7 +20,7 @@ const ID_RE = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 const UID_RE = /^[1-9][0-9]{3,}$/;
 // Version of the add-material workflow in AGENTS.md that produced the articles.
 // Bump it whenever that section changes in a way that affects the output.
-const WORKFLOW = 2;
+const WORKFLOW = 3;
 const KINDS = ['lectie', 'teorie', 'fisa-lucru', 'fisa-recapitulativa', 'test', 'joc', 'quiz'];
 
 const require = createRequire(import.meta.url);
@@ -55,8 +56,8 @@ function textLen(s) {
   return [...String(s)].length;
 }
 
-// Flags without a value (--hidden, --visible, --no-pdf). Every other flag takes one.
-const BOOLEAN_FLAGS = new Set(['hidden', 'visible', 'no-pdf']);
+// Flags without a value (--hidden, --visible, --no-pdf, --no-answers). Every other flag takes one.
+const BOOLEAN_FLAGS = new Set(['hidden', 'visible', 'no-pdf', 'no-answers']);
 
 function parseArgv(argv) {
   const pos = [];
@@ -78,15 +79,6 @@ function parseArgv(argv) {
   return { pos, flags };
 }
 
-function spawnPython(desc, args) {
-  const res = spawnSync('python', args, { cwd: ROOT, encoding: 'utf8' });
-  if (res.status !== 0) fail(`${desc}: ${(res.stdout + res.stderr).trim()}`);
-  return res.stdout;
-}
-
-// Runs a python tool and returns { code, out }: clean_pdf.py uses exit code 2
-// for "written, but a class mark or an answer heading is still inside", which
-// the caller handles instead of failing.
 function runPython(args) {
   const res = spawnSync('python', args, { cwd: ROOT, encoding: 'utf8' });
   return { code: res.status, out: `${res.stdout}${res.stderr}` };
@@ -167,6 +159,17 @@ function cmdList() {
       else if (gone) note.push('(old copy retired)');
     }
     if (m.import && m.import.pdf === 'generated') note.push('(pdf: generated)');
+    if (m.results) {
+      let without = null;
+      try {
+        const saved = JSON.parse(readFileSync(join(ROOT, 'data', 'results', `${nameOf(m)}.json`), 'utf8'));
+        without = Object.values(saved.items || {}).filter((item) => item && item.check === false).length;
+      } catch (e) {
+        without = null;
+      }
+      const checks = m.results.checks === 1 ? '1 check' : `${m.results.checks} checks`;
+      note.push(without === null ? `(results: ${checks})` : `(results: ${checks}, ${without} without)`);
+    }
     if (note.length) note.unshift('—');
     console.log(
       `${String(m.uid).padStart(6)}  ${nameOf(m).padEnd(58)} g${grade} ${m.kind.padEnd(16)} ${m.published} ${shown.padEnd(28)}${note.length ? '  ' + note.join(' ') : ''}`,
@@ -230,18 +233,29 @@ function cmdNew({ pos, flags }) {
   }
 
   const docx = pos[0];
+  let answersRecord = null;
   if (docx && docx !== '-') {
     if (!existsSync(docx)) fail(`docx ${docx} does not exist`);
     const out = join(work, 'ro.html');
-    spawnPython('docx_to_html.py', [join(ROOT, 'tools', 'docx_to_html.py'), docx, '-o', out]);
+    // Converts the worksheet, cutting an answer section off into
+    // .work/<name>/answers.html (sibling file, --answers-docx or the section
+    // itself; --no-answers skips all three). ro.html never holds answers.
+    const done = resolveAnswers({
+      docx,
+      work,
+      roOut: out,
+      answersDocxFlag: flags['answers-docx'] || null,
+      noAnswers: flags['no-answers'] === true,
+    });
+    console.log(`converted ${docx} -> .work/${name}/ro.html`);
     const sources = join(ROOT, '.work', 'sources');
     mkdirSync(sources, { recursive: true });
     const sha = createHash('sha256').update(readFileSync(docx)).digest('hex');
+    answersRecord = done.record;
     writeFileSync(
       join(sources, `${uid}.json`),
-      JSON.stringify({ uid, slug, source: docx, sha256: sha, imported: today(), workflow: WORKFLOW }, null, 2) + '\n',
+      JSON.stringify({ uid, slug, source: docx, sha256: sha, imported: today(), workflow: WORKFLOW, answers: answersRecord }, null, 2) + '\n',
     );
-    console.log(`converted ${docx} -> .work/${name}/ro.html`);
     // The answer key is never a PDF source: only the worksheet is converted.
     // Without --pdf the PDF is made from the DOCX and cleaned automatically;
     // a class mark or an answer heading stops it (pdf stays null).
@@ -294,6 +308,8 @@ function cmdDelete({ pos, flags }) {
     `materiale/${name}.html`,
     `en/materiale/${name}.html`,
     `materiale/pdf/${name}.pdf`,
+    `data/results/${name}.json`,
+    `tm25mlg/raspunsuri/${name}.html`,
   ];
   for (const f of files) {
     const p = join(ROOT, f);

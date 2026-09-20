@@ -8,6 +8,7 @@ import { fileURLToPath } from 'node:url';
 import { createRequire } from 'node:module';
 import vm from 'node:vm';
 import { buildSite, esc, KATEX_VERSION, ADMIN_FOLDER, FONTS } from '../tools/build_pages.mjs';
+import { checkItems, checkTrueKeys } from '../tools/results.mjs';
 
 const require = createRequire(import.meta.url);
 const Catalog = require('../assets/js/catalog.js');
@@ -47,6 +48,7 @@ const REQUIRED_FILES = [
   'assets/js/i18n.js',
   'assets/js/catalog.js',
   'assets/js/visibility.js',
+  'assets/js/answers.js',
   'assets/js/shell.js',
   'assets/js/site.js',
   'assets/js/searchbox.js',
@@ -94,6 +96,16 @@ function checkClassMarks(where, text) {
   }
 }
 
+// Answers live only in data/results/ and tm25mlg/raspunsuri/ (and never in
+// material pages, PDFs or the materials JSON files). The answer-heading rule
+// never runs on those two folders; every other place keeps it.
+function checkNoAnswers(where, text) {
+  const plain = Catalog.normalize(String(text).replace(/<[^>]+>/g, ' ')).replace(/\s+/g, ' ');
+  for (const phrase of ANSWER_HEADINGS) {
+    if (plain.includes(phrase)) fail(`${where}: contains "${phrase}". Published materials must not include answers.`);
+  }
+}
+
 // 1. Required files
 for (const f of REQUIRED_FILES) {
   if (!exists(f)) fail(`Missing required file: ${f}`);
@@ -121,6 +133,7 @@ if (exists(SOURCE)) {
     if (!Array.isArray(data.topics)) fail(`${SOURCE}: "topics" must be an array`);
     if (!Array.isArray(data.materials)) fail(`${SOURCE}: "materials" must be an array`);
     checkClassMarks(SOURCE, raw);
+    checkNoAnswers(SOURCE, raw);
   } catch (e) {
     fail(`${SOURCE} is not valid JSON: ${e.message}`);
   }
@@ -284,17 +297,11 @@ for (const [i, m] of materials.entries()) {
       if (!enHtml.includes('data-root="../../"')) fail(`${enPage}: body must have data-root="../../"`);
       if (!enHtml.includes(`katex@${KATEX_VERSION}/`)) fail(`${enPage}: must load KaTeX ${KATEX_VERSION}`);
       checkClassMarks(enPage, enHtml);
-      const enPlain = Catalog.normalize(enHtml.replace(/<[^>]+>/g, ' ')).replace(/\s+/g, ' ');
-      for (const phrase of ANSWER_HEADINGS) {
-        if (enPlain.includes(phrase)) fail(`${enPage}: contains "${phrase}". Published materials must not include answers.`);
-      }
+      checkNoAnswers(enPage, enHtml);
     }
   }
   checkClassMarks(page, html);
-  const plain = Catalog.normalize(html.replace(/<[^>]+>/g, ' ')).replace(/\s+/g, ' ');
-  for (const phrase of ANSWER_HEADINGS) {
-    if (plain.includes(phrase)) fail(`${page}: contains "${phrase}". Published materials must not include answers.`);
-  }
+  checkNoAnswers(page, html);
 }
 
 // Every file must be named exactly <slug>-<uid> for a material in the data.
@@ -392,6 +399,7 @@ if (exists('data/materials.json')) {
     if (pub.nextUid !== undefined) fail('data/materials.json: must not contain nextUid (it is generated from the source)');
     if (pub.retired !== undefined) fail('data/materials.json: must not contain retired (it is generated from the source)');
     checkClassMarks('data/materials.json', raw);
+    checkNoAnswers('data/materials.json', raw);
   } catch (e) {
     fail(`data/materials.json is not valid JSON: ${e.message}`);
   }
@@ -461,10 +469,7 @@ for (const f of [`${ADMIN_FOLDER}/index.html`, `${ADMIN_FOLDER}/admin.js`, `${AD
   if (!exists(f)) continue;
   const src = read(f);
   checkClassMarks(f, src);
-  const plain = Catalog.normalize(src.replace(/<[^>]+>/g, ' ')).replace(/\s+/g, ' ');
-  for (const phrase of ANSWER_HEADINGS) {
-    if (plain.includes(phrase)) fail(`${f}: contains "${phrase}". Published materials must not include answers.`);
-  }
+  checkNoAnswers(f, src);
 }
 
 // An alias is an old name of the same material: it must not equal a live name,
@@ -554,6 +559,87 @@ if (exists('assets/js/i18n.js')) {
 const files = walk('');
 const codeFiles = files.filter((f) => ['.html', '.js', '.css'].includes(extname(f)));
 
+// Answer keys live in data/results/ and tm25mlg/raspunsuri/ by design: the
+// answer-heading rule never runs there, but the class-mark rules do.
+for (const f of files.filter((x) => x.startsWith('data/results/') || x.startsWith(`${ADMIN_FOLDER}/raspunsuri/`))) {
+  checkClassMarks(f, read(f));
+}
+
+// Results: a material has "results" exactly when both of its files exist
+// (data/results/<name>.json and tm25mlg/raspunsuri/<name>.html); no file in
+// the two folders without a material. A quiz never has results.
+const resultsDataEx = (html) => {
+  const keys = [];
+  for (const m of String(html).matchAll(/\bdata-ex="([^"]+)"/g)) keys.push(m[1]);
+  return keys;
+};
+const resultsSeen = new Set();
+for (const m of materials) {
+  if (!m || typeof m !== 'object' || !isText(m.uid) || !isText(m.slug)) continue;
+  const name = `${m.slug}-${m.uid}`;
+  const resultsFile = `data/results/${name}.json`;
+  const keyFile = `${ADMIN_FOLDER}/raspunsuri/${name}.html`;
+  const hasField = m.results !== undefined;
+  const hasFiles = exists(resultsFile) && exists(keyFile);
+  if (m.kind === 'quiz' && (hasField || exists(resultsFile) || exists(keyFile))) {
+    fail(`material ${name}: a quiz never has results`);
+    continue;
+  }
+  if (hasField && !hasFiles) {
+    fail(`material ${name}: "results" needs both ${resultsFile} and ${keyFile}`);
+    continue;
+  }
+  if (!hasField && (exists(resultsFile) || exists(keyFile))) {
+    fail(`material ${name}: ${exists(resultsFile) ? resultsFile : keyFile} has no "results" field in data/materials.source.json`);
+    continue;
+  }
+  // A page with data-ex must have results: the button needs a result to check.
+  if (!hasField) {
+    for (const page of m.kind === 'quiz' ? [] : [`materiale/${name}.html`, `en/materiale/${name}.html`]) {
+      if (!exists(page)) continue;
+      const keys = resultsDataEx(read(page));
+      if (keys.length) fail(`${page}: data-ex has no result for ${keys.join(', ')} (material ${name} has no "results")`);
+    }
+    continue;
+  }
+  resultsSeen.add(resultsFile);
+  resultsSeen.add(keyFile);
+  const where = `material ${name} results`;
+  if (typeof m.results !== 'object' || m.results === null
+    || !Number.isInteger(m.results.version) || m.results.version < 1
+    || !Number.isInteger(m.results.checks) || m.results.checks < 0) {
+    fail(`${where}: "results" must be { "version": 1 or more, "checks": 0 or more }`);
+    continue;
+  }
+  let saved = null;
+  try {
+    saved = JSON.parse(read(resultsFile));
+  } catch (e) {
+    fail(`${resultsFile} is not valid JSON: ${e.message}`);
+    continue;
+  }
+  if (saved.uid !== m.uid) fail(`${resultsFile}: uid "${saved.uid}" does not match material ${m.uid}`);
+  if (saved.version !== m.results.version) fail(`${resultsFile}: version ${saved.version} does not match "results" in data/materials.source.json`);
+  for (const problem of checkItems(saved.items)) fail(`${resultsFile}: ${problem}`);
+  const checks = checkTrueKeys(saved.items);
+  if (checks.length !== m.results.checks) {
+    fail(`${where}: checks is ${m.results.checks} but the file holds ${checks.length} check:true items`);
+  }
+  // The data-ex set of both pages equals the check:true keys; unique per page.
+  for (const page of m.kind === 'quiz' ? [] : [`materiale/${name}.html`, `en/materiale/${name}.html`]) {
+    if (!exists(page)) continue;
+    const keys = resultsDataEx(read(page));
+    if (new Set(keys).size !== keys.length) fail(`${page}: a data-ex value must be unique on its page`);
+    const missing = checks.filter((k) => !keys.includes(k));
+    const extra = keys.filter((k) => !checks.includes(k));
+    if (missing.length) fail(`${page}: data-ex is missing ${missing.join(', ')}`);
+    if (extra.length) fail(`${page}: data-ex has no result for ${extra.join(', ')}`);
+  }
+}
+for (const f of files.filter((x) => x.startsWith('data/results/') || x.startsWith(`${ADMIN_FOLDER}/raspunsuri/`))) {
+  if (!resultsSeen.has(f)) fail(`${f}: not a <slug>-<uid> name with "results" in data/materials.source.json`);
+}
+
 if (dict && dict.ro && dict.en) {
   const used = new Set();
   for (const f of codeFiles) {
@@ -583,7 +669,8 @@ for (const f of codeFiles) {
 }
 
 // 6. Romanian diacritics use comma-below (ș ț), not the look-alike cedilla letters (ş ţ)
-for (const f of [...codeFiles, 'data/materials.source.json', 'data/materials.json']) {
+for (const f of [...codeFiles, 'data/materials.source.json', 'data/materials.json',
+  ...files.filter((x) => x.startsWith('data/results/'))]) {
   if (exists(f) && /[şţŞŢ]/.test(read(f))) fail(`${f}: uses cedilla letters (ş ţ). Use comma-below letters (ș ț).`);
 }
 
