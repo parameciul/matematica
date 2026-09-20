@@ -1,34 +1,26 @@
 # Result checking, separate answer files, and generated PDFs
 
 Status: design, waiting for review. No code yet.
-Replaces: `2026-09-18-result-checking-design.md` (read this file instead).
 Builds on: `2026-09-18-material-visibility-design.md` (the admin page in `tm25mlg/`).
 
-## What changed against the earlier design
+## What this covers
 
-1. **The geometry sheet (`1007`) is gone from this design.** Parts of its
-   answer key are wrong, so it is no longer evidence for anything and no
-   longer a phase-1 target. The mechanism it motivated stays (a doubtful
-   result gets no check button), but it is now motivated in general, not by
-   that document.
-2. **A new sample pair:** `Clasa 9R2/Fisa de lucru - Modulul unui numar real.docx`
-   (material `1012`) together with
-   `Clasa 9R2/Fisa de lucru - Modulul unui numar real - raspunsuri.docx`.
-3. **New: answers in a separate document.** The import must accept an answer
-   key that is its own DOCX file next to the worksheet, not a section at the
-   end of the worksheet. `1012` has no answer section at all, so for that
-   material the separate file is the only path.
-4. **New: the import makes the PDF when there is no PDF.** LibreOffice is
-   installed on this machine and converts the DOCX locally. No service, no
-   network.
+Two halves, joined by the same import step:
 
-Points 3 and 4 change the "Add a material" workflow, not only result
-checking. There is **one** `WORKFLOW` bump (`2` → `3`) for all of this work,
-not three. It rides with the answer split, in phase 2. `AGENTS.md` bumps
-`WORKFLOW` "whenever a change here affects the article output": the answer
-split does (`ro.html` stops holding the answer section), while making a PDF
-does not touch the article at all. So phase 1 (the PDF) leaves `WORKFLOW`
-at `2`.
+1. **Result checking.** Keep a material's answers at import, and let a
+   student check one exercise at a time on the material page.
+2. **Two import improvements** that result checking needs anyway:
+   - an answer key that is its own DOCX file next to the worksheet, not a
+     section at the end of it;
+   - a PDF made from the DOCX when the material has none. LibreOffice is
+     installed on this machine and converts locally: no service, no network.
+
+Point 2 changes the "Add a material" workflow, not only result checking.
+There is **one** `WORKFLOW` bump (`2` → `3`) for all of this work, not three.
+It rides with the answer split, in phase 2. `AGENTS.md` bumps `WORKFLOW`
+"whenever a change here affects the article output": the answer split does
+(`ro.html` stops holding the answer section), while making a PDF does not
+touch the article at all. So phase 1 (the PDF) leaves `WORKFLOW` at `2`.
 
 ## Problem
 
@@ -74,7 +66,7 @@ A material gets result checking only when its source has answers.
 
 ## What the samples show
 
-### Sample A — `1002`, answers inside the worksheet
+### Answers inside the worksheet — `1002`
 
 `Clasa 9R2/Fisa de lucru - Numere reale, modul, parte intreaga.docx`
 (material `1002`), already on the site without its answers. Its answer
@@ -89,7 +81,7 @@ section is at the end of the same file, under a bold heading.
 - **True/false for each sub-item** (exercise 5 a–e).
 - **Romanian decimals use a comma** (`0,7`), and commas also separate values.
 
-### Sample B — `1012`, answers in a separate document
+### Answers in a separate document — `1012`
 
 Worksheet: `Clasa 9R2/Fisa de lucru - Modulul unui numar real.docx`
 (material `1012`, grade 9, `fisa-lucru`, 15 exercises, `pdf: null`).
@@ -111,8 +103,7 @@ files):
   `1. a) $7 + 5 - 8 = 4$`. The result is `4`, not the whole line. Reading the
   final value out of the line is the step that is easy to get wrong.
 - **The key is correct.** Every one of the 26 items was solved and agrees
-  with the key and with its hint. This is the opposite of the old geometry
-  sample, and it is why this pair replaces it.
+  with the key and with its hint.
 - **Kinds present:** `number` (1a, 1b, 1c), `interval` (6a, 6b, 9b),
   `set` (9a, 11a–d, 12a, 12b, 13a, 13b, 14a, 14b), `list` (7), plus a
   solution set that is written as an interval (15b, `S = [1,\ 5]` → kind
@@ -195,8 +186,6 @@ An item whose key looks wrong:
 "23": { "check": false, "why": "review", "show": "$S = \\{2\\}$",
         "note": "Cheia dă o singură soluție. Ecuația are și $x = -5$." }
 ```
-
-(An invented example. No result of any real material is quoted here.)
 
 - Item keys: the exercise number, plus a letter for a sub-item: `7`, `9a`.
   Pattern `^[0-9]+[a-z]?$`. A key is used at most once in a file.
@@ -468,11 +457,11 @@ A new tool next to `material.mjs`. Node only, no dependencies.
 
 ### 2.7 Existing materials
 
-Phase 1 ends with `1002` and `1012` done: `extract` (or, for `1012`, the
-sibling file), 2.5 and `save`. Other existing materials: run `extract` to see
-whether their source has answers, in either shape. `1007` is **not** a
-target: its key is wrong in places and it needs the teacher before anything
-else.
+Phase 2 ends with `1002` and `1012` done: `extract` (or, for `1012`, the
+sibling file), 2.5 and `save`. For every other material already on the site,
+run `extract` to see whether its source has answers, in either shape. A
+material whose key turns out to be wrong in places gets no result checking
+until the teacher has corrected it.
 
 ## 3. The student check (phase 2)
 
@@ -884,7 +873,6 @@ Answers committed before that stay readable in the public git history.
 
 ## Out of scope
 
-- The geometry sheet `1007`: its key needs the teacher first.
 - Showing the right answer or the solution to students.
 - Scores, grades, or the teacher seeing students' answers.
 - Student accounts, sync between devices.
