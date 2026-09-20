@@ -97,6 +97,7 @@
       m.title && m.title.ro, m.title && m.title.en, m.slug, m.uid,
       row.topic.title && row.topic.title.ro, window.Site.gradeName(row.topic.grade),
       window.Site.kindLabel(m.kind), stateLabel(row.orig),
+      m.results ? 'rezultate' : '',
     ].join(' '));
   }
 
@@ -108,6 +109,9 @@
     var titleHtml = row.orig.state === 'visible'
       ? `<a class="m-title" href="${esc(window.Site.materialUrl(m))}" target="_blank" rel="noopener">${esc(title)}</a>`
       : `<span class="m-title">${esc(title)}</span>`;
+    var resultsHtml = m.results
+      ? `<span class="admin-results"><span class="badge badge-fise">Rezultate: ${esc(String(m.results.checks))}</span> <a href="rezultate.html?uid=${esc(uid)}">Vezi rezultatele</a></span>`
+      : '';
     return `<li class="m-row admin-row" data-uid="${esc(uid)}">`
       + '<div class="admin-item">'
       + `<span class="m-badges"><span class="badge badge-${esc(group)}">${esc(window.Site.kindLabel(m.kind))}</span></span>`
@@ -118,6 +122,7 @@
       + '<span class="admin-next" data-next hidden></span>'
       + `<span>cod ${esc(uid)}</span>`
       + `<time class="m-date" datetime="${esc(m.published)}">${esc(window.Site.formatDate(m.published))}</time>`
+      + resultsHtml
       + '</span>'
       + '</div>'
       + '<div class="admin-controls">'
@@ -153,7 +158,13 @@
     var byGrade = new Map();
     var shown = 0;
     rows.forEach(function (row, uid) {
-      if (only && row.orig.state !== only) return;
+      // The results filter picks rows by the saved data, like the state
+      // filters do, so a row never vanishes while it is being edited.
+      if (only === 'results') {
+        if (!row.m.results) return;
+      } else if (only && row.orig.state !== only) {
+        return;
+      }
       if (q && !searchText(row).includes(q)) return;
       shown += 1;
       var grade = row.topic.grade;

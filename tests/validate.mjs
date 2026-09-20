@@ -62,6 +62,8 @@ const REQUIRED_FILES = [
   `${ADMIN_FOLDER}/index.html`,
   `${ADMIN_FOLDER}/admin.js`,
   `${ADMIN_FOLDER}/admin.css`,
+  `${ADMIN_FOLDER}/rezultate.html`,
+  `${ADMIN_FOLDER}/rezultate.js`,
   'functions/tm25mlg/api/_middleware.js',
   'functions/tm25mlg/api/materials.js',
   'functions/tm25mlg/api/save.js',
@@ -445,11 +447,10 @@ if (exists('_redirects')) {
   }
 }
 
-// The admin page is written by hand, not by the generator, so its head could
-// drift from the site: it must carry the same theme script and fonts. Without
-// the js class the theme button stays hidden.
-if (exists(`${ADMIN_FOLDER}/index.html`)) {
-  const f = `${ADMIN_FOLDER}/index.html`;
+// The admin pages are written by hand, not by the generator, so their heads
+// could drift from the site: they must carry the same theme script and fonts.
+for (const f of [`${ADMIN_FOLDER}/index.html`, `${ADMIN_FOLDER}/rezultate.html`]) {
+  if (!exists(f)) continue;
   const html = read(f);
   const head = html.slice(0, html.indexOf('</head>'));
   if (!head.includes("document.documentElement.classList.add('js')")) {
@@ -465,8 +466,11 @@ if (exists(`${ADMIN_FOLDER}/index.html`)) {
 }
 
 // Pages and the data files contain no answers and no class marks. The admin
-// page is covered too: it lists every material with its state.
-for (const f of [`${ADMIN_FOLDER}/index.html`, `${ADMIN_FOLDER}/admin.js`, `${ADMIN_FOLDER}/admin.css`]) {
+// pages are covered too: the list shows every material with its state, and
+// the results page shows every result. Their own text never uses the answer
+// headings; the key fragment they load is fine.
+for (const f of [`${ADMIN_FOLDER}/index.html`, `${ADMIN_FOLDER}/admin.js`, `${ADMIN_FOLDER}/admin.css`,
+  `${ADMIN_FOLDER}/rezultate.html`, `${ADMIN_FOLDER}/rezultate.js`]) {
   if (!exists(f)) continue;
   const src = read(f);
   checkClassMarks(f, src);

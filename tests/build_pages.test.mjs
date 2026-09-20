@@ -435,6 +435,15 @@ test('the admin page links to the shared assets with their content hash', (t) =>
   assert.equal(second.match(/i18n\.js\?v=([0-9a-f]{10})"/)[1], js[1]);
 });
 
+test('the results page links to the shared assets with their content hash', (t) => {
+  const page = '<head>\n<link rel="stylesheet" href="../assets/css/style.css">\n'
+    + '<script defer src="rezultate.js"></script>\n</head>\n';
+  const dir = makeRoot(t, { pages: { 'tm25mlg/rezultate.html': page, 'assets/css/style.css': 'body{}\n' } });
+  const built = buildSite(dir).get('tm25mlg/rezultate.html');
+  assert.match(built, /style\.css\?v=[0-9a-f]{10}"/);
+  assert.match(built, /src="rezultate\.js"/);
+});
+
 test('every page header carries the brand mark next to the site name', (t) => {
   const dir = makeRoot(t, { pages: stdPages() });
   const site = buildSite(dir);

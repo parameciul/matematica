@@ -232,3 +232,54 @@ a.m-title:hover {
 .admin-bar .button:disabled:hover {
   background: var(--ink);
 }
+
+/* The results chip and link on a list row. */
+.admin-results {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.2rem 0.5rem;
+  white-space: nowrap;
+}
+
+/* Results page: the table of results and the full key below it. */
+.results-table {
+  width: 100%;
+  max-width: 50rem;
+  margin: 0 0 1.5rem;
+  border-collapse: collapse;
+  background: var(--sheet);
+  font-size: 1rem;
+}
+
+.results-table th,
+.results-table td {
+  padding: 0.4rem 0.6rem;
+  border: 1px solid var(--rule);
+  vertical-align: top;
+  text-align: left;
+}
+
+.results-table thead th {
+  background: var(--paper);
+}
+
+.results-table tbody th {
+  white-space: nowrap;
+}
+
+/* A result the teacher must still fix stands out. */
+.rev-row {
+  background: var(--b-teste-bg);
+}
+
+.rev-note {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.9rem;
+  color: var(--b-teste-fg);
+}
+
+#results-key {
+  margin-top: 1rem;
+}

@@ -1079,6 +1079,11 @@ export function buildSite(root) {
   const adminFile = `${ADMIN_FOLDER}/index.html`;
   const adminHtml = readIfExists(root, adminFile);
   if (adminHtml !== null) set(adminFile, renderAdminPage(adminHtml, root));
+  // The read-only results page links the same shared files, so its hashes
+  // stay fresh the same way.
+  const resultsFile = `${ADMIN_FOLDER}/rezultate.html`;
+  const resultsHtml = readIfExists(root, resultsFile);
+  if (resultsHtml !== null) set(resultsFile, renderAdminPage(resultsHtml, root));
 
   // Sitemap: indexable pages only.
   const indexable = [];

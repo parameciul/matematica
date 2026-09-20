@@ -217,6 +217,20 @@ test('a class code on the admin page fails', () => {
   );
 });
 
+test('a missing results page fails', () => {
+  expectFailure(
+    withSite((dir) => unlinkSync(join(dir, 'tm25mlg', 'rezultate.html'))),
+    /Missing required file: tm25mlg\/rezultate\.html/,
+  );
+});
+
+test('an answer heading on the results page fails', () => {
+  expectFailure(
+    withSite((dir) => editFile(dir, 'tm25mlg/rezultate.html', (s) => s.replace('Cheia completă</h2>', 'Răspunsuri și indicații</h2>'))),
+    /must not include answers/,
+  );
+});
+
 test('an alias equal to a live material name fails', () => {
   expectFailure(
     withSite((dir) => editData(dir, (d) => { sample(d).aliases = [`${d.materials[1].slug}-${d.materials[1].uid}`]; })),
