@@ -19,7 +19,6 @@
   const SYMBOLS = ['√', 'π', '∞', '∪', '∅', ';', '{', '}', '[', ']', '(', ')'];
 
   let items = null; // the loaded results, null until the first press
-  let failed = false;
   let opener = null;
 
   function loadSaved() {
@@ -239,7 +238,9 @@
   }
 
   async function ensureItems() {
-    if (items || failed) return items;
+    // No latch on failure: "try again later" must mean the next press really
+    // fetches again, so a student who was offline is not stuck until a reload.
+    if (items) return items;
     try {
       const res = await fetch(`${root}data/results/${name}.json?v=${encodeURIComponent(version)}`, { cache: 'no-cache' });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -248,7 +249,6 @@
       if (!items) throw new Error('no items');
     } catch (e) {
       items = null;
-      failed = true;
     }
     if (items) {
       // An item missing from the file gets no button.
@@ -292,7 +292,11 @@
     const box = main.querySelector(`[data-ex="${key}"]`);
     if (!box) return;
     const given = currentAnswer(key, item);
-    if (!given) return;
+    if (!given) {
+      // Radio kinds with nothing picked: say so instead of doing nothing.
+      say(t('check.pick'), 'error');
+      return;
+    }
     const read = window.Answers.read(item.kind, given.value);
     if (!read.ok) {
       say(t('check.unreadable').replace('{example}', window.Answers.exampleFor(item.kind)), 'error');
