@@ -1,6 +1,9 @@
 # Result checking: keep the answers, let students check them
 
-Status: design, waiting for review. No code yet.
+Status: replaced. Do not build from this file.
+Replaced by: `2026-09-20-result-checking-and-import-design.md`.
+It drops the geometry sample (`1007`, wrong key), adds the `1012` sample with
+its separate answers document, and adds PDF generation from the DOCX.
 Builds on: `2026-09-18-material-visibility-design.md` (the admin page in `tm25mlg/`).
 
 ## Problem
