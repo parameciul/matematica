@@ -207,13 +207,13 @@ function renderHead(opts) {
   if (opts.katex) {
     lines.push(`<link rel="stylesheet" href="${KATEX_CSS.href}" integrity="${KATEX_CSS.integrity}" crossorigin="anonymous">`);
   }
-  lines.push(`<link rel="stylesheet" href="${base}assets/css/style.css">`);
+  lines.push(`<link rel="stylesheet" href="${base}assets/css/style.css${assetQuery('assets/css/style.css')}">`);
   if (opts.katex) {
     lines.push(`<script defer src="${KATEX_JS.href}" integrity="${KATEX_JS.integrity}" crossorigin="anonymous"></script>`);
     lines.push(`<script defer src="${KATEX_RENDER.href}" integrity="${KATEX_RENDER.integrity}" crossorigin="anonymous"></script>`);
   }
   for (const src of opts.pageScripts || []) {
-    lines.push(`<script defer src="${base}${src}"></script>`);
+    lines.push(`<script defer src="${base}${src}${assetQuery(src)}"></script>`);
   }
   for (const block of opts.jsonLdBlocks || []) lines.push(jsonLd(block));
   return lines.join('\n  ');
@@ -811,7 +811,8 @@ function renderHeaders(data) {
     '/package-lock.json',
     '  X-Robots-Tag: noindex',
     '# Static assets and PDFs cache for one day in the browser (audit F4).',
-    '# Safe without content hashing: an edit goes live within a day.',
+    '# Safe: every page links an asset with a ?v=<content hash>, so a changed',
+    '# file is a new URL and a returning reader never pairs it with an old one.',
     '/assets/*',
     '  Cache-Control: public, max-age=86400',
     '/materiale/pdf/*',
@@ -894,18 +895,41 @@ function renderRedirects(data) {
   return lines.concat(hiddenLines).join('\n') + '\n';
 }
 
-// The admin page is written by hand. The generator owns only the ?v= hash on
-// its links to the shared files in assets/. /assets/* is cached for a day,
-// while the admin page and admin.js are no-store: without the hash, a browser
-// pairs a new admin.js with yesterday's visibility.js and the page breaks.
-// The hash reads the text with LF line ends, so it is the same on every OS.
-export function renderAdminPage(html, root) {
-  return html.replace(/\b(src|href)="(\.\.\/assets\/[^"?#]+)(?:\?v=[0-9a-f]*)?"/g, (all, attr, path) => {
-    const abs = join(root, ...path.slice(3).split('/'));
-    if (!existsSync(abs)) return all;
+// Every page links the shared files in assets/ with a ?v= hash. /assets/* is
+// cached for a day, so without the hash a browser pairs a new script with
+// yesterday's copy of another one: a new check.js with an i18n.js that has no
+// check.* keys yet, or a new admin.js with an old visibility.js. The hash
+// reads the text with LF line ends, so it is the same on every OS.
+// ASSET_ROOT and the cache are set once per build: the validator and the
+// tests build several fixture roots in one process.
+let ASSET_ROOT = null; // set by useAssetRoot before any page is rendered
+const ASSET_HASHES = new Map();
+
+function useAssetRoot(root) {
+  ASSET_ROOT = root;
+  ASSET_HASHES.clear();
+}
+
+// "assets/js/i18n.js" -> "?v=1a2b3c4d5e", or "" when the file is not in this
+// root (a fixture root in the tests does not carry every asset).
+export function assetQuery(path) {
+  if (ASSET_HASHES.has(path)) return ASSET_HASHES.get(path);
+  const abs = join(ASSET_ROOT || ROOT, ...path.split('/'));
+  let query = '';
+  if (existsSync(abs)) {
     const text = readFileSync(abs, 'utf8').replace(/\r\n/g, '\n');
-    const hash = createHash('sha256').update(text).digest('hex').slice(0, 10);
-    return `${attr}="${path}?v=${hash}"`;
+    query = `?v=${createHash('sha256').update(text).digest('hex').slice(0, 10)}`;
+  }
+  ASSET_HASHES.set(path, query);
+  return query;
+}
+
+// The admin page is written by hand, so its links are rewritten in place.
+export function renderAdminPage(html, root) {
+  useAssetRoot(root);
+  return html.replace(/\b(src|href)="(\.\.\/assets\/[^"?#]+)(?:\?v=[0-9a-f]*)?"/g, (all, attr, path) => {
+    const query = assetQuery(path.slice(3));
+    return query ? `${attr}="${path}${query}"` : all;
   });
 }
 
@@ -973,6 +997,7 @@ ${jsonLd({
 
 // Builds every generated file in memory: Map<path with forward slashes, content>.
 export function buildSite(root) {
+  useAssetRoot(root);
   const I18N = loadI18N(root);
   const data = loadSiteData(root);
   const topics = new Map(data.topics.map((t) => [t.id, t]));

@@ -435,6 +435,28 @@ test('the admin page links to the shared assets with their content hash', (t) =>
   assert.equal(second.match(/i18n\.js\?v=([0-9a-f]{10})"/)[1], js[1]);
 });
 
+test('a public page links the shared assets with their content hash', (t) => {
+  const dir = makeRoot(t, { pages: stdPages() });
+  const built = buildSite(dir);
+  const home = built.get('index.html');
+  // i18n.js is the only asset makeRoot copies, so it is the one that gets a
+  // hash; an asset missing from this root keeps a plain link.
+  const first = home.match(/i18n\.js\?v=([0-9a-f]{10})"/);
+  assert.ok(first, home);
+  assert.match(home, /href="assets\/css\/style\.css"/);
+  // Every page that loads the asset carries the same hash.
+  const material = built.get(`materiale/${mname('teorie-reale')}.html`);
+  assert.equal(material.match(/i18n\.js\?v=([0-9a-f]{10})"/)[1], first[1]);
+  // Line ends do not change the hash, so Windows and Linux agree.
+  const i18n = join(dir, 'assets', 'js', 'i18n.js');
+  writeFileSync(i18n, readFileSync(i18n, 'utf8').replace(/\n/g, '\r\n'));
+  assert.equal(buildSite(dir).get('index.html'), home);
+  // A changed asset gives a new hash, so the committed page goes stale.
+  const lf = readFileSync(i18n, 'utf8').replace(/\r\n/g, '\n');
+  writeFileSync(i18n, `${lf}// one more line\n`);
+  assert.notEqual(buildSite(dir).get('index.html').match(/i18n\.js\?v=([0-9a-f]{10})"/)[1], first[1]);
+});
+
 test('the results page links to the shared assets with their content hash', (t) => {
   const page = '<head>\n<link rel="stylesheet" href="../assets/css/style.css">\n'
     + '<script defer src="rezultate.js"></script>\n</head>\n';

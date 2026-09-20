@@ -31,7 +31,8 @@ https://:version.:project.pages.dev/*
 /package-lock.json
   X-Robots-Tag: noindex
 # Static assets and PDFs cache for one day in the browser (audit F4).
-# Safe without content hashing: an edit goes live within a day.
+# Safe: every page links an asset with a ?v=<content hash>, so a changed
+# file is a new URL and a returning reader never pairs it with an old one.
 /assets/*
   Cache-Control: public, max-age=86400
 /materiale/pdf/*
