@@ -38,6 +38,8 @@ https://:version.:project.pages.dev/*
 /tm25mlg/*
   X-Robots-Tag: noindex
   Cache-Control: no-store
+/materiale/pdf/fisa-lucru-modulul-unui-numar-real-1012.pdf
+  Link: <https://lauramiron.pages.dev/materiale/fisa-lucru-modulul-unui-numar-real-1012>; rel="canonical"
 /materiale/pdf/fisa-lucru-numere-reale-modul-parte-intreaga-1002.pdf
   Link: <https://lauramiron.pages.dev/materiale/fisa-lucru-numere-reale-modul-parte-intreaga-1002>; rel="canonical"
 /materiale/pdf/fisa-recapitulare-evaluare-initiala-1004.pdf

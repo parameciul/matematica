@@ -3,6 +3,7 @@
 Usage:
   python tools/clean_pdf.py SOURCE.pdf OUTPUT.pdf [options]
   python tools/clean_pdf.py SOURCE.pdf --lines
+  python tools/clean_pdf.py NEW.pdf --same OLD.pdf
 
 Options:
   --delete-pages 4,5        delete these pages (page numbers of the source file, from 1)
@@ -80,6 +81,13 @@ def find_line_rects(page, text):
     return rects
 
 
+# A fixed trailer /ID, so two runs on an unchanged source give a byte-identical
+# file. pymupdf writes a fresh random /ID on every save; without this every
+# re-import shows a false change in git. Both halves are fixed (saving without
+# no_new_id would still regenerate the second half).
+FIXED_ID = '[<00000000000000000000000000000000><00000000000000000000000000000000>]'
+
+
 def clean(source, output, delete_pages=(), whiteouts=(), whiteout_lines=()):
     """Write a cleaned copy of source to output. Returns {pattern label: number of removals}."""
     doc = pymupdf.open(str(source))
@@ -112,8 +120,9 @@ def clean(source, output, delete_pages=(), whiteouts=(), whiteout_lines=()):
     doc.select(keep)
     doc.set_metadata({})
     doc.del_xml_metadata()
+    doc.xref_set_key(-1, 'ID', FIXED_ID)
     Path(output).parent.mkdir(parents=True, exist_ok=True)
-    doc.save(str(output), garbage=4, deflate=True)
+    doc.save(str(output), garbage=4, deflate=True, no_new_id=1)
     return counts
 
 
@@ -127,6 +136,63 @@ def scan(path):
         upper = text.upper()
         problems.extend(f'page {number}: answer heading "{h}"' for h in ANSWER_HEADINGS if h in upper)
     return problems
+
+
+def _font_programs(path):
+    """Map each embedded font name to its decompressed font program bytes."""
+    doc = pymupdf.open(str(path))
+    out = {}
+    for xref in range(1, doc.xref_length()):
+        try:
+            obj = doc.xref_object(xref)
+        except Exception:
+            continue
+        if '/FontDescriptor' not in obj or '/FontFile2' not in obj:
+            continue
+        name = re.search(r'/FontName\s*/(\S+)', obj)
+        ref = re.search(r'/FontFile2\s*(\d+) 0 R', obj)
+        if not name or not ref:
+            continue
+        try:
+            out[name.group(1)] = doc.xref_stream(int(ref.group(1)))
+        except Exception:
+            out[name.group(1)] = None
+    doc.close()
+    return out
+
+
+def equivalent(first, second):
+    """True when two PDFs hold the same document: same pages, same text on
+    each page, same embedded font programs and same images.
+
+    LibreOffice numbers its PDF objects differently on every run, so two runs
+    on an unchanged DOCX never give the same bytes. The import compares the
+    remade PDF with the committed one through this function and keeps the old
+    file when they match, so a rerun shows no false change in git.
+    """
+    a = pymupdf.open(str(first))
+    b = pymupdf.open(str(second))
+    try:
+        if a.page_count != b.page_count:
+            return False
+        for i in range(a.page_count):
+            if a[i].get_text() != b[i].get_text():
+                return False
+            imgs_a = sorted(img[0] for img in a[i].get_images(full=True))
+            imgs_b = sorted(img[0] for img in b[i].get_images(full=True))
+            if len(imgs_a) != len(imgs_b):
+                return False
+            for xa, xb in zip(imgs_a, imgs_b):
+                try:
+                    same = a.extract_image(xa)['image'] == b.extract_image(xb)['image']
+                except Exception:
+                    return False
+                if not same:
+                    return False
+    finally:
+        a.close()
+        b.close()
+    return _font_programs(first) == _font_programs(second)
 
 
 def render(path, out_dir, dpi=70):
@@ -158,7 +224,15 @@ def main(argv=None):
     parser.add_argument('--whiteout-line', action='append', default=[])
     parser.add_argument('--render')
     parser.add_argument('--lines', action='store_true')
+    parser.add_argument('--same', action='store_true',
+                        help='compare SOURCE with OUTPUT and exit 0 when they hold the same document')
     args = parser.parse_args(argv)
+    if args.same:
+        if not args.output:
+            parser.error('OUTPUT is required with --same')
+        same = equivalent(args.source, args.output)
+        print('same' if same else 'different')
+        return 0 if same else 1
     if args.lines:
         print_lines(args.source)
         return 0

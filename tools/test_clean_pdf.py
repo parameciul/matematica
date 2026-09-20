@@ -88,6 +88,32 @@ def test_metadata_is_cleared(tmp_path):
     assert not meta.get('author') and not meta.get('title')
 
 
+def test_two_runs_give_the_same_bytes(tmp_path):
+    # The proof the fixed trailer /ID landed: without it every save writes a
+    # fresh random /ID and the two files differ.
+    src = make_pdf(tmp_path / 'in.pdf', [['Hello']])
+    first = tmp_path / 'first.pdf'
+    second = tmp_path / 'second.pdf'
+    clean_pdf.clean(src, first)
+    clean_pdf.clean(src, second)
+    assert first.read_bytes() == second.read_bytes()
+
+
+def test_equivalent_holds_for_two_cleans_and_fails_on_changes(tmp_path):
+    src = make_pdf(tmp_path / 'in.pdf', [['Hello']])
+    first = tmp_path / 'first.pdf'
+    second = tmp_path / 'second.pdf'
+    clean_pdf.clean(src, first)
+    clean_pdf.clean(src, second)
+    assert clean_pdf.equivalent(first, second)
+    other = make_pdf(tmp_path / 'other.pdf', [['Something else']])
+    third = tmp_path / 'third.pdf'
+    clean_pdf.clean(other, third)
+    assert not clean_pdf.equivalent(first, third)
+    assert clean_pdf.main([str(first), '--same', str(second)]) == 0
+    assert clean_pdf.main([str(first), '--same', str(third)]) == 1
+
+
 def test_scan_reports_class_marks_and_answer_headings(tmp_path):
     bad = make_pdf(tmp_path / 'bad.pdf', [['Clasa a IX-a R2', 'Grupa 9R2', 'S2: 14-18', 'Data 16.09.2026'], ['BAREM DE EVALUARE']])
     joined = '\n'.join(clean_pdf.scan(bad))

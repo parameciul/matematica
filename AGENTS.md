@@ -13,7 +13,7 @@ Grades 5-12. Romanian by default, with an English switch. Plain HTML/CSS/JS: no 
   - `topics`: `id`, `grade` (5-12), `title` (`ro` + `en`).
   - `grades`: per-grade `intro` (`ro` + `en`, 60-100 words naming the year's chapters; first sentence 70-160 characters, used as the grade meta description). Required for grades 5-12.
   - `materials`: each material owns a `slug` + `uid`. The `uid` is its permanent identity: assigned once, never reused, 4+ digits not starting with 0. The material name is `<slug>-<uid>` and names every file: `materiale/<name>.html`, `en/materiale/<name>.html`, `materiale/pdf/<name>.pdf`, `.work/<name>/`. `retired` lists deleted materials (`uid`, `slug`, `removed`, `replacedBy`); `aliases` maps old names to the material; `import: { "date", "workflow" }` records which version of the add-material workflow produced the article. Material fields: `id`/`name` are derived, never stored.
-  - `materials` entry fields: `slug`, `uid`, `topic`, `kind`, `title` (`ro` + `en`), `published` (YYYY-MM-DD), optional `updated` (YYYY-MM-DD, not before `published`), `description` (`ro` + `en`, 70-160 characters each), `pdf` (or `null`), `youtube` (`null` or `{ "id", "uploaded", "duration" }`), optional `supersedes` (uid of the copy this one replaced) and optional `keywords` (`ro` + `en` lists; when present, `ro` must include `clasa a <N>-a` and `en` must include `grade <N>`).
+  - `materials` entry fields: `slug`, `uid`, `topic`, `kind`, `title` (`ro` + `en`), `published` (YYYY-MM-DD), optional `updated` (YYYY-MM-DD, not before `published`), `description` (`ro` + `en`, 70-160 characters each), `pdf` (or `null`), `youtube` (`null` or `{ "id", "uploaded", "duration" }`), optional `supersedes` (uid of the copy this one replaced) and optional `keywords` (`ro` + `en` lists; when present, `ro` must include `clasa a <N>-a` and `en` must include `grade <N>`). `import.pdf`, when present, is `"source"` (a file the teacher gave) or `"generated"` (made from the DOCX).
   - Visibility: exactly one of three states. Default is visible (neither field, old entries need no edit). `"hidden": true` hides the material until someone shows it. `"visibleFrom": "2026-09-21T08:00:00+03:00"` schedules it: not on the site, the timer shows it at that instant (Romania wall-clock time with the explicit Europe/Bucharest offset, `+03:00` in summer, `+02:00` in winter). `hidden` and `visibleFrom` never appear together. `published` stays required on every material.
   - Kinds: `lectie`, `teorie`, `fisa-lucru`, `fisa-recapitulativa`, `test`, `joc`, `quiz`.
 - `data/materials.json`: generated public copy (`{ topics, grades, materials }`, visible materials only, no `nextUid`, no `retired`). The browser (`site.js`, search) fetches this path. Never edit it: the generator writes it.
@@ -29,8 +29,8 @@ Grades 5-12. Romanian by default, with an English switch. Plain HTML/CSS/JS: no 
 - `functions/tm25mlg/api/`: the admin API (`_middleware.js`, `materials.js`, `save.js`). `_routes.json` sends only `/tm25mlg/api/*` to Functions; public pages never run one. `save.js` checks each change with `Visibility.changeError`, the same rule the workflow uses, so a save the API accepts never fails later. It refuses a request that is not `Content-Type: application/json` or comes from another site (`Sec-Fetch-Site`, `Origin`).
 - `.github/workflows/visibility.yml`: the timer (every 10 minutes) and the admin save path. Only the timer runs `reveal --wait-minutes 10`; an admin save and a manual run reveal only what is already due, so a save never waits and a manual run before a material's time changes nothing. The wait ends 10 minutes after the start of the run, never later. A run with nothing to change skips the checks and the commit. Its logs go to `$RUNNER_TEMP`, never into the checkout (a stray file would be committed). GitHub switches a schedule off after 60 days without activity; a weekly run (Monday 04:23 UTC) switches it on again. If the timer stops anyway: GitHub, Actions, material-visibility, "Enable workflow".
 - `assets/js/i18n.js`: all UI text, including the `seo.*` page titles and descriptions.
-- `tools/`: `material.mjs` (list, new, delete — see below), `docx_to_html.py` (needs pandoc) and `clean_pdf.py` (needs pymupdf).
-- `tools/material.mjs`: `list`, `new`, `delete`, `set`, `apply` and `reveal` commands around `data/materials.source.json` (see "Hide or schedule a material"). The `new` command takes the uid from `nextUid` and raises it; `delete` moves a material to `retired` and regenerates the redirects, so an old URL can never be handed to a different material. Node only, no dependencies.
+- `tools/`: `material.mjs` (list, new, delete — see below), `docx_to_html.py` (needs pandoc), `docx_to_pdf.py` (needs LibreOffice) and `clean_pdf.py` (needs pymupdf).
+- `tools/material.mjs`: `list`, `new`, `delete`, `pdf`, `set`, `apply` and `reveal` commands around `data/materials.source.json` (see "Hide or schedule a material" and "Remake a PDF"). The `new` command takes the uid from `nextUid` and raises it; `delete` moves a material to `retired` and regenerates the redirects, so an old URL can never be handed to a different material. Node only, no dependencies.
 - Brand mark: Laura Miron's initials in handwriting over a highlighter stroke. It lives in several places, and nothing regenerates them for you:
   - the header, inline in `assets/js/shell.js` (`BRAND_MARK`), transparent, coloured by `--ink` and `--brand-marker`;
   - `favicon.svg` and `assets/img/og-image.svg`, hand-written SVG;
@@ -98,6 +98,7 @@ The source files are in `D:\Projects\Website-Content\`. Never change them. Put w
    - `new` takes the uid from `nextUid` and raises it, adds the material to `data/materials.source.json`, converts the DOCX to `.work/<name>/ro.html`, saves the source path plus its sha256 in `.work/sources/<uid>.json` (git-ignored, never published) and regenerates the site.
    - `--slug` uses lowercase letters, digits and dashes. `--topic` must exist (add a new topic at the end of `topics` first, only if necessary). `--kind` is one of `lectie, teorie, fisa-lucru, fisa-recapitulativa, test, joc, quiz`. `--desc-ro` and `--desc-en` are 70-160 characters each (see "SEO rules").
    - If the clean PDF already exists, pass `--pdf "<PDF path>"` and it is copied to `materiale/pdf/<name>.pdf`.
+   - Without `--pdf`, the PDF is made from the DOCX and cleaned automatically (LibreOffice converts to `.work/<name>/generated.pdf`, `clean_pdf.py` clears it into `materiale/pdf/<name>.pdf` and renders every page to `.work/<name>/pdf/` for the look-over). Pass `--no-pdf` for no PDF at all (a `joc` or a `quiz`).
    - If there is no DOCX (only a PDF), run `new` without the path (or with `-`); `.work/<name>/` is still made, the pages get empty articles and show the title, the PDF button and a note that the material is only available as a PDF.
    - `docx_to_html.py` needs pandoc. If it warns about `$` signs, write each literal `$` in the text as `&#36;`. Never convert a PDF to HTML: the math breaks.
    - If the material has a video, follow "Add a YouTube video" afterwards.
@@ -123,6 +124,8 @@ The source files are in `D:\Projects\Website-Content\`. Never change them. Put w
    - Look at every `.work/<name>/pdf/page-N.png`: correct page count, no class marks, no answers, no cut letters.
    - The "Numele și prenumele … Data" line stays in the PDF (students fill it in). A grade such as `Clasa: a VIII-a` may stay; a class code such as `8E2` may not.
    - If you did not pass `--pdf` to `new`, set the material's `pdf` field in `data/materials.source.json` to `"materiale/pdf/<name>.pdf"`.
+   - A class mark or an answer heading in the generated PDF stops `new`: `pdf` stays `null`, no file is left behind, and you run `clean_pdf.py` by hand with the right `--whiteout` options.
+   - A remake is byte-stable: `clean_pdf.py` fixes the trailer `/ID`, and a remake that holds the same document (same text, fonts and images) keeps the committed file, so reruns show no false change in git.
 5. **Run the generator again.** `node tools/build_pages.mjs` fills the page shells (title, breadcrumb, related materials).
 6. **Check.**
    - `npm test` and `python -m pytest tools -q` must pass.
@@ -142,6 +145,10 @@ The source files are in `D:\Projects\Website-Content\`. Never change them. Put w
    - Without `--replaced-by` there is no redirect: the old URLs 404.
 3. If the material replaced an earlier copy, delete the old one with
    `node tools/material.mjs delete <uid> --replaced-by <uid>` and the old URLs 301 to the new material (see "Import a material again").
+
+## Remake a PDF
+
+`node tools/material.mjs pdf <uid>` re-makes the PDF of an existing material from its recorded source: it converts the DOCX again, cleans it and keeps the committed file when the remake holds the same document. Use it after LibreOffice is updated or the DOCX is corrected. With `--pdf <path>` it copies a teacher-made file instead and sets `import.pdf` to `"source"`. Without `.work/sources/<uid>.json` it stops and asks for `--source <DOCX path>`, then writes the record for next time.
 
 ## Import a material again
 

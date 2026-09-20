@@ -622,11 +622,12 @@
         "ro": "Fișă de lucru pentru clasa a IX-a cu 15 exerciții despre modul: calcul, proprietăți și ecuații cu modul.",
         "en": "Grade 9 worksheet with 15 exercises on absolute value: evaluation, properties and equations with absolute value."
       },
-      "pdf": null,
+      "pdf": "materiale/pdf/fisa-lucru-modulul-unui-numar-real-1012.pdf",
       "youtube": null,
       "import": {
         "date": "2026-09-20",
-        "workflow": 2
+        "workflow": 2,
+        "pdf": "generated"
       }
     }
   ]

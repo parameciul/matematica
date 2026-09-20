@@ -234,6 +234,13 @@ for (const [i, m] of materials.entries()) {
       && m.aliases.every((a) => isText(a) && ID_RE.test(a));
     if (!ok) fail(`${where}: aliases must be a list of path names (lowercase letters, digits and dashes)`);
   }
+  // Provenance of the PDF: "source" (a file the teacher gave) or "generated"
+  // (made from the DOCX). Older entries have no key.
+  if (m.import !== undefined && (typeof m.import !== 'object' || m.import === null || Array.isArray(m.import))) {
+    fail(`${where}: import must be an object like { "date", "workflow" }`);
+  } else if (m.import && m.import.pdf !== undefined && m.import.pdf !== 'source' && m.import.pdf !== 'generated') {
+    fail(`${where}: import.pdf must be "source" or "generated"`);
+  }
 
   const expectedPdf = `materiale/pdf/${name}.pdf`;
   if (m.kind === 'quiz' && m.pdf !== null) {

@@ -89,6 +89,130 @@ test('new copies a PDF and keeps the file-listing rules happy', (t) => {
   const m = readData(dir).materials.find((x) => x.slug === 'test-cu-pdf');
   assert.match(m.pdf, /materiale\/pdf\/test-cu-pdf-\d+\.pdf$/);
   assert.ok(existsSync(join(dir, m.pdf)));
+  assert.equal(m.import.pdf, 'source');
+});
+
+function hasLibreOffice() {
+  if (process.env.SOFFICE && existsSync(process.env.SOFFICE)) return true;
+  for (const p of ['C:\\Program Files\\LibreOffice\\program\\soffice.exe',
+    'C:\\Program Files (x86)\\LibreOffice\\program\\soffice.exe',
+    '/usr/bin/soffice', '/usr/bin/libreoffice']) {
+    if (existsSync(p)) return true;
+  }
+  return false;
+}
+
+// A one-paragraph DOCX for the PDF tests. Skips when python-docx is missing.
+function makeDocx(t, dir, text) {
+  const target = join(dir, `fixture-${Date.now()}.docx`);
+  const res = spawnSync('python', ['-c',
+    'import sys, docx\n'
+    + `doc = docx.Document()\ndoc.add_paragraph(${JSON.stringify(text)})\ndoc.save(${JSON.stringify(target)})\n`],
+    { encoding: 'utf8' });
+  if (res.status !== 0) t.skip(`python-docx is not installed: ${res.stderr.trim().slice(0, 120)}`);
+  return target;
+}
+
+const NEW_FLAGS = (topic) => ['--slug', 'fisa-ggomery', '--topic', topic,
+  '--title-ro', 'Fișă generată din DOCX pentru testarea comenzii de creare a materialelor noi.',
+  '--title-en', 'Worksheet generated from DOCX for testing the material creation command.',
+  '--desc-ro', 'Fișă de lucru generată din DOCX pentru testarea comenzii de creare, cu exerciții pentru clasa potrivită.',
+  '--desc-en', 'Worksheet generated from DOCX for testing the creation command, with exercises for the right grade.'];
+
+test('new without --pdf makes the PDF from the DOCX', (t) => {
+  if (!hasLibreOffice()) t.skip('LibreOffice is not installed');
+  const dir = makeRoot(t);
+  const before = readData(dir);
+  const docx = makeDocx(t, dir, 'Exercițiu de probă pentru generarea PDF-ului materialului.');
+  const res = run(dir, ['new', docx, ...NEW_FLAGS(before.topics.at(-1).id)]);
+  assert.equal(res.code, 0, res.out);
+  const m = readData(dir).materials.find((x) => x.slug === 'fisa-ggomery');
+  assert.match(m.pdf, /materiale\/pdf\/fisa-ggomery-\d+\.pdf$/);
+  assert.ok(existsSync(join(dir, m.pdf)));
+  assert.equal(m.import.pdf, 'generated');
+  assert.ok(existsSync(join(dir, '.work', `fisa-ggomery-${before.nextUid}`, 'generated.pdf')));
+  assert.match(run(dir, ['list']).out, /\(pdf: generated\)/);
+});
+
+test('new --no-pdf writes no PDF file', (t) => {
+  const dir = makeRoot(t);
+  const before = readData(dir);
+  const res = run(dir, ['new', '--no-pdf', '--slug', 'joc-fara-pdf', '--topic', before.topics.at(-1).id, '--kind', 'joc',
+    '--title-ro', 'Joc fără PDF', '--title-en', 'Game with no PDF',
+    '--desc-ro', 'Joc de recapitulare fără fișier PDF, suficient de lung pentru regulile validatorului site-ului.',
+    '--desc-en', 'Review game with no PDF file, long enough to satisfy the site validator rules.']);
+  assert.equal(res.code, 0, res.out);
+  const m = readData(dir).materials.find((x) => x.slug === 'joc-fara-pdf');
+  assert.equal(m.pdf, null);
+  assert.ok(!('pdf' in (m.import || {})));
+});
+
+test('new refuses --pdf together with --no-pdf', (t) => {
+  const dir = makeRoot(t);
+  const before = readData(dir);
+  const pdf = join(dir, 'materiale', 'pdf', 'scratch.pdf');
+  writeFileSync(pdf, '%PDF-1.4\n%%EOF\n');
+  const res = run(dir, ['new', '--pdf', pdf, '--no-pdf', '--slug', 'x', '--topic', before.topics[0].id,
+    '--title-ro', 'A', '--title-en', 'B',
+    '--desc-ro', 'Fișă de lucru pentru testarea comenzii de creare, suficient de lungă pentru validator.',
+    '--desc-en', 'Worksheet for testing the creation command, long enough to satisfy the validator.']);
+  assert.equal(res.code, 1);
+  assert.match(res.out, /--pdf and --no-pdf never appear together/);
+});
+
+test('a class mark in the generated PDF leaves pdf null and no file behind', (t) => {
+  if (!hasLibreOffice()) t.skip('LibreOffice is not installed');
+  const dir = makeRoot(t);
+  const before = readData(dir);
+  const docx = makeDocx(t, dir, 'Clasa a IX-a R2, exercițiu de probă cu cod de clasă.');
+  const res = run(dir, ['new', docx, ...NEW_FLAGS(before.topics.at(-1).id)]);
+  assert.equal(res.code, 0, res.out);
+  assert.match(res.out, /no PDF: clean_pdf\.py found/);
+  const m = readData(dir).materials.find((x) => x.slug === 'fisa-ggomery');
+  assert.equal(m.pdf, null);
+  // clean_pdf.py writes the file first and scans after: left there it would
+  // break "every file in materiale/pdf/ is listed", so new deletes it.
+  assert.ok(!existsSync(join(dir, 'materiale', 'pdf', `fisa-ggomery-${before.nextUid}.pdf`)));
+});
+
+test('pdf remakes the PDF from the recorded source', (t) => {
+  if (!hasLibreOffice()) t.skip('LibreOffice is not installed');
+  const dir = makeRoot(t);
+  const before = readData(dir);
+  const docx = makeDocx(t, dir, 'Exercițiu de probă pentru refacerea PDF-ului materialului.');
+  const created = run(dir, ['new', docx, ...NEW_FLAGS(before.topics.at(-1).id)]);
+  assert.equal(created.code, 0, created.out);
+  const uid = String(before.nextUid);
+  const pdfFile = join(dir, `materiale/pdf/fisa-ggomery-${uid}.pdf`);
+  const first = readFileSync(pdfFile);
+  // An unchanged DOCX remakes the same document: the committed file is kept,
+  // so a rerun shows no false change in git.
+  const res = run(dir, ['pdf', uid]);
+  assert.equal(res.code, 0, res.out);
+  assert.match(res.out, /unchanged/);
+  assert.deepEqual(readFileSync(pdfFile), first);
+  assert.equal(readData(dir).materials.find((x) => x.uid === uid).import.pdf, 'generated');
+});
+
+test('pdf --pdf copies a teacher-made file instead', (t) => {
+  const dir = makeRoot(t);
+  const uid = readData(dir).materials[0].uid;
+  const teacher = join(dir, 'teacher.pdf');
+  writeFileSync(teacher, '%PDF-1.4\n%%EOF\n');
+  const res = run(dir, ['pdf', uid, '--pdf', teacher]);
+  assert.equal(res.code, 0, res.out);
+  const m = readData(dir).materials.find((x) => x.uid === uid);
+  assert.match(m.pdf, /materiale\/pdf\/.*\.pdf$/);
+  assert.equal(m.import.pdf, 'source');
+});
+
+test('pdf without a sources record stops and names --source', (t) => {
+  const dir = makeRoot(t);
+  // makeRoot never copies .work (git-ignored), so no record exists here.
+  const uid = readData(dir).materials[0].uid;
+  const res = run(dir, ['pdf', uid]);
+  assert.equal(res.code, 1);
+  assert.match(res.out, /--source <DOCX path>/);
 });
 
 test('new validates the flags before touching the data', (t) => {

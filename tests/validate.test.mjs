@@ -314,6 +314,18 @@ test('PDF file not in the data fails', () => {
   expectFailure(withSite((dir) => writeFileSync(join(dir, 'materiale', 'pdf', 'extra.pdf'), '%PDF-1.4')), /materiale\/pdf\/extra\.pdf: not listed/);
 });
 
+test('import.pdf with a value that is neither source nor generated fails', () => {
+  expectFailure(withSite((dir) => editData(dir, (d) => { sample(d).import = { date: '2026-09-20', workflow: 2, pdf: 'fax' }; })), /import\.pdf must be "source" or "generated"/);
+});
+
+test('a generated import.pdf passes', () => {
+  const result = withSite((dir) => {
+    editData(dir, (d) => { sample(d).import = { date: '2026-09-20', workflow: 2, pdf: 'generated' }; });
+    writeSite(dir);
+  });
+  assert.equal(result.code, 0, result.out);
+});
+
 test('missing material page fails', () => {
   expectFailure(withSite((dir) => unlinkSync(join(dir, SAMPLE_PAGE))), new RegExp(`missing file materiale\\/${SAMPLE_NAME}\\.html`));
 });

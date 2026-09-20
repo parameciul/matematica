@@ -1,4 +1,4 @@
-// Material helper: list, create, delete, hide, schedule and reveal materials.
+// Material helper: list, create, delete, remake PDFs, hide, schedule and reveal materials.
 // The uid is the identity: assigned once, never reused. A delete retires the
 // uid (data/materials.source.json "retired") so an old URL can never be handed to a
 // different material; with --replaced-by the old URLs 301 to the new ones.
@@ -55,8 +55,8 @@ function textLen(s) {
   return [...String(s)].length;
 }
 
-// Flags without a value (--hidden, --visible). Every other flag takes one.
-const BOOLEAN_FLAGS = new Set(['hidden', 'visible']);
+// Flags without a value (--hidden, --visible, --no-pdf). Every other flag takes one.
+const BOOLEAN_FLAGS = new Set(['hidden', 'visible', 'no-pdf']);
 
 function parseArgv(argv) {
   const pos = [];
@@ -84,6 +84,66 @@ function spawnPython(desc, args) {
   return res.stdout;
 }
 
+// Runs a python tool and returns { code, out }: clean_pdf.py uses exit code 2
+// for "written, but a class mark or an answer heading is still inside", which
+// the caller handles instead of failing.
+function runPython(args) {
+  const res = spawnSync('python', args, { cwd: ROOT, encoding: 'utf8' });
+  return { code: res.status, out: `${res.stdout}${res.stderr}` };
+}
+
+// Makes the committed PDF of a worksheet DOCX: LibreOffice converts to
+// .work/<name>/generated.pdf (git-ignored), clean_pdf.py clears the metadata
+// (with a fixed trailer /ID), renders every page to .work/<name>/pdf/ for the
+// human look-over and scans for class marks and answer headings. Returns the
+// pdf field value (or null). Never throws away the scan output: on exit 2 the
+// half-written file is deleted, pdf stays null and the caller prints how to
+// run clean_pdf.py by hand.
+//
+// LibreOffice numbers its PDF objects differently on every run, so a remade
+// PDF never matches the committed bytes even when the document is unchanged.
+// When the target already exists and holds the same document (same text,
+// fonts and images), the old file is kept: a rerun shows no false change in
+// git and `pdf <uid>` stays safe on a clean tree.
+function generatePdf(docx, name, work) {
+  const generated = join(work, 'generated.pdf');
+  const target = join(ROOT, 'materiale', 'pdf', `${name}.pdf`);
+  const fresh = `${target}.new`;
+  const renderDir = join(work, 'pdf');
+  const conv = runPython([join(ROOT, 'tools', 'docx_to_pdf.py'), docx, '-o', generated]);
+  if (conv.code !== 0) fail(`docx_to_pdf.py: ${conv.out.trim()}`);
+  console.log(conv.out.trim());
+  const cleaned = runPython([join(ROOT, 'tools', 'clean_pdf.py'), generated, fresh, '--render', renderDir]);
+  console.log(cleaned.out.trim());
+  if (cleaned.code === 2) {
+    // The fresh file holds a class mark or an answer heading: it must never
+    // reach materiale/pdf/ unlisted. A committed PDF from an earlier source
+    // stays (it is still clean); without one the material simply has no PDF.
+    if (existsSync(fresh)) rmSync(fresh);
+    if (existsSync(target)) {
+      console.log(`kept ${`materiale/pdf/${name}.pdf`}: the remade PDF has a class mark or an answer heading, fix the DOCX and run "pdf" again`);
+      return `materiale/pdf/${name}.pdf`;
+    }
+    console.log(`no PDF: clean_pdf.py found a class mark or an answer heading.`);
+    console.log(`run by hand, with the right --whiteout options, then set "pdf":`);
+    console.log(`python tools/clean_pdf.py "${generated}" ${`materiale/pdf/${name}.pdf`} --render ${renderDir}`);
+    return null;
+  }
+  if (cleaned.code !== 0) fail(`clean_pdf.py: ${cleaned.out.trim()}`);
+  if (existsSync(target)) {
+    const same = runPython([join(ROOT, 'tools', 'clean_pdf.py'), fresh, '--same', target]);
+    if (same.code === 0) {
+      rmSync(fresh);
+      console.log(`unchanged ${`materiale/pdf/${name}.pdf`} (same document, kept the committed file)`);
+      return `materiale/pdf/${name}.pdf`;
+    }
+  }
+  if (existsSync(target)) rmSync(target);
+  copyFileSync(fresh, target);
+  rmSync(fresh);
+  return `materiale/pdf/${name}.pdf`;
+}
+
 function cmdList() {
   const d = data();
   const materials = Array.isArray(d.materials) ? d.materials : [];
@@ -106,6 +166,7 @@ function cmdList() {
       if (live) note.push('(dup: delete the old copy when ready)');
       else if (gone) note.push('(old copy retired)');
     }
+    if (m.import && m.import.pdf === 'generated') note.push('(pdf: generated)');
     if (note.length) note.unshift('—');
     console.log(
       `${String(m.uid).padStart(6)}  ${nameOf(m).padEnd(58)} g${grade} ${m.kind.padEnd(16)} ${m.published} ${shown.padEnd(28)}${note.length ? '  ' + note.join(' ') : ''}`,
@@ -154,11 +215,18 @@ function cmdNew({ pos, flags }) {
   const work = join(ROOT, '.work', name);
   mkdirSync(work, { recursive: true });
 
-  const pdf = flags['pdf'] || null;
-  if (pdf !== null && !existsSync(pdf)) fail(`--pdf ${pdf} does not exist`);
-  if (pdf !== null) {
+  const pdfFlag = flags['pdf'] || null;
+  const noPdf = flags['no-pdf'] === true;
+  if (pdfFlag !== null && noPdf) fail('--pdf and --no-pdf never appear together');
+  if (kind === 'quiz' && pdfFlag !== null) fail('a quiz has no PDF: pdf must stay null');
+  let pdf = null;
+  let importPdf = null;
+  if (pdfFlag !== null) {
+    if (!existsSync(pdfFlag)) fail(`--pdf ${pdfFlag} does not exist`);
     mkdirSync(join(ROOT, 'materiale', 'pdf'), { recursive: true });
-    copyFileSync(pdf, join(ROOT, 'materiale', 'pdf', `${name}.pdf`));
+    copyFileSync(pdfFlag, join(ROOT, 'materiale', 'pdf', `${name}.pdf`));
+    pdf = `materiale/pdf/${name}.pdf`;
+    importPdf = 'source';
   }
 
   const docx = pos[0];
@@ -174,6 +242,15 @@ function cmdNew({ pos, flags }) {
       JSON.stringify({ uid, slug, source: docx, sha256: sha, imported: today(), workflow: WORKFLOW }, null, 2) + '\n',
     );
     console.log(`converted ${docx} -> .work/${name}/ro.html`);
+    // The answer key is never a PDF source: only the worksheet is converted.
+    // Without --pdf the PDF is made from the DOCX and cleaned automatically;
+    // a class mark or an answer heading stops it (pdf stays null).
+    if (pdfFlag === null && !noPdf && kind !== 'quiz') {
+      pdf = generatePdf(docx, name, work);
+      if (pdf !== null) importPdf = 'generated';
+    }
+  } else if (pdfFlag === null && !noPdf) {
+    // The `new -` form (PDF only, no DOCX): nothing is generated.
   }
 
   const material = {
@@ -184,10 +261,11 @@ function cmdNew({ pos, flags }) {
     title: { ro: titleRo, en: titleEn },
     published,
     description: { ro: descRo, en: descEn },
-    pdf: pdf === null ? null : `materiale/pdf/${name}.pdf`,
+    pdf,
     youtube: null,
     import: { date: today(), workflow: WORKFLOW },
   };
+  if (importPdf !== null) material.import.pdf = importPdf;
   if (hidden) material.hidden = true;
   if (visibleFrom) material.visibleFrom = visibleFrom;
   d.materials.push(material);
@@ -237,6 +315,73 @@ function cmdDelete({ pos, flags }) {
   save(d);
   writeSite(ROOT);
   console.log(`retired ${name} (uid ${uid})${replacedBy ? `, redirected to ${replacedBy}` : ''}; pages regenerated`);
+}
+
+// Re-makes the PDF of an existing material from its recorded DOCX source:
+// runs the same generate step as `new` and warns when the DOCX sha256
+// changed. With --pdf <path> a teacher-made file is copied instead and
+// import.pdf becomes "source". .work/sources/ is git-ignored; without the
+// record the command stops and asks for --source <DOCX path>, then writes the
+// record for next time.
+function cmdPdf({ pos, flags }) {
+  const d = data();
+  const uid = pos[0];
+  if (!uid || !UID_RE.test(uid)) fail('usage: node tools/material.mjs pdf <uid> [--source <DOCX path>] [--pdf <path>]');
+  const material = (d.materials || []).find((m) => m.uid === uid);
+  if (!material) fail(`no live material with uid ${uid}`);
+  if (material.kind === 'quiz') fail('a quiz has no PDF: pdf must stay null');
+  const name = nameOf(material);
+  const work = join(ROOT, '.work', name);
+  mkdirSync(work, { recursive: true });
+
+  const teacherPdf = flags['pdf'] || null;
+  if (teacherPdf !== null) {
+    if (!existsSync(teacherPdf)) fail(`--pdf ${teacherPdf} does not exist`);
+    mkdirSync(join(ROOT, 'materiale', 'pdf'), { recursive: true });
+    copyFileSync(teacherPdf, join(ROOT, 'materiale', 'pdf', `${name}.pdf`));
+    material.pdf = `materiale/pdf/${name}.pdf`;
+    material.import = material.import || { date: today(), workflow: WORKFLOW };
+    material.import.pdf = 'source';
+    save(d);
+    writeSite(ROOT);
+    console.log(`copied teacher PDF for ${name}; pages regenerated`);
+    return;
+  }
+
+  const sourcesFile = join(ROOT, '.work', 'sources', `${uid}.json`);
+  let record = null;
+  if (existsSync(sourcesFile)) {
+    try {
+      record = JSON.parse(readFileSync(sourcesFile, 'utf8'));
+    } catch (e) {
+      fail(`.work/sources/${uid}.json is not valid JSON: ${e.message}`);
+    }
+  }
+  let docx = record && record.source;
+  const given = flags['source'] || null;
+  if (given !== null) {
+    if (!existsSync(given)) fail(`--source ${given} does not exist`);
+    docx = given;
+  }
+  if (!docx) fail(`no .work/sources/${uid}.json: rerun with --source <DOCX path>`);
+  if (!existsSync(docx)) fail(`source ${docx} does not exist`);
+  const sha = createHash('sha256').update(readFileSync(docx)).digest('hex');
+  if (record && record.sha256 && record.sha256 !== sha) {
+    console.log(`warning: ${docx} changed on disk (sha256 differs from .work/sources/${uid}.json)`);
+  }
+  mkdirSync(join(ROOT, '.work', 'sources'), { recursive: true });
+  writeFileSync(
+    sourcesFile,
+    JSON.stringify({ uid, slug: material.slug, source: docx, sha256: sha, imported: (record && record.imported) || today(), workflow: (record && record.workflow) || WORKFLOW }, null, 2) + '\n',
+  );
+  const pdf = generatePdf(docx, name, work);
+  material.pdf = pdf;
+  material.import = material.import || { date: today(), workflow: WORKFLOW };
+  if (pdf !== null) material.import.pdf = 'generated';
+  else delete material.import.pdf;
+  save(d);
+  writeSite(ROOT);
+  console.log(pdf === null ? `no PDF for ${name} (see above); pages regenerated` : `remade PDF for ${name}; pages regenerated`);
 }
 
 // A scheduled material that shows gets a new publish date. An older `updated`
@@ -395,10 +540,11 @@ const main = async () => {
   if (cmd === 'list') cmdList();
   else if (cmd === 'new') cmdNew({ pos, flags });
   else if (cmd === 'delete') cmdDelete({ pos, flags });
+  else if (cmd === 'pdf') cmdPdf({ pos, flags });
   else if (cmd === 'set') cmdSet({ pos, flags });
   else if (cmd === 'apply') cmdApply({ pos, flags });
   else if (cmd === 'reveal') await cmdReveal({ pos, flags });
-  else fail('usage: node tools/material.mjs <list|new|delete|set|apply|reveal>');
+  else fail('usage: node tools/material.mjs <list|new|delete|pdf|set|apply|reveal>');
 };
 
 main();
