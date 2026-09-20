@@ -585,8 +585,15 @@ the rendered pages every time:
   (`A = {x ∈ ℤ / |2x - 1| ≤ 5}`);
 - `\mathbb{R}` prints as a double-struck `IR`.
 
-Timing: the **first** run builds a LibreOffice profile and can take minutes.
-Every run after that takes a few seconds.
+Timing, measured: **under one second per conversion**, twice in a row, with
+the default profile. There is no slow first run to plan around.
+
+**Never probe LibreOffice with `soffice --version`.** One test run called it
+before converting and sat for about half an hour; the conversion that
+followed took 4.6 seconds. `soffice --version` can block on Windows.
+`docx_to_html.py` finds pandoc by looking for the file and then runs it, and
+`docx_to_pdf.py` must do the same: check that the `soffice.exe` path exists,
+and never run it just to ask its version.
 
 ### 4.2 `tools/docx_to_pdf.py`
 
@@ -605,21 +612,38 @@ python tools/docx_to_pdf.py SOURCE.docx -o OUT.pdf
 - Command: `soffice --headless --norestore --convert-to pdf --outdir <tmp> <docx>`,
   with `-env:UserInstallation=file:///<tmp>/loprofile`, so a LibreOffice
   window that the teacher already has open cannot block the run.
-- Timeout 300 seconds. On timeout: exit code 1 and a line that says the first
-  run is slow and to try again.
+  Honest note: the measured runs above used the **default** profile. The
+  private-profile flag is the usual way to avoid a clash with an open
+  LibreOffice window, but it is not what was timed here, so phase 1 must
+  time it once with a document open in LibreOffice before trusting it.
+- Timeout 60 seconds. A conversion takes under a second (4.1), so a minute
+  means something is stuck, not something slow. On timeout: kill the
+  process, exit code 1, and a line naming the document.
 - The PDF lands in a temp folder and is then moved to `-o`.
 - The tool never touches `materiale/pdf/` itself. Its output is
   `.work/<name>/generated.pdf`, which git ignores.
 
-**Same bytes every run — on the committed file.** The file git sees is
-`materiale/pdf/<name>.pdf`, written by `clean_pdf.py`, not the work file
-above. LibreOffice writes the current time into every PDF it makes.
-`clean_pdf.py` already calls `set_metadata({})` and `del_xml_metadata()`, so
-the dates are gone; what is left is the trailer `/ID`, which pymupdf can
-still write anew on each save. Requirement: two runs of the whole step, on an
-unchanged DOCX, must give a byte-identical `materiale/pdf/<name>.pdf`. If the
-`/ID` moves, `clean_pdf.py` sets a fixed one. Without this, every re-import
-shows a false change in git.
+**Same bytes every run — on the committed file. This is broken today and
+phase 1 must fix it.** Measured on the `1012` worksheet, two runs in a row:
+
+| Stage | Two runs give |
+|---|---|
+| LibreOffice output (`.work/<name>/generated.pdf`) | different bytes — expected, and git ignores this file |
+| After `clean_pdf.py` (`materiale/pdf/<name>.pdf`) | **still different: 28 bytes** |
+
+`clean_pdf.py` already calls `set_metadata({})` and `del_xml_metadata()`, and
+that works: the cleaned file has no `CreationDate` and empty metadata. All 28
+differing bytes are the **first half of the PDF trailer `/ID`**, which pymupdf
+writes anew on every save (measured: `<82FCF528…>` against `<9233D322…>`; the
+second half of the pair is the same both times).
+
+Requirement: two runs of the whole step, on an unchanged DOCX, give a
+byte-identical `materiale/pdf/<name>.pdf`. `clean_pdf.py` must set a fixed
+`/ID`. Without it every re-import shows a false change in git, and
+`material.mjs pdf <uid>` can never be run safely on a clean tree.
+
+This applies to **every** PDF the tool writes, not only generated ones: a
+teacher-made PDF passed through `clean_pdf.py` has the same problem.
 
 ### 4.3 What `material.mjs new` does
 
@@ -754,8 +778,12 @@ Rules of the project: tests for the happy path and the edge cases; run
     line;
   - a small fixture DOCX converts, the file opens with pymupdf, the page
     count is right and the text holds a known word;
-  - two runs in a row give the same bytes (asserted on the cleaned,
-    committed `materiale/pdf/<name>.pdf`, not on the git-ignored work file);
+  - two runs in a row give the same bytes, asserted on the cleaned,
+    committed `materiale/pdf/<name>.pdf`, not on the git-ignored work file.
+    This test **fails before the `/ID` fix** and is the proof the fix landed;
+  - the tool never runs `soffice --version`;
+  - a conversion finishes in seconds; a run with a document already open in
+    LibreOffice also finishes (the private-profile flag);
   - a timeout is reported, not a crash.
   These tests are skipped, with a message, when LibreOffice is not installed.
 - `tests/results.test.mjs` (`results.mjs`, on fixture files): `save` writes
@@ -826,8 +854,9 @@ Rules of the project: tests for the happy path and the edge cases; run
 Each phase ends with passing tests and its own commit (another session shares
 this working tree).
 
-1. **PDF from DOCX:** `docx_to_pdf.py`, `material.mjs new/pdf`, the
-   `import.pdf` key, the validator rule, `AGENTS.md`. `1012` gets its PDF.
+1. **PDF from DOCX:** `docx_to_pdf.py`, the fixed `/ID` in `clean_pdf.py`
+   (4.2 — measured broken today), `material.mjs new/pdf`, the `import.pdf`
+   key, the validator rule, `AGENTS.md`. `1012` gets its PDF.
    `WORKFLOW` stays at `2`: the article output does not change. This phase
    stands alone and can ship first.
 2. **Keep the answers:** `split_answers`, `--answers-only`, the answers
