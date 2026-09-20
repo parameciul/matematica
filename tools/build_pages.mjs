@@ -515,10 +515,13 @@ function renderMaterialPage({ data, material, topic, lang, dict, assetBase, page
     `${others.length ? `<h2>${esc(dict['material.related'])}</h2>\n        <ul class="material-list">\n        ${relatedRows}\n        </ul>\n        ` : ''}` +
     `<p><a class="more" href="${pageRoot}clasa-${topic.grade}.html">${esc(dict['material.allGrade'].replace('{grade}', gradeName))}</a></p></aside>`;
 
-  const main = `    <div class="page" id="material" data-id="${material.uid}">
+  const checkNote = material.results
+    ? `\n      <p class="note" id="check-note">${esc(dict['check.note'])}</p>\n      <p><button class="chip" type="button" id="check-reset" hidden>${esc(dict['check.reset'])}</button></p>`
+    : '';
+  const main = `    <div class="page" id="material" data-id="${material.uid}"${material.results ? ` data-name="${Catalog.nameOf(material)}" data-results="${material.results.version}"` : ''}>
       ${headBlock}
       ${videoBlock}
-      ${note}
+      ${note}${checkNote}
       <article class="material-body" data-lang="${lang}" lang="${lang}">${articleHtml || ''}</article>
 
       ${relatedBlock}
@@ -589,7 +592,8 @@ function renderMaterialPage({ data, material, topic, lang, dict, assetBase, page
     published: material.published,
     assetBase,
     katex: true,
-    pageScripts: ['assets/js/i18n.js', 'assets/js/catalog.js', 'assets/js/shell.js', 'assets/js/site.js', 'assets/js/material.js'],
+    pageScripts: ['assets/js/i18n.js', 'assets/js/catalog.js', 'assets/js/shell.js', 'assets/js/site.js', 'assets/js/material.js']
+      .concat(material.results ? ['assets/js/answers.js', 'assets/js/check.js'] : []),
     jsonLdBlocks: blocks,
   });
   return pageShell({
@@ -790,6 +794,9 @@ function renderHeaders(data) {
     '/tools/*',
     '  X-Robots-Tag: noindex',
     '/data/*',
+    '  X-Robots-Tag: noindex',
+    '# Result files are fetched by the check buttons, never indexed.',
+    '/data/results/*',
     '  X-Robots-Tag: noindex',
     '/.github/*',
     '  X-Robots-Tag: noindex',

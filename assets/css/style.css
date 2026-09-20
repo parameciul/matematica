@@ -1186,6 +1186,169 @@ html:not(.js) .theme-btn {
   margin-bottom: 1.1rem;
 }
 
+/* Result checking: one exercise at a time. The green and the red reuse the
+   worksheet and test badge tokens, so both themes already know them. Colour
+   is never the only sign: verdicts and chips always carry ✓ or ✗. */
+
+.check-btn {
+  margin-left: 0.6rem;
+  padding: 0.15rem 0.8rem;
+  border: 1.5px solid var(--ink);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.check-btn:hover {
+  background: var(--ink);
+  color: var(--sheet);
+}
+
+.check-chip {
+  margin-left: 0.6rem;
+  white-space: nowrap;
+}
+
+.choices li.check-ok {
+  background: var(--b-fise-bg);
+  color: var(--b-fise-fg);
+  border-radius: 3px;
+  outline: 2px solid var(--b-fise-fg);
+  outline-offset: 1px;
+}
+
+.choices li.check-bad {
+  background: var(--b-teste-bg);
+  color: var(--b-teste-fg);
+  border-radius: 3px;
+  outline: 2px solid var(--b-teste-fg);
+  outline-offset: 1px;
+}
+
+.check-dialog {
+  max-width: min(30rem, calc(100vw - 2rem));
+  padding: 1.25rem 1.25rem 1rem;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  background: var(--sheet);
+  color: var(--text);
+}
+
+.check-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.check-title {
+  margin: 0 0 0.75rem;
+  font-size: 1.2rem;
+}
+
+.check-body {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.check-option {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  padding: 0.35rem 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.check-option:hover {
+  background: var(--paper);
+}
+
+.check-option input {
+  flex: none;
+  width: 1.1rem;
+  height: 1.1rem;
+  accent-color: var(--ink);
+}
+
+.check-field {
+  width: 100%;
+  min-height: 2.75rem;
+  padding: 0.4rem 0.9rem;
+  border: 1.5px solid var(--rule);
+  border-radius: 6px;
+  background: var(--paper);
+  color: var(--text);
+  font: inherit;
+}
+
+.check-field:focus {
+  border-color: var(--ink);
+  outline: 3px solid var(--ink);
+  outline-offset: 1px;
+}
+
+.check-example,
+.check-hint {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.check-syms {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.sym {
+  min-width: 2.2rem;
+  min-height: 2.2rem;
+  padding: 0.15rem 0.45rem;
+  border: 1.5px solid var(--rule);
+  border-radius: 6px;
+  background: var(--sheet);
+  color: var(--text);
+  font: inherit;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.sym:hover {
+  border-color: var(--ink);
+}
+
+.check-verdict {
+  margin: 0.75rem 0 0;
+  font-weight: 700;
+}
+
+.check-verdict[data-kind="ok"] {
+  color: var(--b-fise-fg);
+}
+
+.check-verdict[data-kind="bad"] {
+  color: var(--b-teste-fg);
+}
+
+.check-verdict[data-kind="error"] {
+  color: var(--b-teste-fg);
+  font-weight: 400;
+}
+
+.check-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.9rem;
+}
+
+.check-again {
+  margin-left: 0.5rem;
+}
+
 .solution {
   margin-top: 0.35rem;
 }
@@ -1363,6 +1526,8 @@ html:not(.js) .theme-btn {
   .crumbs,
   .material-actions,
   .note,
+  .check-btn,
+  #check-reset,
   .related {
     display: none !important;
   }

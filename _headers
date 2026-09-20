@@ -15,6 +15,9 @@ https://:version.:project.pages.dev/*
   X-Robots-Tag: noindex
 /data/*
   X-Robots-Tag: noindex
+# Result files are fetched by the check buttons, never indexed.
+/data/results/*
+  X-Robots-Tag: noindex
 /.github/*
   X-Robots-Tag: noindex
 /AGENTS.md

@@ -49,6 +49,7 @@ const REQUIRED_FILES = [
   'assets/js/catalog.js',
   'assets/js/visibility.js',
   'assets/js/answers.js',
+  'assets/js/check.js',
   'assets/js/shell.js',
   'assets/js/site.js',
   'assets/js/searchbox.js',

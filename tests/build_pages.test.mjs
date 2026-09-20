@@ -242,6 +242,43 @@ test('_headers gives every PDF the canonical of its page', (t) => {
   assert.match(headers, /X-Robots-Tag: noindex/);
 });
 
+test('_headers never indexes the result files', (t) => {
+  const dir = makeRoot(t, { pages: stdPages() });
+  const headers = buildSite(dir).get('_headers');
+  assert.match(headers, /\/data\/results\/\*\n  X-Robots-Tag: noindex/);
+});
+
+test('a material with results gets the check note, button, data and scripts', (t) => {
+  const materials = dataFixture().materials;
+  materials[0].results = { version: 2, checks: 3 };
+  const dir = makeRoot(t, { materials, pages: stdPages() });
+  const site = buildSite(dir);
+  for (const file of [`materiale/${mname('teorie-reale')}.html`, `en/materiale/${mname('teorie-reale')}.html`]) {
+    const page = site.get(file);
+    assert.match(page, new RegExp(`data-name="${mname('teorie-reale')}" data-results="2"`), `${file}: names the results`);
+    assert.match(page, /id="check-note"/, `${file}: the check note`);
+    assert.match(page, /id="check-reset"/, `${file}: the reset button`);
+    assert.match(page, /assets\/js\/answers\.js/, `${file}: answers.js`);
+    assert.match(page, /assets\/js\/check\.js/, `${file}: check.js`);
+  }
+  // The English note speaks English.
+  assert.match(site.get(`en/materiale/${mname('teorie-reale')}.html`), /You can check your results/);
+});
+
+test('a material without results gets none of the check shell', (t) => {
+  const dir = makeRoot(t, { pages: stdPages() });
+  const site = buildSite(dir);
+  for (const file of [`materiale/${mname('teorie-reale')}.html`, `en/materiale/${mname('teorie-reale')}.html`]) {
+    const page = site.get(file);
+    assert.doesNotMatch(page, /data-name=/, `${file}: no results name`);
+    assert.doesNotMatch(page, /data-results=/, `${file}: no results version`);
+    assert.doesNotMatch(page, /id="check-note"/, `${file}: no check note`);
+    assert.doesNotMatch(page, /id="check-reset"/, `${file}: no reset button`);
+    assert.doesNotMatch(page, /assets\/js\/answers\.js/, `${file}: no answers.js`);
+    assert.doesNotMatch(page, /assets\/js\/check\.js/, `${file}: no check.js`);
+  }
+});
+
 test('_redirects 301s aliases and retired names, only files the target has', (t) => {
   const dir = makeRoot(t, { pages: stdPages() });
   const redirects = buildSite(dir).get('_redirects');
