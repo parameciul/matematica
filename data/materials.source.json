@@ -661,8 +661,31 @@
         "version": 1,
         "checks": 19
       }
+    },
+    {
+      "slug": "joc-stafeta-pe-echipe",
+      "uid": "1013",
+      "topic": "recapitulare-clasa-a-v-a",
+      "kind": "joc",
+      "title": {
+        "ro": "Joc: Ștafeta pe echipe (geometrie și unități de măsură)",
+        "en": "Game: Team relay (geometry and measurement units)"
+      },
+      "published": "2026-09-21",
+      "description": {
+        "ro": "Joc de recapitulare pentru clasa a VI-a: ștafeta pe echipe, cu perimetru, arie, măsuri de unghiuri, volum și capacitate.",
+        "en": "Review game for grade 6: team relay with perimeter, area, angle measures, volume and capacity."
+      },
+      "pdf": "materiale/pdf/joc-stafeta-pe-echipe-1013.pdf",
+      "youtube": null,
+      "import": {
+        "date": "2026-09-21",
+        "workflow": 3,
+        "pdf": "source"
+      },
+      "hidden": true
     }
   ],
-  "nextUid": 1013,
+  "nextUid": 1014,
   "retired": []
 }

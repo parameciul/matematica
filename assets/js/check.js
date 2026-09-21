@@ -369,11 +369,32 @@
 
   // --- Wiring ---------------------------------------------------------------
 
+  function placeButton(box, btn) {
+    // A whole exercise is usually `<li data-ex="1"><p>…</p></li>`: appending
+    // the button to the `<li>` drops it on its own line under the paragraph,
+    // costing a full row per exercise. Appending it to the last paragraph
+    // keeps it on the same line as the text, like the `<p data-ex>` case.
+    // A `<ul class="choices">` keeps its own row (see style.css): its last
+    // child is an option `<li>`, never a `<p>`, so it stays untouched here.
+    // Never move into a paragraph that is itself an answer box: nested
+    // boxes would mix two buttons in one paragraph and misroute clicks.
+    const last = box.lastElementChild;
+    if (
+      last &&
+      last.tagName === 'P' &&
+      box.tagName !== 'P' &&
+      !last.hasAttribute('data-ex') &&
+      !last.querySelector('[data-ex]')
+    )
+      last.appendChild(btn);
+    else box.appendChild(btn);
+  }
+
   main.querySelectorAll('[data-ex]').forEach((box) => {
     const btn = el('button', 'check-btn', t('check.verify'));
     btn.type = 'button';
     btn.addEventListener('click', onCheck);
-    box.appendChild(btn);
+    placeButton(box, btn);
   });
   applySaved();
 

@@ -34,4 +34,9 @@
 # Not-visible materials (hidden or scheduled): 302 to their grade page.
 # Visibility is resolved at build time, so these lines change only when
 # a material is hidden, scheduled or revealed.
+/materiale/joc-stafeta-pe-echipe-1013 /clasa-6 302
+/materiale/joc-stafeta-pe-echipe-1013.html /clasa-6 302
+/en/materiale/joc-stafeta-pe-echipe-1013 /en/clasa-6 302
+/en/materiale/joc-stafeta-pe-echipe-1013.html /en/clasa-6 302
+/materiale/pdf/joc-stafeta-pe-echipe-1013.pdf /clasa-6 302
 /data/materials.source.json / 302
