@@ -162,6 +162,18 @@ test('an empty grade gets noindex and stays out of the sitemap', (t) => {
   assert.match(sitemap, new RegExp(`<loc>${SITE_URL}clasa-9</loc>`));
 });
 
+test('the sitemap references the sitemap.xsl stylesheet', (t) => {
+  const dir = makeRoot(t, { pages: stdPages() });
+  const site = buildSite(dir);
+  assert.match(site.get('sitemap.xml'), /<\?xml-stylesheet type="text\/xsl" href="sitemap\.xsl"\?>/);
+  const xsl = site.get('sitemap.xsl');
+  assert.match(xsl, /<xsl:stylesheet/);
+  assert.match(xsl, /http:\/\/www\.w3\.org\/1999\/XSL\/Transform/);
+  assert.match(xsl, /http:\/\/www\.sitemaps\.org\/schemas\/sitemap\/0\.9/);
+  assert.match(xsl, /s:urlset\/s:url/);
+  assert.match(site.get('_headers'), /\/sitemap\.xsl\n  Content-Type: text\/xsl/);
+});
+
 test('an empty English article means noindex and no sitemap entry', (t) => {
   const pages = stdPages();
   pages[`materiale/${mname('teorie-reale')}.html`] = articlePage('1001', '<p>RO</p>', '');

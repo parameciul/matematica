@@ -594,7 +594,7 @@ test('an English page for the quiz fails', () => {
 });
 
 test('missing generated SEO files fail', () => {
-  const deleted = ['robots.txt', 'sitemap.xml', '_headers', '_redirects', '404.html', 'en/404.html', 'favicon.svg', 'assets/img/og-image.png'];
+  const deleted = ['robots.txt', 'sitemap.xml', 'sitemap.xsl', '_headers', '_redirects', '404.html', 'en/404.html', 'favicon.svg', 'assets/img/og-image.png'];
   const result = withSite((dir) => {
     for (const f of deleted) unlinkSync(join(dir, f));
   });
@@ -602,6 +602,20 @@ test('missing generated SEO files fail', () => {
   for (const f of deleted) {
     assert.match(result.out, new RegExp(`Missing required file: ${f.replace(/[./]/g, (c) => `\\${c}`)}`));
   }
+});
+
+test('a sitemap without the stylesheet reference fails', () => {
+  expectFailure(
+    withSite((dir) => editFile(dir, 'sitemap.xml', (s) => s.replace(/<\?xml-stylesheet[^?]*\?>\n/, ''))),
+    /sitemap\.xml: must reference the stylesheet/,
+  );
+});
+
+test('a sitemap stylesheet without the sitemap namespace fails', () => {
+  expectFailure(
+    withSite((dir) => editFile(dir, 'sitemap.xsl', (s) => s.replace('http://www.sitemaps.org/schemas/sitemap/0.9', 'http://example.com/nope'))),
+    /sitemap\.xsl: must contain/,
+  );
 });
 
 test('absolute path fails', () => {

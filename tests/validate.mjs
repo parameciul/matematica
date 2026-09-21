@@ -37,6 +37,7 @@ const REQUIRED_FILES = [
   'en/404.html',
   'robots.txt',
   'sitemap.xml',
+  'sitemap.xsl',
   '_headers',
   '_redirects',
   '.nojekyll',
@@ -698,7 +699,7 @@ for (const f of codeFiles) {
 }
 
 // 6. Romanian diacritics use comma-below (ș ț), not the look-alike cedilla letters (ş ţ)
-for (const f of [...codeFiles, 'data/materials.source.json', 'data/materials.json',
+for (const f of [...codeFiles, 'sitemap.xsl', 'data/materials.source.json', 'data/materials.json',
   ...files.filter((x) => x.startsWith('data/results/'))]) {
   if (exists(f) && /[şţŞŢ]/.test(read(f))) fail(`${f}: uses cedilla letters (ş ţ). Use comma-below letters (ș ț).`);
 }
@@ -750,6 +751,30 @@ if (exists('_headers')) {
   if (/^https:\/\/:project\.pages\.dev\/\*$/m.test(h)) {
     fail('_headers: must not noindex "https://:project.pages.dev/*" — that would noindex production');
   }
+  if (!h.includes('/sitemap.xsl') || !h.includes('Content-Type: text/xsl')) {
+    fail('_headers: must serve /sitemap.xsl as "Content-Type: text/xsl" so browsers apply the sitemap stylesheet');
+  }
+}
+// The sitemap renders as a styled page in browsers (XSLT); crawlers read the raw XML.
+if (exists('sitemap.xml')) {
+  const sm = read('sitemap.xml');
+  if (!sm.includes('<?xml-stylesheet type="text/xsl" href="sitemap.xsl"?>')) {
+    fail('sitemap.xml: must reference the stylesheet as <?xml-stylesheet type="text/xsl" href="sitemap.xsl"?>');
+  }
+}
+if (exists('sitemap.xsl')) {
+  const xsl = read('sitemap.xsl');
+  for (const needle of [
+    '<xsl:stylesheet',
+    'http://www.w3.org/1999/XSL/Transform',
+    'http://www.sitemaps.org/schemas/sitemap/0.9',
+    's:urlset/s:url',
+    'noindex, follow',
+  ]) {
+    if (!xsl.includes(needle)) fail(`sitemap.xsl: must contain "${needle}"`);
+  }
+  const bad = xsl.match(/(?:href|src)\s*=\s*["']\/(?!\/)/g);
+  if (bad) fail(`sitemap.xsl: uses an absolute path (${bad[0]}...). Use relative paths.`);
 }
 // Grade titles carry both numeral forms (audit F2); descriptions are unique (audit F3).
 {

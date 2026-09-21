@@ -37,6 +37,8 @@ https://:version.:project.pages.dev/*
   Cache-Control: public, max-age=86400
 /materiale/pdf/*
   Cache-Control: public, max-age=86400
+/sitemap.xsl
+  Content-Type: text/xsl; charset=utf-8
 # The admin page is behind Cloudflare Access, and still stays out of
 # search results and caches even if the Access application misses a host.
 /tm25mlg/*
