@@ -16,6 +16,7 @@
 
   const root = document.body.getAttribute('data-root') || '';
   const storeKey = `matematica.checks.${uid}`;
+  const STORE_PREFIX = 'matematica.checks.';
   const SYMBOLS = ['√', 'π', '∞', '∪', '∅', ';', '{', '}', '[', ']', '(', ')'];
 
   let items = null; // the loaded results, null until the first press
@@ -328,6 +329,19 @@
     }
   }
 
+  function clearAllStored() {
+    try {
+      const doomed = [];
+      for (let i = 0; i < window.localStorage.length; i++) {
+        const k = window.localStorage.key(i);
+        if (k && k.indexOf(STORE_PREFIX) === 0) doomed.push(k);
+      }
+      doomed.forEach((k) => window.localStorage.removeItem(k));
+    } catch (e) {
+      storeAll(null);
+    }
+  }
+
   // --- Wiring ---------------------------------------------------------------
 
   main.querySelectorAll('[data-ex]').forEach((box) => {
@@ -340,11 +354,65 @@
 
   const reset = document.getElementById('check-reset');
   if (reset) {
+    let resetDialog = null;
+    let resetOpener = null;
+
+    function ensureResetDialog() {
+      if (resetDialog) return;
+      resetDialog = el('dialog', 'check-dialog');
+      const title = el('h2', 'check-title', t('check.resetTitle'));
+      title.id = 'check-reset-title';
+      resetDialog.setAttribute('aria-labelledby', 'check-reset-title');
+      const body = el('div', 'check-body');
+      const labelThis = el('label', 'check-option');
+      const radioThis = el('input');
+      radioThis.type = 'radio';
+      radioThis.name = `check-reset-scope-${uid}`;
+      radioThis.value = 'this';
+      radioThis.checked = true;
+      labelThis.appendChild(radioThis);
+      labelThis.appendChild(el('span', null, t('check.resetThis')));
+      const labelAll = el('label', 'check-option');
+      const radioAll = el('input');
+      radioAll.type = 'radio';
+      radioAll.name = `check-reset-scope-${uid}`;
+      radioAll.value = 'all';
+      labelAll.appendChild(radioAll);
+      labelAll.appendChild(el('span', null, t('check.resetAll')));
+      body.appendChild(labelThis);
+      body.appendChild(labelAll);
+      const row = el('div', 'check-row');
+      const del = el('button', 'button check-submit', t('check.resetDelete'));
+      del.type = 'button';
+      const cancel = el('button', 'chip check-cancel', t('check.cancel'));
+      cancel.type = 'button';
+      cancel.addEventListener('click', () => resetDialog.close());
+      row.appendChild(del);
+      row.appendChild(cancel);
+      resetDialog.appendChild(title);
+      resetDialog.appendChild(body);
+      resetDialog.appendChild(row);
+      document.body.appendChild(resetDialog);
+      resetDialog.addEventListener('close', () => {
+        if (resetOpener && resetOpener.isConnected) resetOpener.focus();
+        resetOpener = null;
+      });
+      del.addEventListener('click', () => {
+        const all = resetDialog.querySelector('input[value="all"]').checked;
+        if (all) clearAllStored();
+        else storeAll(null);
+        main.querySelectorAll('[data-ex]').forEach(clearMark);
+        refreshReset();
+        resetDialog.close();
+      });
+    }
+
     reset.addEventListener('click', () => {
-      if (!window.confirm(t('check.resetConfirm'))) return;
-      storeAll(null);
-      main.querySelectorAll('[data-ex]').forEach(clearMark);
-      refreshReset();
+      ensureResetDialog();
+      const thisRadio = resetDialog.querySelector('input[value="this"]');
+      if (thisRadio) thisRadio.checked = true;
+      resetOpener = reset;
+      resetDialog.showModal();
     });
     refreshReset();
   }
