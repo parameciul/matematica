@@ -1145,6 +1145,13 @@ html:not(.js) .theme-btn {
 
   .material-body {
     padding: 1rem;
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+
+  .note {
+    padding: 0.5rem 0.7rem;
+    font-size: 0.95rem;
   }
 }
 
@@ -1202,16 +1209,29 @@ html:not(.js) .theme-btn {
   background: var(--paper);
 }
 
+/* Grid, not flex: options then line up in columns instead of reflowing into a
+   ragged block. auto-fit picks as many columns as fit, so a phone gets two and
+   a desktop four, and a long option drops to one column on its own. */
 .choices {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.25rem 1.75rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+  gap: 0.4rem 0.9rem;
   padding: 0;
   list-style: none;
 }
 
 .material-body .choices li {
   margin: 0;
+  min-width: 0;
+}
+
+/* data-ex often sits on the <ul class="choices"> itself, so check.js appends
+   the button INSIDE this grid. Give it a whole row, or it lands in a cell
+   beside the last option. */
+.choices .check-btn {
+  grid-column: 1 / -1;
+  justify-self: start;
+  margin: 0.55rem 0 0;
 }
 
 /* Highlighted boxes cover a lot of page, so they take the pale fill and put the
@@ -1238,8 +1258,17 @@ html:not(.js) .theme-btn {
   margin-bottom: 0;
 }
 
+/* A hairline between exercises: a long one then has a visible start and end
+   instead of running into its neighbour. The old bottom margin goes, or the
+   gap would double (margin + padding) and cost more scrolling than the
+   smaller font just saved. */
 .exercises > li {
-  margin-bottom: 1.1rem;
+  margin-bottom: 0;
+}
+
+.exercises > li + li {
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--rule);
 }
 
 /* Result checking: one exercise at a time. The green and the red reuse the

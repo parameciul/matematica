@@ -262,7 +262,7 @@ test('a material with results gets the check note, button, data and scripts', (t
     assert.match(page, /assets\/js\/check\.js/, `${file}: check.js`);
   }
   // The English note speaks English.
-  assert.match(site.get(`en/materiale/${mname('teorie-reale')}.html`), /You can check your results/);
+  assert.match(site.get(`en/materiale/${mname('teorie-reale')}.html`), /Press “Check” next to an exercise/);
 });
 
 test('a material without results gets none of the check shell', (t) => {
