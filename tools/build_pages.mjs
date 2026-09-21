@@ -59,7 +59,7 @@ const PROFILES = [];
 // Search-engine verification tokens (audit F1). Empty until the property is
 // verified: paste the code from Search Console / Bing Webmaster Tools here and
 // regenerate. When set, renderHead emits the meta tag.
-export const GOOGLE_SITE_VERIFICATION = '';
+export const GOOGLE_SITE_VERIFICATION = 'lwpe3phdRnlGTaxwvpfcxbuygEudOHDa7i_hl_1wQQc';
 export const BING_SITE_VERIFICATION = '';
 
 export function esc(text) {
