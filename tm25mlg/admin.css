@@ -15,15 +15,34 @@
   display: none;
 }
 
-/* One grade per block, like the school years on a grade page. */
-.admin-grade > summary h2 {
-  font-size: 1.5rem;
-  color: var(--text);
+/* Two chip rows: the state, then the grade. They AND together. The grade row
+   keeps its label and its nine chips on one line on a phone by scrolling
+   sideways rather than wrapping into a block that pushes the list down. */
+.filters-grade {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-bottom: 0.15rem;
 }
 
-.admin-grade > summary .admin-grade-count {
+.filters-grade::-webkit-scrollbar {
+  display: none;
+}
+
+.filters-grade .chip {
+  flex: none;
+}
+
+.filters-label {
+  align-self: center;
   color: var(--muted);
   font-size: 0.95rem;
+  white-space: nowrap;
+}
+
+/* The grade and the topic on a row: quiet, because the title leads. */
+.admin-where {
+  color: var(--muted);
 }
 
 .admin-item {

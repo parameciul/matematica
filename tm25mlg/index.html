@@ -19,7 +19,7 @@
   <script defer src="../assets/js/shell.js?v=c1e6f3a18d"></script>
   <script defer src="../assets/js/site.js?v=99ee3ee51f"></script>
   <script defer src="../assets/js/searchbox.js?v=048c6e71a1"></script>
-  <script defer src="../assets/js/visibility.js?v=7ba023bdb2"></script>
+  <script defer src="../assets/js/visibility.js?v=a35ae0372b"></script>
   <script defer src="admin.js"></script>
 </head>
 <body data-root="../">
@@ -38,6 +38,18 @@
         <button class="chip" type="button" data-filter="hidden" aria-pressed="false">Ascunse</button>
         <button class="chip" type="button" data-filter="scheduled" aria-pressed="false">Programate</button>
         <button class="chip" type="button" data-filter="results" aria-pressed="false">Cu rezultate</button>
+      </div>
+      <div class="filters filters-grade" role="group" aria-label="Arată o singură clasă" id="admin-grade-filter">
+        <span class="filters-label" aria-hidden="true">Clase:</span>
+        <button class="chip" type="button" data-grade="" aria-pressed="true">Toate</button>
+        <button class="chip" type="button" data-grade="5" aria-pressed="false">5</button>
+        <button class="chip" type="button" data-grade="6" aria-pressed="false">6</button>
+        <button class="chip" type="button" data-grade="7" aria-pressed="false">7</button>
+        <button class="chip" type="button" data-grade="8" aria-pressed="false">8</button>
+        <button class="chip" type="button" data-grade="9" aria-pressed="false">9</button>
+        <button class="chip" type="button" data-grade="10" aria-pressed="false">10</button>
+        <button class="chip" type="button" data-grade="11" aria-pressed="false">11</button>
+        <button class="chip" type="button" data-grade="12" aria-pressed="false">12</button>
       </div>
       <p class="search-count" id="admin-count" aria-live="polite"></p>
       <div id="admin-list" aria-busy="true"><p class="message">Se încarcă lista…</p></div>
