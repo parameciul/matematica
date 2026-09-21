@@ -7,6 +7,14 @@
   display: none;
 }
 
+/* This page is one flat list of every grade, so the header grade links are
+   noise. The phone toggle goes too: a button that opens a hidden panel is
+   worse than no button. The grade filter below the search box replaces both. */
+.site-header .grade-nav,
+.site-header [data-toggle="grades"] {
+  display: none;
+}
+
 /* One grade per block, like the school years on a grade page. */
 .admin-grade > summary h2 {
   font-size: 1.5rem;
