@@ -348,7 +348,7 @@ function cmdSave({ pos }) {
       if (!el) continue; // already reported as missing
       let lists = choicesOf(el.inner);
       if (!lists.length && /<ul[^>]*class="[^"]*\bchoices\b/.test(el.attrs)) {
-        lists = choicesOf(`<ul>${el.inner}</ul>`);
+        lists = choicesOf(`<ul class="choices">${el.inner}</ul>`);
       }
       if (!lists.length) {
         problems.push(`${p.label} page: data-ex="${key}" (choice) holds no <ul class="choices">`);

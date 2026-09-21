@@ -1,0 +1,383 @@
+{
+  "uid": "1007",
+  "version": 1,
+  "items": {
+    "1": {
+      "kind": "list",
+      "show": "$\\overrightarrow{AB} = (2,4)$, $|\\overrightarrow{AB}| = 2\\sqrt{5}$",
+      "accept": [
+        "2; 4; 2√5"
+      ],
+      "hint": {
+        "ro": "în ordinea $x_{AB}$; $y_{AB}$; modulul",
+        "en": "in the order $x_{AB}$; $y_{AB}$; magnitude"
+      }
+    },
+    "2": {
+      "kind": "list",
+      "show": "$\\overrightarrow{w} = (3,8)$",
+      "accept": [
+        "3; 8"
+      ]
+    },
+    "3": {
+      "kind": "number",
+      "show": "$AB = 10$",
+      "accept": [
+        "10"
+      ]
+    },
+    "4": {
+      "kind": "list",
+      "show": "$M(2,3)$",
+      "accept": [
+        "2; 3"
+      ]
+    },
+    "5": {
+      "kind": "number",
+      "show": "$a = 3$",
+      "accept": [
+        "3"
+      ]
+    },
+    "6": {
+      "kind": "number",
+      "show": "$a = 6$",
+      "accept": [
+        "6"
+      ]
+    },
+    "7": {
+      "kind": "number",
+      "show": "$m = 2$",
+      "accept": [
+        "2"
+      ]
+    },
+    "8": {
+      "kind": "text",
+      "show": "$y = - 3x + 5$",
+      "accept": [
+        "y=-3x+5",
+        "3x+y-5=0"
+      ]
+    },
+    "9": {
+      "kind": "text",
+      "show": "$y = x + 1$",
+      "accept": [
+        "y=x+1",
+        "x-y+1=0"
+      ]
+    },
+    "11": {
+      "kind": "text",
+      "show": "$y = 2x + 2$",
+      "accept": [
+        "y=2x+2",
+        "2x-y+2=0"
+      ]
+    },
+    "12": {
+      "kind": "number",
+      "show": "$m_{\\perp} = 3$",
+      "accept": [
+        "3"
+      ]
+    },
+    "13": {
+      "kind": "number",
+      "show": "$d = 3$",
+      "accept": [
+        "3"
+      ]
+    },
+    "14": {
+      "kind": "list",
+      "show": "$G(3,3)$",
+      "accept": [
+        "3; 3"
+      ]
+    },
+    "15": {
+      "kind": "truefalse",
+      "show": "A (pantele sunt $2$)",
+      "accept": [
+        "A"
+      ]
+    },
+    "16": {
+      "kind": "text",
+      "show": "$x + 2y + 1 = 0$",
+      "accept": [
+        "x+2y+1=0",
+        "y=-x/2-1/2"
+      ]
+    },
+    "17": {
+      "kind": "text",
+      "show": "$x + 2y - 3 = 0$",
+      "accept": [
+        "x+2y-3=0",
+        "y=-x/2+3/2"
+      ]
+    },
+    "18": {
+      "kind": "number",
+      "show": "$3$",
+      "accept": [
+        "3"
+      ]
+    },
+    "19": {
+      "kind": "text",
+      "show": "$2x + y - 13 = 0$",
+      "accept": [
+        "2x+y-13=0",
+        "y=-2x+13"
+      ]
+    },
+    "20": {
+      "kind": "set",
+      "show": "$\\{ - 2,\\ 2\\}$",
+      "accept": [
+        "{-2; 2}"
+      ]
+    },
+    "21": {
+      "kind": "number",
+      "show": "$a = \\frac{1}{2}$",
+      "accept": [
+        "1/2"
+      ]
+    },
+    "22": {
+      "kind": "number",
+      "show": "$A = 10$",
+      "accept": [
+        "10"
+      ]
+    },
+    "23": {
+      "kind": "list",
+      "show": "$D(2,4)$",
+      "accept": [
+        "2; 4"
+      ]
+    },
+    "24": {
+      "kind": "set",
+      "show": "$S = \\varnothing$",
+      "accept": [
+        "∅"
+      ]
+    },
+    "25": {
+      "kind": "text",
+      "show": "$3x + 2y - 9 = 0$",
+      "accept": [
+        "3x+2y-9=0",
+        "y=-3x/2+9/2"
+      ]
+    },
+    "26": {
+      "kind": "list",
+      "show": "$A'(- 1, - 2)$",
+      "accept": [
+        "-1; -2"
+      ]
+    },
+    "27": {
+      "kind": "text",
+      "show": "$m = - \\frac{\\alpha + 1}{\\alpha - 1}$",
+      "accept": [
+        "m=-(α+1)/(α-1)",
+        "-(α+1)/(α-1)",
+        "m=-(a+1)/(a-1)",
+        "-(a+1)/(a-1)"
+      ]
+    },
+    "28": {
+      "check": false,
+      "why": "proof",
+      "show": "$AB^{2} = AC^{2} = 10$, $BC^{2} = 20$"
+    },
+    "29": {
+      "kind": "list",
+      "show": "$(\\frac{5}{13}, - \\frac{12}{13})$",
+      "accept": [
+        "5/13; -12/13"
+      ]
+    },
+    "30": {
+      "kind": "number",
+      "show": "$30{^\\circ}$",
+      "accept": [
+        "30"
+      ]
+    },
+    "31": {
+      "kind": "set",
+      "show": "$\\{ - \\frac{3}{2},\\ \\frac{7}{2}\\}$",
+      "accept": [
+        "{-3/2; 7/2}"
+      ]
+    },
+    "32": {
+      "kind": "list",
+      "show": "$x = 6$, $y = 5$",
+      "accept": [
+        "6; 5"
+      ],
+      "hint": {
+        "ro": "în ordinea $x$; $y$",
+        "en": "in the order $x$; $y$"
+      }
+    },
+    "33": {
+      "kind": "number",
+      "show": "$6$",
+      "accept": [
+        "6"
+      ]
+    },
+    "34": {
+      "kind": "text",
+      "show": "$4x - 3y + 11 = 0$ și $4x - 3y - 9 = 0$",
+      "accept": [
+        "4x-3y+11=0;4x-3y-9=0",
+        "4x-3y-9=0;4x-3y+11=0"
+      ],
+      "hint": {
+        "ro": "scrie ambele ecuații, separate prin $;$",
+        "en": "write both equations, separated by $;$"
+      }
+    },
+    "35": {
+      "kind": "list",
+      "show": "$O(1,2)$",
+      "accept": [
+        "1; 2"
+      ]
+    },
+    "36": {
+      "kind": "list",
+      "show": "$P( - \\frac{1}{3}, - \\frac{7}{3})$",
+      "accept": [
+        "-1/3; -7/3"
+      ]
+    },
+    "37": {
+      "kind": "list",
+      "show": "$H(\\frac{3}{2},\\ \\frac{5}{2})$",
+      "accept": [
+        "3/2; 5/2"
+      ]
+    },
+    "38": {
+      "kind": "list",
+      "show": "$A'(\\frac{13}{5},\\ \\frac{21}{5})$",
+      "accept": [
+        "13/5; 21/5"
+      ]
+    },
+    "39": {
+      "kind": "list",
+      "show": "$C(\\frac{7}{2},\\ \\frac{7}{2})$ sau $C( - \\frac{1}{2},\\  - \\frac{1}{2})$",
+      "accept": [
+        "7/2; 7/2; -1/2; -1/2",
+        "-1/2; -1/2; 7/2; 7/2"
+      ]
+    },
+    "40": {
+      "kind": "set",
+      "show": "$\\{ 0,\\ 2\\}$",
+      "accept": [
+        "{0; 2}"
+      ]
+    },
+    "41": {
+      "check": false,
+      "why": "open",
+      "show": "$a < - \\frac{1}{5}$, $a \\neq - \\sqrt{7}$"
+    },
+    "42": {
+      "check": false,
+      "why": "proof",
+      "show": "$\\overrightarrow{AM} = \\frac{1}{3}\\overrightarrow{AB} + \\frac{2}{3}\\overrightarrow{AC}$"
+    },
+    "43": {
+      "check": false,
+      "why": "proof",
+      "show": "ambele diferențe dau același vector"
+    },
+    "44": {
+      "kind": "list",
+      "show": "$H( - 3,\\ 4)$",
+      "accept": [
+        "-3; 4"
+      ]
+    },
+    "45": {
+      "kind": "number",
+      "show": "$m = 0$",
+      "accept": [
+        "0"
+      ]
+    },
+    "46": {
+      "kind": "list",
+      "show": "$a = 2\\sqrt{2}$, $b = 3\\sqrt{2}$",
+      "accept": [
+        "2√2; 3√2"
+      ]
+    },
+    "47": {
+      "check": false,
+      "why": "open",
+      "show": "$\\frac{|3x - 4y + 1|}{5} = \\frac{|5x + 12y - 2|}{13}$"
+    },
+    "48": {
+      "kind": "number",
+      "show": "$\\sqrt{181}$",
+      "accept": [
+        "√181"
+      ]
+    },
+    "49": {
+      "kind": "text",
+      "show": "$x - y + 1 = 0$",
+      "accept": [
+        "x-y+1=0",
+        "y=x+1"
+      ]
+    },
+    "50": {
+      "kind": "list",
+      "show": "$B(0,2)$, $C(\\frac{13}{5},\\  - \\frac{1}{5})$",
+      "accept": [
+        "0; 2; 13/5; -1/5"
+      ],
+      "hint": {
+        "ro": "în ordinea $x_B$; $y_B$; $x_C$; $y_C$",
+        "en": "in the order $x_B$; $y_B$; $x_C$; $y_C$"
+      }
+    },
+    "10a": {
+      "kind": "text",
+      "show": "$y = \\frac{2}{3}x + 2$",
+      "accept": [
+        "y=2x/3+2",
+        "2x-3y+6=0"
+      ]
+    },
+    "10b": {
+      "kind": "number",
+      "show": "$m = \\frac{2}{3}$",
+      "accept": [
+        "2/3"
+      ]
+    }
+  }
+}

@@ -1,0 +1,135 @@
+{
+  "uid": "1010",
+  "version": 1,
+  "items": {
+    "1": {
+      "kind": "choice",
+      "show": "$12\\text{ cm}$",
+      "accept": [
+        "12cm"
+      ]
+    },
+    "2": {
+      "kind": "choice",
+      "show": "$9\\text{ cm}$",
+      "accept": [
+        "9cm"
+      ]
+    },
+    "3": {
+      "kind": "choice",
+      "show": "obtuz",
+      "accept": [
+        "obtuz"
+      ]
+    },
+    "4": {
+      "kind": "choice",
+      "show": "$60{^\\circ}15'$",
+      "accept": [
+        "60°15'"
+      ]
+    },
+    "5": {
+      "kind": "choice",
+      "show": "$320\\text{ cm}$",
+      "accept": [
+        "320cm"
+      ]
+    },
+    "6": {
+      "kind": "choice",
+      "show": "$250\\text{ cm}^{2}$",
+      "accept": [
+        "250cm²"
+      ]
+    },
+    "7": {
+      "kind": "choice",
+      "show": "$49\\text{ cm}^{2}$",
+      "accept": [
+        "49cm²"
+      ]
+    },
+    "8": {
+      "kind": "choice",
+      "show": "$51000\\text{ cm}$",
+      "accept": [
+        "51000cm"
+      ]
+    },
+    "9": {
+      "kind": "choice",
+      "show": "$8$ litri",
+      "accept": [
+        "8litri"
+      ]
+    },
+    "10a": {
+      "kind": "text",
+      "show": "$3\\text{ cm}$",
+      "accept": [
+        "3cm",
+        "3"
+      ]
+    },
+    "10b": {
+      "kind": "text",
+      "show": "ascuțit ($50{^\\circ} < 90{^\\circ}$)",
+      "accept": [
+        "ascuțit",
+        "ascutit",
+        "acute"
+      ]
+    },
+    "11a": {
+      "kind": "text",
+      "show": "$40\\text{ cm}$",
+      "accept": [
+        "40cm",
+        "40"
+      ]
+    },
+    "11b": {
+      "kind": "list",
+      "show": "$96\\text{ cm}^{2} = \\text{0,96 dm}^{2}$",
+      "accept": [
+        "96; 0,96"
+      ],
+      "hint": {
+        "ro": "în ordinea cm²; dm²",
+        "en": "in the order cm²; dm²"
+      }
+    },
+    "12a": {
+      "kind": "text",
+      "show": "$52{^\\circ}15'$",
+      "accept": [
+        "52°15'",
+        "52°15"
+      ]
+    },
+    "12b": {
+      "kind": "truefalse",
+      "show": "F ($37{^\\circ}45' \\neq 52{^\\circ}15'$)",
+      "accept": [
+        "F"
+      ]
+    },
+    "13a": {
+      "kind": "text",
+      "show": "$21\\text{ m}^{2}$",
+      "accept": [
+        "21m²",
+        "21"
+      ]
+    },
+    "13b": {
+      "kind": "number",
+      "show": "$9$",
+      "accept": [
+        "9"
+      ]
+    }
+  }
+}

@@ -1,0 +1,147 @@
+{
+  "uid": "1009",
+  "version": 1,
+  "items": {
+    "1": {
+      "kind": "choice",
+      "show": "$29$",
+      "accept": [
+        "29"
+      ]
+    },
+    "2": {
+      "kind": "choice",
+      "show": "$2^{2}$",
+      "accept": [
+        "2^2"
+      ]
+    },
+    "3": {
+      "kind": "choice",
+      "show": "$3700$",
+      "accept": [
+        "3700"
+      ]
+    },
+    "4": {
+      "kind": "choice",
+      "show": "$540$",
+      "accept": [
+        "540"
+      ]
+    },
+    "5": {
+      "kind": "choice",
+      "show": "$1$",
+      "accept": [
+        "1"
+      ]
+    },
+    "6": {
+      "kind": "choice",
+      "show": "$2^{8}$",
+      "accept": [
+        "2^8"
+      ]
+    },
+    "7": {
+      "kind": "choice",
+      "show": "$\\frac{11}{8}$",
+      "accept": [
+        "11/8"
+      ]
+    },
+    "8": {
+      "kind": "choice",
+      "show": "$\\frac{7}{12}$",
+      "accept": [
+        "7/12"
+      ]
+    },
+    "9": {
+      "kind": "choice",
+      "show": "$30$ de lei",
+      "accept": [
+        "30lei"
+      ]
+    },
+    "10": {
+      "kind": "choice",
+      "show": "$375$",
+      "accept": [
+        "375"
+      ]
+    },
+    "11": {
+      "kind": "choice",
+      "show": "$0,35$",
+      "accept": [
+        "0,35"
+      ]
+    },
+    "12": {
+      "kind": "choice",
+      "show": "$12$",
+      "accept": [
+        "12"
+      ]
+    },
+    "13a": {
+      "kind": "number",
+      "show": "$2945$",
+      "accept": [
+        "2945"
+      ]
+    },
+    "13b": {
+      "kind": "set",
+      "show": "$\\{ 2340,\\ 2745\\}$",
+      "accept": [
+        "{2340; 2745}"
+      ]
+    },
+    "14a": {
+      "kind": "truefalse",
+      "show": "F ($10 \\cdot 3 + 12 = 42$, $42:5 = \\text{8,4} \\neq 9$)",
+      "accept": [
+        "F"
+      ]
+    },
+    "14b": {
+      "kind": "number",
+      "show": "$x = 11$",
+      "accept": [
+        "11"
+      ]
+    },
+    "15a": {
+      "kind": "number",
+      "show": "$\\frac{11}{15}$",
+      "accept": [
+        "11/15"
+      ]
+    },
+    "15b": {
+      "kind": "text",
+      "show": "$90\\text{ km}$",
+      "accept": [
+        "90km",
+        "90"
+      ]
+    },
+    "16a": {
+      "kind": "truefalse",
+      "show": "F ($10 \\cdot 2 + 10 \\cdot 4 = 60 \\neq 56$)",
+      "accept": [
+        "F"
+      ]
+    },
+    "16b": {
+      "kind": "number",
+      "show": "$8$",
+      "accept": [
+        "8"
+      ]
+    }
+  }
+}

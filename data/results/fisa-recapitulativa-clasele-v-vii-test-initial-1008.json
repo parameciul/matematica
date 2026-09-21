@@ -1,0 +1,472 @@
+{
+  "uid": "1008",
+  "version": 1,
+  "items": {
+    "1": {
+      "kind": "choice",
+      "show": "$18$",
+      "accept": [
+        "18"
+      ]
+    },
+    "2": {
+      "kind": "choice",
+      "show": "$c < a < b$",
+      "accept": [
+        "c<a<b"
+      ]
+    },
+    "3": {
+      "kind": "choice",
+      "show": "$144$",
+      "accept": [
+        "144"
+      ]
+    },
+    "4": {
+      "kind": "choice",
+      "show": "$68$ de lei",
+      "accept": [
+        "68lei"
+      ]
+    },
+    "5": {
+      "kind": "choice",
+      "show": "$5$",
+      "accept": [
+        "5"
+      ]
+    },
+    "6": {
+      "kind": "choice",
+      "show": "$\\frac{3}{4}$",
+      "accept": [
+        "\\frac{3}{4}"
+      ]
+    },
+    "7": {
+      "kind": "choice",
+      "show": "$\\{ 2,\\ 3,\\ 4,\\ 6\\}$",
+      "accept": [
+        "{2; 3; 4; 6}"
+      ]
+    },
+    "10": {
+      "kind": "choice",
+      "show": "$- 16$",
+      "accept": [
+        "-16"
+      ]
+    },
+    "11": {
+      "kind": "choice",
+      "show": "$- \\frac{4}{5}$",
+      "accept": [
+        "-4/5"
+      ]
+    },
+    "12": {
+      "kind": "choice",
+      "show": "$1$",
+      "accept": [
+        "1"
+      ]
+    },
+    "13": {
+      "kind": "choice",
+      "show": "$3\\sqrt{3}$",
+      "accept": [
+        "3√3"
+      ]
+    },
+    "14": {
+      "kind": "choice",
+      "show": "$\\sqrt{8}$",
+      "accept": [
+        "√8"
+      ]
+    },
+    "15": {
+      "kind": "choice",
+      "show": "$7$ și $8$",
+      "accept": [
+        "7;8"
+      ]
+    },
+    "18": {
+      "kind": "choice",
+      "show": "$5$",
+      "accept": [
+        "5"
+      ]
+    },
+    "19": {
+      "kind": "choice",
+      "show": "$9$ zile",
+      "accept": [
+        "9zile"
+      ]
+    },
+    "20": {
+      "kind": "choice",
+      "show": "$\\frac{2}{5}$",
+      "accept": [
+        "2/5"
+      ]
+    },
+    "21": {
+      "kind": "choice",
+      "show": "$x = 8$",
+      "accept": [
+        "x=8"
+      ]
+    },
+    "22": {
+      "kind": "choice",
+      "show": "$(4,\\ 3)$",
+      "accept": [
+        "(4,3)"
+      ]
+    },
+    "26": {
+      "kind": "choice",
+      "show": "$72$ de litri",
+      "accept": [
+        "72litri"
+      ]
+    },
+    "27": {
+      "kind": "choice",
+      "show": "$9\\text{ cm}$",
+      "accept": [
+        "9cm"
+      ]
+    },
+    "28": {
+      "kind": "choice",
+      "show": "$132{^\\circ}25'$",
+      "accept": [
+        "132°25'"
+      ]
+    },
+    "29": {
+      "kind": "choice",
+      "show": "$142{^\\circ}$",
+      "accept": [
+        "142°"
+      ]
+    },
+    "30": {
+      "kind": "choice",
+      "show": "$115{^\\circ}$",
+      "accept": [
+        "115°"
+      ]
+    },
+    "31": {
+      "kind": "choice",
+      "show": "$120{^\\circ}$",
+      "accept": [
+        "120°"
+      ]
+    },
+    "32": {
+      "kind": "choice",
+      "show": "$70{^\\circ}$",
+      "accept": [
+        "70°"
+      ]
+    },
+    "36": {
+      "kind": "choice",
+      "show": "$135{^\\circ}$",
+      "accept": [
+        "135°"
+      ]
+    },
+    "37": {
+      "kind": "choice",
+      "show": "$13\\text{ cm}$",
+      "accept": [
+        "13cm"
+      ]
+    },
+    "38": {
+      "kind": "choice",
+      "show": "$11\\text{ cm}$",
+      "accept": [
+        "11cm"
+      ]
+    },
+    "39": {
+      "kind": "choice",
+      "show": "$10\\text{ cm}$",
+      "accept": [
+        "10cm"
+      ]
+    },
+    "40": {
+      "kind": "choice",
+      "show": "$55{^\\circ}$",
+      "accept": [
+        "55°"
+      ]
+    },
+    "41": {
+      "kind": "choice",
+      "show": "$219,8\\text{ m}$",
+      "accept": [
+        "219,8m"
+      ]
+    },
+    "42": {
+      "kind": "choice",
+      "show": "$9\\text{ cm}$",
+      "accept": [
+        "9cm"
+      ]
+    },
+    "43": {
+      "kind": "choice",
+      "show": "$20\\text{ cm}^{2}$",
+      "accept": [
+        "20cm²"
+      ]
+    },
+    "44": {
+      "kind": "choice",
+      "show": "$6\\text{ cm}$",
+      "accept": [
+        "6cm"
+      ]
+    },
+    "45": {
+      "kind": "choice",
+      "show": "$\\frac{4}{5}$",
+      "accept": [
+        "4/5"
+      ]
+    },
+    "8a": {
+      "kind": "truefalse",
+      "show": "F (pentru $160$ de pagini a treia zi ar fi $72 \\neq 90$)",
+      "accept": [
+        "F"
+      ]
+    },
+    "8b": {
+      "kind": "number",
+      "show": "$200$",
+      "accept": [
+        "200"
+      ]
+    },
+    "9a": {
+      "check": false,
+      "why": "proof",
+      "show": "$[12,15,18] = 180$"
+    },
+    "9b": {
+      "kind": "number",
+      "show": "$365$",
+      "accept": [
+        "365"
+      ]
+    },
+    "16a": {
+      "check": false,
+      "why": "proof",
+      "show": "$a = 2\\sqrt{3} + 5\\sqrt{3} - 6\\sqrt{3} = \\sqrt{3}$"
+    },
+    "16b": {
+      "kind": "number",
+      "show": "$6$",
+      "accept": [
+        "6"
+      ]
+    },
+    "17a": {
+      "check": false,
+      "why": "proof",
+      "show": "$N = 2\\sqrt{5} - 2\\sqrt{5} + \\sqrt{5} = \\sqrt{5}$"
+    },
+    "17b": {
+      "check": false,
+      "why": "proof",
+      "show": "$2,2^{2} = 4,84 < 5 < 5,29 = 2,3^{2}$"
+    },
+    "23a": {
+      "check": false,
+      "why": "proof",
+      "show": "$k = 4$: $b + c = 12 + 20 = 32$"
+    },
+    "23b": {
+      "kind": "list",
+      "show": "$a = 12$, $b = 18$, $c = 30$",
+      "accept": [
+        "12; 18; 30"
+      ],
+      "hint": {
+        "ro": "în ordinea $a$; $b$; $c$",
+        "en": "in the order $a$; $b$; $c$"
+      }
+    },
+    "24a": {
+      "kind": "truefalse",
+      "show": "F ($2 \\cdot 6 + 3 \\cdot 4,5 = 25,5 \\neq 23$)",
+      "accept": [
+        "F"
+      ]
+    },
+    "24b": {
+      "kind": "list",
+      "show": "$c = 7$ lei, $p = 3$ lei",
+      "accept": [
+        "7; 3"
+      ],
+      "hint": {
+        "ro": "în ordinea caietul; pixul",
+        "en": "in the order notebook; pen"
+      }
+    },
+    "25a": {
+      "kind": "number",
+      "show": "$68\\%$",
+      "accept": [
+        "68"
+      ]
+    },
+    "25b": {
+      "kind": "number",
+      "show": "$8,04$",
+      "accept": [
+        "8,04"
+      ]
+    },
+    "33a": {
+      "kind": "text",
+      "show": "$78\\text{ m}$",
+      "accept": [
+        "78m",
+        "78"
+      ]
+    },
+    "33b": {
+      "kind": "number",
+      "show": "$9$",
+      "accept": [
+        "9"
+      ]
+    },
+    "34a": {
+      "check": false,
+      "why": "proof",
+      "show": "$\\Delta AOD \\equiv \\Delta BOC$ (LUL)"
+    },
+    "34b": {
+      "check": false,
+      "why": "proof",
+      "show": "$OM$ bisectoare"
+    },
+    "35a": {
+      "kind": "number",
+      "show": "$6$",
+      "accept": [
+        "6"
+      ]
+    },
+    "35b": {
+      "kind": "number",
+      "show": "$DM = 3$",
+      "accept": [
+        "3"
+      ]
+    },
+    "46a": {
+      "kind": "number",
+      "show": "$20$",
+      "accept": [
+        "20"
+      ]
+    },
+    "46b": {
+      "kind": "number",
+      "show": "$24$",
+      "accept": [
+        "24"
+      ]
+    },
+    "47a": {
+      "kind": "number",
+      "show": "$72$",
+      "accept": [
+        "72"
+      ]
+    },
+    "47b": {
+      "check": false,
+      "why": "proof",
+      "show": "$AD \\perp BC$"
+    },
+    "48a": {
+      "kind": "text",
+      "show": "$4,5\\text{ m}$",
+      "accept": [
+        "4,5m",
+        "4,5"
+      ]
+    },
+    "48b": {
+      "kind": "text",
+      "show": "$2,4\\text{ m}$",
+      "accept": [
+        "2,4m",
+        "2,4"
+      ]
+    },
+    "49a": {
+      "kind": "list",
+      "show": "$BC = 25\\text{ cm}$, $A = 150\\text{ cm}^{2}$",
+      "accept": [
+        "25; 150"
+      ],
+      "hint": {
+        "ro": "în ordinea ipotenuza; aria",
+        "en": "in the order hypotenuse; area"
+      }
+    },
+    "49b": {
+      "kind": "list",
+      "show": "$AD = 12\\text{ cm}$, $BD = 9\\text{ cm}$",
+      "accept": [
+        "12; 9"
+      ],
+      "hint": {
+        "ro": "în ordinea $AD$; $BD$",
+        "en": "in the order $AD$; $BD$"
+      }
+    },
+    "50a": {
+      "kind": "list",
+      "show": "$P = 48\\text{ cm}$, $A = 96\\sqrt{3}\\text{ cm}^{2}$",
+      "accept": [
+        "48; 96√3"
+      ],
+      "hint": {
+        "ro": "în ordinea perimetrul; aria",
+        "en": "in the order perimeter; area"
+      }
+    },
+    "50b": {
+      "kind": "list",
+      "show": "$AC = 8\\sqrt{3}\\text{ cm}$, $d = 4\\sqrt{3}\\text{ cm}$",
+      "accept": [
+        "8√3; 4√3"
+      ],
+      "hint": {
+        "ro": "în ordinea $AC$; distanța",
+        "en": "in the order $AC$; distance"
+      }
+    }
+  }
+}
