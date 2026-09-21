@@ -124,6 +124,49 @@ test('an admin row differs from the saved state only when the data would change'
   assert.equal(V.isSameState({ state: 'hidden' }, { state: 'visible' }), false);
 });
 
+test('adminMatches: no filters lets everything through', () => {
+  const row = { state: 'hidden', grade: 7, hasResults: false };
+  assert.equal(V.adminMatches(row, { state: '', grade: null }), true);
+});
+
+test('adminMatches: the state filter picks by saved state', () => {
+  const row = { state: 'scheduled', grade: 7, hasResults: false };
+  assert.equal(V.adminMatches(row, { state: 'scheduled', grade: null }), true);
+  assert.equal(V.adminMatches(row, { state: 'hidden', grade: null }), false);
+});
+
+test('adminMatches: the results filter ignores the state', () => {
+  const withResults = { state: 'hidden', grade: 7, hasResults: true };
+  const without = { state: 'visible', grade: 7, hasResults: false };
+  assert.equal(V.adminMatches(withResults, { state: 'results', grade: null }), true);
+  assert.equal(V.adminMatches(without, { state: 'results', grade: null }), false);
+});
+
+test('adminMatches: the grade filter ANDs with the state filter', () => {
+  const row = { state: 'hidden', grade: 7, hasResults: false };
+  assert.equal(V.adminMatches(row, { state: 'hidden', grade: 7 }), true);
+  assert.equal(V.adminMatches(row, { state: 'hidden', grade: 8 }), false);
+  assert.equal(V.adminMatches(row, { state: 'visible', grade: 7 }), false);
+});
+
+test('adminSortKey: newest first, then grade, then data order', () => {
+  const rows = [
+    { published: '2026-09-15', grade: 6, order: 0 },
+    { published: '2026-09-17', grade: 8, order: 1 },
+    { published: '2026-09-17', grade: 6, order: 2 },
+    { published: '2026-09-17', grade: 6, order: 3 },
+  ];
+  const sorted = rows.slice().sort((a, b) => {
+    const x = V.adminSortKey(a);
+    const y = V.adminSortKey(b);
+    for (let i = 0; i < x.length; i += 1) {
+      if (x[i] !== y[i]) return x[i] - y[i];
+    }
+    return 0;
+  });
+  assert.deepEqual(sorted.map((r) => r.order), [2, 3, 1, 0]);
+});
+
 test('a saved change has landed when the data shows it', () => {
   const now = Date.parse('2026-09-18T10:00:00+03:00');
   assert.equal(V.changeLanded({ uid: '1', state: 'hidden' }, { uid: '1', hidden: true }, now), true);

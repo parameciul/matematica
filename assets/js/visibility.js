@@ -223,6 +223,35 @@
     return a.state !== 'scheduled' || a.visibleFrom === b.visibleFrom;
   }
 
+  // --- Admin list ----------------------------------------------------------
+  // The admin page shows one flat list. These two decide what is in it and in
+  // what order; they take plain objects so the node tests can reach them.
+
+  // row: { state, grade, hasResults }. filters: { state, grade }.
+  // The state filter reads the SAVED state, never the pending one, so a row
+  // never vanishes from under a hand that is editing it. "results" is not a
+  // state: it picks the materials that have a results file, whatever they show.
+  function adminMatches(row, filters) {
+    const want = (filters && filters.state) || '';
+    if (want === 'results') {
+      if (!row.hasResults) return false;
+    } else if (want && row.state !== want) {
+      return false;
+    }
+    const grade = filters && filters.grade;
+    if (grade != null && row.grade !== grade) return false;
+    return true;
+  }
+
+  // row: { published, grade, order }. Compare the arrays element by element.
+  // Newest first; then grade ascending, so two materials published the same
+  // day group by year instead of looking shuffled; then the order they sit in
+  // data/materials.source.json, the same last resort the grade pages use.
+  function adminSortKey(row) {
+    const day = Number(String(row.published || '').replace(/-/g, '')) || 0;
+    return [-day, Number(row.grade) || 0, Number(row.order) || 0];
+  }
+
   // True when a saved change is in the data (the admin page polls for it).
   // A scheduled time that has already passed is revealed by the same
   // workflow run, so a visible material counts for it too.
@@ -256,6 +285,8 @@
     changeError,
     rowChange,
     isSameState,
+    adminMatches,
+    adminSortKey,
     changeLanded,
   };
   if (typeof module === 'object' && module.exports) module.exports = api;
