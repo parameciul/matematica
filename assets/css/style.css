@@ -1294,8 +1294,14 @@ html:not(.js) .theme-btn {
   color: var(--sheet);
 }
 
+/* The result is the answer to the student's question, so it reads at the size
+   of the exercise around it, not at kind-badge size. inherit keeps it in step
+   with the article on a phone without a second rule. */
 .check-chip {
   margin-left: 0.6rem;
+  padding: 0.05rem 0.55rem;
+  font-size: inherit;
+  line-height: 1.4;
   white-space: nowrap;
 }
 
