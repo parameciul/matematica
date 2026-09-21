@@ -379,7 +379,7 @@ function renderHome({ data, lang, dict, assetBase, pageRoot, selfFile, altFile }
     altFile,
     ogImage: OG_IMAGE,
     assetBase,
-    pageScripts: ['assets/js/i18n.js', 'assets/js/catalog.js', 'assets/js/shell.js', 'assets/js/site.js', 'assets/js/home.js'],
+    pageScripts: ['assets/js/i18n.js', 'assets/js/catalog.js', 'assets/js/shell.js', 'assets/js/site.js', 'assets/js/searchbox.js', 'assets/js/home.js'],
     jsonLdBlocks: webSiteLd(lang, dict),
   });
   return pageShell({
@@ -428,7 +428,7 @@ function renderGradePage({ data, grade, lang, dict, assetBase, pageRoot, selfFil
     noindex: empty || undefined,
     ogImage: OG_IMAGE,
     assetBase,
-    pageScripts: ['assets/js/i18n.js', 'assets/js/catalog.js', 'assets/js/shell.js', 'assets/js/site.js', 'assets/js/clasa.js'],
+    pageScripts: ['assets/js/i18n.js', 'assets/js/catalog.js', 'assets/js/shell.js', 'assets/js/site.js', 'assets/js/searchbox.js', 'assets/js/clasa.js'],
     jsonLdBlocks: [
       {
         '@context': 'https://schema.org',
@@ -592,7 +592,7 @@ function renderMaterialPage({ data, material, topic, lang, dict, assetBase, page
     published: material.published,
     assetBase,
     katex: true,
-    pageScripts: ['assets/js/i18n.js', 'assets/js/catalog.js', 'assets/js/shell.js', 'assets/js/site.js', 'assets/js/material.js']
+    pageScripts: ['assets/js/i18n.js', 'assets/js/catalog.js', 'assets/js/shell.js', 'assets/js/site.js', 'assets/js/searchbox.js', 'assets/js/material.js']
       .concat(material.results ? ['assets/js/answers.js', 'assets/js/check.js'] : []),
     jsonLdBlocks: blocks,
   });
@@ -621,7 +621,7 @@ function renderSearchPage({ lang, dict, assetBase, pageRoot, selfFile }) {
     noindex: true,
     ogImage: OG_IMAGE,
     assetBase,
-    pageScripts: ['assets/js/i18n.js', 'assets/js/catalog.js', 'assets/js/shell.js', 'assets/js/site.js', 'assets/js/cautare.js'],
+    pageScripts: ['assets/js/i18n.js', 'assets/js/catalog.js', 'assets/js/shell.js', 'assets/js/site.js', 'assets/js/searchbox.js', 'assets/js/cautare.js'],
   });
   return pageShell({
     lang,

@@ -457,6 +457,25 @@ test('a public page links the shared assets with their content hash', (t) => {
   assert.notEqual(buildSite(dir).get('index.html').match(/i18n\.js\?v=([0-9a-f]{10})"/)[1], first[1]);
 });
 
+test('a generated page links searchbox.js with a hash right after site.js', (t) => {
+  const dir = makeRoot(t, { pages: stdPages() });
+  // makeRoot copies only i18n.js, and an asset missing from the fixture root
+  // keeps a plain link, so both scripts under test are copied in to get hashes.
+  cpSync(join(REPO, 'assets', 'js', 'site.js'), join(dir, 'assets', 'js', 'site.js'));
+  cpSync(join(REPO, 'assets', 'js', 'searchbox.js'), join(dir, 'assets', 'js', 'searchbox.js'));
+  const site = buildSite(dir);
+  for (const file of ['index.html', 'en/index.html', 'clasa-9.html', `materiale/${mname('teorie-reale')}.html`, 'cautare.html']) {
+    const page = site.get(file);
+    const siteMatch = page.match(/site\.js\?v=([0-9a-f]{10})"/);
+    const boxMatch = page.match(/searchbox\.js\?v=([0-9a-f]{10})"/);
+    assert.ok(siteMatch, `${file}: site.js carries a content hash`);
+    assert.ok(boxMatch, `${file}: searchbox.js carries a content hash`);
+    assert.ok(page.indexOf(siteMatch[0]) < page.indexOf(boxMatch[0]), `${file}: searchbox.js loads after site.js`);
+  }
+  // The quiz is standalone and loads no shared script.
+  assert.doesNotMatch(site.get(`materiale/${mname('quiz-recap')}.html`), /searchbox/);
+});
+
 test('the results page links to the shared assets with their content hash', (t) => {
   const page = '<head>\n<link rel="stylesheet" href="../assets/css/style.css">\n'
     + '<script defer src="rezultate.js"></script>\n</head>\n';

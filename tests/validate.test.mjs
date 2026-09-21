@@ -651,6 +651,20 @@ test('missing English grade page fails', () => {
   expectFailure(withSite((dir) => unlinkSync(join(dir, 'en', 'clasa-9.html'))), /Missing required file: en\/clasa-9\.html/);
 });
 
+test('a page script without its content hash fails', () => {
+  expectFailure(
+    withSite((dir) => editFile(dir, 'index.html', (s) => s.replace(/searchbox\.js\?v=[0-9a-f]+/, 'searchbox.js'))),
+    /index\.html: .* must carry a \?v= content hash/,
+  );
+});
+
+test('a shared script injected at runtime fails', () => {
+  expectFailure(
+    withSite((dir) => editFile(dir, 'assets/js/site.js', (s) => `${s}\ndocument.createElement('script');\n`)),
+    /assets\/js\/site\.js: must not inject a <script> at runtime/,
+  );
+});
+
 test('an admin page without the site head fails', () => {
   // Without the js class the theme button stays hidden; without the fonts the
   // grade numerals and the body text fall back to system fonts.

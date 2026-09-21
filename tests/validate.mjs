@@ -564,6 +564,30 @@ if (exists('assets/js/i18n.js')) {
 const files = walk('');
 const codeFiles = files.filter((f) => ['.html', '.js', '.css'].includes(extname(f)));
 
+// Every shared script and stylesheet a page loads carries a ?v=<content hash>:
+// /assets/* is cached for a day, so a new file must never pair with a stale
+// cached copy of another one. Only relative page links are hashed; absolute
+// URLs (og:image, the JSON-LD logo) stay exempt.
+for (const f of files.filter((x) => x.endsWith('.html'))) {
+  const html = read(f);
+  for (const m of html.matchAll(/(?:src|href)="((?:\.\.\/)*assets\/(?:js|css)\/[^"]*)"/g)) {
+    if (!m[1].includes('?v=')) fail(`${f}: ${m[0]} must carry a ?v= content hash`);
+  }
+}
+
+// A shared script must never be injected at runtime (document.createElement):
+// the generator cannot hash a URL built inside a script, so the injected file
+// would load without ?v= and could pair with a stale cached copy. Load every
+// shared file as a defer page script instead.
+if (exists('assets/js')) {
+  for (const name of readdirSync(join(ROOT, 'assets', 'js'))) {
+    if (!name.endsWith('.js')) continue;
+    if (/createElement\(\s*['"]script['"]\s*\)/.test(read(`assets/js/${name}`))) {
+      fail(`assets/js/${name}: must not inject a <script> at runtime. Load the shared file as a defer page script instead, so tools/build_pages.mjs gives it a ?v= content hash.`);
+    }
+  }
+}
+
 // Answer keys live in data/results/ and tm25mlg/raspunsuri/ by design: the
 // answer-heading rule never runs there, but the class-mark rules do.
 for (const f of files.filter((x) => x.startsWith('data/results/') || x.startsWith(`${ADMIN_FOLDER}/raspunsuri/`))) {
