@@ -22,25 +22,19 @@
   var listEl = document.getElementById('admin-list');
   var searchEl = document.getElementById('admin-search');
   var filterEl = document.getElementById('admin-filter');
+  var gradeFilterEl = document.getElementById('admin-grade-filter');
   var countEl = document.getElementById('admin-count');
   var saveEl = document.getElementById('admin-save');
   var resetEl = document.getElementById('admin-reset');
   var statusEl = document.getElementById('admin-status');
 
-  // uid -> { m, topic, orig: { state, visibleFrom }, checked, when }.
+  // uid -> { m, topic, order, orig: { state, visibleFrom }, checked, when }.
   // orig is the last saved state; checked and when are what the row says now.
+  // order is the position in data/materials.source.json, the last tie-break.
   var rows = new Map();
-  // The topics in data-file order, for the same tie order as the grade pages.
-  var topicOrder = [];
   var readOnly = false;
   var busy = false;
   var pollTimer = null;
-  // The grade blocks the admin opened, kept across re-renders (filter,
-  // search, reset, save). null until the first plain render.
-  var openGrades = null;
-  // True when the last render had no search and no filter: only then do the
-  // open blocks show the admin's choice (a search opens every block).
-  var lastPlain = false;
 
   function esc(s) {
     return window.Shell.escapeHtml(s == null ? '' : s);
@@ -120,6 +114,8 @@
       + '<span class="m-meta">'
       + `<span class="admin-state" data-state="${esc(row.orig.state)}">${esc(stateLabel(row.orig))}</span>`
       + '<span class="admin-next" data-next hidden></span>'
+      + `<span class="admin-where">${esc(window.Site.gradeName(row.topic.grade))}</span>`
+      + `<span class="admin-where">${esc((row.topic.title && row.topic.title.ro) || row.topic.id)}</span>`
       + `<span>cod ${esc(uid)}</span>`
       + `<time class="m-date" datetime="${esc(m.published)}">${esc(window.Site.formatDate(m.published))}</time>`
       + resultsHtml
@@ -141,82 +137,37 @@
       + '</li>';
   }
 
-  // Grades in order, then topics and materials, newest first. At first only
-  // the first grade block is open; later the blocks the admin opened stay
-  // open. The search and the filter pick rows by the saved state, so a row
-  // never vanishes while it is being edited.
+  // One flat list, newest first. The grade and the topic ride on each row,
+  // because there are no headings any more. The search and both filters pick
+  // rows by the SAVED state, so a row never vanishes while it is being edited.
   function renderList() {
     var q = window.Catalog.normalize(searchEl.value.trim());
-    var only = selectedFilter();
-    if (lastPlain) {
-      openGrades = new Set();
-      listEl.querySelectorAll('details[data-grade]').forEach(function (block) {
-        if (block.open) openGrades.add(Number(block.getAttribute('data-grade')));
-      });
-    }
-    lastPlain = !q && !only;
-    var byGrade = new Map();
-    var shown = 0;
+    var filters = { state: selectedFilter(), grade: selectedGrade() };
+    var picked = [];
     rows.forEach(function (row, uid) {
-      // The results filter picks rows by the saved data, like the state
-      // filters do, so a row never vanishes while it is being edited.
-      if (only === 'results') {
-        if (!row.m.results) return;
-      } else if (only && row.orig.state !== only) {
-        return;
-      }
+      var test = { state: row.orig.state, grade: row.topic.grade, hasResults: !!row.m.results };
+      if (!V.adminMatches(test, filters)) return;
       if (q && !searchText(row).includes(q)) return;
-      shown += 1;
-      var grade = row.topic.grade;
-      if (!byGrade.has(grade)) byGrade.set(grade, []);
-      byGrade.get(grade).push(uid);
+      picked.push(uid);
     });
-    // Newest first, like the grade pages: the sort is stable, so equal dates
-    // keep their order in the data file.
-    var newestFirst = function (a, b) {
-      if (a.date === b.date) return 0;
-      return a.date < b.date ? 1 : -1;
-    };
-    var html = '';
-    var first = true;
-    Array.from(byGrade.keys()).sort(function (a, b) { return a - b; }).forEach(function (grade) {
-      var uids = byGrade.get(grade);
-      var byTopic = new Map();
-      topicOrder.forEach(function (topic) {
-        if (topic.grade === grade) byTopic.set(topic.id, { topic: topic, uids: [] });
-      });
-      uids.forEach(function (uid) {
-        byTopic.get(rows.get(uid).topic.id).uids.push(uid);
-      });
-      var entries = Array.from(byTopic.values())
-        .filter(function (entry) { return entry.uids.length; })
-        .map(function (entry) {
-          var sorted = entry.uids
-            .map(function (uid) { return { uid: uid, date: rows.get(uid).m.published }; })
-            .sort(newestFirst);
-          return { topic: entry.topic, uids: sorted.map(function (x) { return x.uid; }), date: sorted[0].date };
-        })
-        .sort(newestFirst);
-      // With a search or a filter, every matching grade opens.
-      var open = q || only || (openGrades ? openGrades.has(grade) : first);
-      first = false;
-      html += `<details class="year admin-grade" data-grade="${grade}"${open ? ' open' : ''}>`
-        + `<summary><h2>${esc(window.Site.gradeName(grade))}</h2>`
-        + `<span class="admin-grade-count">${esc(window.Site.countLabel(uids.length))}</span></summary>`;
-      entries.forEach(function (entry) {
-        html += '<section class="topic">'
-          + `<h3 class="topic-title">${esc((entry.topic.title && entry.topic.title.ro) || entry.topic.id)}</h3>`
-          + '<ul class="material-list">';
-        entry.uids.forEach(function (uid) {
-          html += rowHtml(uid, rows.get(uid));
-        });
-        html += '</ul></section>';
-      });
-      html += '</details>';
+    picked.sort(function (a, b) {
+      var ra = rows.get(a);
+      var rb = rows.get(b);
+      var x = V.adminSortKey({ published: ra.m.published, grade: ra.topic.grade, order: ra.order });
+      var y = V.adminSortKey({ published: rb.m.published, grade: rb.topic.grade, order: rb.order });
+      for (var i = 0; i < x.length; i += 1) {
+        if (x[i] !== y[i]) return x[i] - y[i];
+      }
+      return 0;
     });
-    listEl.innerHTML = html || '<p class="message">Niciun material nu se potrivește.</p>';
+    var html = picked.map(function (uid) {
+      return rowHtml(uid, rows.get(uid));
+    }).join('');
+    listEl.innerHTML = html
+      ? `<ul class="material-list">${html}</ul>`
+      : '<p class="message">Niciun material nu se potrivește.</p>';
     listEl.removeAttribute('aria-busy');
-    countEl.textContent = shown ? window.Site.plural(shown, 'count') : '';
+    countEl.textContent = picked.length ? window.Site.plural(picked.length, 'count') : '';
     rows.forEach(function (_row, uid) {
       refreshRow(uid);
     });
@@ -226,6 +177,12 @@
   function selectedFilter() {
     var active = filterEl.querySelector('[aria-pressed="true"]');
     return active ? active.getAttribute('data-filter') : '';
+  }
+
+  function selectedGrade() {
+    var active = gradeFilterEl.querySelector('[aria-pressed="true"]');
+    var value = active ? active.getAttribute('data-grade') : '';
+    return value ? Number(value) : null;
   }
 
   function rowEl(uid) {
@@ -322,9 +279,9 @@
   // --- Data ----------------------------------------------------------------
 
   function setData(data) {
-    topicOrder = data.topics || [];
-    var topics = new Map(topicOrder.map(function (t) { return [t.id, t]; }));
+    var topics = new Map((data.topics || []).map(function (t) { return [t.id, t]; }));
     rows = new Map();
+    var order = 0;
     (data.materials || []).forEach(function (m) {
       var topic = topics.get(m.topic);
       if (!topic) return;
@@ -332,6 +289,7 @@
       rows.set(m.uid, {
         m: m,
         topic: topic,
+        order: order++,
         orig: orig,
         checked: orig.state === 'visible',
         when: orig.state === 'scheduled' ? V.visibleFromToInput(orig.visibleFrom) : '',
@@ -497,6 +455,18 @@
   filterEl.querySelectorAll('[data-filter]').forEach(function (btn) {
     btn.addEventListener('click', function () {
       filterEl.querySelectorAll('[data-filter]').forEach(function (other) {
+        other.setAttribute('aria-pressed', String(other === btn));
+      });
+      renderList();
+    });
+  });
+  gradeFilterEl.querySelectorAll('[data-grade]').forEach(function (btn) {
+    var n = btn.getAttribute('data-grade');
+    // The chip shows the numeral; screen readers get the full grade name,
+    // exactly like the grade links in the site header.
+    if (n) btn.setAttribute('aria-label', window.Site.gradeName(Number(n)));
+    btn.addEventListener('click', function () {
+      gradeFilterEl.querySelectorAll('[data-grade]').forEach(function (other) {
         other.setAttribute('aria-pressed', String(other === btn));
       });
       renderList();

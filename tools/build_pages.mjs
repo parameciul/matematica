@@ -59,7 +59,7 @@ const PROFILES = [];
 // Search-engine verification tokens (audit F1). Empty until the property is
 // verified: paste the code from Search Console / Bing Webmaster Tools here and
 // regenerate. When set, renderHead emits the meta tag.
-export const GOOGLE_SITE_VERIFICATION = '';
+export const GOOGLE_SITE_VERIFICATION = 'lwpe3phdRnlGTaxwvpfcxbuygEudOHDa7i_hl_1wQQc';
 export const BING_SITE_VERIFICATION = '';
 
 export function esc(text) {
@@ -516,7 +516,7 @@ function renderMaterialPage({ data, material, topic, lang, dict, assetBase, page
     `<p><a class="more" href="${pageRoot}clasa-${topic.grade}.html">${esc(dict['material.allGrade'].replace('{grade}', gradeName))}</a></p></aside>`;
 
   const checkNote = material.results
-    ? `\n      <p class="note" id="check-note">${esc(dict['check.note'])}</p>\n      <p><button class="chip" type="button" id="check-reset" hidden>${esc(dict['check.reset'])}</button></p>`
+    ? `\n      <div class="check-bar"><p class="note" id="check-note">${esc(dict['check.note'])}</p><button class="chip" type="button" id="check-reset" hidden>${esc(dict['check.reset'])}</button></div>`
     : '';
   const main = `    <div class="page" id="material" data-id="${material.uid}"${material.results ? ` data-name="${Catalog.nameOf(material)}" data-results="${material.results.version}"` : ''}>
       ${headBlock}

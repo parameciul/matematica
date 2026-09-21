@@ -981,6 +981,28 @@ html:not(.js) .theme-btn {
 
 /* Material page */
 
+/* The check note and the "delete my answers" button are one row: two stacked
+   blocks pushed the first exercise a whole button-height further down. The
+   button is hidden until something is saved, so the note sits alone then. */
+.check-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1rem;
+  flex-wrap: wrap;
+  max-width: 50rem;
+  margin: 0 0 1rem;
+}
+
+.check-bar .note {
+  flex: 1 1 18rem;
+  margin: 0;
+}
+
+.check-bar .chip {
+  flex: 0 0 auto;
+}
+
 .crumbs ol {
   display: flex;
   flex-wrap: wrap;
@@ -997,10 +1019,10 @@ html:not(.js) .theme-btn {
   color: var(--muted);
 }
 
-.material-head h1 {
+#material-head h1 {
   max-width: 42rem;
   margin: 0.4rem 0 0.35rem;
-  font-size: clamp(1.8rem, 1.3rem + 2.2vw, 2.6rem);
+  font-size: clamp(1.7rem, 1.25rem + 1.1vw, 2.15rem);
   font-weight: 800;
   line-height: 1.12;
   text-wrap: balance;
@@ -1086,9 +1108,115 @@ html:not(.js) .theme-btn {
   line-height: 1.65;
 }
 
+/* Wide screens: the PDF button sits in a second column beside the title
+   instead of costing a full row under the date. Explicit rows, because the
+   English pages and the PDF-only materials also put a note span in
+   .material-actions, and a joc or a quiz has no .material-actions at all. */
+@media (min-width: 40rem) {
+  #material-head {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: 1.5rem;
+    align-items: start;
+  }
+
+  #material-head .crumbs {
+    grid-area: 1 / 1 / 2 / 3;
+  }
+
+  #material-head .badge {
+    grid-area: 2 / 1 / 3 / 2;
+  }
+
+  #material-head h1 {
+    grid-area: 3 / 1 / 4 / 2;
+  }
+
+  #material-head .material-meta {
+    grid-area: 4 / 1 / 5 / 2;
+    margin-bottom: 1.25rem;
+  }
+
+  #material-head .material-actions {
+    grid-area: 2 / 2 / 5 / 3;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.45rem;
+    max-width: 16rem;
+    margin: 0.35rem 0 1.25rem;
+  }
+
+  #material-head .material-actions .note {
+    font-size: 0.9rem;
+  }
+}
+
 @media (max-width: 40rem) {
+  /* Phone: the head must not eat the first screen. The DOM order is crumbs,
+     badge, h1, date, PDF; grid puts the badge and the date on one row under
+     the title without the generator having to change. Explicit rows, because
+     .material-actions can also carry a note span on the English pages. */
+  #material-head {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    column-gap: 0.6rem;
+    row-gap: 0.3rem;
+    align-items: baseline;
+  }
+
+  #material-head .crumbs {
+    grid-area: 1 / 1 / 2 / 3;
+  }
+
+  #material-head h1 {
+    grid-area: 2 / 1 / 3 / 3;
+    margin: 0.1rem 0 0.15rem;
+    font-size: 1.5rem;
+    line-height: 1.15;
+  }
+
+  #material-head .badge {
+    grid-area: 3 / 1 / 4 / 2;
+  }
+
+  #material-head .material-meta {
+    grid-area: 3 / 2 / 4 / 3;
+    margin: 0;
+    font-size: 0.85rem;
+  }
+
+  #material-head .material-actions {
+    grid-area: 4 / 1 / 5 / 3;
+    margin: 0.55rem 0 1rem;
+  }
+
+  /* One line, swipe for the rest. Wrapped crumbs cost two lines of the first
+     screen and the last crumb is the one that matters. */
+  .crumbs ol {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    margin-bottom: 0.4rem;
+    font-size: 0.85rem;
+  }
+
+  .crumbs ol::-webkit-scrollbar {
+    display: none;
+  }
+
+  .crumbs li {
+    white-space: nowrap;
+  }
+
   .material-body {
     padding: 1rem;
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+
+  .note {
+    padding: 0.5rem 0.7rem;
+    font-size: 0.95rem;
   }
 }
 
@@ -1146,16 +1274,29 @@ html:not(.js) .theme-btn {
   background: var(--paper);
 }
 
+/* Grid, not flex: options then line up in columns instead of reflowing into a
+   ragged block. auto-fit picks as many columns as fit, so a phone gets two and
+   a desktop four, and a long option drops to one column on its own. */
 .choices {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.25rem 1.75rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+  gap: 0.4rem 0.9rem;
   padding: 0;
   list-style: none;
 }
 
 .material-body .choices li {
   margin: 0;
+  min-width: 0;
+}
+
+/* data-ex often sits on the <ul class="choices"> itself, so check.js appends
+   the button INSIDE this grid. Give it a whole row, or it lands in a cell
+   beside the last option. */
+.choices .check-btn {
+  grid-column: 1 / -1;
+  justify-self: start;
+  margin: 0.55rem 0 0;
 }
 
 /* Highlighted boxes cover a lot of page, so they take the pale fill and put the
@@ -1182,8 +1323,17 @@ html:not(.js) .theme-btn {
   margin-bottom: 0;
 }
 
+/* A hairline between exercises: a long one then has a visible start and end
+   instead of running into its neighbour. The old bottom margin goes, or the
+   gap would double (margin + padding) and cost more scrolling than the
+   smaller font just saved. */
 .exercises > li {
-  margin-bottom: 1.1rem;
+  margin-bottom: 0;
+}
+
+.exercises > li + li {
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--rule);
 }
 
 /* Result checking: one exercise at a time. The green and the red reuse the
@@ -1209,8 +1359,14 @@ html:not(.js) .theme-btn {
   color: var(--sheet);
 }
 
+/* The result is the answer to the student's question, so it reads at the size
+   of the exercise around it, not at kind-badge size. inherit keeps it in step
+   with the article on a phone without a second rule. */
 .check-chip {
   margin-left: 0.6rem;
+  padding: 0.05rem 0.55rem;
+  font-size: inherit;
+  line-height: 1.4;
   white-space: nowrap;
 }
 

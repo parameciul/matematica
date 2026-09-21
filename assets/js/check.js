@@ -114,6 +114,18 @@
   let verdict = null;
   let body = null;
   let titleEl = null;
+  // A correct answer closes the dialog by itself after a moment. The id is
+  // kept so a re-open, an Escape or a Renunță can cancel a pending close.
+  let closeTimer = null;
+
+  const CLOSE_AFTER = 1100;
+
+  function cancelClose() {
+    if (closeTimer) {
+      clearTimeout(closeTimer);
+      closeTimer = null;
+    }
+  }
 
   function ensureDialog() {
     if (dialog) return;
@@ -138,6 +150,7 @@
     dialog.appendChild(row);
     document.body.appendChild(dialog);
     dialog.addEventListener('close', () => {
+      cancelClose();
       if (opener && opener.isConnected) opener.focus();
       opener = null;
     });
@@ -151,6 +164,7 @@
 
   function openFor(box, key) {
     ensureDialog();
+    cancelClose();
     opener = box.querySelector('.check-btn');
     titleEl.textContent = t('check.exercise').replace('{key}', keyLabel(key));
     body.textContent = '';
@@ -276,6 +290,7 @@
     const found = await ensureItems();
     if (!found) {
       opener = btn;
+      cancelClose();
       titleEl.textContent = t('check.exercise').replace('{key}', keyLabel(key));
       body.textContent = '';
       say(t('check.offline'), 'error');
@@ -287,6 +302,9 @@
   }
 
   async function onSubmit() {
+    // A pending auto-close means this answer was already accepted: a second
+    // press must not run the check again.
+    if (closeTimer) return;
     const key = dialog.dataset.key;
     if (!key || !items || !items[key]) return;
     const item = items[key];
@@ -314,6 +332,13 @@
     }
     if (ok) {
       say(`${t('check.ok')} ✓`, 'ok');
+      // The green chip is on the page already, so there is nothing left to do
+      // here. Closing by itself saves a press; the pause is long enough to
+      // read the word first.
+      closeTimer = setTimeout(() => {
+        closeTimer = null;
+        if (dialog.open) dialog.close();
+      }, CLOSE_AFTER);
     } else {
       say(`${t('check.retry')} ✗`, 'bad');
       const again = el('button', 'chip check-again', t('check.tryAgain'));
