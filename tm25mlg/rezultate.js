@@ -8,7 +8,10 @@
   // Same addressing as the admin list: the API sits in this page's folder,
   // the static files next to it. The local preview (python -m http.server)
   // has no Functions: the material then comes read-only from the source file.
-  var PAGE_DIR = location.pathname.replace(/\/rezultate\.html$/, '').replace(/\/?$/, '/');
+  // Cloudflare Pages redirects rezultate.html to its extension-less counterpart
+  // (/tm25mlg/rezultate.html -> /tm25mlg/rezultate), so both shapes strip to
+  // the folder.
+  var PAGE_DIR = location.pathname.replace(/\/rezultate(\.html)?\/?$/, '').replace(/\/?$/, '/');
   var API = PAGE_DIR + 'api/';
   var IS_LOCAL = /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname);
   var LOCAL_SOURCE = PAGE_DIR + '../data/materials.source.json';
