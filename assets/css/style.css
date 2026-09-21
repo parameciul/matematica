@@ -1290,13 +1290,16 @@ html:not(.js) .theme-btn {
   min-width: 0;
 }
 
-/* data-ex often sits on the <ul class="choices"> itself, so check.js appends
-   the button INSIDE this grid. Give it a whole row, or it lands in a cell
-   beside the last option. */
+/* A choice button normally sits at the end of the question paragraph above
+   (see placeButton in check.js). When there is no such paragraph, the button
+   stays INSIDE this grid: it flows right after the options, on the same row
+   when the row still has room, wrapped to its own row otherwise. Either way
+   it never stretches, and the grid's row gap keeps the distance when it
+   wraps, so it needs no margin of its own. */
 .choices .check-btn {
-  grid-column: 1 / -1;
   justify-self: start;
-  margin: 0.55rem 0 0;
+  align-self: center;
+  margin: 0;
 }
 
 /* Highlighted boxes cover a lot of page, so they take the pale fill and put the

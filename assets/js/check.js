@@ -65,8 +65,19 @@
 
   // --- Page marks -----------------------------------------------------------
 
+  // The button is tagged with its exercise key because it does not always
+  // live inside its box: a choice button sits at the end of the question
+  // paragraph above the options (see placeButton).
+  function buttonFor(key) {
+    return main.querySelector(`.check-btn[data-check-for="${key}"]`);
+  }
+
   function clearMark(box) {
     box.querySelectorAll('.check-chip').forEach((n) => n.remove());
+    const key = box.getAttribute('data-ex');
+    const btn = key ? buttonFor(key) : null;
+    if (btn && btn.parentNode && btn.parentNode !== box)
+      btn.parentNode.querySelectorAll('.check-chip').forEach((n) => n.remove());
     box.querySelectorAll('.check-ok, .check-bad').forEach((n) => n.classList.remove('check-ok', 'check-bad'));
   }
 
@@ -94,7 +105,7 @@
       const key = box.getAttribute('data-ex');
       const entry = saved[key];
       if (!entry) return;
-      const btn = box.querySelector('.check-btn');
+      const btn = buttonFor(key);
       if (entry.pick !== undefined) markChoice(box, entry.pick, entry.ok);
       else if (entry.a !== undefined && btn) markText(box, entry.a, entry.ok, btn);
     });
@@ -165,7 +176,7 @@
   function openFor(box, key) {
     ensureDialog();
     cancelClose();
-    opener = box.querySelector('.check-btn');
+    opener = buttonFor(key);
     titleEl.textContent = t('check.exercise').replace('{key}', keyLabel(key));
     body.textContent = '';
     say('', 'none');
@@ -271,7 +282,7 @@
         const key = box.getAttribute('data-ex');
         const item = items[key];
         if (!item || item.check === false) {
-          const btn = box.querySelector('.check-btn');
+          const btn = buttonFor(key);
           if (btn) btn.remove();
           clearMark(box);
         }
@@ -282,9 +293,9 @@
 
   async function onCheck(event) {
     const btn = event.currentTarget;
-    const box = btn.closest('[data-ex]');
-    if (!box) return;
-    const key = box.getAttribute('data-ex');
+    const key = btn.getAttribute('data-check-for');
+    const box = key ? main.querySelector(`[data-ex="${key}"]`) : null;
+    if (!box || !key) return;
     ensureDialog();
     // The first press loads the file; nothing loads before that.
     const found = await ensureItems();
@@ -322,7 +333,7 @@
       return;
     }
     const ok = await window.Answers.verify(item, given.value);
-    const btn = box.querySelector('.check-btn');
+    const btn = buttonFor(key);
     if (item.kind === 'choice') {
       markChoice(box, given.pick, ok);
       remember(key, { pick: given.pick, ok });
@@ -374,10 +385,23 @@
     // the button to the `<li>` drops it on its own line under the paragraph,
     // costing a full row per exercise. Appending it to the last paragraph
     // keeps it on the same line as the text, like the `<p data-ex>` case.
-    // A `<ul class="choices">` keeps its own row (see style.css): its last
-    // child is an option `<li>`, never a `<p>`, so it stays untouched here.
+    // A choice box `<ul class="choices" data-ex>` follows its question
+    // paragraph: the button goes at the end of that line, above the options,
+    // instead of costing a row under them.
     // Never move into a paragraph that is itself an answer box: nested
     // boxes would mix two buttons in one paragraph and misroute clicks.
+    if (box.tagName === 'UL') {
+      const prev = box.previousElementSibling;
+      if (
+        prev &&
+        prev.tagName === 'P' &&
+        !prev.hasAttribute('data-ex') &&
+        !prev.querySelector('[data-ex]')
+      ) {
+        prev.appendChild(btn);
+        return;
+      }
+    }
     const last = box.lastElementChild;
     if (
       last &&
@@ -393,6 +417,7 @@
   main.querySelectorAll('[data-ex]').forEach((box) => {
     const btn = el('button', 'check-btn', t('check.verify'));
     btn.type = 'button';
+    btn.setAttribute('data-check-for', box.getAttribute('data-ex'));
     btn.addEventListener('click', onCheck);
     placeButton(box, btn);
   });
