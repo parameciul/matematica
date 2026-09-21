@@ -997,7 +997,7 @@ html:not(.js) .theme-btn {
   color: var(--muted);
 }
 
-.material-head h1 {
+#material-head h1 {
   max-width: 42rem;
   margin: 0.4rem 0 0.35rem;
   font-size: clamp(1.8rem, 1.3rem + 2.2vw, 2.6rem);
@@ -1087,6 +1087,62 @@ html:not(.js) .theme-btn {
 }
 
 @media (max-width: 40rem) {
+  /* Phone: the head must not eat the first screen. The DOM order is crumbs,
+     badge, h1, date, PDF; grid puts the badge and the date on one row under
+     the title without the generator having to change. Explicit rows, because
+     .material-actions can also carry a note span on the English pages. */
+  #material-head {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    column-gap: 0.6rem;
+    row-gap: 0.3rem;
+    align-items: baseline;
+  }
+
+  #material-head .crumbs {
+    grid-area: 1 / 1 / 2 / 3;
+  }
+
+  #material-head h1 {
+    grid-area: 2 / 1 / 3 / 3;
+    margin: 0.1rem 0 0.15rem;
+    font-size: 1.5rem;
+    line-height: 1.15;
+  }
+
+  #material-head .badge {
+    grid-area: 3 / 1 / 4 / 2;
+  }
+
+  #material-head .material-meta {
+    grid-area: 3 / 2 / 4 / 3;
+    margin: 0;
+    font-size: 0.85rem;
+  }
+
+  #material-head .material-actions {
+    grid-area: 4 / 1 / 5 / 3;
+    margin: 0.55rem 0 1rem;
+  }
+
+  /* One line, swipe for the rest. Wrapped crumbs cost two lines of the first
+     screen and the last crumb is the one that matters. */
+  .crumbs ol {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    margin-bottom: 0.4rem;
+    font-size: 0.85rem;
+  }
+
+  .crumbs ol::-webkit-scrollbar {
+    display: none;
+  }
+
+  .crumbs li {
+    white-space: nowrap;
+  }
+
   .material-body {
     padding: 1rem;
   }
