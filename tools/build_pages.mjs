@@ -516,7 +516,7 @@ function renderMaterialPage({ data, material, topic, lang, dict, assetBase, page
     `<p><a class="more" href="${pageRoot}clasa-${topic.grade}.html">${esc(dict['material.allGrade'].replace('{grade}', gradeName))}</a></p></aside>`;
 
   const checkNote = material.results
-    ? `\n      <p class="note" id="check-note">${esc(dict['check.note'])}</p>\n      <p><button class="chip" type="button" id="check-reset" hidden>${esc(dict['check.reset'])}</button></p>`
+    ? `\n      <div class="check-bar"><p class="note" id="check-note">${esc(dict['check.note'])}</p><button class="chip" type="button" id="check-reset" hidden>${esc(dict['check.reset'])}</button></div>`
     : '';
   const main = `    <div class="page" id="material" data-id="${material.uid}"${material.results ? ` data-name="${Catalog.nameOf(material)}" data-results="${material.results.version}"` : ''}>
       ${headBlock}

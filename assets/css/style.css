@@ -981,6 +981,28 @@ html:not(.js) .theme-btn {
 
 /* Material page */
 
+/* The check note and the "delete my answers" button are one row: two stacked
+   blocks pushed the first exercise a whole button-height further down. The
+   button is hidden until something is saved, so the note sits alone then. */
+.check-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1rem;
+  flex-wrap: wrap;
+  max-width: 50rem;
+  margin: 0 0 1rem;
+}
+
+.check-bar .note {
+  flex: 1 1 18rem;
+  margin: 0;
+}
+
+.check-bar .chip {
+  flex: 0 0 auto;
+}
+
 .crumbs ol {
   display: flex;
   flex-wrap: wrap;
@@ -1000,7 +1022,7 @@ html:not(.js) .theme-btn {
 #material-head h1 {
   max-width: 42rem;
   margin: 0.4rem 0 0.35rem;
-  font-size: clamp(1.8rem, 1.3rem + 2.2vw, 2.6rem);
+  font-size: clamp(1.7rem, 1.25rem + 1.1vw, 2.15rem);
   font-weight: 800;
   line-height: 1.12;
   text-wrap: balance;
@@ -1084,6 +1106,49 @@ html:not(.js) .theme-btn {
   background: var(--sheet);
   font-size: 1.125rem;
   line-height: 1.65;
+}
+
+/* Wide screens: the PDF button sits in a second column beside the title
+   instead of costing a full row under the date. Explicit rows, because the
+   English pages and the PDF-only materials also put a note span in
+   .material-actions, and a joc or a quiz has no .material-actions at all. */
+@media (min-width: 40rem) {
+  #material-head {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: 1.5rem;
+    align-items: start;
+  }
+
+  #material-head .crumbs {
+    grid-area: 1 / 1 / 2 / 3;
+  }
+
+  #material-head .badge {
+    grid-area: 2 / 1 / 3 / 2;
+  }
+
+  #material-head h1 {
+    grid-area: 3 / 1 / 4 / 2;
+  }
+
+  #material-head .material-meta {
+    grid-area: 4 / 1 / 5 / 2;
+    margin-bottom: 1.25rem;
+  }
+
+  #material-head .material-actions {
+    grid-area: 2 / 2 / 5 / 3;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.45rem;
+    max-width: 16rem;
+    margin: 0.35rem 0 1.25rem;
+  }
+
+  #material-head .material-actions .note {
+    font-size: 0.9rem;
+  }
 }
 
 @media (max-width: 40rem) {
