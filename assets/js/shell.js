@@ -33,9 +33,7 @@
       .replace(/"/g, '&quot;');
   }
 
-  // opts: { pageRoot, lang, selfHref, altHref, dict, grades: [{ n, name, short }] }
-  // short is the label inside the search box's grade filter: the Roman numeral
-  // in Romanian, the digit in English. name is the full "Clasa a VI-a".
+  // opts: { pageRoot, lang, selfHref, altHref, dict, grades: [{ n, name }] }
   // pageRoot points at the folder with the same-language pages ('' or '../').
   // selfHref is this page, altHref the same page in the other language. dict is I18N[lang].
   function headerHtml(opts) {
@@ -45,9 +43,6 @@
     const text = (key) => dict[key] || key;
     const grades = (opts.grades || []).map((g) => (
       `<a href="${pageRoot}clasa-${g.n}.html" data-grade-link="${g.n}"${g.n === 9 ? ' class="gap"' : ''} aria-label="${escapeHtml(g.name)}">${g.n}</a>`
-    )).join('');
-    const gradeOptions = (opts.grades || []).map((g) => (
-      `<option value="${g.n}">${escapeHtml(g.short || String(g.n))}</option>`
     )).join('');
     // hreflang on the switch promises a translated page. With no pair (href="#")
     // it is left out, like the head hreflang links.
@@ -76,11 +71,11 @@
       `<label class="sr-only" for="site-search-input" data-i18n="search.label">${escapeHtml(text('search.label'))}</label>` +
       SEARCH_ICON +
       `<input id="site-search-input" name="q" type="search" autocomplete="off" spellcheck="false" enterkeyhint="search" placeholder="${escapeHtml(text('search.placeholder'))}">` +
-      `<label class="sr-only" for="site-search-grade" data-i18n="search.grade">${escapeHtml(text('search.grade'))}</label>` +
-      `<select class="search-grade" id="site-search-grade" name="c" title="${escapeHtml(text('search.grade'))}">` +
-      `<option value="">${escapeHtml(text('search.anyGrade'))}</option>` +
-      gradeOptions +
-      `</select>` +
+      // The grade filter is a row of chips at the top of the suggestion panel
+      // (assets/js/searchbox.js), not a menu in the bar: the bar has no room and
+      // the chips show every grade at once. This field carries the chosen one to
+      // the search page when the form is submitted.
+      `<input type="hidden" id="site-search-grade" name="c" value="">` +
       `</form>` +
       `<div class="header-tools">` +
       `<button type="button" class="icon-btn" data-toggle="search" aria-controls="site-search" aria-expanded="false">${SEARCH_ICON}<span class="sr-only" data-i18n="search.open">${escapeHtml(text('search.open'))}</span></button>` +

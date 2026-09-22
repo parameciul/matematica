@@ -131,9 +131,6 @@
 
   render();
   if (!query) document.getElementById('search-page-q').focus();
-  // Keep the header's own grade filter on the same grade this page is showing.
-  const headerGrade = document.getElementById('site-search-grade');
-  if (headerGrade) headerGrade.value = grade ? String(grade) : '';
   Site.loadData().then(
     (loaded) => {
       data = loaded;

@@ -2,15 +2,104 @@
 // Each row carries the same leading block as a list row (grade, type, publish date)
 // and the material's description as its tooltip. "See all results" sits under the
 // scrolling list, pinned, so the total count is readable however long the list is.
+// The grade filter is a row of chips at the top of that panel, not a menu in the
+// bar: the bar has no room for one, and the chips show every grade at once.
 (function () {
   const form = document.getElementById('site-search');
   const input = document.getElementById('site-search-input');
   if (!form || !input) return;
 
   const MAX_RESULTS = 8;
-  const gradeSelect = document.getElementById('site-search-grade');
+  // The chips are not a form field, so the picked grade rides in a hidden one:
+  // pressing Enter must reach the search page with the same filter.
+  const gradeField = document.getElementById('site-search-grade');
+  let grade = 0;
+
+  // On the search page the address already names a grade: start on the same one.
+  function gradeFromUrl() {
+    const n = Number(new URLSearchParams(window.location.search).get('c'));
+    return Number.isInteger(n) && n >= 5 && n <= 12 ? n : 0;
+  }
+
+  function setGrade(n) {
+    grade = n;
+    if (gradeField) gradeField.value = grade ? String(grade) : '';
+  }
+
+  setGrade(gradeFromUrl());
+
   const panel = Site.el('div', 'search-panel');
   panel.hidden = true;
+
+  // The grade chips sit above the list and never scroll with it.
+
+  const chipBar = Site.el('div', 'search-grades');
+  chipBar.setAttribute('role', 'group');
+  chipBar.setAttribute('aria-label', t('search.grade'));
+  const barLabel = Site.el('span', 'search-grades-label', `${t('search.grade')}:`);
+  chipBar.appendChild(barLabel);
+  const chips = [];
+
+  function markChips() {
+    chips.forEach(({ node, value }) => node.setAttribute('aria-pressed', String(value === grade)));
+  }
+
+  function pickGrade(n) {
+    setGrade(grade === n ? 0 : n);
+    markChips();
+    update();
+  }
+
+  // The chips take the focus one at a time (a roving tabindex), so the arrow
+  // keys walk the row instead of the browser's own tab order.
+  function focusChip(index) {
+    const i = Math.max(0, Math.min(chips.length - 1, index));
+    chips.forEach(({ node }, j) => { node.tabIndex = j === i ? 0 : -1; });
+    chips[i].node.focus();
+  }
+
+  function focusChipRow() {
+    if (panel.hidden) update();
+    if (panel.hidden) return;
+    const at = chips.findIndex(({ value }) => value === grade);
+    focusChip(at < 0 ? 0 : at);
+  }
+
+  // The Romanian pages name a grade with its Roman numeral, English with the
+  // digit, like the badges on the rows the filter narrows.
+  function chipLabel(n) {
+    if (n === 0) return t('search.anyGrade');
+    return getLang() === 'ro' ? Catalog.ROMAN[n] : String(n);
+  }
+
+  [0, 5, 6, 7, 8, 9, 10, 11, 12].forEach((n) => {
+    const chip = Site.el('button', 'chip', chipLabel(n));
+    chip.type = 'button';
+    chip.tabIndex = -1;
+    chip.setAttribute('aria-pressed', String(n === grade));
+    // A mouse click must not move the focus: the panel would close on the way.
+    chip.addEventListener('mousedown', (event) => event.preventDefault());
+    chip.addEventListener('click', () => {
+      pickGrade(n);
+      if (document.activeElement !== chip) input.focus();
+    });
+    chip.addEventListener('keydown', (event) => {
+      const at = chips.findIndex((c) => c.node === chip);
+      if (event.key === 'ArrowRight') {
+        event.preventDefault();
+        focusChip(at + 1 >= chips.length ? 0 : at + 1);
+      } else if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        if (at === 0) input.focus();
+        else focusChip(at - 1);
+      } else if (event.key === 'ArrowDown' || event.key === 'ArrowUp' || event.key === 'Escape') {
+        event.preventDefault();
+        input.focus();
+      }
+    });
+    chips.push({ node: chip, value: n });
+    chipBar.appendChild(chip);
+  });
   const list = Site.el('ul', 'search-list');
   list.id = 'site-search-list';
   list.setAttribute('role', 'listbox');
@@ -21,7 +110,7 @@
   const all = Site.el('a', 'search-all');
   all.hidden = true;
   all.addEventListener('mousedown', (event) => event.preventDefault());
-  panel.append(list, all);
+  panel.append(chipBar, list, all);
   form.appendChild(panel);
   input.setAttribute('role', 'combobox');
   input.setAttribute('aria-autocomplete', 'list');
@@ -32,11 +121,6 @@
   let loading = false;
   let options = []; // [{ node, href }]
   let active = -1;
-
-  function chosenGrade() {
-    const n = gradeSelect ? Number(gradeSelect.value) : 0;
-    return Number.isInteger(n) && n >= 5 && n <= 12 ? n : 0;
-  }
 
   function searchPageUrl(query, grade) {
     const params = new URLSearchParams();
@@ -96,11 +180,20 @@
 
   function update() {
     const query = input.value.trim();
-    const grade = chosenGrade();
     const typed = Catalog.normalize(query).replace(/\s+/g, '').length >= 2;
-    // A picked grade is a filter on its own: it opens the list with no words typed.
-    if (!data || (!typed && !grade)) {
+    if (!data) {
       close();
+      return;
+    }
+    // The chips are the grade filter, so they must show the moment the box is
+    // used: an empty box opens the panel with the chips alone, as an invitation.
+    if (!typed && !grade) {
+      list.textContent = '';
+      options = [];
+      setActive(-1);
+      all.hidden = true;
+      panel.hidden = false;
+      input.setAttribute('aria-expanded', 'true');
       return;
     }
     const results = typed
@@ -138,7 +231,7 @@
     Site.loadData().then(
       (loaded) => {
         data = loaded;
-        if (document.activeElement === input) update();
+        if (form.contains(document.activeElement)) update();
       },
       () => {
         loading = false;
@@ -146,20 +239,23 @@
     );
   }
 
-  input.addEventListener('focus', ensureData);
+  input.addEventListener('focus', () => {
+    ensureData();
+    update();
+  });
   input.addEventListener('input', () => {
     ensureData();
     update();
   });
-  input.addEventListener('blur', close);
-  if (gradeSelect) {
-    gradeSelect.addEventListener('focus', ensureData);
-    gradeSelect.addEventListener('change', () => {
-      ensureData();
-      update();
-      input.focus();
-    });
-  }
+  // The chips can hold the focus themselves, so a blur inside the box is not a
+  // goodbye. Only a focus that lands outside forgets the grade and closes.
+  form.addEventListener('focusout', (event) => {
+    if (event.relatedTarget && form.contains(event.relatedTarget)) return;
+    // Back to whatever the address says, which on the search page is its own grade.
+    setGrade(gradeFromUrl());
+    markChips();
+    close();
+  });
   input.addEventListener('keydown', (event) => {
     if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
       if (panel.hidden) update();
@@ -168,6 +264,12 @@
       const last = options.length - 1;
       if (event.key === 'ArrowDown') setActive(active >= last ? 0 : active + 1);
       else setActive(active <= 0 ? last : active - 1);
+    } else if (event.key === 'ArrowRight' && input.selectionStart === input.value.length
+        && input.selectionStart === input.selectionEnd) {
+      // At the end of the words the caret has nowhere left to go, so the right
+      // arrow steps out of the box and into the class filter.
+      event.preventDefault();
+      focusChipRow();
     } else if (event.key === 'Enter') {
       // The form holds a text box and a grade menu but no submit button, so a
       // browser may not submit it by itself. Send it on purpose: Enter opens the
@@ -183,6 +285,9 @@
   });
   Site.onLangChange(() => {
     list.setAttribute('aria-label', t('search.label'));
+    chipBar.setAttribute('aria-label', t('search.grade'));
+    barLabel.textContent = `${t('search.grade')}:`;
+    chips.forEach(({ node, value }) => { node.textContent = chipLabel(value); });
     if (!panel.hidden) update();
   });
 })();

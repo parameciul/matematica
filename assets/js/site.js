@@ -201,7 +201,7 @@
       selfHref: '#',
       altHref: alt ? alt.getAttribute('href') : '#',
       dict: window.I18N ? window.I18N[lang] : {},
-      grades: [5, 6, 7, 8, 9, 10, 11, 12].map((n) => ({ n, name: gradeName(n), short: lang === 'ro' ? Catalog.ROMAN[n] : String(n) })),
+      grades: [5, 6, 7, 8, 9, 10, 11, 12].map((n) => ({ n, name: gradeName(n) })),
     };
   }
 

@@ -271,8 +271,6 @@ a:hover {
   border-color: var(--red);
 }
 
-/* One pill holds the search box and the grade filter, so the header keeps the
-   width of a single control while the filter stays next to what it filters. */
 .search {
   position: relative;
   display: flex;
@@ -293,7 +291,7 @@ a:hover {
 .search input {
   flex: 1 1 auto;
   min-width: 0;
-  padding: 0.35rem 0.4rem 0.35rem 2.3rem;
+  padding: 0.35rem 0.9rem 0.35rem 2.3rem;
   border: 0;
   background: none;
   color: var(--text);
@@ -310,24 +308,6 @@ a:hover {
   opacity: 1;
 }
 
-.search-grade {
-  flex: none;
-  align-self: stretch;
-  padding: 0 0.15rem 0 0.35rem;
-  border: 0;
-  border-left: 1.5px solid var(--rule);
-  border-radius: 0 999px 999px 0;
-  background: none;
-  color: var(--text);
-  font: inherit;
-  font-size: 0.85rem;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-.search-grade:focus {
-  outline: none;
-}
 
 .search-icon {
   width: 1.05rem;
@@ -1624,9 +1604,51 @@ html:not(.js) .theme-btn {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
 }
 
+/* The grade filter: a quiet row above the list that never scrolls with it.
+   Small, hollow pills, so the panel still reads as a list of materials. */
+.search-grades {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.1rem 0.2rem 0.4rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.search-grades-label {
+  margin-right: 0.2rem;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.search-grades .chip {
+  min-height: 0;
+  min-width: 1.5rem;
+  padding: 0.05rem 0.35rem;
+  border-width: 1px;
+  background: none;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.search-grades .chip:hover {
+  color: var(--ink);
+}
+
+.search-grades .chip[aria-pressed="true"] {
+  background: var(--ink);
+  color: var(--sheet);
+}
+
+.search-grades .chip:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 1px;
+}
+
 .search-list {
   margin: 0;
-  padding: 0;
+  padding: 0.35rem 0 0;
   overflow-y: auto;
   list-style: none;
 }

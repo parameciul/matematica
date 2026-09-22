@@ -234,7 +234,7 @@ function headerFor({ lang, dict, pageRoot, selfFile, altFile }) {
     selfHref: relHref(selfFile, selfFile),
     altHref: altFile ? relHref(selfFile, altFile) : '#',
     dict,
-    grades: [5, 6, 7, 8, 9, 10, 11, 12].map((n) => ({ n, name: gradeNameOf(n, lang), short: lang === 'ro' ? Catalog.ROMAN[n] : String(n) })),
+    grades: [5, 6, 7, 8, 9, 10, 11, 12].map((n) => ({ n, name: gradeNameOf(n, lang) })),
   });
 }
 
