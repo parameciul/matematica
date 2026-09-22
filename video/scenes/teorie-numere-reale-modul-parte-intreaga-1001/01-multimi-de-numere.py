@@ -45,12 +45,17 @@ from theme import (  # noqa: E402
     title,
 )
 
-VOICE = "fr-FR-VivienneMultilingualNeural"
+VOICE = "ro-RO-AlinaNeural"
+# A little under the voice's own pace: it reads a lesson more calmly, and it leaves more
+# room between bookmarks for the animations.
+RATE = "-8%"
 
 
 class MultimiDeNumere(BilingualVoiceoverScene):
     def construct(self):
-        self.set_speech_service(EdgeTTSService(voice=VOICE), create_subcaption=True)
+        self.set_speech_service(
+            EdgeTTSService(voice=VOICE, rate=RATE), create_subcaption=True
+        )
         self.opening()
         self.naturale()
         self.intregi()
