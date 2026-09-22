@@ -138,7 +138,8 @@
       ],
       "import": {
         "date": "2026-09-18",
-        "workflow": 2
+        "workflow": 2,
+        "pdf": "generated"
       }
     },
     {
