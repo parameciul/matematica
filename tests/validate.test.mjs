@@ -12,7 +12,7 @@ import { writeSite } from '../tools/build_pages.mjs';
 const REPO = join(dirname(fileURLToPath(import.meta.url)), '..');
 const VALIDATOR = join(REPO, 'tests', 'validate.mjs');
 // Local work files that are not part of the site.
-const SKIP = [/\.git([/\\]|$)/, /\.work([/\\]|$)/, /__pycache__/, /\.pytest_cache/, /SEO Improvements plan\.md$/];
+const SKIP = [/\.git([/\\]|$)/, /\.work([/\\]|$)/, /\.venv([/\\]|$)/, /__pycache__/, /\.pytest_cache/, /SEO Improvements plan\.md$/];
 const SAMPLE = 'sample-material';
 const SAMPLE_UID = '9901';
 const SAMPLE_NAME = `${SAMPLE}-${SAMPLE_UID}`;

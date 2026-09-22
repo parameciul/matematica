@@ -11,7 +11,7 @@ import { spawnSync } from 'node:child_process';
 const REPO = join(dirname(fileURLToPath(import.meta.url)), '..');
 const MATERIAL = join(REPO, 'tools', 'material.mjs');
 const RESULTS = join(REPO, 'tools', 'results.mjs');
-const SKIP = [/\.git([/\\]|$)/, /\.work([/\\]|$)/, /node_modules/, /__pycache__/, /\.pytest_cache/];
+const SKIP = [/\.git([/\\]|$)/, /\.work([/\\]|$)/, /node_modules/, /\.venv([/\\]|$)/, /__pycache__/, /\.pytest_cache/];
 
 function run(root, tool, args) {
   const res = spawnSync(process.execPath, [tool, ...args], {

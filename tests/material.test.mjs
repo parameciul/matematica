@@ -11,7 +11,7 @@ import { writeSite } from '../tools/build_pages.mjs';
 
 const REPO = join(dirname(fileURLToPath(import.meta.url)), '..');
 const TOOL = join(REPO, 'tools', 'material.mjs');
-const SKIP = [/\.git([/\\]|$)/, /\.work([/\\]|$)/, /node_modules/, /__pycache__/, /\.pytest_cache/];
+const SKIP = [/\.git([/\\]|$)/, /\.work([/\\]|$)/, /node_modules/, /\.venv([/\\]|$)/, /__pycache__/, /\.pytest_cache/];
 
 function run(root, args) {
   const res = spawnSync(process.execPath, [TOOL, ...args], {
