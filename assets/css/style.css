@@ -756,6 +756,7 @@ html:not(.js) .theme-btn {
   .m-link {
     grid-template-columns: 11.5rem minmax(0, 1fr) auto;
     align-items: baseline;
+    row-gap: 0;
     column-gap: 0.75rem;
   }
 
@@ -768,6 +769,17 @@ html:not(.js) .theme-btn {
 
   .m-link:has(.m-where) .m-meta {
     grid-column: 2;
+  }
+
+  /* The leading block is two lines tall, and so is the text beside it: let it
+     stand in both rows instead of stretching the first one. The badges then sit
+     next to the title and the date next to the topic line, which is the shortest
+     the row can be without dropping anything. */
+  .m-link:has(.m-where) .m-badges {
+    grid-row: 1 / span 2;
+    align-content: start;
+    /* Tight enough that the date sits on the line of the topic text beside it. */
+    row-gap: 0.15rem;
   }
 }
 
@@ -841,10 +853,13 @@ html:not(.js) .theme-btn {
 /* Wide enough for a leading column: the date takes a whole line of the badge
    block, so every row breaks in the same place and the dates line up under one
    another. On a phone the row is one column already, and a second line there
-   would only make every row taller. */
+   would only make every row taller. The badges above the date are pills whose
+   text starts one padding in, so the date takes the same inset and the two read
+   as one left edge. */
 @media (min-width: 40rem) {
   .m-badges .m-date {
     flex-basis: 100%;
+    padding-left: 0.5rem;
   }
 }
 
@@ -853,7 +868,7 @@ html:not(.js) .theme-btn {
   align-items: center;
   justify-content: center;
   min-width: 1.55rem;
-  padding: 0 0.4rem;
+  padding: 0 0.5rem;
   border-radius: 999px;
   background: var(--b-lectii-bg);
   color: var(--b-lectii-fg);
