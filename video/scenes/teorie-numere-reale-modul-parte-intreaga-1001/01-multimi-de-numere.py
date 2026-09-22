@@ -31,7 +31,7 @@ from manim_voiceover import VoiceoverScene
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
 from edge_tts_service import EdgeTTSService  # noqa: E402
-from theme import GREEN, INK, MARKER, MATH_COLOR, MUTED, RED, caption, title  # noqa: E402
+from theme import GREEN, INK, MARKER, MATH_COLOR, MUTED, RED, TEXT, caption, title  # noqa: E402
 
 
 class MultimiDeNumere(VoiceoverScene):
@@ -78,6 +78,9 @@ class MultimiDeNumere(VoiceoverScene):
             color=MUTED,
             font_size=30,
         )
+        # NumberLine's `color` reaches the line and the ticks but not the number labels:
+        # those keep Manim's default white, which is invisible on the paper background.
+        line.numbers.set_color(TEXT)
         line.next_to(formula, DOWN, buff=1.1)
         dots = VGroup(*[Dot(line.n2p(k), color=INK, radius=0.09) for k in range(7)])
 
@@ -115,6 +118,7 @@ class MultimiDeNumere(VoiceoverScene):
             color=MUTED,
             font_size=26,
         )
+        line2.numbers.set_color(TEXT)
         line2.move_to(self.line)
         negatives = VGroup(*[Dot(line2.n2p(k), color=RED, radius=0.09) for k in range(-6, 0)])
         positives = VGroup(*[Dot(line2.n2p(k), color=INK, radius=0.09) for k in range(0, 7)])
@@ -220,7 +224,7 @@ class MultimiDeNumere(VoiceoverScene):
 
         # The steps between the boxes have to be wide enough that the nesting reads at a
         # glance, and each label has to sit clear of the box inside it.
-        sizes = [(11.0, 5.0), (8.4, 3.9), (5.6, 2.8), (2.8, 1.5)]
+        sizes = [(11.0, 4.6), (8.4, 3.6), (5.6, 2.6), (2.6, 1.4)]
         colors = [MUTED, GREEN, INK, RED]
         labels = [r"\mathbb{R}", r"\mathbb{Q}", r"\mathbb{Z}", r"\mathbb{N}"]
         boxes = VGroup()
@@ -234,12 +238,12 @@ class MultimiDeNumere(VoiceoverScene):
             tags.add(tag)
         # The innermost label would land on top of its own small box, so it goes in the middle.
         tags[3].move_to(boxes[3].get_center())
-        diagram = VGroup(boxes, tags).move_to(UP * 0.15)
+        diagram = VGroup(boxes, tags).move_to(DOWN * 0.35)
 
         chain = MathTex(
             r"\mathbb{N}\subset\mathbb{Z}\subset\mathbb{Q}\subset\mathbb{R}", color=MATH_COLOR
         ).scale(1.3)
-        chain.to_edge(DOWN, buff=0.7)
+        chain.to_edge(DOWN, buff=0.45)
 
         with self.voiceover(
             text=(

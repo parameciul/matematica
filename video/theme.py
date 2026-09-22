@@ -21,6 +21,11 @@ FONT = "Segoe UI"
 # Manim's own default is white-on-black; every clip draws on paper instead.
 MATH_COLOR = TEXT
 
+# Watch out: anything Manim colours by default stays WHITE and so becomes invisible here.
+# A NumberLine's `color` reaches its line and ticks but not its number labels, so call
+# `line.numbers.set_color(TEXT)` after building one. The same trap applies to any mobject
+# built with sub-parts you did not colour yourself.
+
 
 def ro(text, size=32, color=TEXT, weight="NORMAL", **kwargs):
     """Romanian on-screen text in the site font."""
