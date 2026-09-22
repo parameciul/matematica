@@ -15,6 +15,13 @@
   display: none;
 }
 
+/* The page has its own search box, so the header search is redundant.
+   The phone toggle goes too, like the grade links above. */
+.site-header .search,
+.site-header [data-toggle="search"] {
+  display: none;
+}
+
 /* Two chip rows: the state, then the grade. They AND together. The grade row
    keeps its label and its nine chips on one line on a phone by scrolling
    sideways rather than wrapping into a block that pushes the list down. */

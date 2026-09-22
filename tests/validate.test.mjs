@@ -212,7 +212,7 @@ test('_routes.json with another route fails', () => {
 
 test('a class code on the admin page fails', () => {
   expectFailure(
-    withSite((dir) => editFile(dir, 'tm25mlg/index.html', (s) => s.replace('Materiale: ce se vede pe site</h1>', 'Materiale 9R2</h1>'))),
+    withSite((dir) => editFile(dir, 'tm25mlg/index.html', (s) => s.replace('Materiale</h1>', 'Materiale 9R2</h1>'))),
     /class code like "9R2"/,
   );
 });

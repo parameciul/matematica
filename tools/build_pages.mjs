@@ -254,7 +254,8 @@ function materialRow({ material, topic, lang, dict, matBase, root, showGrade, sh
   const name = Catalog.nameOf(material);
   const href = material.kind === 'quiz' ? `${root}materiale/${name}.html` : `${matBase}${name}.html`;
   const title = material.title[lang] || material.title.ro;
-  const badges = `${showGrade ? `<span class="m-grade m-grade-${group}">${topic.grade}</span>` : ''}` +
+  const gradeBadge = lang === 'ro' ? Catalog.ROMAN[topic.grade] : topic.grade;
+  const badges = `${showGrade ? `<span class="m-grade m-grade-${group}">${gradeBadge}</span>` : ''}` +
     `<span class="badge badge-${group}">${esc(dict[`kind.${material.kind}`] || material.kind)}</span>`;
   const where = [];
   if (showGrade && topic) where.push(gradeNameOf(topic.grade, lang));

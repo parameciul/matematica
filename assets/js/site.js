@@ -96,6 +96,7 @@
   }
 
   // One material in a list: type, title, optional grade and topic, date and the "new" label.
+  // The Romanian lists show the grade as a Roman numeral (IX, VI); English keeps digits.
   function materialRow(material, topic, options) {
     const opts = options || {};
     const li = el('li', 'm-row');
@@ -103,7 +104,8 @@
     a.href = materialUrl(material);
     const badges = el('span', 'm-badges');
     if (opts.grade && topic) {
-      badges.appendChild(el('span', `m-grade m-grade-${Catalog.groupOf(material.kind)}`, String(topic.grade)));
+      const gradeBadge = getLang() === 'ro' ? Catalog.ROMAN[topic.grade] : String(topic.grade);
+      badges.appendChild(el('span', `m-grade m-grade-${Catalog.groupOf(material.kind)}`, gradeBadge));
     }
     badges.appendChild(el('span', `badge badge-${Catalog.groupOf(material.kind)}`, kindLabel(material.kind)));
     a.appendChild(badges);

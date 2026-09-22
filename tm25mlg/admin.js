@@ -108,7 +108,7 @@
       : '';
     return `<li class="m-row admin-row" data-uid="${esc(uid)}">`
       + '<div class="admin-item">'
-      + `<span class="m-badges"><span class="badge badge-${esc(group)}">${esc(window.Site.kindLabel(m.kind))}</span></span>`
+      + `<span class="m-badges"><span class="m-grade m-grade-${esc(group)}">${esc(window.Catalog.ROMAN[row.topic.grade])}</span><span class="badge badge-${esc(group)}">${esc(window.Site.kindLabel(m.kind))}</span></span>`
       + '<div class="admin-main">'
       + titleHtml
       + '<span class="m-meta">'
