@@ -277,6 +277,22 @@
 
   form.addEventListener('keydown', (event) => {
     if (event.key !== 'Tab' || panel.hidden) return;
+    // While the arrows walk the results, the next thing after them is the
+    // see-all line under the list, not the grade row above it. The results keep
+    // the text field's own focus (aria-activedescendant), so this shortcut has
+    // to be read off the highlighted row, not off document.activeElement.
+    if (active >= 0 && !all.hidden) {
+      if (!event.shiftKey && document.activeElement === input) {
+        event.preventDefault();
+        all.focus();
+        return;
+      }
+      if (event.shiftKey && document.activeElement === all) {
+        event.preventDefault();
+        input.focus();
+        return;
+      }
+    }
     const stops = tabStops();
     const at = stops.indexOf(document.activeElement);
     if (at < 0) return;
