@@ -9,6 +9,7 @@
     jocuri: ['joc', 'quiz'],
   };
   const GROUP_ORDER = ['lectii', 'fise', 'teste', 'jocuri'];
+  const SORTS = ['relevance', 'newest', 'oldest', 'grade', 'grade-desc', 'title'];
   const NEW_DAYS = 14;
   const DATE_RE = /^(\d{4})-(\d{2})-(\d{2})$/;
   // A uid is the material identity: four or more digits, never starting with 0.
@@ -216,6 +217,21 @@
       .map((h) => ({ material: h.material, topic: h.topic }));
   }
 
+  // How a result list may be ordered. 'relevance' keeps the order search() gave
+  // it, so it means nothing without typed words; the search page leaves it out
+  // then. Array.prototype.sort is stable, so ties keep the order they came in.
+  function sortResults(results, mode, lang) {
+    const list = results.slice();
+    const text = (r) => normalize(r.material.title[lang] || r.material.title.ro || '');
+    const byDate = (a, b) => (a === b ? 0 : (a < b ? -1 : 1));
+    if (mode === 'newest') return list.sort((a, b) => byDate(b.material.published, a.material.published));
+    if (mode === 'oldest') return list.sort((a, b) => byDate(a.material.published, b.material.published));
+    if (mode === 'grade') return list.sort((a, b) => a.topic.grade - b.topic.grade);
+    if (mode === 'grade-desc') return list.sort((a, b) => b.topic.grade - a.topic.grade);
+    if (mode === 'title') return list.sort((a, b) => byDate(text(a), text(b)));
+    return list;
+  }
+
   // True when an article's HTML shows something: text or media. Comments, empty tags and spaces do not count.
   function hasArticleContent(html) {
     const src = String(html || '').replace(/<!--[\s\S]*?-->/g, '');
@@ -251,12 +267,12 @@
   }
 
   const api = {
-    ROMAN, KINDS, GROUPS, GROUP_ORDER, NEW_DAYS, UID_RE,
+    ROMAN, KINDS, GROUPS, GROUP_ORDER, SORTS, NEW_DAYS, UID_RE,
     isUid, nameOf, parseName,
     groupOf, isValidDate, todayIso, isNew, schoolYearOf, schoolYearLabel,
     visibleMaterials, topicMaterials, gradeTopics, filterEntries, groupsPresent, bySchoolYear,
     latestMaterials, gradeSummary, findMaterial, relatedMaterials,
-    normalize, browse, search, formatDate, hasArticleContent, pickArticle,
+    normalize, browse, search, sortResults, formatDate, hasArticleContent, pickArticle,
   };
   if (typeof module === 'object' && module.exports) module.exports = api;
   if (typeof window !== 'undefined') window.Catalog = api;

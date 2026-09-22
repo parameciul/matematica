@@ -146,6 +146,27 @@ test('normalize removes diacritics, also the cedilla look-alikes', () => {
   assert.equal(C.normalize('Fracţii'), 'fractii');
 });
 
+test('sortResults orders by date, grade and title, and leaves relevance alone', () => {
+  const found = C.search(sampleData(), 'fisa');
+  assert.deepEqual(ids(C.sortResults(found, 'relevance')), ids(found));
+  const all = C.browse(sampleData());
+  assert.deepEqual(ids(C.sortResults(all, 'newest')), ['teorie-reale', 'fisa-reale', 'fisa-recap', 'test-recap', 'geo-teorie', 'functii-vechi']);
+  // Equal dates keep the order they came in: the sort is stable.
+  assert.deepEqual(ids(C.sortResults(all, 'oldest')), ['functii-vechi', 'geo-teorie', 'fisa-recap', 'test-recap', 'teorie-reale', 'fisa-reale']);
+  assert.deepEqual(C.sortResults(all, 'grade').map((r) => r.topic.grade), [9, 9, 9, 9, 9, 11]);
+  assert.deepEqual(C.sortResults(all, 'grade-desc').map((r) => r.topic.grade), [11, 9, 9, 9, 9, 9]);
+  assert.deepEqual(ids(C.sortResults(all, 'title', 'ro')), ['fisa-reale', 'fisa-recap', 'functii-vechi', 'teorie-reale', 'test-recap', 'geo-teorie']);
+  assert.deepEqual(ids(C.sortResults(all, 'nonsense')), ids(all));
+});
+
+test('sortResults ignores diacritics in the title order and does not touch the input', () => {
+  const all = C.browse(sampleData());
+  const before = ids(all);
+  C.sortResults(all, 'title', 'ro');
+  assert.deepEqual(ids(all), before);
+  assert.deepEqual(ids(C.sortResults(all, 'title', 'en')), ['test-recap', 'functii-vechi', 'fisa-recap', 'teorie-reale', 'geo-teorie', 'fisa-reale']);
+});
+
 test('browse lists every material, newest first, with no words typed', () => {
   const data = sampleData();
   assert.deepEqual(ids(C.browse(data)), ['teorie-reale', 'fisa-reale', 'fisa-recap', 'test-recap', 'geo-teorie', 'functii-vechi']);

@@ -1743,9 +1743,48 @@ html:not(.js) .theme-btn {
   outline-offset: 1px;
 }
 
-.search-count {
+/* The count and the order of the results share one line above the list. */
+.results-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.4rem 1rem;
   margin: 0 0 0.75rem;
+}
+
+.search-count {
+  margin: 0;
   color: var(--muted);
+}
+
+.sort-field {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.sort-label {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.sort-select {
+  min-height: 2.1rem;
+  padding: 0.15rem 0.5rem;
+  border: 1.5px solid var(--rule);
+  border-radius: 999px;
+  background: var(--sheet);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.sort-select:focus {
+  border-color: var(--ink);
+  outline: 3px solid var(--ink);
+  outline-offset: 1px;
 }
 
 /* Footer */

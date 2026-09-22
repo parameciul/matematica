@@ -9,6 +9,12 @@
   const grade = Number.isInteger(gradeParam) && gradeParam >= 5 && gradeParam <= 12 ? gradeParam : 0;
   const el = Site.el;
   let group = params.get('tip') || '';
+  // 'relevance' only means something with typed words: without them the page
+  // falls back to the newest first, the order every other listing uses.
+  const defaultSort = query ? 'relevance' : 'newest';
+  const sortParam = params.get('sort') || '';
+  let sort = Catalog.SORTS.includes(sortParam) ? sortParam : defaultSort;
+  if (!query && sort === 'relevance') sort = 'newest';
   let data = null;
   let failed = false;
 
@@ -38,12 +44,48 @@
     const submit = el('button', 'button', t('search.submit'));
     submit.type = 'submit';
     form.append(label, input, gradeLabel, select, submit);
-    if (activeGroup) {
+    // The type filter and the order are chosen outside this form. Carry both
+    // through a submit, or a new search would silently throw them away.
+    const carry = (name, value) => {
+      if (!value) return;
       const hidden = el('input');
-      Object.assign(hidden, { type: 'hidden', name: 'tip', value: activeGroup });
+      Object.assign(hidden, { type: 'hidden', name, value });
       form.appendChild(hidden);
-    }
+    };
+    carry('tip', activeGroup);
+    // 'relevance' is the default of a search with words, so it needs no parameter.
+    carry('sort', sort === 'relevance' ? '' : sort);
     return form;
+  }
+
+  // Order of the results. It sits beside the count, above the list it changes.
+  function sortBar(total) {
+    const bar = el('div', 'results-head');
+    const count = el('p', 'search-count', Site.plural(total, 'search.count'));
+    count.setAttribute('role', 'status');
+    bar.appendChild(count);
+    if (total < 2) return bar;
+    const box = el('div', 'sort-field');
+    const label = el('label', 'sort-label', t('sort.label'));
+    label.htmlFor = 'search-sort';
+    const select = el('select', 'sort-select');
+    select.id = 'search-sort';
+    Catalog.SORTS.filter((mode) => query || mode !== 'relevance').forEach((mode) => {
+      const option = el('option', null, t(`sort.${mode}`));
+      option.value = mode;
+      option.selected = mode === sort;
+      select.appendChild(option);
+    });
+    select.addEventListener('change', () => {
+      sort = select.value;
+      Site.setParam('sort', sort === defaultSort ? '' : sort);
+      render();
+      const again = document.getElementById('search-sort');
+      if (again) again.focus();
+    });
+    box.append(label, select);
+    bar.appendChild(box);
+    return bar;
   }
 
   function pickGroup(next) {
@@ -75,10 +117,9 @@
     // The note says "all materials": it belongs only above an unfiltered list.
     if (!query && !grade) container.appendChild(el('p', 'message search-browse', t('search.browse')));
 
-    const results = active ? found.filter((r) => Catalog.groupOf(r.material.kind) === active) : found;
-    const count = el('p', 'search-count', Site.plural(results.length, 'search.count'));
-    count.setAttribute('role', 'status');
-    container.appendChild(count);
+    const picked = active ? found.filter((r) => Catalog.groupOf(r.material.kind) === active) : found;
+    const results = Catalog.sortResults(picked, sort, getLang());
+    container.appendChild(sortBar(results.length));
     if (!results.length) {
       container.appendChild(el('p', 'message', t('search.none')));
       return;
