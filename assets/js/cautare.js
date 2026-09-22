@@ -1,4 +1,6 @@
-// Search page (?q=...&c=<grade>&tip=<group>): every matching material, with grade and type filters.
+// Search page (?q=...&c=<grade>&tip=<group>): every matching material, with grade
+// and type filters. An empty box is not empty-handed: it lists every material,
+// newest first, so the page doubles as the full catalogue.
 (function () {
   const container = document.getElementById('search-page');
   const params = new URLSearchParams(window.location.search);
@@ -41,9 +43,6 @@
       Object.assign(hidden, { type: 'hidden', name: 'tip', value: activeGroup });
       form.appendChild(hidden);
     }
-    form.addEventListener('submit', (event) => {
-      if (!input.value.trim()) event.preventDefault();
-    });
     return form;
   }
 
@@ -59,20 +58,22 @@
     container.textContent = '';
     Site.setTitle(query ? `${t('search.title')}: ${query}` : t('search.title'));
     container.appendChild(el('h1', 'search-heading', t('search.title')));
-    if (!query || failed || !data) {
+    if (failed || !data) {
       container.appendChild(searchForm(''));
-      let key = 'common.loading';
-      if (!query) key = 'search.empty';
-      else if (failed) key = 'error.load';
-      container.appendChild(el('p', 'message', t(key)));
+      container.appendChild(el('p', 'message', t(failed ? 'error.load' : 'common.loading')));
       return;
     }
 
-    const found = Catalog.search(data, query, { labels: Site.searchLabels(), grade: grade || undefined, lang: getLang() });
+    // No words typed: show the whole catalogue instead of asking for a word.
+    const found = query
+      ? Catalog.search(data, query, { labels: Site.searchLabels(), grade: grade || undefined, lang: getLang() })
+      : Catalog.browse(data, { grade: grade || undefined, lang: getLang() });
     const groups = Catalog.GROUP_ORDER.filter((g) => found.some((r) => Catalog.groupOf(r.material.kind) === g));
     const active = groups.includes(group) ? group : '';
     container.appendChild(searchForm(active));
     if (groups.length > 1) container.appendChild(Site.filterBar(groups, active, pickGroup));
+    // The note says "all materials": it belongs only above an unfiltered list.
+    if (!query && !grade) container.appendChild(el('p', 'message search-browse', t('search.browse')));
 
     const results = active ? found.filter((r) => Catalog.groupOf(r.material.kind) === active) : found;
     const count = el('p', 'search-count', Site.plural(results.length, 'search.count'));
@@ -89,14 +90,17 @@
 
   render();
   if (!query) document.getElementById('search-page-q').focus();
+  // Keep the header's own grade filter on the same grade this page is showing.
+  const headerGrade = document.getElementById('site-search-grade');
+  if (headerGrade) headerGrade.value = grade ? String(grade) : '';
   Site.loadData().then(
     (loaded) => {
       data = loaded;
-      if (query) render();
+      render();
     },
     () => {
       failed = true;
-      if (query) render();
+      render();
     },
   );
   Site.onLangChange(render);

@@ -178,28 +178,40 @@
     return [`clasa a ${ROMAN[grade]}-a`, `clasa ${grade}`, `grade ${grade}`, String(grade)];
   }
 
-  function search(data, query, options) {
+  // Every material a listing may show, newest first, after the language, grade
+  // and group filters. It is what the search page lists when the box is empty,
+  // and the set search() then narrows with the typed words.
+  function browse(data, options) {
     const opts = options || {};
-    const terms = normalize(query).split(/\s+/).filter(Boolean);
-    if (!terms.length) return [];
     const topics = topicMap(data);
-    const labels = opts.labels || {};
     const hits = [];
     visibleMaterials(data.materials, opts.lang).forEach((material) => {
       const topic = topics.get(material.topic);
       if (!topic) return;
       if (opts.grade && topic.grade !== opts.grade) return;
       if (GROUPS[opts.group] && groupOf(material.kind) !== opts.group) return;
-      const keywords = material.keywords ? [...(material.keywords.ro || []), ...(material.keywords.en || [])] : [];
-      const title = normalize(`${material.title.ro || ''} | ${material.title.en || ''}`);
-      const text = normalize([
-        material.title.ro, material.title.en, topic.title.ro, topic.title.en,
-        ...(labels[material.kind] || []), ...gradeWords(topic.grade), ...keywords,
-      ].filter(Boolean).join(' | '));
-      if (!terms.every((w) => text.includes(w))) return;
-      hits.push({ material, topic, inTitle: terms.every((w) => title.includes(w)) });
+      hits.push({ material, topic });
     });
-    return newestFirst(hits, (h) => h.material.published)
+    return newestFirst(hits, (h) => h.material.published);
+  }
+
+  function search(data, query, options) {
+    const opts = options || {};
+    const terms = normalize(query).split(/\s+/).filter(Boolean);
+    if (!terms.length) return [];
+    const labels = opts.labels || {};
+    return browse(data, opts)
+      .map(({ material, topic }) => {
+        const keywords = material.keywords ? [...(material.keywords.ro || []), ...(material.keywords.en || [])] : [];
+        const title = normalize(`${material.title.ro || ''} | ${material.title.en || ''}`);
+        const text = normalize([
+          material.title.ro, material.title.en, topic.title.ro, topic.title.en,
+          ...(labels[material.kind] || []), ...gradeWords(topic.grade), ...keywords,
+        ].filter(Boolean).join(' | '));
+        if (!terms.every((w) => text.includes(w))) return null;
+        return { material, topic, inTitle: terms.every((w) => title.includes(w)) };
+      })
+      .filter(Boolean)
       .sort((a, b) => Number(b.inTitle) - Number(a.inTitle))
       .map((h) => ({ material: h.material, topic: h.topic }));
   }
@@ -244,7 +256,7 @@
     groupOf, isValidDate, todayIso, isNew, schoolYearOf, schoolYearLabel,
     visibleMaterials, topicMaterials, gradeTopics, filterEntries, groupsPresent, bySchoolYear,
     latestMaterials, gradeSummary, findMaterial, relatedMaterials,
-    normalize, search, formatDate, hasArticleContent, pickArticle,
+    normalize, browse, search, formatDate, hasArticleContent, pickArticle,
   };
   if (typeof module === 'object' && module.exports) module.exports = api;
   if (typeof window !== 'undefined') window.Catalog = api;

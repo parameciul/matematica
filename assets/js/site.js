@@ -95,8 +95,11 @@
     return node;
   }
 
-  // One material in a list: type, title, optional grade and topic, date and the "new" label.
+  // One material in a list: the leading block carries the type, the optional
+  // grade and the publish date; the title and the optional place follow.
   // The Romanian lists show the grade as a Roman numeral (IX, VI); English keeps digits.
+  // tools/build_pages.mjs writes the same markup: keep the two in step, or every
+  // row jumps when the data loads over the static page.
   function materialRow(material, topic, options) {
     const opts = options || {};
     const li = el('li', 'm-row');
@@ -108,18 +111,21 @@
       badges.appendChild(el('span', `m-grade m-grade-${Catalog.groupOf(material.kind)}`, gradeBadge));
     }
     badges.appendChild(el('span', `badge badge-${Catalog.groupOf(material.kind)}`, kindLabel(material.kind)));
+    const time = el('time', 'm-date', formatDate(material.published));
+    time.dateTime = material.published;
+    badges.appendChild(time);
     a.appendChild(badges);
     a.appendChild(el('span', 'm-title', pick(material.title)));
-    const meta = el('span', 'm-meta');
     const where = [];
     if (opts.grade && topic) where.push(gradeName(topic.grade));
     if (opts.topic && topic) where.push(pick(topic.title));
-    if (where.length) meta.appendChild(el('span', 'm-where', where.join(' · ')));
-    const time = el('time', 'm-date', formatDate(material.published));
-    time.dateTime = material.published;
-    meta.appendChild(time);
-    if (Catalog.isNew(material.published, Catalog.todayIso())) meta.appendChild(el('span', 'new', t('common.new')));
-    a.appendChild(meta);
+    const fresh = Catalog.isNew(material.published, Catalog.todayIso());
+    if (where.length || fresh) {
+      const meta = el('span', 'm-meta');
+      if (where.length) meta.appendChild(el('span', 'm-where', where.join(' · ')));
+      if (fresh) meta.appendChild(el('span', 'new', t('common.new')));
+      a.appendChild(meta);
+    }
     li.appendChild(a);
     return li;
   }
@@ -195,7 +201,7 @@
       selfHref: '#',
       altHref: alt ? alt.getAttribute('href') : '#',
       dict: window.I18N ? window.I18N[lang] : {},
-      grades: [5, 6, 7, 8, 9, 10, 11, 12].map((n) => ({ n, name: gradeName(n) })),
+      grades: [5, 6, 7, 8, 9, 10, 11, 12].map((n) => ({ n, name: gradeName(n), short: lang === 'ro' ? Catalog.ROMAN[n] : String(n) })),
     };
   }
 
@@ -216,10 +222,8 @@
       togglePanel(header, open);
       header.querySelector(`[data-toggle="${open}"]`).focus();
     });
-    const form = header.querySelector('#site-search');
-    form.addEventListener('submit', (event) => {
-      if (!form.elements.q.value.trim()) event.preventDefault();
-    });
+    // An empty box is no longer a dead end: the search page lists every material,
+    // narrowed by the grade the box's filter carries in its "c" parameter.
 
     // Anchors must land below the sticky header: CSS reads its height from --header-h.
     const setHeight = () => document.documentElement.style.setProperty('--header-h', `${header.offsetHeight}px`);

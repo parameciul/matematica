@@ -234,7 +234,7 @@ function headerFor({ lang, dict, pageRoot, selfFile, altFile }) {
     selfHref: relHref(selfFile, selfFile),
     altHref: altFile ? relHref(selfFile, altFile) : '#',
     dict,
-    grades: [5, 6, 7, 8, 9, 10, 11, 12].map((n) => ({ n, name: gradeNameOf(n, lang) })),
+    grades: [5, 6, 7, 8, 9, 10, 11, 12].map((n) => ({ n, name: gradeNameOf(n, lang), short: lang === 'ro' ? Catalog.ROMAN[n] : String(n) })),
   });
 }
 
@@ -256,16 +256,18 @@ function materialRow({ material, topic, lang, dict, matBase, root, showGrade, sh
   const title = material.title[lang] || material.title.ro;
   const gradeBadge = lang === 'ro' ? Catalog.ROMAN[topic.grade] : topic.grade;
   const badges = `${showGrade ? `<span class="m-grade m-grade-${group}">${gradeBadge}</span>` : ''}` +
-    `<span class="badge badge-${group}">${esc(dict[`kind.${material.kind}`] || material.kind)}</span>`;
+    `<span class="badge badge-${group}">${esc(dict[`kind.${material.kind}`] || material.kind)}</span>` +
+    `<time class="m-date" datetime="${material.published}">${esc(Catalog.formatDate(material.published, lang))}</time>`;
   const where = [];
   if (showGrade && topic) where.push(gradeNameOf(topic.grade, lang));
   if (showTopic && topic) where.push(esc(topic.title[lang] || topic.title.ro));
-  const meta = `${where.length ? `<span class="m-where">${where.join(' · ')}</span>` : ''}` +
-    `<time class="m-date" datetime="${material.published}">${esc(Catalog.formatDate(material.published, lang))}</time>`;
+  // Rows with nothing to say about the place carry no meta line at all, so the
+  // static markup matches what materialRow in assets/js/site.js builds.
+  const meta = where.length ? `<span class="m-meta"><span class="m-where">${where.join(' · ')}</span></span>` : '';
   return `<li class="m-row"><a class="m-link" href="${href}">` +
     `<span class="m-badges">${badges}</span>` +
     `<span class="m-title">${esc(title)}</span>` +
-    `<span class="m-meta">${meta}</span></a></li>`;
+    `${meta}</a></li>`;
 }
 
 function topicCard({ entry, lang, dict, matBase, root }) {

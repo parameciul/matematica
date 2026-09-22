@@ -146,6 +146,26 @@ test('normalize removes diacritics, also the cedilla look-alikes', () => {
   assert.equal(C.normalize('Fracţii'), 'fractii');
 });
 
+test('browse lists every material, newest first, with no words typed', () => {
+  const data = sampleData();
+  assert.deepEqual(ids(C.browse(data)), ['teorie-reale', 'fisa-reale', 'fisa-recap', 'test-recap', 'geo-teorie', 'functii-vechi']);
+});
+
+test('browse applies the grade, group and language filters', () => {
+  const data = sampleData();
+  assert.deepEqual(ids(C.browse(data, { grade: 11 })), ['geo-teorie']);
+  assert.deepEqual(ids(C.browse(data, { group: 'teste' })), ['test-recap']);
+  assert.deepEqual(ids(C.browse(data, { grade: 9, group: 'lectii' })), ['teorie-reale', 'functii-vechi']);
+  data.materials.push({ slug: 'joc-ro', uid: '1007', topic: 'recap', kind: 'quiz', title: { ro: 'Chestionar', en: 'Quiz' }, published: '2026-09-20' });
+  assert.equal(ids(C.browse(data, { lang: 'en' })).includes('joc-ro'), false);
+  assert.equal(ids(C.browse(data, { lang: 'ro' })).includes('joc-ro'), true);
+});
+
+test('browse gives each material its topic', () => {
+  const [first] = C.browse(sampleData(), { grade: 11 });
+  assert.equal(first.topic.id, 'geo');
+});
+
 test('search ignores diacritics and needs every word', () => {
   const data = sampleData();
   assert.deepEqual(ids(C.search(data, 'fisa')), ['fisa-reale', 'fisa-recap']);

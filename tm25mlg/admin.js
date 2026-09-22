@@ -108,7 +108,7 @@
       : '';
     return `<li class="m-row admin-row" data-uid="${esc(uid)}">`
       + '<div class="admin-item">'
-      + `<span class="m-badges"><span class="m-grade m-grade-${esc(group)}">${esc(window.Catalog.ROMAN[row.topic.grade])}</span><span class="badge badge-${esc(group)}">${esc(window.Site.kindLabel(m.kind))}</span></span>`
+      + `<span class="m-badges"><span class="m-grade m-grade-${esc(group)}">${esc(window.Catalog.ROMAN[row.topic.grade])}</span><span class="badge badge-${esc(group)}">${esc(window.Site.kindLabel(m.kind))}</span><time class="m-date" datetime="${esc(m.published)}">${esc(window.Site.formatDate(m.published))}</time></span>`
       + '<div class="admin-main">'
       + titleHtml
       + '<span class="m-meta">'
@@ -117,7 +117,6 @@
       + `<span class="admin-where">${esc(window.Site.gradeName(row.topic.grade))}</span>`
       + `<span class="admin-where">${esc((row.topic.title && row.topic.title.ro) || row.topic.id)}</span>`
       + `<span>cod ${esc(uid)}</span>`
-      + `<time class="m-date" datetime="${esc(m.published)}">${esc(window.Site.formatDate(m.published))}</time>`
       + resultsHtml
       + '</span>'
       + '</div>'

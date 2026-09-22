@@ -271,21 +271,38 @@ a:hover {
   border-color: var(--red);
 }
 
+/* One pill holds the search box and the grade filter, so the header keeps the
+   width of a single control while the filter stays next to what it filters. */
 .search {
   position: relative;
+  display: flex;
+  align-items: center;
   width: 15rem;
-}
-
-.search input {
-  width: 100%;
   min-height: 2.5rem;
-  padding: 0.35rem 0.9rem 0.35rem 2.3rem;
   border: 1.5px solid var(--rule);
   border-radius: 999px;
   background: var(--paper);
+}
+
+.search:focus-within {
+  border-color: var(--ink);
+  outline: 3px solid var(--ink);
+  outline-offset: 1px;
+}
+
+.search input {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 0.35rem 0.4rem 0.35rem 2.3rem;
+  border: 0;
+  background: none;
   color: var(--text);
   font: inherit;
   font-size: 0.95rem;
+}
+
+.search input:focus {
+  outline: none;
 }
 
 .search input::placeholder {
@@ -293,10 +310,23 @@ a:hover {
   opacity: 1;
 }
 
-.search input:focus {
-  border-color: var(--ink);
-  outline: 3px solid var(--ink);
-  outline-offset: 1px;
+.search-grade {
+  flex: none;
+  align-self: stretch;
+  padding: 0 0.15rem 0 0.35rem;
+  border: 0;
+  border-left: 1.5px solid var(--rule);
+  border-radius: 0 999px 999px 0;
+  background: none;
+  color: var(--text);
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.search-grade:focus {
+  outline: none;
 }
 
 .search-icon {
@@ -454,7 +484,7 @@ html:not(.js) .theme-btn {
   }
 
   .site-header[data-open="search"] .search {
-    display: block;
+    display: flex;
     margin-bottom: 0.5rem;
   }
 
@@ -800,6 +830,22 @@ html:not(.js) .theme-btn {
   flex-wrap: wrap;
   align-items: center;
   gap: 0.35rem;
+}
+
+/* The publish date leads the row, with the grade and the type. */
+.m-badges .m-date {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+/* Wide enough for a leading column: the date takes a whole line of the badge
+   block, so every row breaks in the same place and the dates line up under one
+   another. On a phone the row is one column already, and a second line there
+   would only make every row taller. */
+@media (min-width: 40rem) {
+  .m-badges .m-date {
+    flex-basis: 100%;
+  }
 }
 
 .m-grade {
@@ -1545,25 +1591,33 @@ html:not(.js) .theme-btn {
 
 /* Search: header dropdown and search page */
 
-.search-list {
+/* The dropdown is a box with two parts: the list scrolls, the "see all" line
+   below it does not, so the number of matches stays readable at any length. */
+.search-panel {
   position: absolute;
   top: calc(100% + 0.35rem);
   right: 0;
   z-index: 30;
-  width: min(28rem, calc(100vw - 2rem));
-  max-height: min(70vh, 30rem);
-  margin: 0;
+  display: flex;
+  flex-direction: column;
+  width: min(34rem, calc(100vw - 2rem));
+  max-height: min(70vh, 32rem);
   padding: 0.35rem;
-  overflow-y: auto;
-  list-style: none;
   border: 1px solid var(--rule);
   border-radius: 6px;
   background: var(--sheet);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
 }
 
+.search-list {
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  list-style: none;
+}
+
 @media (max-width: 60rem) {
-  .search-list {
+  .search-panel {
     left: 0;
     width: auto;
   }
@@ -1571,12 +1625,25 @@ html:not(.js) .theme-btn {
 
 .search-option {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  align-items: baseline;
-  gap: 0.1rem 0.6rem;
-  padding: 0.5rem 0.6rem;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;
+  gap: 0.1rem 0.7rem;
+  padding: 0.4rem 0.6rem;
   border-radius: 4px;
   cursor: pointer;
+}
+
+/* A fixed leading column, like a list row, so every title starts at the same
+   place however wide the type badge of that row happens to be. A phone has no
+   room for two columns: there the badges sit above the title. */
+@media (min-width: 40rem) {
+  .search-option {
+    grid-template-columns: 11.5rem minmax(0, 1fr);
+  }
+}
+
+.search-option + .search-option {
+  border-top: 1px solid var(--rule);
 }
 
 .search-option:hover,
@@ -1592,27 +1659,31 @@ html:not(.js) .theme-btn {
 
 .search-title {
   font-weight: 700;
+  line-height: 1.35;
   color: var(--ink);
-}
-
-.search-where {
-  grid-column: 2;
-  font-size: 0.85rem;
-  color: var(--muted);
+  overflow-wrap: break-word;
 }
 
 .search-all {
+  flex: none;
+  margin-top: 0.35rem;
   padding: 0.55rem 0.6rem;
-  border-radius: 4px;
+  border-top: 1px solid var(--rule);
+  border-radius: 0 0 4px 4px;
   font-weight: 700;
   color: var(--ink);
   text-align: center;
+  text-decoration: none;
   cursor: pointer;
 }
 
 .search-none {
   padding: 0.6rem;
   color: var(--muted);
+}
+
+.search-browse {
+  margin-top: 0;
 }
 
 #search-page {
