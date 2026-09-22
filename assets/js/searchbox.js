@@ -47,15 +47,20 @@
   function pickGrade(n) {
     setGrade(grade === n ? 0 : n);
     markChips();
+    rove(chips.findIndex((c) => c.value === n));
     update();
   }
 
-  // The chips take the focus one at a time (a roving tabindex), so the arrow
-  // keys walk the row instead of the browser's own tab order.
-  function focusChip(index) {
+  // The chips take the focus one at a time (a roving tabindex): the arrow keys
+  // walk the row, and the whole row counts as one stop for the Tab key.
+  function rove(index) {
     const i = Math.max(0, Math.min(chips.length - 1, index));
     chips.forEach(({ node }, j) => { node.tabIndex = j === i ? 0 : -1; });
-    chips[i].node.focus();
+    return chips[i].node;
+  }
+
+  function focusChip(index) {
+    rove(index).focus();
   }
 
   function focusChipRow() {
@@ -100,6 +105,7 @@
     chips.push({ node: chip, value: n });
     chipBar.appendChild(chip);
   });
+  rove(Math.max(0, chips.findIndex((c) => c.value === grade)));
   const list = Site.el('ul', 'search-list');
   list.id = 'site-search-list';
   list.setAttribute('role', 'listbox');
@@ -256,6 +262,29 @@
     markChips();
     close();
   });
+  // While the panel is open, Tab walks the parts of the search box and comes back
+  // to the text field instead of leaving for the theme button. The stops are the
+  // text field, the grade row (one stop, whichever chip currently holds it) and
+  // the "see all" line when there is one. Escape closes the panel, and Tab then
+  // leaves for the rest of the page as usual.
+  function tabStops() {
+    const stops = [input];
+    const roving = chips.find(({ node }) => node.tabIndex === 0);
+    if (roving) stops.push(roving.node);
+    if (!all.hidden) stops.push(all);
+    return stops;
+  }
+
+  form.addEventListener('keydown', (event) => {
+    if (event.key !== 'Tab' || panel.hidden) return;
+    const stops = tabStops();
+    const at = stops.indexOf(document.activeElement);
+    if (at < 0) return;
+    event.preventDefault();
+    const step = event.shiftKey ? -1 : 1;
+    stops[(at + step + stops.length) % stops.length].focus();
+  });
+
   input.addEventListener('keydown', (event) => {
     if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
       if (panel.hidden) update();
