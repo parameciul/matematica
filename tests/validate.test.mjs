@@ -378,6 +378,17 @@ test('a video id that looks like a class code passes', () => {
   assert.equal(result.code, 0, result.out);
 });
 
+test('a generated clip slot the stripper cannot recognise fails', () => {
+  expectFailure(withSite((dir) => {
+    // Attribute order swapped from what the generator writes: stripClipSlots
+    // will not recognise it, so it survives a regenerate self-consistently
+    // (the freshness check alone would stay quiet) and must still be caught
+    // as a leftover.
+    editFile(dir, SAMPLE_PAGE, addToArticle('<div data-generated="clips" class="clip-slot">x</div><!-- /clip-slot -->'));
+    writeSite(dir);
+  }), /a generated clip slot is left inside the article; run node tools\/build_pages\.mjs/);
+});
+
 test('quiz with a PDF fails', () => {
   expectFailure(withSite((dir) => editData(dir, (d) => { sample(d).kind = 'quiz'; })), /pdf must be null for a quiz/);
 });

@@ -199,7 +199,11 @@ test('JSON-LD parses, and VideoObject exists only with a video', (t) => {
   assert.equal(video.duration, 'PT7M31S');
   const page = site.get(`materiale/${mname('lectie-video')}.html`);
   assert.match(page, /class="clip-card clip-hero" id="clip-1" href="https:\/\/www\.youtube\.com\/watch\?v=dQw4w9WgXcQ"/);
+  assert.match(page, /aria-label="Videoclipul lecției: Lecție video: modul \(7:31\)"/);
   assert.doesNotMatch(page, /<iframe/);
+  assert.match(page, /<meta property="og:image" content="https:\/\/i\.ytimg\.com\/vi\/dQw4w9WgXcQ\/hqdefault\.jpg">/);
+  assert.match(page, /<meta property="og:image:width" content="480">/);
+  assert.match(page, /<meta property="og:image:height" content="360">/);
   assert.equal(video.inLanguage, 'ro');
   assert.equal(video.name, 'Modulul');
   const withoutVideo = ldBlocks(site.get(`materiale/${mname('teorie-reale')}.html`));
@@ -651,4 +655,34 @@ test('material page with clips loads the clip scripts; one without does not', (t
   assert.doesNotMatch(site.get(`materiale/${mname('quiz-recap')}.html`), /clips\.js/);
   const plain = buildSite(clipRoot(t, null));
   assert.doesNotMatch(plain.get(`materiale/${mname('teorie-reale')}.html`), /clips\.js/);
+});
+
+test('stripClipSlots removes a slot re-indented to 4 spaces or a tab', () => {
+  const withFour = SECTIONS('ro').replace(
+    '<h2>1. Unu</h2>',
+    '<h2>1. Unu</h2>\n    <div class="clip-slot" data-generated="clips"><a>one</a></div><!-- /clip-slot -->',
+  );
+  assert.equal(stripClipSlots(withFour), SECTIONS('ro'));
+  const withTab = SECTIONS('ro').replace(
+    '<h2>1. Unu</h2>',
+    '<h2>1. Unu</h2>\n\t<div class="clip-slot" data-generated="clips"><a>one</a></div><!-- /clip-slot -->',
+  );
+  assert.equal(stripClipSlots(withTab), SECTIONS('ro'));
+});
+
+test('a hand re-indented clip slot is stripped, not duplicated, on rebuild', (t) => {
+  const dir = clipRoot(t, THREE);
+  writeSite(dir);
+  const rel = `materiale/${mname('teorie-reale')}.html`;
+  const file = join(dir, rel);
+  const original = readFileSync(file, 'utf8');
+  assert.match(original, /\n {8}<div class="clip-slot"/);
+  const reindented = original.replace(/\n {8}(<div class="clip-slot")/g, '\n\t$1');
+  writeFileSync(file, reindented);
+  const clean = readArticle(reindented, 'ro');
+  assert.doesNotMatch(clean, /data-generated="clips"/);
+  writeSite(dir);
+  const rebuilt = readFileSync(file, 'utf8');
+  assert.equal(rebuilt, original, 'a rebuild after a hand re-indent must give the same bytes back');
+  assert.equal((rebuilt.match(/id="clip-1"/g) || []).length, 1, 'the slot must not be duplicated');
 });

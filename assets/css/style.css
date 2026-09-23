@@ -1275,6 +1275,7 @@ ol.clips a:hover .clip-title { text-decoration: underline; }
   font-size: 0.9rem;
 }
 
+/* Fixed dark text on the yellow marker fill, readable in both themes. */
 li.seen .clip-num { border-color: var(--marker-edge); background: var(--marker-edge); color: #24272d; }
 
 .clip-state { display: block; font-weight: 400; font-size: 0.85rem; color: var(--muted); }
@@ -2003,7 +2004,13 @@ ol.clips .clip-dur {
   .note,
   .check-btn,
   #check-reset,
-  .related {
+  .related,
+  .clips-overview,
+  .clip-top,
+  .clip-slot,
+  .clip-hero,
+  .clip-open,
+  .video-link {
     display: none !important;
   }
 

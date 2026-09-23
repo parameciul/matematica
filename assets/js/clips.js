@@ -57,21 +57,25 @@
     iframe.allowFullscreen = true;
     frame.appendChild(iframe);
     box.appendChild(frame);
-    const line = Site.el('p', 'video-link');
-    const yt = Site.el('a', null, t('material.openYoutube'));
-    yt.href = card.href;
-    yt.target = '_blank';
-    yt.rel = 'noopener';
-    line.appendChild(yt);
-    const next = cards.find((c) => Number(c.dataset.n) === n + 1);
-    if (next) {
-      line.appendChild(document.createTextNode(' · '));
-      const name = next.querySelector('.clip-name');
-      const link = Site.el('a', null, `${t('clips.next')}: ${name ? name.textContent : next.dataset.title} ↓`);
-      link.href = `#${next.id}`;
-      line.appendChild(link);
+    // A single clip already has a static "open on YouTube" line under the
+    // hero, and it has no next clip either: no line to add here at all.
+    if (!card.classList.contains('clip-hero')) {
+      const line = Site.el('p', 'video-link');
+      const yt = Site.el('a', null, t('material.openYoutube'));
+      yt.href = card.href;
+      yt.target = '_blank';
+      yt.rel = 'noopener';
+      line.appendChild(yt);
+      const next = cards.find((c) => Number(c.dataset.n) === n + 1);
+      if (next) {
+        line.appendChild(document.createTextNode(' · '));
+        const name = next.querySelector('.clip-name');
+        const link = Site.el('a', null, `${t('clips.next')}: ${name ? name.textContent : next.dataset.title} ↓`);
+        link.href = `#${next.id}`;
+        line.appendChild(link);
+      }
+      box.appendChild(line);
     }
-    box.appendChild(line);
     card.replaceWith(box);
     open = { card, box };
     iframe.focus();
@@ -89,6 +93,7 @@
 
   // Overview rows and "Next" links only scroll to the clip; they never start it.
   main.addEventListener('click', (e) => {
+    if (e.button !== 0 || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
     const a = e.target.closest('a[href^="#clip-"]');
     if (!a) return;
     const target = document.getElementById(a.getAttribute('href').slice(1));

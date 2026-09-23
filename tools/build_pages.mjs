@@ -123,7 +123,7 @@ function readIfExists(root, file) {
 // article removes the blocks, so the hand-written text always reads back clean.
 const SLOT_OPEN = '<div class="clip-slot" data-generated="clips">';
 const SLOT_CLOSE = '</div><!-- /clip-slot -->';
-const SLOT_RE = /\n {8}<div class="clip-slot" data-generated="clips">[\s\S]*?<\/div><!-- \/clip-slot -->/g;
+const SLOT_RE = /\s*<div class="clip-slot" data-generated="clips">[\s\S]*?<\/div><!-- \/clip-slot -->/g;
 
 export function stripClipSlots(html) {
   return String(html).replace(SLOT_RE, '');
@@ -529,8 +529,10 @@ function renderMaterialPage({ data, material, topic, lang, dict, assetBase, page
   let videoBlock = '';
   if (clips.length === 1) {
     const c = clips[0];
-    videoBlock = `<a class="clip-card clip-hero" id="clip-1" href="https://www.youtube.com/watch?v=${c.id}" data-clip="${c.id}" data-n="1" data-title="${esc(`${dict['material.video']}: ${materialTitle}`)}">` +
-      `<span class="clip-thumb"><img src="${thumbFor(c.id)}" alt="" width="480" height="360"><span class="clip-play" aria-hidden="true"></span><span class="clip-dur">${Clips.clock(c.duration)}</span></span></a>\n` +
+    const heroTitle = `${dict['material.video']}: ${materialTitle}`;
+    const heroClock = Clips.clock(c.duration);
+    videoBlock = `<a class="clip-card clip-hero" id="clip-1" href="https://www.youtube.com/watch?v=${c.id}" data-clip="${c.id}" data-n="1" data-title="${esc(heroTitle)}" aria-label="${esc(`${heroTitle} (${heroClock})`)}">` +
+      `<span class="clip-thumb"><img src="${thumbFor(c.id)}" alt="" width="480" height="360"><span class="clip-play" aria-hidden="true"></span><span class="clip-dur">${heroClock}</span></span></a>\n` +
       `      <p class="video-link"><a href="https://www.youtube.com/watch?v=${c.id}" target="_blank" rel="noopener">${esc(dict['material.openYoutube'])}</a></p>`;
   } else if (clips.length > 1) {
     const rows = clips.map((c, i) => `<li data-clip="${c.id}" data-n="${i + 1}"><a href="#clip-${i + 1}">` +

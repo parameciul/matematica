@@ -31,7 +31,7 @@ With JS (`assets/js/clips.js`, new):
 - Only one player at a time. Starting another clip turns the open player back into its card, which stops that video.
 - An overview row click scrolls to the card. The scroll is smooth only without `prefers-reduced-motion`. It does not start the clip; the student starts it with one more tap. A clip must not start playing with sound unexpectedly.
 
-Thumbnails come from `i.ytimg.com`: `mqdefault.jpg` (16:9) for the cards, `hqdefault.jpg` for the single large player. `loading="lazy"`, `alt=""` (the title is text next to it). The iframe loads only after a click, so a page with 5 clips loads no YouTube frame until the student asks.
+Thumbnails come from `i.ytimg.com`: `mqdefault.jpg` (16:9) for the cards, `hqdefault.jpg` for the single large player. `alt=""` (the title is text next to it). The card thumbnails load lazily (`loading="lazy"`); the single large player's thumbnail loads right away, since it sits above the fold. The iframe loads only after a click, so a page with 5 clips loads no YouTube frame until the student asks.
 
 ## Watched state
 

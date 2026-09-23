@@ -179,6 +179,17 @@ function checkClipSections(where, m, page, html, lang) {
   });
 }
 
+// A generated clip slot is the one thing the generator inserts inside the
+// article; readArticle strips it back out. If it survives, either a hand
+// edit re-shaped it past what stripClipSlots recognises, or the page was
+// never regenerated after a data change.
+function checkNoLeftoverSlot(page, html, lang) {
+  const article = readArticle(html, lang) || '';
+  if (article.includes('data-generated="clips"')) {
+    fail(`${page}: a generated clip slot is left inside the article; run node tools/build_pages.mjs`);
+  }
+}
+
 const materialUids = new Set();
 const materialNames = new Set();
 const listedPdfs = new Set();
@@ -328,12 +339,14 @@ for (const [i, m] of materials.entries()) {
     if (!html.includes('data-root="../"')) fail(`${page}: body must have data-root="../"`);
     if (!html.includes(`katex@${KATEX_VERSION}/`)) fail(`${page}: must load KaTeX ${KATEX_VERSION}`);
     checkClipSections(where, m, page, html, 'ro');
+    checkNoLeftoverSlot(page, html, 'ro');
     const enPage = `en/${page}`;
     if (!exists(enPage)) {
       fail(`${where}: missing file ${enPage}`);
     } else {
       const enHtml = read(enPage);
       checkClipSections(where, m, enPage, enHtml, 'en');
+      checkNoLeftoverSlot(enPage, enHtml, 'en');
       if (!enHtml.includes('data-lang="en"')) fail(`${enPage}: must contain an article with data-lang="en"`);
       if (enHtml.includes('data-lang="ro"')) fail(`${enPage}: the Romanian article lives in ${page}`);
       if (!enHtml.includes('data-root="../../"')) fail(`${enPage}: body must have data-root="../../"`);
