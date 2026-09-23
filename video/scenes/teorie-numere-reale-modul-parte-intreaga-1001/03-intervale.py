@@ -1,14 +1,19 @@
-"""Clip 2 of the grade 9 lesson "Numere reale, modul, parte întreagă".
+"""Clip 3 of the grade 9 lesson "Numere reale, modul, parte întreagă".
 
-Covers section 2, "Relația de ordine pe ℝ. Intervale": the properties of inequalities, the
-four kinds of intervals, the worked example with A = [-2, 3) and B = (1, 5], and the rule
-that an interval is always open at infinity.
+Covers the second half of section 2, "Intervale": the four kinds of intervals, the worked
+example with A = [-2, 3) and B = (1, 5], and the rule that an interval is always open at
+infinity.
 
-Spoken in Romanian, captioned in Romanian and English.
+On every axis the ends are drawn with the same signs as the notation, [ ] and ( ), the way
+the students write them in their notebooks. A wrong notation is shown in red with its
+label, never crossed out: a cross hides the very thing the student should read.
+
+Spoken in Romanian, captioned in Romanian and English. Like every clip, it stands alone: it
+never mentions what the previous clip covered or what the next one will.
 
 Render:
-    uv run manim render -ql scenes/.../02-relatia-de-ordine-intervale.py RelatiaDeOrdine   (draft)
-    uv run manim render -qh scenes/.../02-relatia-de-ordine-intervale.py RelatiaDeOrdine   (final)
+    uv run manim render -ql scenes/.../03-intervale.py Intervale   (draft)
+    uv run manim render -qh scenes/.../03-intervale.py Intervale   (final)
 """
 import sys
 from pathlib import Path
@@ -16,20 +21,19 @@ from pathlib import Path
 from manim import (
     DOWN,
     LEFT,
+    PI,
     RIGHT,
     UP,
-    Circle,
+    ArcBetweenPoints,
     Create,
-    Cross,
-    Dot,
     FadeIn,
     FadeOut,
     Line,
     MathTex,
     NumberLine,
-    Rectangle,
     Transform,
     VGroup,
+    VMobject,
     Write,
 )
 
@@ -43,7 +47,6 @@ from theme import (  # noqa: E402
     MARKER,
     MATH_COLOR,
     MUTED,
-    PAPER,
     RED,
     TEXT,
     caption,
@@ -52,7 +55,7 @@ from theme import (  # noqa: E402
 )
 
 VOICE = "ro-RO-AlinaNeural"
-# The same pace as clip 1, so the clips of one lesson sound alike.
+# The same pace as the other clips of the lesson, so they sound alike.
 RATE = "-8%"
 
 # The x positions of the three columns in the interval table: notation, set, picture.
@@ -61,13 +64,33 @@ COL_SET = -1.3
 COL_AXIS = 3.9
 
 
-def end_mark(point, closed, color):
-    """A filled dot for an end that belongs to the interval, a hollow ring for one that does not."""
+def end_mark(point, closed, side, color, height=0.44):
+    """The end of an interval drawn as its bracket: [ or ] when the end belongs to the
+    interval, ( or ) when it does not.
+
+    `side` is "left" or "right": which end of the interval `point` is. The bracket opens
+    towards the inside of the interval.
+    """
+    half = height / 2
+    inward = RIGHT if side == "left" else LEFT
     if closed:
-        return Dot(point, radius=0.1, color=color).set_z_index(3)
-    ring = Circle(radius=0.1, color=color, stroke_width=4).move_to(point)
-    # The paper fill hides the segment under the ring, so the end reads as "left out".
-    return ring.set_fill(PAPER, opacity=1).set_z_index(3)
+        bracket = VMobject(stroke_color=color, stroke_width=5)
+        bracket.set_points_as_corners(
+            [
+                point + UP * half + inward * 0.13,
+                point + UP * half,
+                point + DOWN * half,
+                point + DOWN * half + inward * 0.13,
+            ]
+        )
+    else:
+        # The chord sits a little inside the interval, so the curve bulges back out to the
+        # end itself. An arc from top to bottom bulges left, from bottom to top it bulges right.
+        top = point + UP * half + inward * 0.1
+        bottom = point + DOWN * half + inward * 0.1
+        start, end = (top, bottom) if side == "left" else (bottom, top)
+        bracket = ArcBetweenPoints(start, end, angle=PI / 2, color=color, stroke_width=5)
+    return bracket.set_z_index(3)
 
 
 def interval_picture(left, right, names, width=4.4):
@@ -93,12 +116,11 @@ def interval_picture(left, right, names, width=4.4):
 
     parts = VGroup(axis, segment)
     for x, name in zip(xs, names):
-        parts.add(Line(RIGHT * x + UP * 0.12, RIGHT * x + DOWN * 0.12, color=MUTED, stroke_width=3))
-        parts.add(MathTex(name, color=TEXT).scale(0.8).move_to(RIGHT * x + DOWN * 0.45))
+        parts.add(MathTex(name, color=TEXT).scale(0.8).move_to(RIGHT * x + DOWN * 0.5))
     if left != "inf":
-        parts.add(end_mark(start, left == "closed", INK))
+        parts.add(end_mark(start, left == "closed", "left", INK))
     if right != "inf":
-        parts.add(end_mark(end, right == "closed", INK))
+        parts.add(end_mark(end, right == "closed", "right", INK))
     return parts
 
 
@@ -110,15 +132,12 @@ def interval_row(notation, members, left, right, names, y):
     return VGroup(note, body, picture)
 
 
-class RelatiaDeOrdine(BilingualVoiceoverScene):
+class Intervale(BilingualVoiceoverScene):
     def construct(self):
         self.set_speech_service(
             EdgeTTSService(voice=VOICE, rate=RATE), create_subcaption=True
         )
         self.opening()
-        self.adunare()
-        self.inmultire()
-        self.inverse_patrate()
         self.intervale()
         self.exemplu()
         self.infinit()
@@ -128,19 +147,17 @@ class RelatiaDeOrdine(BilingualVoiceoverScene):
     # ------------------------------------------------------------------ opening
 
     def opening(self):
-        head = title("Relația de ordine. Intervale")
+        head = title("Intervale de numere reale")
         sub = caption("Clasa a IX-a · Numere reale")
         VGroup(head, sub).arrange(DOWN, buff=0.45)
         with self.say(
             ro=(
-                "Bine ați revenit! În clipul trecut am recapitulat mulțimile de numere. "
-                "<bookmark mark='sub'/> Acum vorbim despre relația de ordine pe mulțimea "
-                "numerelor reale și despre intervale."
+                "Bine ați venit! Astăzi învățăm intervalele de numere reale. "
+                "<bookmark mark='sub'/> La final rezolvăm împreună un exemplu."
             ),
             en=(
-                "Welcome back! In the last clip we reviewed the sets of numbers. "
-                "Now we talk about the order relation on the set of real numbers "
-                "and about intervals."
+                "Welcome! Today we learn the intervals of real numbers. "
+                "At the end we work through an example together."
             ),
         ) as t:
             self.play(FadeIn(head, shift=UP * 0.3), run_time=1.2)
@@ -148,147 +165,6 @@ class RelatiaDeOrdine(BilingualVoiceoverScene):
             self.play(FadeIn(sub), run_time=0.8)
             self.wait(t.get_remaining_duration())
         self.play(FadeOut(head), FadeOut(sub), run_time=0.6)
-
-    # ---------------------------------------------------------- adunare, tranzitivitate
-
-    def adunare(self):
-        head = title("Proprietăți ale inegalităților").to_edge(UP, buff=0.8)
-        given = MathTex(r"a,\ b,\ c,\ d\in\mathbb{R}", color=MUTED).scale(0.9)
-        given.next_to(head, DOWN, buff=0.4)
-
-        rows = VGroup(
-            MathTex(r"a\le b,\ \ b\le c\ \Rightarrow\ a\le c", color=MATH_COLOR),
-            MathTex(r"a\le b\ \Rightarrow\ a+c\le b+c", color=MATH_COLOR),
-            MathTex(r"a\le b,\ \ c\le d\ \Rightarrow\ a+c\le b+d", color=MATH_COLOR),
-        ).scale(1.1).arrange(DOWN, buff=0.9, aligned_edge=LEFT)
-        notes = VGroup(
-            caption("tranzitivitate").next_to(rows[0], RIGHT, buff=0.7),
-            caption("adunăm același număr").next_to(rows[1], RIGHT, buff=0.7),
-            caption("se adună membru cu membru").next_to(rows[2], RIGHT, buff=0.7),
-        )
-        # The notes of the three rows start on one vertical line.
-        left_edge = max(note.get_left()[0] for note in notes)
-        for note in notes:
-            note.shift(RIGHT * (left_edge - note.get_left()[0]))
-        # The rows and their notes sit as one block in the free space under the title.
-        VGroup(rows, notes).move_to(DOWN * 0.5)
-
-        with self.say(
-            ro=(
-                "Pentru orice numere reale a, b, c și d avem câteva reguli. "
-                "<bookmark mark='a'/> Prima este tranzitivitatea: dacă a este mai mic sau egal cu b, "
-                "iar b este mai mic sau egal cu c, atunci a este mai mic sau egal cu c. "
-                "<bookmark mark='b'/> Putem aduna același număr în ambii membri, "
-                "iar inegalitatea se păstrează. "
-                "<bookmark mark='c'/> Și putem aduna două inegalități de același sens, "
-                "membru cu membru."
-            ),
-            en=(
-                "For any real numbers a, b, c and d we have a few rules. "
-                "The first is transitivity: if a is less than or equal to b, "
-                "and b is less than or equal to c, then a is less than or equal to c. "
-                "We can add the same number to both sides, "
-                "and the inequality still holds. "
-                "And we can add two inequalities that point the same way, "
-                "side by side."
-            ),
-        ) as t:
-            self.play(FadeIn(head), FadeIn(given), run_time=0.9)
-            for mark, index in (("a", 0), ("b", 1), ("c", 2)):
-                self.wait_until_bookmark(mark)
-                self.play(Write(rows[index]), run_time=1.3)
-                self.play(FadeIn(notes[index]), run_time=0.6)
-            self.wait(t.get_remaining_duration())
-
-        self.play(FadeOut(rows), FadeOut(notes), run_time=0.6)
-        self.head, self.given = head, given
-
-    # ---------------------------------------------------------------- înmulțire
-
-    def inmultire(self):
-        rows = VGroup(
-            MathTex(r"a\le b,\ \ c>0\ \Rightarrow\ ac\le bc", color=MATH_COLOR),
-            MathTex(r"a\le b,\ \ c<0\ \Rightarrow\ ac", r"\ge", r"bc", color=MATH_COLOR),
-        ).scale(1.1).arrange(DOWN, buff=0.9, aligned_edge=LEFT)
-        rows[1][1].set_color(RED)
-        warning = ro("se schimbă sensul inegalității!", size=30, color=RED, weight="BOLD")
-        warning.next_to(rows[1], DOWN, buff=0.35).align_to(rows, LEFT)
-
-        sample = VGroup(
-            MathTex(r"2<3", color=MATH_COLOR),
-            MathTex(r"\big|\cdot(-1)", color=MUTED),
-            MathTex(r"\Rightarrow", color=MATH_COLOR),
-            MathTex(r"-2", r">", r"-3", color=MATH_COLOR),
-        ).scale(1.1).arrange(RIGHT, buff=0.35)
-        sample[3][1].set_color(RED)
-        sample.next_to(warning, DOWN, buff=0.8).align_to(rows, LEFT)
-        VGroup(rows, warning, sample).move_to(DOWN * 0.9)
-
-        with self.say(
-            ro=(
-                "Acum înmulțim. <bookmark mark='a'/> Dacă înmulțim ambii membri cu un număr "
-                "strict pozitiv, inegalitatea se păstrează. "
-                "<bookmark mark='b'/> Dacă înmulțim cu un număr strict negativ, "
-                "<bookmark mark='warn'/> se schimbă sensul inegalității! "
-                "<bookmark mark='ex'/> De exemplu, doi este mai mic decât trei, "
-                "dar minus doi este mai mare decât minus trei."
-            ),
-            en=(
-                "Now we multiply. If we multiply both sides by a strictly positive "
-                "number, the inequality still holds. "
-                "If we multiply by a strictly negative number, "
-                "the inequality changes direction! "
-                "For example, two is less than three, "
-                "but minus two is greater than minus three."
-            ),
-        ) as t:
-            self.wait_until_bookmark("a")
-            self.play(Write(rows[0]), run_time=1.3)
-            self.wait_until_bookmark("b")
-            self.play(Write(rows[1]), run_time=1.3)
-            self.wait_until_bookmark("warn")
-            self.play(FadeIn(warning, shift=LEFT * 0.2), run_time=0.8)
-            self.wait_until_bookmark("ex")
-            self.play(FadeIn(sample, lag_ratio=0.3), run_time=1.6)
-            self.wait(t.get_remaining_duration())
-
-        self.play(FadeOut(rows), FadeOut(warning), FadeOut(sample), run_time=0.6)
-
-    # ---------------------------------------------------- inverse și pătrate
-
-    def inverse_patrate(self):
-        rows = VGroup(
-            MathTex(r"0<a\le b\ \Rightarrow\ \frac{1}{a}\ge\frac{1}{b}", color=MATH_COLOR),
-            MathTex(r"x^{2}\ge 0\ \ \text{pentru orice}\ x\in\mathbb{R}", color=MATH_COLOR),
-            MathTex(r"x^{2}=0\ \Leftrightarrow\ x=0", color=MATH_COLOR),
-        ).scale(1.2).arrange(DOWN, buff=0.8, aligned_edge=LEFT)
-        rows.move_to(DOWN * 0.9)
-
-        with self.say(
-            ro=(
-                "Pentru numere strict pozitive, inversele schimbă ordinea: "
-                "dacă a este mai mic sau egal cu b, atunci unu supra a este mai mare "
-                "sau egal cu unu supra b. "
-                "<bookmark mark='b'/> Și nu uitați: pătratul oricărui număr real este "
-                "mai mare sau egal cu zero, "
-                "<bookmark mark='c'/> iar el este egal cu zero doar când numărul este zero."
-            ),
-            en=(
-                "For strictly positive numbers, the inverses swap the order: "
-                "if a is less than or equal to b, then one over a is greater "
-                "than or equal to one over b. "
-                "And do not forget: the square of any real number is "
-                "greater than or equal to zero, "
-                "and it equals zero only when the number is zero."
-            ),
-        ) as t:
-            self.play(Write(rows[0]), run_time=1.3)
-            for mark, index in (("b", 1), ("c", 2)):
-                self.wait_until_bookmark(mark)
-                self.play(Write(rows[index]), run_time=1.3)
-            self.wait(t.get_remaining_duration())
-
-        self.play(FadeOut(rows), FadeOut(self.given), run_time=0.6)
 
     # ---------------------------------------------------------------- intervale
 
@@ -317,22 +193,21 @@ class RelatiaDeOrdine(BilingualVoiceoverScene):
 
         with self.say(
             ro=(
-                "Trecem la intervale. Fie a și b două numere reale, cu a mai mic decât b. "
+                "Fie a și b două numere reale, cu a mai mic decât b. "
                 "<bookmark mark='closed'/> Intervalul închis de la a la b conține toate "
                 "numerele reale dintre a și b, inclusiv capetele. "
-                "<bookmark mark='dots'/> Pe axă, punctele pline arată că a și b "
+                "<bookmark mark='dots'/> Pe axă, parantezele drepte arată că a și b "
                 "aparțin intervalului."
             ),
             en=(
-                "We move on to intervals. Let a and b be two real numbers, with a less than b. "
+                "Let a and b be two real numbers, with a less than b. "
                 "The closed interval from a to b holds all the "
                 "real numbers between a and b, the ends included. "
-                "On the number line, the filled dots show that a and b "
+                "On the number line, the square brackets show that a and b "
                 "belong to the interval."
             ),
         ) as t:
-            self.play(Transform(self.head, head2), run_time=0.9)
-            self.play(FadeIn(given), run_time=0.6)
+            self.play(FadeIn(head2), FadeIn(given), run_time=0.9)
             label = kind("Interval închis")
             self.wait_until_bookmark("closed")
             self.play(FadeIn(label), Write(closed[0]), Write(closed[1]), run_time=1.4)
@@ -344,12 +219,12 @@ class RelatiaDeOrdine(BilingualVoiceoverScene):
             ro=(
                 "Intervalul deschis de la a la b are aceleași numere, "
                 "dar fără capete. "
-                "<bookmark mark='rings'/> Cercurile goale arată că a și b nu aparțin intervalului."
+                "<bookmark mark='rings'/> Parantezele rotunde arată că a și b nu aparțin intervalului."
             ),
             en=(
                 "The open interval from a to b has the same numbers, "
                 "but without the ends. "
-                "The hollow circles show that a and b do not belong to the interval."
+                "The round brackets show that a and b do not belong to the interval."
             ),
         ) as t:
             label2 = kind("Interval deschis")
@@ -409,6 +284,7 @@ class RelatiaDeOrdine(BilingualVoiceoverScene):
             self.wait(t.get_remaining_duration())
 
         self.play(FadeOut(rays), FadeOut(label), FadeOut(given), run_time=0.7)
+        self.head = head2
 
     # ------------------------------------------------------------------ exemplu
 
@@ -435,7 +311,12 @@ class RelatiaDeOrdine(BilingualVoiceoverScene):
             start, end = line.n2p(lo) + UP * lift, line.n2p(hi) + UP * lift
             bar = Line(start, end, color=color, stroke_width=7).set_z_index(2)
             tag = MathTex(name, color=color).scale(0.9).next_to(bar, LEFT, buff=0.3)
-            return VGroup(bar, end_mark(start, lo_closed, color), end_mark(end, hi_closed, color), tag)
+            return VGroup(
+                bar,
+                end_mark(start, lo_closed, "left", color),
+                end_mark(end, hi_closed, "right", color),
+                tag,
+            )
 
         band_a = band(-2, 3, True, False, 0.55, INK, "A")
         band_b = band(1, 5, False, True, 1.1, GREEN, "B")
@@ -446,7 +327,11 @@ class RelatiaDeOrdine(BilingualVoiceoverScene):
             start, end = line.n2p(lo), line.n2p(hi)
             stroke = Line(start, end, color=MARKER, stroke_width=22, stroke_opacity=0.9)
             stroke.set_z_index(-1)
-            return VGroup(stroke, end_mark(start, lo_closed, RED), end_mark(end, hi_closed, RED))
+            return VGroup(
+                stroke,
+                end_mark(start, lo_closed, "left", RED),
+                end_mark(end, hi_closed, "right", RED),
+            )
 
         results = VGroup(
             MathTex(r"A\cap B=(1,\ 3)", color=MATH_COLOR),
@@ -588,7 +473,6 @@ class RelatiaDeOrdine(BilingualVoiceoverScene):
         pair = VGroup(right, wrong).arrange(RIGHT, buff=3.0).move_to(UP * 0.4)
         yes = ro("corect", size=30, color=GREEN, weight="BOLD").next_to(right, DOWN, buff=0.5)
         no = ro("greșit", size=30, color=RED, weight="BOLD").next_to(wrong, DOWN, buff=0.5)
-        cross = Cross(wrong, stroke_color=RED, stroke_width=6)
         reason = caption("Infinitul nu este un număr, deci nu aparține intervalului.")
         reason.to_edge(DOWN, buff=1.0)
 
@@ -614,68 +498,71 @@ class RelatiaDeOrdine(BilingualVoiceoverScene):
             self.wait_until_bookmark("ok")
             self.play(Write(right), FadeIn(yes), run_time=1.2)
             self.wait_until_bookmark("no")
-            self.play(Write(wrong), run_time=1.0)
-            self.play(Create(cross), FadeIn(no), run_time=0.8)
+            # The wrong form stays readable: red and labelled, never crossed out.
+            self.play(Write(wrong), FadeIn(no), run_time=1.2)
             self.wait_until_bookmark("why")
             self.play(FadeIn(reason), run_time=0.8)
             self.wait(t.get_remaining_duration())
 
-        self.play(FadeOut(VGroup(right, wrong, yes, no, cross, reason)), run_time=0.7)
+        self.play(FadeOut(VGroup(pair, yes, no, reason)), run_time=0.7)
 
     # ------------------------------------------------------------------ final
 
     def closing(self):
         head5 = title("De reținut").to_edge(UP, buff=0.8)
-        first = VGroup(
-            MathTex(r"c<0:", color=MATH_COLOR),
-            MathTex(r"a\le b\ \Rightarrow\ ac", r"\ge", r"bc", color=MATH_COLOR),
-        ).scale(1.3).arrange(RIGHT, buff=0.4)
-        first[1][1].set_color(RED)
-        second = MathTex(r"(-\infty,\ b],\qquad [a,\ +\infty)", color=MATH_COLOR).scale(1.3)
-        points = VGroup(first, second).arrange(DOWN, buff=1.0).move_to(UP * 0.4)
-        underline = Rectangle(width=first.width + 0.6, height=0.22, color=MARKER, stroke_width=0)
-        underline.set_fill(MARKER, opacity=0.85)
-        underline.next_to(first, DOWN, buff=0.18)
-        bye = caption("În clipul următor: modulul unui număr real.")
-        bye.to_edge(DOWN, buff=0.9)
+        signs = VGroup(
+            MathTex(r"[\quad]", color=INK),
+            MathTex(r"(\quad)", color=INK),
+            MathTex(r"\pm\infty", color=INK),
+        ).scale(1.4)
+        notes = VGroup(
+            ro("capătul aparține intervalului", size=34),
+            ro("capătul nu aparține intervalului", size=34),
+            ro("intervalul este mereu deschis", size=34),
+        )
+        rows = VGroup(
+            *[VGroup(sign, note).arrange(RIGHT, buff=0.8) for sign, note in zip(signs, notes)]
+        ).arrange(DOWN, buff=0.8)
+        # The signs share one column and the notes start on one vertical line.
+        for sign in signs:
+            sign.set_x(-3.6)
+        for note in notes:
+            note.align_to(LEFT * 2.2, LEFT)
+        rows.move_to(DOWN * 0.3)
+        underline = Line(
+            notes[2].get_corner(DOWN + LEFT),
+            notes[2].get_corner(DOWN + RIGHT),
+            color=MARKER,
+            stroke_width=14,
+            stroke_opacity=0.85,
+        ).shift(DOWN * 0.12).set_z_index(-1)
 
         with self.say(
             ro=(
-                "Să reținem două idei. "
-                "<bookmark mark='a'/> Când înmulțim cu un număr negativ, se schimbă "
-                "sensul inegalității. "
-                "<bookmark mark='b'/> Și la infinit, intervalul este mereu deschis. "
-                "<bookmark mark='bye'/> În clipul următor continuăm cu modulul unui număr real. "
+                "Să reținem. "
+                "<bookmark mark='a'/> Paranteza dreaptă arată că capătul aparține intervalului. "
+                "<bookmark mark='b'/> Paranteza rotundă arată că el nu aparține intervalului. "
+                "<bookmark mark='c'/> Iar la infinit, intervalul este mereu deschis. "
                 "Pe curând!"
             ),
             en=(
-                "Let us keep two ideas. "
-                "When we multiply by a negative number, the inequality "
-                "changes direction. "
+                "Let us remember. "
+                "A square bracket shows that the end belongs to the interval. "
+                "A round bracket shows that it does not belong to the interval. "
                 "And at infinity, the interval is always open. "
-                "In the next clip we continue with the absolute value of a real number. "
                 "See you soon!"
             ),
         ) as t:
             self.play(Transform(self.head, head5), run_time=0.9)
-            self.wait_until_bookmark("a")
-            self.play(Write(first), run_time=1.4)
+            for mark, index in (("a", 0), ("b", 1), ("c", 2)):
+                self.wait_until_bookmark(mark)
+                self.play(FadeIn(rows[index]), run_time=1.0)
             self.play(FadeIn(underline), run_time=0.6)
-            self.wait_until_bookmark("b")
-            self.play(Write(second), run_time=1.4)
-            self.wait_until_bookmark("bye")
-            self.play(FadeIn(bye), run_time=0.9)
             self.wait(t.get_remaining_duration())
 
-        self.play(
-            FadeOut(self.head),
-            FadeOut(points),
-            FadeOut(underline),
-            FadeOut(bye),
-            run_time=1.0,
-        )
+        self.play(FadeOut(self.head), FadeOut(rows), FadeOut(underline), run_time=1.0)
         self.wait(0.4)
 
 
-CLIP_TITLE_RO = "Relația de ordine pe ℝ. Intervale — clasa a IX-a"
-CLIP_TITLE_EN = "The order relation on ℝ. Intervals — grade 9"
+CLIP_TITLE_RO = "Intervale de numere reale — clasa a IX-a"
+CLIP_TITLE_EN = "Intervals of real numbers — grade 9"
