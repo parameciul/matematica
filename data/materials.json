@@ -39,6 +39,14 @@
         "ro": "Recapitulare inițială: materia claselor a V-a – a VII-a",
         "en": "Start-of-year review: grades 5-7 math"
       }
+    },
+    {
+      "id": "permutari",
+      "grade": 11,
+      "title": {
+        "ro": "Permutări",
+        "en": "Permutations"
+      }
     }
   ],
   "grades": {
@@ -80,8 +88,8 @@
     },
     "11": {
       "intro": {
-        "ro": "Materiale de matematică pentru clasa a 11-a (Clasa a XI-a): matrice și determinanți, șiruri și limite de funcții, vectori și geometrie analitică. Găsești aici teorie sintetică, fișe de lucru cu exerciții pe niveluri, fișe recapitulative și teste pentru teze și examen. Pagina grupează materialele pe teme și ani școlari, de la recapitularea clasei a X-a până la lecțiile noi. Le poți folosi acasă, în ritmul tău, pe tot parcursul anului.",
-        "en": "Math materials for Grade 11: matrices and determinants, sequences and limits of functions, vectors and analytic geometry, baccalaureate reviews. Here you will find concise theory, leveled worksheets, review sheets and tests for theses and the exam. The page groups the materials by topic and school year, from the grade 10 review to the new lessons. Use them at home, at your own pace, throughout the year."
+        "ro": "Materiale de matematică pentru clasa a 11-a (Clasa a XI-a): permutări, matrice și determinanți, șiruri și limite de funcții, vectori și geometrie analitică. Găsești aici teorie sintetică, fișe de lucru cu exerciții pe niveluri, fișe recapitulative și teste pentru teze și examen. Pagina grupează materialele pe teme și ani școlari, de la recapitularea clasei a X-a până la lecțiile noi. Le poți folosi acasă, în ritmul tău, pe tot parcursul anului.",
+        "en": "Math materials for Grade 11: permutations, matrices and determinants, sequences and limits of functions, vectors and analytic geometry, baccalaureate reviews. Here you will find concise theory, leveled worksheets, review sheets and tests for theses and the exam. The page groups the materials by topic and school year, from the grade 10 review to the new lessons. Use them at home, at your own pace, throughout the year."
       }
     },
     "12": {
@@ -692,6 +700,57 @@
       "results": {
         "version": 1,
         "checks": 20
+      }
+    },
+    {
+      "slug": "fisa-recapitulativa-permutari",
+      "uid": "1015",
+      "topic": "permutari",
+      "kind": "fisa-recapitulativa",
+      "title": {
+        "ro": "Fișă recapitulativă: permutări",
+        "en": "Review worksheet: permutations"
+      },
+      "published": "2026-09-23",
+      "description": {
+        "ro": "Fișă recapitulativă pentru clasa a XI-a cu 50 de probleme pe trei niveluri despre permutări: compunere, inversă, inversiuni și semn.",
+        "en": "Grade 11 review worksheet with 50 problems on three levels about permutations: composition, inverse, inversions and sign."
+      },
+      "pdf": "materiale/pdf/fisa-recapitulativa-permutari-1015.pdf",
+      "youtube": null,
+      "import": {
+        "date": "2026-09-23",
+        "workflow": 3,
+        "pdf": "generated"
+      },
+      "keywords": {
+        "ro": [
+          "permutări",
+          "compunerea permutărilor",
+          "inversa unei permutări",
+          "inversiuni",
+          "semnul unei permutări",
+          "transpoziții",
+          "ecuații cu permutări",
+          "recapitulare",
+          "clasa a 11-a",
+          "clasa a XI-a"
+        ],
+        "en": [
+          "permutations",
+          "composition of permutations",
+          "inverse permutation",
+          "inversions",
+          "sign of a permutation",
+          "transpositions",
+          "permutation equations",
+          "review",
+          "grade 11"
+        ]
+      },
+      "results": {
+        "version": 1,
+        "checks": 41
       }
     }
   ]
