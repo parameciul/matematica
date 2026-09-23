@@ -65,7 +65,7 @@ Validator rules (in `tests/validate.mjs`):
 - `section` values never go down along the list (clip numbers follow the text).
 - When the article is filled, section `n` must exist: the article has at least `n` `<h2>`, in RO and in EN.
 - A quiz has `youtube: null`.
-- The class-code rule (`9R2`) reads page text. A video id is written only in `href`, `src` and JSON-LD, never as visible text, so an id such as `a-9R2xyz` cannot trip it. A generator test checks this.
+- The class-code rule (`9R2`) reads the page source, attributes too (it once caught SVG path data). A video id such as `a-9R2xyz` would trip it, and a YouTube id cannot be changed. The rule skips the video ids of the material: it removes them from the source before the scan. A validator test checks an id like this.
 
 The public `data/materials.json` carries the same list.
 
