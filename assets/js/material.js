@@ -1,5 +1,5 @@
 // Material page: the static page already holds the breadcrumb, title, date, PDF
-// button, video and related materials. The script below only re-renders the
+// button, clips and related materials. The script below only re-renders the
 // related list (so "new" labels stay fresh), marks the grade in the menu and
 // renders the math. There is one article per page, in the page language.
 (function () {
@@ -8,48 +8,11 @@
 
   const uid = main.getAttribute('data-id');
   const el = Site.el;
-  const article = main.querySelector('article[data-lang]');
   const related = document.getElementById('material-related');
 
   let data = null;
   let found; // undefined while loading, null when the uid is not in the list
   let failed = false;
-
-  function videoUrl(videoId) {
-    return `https://www.youtube.com/watch?v=${encodeURIComponent(videoId)}`;
-  }
-
-  // The generator writes the video frame statically. Only build it when it is
-  // missing, inserting it above the article like the static page does.
-  function ensureVideo(material) {
-    if (!material.youtube) return;
-    const videoId = typeof material.youtube === 'string' ? material.youtube : material.youtube.id;
-    if (!videoId) return;
-    let box = main.querySelector('.video');
-    let link = main.querySelector('.video-link a');
-    if (!box) {
-      box = el('div', 'video');
-      const iframe = el('iframe');
-      iframe.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(videoId)}`;
-      iframe.loading = 'lazy';
-      iframe.allow = 'accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
-      iframe.referrerPolicy = 'strict-origin-when-cross-origin';
-      iframe.allowFullscreen = true;
-      box.appendChild(iframe);
-      const line = el('p', 'video-link');
-      link = el('a');
-      link.href = videoUrl(videoId);
-      link.target = '_blank';
-      link.rel = 'noopener';
-      line.appendChild(link);
-      main.insertBefore(box, article);
-      main.insertBefore(line, article);
-    }
-    const title = `${t('material.video')}: ${Site.pick(material.title)}`;
-    const frame = box.querySelector('iframe');
-    if (frame && !frame.title) frame.title = title;
-    if (link && !link.textContent) link.textContent = t('material.openYoutube');
-  }
 
   function renderRelated(material, topic) {
     if (!related) return;
@@ -82,7 +45,6 @@
 
     const { material, topic } = found;
     Site.markGrade(topic.grade, false);
-    ensureVideo(material);
     renderRelated(material, topic);
   }
 
