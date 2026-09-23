@@ -46,12 +46,15 @@ from theme import (  # noqa: E402
 VOICE = "ro-RO-AlinaNeural"
 # The same pace as clip 1, so the clips of one lesson sound alike.
 RATE = "-8%"
+# Extra silence after each sentence, so the viewer can take in one idea before the next.
+SENTENCE_PAUSE = 0.8
 
 
 class RelatiaDeOrdine(BilingualVoiceoverScene):
     def construct(self):
         self.set_speech_service(
-            EdgeTTSService(voice=VOICE, rate=RATE), create_subcaption=True
+            EdgeTTSService(voice=VOICE, rate=RATE, sentence_pause=SENTENCE_PAUSE),
+            create_subcaption=True,
         )
         self.opening()
         self.adunare()
@@ -114,9 +117,9 @@ class RelatiaDeOrdine(BilingualVoiceoverScene):
 
         with self.say(
             ro=(
-                "Pentru orice numere reale a, b, c și d avem câteva reguli. "
-                "<bookmark mark='a'/> Prima este tranzitivitatea: dacă a este mai mic sau egal cu b, "
-                "iar b este mai mic sau egal cu c, atunci a este mai mic sau egal cu c. "
+                "Pentru orice numere reale {a}, {b}, {c} și {d} avem câteva reguli. "
+                "<bookmark mark='a'/> Prima este tranzitivitatea: dacă {a} este mai mic sau egal cu {b}, "
+                "iar {b} este mai mic sau egal cu {c}, atunci {a} este mai mic sau egal cu {c}. "
                 "<bookmark mark='b'/> Putem aduna același număr în ambii membri, "
                 "iar inegalitatea se păstrează. "
                 "<bookmark mark='c'/> Și putem aduna două inegalități de același sens, "
@@ -206,8 +209,8 @@ class RelatiaDeOrdine(BilingualVoiceoverScene):
         with self.say(
             ro=(
                 "Pentru numere strict pozitive, inversele schimbă ordinea: "
-                "dacă a este mai mic sau egal cu b, atunci unu supra a este mai mare "
-                "sau egal cu unu supra b. "
+                "dacă {a} este mai mic sau egal cu {b}, atunci unu supra {a} este mai mare "
+                "sau egal cu unu supra {b}. "
                 "<bookmark mark='b'/> Și nu uitați: pătratul oricărui număr real este "
                 "mai mare sau egal cu zero, "
                 "<bookmark mark='c'/> iar el este egal cu zero doar când numărul este zero."

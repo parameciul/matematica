@@ -49,12 +49,15 @@ VOICE = "ro-RO-AlinaNeural"
 # A little under the voice's own pace: it reads a lesson more calmly, and it leaves more
 # room between bookmarks for the animations.
 RATE = "-8%"
+# Extra silence after each sentence, so the viewer can take in one idea before the next.
+SENTENCE_PAUSE = 0.8
 
 
 class MultimiDeNumere(BilingualVoiceoverScene):
     def construct(self):
         self.set_speech_service(
-            EdgeTTSService(voice=VOICE, rate=RATE), create_subcaption=True
+            EdgeTTSService(voice=VOICE, rate=RATE, sentence_pause=SENTENCE_PAUSE),
+            create_subcaption=True,
         )
         self.opening()
         self.naturale()
@@ -339,9 +342,9 @@ class MultimiDeNumere(BilingualVoiceoverScene):
         with self.say(
             ro=(
                 "Mai avem trei notații utile. "
-                "<bookmark mark='a'/> R stelat înseamnă numerele reale fără zero. "
-                "<bookmark mark='b'/> R plus înseamnă numerele reale strict pozitive, deci fără zero. "
-                "<bookmark mark='c'/> R minus înseamnă numerele reale strict negative, tot fără zero."
+                "<bookmark mark='a'/> {R} stelat înseamnă numerele reale fără zero. "
+                "<bookmark mark='b'/> {R} plus înseamnă numerele reale strict pozitive, deci fără zero. "
+                "<bookmark mark='c'/> {R} minus înseamnă numerele reale strict negative, tot fără zero."
             ),
             en=(
                 "Three more useful notations. "
@@ -368,20 +371,16 @@ class MultimiDeNumere(BilingualVoiceoverScene):
         underline = Rectangle(width=7.4, height=0.22, color=MARKER, stroke_width=0)
         underline.set_fill(MARKER, opacity=0.85)
         underline.next_to(summary, DOWN, buff=0.18)
-        bye = caption("În clipul următor: relația de ordine și intervalele.")
-        bye.next_to(underline, DOWN, buff=1.1)
 
         with self.say(
             ro=(
                 "Să reținem ideea principală: "
                 "<bookmark mark='sum'/> fiecare mulțime o conține pe cea dinaintea ei. "
-                "<bookmark mark='bye'/> În clipul următor continuăm cu relația de ordine și cu intervalele. "
                 "Pe curând!"
             ),
             en=(
                 "Let us keep the main idea: "
                 "every set contains the one before it. "
-                "In the next clip we continue with the order relation and the intervals. "
                 "See you soon!"
             ),
         ) as t:
@@ -389,11 +388,9 @@ class MultimiDeNumere(BilingualVoiceoverScene):
             self.wait_until_bookmark("sum")
             self.play(Write(summary), run_time=1.5)
             self.play(FadeIn(underline), run_time=0.7)
-            self.wait_until_bookmark("bye")
-            self.play(FadeIn(bye), run_time=0.9)
             self.wait(t.get_remaining_duration())
 
-        self.play(FadeOut(self.head), FadeOut(summary), FadeOut(underline), FadeOut(bye), run_time=1.0)
+        self.play(FadeOut(self.head), FadeOut(summary), FadeOut(underline), run_time=1.0)
         self.wait(0.4)
 
 

@@ -57,6 +57,8 @@ from theme import (  # noqa: E402
 VOICE = "ro-RO-AlinaNeural"
 # The same pace as the other clips of the lesson, so they sound alike.
 RATE = "-8%"
+# Extra silence after each sentence, so the viewer can take in one idea before the next.
+SENTENCE_PAUSE = 0.8
 
 # The x positions of the three columns in the interval table: notation, set, picture.
 COL_NOTATION = -5.3
@@ -135,7 +137,8 @@ def interval_row(notation, members, left, right, names, y):
 class Intervale(BilingualVoiceoverScene):
     def construct(self):
         self.set_speech_service(
-            EdgeTTSService(voice=VOICE, rate=RATE), create_subcaption=True
+            EdgeTTSService(voice=VOICE, rate=RATE, sentence_pause=SENTENCE_PAUSE),
+            create_subcaption=True,
         )
         self.opening()
         self.intervale()
@@ -193,10 +196,10 @@ class Intervale(BilingualVoiceoverScene):
 
         with self.say(
             ro=(
-                "Fie a și b două numere reale, cu a mai mic decât b. "
-                "<bookmark mark='closed'/> Intervalul închis de la a la b conține toate "
-                "numerele reale dintre a și b, inclusiv capetele. "
-                "<bookmark mark='dots'/> Pe axă, parantezele drepte arată că a și b "
+                "Fie {a} și {b} două numere reale, cu {a} mai mic decât {b}. "
+                "<bookmark mark='closed'/> Intervalul închis de la {a} la {b} conține toate "
+                "numerele reale dintre {a} și {b}, inclusiv capetele. "
+                "<bookmark mark='dots'/> Pe axă, parantezele drepte arată că {a} și {b} "
                 "aparțin intervalului."
             ),
             en=(
@@ -217,9 +220,9 @@ class Intervale(BilingualVoiceoverScene):
 
         with self.say(
             ro=(
-                "Intervalul deschis de la a la b are aceleași numere, "
+                "Intervalul deschis de la {a} la {b} are aceleași numere, "
                 "dar fără capete. "
-                "<bookmark mark='rings'/> Parantezele rotunde arată că a și b nu aparțin intervalului."
+                "<bookmark mark='rings'/> Parantezele rotunde arată că {a} și {b} nu aparțin intervalului."
             ),
             en=(
                 "The open interval from a to b has the same numbers, "
@@ -261,10 +264,10 @@ class Intervale(BilingualVoiceoverScene):
         with self.say(
             ro=(
                 "Un interval nemărginit continuă la nesfârșit într-o parte. "
-                "<bookmark mark='plus'/> Spre plus infinit, el pornește din a, "
-                "cu a inclus sau nu. "
-                "<bookmark mark='minus'/> Spre minus infinit, el se oprește în b, "
-                "cu b inclus sau nu."
+                "<bookmark mark='plus'/> Spre plus infinit, el pornește din {a}, "
+                "cu {a} inclus sau nu. "
+                "<bookmark mark='minus'/> Spre minus infinit, el se oprește în {b}, "
+                "cu {b} inclus sau nu."
             ),
             en=(
                 "An unbounded interval goes on forever to one side. "
@@ -334,10 +337,10 @@ class Intervale(BilingualVoiceoverScene):
             )
 
         results = VGroup(
-            MathTex(r"A\cap B=(1,\ 3)", color=MATH_COLOR),
-            MathTex(r"A\cup B=[-2,\ 5]", color=MATH_COLOR),
-            MathTex(r"A\smallsetminus B=[-2,\ 1]", color=MATH_COLOR),
-            MathTex(r"B\smallsetminus A=[3,\ 5]", color=MATH_COLOR),
+            MathTex(r"A\cap B=", r"(1,\ 3)", color=MATH_COLOR),
+            MathTex(r"A\cup B=", r"[-2,\ 5]", color=MATH_COLOR),
+            MathTex(r"A\smallsetminus B=", r"[-2,\ 1]", color=MATH_COLOR),
+            MathTex(r"B\smallsetminus A=", r"[3,\ 5]", color=MATH_COLOR),
         ).scale(1.0)
         results.arrange_in_grid(rows=2, cols=2, buff=(1.6, 0.45), col_alignments="ll")
         results.to_edge(DOWN, buff=0.45)
@@ -345,10 +348,10 @@ class Intervale(BilingualVoiceoverScene):
         with self.say(
             ro=(
                 "Să facem un exemplu. "
-                "<bookmark mark='sets'/> Fie A intervalul de la minus doi, închis, "
-                "până la trei, deschis, și B intervalul de la unu, deschis, până la cinci, închis. "
-                "<bookmark mark='a'/> Desenăm A pe axă, "
-                "<bookmark mark='b'/> apoi pe B, deasupra lui."
+                "<bookmark mark='sets'/> Fie {A} intervalul de la minus doi, închis, "
+                "până la trei, deschis, și {B} intervalul de la unu, deschis, până la cinci, închis. "
+                "<bookmark mark='a'/> Desenăm {A} pe axă, "
+                "<bookmark mark='b'/> apoi pe {B}, deasupra lui."
             ),
             en=(
                 "Let us work through an example. "
@@ -372,14 +375,16 @@ class Intervale(BilingualVoiceoverScene):
             (
                 (1, 3, False, False),
                 (
-                    "Intersecția conține numerele care sunt în ambele "
+                    "Calculăm {A} intersectat cu {B}. "
+                    "<bookmark mark='show'/> Intersecția conține numerele care sunt în ambele "
                     "mulțimi: de la unu la trei. "
-                    "<bookmark mark='ends'/> Unu nu este în B, iar trei nu este în A, "
+                    "<bookmark mark='ends'/> Unu nu este în {B}, iar trei nu este în {A}, "
                     "deci ambele capete sunt deschise. "
-                    "<bookmark mark='res'/> A intersectat cu B este intervalul deschis "
+                    "<bookmark mark='res'/> {A} intersectat cu {B} este intervalul deschis "
                     "de la unu la trei."
                 ),
                 (
+                    "We work out A intersected with B. "
                     "The intersection holds the numbers that are in both "
                     "sets: from one to three. "
                     "One is not in B, and three is not in A, "
@@ -391,14 +396,16 @@ class Intervale(BilingualVoiceoverScene):
             (
                 (-2, 5, True, True),
                 (
-                    "Reuniunea conține numerele din cel puțin una "
+                    "Calculăm {A} reunit cu {B}. "
+                    "<bookmark mark='show'/> Reuniunea conține numerele din cel puțin una "
                     "dintre mulțimi: de la minus doi la cinci. "
-                    "<bookmark mark='ends'/> Minus doi este în A, iar cinci este în B, "
+                    "<bookmark mark='ends'/> Minus doi este în {A}, iar cinci este în {B}, "
                     "deci ambele capete sunt incluse. "
-                    "<bookmark mark='res'/> A reunit cu B este intervalul închis "
+                    "<bookmark mark='res'/> {A} reunit cu {B} este intervalul închis "
                     "de la minus doi la cinci."
                 ),
                 (
+                    "We work out A union B. "
                     "The union holds the numbers that are in at least one "
                     "of the sets: from minus two to five. "
                     "Minus two is in A, and five is in B, "
@@ -410,13 +417,15 @@ class Intervale(BilingualVoiceoverScene):
             (
                 (-2, 1, True, True),
                 (
-                    "A minus B păstrează numerele din A care nu sunt "
-                    "în B: de la minus doi la unu. "
-                    "<bookmark mark='ends'/> Unu rămâne inclus, pentru că B nu îl conține. "
+                    "Calculăm {A} minus {B}. "
+                    "<bookmark mark='show'/> Păstrăm numerele din {A} care nu sunt "
+                    "în {B}: de la minus doi la unu. "
+                    "<bookmark mark='ends'/> Unu rămâne inclus, pentru că {B} nu îl conține. "
                     "<bookmark mark='res'/> Obținem intervalul închis de la minus doi la unu."
                 ),
                 (
-                    "A minus B keeps the numbers of A that are not "
+                    "We work out A minus B. "
+                    "We keep the numbers of A that are not "
                     "in B: from minus two to one. "
                     "One stays included, because B does not contain it. "
                     "We get the closed interval from minus two to one."
@@ -425,13 +434,15 @@ class Intervale(BilingualVoiceoverScene):
             (
                 (3, 5, True, True),
                 (
-                    "B minus A păstrează numerele din B care nu sunt "
-                    "în A: de la trei la cinci. "
-                    "<bookmark mark='ends'/> Trei este inclus, pentru că A nu îl conține. "
+                    "Calculăm {B} minus {A}. "
+                    "<bookmark mark='show'/> Păstrăm numerele din {B} care nu sunt "
+                    "în {A}: de la trei la cinci. "
+                    "<bookmark mark='ends'/> Trei este inclus, pentru că {A} nu îl conține. "
                     "<bookmark mark='res'/> Obținem intervalul închis de la trei la cinci."
                 ),
                 (
-                    "B minus A keeps the numbers of B that are not "
+                    "We work out B minus A. "
+                    "We keep the numbers of B that are not "
                     "in A: from three to five. "
                     "Three is included, because A does not contain it. "
                     "We get the closed interval from three to five."
@@ -443,14 +454,17 @@ class Intervale(BilingualVoiceoverScene):
         for index, ((lo, hi, lo_closed, hi_closed), ro_text, en_text) in enumerate(steps):
             mark = highlight(lo, hi, lo_closed, hi_closed)
             with self.say(ro=ro_text, en=en_text) as t:
-                if shown is None:
-                    self.play(FadeIn(mark[0]), run_time=0.9)
-                else:
-                    self.play(FadeOut(shown), FadeIn(mark[0]), run_time=0.9)
+                # First what we work out, then the picture, then the value: the left side
+                # is on screen before the axis is read, and the answer comes last.
+                # The previous answer's stroke leaves as the new question is written.
+                clear = [] if shown is None else [FadeOut(shown)]
+                self.play(Write(results[index][0]), *clear, run_time=1.0)
+                self.wait_until_bookmark("show")
+                self.play(FadeIn(mark[0]), run_time=0.9)
                 self.wait_until_bookmark("ends")
                 self.play(FadeIn(mark[1]), FadeIn(mark[2]), run_time=0.8)
                 self.wait_until_bookmark("res")
-                self.play(Write(results[index]), run_time=1.2)
+                self.play(Write(results[index][1]), run_time=1.2)
                 self.wait(t.get_remaining_duration())
             shown = mark
 
