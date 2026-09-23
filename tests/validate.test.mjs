@@ -284,28 +284,109 @@ test('impossible publish date fails', () => {
   expectFailure(withSite((dir) => editData(dir, (d) => { sample(d).published = '2026-02-30'; })), /published must be a real date/);
 });
 
-test('YouTube id as a plain string fails', () => {
-  expectFailure(withSite((dir) => editData(dir, (d) => { sample(d).youtube = 'dQw4w9WgXcQ'; })), /youtube must be null or/);
+const CLIP_OK = { id: 'dQw4w9WgXcQ', uploaded: '2026-09-01', duration: 'PT7M31S', title: { ro: 'Modulul', en: 'Absolute value' } };
+const withClip = (patch) => (d) => { sample(d).youtube = [{ ...CLIP_OK, ...patch }]; };
+
+test('YouTube as a single object fails', () => {
+  expectFailure(withSite((dir) => editData(dir, (d) => { sample(d).youtube = { ...CLIP_OK }; })), /youtube must be null or a non-empty list/);
+});
+
+test('an empty YouTube list fails', () => {
+  expectFailure(withSite((dir) => editData(dir, (d) => { sample(d).youtube = []; })), /youtube must be null or a non-empty list/);
 });
 
 test('malformed YouTube id fails', () => {
-  expectFailure(withSite((dir) => editData(dir, (d) => { sample(d).youtube = { id: 'abc', uploaded: '2026-09-01', duration: 'PT7M31S' }; })), /youtube\.id must be an 11-character YouTube video ID/);
+  expectFailure(withSite((dir) => editData(dir, withClip({ id: 'abc' }))), /youtube\[0\]\.id must be an 11-character YouTube video ID/);
 });
 
 test('bad YouTube duration fails', () => {
-  expectFailure(withSite((dir) => editData(dir, (d) => { sample(d).youtube = { id: 'dQw4w9WgXcQ', uploaded: '2026-09-01', duration: '7:31' }; })), /youtube\.duration must be an ISO 8601 duration/);
+  expectFailure(withSite((dir) => editData(dir, withClip({ duration: '7:31' }))), /youtube\[0\]\.duration must be an ISO 8601 duration/);
 });
 
 test('bad YouTube upload date fails', () => {
-  expectFailure(withSite((dir) => editData(dir, (d) => { sample(d).youtube = { id: 'dQw4w9WgXcQ', uploaded: 'tomorrow', duration: 'PT7M31S' }; })), /youtube\.uploaded must be an ISO date/);
+  expectFailure(withSite((dir) => editData(dir, withClip({ uploaded: 'tomorrow' }))), /youtube\[0\]\.uploaded must be an ISO date/);
+});
+
+test('a clip without an English title fails', () => {
+  expectFailure(withSite((dir) => editData(dir, withClip({ title: { ro: 'Modulul' } }))), /youtube\[0\]\.title needs ro and en/);
+});
+
+test('a clip with an unknown field fails', () => {
+  expectFailure(withSite((dir) => editData(dir, withClip({ chapter: 2 }))), /unknown field "chapter"/);
+});
+
+test('a clip with section 0 fails', () => {
+  expectFailure(withSite((dir) => editData(dir, withClip({ section: 0 }))), /section must be a whole number from 1/);
 });
 
 test('a material with a valid video passes', () => {
   const result = withSite((dir) => {
-    editData(dir, (d) => { sample(d).youtube = { id: 'dQw4w9WgXcQ', uploaded: '2026-09-01', duration: 'PT7M31S' }; });
+    editData(dir, withClip({}));
     writeSite(dir);
   });
   assert.equal(result.code, 0, result.out);
+});
+
+// The sample page gets a real article with two sections, then the pages are generated again.
+function sampleArticle(dir, roInner, enInner) {
+  for (const [rel, inner] of [[SAMPLE_PAGE, roInner], [SAMPLE_EN_PAGE, enInner]]) {
+    editFile(dir, rel, (s) => s.replace(/(<article\b[^>]*>)[\s\S]*?(<\/article>)/, `$1${inner}$2`));
+  }
+}
+const TWO_SECTIONS = '<h2>1. Unu</h2>\n<p>a</p>\n<h2>2. Doi</h2>\n<p>b</p>';
+
+test('two clips with the same id fail', () => {
+  expectFailure(withSite((dir) => editData(dir, (d) => { sample(d).youtube = [{ ...CLIP_OK }, { ...CLIP_OK }]; })), /youtube: clip "dQw4w9WgXcQ" appears twice/);
+});
+
+test('clip sections going down fail', () => {
+  expectFailure(
+    withSite((dir) => editData(dir, (d) => { sample(d).youtube = [{ ...CLIP_OK, section: 2 }, { ...CLIP_OK, id: 'aKzam7LMZ_4', section: 1 }]; })),
+    /youtube\[1\]\.section must not be lower than the clip before it/,
+  );
+});
+
+test('a quiz with a clip fails', () => {
+  expectFailure(withSite((dir) => editData(dir, (d) => {
+    const quiz = d.materials.find((m) => m.kind === 'quiz');
+    quiz.youtube = [{ ...CLIP_OK }];
+  })), /youtube must be null for a quiz/);
+});
+
+test('a clip section past the last heading fails', () => {
+  expectFailure(withSite((dir) => {
+    sampleArticle(dir, TWO_SECTIONS, TWO_SECTIONS);
+    editData(dir, (d) => { sample(d).youtube = [{ ...CLIP_OK, section: 1 }, { ...CLIP_OK, id: 'aKzam7LMZ_4', section: 3 }]; });
+    writeSite(dir);
+  }), /youtube\[1\]\.section 3 but the article has 2 <h2>/);
+});
+
+test('clips placed in sections pass', () => {
+  const result = withSite((dir) => {
+    sampleArticle(dir, TWO_SECTIONS, TWO_SECTIONS);
+    editData(dir, (d) => { sample(d).youtube = [{ ...CLIP_OK, section: 1 }, { ...CLIP_OK, id: 'aKzam7LMZ_4', section: 2 }]; });
+    writeSite(dir);
+  });
+  assert.equal(result.code, 0, result.out);
+});
+
+test('a video id that looks like a class code passes', () => {
+  const result = withSite((dir) => {
+    editData(dir, (d) => { sample(d).youtube = [{ ...CLIP_OK, id: 'abcdefg-9R2' }]; });
+    writeSite(dir);
+  });
+  assert.equal(result.code, 0, result.out);
+});
+
+test('a generated clip slot the stripper cannot recognise fails', () => {
+  expectFailure(withSite((dir) => {
+    // Attribute order swapped from what the generator writes: stripClipSlots
+    // will not recognise it, so it survives a regenerate self-consistently
+    // (the freshness check alone would stay quiet) and must still be caught
+    // as a leftover.
+    editFile(dir, SAMPLE_PAGE, addToArticle('<div data-generated="clips" class="clip-slot">x</div><!-- /clip-slot -->'));
+    writeSite(dir);
+  }), /a generated clip slot is left inside the article; run node tools\/build_pages\.mjs/);
 });
 
 test('quiz with a PDF fails', () => {

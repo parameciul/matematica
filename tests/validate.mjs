@@ -7,7 +7,7 @@ import { join, dirname, extname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createRequire } from 'node:module';
 import vm from 'node:vm';
-import { buildSite, esc, KATEX_VERSION, ADMIN_FOLDER, FONTS } from '../tools/build_pages.mjs';
+import { buildSite, esc, KATEX_VERSION, ADMIN_FOLDER, FONTS, readArticle, countHeadings } from '../tools/build_pages.mjs';
 import { checkItems, checkTrueKeys } from '../tools/results.mjs';
 
 const require = createRequire(import.meta.url);
@@ -93,7 +93,12 @@ function walk(dir, out = []) {
   return out;
 }
 
+// YouTube ids of the materials. An id cannot be changed, and one such as
+// "ab-9R2xyzAB" reads like a class code, so the class-mark scan skips them.
+const VIDEO_IDS = new Set();
+
 function checkClassMarks(where, text) {
+  for (const id of VIDEO_IDS) text = text.split(id).join('');
   for (const [re, what] of CLASS_MARKS) {
     const hit = text.match(re);
     if (hit) fail(`${where}: contains ${what} ("${hit[0]}"). Remove class-specific details.`);
@@ -134,6 +139,9 @@ if (exists(SOURCE)) {
   const raw = read(SOURCE);
   try {
     data = JSON.parse(raw);
+    for (const m of Array.isArray(data.materials) ? data.materials : []) {
+      for (const v of Array.isArray(m.youtube) ? m.youtube : []) if (v && typeof v.id === 'string') VIDEO_IDS.add(v.id);
+    }
     if (!Array.isArray(data.topics)) fail(`${SOURCE}: "topics" must be an array`);
     if (!Array.isArray(data.materials)) fail(`${SOURCE}: "materials" must be an array`);
     checkClassMarks(SOURCE, raw);
@@ -155,6 +163,31 @@ for (const [i, t] of topics.entries()) {
   if (!Number.isInteger(t.grade) || t.grade < 5 || t.grade > 12) fail(`${where}: grade must be an integer 5-12`);
   if (!t.title || !isText(t.title.ro)) fail(`${where}: title.ro is required`);
   if (!t.title || !isText(t.title.en)) fail(`${where}: title.en is required`);
+}
+
+// A clip's section is the n-th <h2> of the article. An empty article shows
+// every card above it, so it needs no headings.
+function checkClipSections(where, m, page, html, lang) {
+  if (!Array.isArray(m.youtube) || m.youtube.length < 2) return;
+  const article = readArticle(html, lang) || '';
+  if (!Catalog.hasArticleContent(article)) return;
+  const count = countHeadings(article);
+  m.youtube.forEach((v, i) => {
+    if (v && Number.isInteger(v.section) && v.section > count) {
+      fail(`${page}: youtube[${i}].section ${v.section} but the article has ${count} <h2>`);
+    }
+  });
+}
+
+// A generated clip slot is the one thing the generator inserts inside the
+// article; readArticle strips it back out. If it survives, either a hand
+// edit re-shaped it past what stripClipSlots recognises, or the page was
+// never regenerated after a data change.
+function checkNoLeftoverSlot(page, html, lang) {
+  const article = readArticle(html, lang) || '';
+  if (article.includes('data-generated="clips"')) {
+    fail(`${page}: a generated clip slot is left inside the article; run node tools/build_pages.mjs`);
+  }
 }
 
 const materialUids = new Set();
@@ -193,23 +226,37 @@ for (const [i, m] of materials.entries()) {
       fail(`${where}: description.${lang} must be 70-160 characters (is ${[...d].length})`);
     }
   }
-  if (m.youtube === null || m.youtube === undefined) {
-    if (m.youtube !== null) fail(`${where}: youtube must be null or { "id", "uploaded", "duration" }`);
-  } else if (typeof m.youtube !== 'object') {
-    fail(`${where}: youtube must be null or { "id", "uploaded", "duration" }`);
-  } else {
-    if (!(typeof m.youtube.id === 'string' && YT_RE.test(m.youtube.id))) {
-      fail(`${where}: youtube.id must be an 11-character YouTube video ID`);
-    }
-    const up = YT_UPLOADED_RE.exec(String(m.youtube.uploaded || ''));
-    if (!up || !Catalog.isValidDate(up[1])) {
-      fail(`${where}: youtube.uploaded must be an ISO date or date-time`);
-    }
-    const dur = YT_DURATION_RE.exec(String(m.youtube.duration || ''));
-    if (!dur || dur[0] === 'PT' || (!dur[1] && !dur[2] && !dur[3])) {
-      fail(`${where}: youtube.duration must be an ISO 8601 duration like "PT7M31S"`);
+  const VIDEO_KEYS = ['id', 'uploaded', 'duration', 'title', 'section'];
+  if (m.youtube !== null) {
+    if (!Array.isArray(m.youtube) || m.youtube.length === 0) {
+      fail(`${where}: youtube must be null or a non-empty list of clips`);
+    } else {
+      m.youtube.forEach((v, i) => {
+        const at = `${where}: youtube[${i}]`;
+        if (!v || typeof v !== 'object' || Array.isArray(v)) { fail(`${at} must be an object`); return; }
+        for (const key of Object.keys(v)) if (!VIDEO_KEYS.includes(key)) fail(`${at}: unknown field "${key}"`);
+        if (!(typeof v.id === 'string' && YT_RE.test(v.id))) fail(`${at}.id must be an 11-character YouTube video ID`);
+        const up = YT_UPLOADED_RE.exec(String(v.uploaded || ''));
+        if (!up || !Catalog.isValidDate(up[1])) fail(`${at}.uploaded must be an ISO date or date-time`);
+        const dur = YT_DURATION_RE.exec(String(v.duration || ''));
+        if (!dur || dur[0] === 'PT' || (!dur[1] && !dur[2] && !dur[3])) fail(`${at}.duration must be an ISO 8601 duration like "PT7M31S"`);
+        if (!v.title || !isText(v.title.ro) || !isText(v.title.en)) fail(`${at}.title needs ro and en`);
+        if (v.section !== undefined && !(Number.isInteger(v.section) && v.section >= 1)) fail(`${at}.section must be a whole number from 1`);
+      });
+      const seen = new Set();
+      let lastSection = 0;
+      m.youtube.forEach((v, i) => {
+        if (!v || typeof v !== 'object') return;
+        if (seen.has(v.id)) fail(`${where}: youtube: clip "${v.id}" appears twice`);
+        seen.add(v.id);
+        if (Number.isInteger(v.section)) {
+          if (v.section < lastSection) fail(`${where}: youtube[${i}].section must not be lower than the clip before it`);
+          lastSection = v.section;
+        }
+      });
     }
   }
+  if (m.kind === 'quiz' && m.youtube !== null) fail(`${where}: youtube must be null for a quiz`);
   if (m.keywords !== undefined) {
     const ok = m.keywords && typeof m.keywords === 'object'
       && ['ro', 'en'].every((lang) => m.keywords[lang] === undefined || (Array.isArray(m.keywords[lang]) && m.keywords[lang].every(isText)));
@@ -291,11 +338,15 @@ for (const [i, m] of materials.entries()) {
     if (html.includes('data-lang="en"')) fail(`${page}: the English article lives in en/${page}`);
     if (!html.includes('data-root="../"')) fail(`${page}: body must have data-root="../"`);
     if (!html.includes(`katex@${KATEX_VERSION}/`)) fail(`${page}: must load KaTeX ${KATEX_VERSION}`);
+    checkClipSections(where, m, page, html, 'ro');
+    checkNoLeftoverSlot(page, html, 'ro');
     const enPage = `en/${page}`;
     if (!exists(enPage)) {
       fail(`${where}: missing file ${enPage}`);
     } else {
       const enHtml = read(enPage);
+      checkClipSections(where, m, enPage, enHtml, 'en');
+      checkNoLeftoverSlot(enPage, enHtml, 'en');
       if (!enHtml.includes('data-lang="en"')) fail(`${enPage}: must contain an article with data-lang="en"`);
       if (enHtml.includes('data-lang="ro"')) fail(`${enPage}: the Romanian article lives in ${page}`);
       if (!enHtml.includes('data-root="../../"')) fail(`${enPage}: body must have data-root="../../"`);

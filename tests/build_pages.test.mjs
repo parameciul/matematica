@@ -7,7 +7,10 @@ import { tmpdir } from 'node:os';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
-import { buildSite, writeSite, canonicalFor, materialPageTitle, relHref, SITE_URL } from '../tools/build_pages.mjs';
+import {
+  buildSite, writeSite, canonicalFor, materialPageTitle, relHref, SITE_URL,
+  stripClipSlots, insertClipSlots, countHeadings, readArticle,
+} from '../tools/build_pages.mjs';
 
 const REPO = join(dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -41,7 +44,7 @@ function dataFixture() {
         title: { ro: 'Lecție video: modul', en: 'Video lesson: absolute value' },
         published: '2026-09-15', description: DESC,
         pdf: null,
-        youtube: { id: 'dQw4w9WgXcQ', uploaded: '2026-09-01T10:00:00Z', duration: 'PT7M31S' },
+        youtube: [{ id: 'dQw4w9WgXcQ', uploaded: '2026-09-01T10:00:00Z', duration: 'PT7M31S', title: { ro: 'Modulul', en: 'Absolute value' } }],
       },
       {
         slug: 'quiz-recap', uid: '1003', topic: 'recap6', kind: 'quiz',
@@ -194,7 +197,15 @@ test('JSON-LD parses, and VideoObject exists only with a video', (t) => {
   assert.equal(video.thumbnailUrl, 'https://i.ytimg.com/vi/dQw4w9WgXcQ/hqdefault.jpg');
   assert.equal(video.uploadDate, '2026-09-01T10:00:00Z');
   assert.equal(video.duration, 'PT7M31S');
-  assert.match(site.get(`materiale/${mname('lectie-video')}.html`), /youtube-nocookie\.com\/embed\/dQw4w9WgXcQ/);
+  const page = site.get(`materiale/${mname('lectie-video')}.html`);
+  assert.match(page, /class="clip-card clip-hero" id="clip-1" href="https:\/\/www\.youtube\.com\/watch\?v=dQw4w9WgXcQ"/);
+  assert.match(page, /aria-label="Videoclipul lecției: Lecție video: modul \(7:31\)"/);
+  assert.doesNotMatch(page, /<iframe/);
+  assert.match(page, /<meta property="og:image" content="https:\/\/i\.ytimg\.com\/vi\/dQw4w9WgXcQ\/hqdefault\.jpg">/);
+  assert.match(page, /<meta property="og:image:width" content="480">/);
+  assert.match(page, /<meta property="og:image:height" content="360">/);
+  assert.equal(video.inLanguage, 'ro');
+  assert.equal(video.name, 'Modulul');
   const withoutVideo = ldBlocks(site.get(`materiale/${mname('teorie-reale')}.html`));
   assert.ok(withoutVideo.find((b) => b['@type'] === 'LearningResource'));
   assert.equal(withoutVideo.find((b) => b['@type'] === 'VideoObject'), undefined);
@@ -533,4 +544,145 @@ test('every page can switch theme without a flash of the wrong one', (t) => {
     assert.match(html, /<div class="header-tools">[\s\S]*data-theme-toggle[\s\S]*<div class="lang"/,
       `${file}: the button sits in the header tools, before the language switch`);
   }
+});
+const CLIP = (id, n, section) => ({
+  id, uploaded: '2026-09-22', duration: `PT${n}M4S`,
+  title: { ro: `Clip ${n} RO`, en: `Clip ${n} EN` },
+  ...(section === undefined ? {} : { section }),
+});
+const THREE = [CLIP('KPgLE438mko', 1, 1), CLIP('aKzam7LMZ_4', 2, 2), CLIP('vIF9CkNmF6A', 3, 2)];
+const SECTIONS = (lang) => `<p>intro ${lang}</p>\n<h2>1. Unu</h2>\n<p>a</p>\n<h2>2. Doi</h2>\n<p>b</p>\n<h2>3. Trei</h2>`;
+
+function clipRoot(t, youtube, roInner = SECTIONS('ro'), enInner = SECTIONS('en')) {
+  const materials = dataFixture().materials;
+  materials[0].youtube = youtube;
+  return makeRoot(t, {
+    materials,
+    pages: { ...stdPages(), [`materiale/${mname('teorie-reale')}.html`]: articlePage('1001', roInner, enInner) },
+  });
+}
+
+test('insertClipSlots and stripClipSlots are exact inverses', () => {
+  const art = SECTIONS('ro');
+  const slots = new Map([[1, '<a>one</a>'], [3, '<a>three</a>']]);
+  const withSlots = insertClipSlots(art, slots);
+  assert.equal(countHeadings(art), 3);
+  assert.match(withSlots, /<h2>1\. Unu<\/h2>\n        <div class="clip-slot" data-generated="clips"><a>one<\/a><\/div><!-- \/clip-slot -->\n<p>a<\/p>/);
+  assert.match(withSlots, /<h2>3\. Trei<\/h2>\n        <div class="clip-slot" data-generated="clips"><a>three<\/a><\/div><!-- \/clip-slot -->$/);
+  assert.equal(stripClipSlots(withSlots), art);
+  assert.equal(countHeadings(withSlots), 3);
+});
+
+test('three clips: overview above the article, cards under their sections', (t) => {
+  const site = buildSite(clipRoot(t, THREE));
+  const page = site.get(`materiale/${mname('teorie-reale')}.html`);
+  const before = page.slice(0, page.indexOf('<article'));
+  assert.match(before, /<section class="clips-overview"/);
+  assert.match(before, /3 videoclipuri · 7 min/);
+  assert.match(before, /<li data-clip="aKzam7LMZ_4" data-n="2"><a href="#clip-2">/);
+  assert.doesNotMatch(before, /class="clip-card/);
+  const article = page.slice(page.indexOf('<article'));
+  assert.match(article, /<h2>1\. Unu<\/h2>\n        <div class="clip-slot" data-generated="clips"><a class="clip-card" id="clip-1"/);
+  assert.match(article, /<h2>2\. Doi<\/h2>\n        <div class="clip-slot" data-generated="clips"><a class="clip-card" id="clip-2"[\s\S]*?<a class="clip-card" id="clip-3"/);
+  assert.match(article, /Videoclipul 2 din 3/);
+  assert.match(article, /i\.ytimg\.com\/vi\/aKzam7LMZ_4\/mqdefault\.jpg/);
+  assert.match(article, /<span class="clip-dur">2:04<\/span>/);
+  assert.doesNotMatch(page, /<iframe/);
+});
+
+test('English page: English clip titles and the subtitle note', (t) => {
+  const site = buildSite(clipRoot(t, THREE));
+  const page = site.get(`en/materiale/${mname('teorie-reale')}.html`);
+  assert.match(page, /The videos are in Romanian, with English subtitles\./);
+  assert.match(page, /<span class="clip-name">Clip 2 EN<\/span>/);
+  assert.match(page, /Video 2 of 3/);
+});
+
+test('a clip without a section gets its card above the article', (t) => {
+  const site = buildSite(clipRoot(t, [CLIP('KPgLE438mko', 1), CLIP('aKzam7LMZ_4', 2, 2)]));
+  const page = site.get(`materiale/${mname('teorie-reale')}.html`);
+  const before = page.slice(0, page.indexOf('<article'));
+  assert.match(before, /<div class="clip-top"><a class="clip-card" id="clip-1"/);
+  assert.match(page.slice(page.indexOf('<article')), /<h2>2\. Doi<\/h2>\n        <div class="clip-slot"[^>]*><a class="clip-card" id="clip-2"/);
+});
+
+test('an empty article puts every card above it', (t) => {
+  const site = buildSite(clipRoot(t, THREE, '', ''));
+  const page = site.get(`materiale/${mname('teorie-reale')}.html`);
+  assert.doesNotMatch(page, /clip-slot/);
+  assert.equal((page.slice(0, page.indexOf('<article')).match(/class="clip-card/g) || []).length, 3);
+});
+
+test('a second run gives the same bytes and reads the article back clean', (t) => {
+  const dir = clipRoot(t, THREE);
+  writeSite(dir);
+  const first = readFileSync(join(dir, `materiale/${mname('teorie-reale')}.html`), 'utf8');
+  assert.equal(readArticle(first, 'ro'), SECTIONS('ro'));
+  writeSite(dir);
+  assert.equal(readFileSync(join(dir, `materiale/${mname('teorie-reale')}.html`), 'utf8'), first);
+});
+
+// --check always runs on the repo root, so this makes the same comparison it makes.
+test('a page whose clip cards were removed by hand is stale', (t) => {
+  const dir = clipRoot(t, THREE);
+  writeSite(dir);
+  const rel = `materiale/${mname('teorie-reale')}.html`;
+  const file = join(dir, rel);
+  writeFileSync(file, readFileSync(file, 'utf8').replace(/\n        <div class="clip-slot"[\s\S]*?<!-- \/clip-slot -->/, ''));
+  assert.notEqual(buildSite(dir).get(rel), readFileSync(file, 'utf8'));
+});
+
+test('one VideoObject per clip; site image for 2+ clips', (t) => {
+  const site = buildSite(clipRoot(t, THREE));
+  for (const file of [`materiale/${mname('teorie-reale')}.html`, `en/materiale/${mname('teorie-reale')}.html`]) {
+    const page = site.get(file);
+    const videos = ldBlocks(page).filter((b) => b['@type'] === 'VideoObject');
+    assert.equal(videos.length, 3);
+    assert.ok(videos.every((v) => v.inLanguage === 'ro'));
+    assert.equal(videos[1].embedUrl, 'https://www.youtube.com/embed/aKzam7LMZ_4');
+    if (file.startsWith('en/')) {
+      assert.equal(videos[1].description, 'Clip 2 EN – Theory: absolute value');
+    } else {
+      assert.equal(videos[1].description, 'Clip 2 RO – Teorie: modul');
+    }
+    assert.match(page, /<meta property="og:image:width" content="1200">/);
+  }
+});
+
+test('material page with clips loads the clip scripts; one without does not', (t) => {
+  const site = buildSite(clipRoot(t, THREE));
+  assert.match(site.get(`materiale/${mname('teorie-reale')}.html`), /assets\/js\/clips-core\.js[\s\S]*assets\/js\/clips\.js/);
+  assert.doesNotMatch(site.get(`materiale/${mname('quiz-recap')}.html`), /clips\.js/);
+  const plain = buildSite(clipRoot(t, null));
+  assert.doesNotMatch(plain.get(`materiale/${mname('teorie-reale')}.html`), /clips\.js/);
+});
+
+test('stripClipSlots removes a slot re-indented to 4 spaces or a tab', () => {
+  const withFour = SECTIONS('ro').replace(
+    '<h2>1. Unu</h2>',
+    '<h2>1. Unu</h2>\n    <div class="clip-slot" data-generated="clips"><a>one</a></div><!-- /clip-slot -->',
+  );
+  assert.equal(stripClipSlots(withFour), SECTIONS('ro'));
+  const withTab = SECTIONS('ro').replace(
+    '<h2>1. Unu</h2>',
+    '<h2>1. Unu</h2>\n\t<div class="clip-slot" data-generated="clips"><a>one</a></div><!-- /clip-slot -->',
+  );
+  assert.equal(stripClipSlots(withTab), SECTIONS('ro'));
+});
+
+test('a hand re-indented clip slot is stripped, not duplicated, on rebuild', (t) => {
+  const dir = clipRoot(t, THREE);
+  writeSite(dir);
+  const rel = `materiale/${mname('teorie-reale')}.html`;
+  const file = join(dir, rel);
+  const original = readFileSync(file, 'utf8');
+  assert.match(original, /\n {8}<div class="clip-slot"/);
+  const reindented = original.replace(/\n {8}(<div class="clip-slot")/g, '\n\t$1');
+  writeFileSync(file, reindented);
+  const clean = readArticle(reindented, 'ro');
+  assert.doesNotMatch(clean, /data-generated="clips"/);
+  writeSite(dir);
+  const rebuilt = readFileSync(file, 'utf8');
+  assert.equal(rebuilt, original, 'a rebuild after a hand re-indent must give the same bytes back');
+  assert.equal((rebuilt.match(/id="clip-1"/g) || []).length, 1, 'the slot must not be duplicated');
 });
