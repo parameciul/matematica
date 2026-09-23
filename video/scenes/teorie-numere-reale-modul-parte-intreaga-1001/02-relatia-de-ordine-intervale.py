@@ -161,7 +161,6 @@ class RelatiaDeOrdine(BilingualVoiceoverScene):
             MathTex(r"a\le b\ \Rightarrow\ a+c\le b+c", color=MATH_COLOR),
             MathTex(r"a\le b,\ \ c\le d\ \Rightarrow\ a+c\le b+d", color=MATH_COLOR),
         ).scale(1.1).arrange(DOWN, buff=0.9, aligned_edge=LEFT)
-        rows.next_to(given, DOWN, buff=0.8).shift(LEFT * 1.6)
         notes = VGroup(
             caption("tranzitivitate").next_to(rows[0], RIGHT, buff=0.7),
             caption("adunăm același număr").next_to(rows[1], RIGHT, buff=0.7),
@@ -171,6 +170,8 @@ class RelatiaDeOrdine(BilingualVoiceoverScene):
         left_edge = max(note.get_left()[0] for note in notes)
         for note in notes:
             note.shift(RIGHT * (left_edge - note.get_left()[0]))
+        # The rows and their notes sit as one block in the free space under the title.
+        VGroup(rows, notes).move_to(DOWN * 0.5)
 
         with self.say(
             ro=(
@@ -210,9 +211,8 @@ class RelatiaDeOrdine(BilingualVoiceoverScene):
             MathTex(r"a\le b,\ \ c<0\ \Rightarrow\ ac", r"\ge", r"bc", color=MATH_COLOR),
         ).scale(1.1).arrange(DOWN, buff=0.9, aligned_edge=LEFT)
         rows[1][1].set_color(RED)
-        rows.next_to(self.given, DOWN, buff=0.8).shift(LEFT * 1.6)
         warning = ro("se schimbă sensul inegalității!", size=30, color=RED, weight="BOLD")
-        warning.next_to(rows[1], RIGHT, buff=0.7)
+        warning.next_to(rows[1], DOWN, buff=0.35).align_to(rows, LEFT)
 
         sample = VGroup(
             MathTex(r"2<3", color=MATH_COLOR),
@@ -221,7 +221,8 @@ class RelatiaDeOrdine(BilingualVoiceoverScene):
             MathTex(r"-2", r">", r"-3", color=MATH_COLOR),
         ).scale(1.1).arrange(RIGHT, buff=0.35)
         sample[3][1].set_color(RED)
-        sample.next_to(rows, DOWN, buff=1.0).align_to(rows, LEFT)
+        sample.next_to(warning, DOWN, buff=0.8).align_to(rows, LEFT)
+        VGroup(rows, warning, sample).move_to(DOWN * 0.5)
 
         with self.say(
             ro=(
@@ -260,8 +261,8 @@ class RelatiaDeOrdine(BilingualVoiceoverScene):
             MathTex(r"0<a\le b\ \Rightarrow\ \frac{1}{a}\ge\frac{1}{b}", color=MATH_COLOR),
             MathTex(r"x^{2}\ge 0\ \ \text{pentru orice}\ x\in\mathbb{R}", color=MATH_COLOR),
             MathTex(r"x^{2}=0\ \Leftrightarrow\ x=0", color=MATH_COLOR),
-        ).scale(1.1).arrange(DOWN, buff=0.8, aligned_edge=LEFT)
-        rows.next_to(self.given, DOWN, buff=0.8)
+        ).scale(1.2).arrange(DOWN, buff=0.8, aligned_edge=LEFT)
+        rows.move_to(DOWN * 0.5)
 
         with self.say(
             ro=(
