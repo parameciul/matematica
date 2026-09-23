@@ -1520,6 +1520,72 @@ html:not(.js) .theme-btn {
   border-color: var(--ink);
 }
 
+/* Permutation tables: the two-line notation of the answer, with the first
+   row fixed and one small box per value of the second row. The rounded side
+   borders read as the parentheses around the table. */
+.perm-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.perm-item {
+  overflow-x: auto;
+  padding-bottom: 0.15rem;
+}
+
+.perm-cap {
+  margin: 0 0 0.25rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.perm-grid {
+  display: inline-flex;
+  align-items: stretch;
+  gap: 0.3rem;
+  padding: 0.35rem 0.6rem;
+  border-left: 2px solid var(--text);
+  border-right: 2px solid var(--text);
+  border-radius: 14px;
+}
+
+.perm-col {
+  display: grid;
+  grid-template-rows: auto auto;
+  justify-items: center;
+  gap: 0.25rem;
+}
+
+.perm-top {
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.perm-prefix {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.perm-cell {
+  width: 2.5rem;
+  min-height: 2.5rem;
+  padding: 0.25rem 0.2rem;
+  border: 1.5px solid var(--rule);
+  border-radius: 6px;
+  background: var(--paper);
+  color: var(--text);
+  font: inherit;
+  text-align: center;
+}
+
+.perm-cell:focus {
+  border-color: var(--ink);
+  outline: 3px solid var(--ink);
+  outline-offset: 1px;
+}
+
 .check-verdict {
   margin: 0.75rem 0 0;
   font-weight: 700;

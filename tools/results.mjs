@@ -260,6 +260,57 @@ export function checkItems(items) {
       const hint = item.hint;
       if (!hint || typeof hint.ro !== 'string' || !hint.ro.trim() || typeof hint.en !== 'string' || !hint.en.trim()) {
         problems.push(`${where}: hint needs both ro and en`);
+      } else if (item.kind === 'perm') {
+        // The popup shows one box per value inside the tables, so the hint
+        // only names the order (like "$\\sigma\\tau$, apoi $\\tau\\sigma$").
+        // Separator help ("a doua linie … cu ; între numere") belongs to the
+        // old single-field UI and would confuse the table UI.
+        for (const [lang, banned] of [['ro', [/;/, /a doua linie/i]], ['en', [/;/, /second row/i]]]) {
+          for (const re of banned) {
+            if (re.test(hint[lang])) {
+              problems.push(`${where}: hint.${lang} must only name the order (the tables need no separator help)`);
+              break;
+            }
+          }
+        }
+      }
+    }
+    if (item.kind === 'perm') {
+      // A perm is one or more two-line tables with the first row fixed
+      // (1…n): sizes holds one degree per table, in the hint's order. An
+      // optional prefix counts plain numbers before the tables (like k in
+      // "mai întâi k, apoi σ¹⁰⁰"). The popup builds the tables from these.
+      const sizes = item.sizes;
+      if (!Array.isArray(sizes) || !sizes.length
+        || !sizes.every((n) => Number.isInteger(n) && n >= 2 && n <= 12)) {
+        problems.push(`${where}: sizes must be a non-empty list of table degrees (integers 2-12, one per table)`);
+      }
+      const prefix = item.prefix === undefined ? 0 : item.prefix;
+      if (!Number.isInteger(prefix) || prefix < 0 || prefix > 20) {
+        problems.push(`${where}: prefix must be a count of plain numbers before the tables (0 or more)`);
+      }
+      if (Array.isArray(sizes) && sizes.length
+        && sizes.every((n) => Number.isInteger(n) && n >= 2 && n <= 12)
+        && Number.isInteger(prefix) && prefix >= 0 && Array.isArray(item.accept)) {
+        const total = prefix + sizes.reduce((a, n) => a + n, 0);
+        for (const a of item.accept) {
+          if (typeof a !== 'string' || !a.trim()) continue; // already reported above
+          const r = Answers.read('perm', a);
+          if (!r.ok) continue; // already reported above
+          if (r.values.length !== total) {
+            problems.push(`${where}: accept "${a}" holds ${r.values.length} values but prefix + sizes need ${total}`);
+            continue;
+          }
+          let pos = prefix;
+          sizes.forEach((n, ti) => {
+            const part = r.values.slice(pos, pos + n);
+            pos += n;
+            const sorted = [...part].sort((x, y) => x - y);
+            if (!sorted.every((v, i) => Answers.sameValue(v, i + 1))) {
+              problems.push(`${where}: accept "${a}": table ${ti + 1} is not a permutation of 1..${n}`);
+            }
+          });
+        }
       }
     }
   }

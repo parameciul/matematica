@@ -9,8 +9,12 @@
 // and at an interval end. inf/∞ only as interval ends.
 // Separators: with a ";" values split at ";" and a comma is a decimal comma;
 // without one commas split the values and decimals need a point.
+// A perm (a permutation in two-line notation) reads and compares exactly like
+// a list: the flat values in order, first any leading scalars then the second
+// rows of the tables. Only the popup differs: instead of one text field it
+// shows one small box per value, arranged as tables with the first row fixed.
 (function () {
-  const KINDS = ['choice', 'truefalse', 'number', 'list', 'set', 'interval', 'text'];
+  const KINDS = ['choice', 'truefalse', 'number', 'list', 'set', 'interval', 'text', 'perm'];
   const TOL = 1e-9;
 
   function sameValue(a, b) {
@@ -189,6 +193,20 @@
       if (!values.length) return { ok: false };
       return { ok: true, values };
     }
+    if (kind === 'perm') {
+      // Same shape as a list: the sizes of the tables live on the result item
+      // (sizes/prefix), not in the typed text, so the reader needs no layout.
+      const parts = readListParts(src);
+      const values = [];
+      const decimalComma = src.includes(';');
+      for (const p of parts) {
+        const r = parseNumber(p, { decimalComma });
+        if (!r.ok) return { ok: false };
+        values.push(r.value);
+      }
+      if (!values.length) return { ok: false };
+      return { ok: true, values };
+    }
     if (kind === 'set') {
       let inner = dropName(src);
       if (inner === '∅') return { ok: true, empty: true, values: [] };
@@ -276,6 +294,14 @@
           && r.values.every((v, i) => sameValue(v, student.values[i]));
       });
     }
+    if (kind === 'perm') {
+      // Order matters, like a list: the tables stay in the hint's order.
+      return list.some((a) => {
+        const r = read('perm', String(a));
+        return r.ok && r.values.length === student.values.length
+          && r.values.every((v, i) => sameValue(v, student.values[i]));
+      });
+    }
     if (kind === 'set') {
       return list.some((a) => {
         const r = read('set', String(a));
@@ -320,6 +346,7 @@
     switch (kind) {
       case 'number': return '-2/3';
       case 'list': return '4; 2';
+      case 'perm': return '3; 4; 1; 5; 2';
       case 'set': return '{-3; 7}';
       case 'interval': return '[-2; 4]';
       case 'text': return '2x+1';

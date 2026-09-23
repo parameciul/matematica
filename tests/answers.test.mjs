@@ -102,8 +102,25 @@ test('truefalse takes Adevărat or Fals', async () => {
   assert.equal(await Answers.verify(item, 'F'), false);
 });
 
+test('perm reads and compares in order, like the second rows of the tables', async () => {
+  const item = { kind: 'perm', accept: ['3; 4; 1; 5; 2'] };
+  assert.equal(await Answers.verify(item, '3; 4; 1; 5; 2'), true);
+  assert.equal(await Answers.verify(item, '3; 4; 1; 2; 5'), false);
+  assert.equal(await Answers.verify(item, '3; 4; 1; 5'), false);
+  const two = { kind: 'perm', accept: ['2; 1; 3; 3; 2; 1'] };
+  assert.equal(await Answers.verify(two, '2; 1; 3; 3; 2; 1'), true);
+  assert.equal(await Answers.verify(two, '3; 2; 1; 2; 1; 3'), false);
+});
+
+test('perm has an example and rejects unreadable text', () => {
+  assert.ok(Answers.exampleFor('perm').length > 0);
+  assert.equal(Answers.read('perm', 'nu știu').ok, false);
+  assert.equal(Answers.read('perm', '').ok, false);
+  assert.equal(Answers.read('perm', '3; 4; ghi').ok, false);
+});
+
 test('unreadable answers fail every kind with an example', () => {
-  for (const kind of ['number', 'list', 'set', 'interval']) {
+  for (const kind of ['number', 'list', 'perm', 'set', 'interval']) {
     assert.equal(Answers.read(kind, 'nu știu').ok, false, kind);
     assert.ok(Answers.exampleFor(kind).length > 0, kind);
   }

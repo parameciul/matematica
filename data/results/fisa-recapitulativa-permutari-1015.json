@@ -1,17 +1,20 @@
 {
   "uid": "1015",
-  "version": 1,
+  "version": 2,
   "items": {
     "2": {
-      "kind": "list",
+      "kind": "perm",
       "show": "$f = \\begin{pmatrix} 1 & 2 & 3 & 4 \\\\ 3 & 1 & 4 & 2 \\end{pmatrix}$; $g$ nu este permutare",
       "accept": [
         "3; 1; 4; 2"
       ],
       "hint": {
-        "ro": "permutarea găsită: a doua linie a tabelului, cu ; între numere; pentru $e$ scrie tot a doua linie ($1; 2; \\ldots$)",
-        "en": "the permutation you found: the second row of the table, with ; between the numbers; for $e$ also write the second row ($1; 2; \\ldots$)"
-      }
+        "ro": "permutarea găsită",
+        "en": "the permutation you found"
+      },
+      "sizes": [
+        4
+      ]
     },
     "3": {
       "kind": "list",
@@ -47,37 +50,49 @@
       }
     },
     "6": {
-      "kind": "list",
+      "kind": "perm",
       "show": "$\\sigma\\tau = \\begin{pmatrix} 1 & 2 & 3 \\\\ 2 & 1 & 3 \\end{pmatrix}$, $\\tau\\sigma = \\begin{pmatrix} 1 & 2 & 3 \\\\ 3 & 2 & 1 \\end{pmatrix}$; nu este comutativă",
       "accept": [
         "2; 1; 3; 3; 2; 1"
       ],
       "hint": {
-        "ro": "$\\sigma\\tau$, apoi $\\tau\\sigma$: a doua linie a tabelului, cu ; între numere; pentru $e$ scrie tot a doua linie ($1; 2; \\ldots$)",
-        "en": "$\\sigma\\tau$, then $\\tau\\sigma$: the second row of the table, with ; between the numbers; for $e$ also write the second row ($1; 2; \\ldots$)"
-      }
+        "ro": "$\\sigma\\tau$, apoi $\\tau\\sigma$",
+        "en": "$\\sigma\\tau$, then $\\tau\\sigma$"
+      },
+      "sizes": [
+        3,
+        3
+      ]
     },
     "7": {
-      "kind": "list",
+      "kind": "perm",
       "show": "$\\sigma^{2} = \\begin{pmatrix} 1 & 2 & 3 & 4 \\\\ 3 & 4 & 1 & 2 \\end{pmatrix}$, $\\sigma^{3} = \\begin{pmatrix} 1 & 2 & 3 & 4 \\\\ 4 & 1 & 2 & 3 \\end{pmatrix}$, $\\sigma^{4} = e$",
       "accept": [
         "3; 4; 1; 2; 4; 1; 2; 3; 1; 2; 3; 4"
       ],
       "hint": {
-        "ro": "$\\sigma^{2}$, $\\sigma^{3}$, apoi $\\sigma^{4}$: a doua linie a tabelului, cu ; între numere; pentru $e$ scrie tot a doua linie ($1; 2; \\ldots$)",
-        "en": "$\\sigma^{2}$, $\\sigma^{3}$, then $\\sigma^{4}$: the second row of the table, with ; between the numbers; for $e$ also write the second row ($1; 2; \\ldots$)"
-      }
+        "ro": "$\\sigma^{2}$, $\\sigma^{3}$, apoi $\\sigma^{4}$",
+        "en": "$\\sigma^{2}$, $\\sigma^{3}$, then $\\sigma^{4}$"
+      },
+      "sizes": [
+        4,
+        4,
+        4
+      ]
     },
     "8": {
-      "kind": "list",
+      "kind": "perm",
       "show": "$\\sigma^{-1} = \\begin{pmatrix} 1 & 2 & 3 & 4 & 5 \\\\ 3 & 4 & 1 & 5 & 2 \\end{pmatrix}$",
       "accept": [
         "3; 4; 1; 5; 2"
       ],
       "hint": {
-        "ro": "$\\sigma^{-1}$: a doua linie a tabelului, cu ; între numere; pentru $e$ scrie tot a doua linie ($1; 2; \\ldots$)",
-        "en": "$\\sigma^{-1}$: the second row of the table, with ; between the numbers; for $e$ also write the second row ($1; 2; \\ldots$)"
-      }
+        "ro": "$\\sigma^{-1}$",
+        "en": "$\\sigma^{-1}$"
+      },
+      "sizes": [
+        5
+      ]
     },
     "9": {
       "kind": "list",
@@ -96,15 +111,18 @@
       "show": "$e$ pară; $m(\\alpha) = 6$, pară; $m(\\beta) = 3$, impară"
     },
     "11": {
-      "kind": "list",
+      "kind": "perm",
       "show": "$\\tau = \\begin{pmatrix} 1 & 2 & 3 & 4 \\\\ 4 & 2 & 3 & 1 \\end{pmatrix}$, $\\tau^{2} = e$, $\\tau^{-1} = \\tau$, $\\varepsilon(\\tau) = -1$",
       "accept": [
         "4; 2; 3; 1"
       ],
       "hint": {
-        "ro": "$\\tau$: a doua linie a tabelului, cu ; între numere; pentru $e$ scrie tot a doua linie ($1; 2; \\ldots$)",
-        "en": "$\\tau$: the second row of the table, with ; between the numbers; for $e$ also write the second row ($1; 2; \\ldots$)"
-      }
+        "ro": "$\\tau$",
+        "en": "$\\tau$"
+      },
+      "sizes": [
+        4
+      ]
     },
     "12": {
       "kind": "list",
@@ -118,92 +136,119 @@
       }
     },
     "13": {
-      "kind": "list",
+      "kind": "perm",
       "show": "$\\sigma^{-1} = \\sigma^{2} = \\begin{pmatrix} 1 & 2 & 3 \\\\ 2 & 3 & 1 \\end{pmatrix}$",
       "accept": [
         "2; 3; 1; 2; 3; 1"
       ],
       "hint": {
-        "ro": "$\\sigma^{-1}$, apoi $\\sigma^{2}$: a doua linie a tabelului, cu ; între numere; pentru $e$ scrie tot a doua linie ($1; 2; \\ldots$)",
-        "en": "$\\sigma^{-1}$, then $\\sigma^{2}$: the second row of the table, with ; between the numbers; for $e$ also write the second row ($1; 2; \\ldots$)"
-      }
+        "ro": "$\\sigma^{-1}$, apoi $\\sigma^{2}$",
+        "en": "$\\sigma^{-1}$, then $\\sigma^{2}$"
+      },
+      "sizes": [
+        3,
+        3
+      ]
     },
     "14": {
-      "kind": "list",
+      "kind": "perm",
       "show": "$x = \\begin{pmatrix} 1 & 2 & 3 \\\\ 2 & 1 & 3 \\end{pmatrix}$",
       "accept": [
         "2; 1; 3"
       ],
       "hint": {
-        "ro": "$x$: a doua linie a tabelului, cu ; între numere; pentru $e$ scrie tot a doua linie ($1; 2; \\ldots$)",
-        "en": "$x$: the second row of the table, with ; between the numbers; for $e$ also write the second row ($1; 2; \\ldots$)"
-      }
+        "ro": "$x$",
+        "en": "$x$"
+      },
+      "sizes": [
+        3
+      ]
     },
     "15": {
-      "kind": "list",
+      "kind": "perm",
       "show": "$x = \\begin{pmatrix} 1 & 2 & 3 \\\\ 1 & 3 & 2 \\end{pmatrix}$",
       "accept": [
         "1; 3; 2"
       ],
       "hint": {
-        "ro": "$x$: a doua linie a tabelului, cu ; între numere; pentru $e$ scrie tot a doua linie ($1; 2; \\ldots$)",
-        "en": "$x$: the second row of the table, with ; between the numbers; for $e$ also write the second row ($1; 2; \\ldots$)"
-      }
+        "ro": "$x$",
+        "en": "$x$"
+      },
+      "sizes": [
+        3
+      ]
     },
     "16": {
-      "kind": "list",
+      "kind": "perm",
       "show": "$\\sigma\\tau = \\begin{pmatrix} 1 & 2 & 3 & 4 \\\\ 2 & 1 & 3 & 4 \\end{pmatrix}$; $\\varepsilon(\\sigma) = -1$, $\\varepsilon(\\tau) = 1$, $\\varepsilon(\\sigma\\tau) = -1$",
       "accept": [
         "2; 1; 3; 4"
       ],
       "hint": {
-        "ro": "$\\sigma\\tau$: a doua linie a tabelului, cu ; între numere; pentru $e$ scrie tot a doua linie ($1; 2; \\ldots$)",
-        "en": "$\\sigma\\tau$: the second row of the table, with ; between the numbers; for $e$ also write the second row ($1; 2; \\ldots$)"
-      }
+        "ro": "$\\sigma\\tau$",
+        "en": "$\\sigma\\tau$"
+      },
+      "sizes": [
+        4
+      ]
     },
     "18": {
-      "kind": "list",
+      "kind": "perm",
       "show": "$\\sigma^{2026} = e$, $\\sigma^{2027} = \\sigma$",
       "accept": [
         "1; 2; 3; 4; 2; 1; 4; 3"
       ],
       "hint": {
-        "ro": "$\\sigma^{2026}$, apoi $\\sigma^{2027}$: a doua linie a tabelului, cu ; între numere; pentru $e$ scrie tot a doua linie ($1; 2; \\ldots$)",
-        "en": "$\\sigma^{2026}$, then $\\sigma^{2027}$: the second row of the table, with ; between the numbers; for $e$ also write the second row ($1; 2; \\ldots$)"
-      }
+        "ro": "$\\sigma^{2026}$, apoi $\\sigma^{2027}$",
+        "en": "$\\sigma^{2026}$, then $\\sigma^{2027}$"
+      },
+      "sizes": [
+        4,
+        4
+      ]
     },
     "19": {
-      "kind": "list",
+      "kind": "perm",
       "show": "$\\sigma^{2026} = \\sigma^{2} = \\begin{pmatrix} 1 & 2 & 3 & 4 \\\\ 3 & 4 & 1 & 2 \\end{pmatrix}$",
       "accept": [
         "3; 4; 1; 2"
       ],
       "hint": {
-        "ro": "$\\sigma^{2026}$: a doua linie a tabelului, cu ; între numere; pentru $e$ scrie tot a doua linie ($1; 2; \\ldots$)",
-        "en": "$\\sigma^{2026}$: the second row of the table, with ; between the numbers; for $e$ also write the second row ($1; 2; \\ldots$)"
-      }
+        "ro": "$\\sigma^{2026}$",
+        "en": "$\\sigma^{2026}$"
+      },
+      "sizes": [
+        4
+      ]
     },
     "20": {
-      "kind": "list",
+      "kind": "perm",
       "show": "$k = 6$; $\\sigma^{100} = \\sigma^{4} = \\begin{pmatrix} 1 & 2 & 3 & 4 & 5 & 6 \\\\ 1 & 2 & 4 & 5 & 3 & 6 \\end{pmatrix}$",
       "accept": [
         "6; 1; 2; 4; 5; 3; 6"
       ],
       "hint": {
-        "ro": "mai întâi $k$, apoi $\\sigma^{100}$: a doua linie a tabelului, cu ; între numere; pentru $e$ scrie tot a doua linie ($1; 2; \\ldots$)",
-        "en": "first $k$, then $\\sigma^{100}$: the second row of the table, with ; between the numbers; for $e$ also write the second row ($1; 2; \\ldots$)"
-      }
+        "ro": "mai întâi $k$, apoi $\\sigma^{100}$",
+        "en": "first $k$, then $\\sigma^{100}$"
+      },
+      "sizes": [
+        6
+      ],
+      "prefix": 1
     },
     "21": {
-      "kind": "list",
+      "kind": "perm",
       "show": "$x = \\begin{pmatrix} 1 & 2 & 3 & 4 \\\\ 4 & 3 & 2 & 1 \\end{pmatrix}$",
       "accept": [
         "4; 3; 2; 1"
       ],
       "hint": {
-        "ro": "$x$: a doua linie a tabelului, cu ; între numere; pentru $e$ scrie tot a doua linie ($1; 2; \\ldots$)",
-        "en": "$x$: the second row of the table, with ; between the numbers; for $e$ also write the second row ($1; 2; \\ldots$)"
-      }
+        "ro": "$x$",
+        "en": "$x$"
+      },
+      "sizes": [
+        4
+      ]
     },
     "22": {
       "check": false,
@@ -260,15 +305,18 @@
       ]
     },
     "31": {
-      "kind": "list",
+      "kind": "perm",
       "show": "$x = \\begin{pmatrix} 1 & 2 & 3 \\\\ 3 & 1 & 2 \\end{pmatrix}$",
       "accept": [
         "3; 1; 2"
       ],
       "hint": {
-        "ro": "$x$: a doua linie a tabelului, cu ; între numere; pentru $e$ scrie tot a doua linie ($1; 2; \\ldots$)",
-        "en": "$x$: the second row of the table, with ; between the numbers; for $e$ also write the second row ($1; 2; \\ldots$)"
-      }
+        "ro": "$x$",
+        "en": "$x$"
+      },
+      "sizes": [
+        3
+      ]
     },
     "32": {
       "kind": "list",
@@ -282,15 +330,19 @@
       }
     },
     "34": {
-      "kind": "list",
+      "kind": "perm",
       "show": "$\\sigma^{3} = e$; $x = \\begin{pmatrix} 1 & 2 & 3 & 4 \\\\ 1 & 3 & 4 & 2 \\end{pmatrix}$",
       "accept": [
         "1; 2; 3; 4; 1; 3; 4; 2"
       ],
       "hint": {
-        "ro": "$\\sigma^{3}$, apoi $x$: a doua linie a tabelului, cu ; între numere; pentru $e$ scrie tot a doua linie ($1; 2; \\ldots$)",
-        "en": "$\\sigma^{3}$, then $x$: the second row of the table, with ; between the numbers; for $e$ also write the second row ($1; 2; \\ldots$)"
-      }
+        "ro": "$\\sigma^{3}$, apoi $x$",
+        "en": "$\\sigma^{3}$, then $x$"
+      },
+      "sizes": [
+        4,
+        4
+      ]
     },
     "35": {
       "check": false,
@@ -303,15 +355,18 @@
       "show": "$\\begin{pmatrix} 1 & 2 & 3 & 4 \\\\ 2 & 3 & 4 & 1 \\end{pmatrix}$, $\\begin{pmatrix} 1 & 2 & 3 & 4 \\\\ 4 & 1 & 2 & 3 \\end{pmatrix}$"
     },
     "38": {
-      "kind": "list",
+      "kind": "perm",
       "show": "$x = \\begin{pmatrix} 1 & 2 & 3 \\\\ 3 & 1 & 2 \\end{pmatrix}$",
       "accept": [
         "3; 1; 2"
       ],
       "hint": {
-        "ro": "$x$: a doua linie a tabelului, cu ; între numere; pentru $e$ scrie tot a doua linie ($1; 2; \\ldots$)",
-        "en": "$x$: the second row of the table, with ; between the numbers; for $e$ also write the second row ($1; 2; \\ldots$)"
-      }
+        "ro": "$x$",
+        "en": "$x$"
+      },
+      "sizes": [
+        3
+      ]
     },
     "39": {
       "check": false,
@@ -359,15 +414,18 @@
       "show": "$\\sigma^{q - p} = e$"
     },
     "46": {
-      "kind": "list",
+      "kind": "perm",
       "show": "$\\sigma = e$",
       "accept": [
         "1; 2; 3"
       ],
       "hint": {
-        "ro": "$\\sigma$: a doua linie a tabelului, cu ; între numere; pentru $e$ scrie tot a doua linie ($1; 2; \\ldots$)",
-        "en": "$\\sigma$: the second row of the table, with ; between the numbers; for $e$ also write the second row ($1; 2; \\ldots$)"
-      }
+        "ro": "$\\sigma$",
+        "en": "$\\sigma$"
+      },
+      "sizes": [
+        3
+      ]
     },
     "47": {
       "check": false,
@@ -482,15 +540,18 @@
       "show": "$\\sigma^{6} = (\\sigma^{3})^{2} = e$"
     },
     "49c": {
-      "kind": "list",
+      "kind": "perm",
       "show": "$\\sigma^{2026} = \\sigma^{4} = \\begin{pmatrix} 1 & 2 & 3 & 4 & 5 \\\\ 2 & 3 & 1 & 4 & 5 \\end{pmatrix}$",
       "accept": [
         "2; 3; 1; 4; 5"
       ],
       "hint": {
-        "ro": "$\\sigma^{2026}$: a doua linie a tabelului, cu ; între numere; pentru $e$ scrie tot a doua linie ($1; 2; \\ldots$)",
-        "en": "$\\sigma^{2026}$: the second row of the table, with ; between the numbers; for $e$ also write the second row ($1; 2; \\ldots$)"
-      }
+        "ro": "$\\sigma^{2026}$",
+        "en": "$\\sigma^{2026}$"
+      },
+      "sizes": [
+        5
+      ]
     },
     "49d": {
       "check": false,
@@ -498,15 +559,18 @@
       "show": "$\\varepsilon(x^{2}) = 1 \\neq -1 = \\varepsilon(\\sigma)$"
     },
     "50a": {
-      "kind": "list",
+      "kind": "perm",
       "show": "$\\sigma^{-1} = \\begin{pmatrix} 1 & 2 & 3 & 4 \\\\ 4 & 3 & 1 & 2 \\end{pmatrix}$",
       "accept": [
         "4; 3; 1; 2"
       ],
       "hint": {
-        "ro": "$\\sigma^{-1}$: a doua linie a tabelului, cu ; între numere; pentru $e$ scrie tot a doua linie ($1; 2; \\ldots$)",
-        "en": "$\\sigma^{-1}$: the second row of the table, with ; between the numbers; for $e$ also write the second row ($1; 2; \\ldots$)"
-      }
+        "ro": "$\\sigma^{-1}$",
+        "en": "$\\sigma^{-1}$"
+      },
+      "sizes": [
+        4
+      ]
     },
     "50b": {
       "kind": "number",
@@ -516,15 +580,18 @@
       ]
     },
     "50c": {
-      "kind": "list",
+      "kind": "perm",
       "show": "$x = \\sigma^{-2} = \\begin{pmatrix} 1 & 2 & 3 & 4 \\\\ 2 & 1 & 4 & 3 \\end{pmatrix}$",
       "accept": [
         "2; 1; 4; 3"
       ],
       "hint": {
-        "ro": "$x$: a doua linie a tabelului, cu ; între numere; pentru $e$ scrie tot a doua linie ($1; 2; \\ldots$)",
-        "en": "$x$: the second row of the table, with ; between the numbers; for $e$ also write the second row ($1; 2; \\ldots$)"
-      }
+        "ro": "$x$",
+        "en": "$x$"
+      },
+      "sizes": [
+        4
+      ]
     }
   }
 }
