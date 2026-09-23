@@ -122,4 +122,12 @@ New rules in `assets/css/style.css`, only with the existing colour tokens, so bo
 
 ## Migration of material 1001
 
-The one video on the site today (`KPgLE438mko`, 2:02) becomes a one-entry list. The spec assumes it is clip 1, "Mulțimi de numere", `section: 1`. The teacher confirms this before the change ships. Clips 2 and 3 get `section: 2` when they are on YouTube.
+Confirmed by the teacher on 2026-09-23. All three clips are on YouTube and allow embedding (oEmbed answers).
+
+| # | id | uploaded | duration | title ro | title en | section |
+|---|----|----------|----------|----------|----------|---------|
+| 1 | `KPgLE438mko` | `2026-09-22T14:23:15-07:00` | `PT2M2S` | Mulțimi de numere | Sets of numbers | 1 |
+| 2 | `aKzam7LMZ_4` | `2026-09-23T11:48:08-07:00` | `PT1M53S` | Proprietăți ale inegalităților | Properties of inequalities | 2 |
+| 3 | `vIF9CkNmF6A` | `2026-09-23T11:55:57-07:00` | `PT4M4S` | Intervale de numere reale | Intervals of real numbers | 2 |
+
+Put the material page URL in the first line of the description of clips 2 and 3 on YouTube ("Add a YouTube video", step 4), if it is not there yet.
