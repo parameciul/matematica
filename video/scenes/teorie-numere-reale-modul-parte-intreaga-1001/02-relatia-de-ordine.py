@@ -121,7 +121,7 @@ class RelatiaDeOrdine(BilingualVoiceoverScene):
 
         with self.say(
             ro=(
-                "Pentru orice numere reale {a}, {b|be}, {c|ce} și {d|de} avem câteva reguli. "
+                "Pentru orice numere reale {a}, {b|be}, {c|ce} și {d|de,} avem câteva reguli. "
                 "<bookmark mark='a'/> Prima este tranzitivitatea: dacă {a} este mai mic sau egal cu {b}, "
                 "iar {b} este mai mic sau egal cu {c}, atunci {a} este mai mic sau egal cu {c}. "
                 "<bookmark mark='b'/> Putem aduna același număr în ambii membri, "
