@@ -104,6 +104,9 @@ Clips are Manim scenes in `video/scenes/<material name>/NN-<slug>.py`, one clip 
 - On an axis, draw the ends of an interval with the same signs as the notation: `[` `]` for an end that belongs to it, `(` `)` for one that does not. No filled dots or hollow circles.
 - Show a wrong form in red with a `greșit` label. Never draw an X over it: the student must still read it.
 - Write the math in the spoken text as Romanian words ("minus doi", "plus infinit"), never as symbols or digits.
+- Write every math letter in the Romanian text in braces: `{a}`, `{B}`. The voice swallows a lone letter; the braces make it say the letter with a short pause after it, and the subtitles show the plain letter.
+- Leave time to think: keep `SENTENCE_PAUSE = 0.8` (silence after each sentence). `say()` also waits 1 s after each block. The English line must have the same number of sentences as the Romanian one.
+- In a worked example, first write what is being calculated (`A ∪ B =`), then find it on the drawing, and write the value last.
 - Check frames of the draft before the final render, and send the frames with the result.
 
 ## Add a material
