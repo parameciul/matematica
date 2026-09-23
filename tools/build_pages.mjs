@@ -24,6 +24,7 @@ const require = createRequire(import.meta.url);
 const Catalog = require('../assets/js/catalog.js');
 const Shell = require('../assets/js/shell.js');
 const Visibility = require('../assets/js/visibility.js');
+const Clips = require('../assets/js/clips-core.js');
 
 // The admin page folder at the site root. The name has no "admin" in it; it
 // is not linked from any page, not in sitemap.xml and not in robots.txt.
@@ -117,24 +118,44 @@ function readIfExists(root, file) {
   return existsSync(abs) ? readFileSync(abs, 'utf8') : null;
 }
 
-// Inner HTML of the article for a language, or null when the file has none.
+// Clip cards inside an article are the one generated thing inside <article>.
+// Each sits in a marked block right after its section heading; reading an
+// article removes the blocks, so the hand-written text always reads back clean.
+const SLOT_OPEN = '<div class="clip-slot" data-generated="clips">';
+const SLOT_CLOSE = '</div><!-- /clip-slot -->';
+const SLOT_RE = /\n {8}<div class="clip-slot" data-generated="clips">[\s\S]*?<\/div><!-- \/clip-slot -->/g;
+
+export function stripClipSlots(html) {
+  return String(html).replace(SLOT_RE, '');
+}
+
+export function countHeadings(html) {
+  return (String(html).match(/<h2\b/g) || []).length;
+}
+
+// slots: Map of section number (the n-th <h2>, from 1) to the slot's inner HTML.
+export function insertClipSlots(html, slots) {
+  let n = 0;
+  return String(html).replace(/<h2\b[\s\S]*?<\/h2>/g, (heading) => {
+    n += 1;
+    return slots.has(n) ? `${heading}\n        ${SLOT_OPEN}${slots.get(n)}${SLOT_CLOSE}` : heading;
+  });
+}
+
+// Inner HTML of the article for a language (without generated clip cards),
+// or null when the file has none.
 export function readArticle(html, lang) {
   if (!html) return null;
   const m = html.match(new RegExp(`<article\\b[^>]*\\bdata-lang="${lang}"[^>]*>([\\s\\S]*?)</article>`));
-  return m ? m[1] : null;
+  return m ? stripClipSlots(m[1]) : null;
 }
 
 function lastmodOf(material) {
   return material.updated || material.published;
 }
 
-function youtubeId(video) {
-  if (!video) return null;
-  return typeof video === 'string' ? video : video.id;
-}
-
-function thumbFor(video) {
-  return `https://i.ytimg.com/vi/${youtubeId(video)}/hqdefault.jpg`;
+function thumbFor(id, size = 'hqdefault') {
+  return `https://i.ytimg.com/vi/${id}/${size}.jpg`;
 }
 
 function jsonLd(obj) {
@@ -469,7 +490,7 @@ function renderMaterialPage({ data, material, topic, lang, dict, assetBase, page
   const noindex = (!filled || material.supersedes || !Visibility.isVisible(material)) || undefined;
   const title = materialPageTitle(material, topic, lang);
   const description = material.description[lang] || material.description.ro;
-  const video = material.youtube || null;
+  const clips = material.youtube || [];
   const pageUrl = canonicalFor(selfFile);
   const gradeName = gradeNameOf(topic.grade, lang);
   const topicTitle = topic.title[lang] || topic.title.ro;
@@ -494,14 +515,43 @@ function renderMaterialPage({ data, material, topic, lang, dict, assetBase, page
     `      <p class="material-meta">${esc(dict['material.published'].split('{date}')[0])}<time datetime="${material.published}">${esc(Catalog.formatDate(material.published, lang, 'long'))}</time>${esc(dict['material.published'].split('{date}')[1] || '')}</p>\n` +
     `      ${pdfButton}</div>`;
 
-  // Part C: a static privacy-friendly player above the article, plus an
-  // "Open on YouTube" link. For a lesson (lectie) with a video the video is
-  // the main content at the top of the page.
+  // Clips. One clip: a large click-to-load player above the article, as the
+  // single video always was. Two or more: an overview above the article and a
+  // card under the heading of each clip's section.
+  const clipTitle = (c) => c.title[lang] || c.title.ro;
+  const cardFor = (c, n) => {
+    const kicker = dict['clips.of'].replace('{n}', n).replace('{total}', clips.length);
+    return `<a class="clip-card" id="clip-${n}" href="https://www.youtube.com/watch?v=${c.id}" data-clip="${c.id}" data-n="${n}" data-title="${esc(`${kicker}: ${clipTitle(c)}`)}">` +
+      `<span class="clip-thumb"><img src="${thumbFor(c.id, 'mqdefault')}" alt="" loading="lazy" width="320" height="180"><span class="clip-play" aria-hidden="true"></span><span class="clip-dur">${Clips.clock(c.duration)}</span></span>` +
+      `<span class="clip-text"><span class="clip-kicker">${esc(kicker)}</span><span class="clip-name">${esc(clipTitle(c))}</span><span class="clip-seen" hidden>✓ ${esc(dict['clips.seen'])}</span></span></a>`;
+  };
+  const placed = filled && clips.length > 1;
   let videoBlock = '';
-  if (video) {
-    const id = youtubeId(video);
-    videoBlock = `<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/${id}" title="${esc(`${dict['material.video']}: ${materialTitle}`)}" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>\n` +
-      `      <p class="video-link"><a href="https://www.youtube.com/watch?v=${id}" target="_blank" rel="noopener">${esc(dict['material.openYoutube'])}</a></p>`;
+  if (clips.length === 1) {
+    const c = clips[0];
+    videoBlock = `<a class="clip-card clip-hero" id="clip-1" href="https://www.youtube.com/watch?v=${c.id}" data-clip="${c.id}" data-n="1" data-title="${esc(`${dict['material.video']}: ${materialTitle}`)}">` +
+      `<span class="clip-thumb"><img src="${thumbFor(c.id)}" alt="" width="480" height="360"><span class="clip-play" aria-hidden="true"></span><span class="clip-dur">${Clips.clock(c.duration)}</span></span></a>\n` +
+      `      <p class="video-link"><a href="https://www.youtube.com/watch?v=${c.id}" target="_blank" rel="noopener">${esc(dict['material.openYoutube'])}</a></p>`;
+  } else if (clips.length > 1) {
+    const rows = clips.map((c, i) => `<li data-clip="${c.id}" data-n="${i + 1}"><a href="#clip-${i + 1}">` +
+      `<span class="clip-num" aria-hidden="true">${i + 1}</span>` +
+      `<span class="clip-title">${esc(clipTitle(c))}<span class="clip-state" hidden>${esc(dict['clips.seen'])}</span></span>` +
+      `<span class="clip-dur">${Clips.clock(c.duration)}</span></a></li>`).join('\n        ');
+    const summary = dict['clips.summary'].replace('{count}', clips.length).replace('{minutes}', Clips.totalMinutes(clips));
+    const top = clips.map((c, i) => ((!placed || !c.section) ? cardFor(c, i + 1) : '')).join('');
+    videoBlock = `<section class="clips-overview" aria-labelledby="clips-heading">` +
+      `<div class="clips-head"><h2 id="clips-heading">${esc(dict['clips.heading'])}</h2><p class="clips-summary">${esc(summary)}<span class="clips-progress" hidden></span></p></div>\n` +
+      (lang === 'en' ? `      <p class="clips-lang">${esc(dict['clips.lang'])}</p>\n` : '') +
+      `      <ol class="clips">\n        ${rows}\n      </ol></section>` +
+      (top ? `\n      <div class="clip-top">${top}</div>` : '');
+  }
+  let articleOut = articleHtml || '';
+  if (placed) {
+    const slots = new Map();
+    clips.forEach((c, i) => {
+      if (c.section) slots.set(c.section, (slots.get(c.section) || '') + cardFor(c, i + 1));
+    });
+    articleOut = insertClipSlots(articleOut, slots);
   }
 
   let note = '';
@@ -525,7 +575,7 @@ function renderMaterialPage({ data, material, topic, lang, dict, assetBase, page
       ${headBlock}
       ${videoBlock}
       ${note}${checkNote}
-      <article class="material-body" data-lang="${lang}" lang="${lang}">${articleHtml || ''}</article>
+      <article class="material-body" data-lang="${lang}" lang="${lang}">${articleOut}</article>
 
       ${relatedBlock}
     </div>`;
@@ -567,19 +617,20 @@ function renderMaterialPage({ data, material, topic, lang, dict, assetBase, page
       ],
     },
   ];
-  if (video) {
+  clips.forEach((c) => {
     blocks.push({
       '@context': 'https://schema.org',
       '@type': 'VideoObject',
-      name: materialTitle,
-      description,
-      thumbnailUrl: thumbFor(video),
-      uploadDate: video.uploaded,
-      duration: video.duration,
-      embedUrl: `https://www.youtube.com/embed/${youtubeId(video)}`,
-      inLanguage: lang,
+      name: clipTitle(c),
+      description: `${clipTitle(c)} – ${materialTitle}`,
+      thumbnailUrl: thumbFor(c.id),
+      uploadDate: c.uploaded,
+      duration: c.duration,
+      embedUrl: `https://www.youtube.com/embed/${c.id}`,
+      // The clips are spoken in Romanian, also on the English page.
+      inLanguage: 'ro',
     });
-  }
+  });
   const head = renderHead({
     lang,
     title,
@@ -588,14 +639,16 @@ function renderMaterialPage({ data, material, topic, lang, dict, assetBase, page
     altFile: pairFile || null,
     noindex,
     ogType: 'article',
-    ogImage: video ? thumbFor(video) : OG_IMAGE,
-    ogImageWidth: video ? '480' : '1200',
-    ogImageHeight: video ? '360' : '630',
-    ogImageAlt: video ? materialTitle : undefined,
+    // One clip: its frame. Several: the site image, one frame does not stand for all.
+    ogImage: clips.length === 1 ? thumbFor(clips[0].id) : OG_IMAGE,
+    ogImageWidth: clips.length === 1 ? '480' : '1200',
+    ogImageHeight: clips.length === 1 ? '360' : '630',
+    ogImageAlt: clips.length === 1 ? materialTitle : undefined,
     published: material.published,
     assetBase,
     katex: true,
     pageScripts: ['assets/js/i18n.js', 'assets/js/catalog.js', 'assets/js/shell.js', 'assets/js/site.js', 'assets/js/searchbox.js', 'assets/js/material.js']
+      .concat(clips.length ? ['assets/js/clips-core.js', 'assets/js/clips.js'] : [])
       .concat(material.results ? ['assets/js/answers.js', 'assets/js/check.js'] : []),
     jsonLdBlocks: blocks,
   });

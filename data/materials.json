@@ -106,11 +106,38 @@
         "en": "Grade 9 theory: real numbers, absolute value, intervals, integer and fractional part, with definitions and properties."
       },
       "pdf": "materiale/pdf/teorie-numere-reale-modul-parte-intreaga-1001.pdf",
-      "youtube": {
-        "id": "KPgLE438mko",
-        "uploaded": "2026-09-22T14:23:15-07:00",
-        "duration": "PT2M2S"
-      },
+      "youtube": [
+        {
+          "id": "KPgLE438mko",
+          "uploaded": "2026-09-22T14:23:15-07:00",
+          "duration": "PT2M2S",
+          "title": {
+            "ro": "Mulțimi de numere",
+            "en": "Sets of numbers"
+          },
+          "section": 1
+        },
+        {
+          "id": "aKzam7LMZ_4",
+          "uploaded": "2026-09-23T11:48:08-07:00",
+          "duration": "PT1M53S",
+          "title": {
+            "ro": "Proprietăți ale inegalităților",
+            "en": "Properties of inequalities"
+          },
+          "section": 2
+        },
+        {
+          "id": "vIF9CkNmF6A",
+          "uploaded": "2026-09-23T11:55:57-07:00",
+          "duration": "PT4M4S",
+          "title": {
+            "ro": "Intervale de numere reale",
+            "en": "Intervals of real numbers"
+          },
+          "section": 2
+        }
+      ],
       "keywords": {
         "ro": [
           "modul",

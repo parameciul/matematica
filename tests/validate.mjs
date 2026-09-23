@@ -193,21 +193,23 @@ for (const [i, m] of materials.entries()) {
       fail(`${where}: description.${lang} must be 70-160 characters (is ${[...d].length})`);
     }
   }
-  if (m.youtube === null || m.youtube === undefined) {
-    if (m.youtube !== null) fail(`${where}: youtube must be null or { "id", "uploaded", "duration" }`);
-  } else if (typeof m.youtube !== 'object') {
-    fail(`${where}: youtube must be null or { "id", "uploaded", "duration" }`);
-  } else {
-    if (!(typeof m.youtube.id === 'string' && YT_RE.test(m.youtube.id))) {
-      fail(`${where}: youtube.id must be an 11-character YouTube video ID`);
-    }
-    const up = YT_UPLOADED_RE.exec(String(m.youtube.uploaded || ''));
-    if (!up || !Catalog.isValidDate(up[1])) {
-      fail(`${where}: youtube.uploaded must be an ISO date or date-time`);
-    }
-    const dur = YT_DURATION_RE.exec(String(m.youtube.duration || ''));
-    if (!dur || dur[0] === 'PT' || (!dur[1] && !dur[2] && !dur[3])) {
-      fail(`${where}: youtube.duration must be an ISO 8601 duration like "PT7M31S"`);
+  const VIDEO_KEYS = ['id', 'uploaded', 'duration', 'title', 'section'];
+  if (m.youtube !== null) {
+    if (!Array.isArray(m.youtube) || m.youtube.length === 0) {
+      fail(`${where}: youtube must be null or a non-empty list of clips`);
+    } else {
+      m.youtube.forEach((v, i) => {
+        const at = `${where}: youtube[${i}]`;
+        if (!v || typeof v !== 'object' || Array.isArray(v)) { fail(`${at} must be an object`); return; }
+        for (const key of Object.keys(v)) if (!VIDEO_KEYS.includes(key)) fail(`${at}: unknown field "${key}"`);
+        if (!(typeof v.id === 'string' && YT_RE.test(v.id))) fail(`${at}.id must be an 11-character YouTube video ID`);
+        const up = YT_UPLOADED_RE.exec(String(v.uploaded || ''));
+        if (!up || !Catalog.isValidDate(up[1])) fail(`${at}.uploaded must be an ISO date or date-time`);
+        const dur = YT_DURATION_RE.exec(String(v.duration || ''));
+        if (!dur || dur[0] === 'PT' || (!dur[1] && !dur[2] && !dur[3])) fail(`${at}.duration must be an ISO 8601 duration like "PT7M31S"`);
+        if (!v.title || !isText(v.title.ro) || !isText(v.title.en)) fail(`${at}.title needs ro and en`);
+        if (v.section !== undefined && !(Number.isInteger(v.section) && v.section >= 1)) fail(`${at}.section must be a whole number from 1`);
+      });
     }
   }
   if (m.keywords !== undefined) {
