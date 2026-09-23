@@ -492,7 +492,7 @@ class Intervale(BilingualVoiceoverScene):
 
         with self.say(
             ro=(
-                "Încă o regulă importantă. "
+                "Reținem și această regulă importantă. "
                 "<bookmark mark='rule'/> La plus infinit sau la minus infinit, "
                 "intervalul este întotdeauna deschis. "
                 "<bookmark mark='ok'/> Scriem paranteză rotundă lângă infinit, "
@@ -500,7 +500,7 @@ class Intervale(BilingualVoiceoverScene):
                 "<bookmark mark='why'/> Infinitul nu este un număr, deci nu poate aparține intervalului."
             ),
             en=(
-                "One more important rule. "
+                "Remember this important rule too. "
                 "At plus infinity or at minus infinity, "
                 "the interval is always open. "
                 "We write a round bracket next to infinity, "
@@ -554,8 +554,8 @@ class Intervale(BilingualVoiceoverScene):
         with self.say(
             ro=(
                 "Să reținem. "
-                "<bookmark mark='a'/> Paranteza dreaptă arată că capătul aparține intervalului. "
-                "<bookmark mark='b'/> Paranteza rotundă arată că el nu aparține intervalului. "
+                "<bookmark mark='a'/> Paranteza dreaptă ne spune: capătul aparține intervalului. "
+                "<bookmark mark='b'/> Paranteza rotundă ne spune: capătul nu aparține intervalului. "
                 "<bookmark mark='c'/> Iar la infinit, intervalul este mereu deschis. "
                 "Pe curând!"
             ),

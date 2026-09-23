@@ -1,0 +1,597 @@
+{
+  "uid": "1015",
+  "version": 2,
+  "items": {
+    "2": {
+      "kind": "perm",
+      "show": "$f = \\begin{pmatrix} 1 & 2 & 3 & 4 \\\\ 3 & 1 & 4 & 2 \\end{pmatrix}$; $g$ nu este permutare",
+      "accept": [
+        "3; 1; 4; 2"
+      ],
+      "hint": {
+        "ro": "permutarea găsită",
+        "en": "the permutation you found"
+      },
+      "sizes": [
+        4
+      ]
+    },
+    "3": {
+      "kind": "list",
+      "show": "$5$; $3$; $3$",
+      "accept": [
+        "5; 3; 3"
+      ],
+      "hint": {
+        "ro": "în ordinea $\\sigma(1) + \\sigma(4)$; $\\sigma(\\sigma(2))$; $\\sigma^{-1}(4)$",
+        "en": "in the order $\\sigma(1) + \\sigma(4)$; $\\sigma(\\sigma(2))$; $\\sigma^{-1}(4)$"
+      }
+    },
+    "4": {
+      "kind": "list",
+      "show": "$x = 2$, $y = 1$",
+      "accept": [
+        "2; 1"
+      ],
+      "hint": {
+        "ro": "în ordinea $x$; $y$",
+        "en": "in the order $x$; $y$"
+      }
+    },
+    "5": {
+      "kind": "list",
+      "show": "$a = 2$, $b = 0$, $c = 2$",
+      "accept": [
+        "2; 0; 2"
+      ],
+      "hint": {
+        "ro": "în ordinea $a$; $b$; $c$",
+        "en": "in the order $a$; $b$; $c$"
+      }
+    },
+    "6": {
+      "kind": "perm",
+      "show": "$\\sigma\\tau = \\begin{pmatrix} 1 & 2 & 3 \\\\ 2 & 1 & 3 \\end{pmatrix}$, $\\tau\\sigma = \\begin{pmatrix} 1 & 2 & 3 \\\\ 3 & 2 & 1 \\end{pmatrix}$; nu este comutativă",
+      "accept": [
+        "2; 1; 3; 3; 2; 1"
+      ],
+      "hint": {
+        "ro": "$\\sigma\\tau$, apoi $\\tau\\sigma$",
+        "en": "$\\sigma\\tau$, then $\\tau\\sigma$"
+      },
+      "sizes": [
+        3,
+        3
+      ]
+    },
+    "7": {
+      "kind": "perm",
+      "show": "$\\sigma^{2} = \\begin{pmatrix} 1 & 2 & 3 & 4 \\\\ 3 & 4 & 1 & 2 \\end{pmatrix}$, $\\sigma^{3} = \\begin{pmatrix} 1 & 2 & 3 & 4 \\\\ 4 & 1 & 2 & 3 \\end{pmatrix}$, $\\sigma^{4} = e$",
+      "accept": [
+        "3; 4; 1; 2; 4; 1; 2; 3; 1; 2; 3; 4"
+      ],
+      "hint": {
+        "ro": "$\\sigma^{2}$, $\\sigma^{3}$, apoi $\\sigma^{4}$",
+        "en": "$\\sigma^{2}$, $\\sigma^{3}$, then $\\sigma^{4}$"
+      },
+      "sizes": [
+        4,
+        4,
+        4
+      ]
+    },
+    "8": {
+      "kind": "perm",
+      "show": "$\\sigma^{-1} = \\begin{pmatrix} 1 & 2 & 3 & 4 & 5 \\\\ 3 & 4 & 1 & 5 & 2 \\end{pmatrix}$",
+      "accept": [
+        "3; 4; 1; 5; 2"
+      ],
+      "hint": {
+        "ro": "$\\sigma^{-1}$",
+        "en": "$\\sigma^{-1}$"
+      },
+      "sizes": [
+        5
+      ]
+    },
+    "9": {
+      "kind": "list",
+      "show": "$m(\\sigma) = 5$, $\\varepsilon(\\sigma) = -1$",
+      "accept": [
+        "5; -1"
+      ],
+      "hint": {
+        "ro": "în ordinea $m(\\sigma)$; $\\varepsilon(\\sigma)$",
+        "en": "in the order $m(\\sigma)$; $\\varepsilon(\\sigma)$"
+      }
+    },
+    "10": {
+      "check": false,
+      "why": "open",
+      "show": "$e$ pară; $m(\\alpha) = 6$, pară; $m(\\beta) = 3$, impară"
+    },
+    "11": {
+      "kind": "perm",
+      "show": "$\\tau = \\begin{pmatrix} 1 & 2 & 3 & 4 \\\\ 4 & 2 & 3 & 1 \\end{pmatrix}$, $\\tau^{2} = e$, $\\tau^{-1} = \\tau$, $\\varepsilon(\\tau) = -1$",
+      "accept": [
+        "4; 2; 3; 1"
+      ],
+      "hint": {
+        "ro": "$\\tau$",
+        "en": "$\\tau$"
+      },
+      "sizes": [
+        4
+      ]
+    },
+    "12": {
+      "kind": "list",
+      "show": "$m(\\sigma) = 15$, $\\varepsilon(\\sigma) = -1$",
+      "accept": [
+        "15; -1"
+      ],
+      "hint": {
+        "ro": "în ordinea $m(\\sigma)$; $\\varepsilon(\\sigma)$",
+        "en": "in the order $m(\\sigma)$; $\\varepsilon(\\sigma)$"
+      }
+    },
+    "13": {
+      "kind": "perm",
+      "show": "$\\sigma^{-1} = \\sigma^{2} = \\begin{pmatrix} 1 & 2 & 3 \\\\ 2 & 3 & 1 \\end{pmatrix}$",
+      "accept": [
+        "2; 3; 1; 2; 3; 1"
+      ],
+      "hint": {
+        "ro": "$\\sigma^{-1}$, apoi $\\sigma^{2}$",
+        "en": "$\\sigma^{-1}$, then $\\sigma^{2}$"
+      },
+      "sizes": [
+        3,
+        3
+      ]
+    },
+    "14": {
+      "kind": "perm",
+      "show": "$x = \\begin{pmatrix} 1 & 2 & 3 \\\\ 2 & 1 & 3 \\end{pmatrix}$",
+      "accept": [
+        "2; 1; 3"
+      ],
+      "hint": {
+        "ro": "$x$",
+        "en": "$x$"
+      },
+      "sizes": [
+        3
+      ]
+    },
+    "15": {
+      "kind": "perm",
+      "show": "$x = \\begin{pmatrix} 1 & 2 & 3 \\\\ 1 & 3 & 2 \\end{pmatrix}$",
+      "accept": [
+        "1; 3; 2"
+      ],
+      "hint": {
+        "ro": "$x$",
+        "en": "$x$"
+      },
+      "sizes": [
+        3
+      ]
+    },
+    "16": {
+      "kind": "perm",
+      "show": "$\\sigma\\tau = \\begin{pmatrix} 1 & 2 & 3 & 4 \\\\ 2 & 1 & 3 & 4 \\end{pmatrix}$; $\\varepsilon(\\sigma) = -1$, $\\varepsilon(\\tau) = 1$, $\\varepsilon(\\sigma\\tau) = -1$",
+      "accept": [
+        "2; 1; 3; 4"
+      ],
+      "hint": {
+        "ro": "$\\sigma\\tau$",
+        "en": "$\\sigma\\tau$"
+      },
+      "sizes": [
+        4
+      ]
+    },
+    "18": {
+      "kind": "perm",
+      "show": "$\\sigma^{2026} = e$, $\\sigma^{2027} = \\sigma$",
+      "accept": [
+        "1; 2; 3; 4; 2; 1; 4; 3"
+      ],
+      "hint": {
+        "ro": "$\\sigma^{2026}$, apoi $\\sigma^{2027}$",
+        "en": "$\\sigma^{2026}$, then $\\sigma^{2027}$"
+      },
+      "sizes": [
+        4,
+        4
+      ]
+    },
+    "19": {
+      "kind": "perm",
+      "show": "$\\sigma^{2026} = \\sigma^{2} = \\begin{pmatrix} 1 & 2 & 3 & 4 \\\\ 3 & 4 & 1 & 2 \\end{pmatrix}$",
+      "accept": [
+        "3; 4; 1; 2"
+      ],
+      "hint": {
+        "ro": "$\\sigma^{2026}$",
+        "en": "$\\sigma^{2026}$"
+      },
+      "sizes": [
+        4
+      ]
+    },
+    "20": {
+      "kind": "perm",
+      "show": "$k = 6$; $\\sigma^{100} = \\sigma^{4} = \\begin{pmatrix} 1 & 2 & 3 & 4 & 5 & 6 \\\\ 1 & 2 & 4 & 5 & 3 & 6 \\end{pmatrix}$",
+      "accept": [
+        "6; 1; 2; 4; 5; 3; 6"
+      ],
+      "hint": {
+        "ro": "mai întâi $k$, apoi $\\sigma^{100}$",
+        "en": "first $k$, then $\\sigma^{100}$"
+      },
+      "sizes": [
+        6
+      ],
+      "prefix": 1
+    },
+    "21": {
+      "kind": "perm",
+      "show": "$x = \\begin{pmatrix} 1 & 2 & 3 & 4 \\\\ 4 & 3 & 2 & 1 \\end{pmatrix}$",
+      "accept": [
+        "4; 3; 2; 1"
+      ],
+      "hint": {
+        "ro": "$x$",
+        "en": "$x$"
+      },
+      "sizes": [
+        4
+      ]
+    },
+    "22": {
+      "check": false,
+      "why": "open",
+      "show": "$m(\\sigma) = \\frac{n(n - 1)}{2}$; pară pentru $n = 4k$ sau $n = 4k + 1$"
+    },
+    "23": {
+      "kind": "number",
+      "show": "$\\varepsilon(\\sigma) = -1$; $m(\\sigma) = 7$",
+      "accept": [
+        "-1"
+      ],
+      "hint": {
+        "ro": "semnul permutării: $1$ sau $-1$",
+        "en": "the sign of the permutation: $1$ or $-1$"
+      }
+    },
+    "24": {
+      "check": false,
+      "why": "proof",
+      "show": "$\\varepsilon(\\sigma^{-1}) = \\varepsilon(\\sigma)$; $m(\\sigma) = m(\\sigma^{-1}) = 5$"
+    },
+    "25": {
+      "check": false,
+      "why": "open",
+      "show": "$e$ și cele trei transpoziții din $S_{3}$"
+    },
+    "26": {
+      "check": false,
+      "why": "open",
+      "show": "$e$, $\\begin{pmatrix} 1 & 2 & 3 \\\\ 2 & 3 & 1 \\end{pmatrix}$, $\\begin{pmatrix} 1 & 2 & 3 \\\\ 3 & 1 & 2 \\end{pmatrix}$"
+    },
+    "27": {
+      "check": false,
+      "why": "open",
+      "show": "$e$, $\\begin{pmatrix} 1 & 2 & 3 \\\\ 2 & 1 & 3 \\end{pmatrix}$"
+    },
+    "29": {
+      "kind": "list",
+      "show": "$a = 5$, $b = 2$",
+      "accept": [
+        "5; 2"
+      ],
+      "hint": {
+        "ro": "în ordinea $a$; $b$",
+        "en": "in the order $a$; $b$"
+      }
+    },
+    "30": {
+      "kind": "number",
+      "show": "$-1$",
+      "accept": [
+        "-1"
+      ]
+    },
+    "31": {
+      "kind": "perm",
+      "show": "$x = \\begin{pmatrix} 1 & 2 & 3 \\\\ 3 & 1 & 2 \\end{pmatrix}$",
+      "accept": [
+        "3; 1; 2"
+      ],
+      "hint": {
+        "ro": "$x$",
+        "en": "$x$"
+      },
+      "sizes": [
+        3
+      ]
+    },
+    "32": {
+      "kind": "list",
+      "show": "$m(\\sigma) = 6$, $\\varepsilon(\\sigma) = 1$",
+      "accept": [
+        "6; 1"
+      ],
+      "hint": {
+        "ro": "în ordinea $m(\\sigma)$; $\\varepsilon(\\sigma)$",
+        "en": "in the order $m(\\sigma)$; $\\varepsilon(\\sigma)$"
+      }
+    },
+    "34": {
+      "kind": "perm",
+      "show": "$\\sigma^{3} = e$; $x = \\begin{pmatrix} 1 & 2 & 3 & 4 \\\\ 1 & 3 & 4 & 2 \\end{pmatrix}$",
+      "accept": [
+        "1; 2; 3; 4; 1; 3; 4; 2"
+      ],
+      "hint": {
+        "ro": "$\\sigma^{3}$, apoi $x$",
+        "en": "$\\sigma^{3}$, then $x$"
+      },
+      "sizes": [
+        4,
+        4
+      ]
+    },
+    "35": {
+      "check": false,
+      "why": "proof",
+      "show": "$\\varepsilon(x^{2}) = 1$, iar transpoziția are semnul $-1$"
+    },
+    "37": {
+      "check": false,
+      "why": "open",
+      "show": "$\\begin{pmatrix} 1 & 2 & 3 & 4 \\\\ 2 & 3 & 4 & 1 \\end{pmatrix}$, $\\begin{pmatrix} 1 & 2 & 3 & 4 \\\\ 4 & 1 & 2 & 3 \\end{pmatrix}$"
+    },
+    "38": {
+      "kind": "perm",
+      "show": "$x = \\begin{pmatrix} 1 & 2 & 3 \\\\ 3 & 1 & 2 \\end{pmatrix}$",
+      "accept": [
+        "3; 1; 2"
+      ],
+      "hint": {
+        "ro": "$x$",
+        "en": "$x$"
+      },
+      "sizes": [
+        3
+      ]
+    },
+    "39": {
+      "check": false,
+      "why": "proof",
+      "show": "$\\sigma^{12} = e$; nu există"
+    },
+    "40": {
+      "kind": "number",
+      "show": "$120$",
+      "accept": [
+        "120"
+      ]
+    },
+    "41": {
+      "kind": "list",
+      "show": "9 în $S_{4}$; 44 în $S_{5}$",
+      "accept": [
+        "9; 44"
+      ],
+      "hint": {
+        "ro": "în ordinea $S_{4}$; $S_{5}$",
+        "en": "in the order $S_{4}$; $S_{5}$"
+      }
+    },
+    "42": {
+      "kind": "number",
+      "show": "$n = 10$",
+      "accept": [
+        "10"
+      ]
+    },
+    "43": {
+      "check": false,
+      "why": "proof",
+      "show": "$\\varepsilon(\\tau\\sigma) = -\\varepsilon(\\sigma)$"
+    },
+    "44": {
+      "check": false,
+      "why": "proof",
+      "show": "$\\varepsilon(\\sigma\\tau) = 1$, $\\varepsilon(\\sigma^{-1}) = 1$"
+    },
+    "45": {
+      "check": false,
+      "why": "proof",
+      "show": "$\\sigma^{q - p} = e$"
+    },
+    "46": {
+      "kind": "perm",
+      "show": "$\\sigma = e$",
+      "accept": [
+        "1; 2; 3"
+      ],
+      "hint": {
+        "ro": "$\\sigma$",
+        "en": "$\\sigma$"
+      },
+      "sizes": [
+        3
+      ]
+    },
+    "47": {
+      "check": false,
+      "why": "proof",
+      "show": "contradicție: $x^{4} = e$ și $x^{4} \\neq e$"
+    },
+    "48": {
+      "check": false,
+      "why": "proof",
+      "show": "$m(\\sigma\\rho) = \\frac{n(n - 1)}{2} - m(\\sigma)$"
+    },
+    "1a": {
+      "check": false,
+      "why": "open",
+      "show": "cele 6 permutări din $S_{3}$"
+    },
+    "1b": {
+      "kind": "list",
+      "show": "$4! = 24$, $5! = 120$",
+      "accept": [
+        "24; 120"
+      ],
+      "hint": {
+        "ro": "în ordinea $S_{4}$; $S_{5}$",
+        "en": "in the order $S_{4}$; $S_{5}$"
+      }
+    },
+    "17a": {
+      "kind": "number",
+      "show": "$3! = 6$",
+      "accept": [
+        "6"
+      ]
+    },
+    "17b": {
+      "kind": "number",
+      "show": "$2! = 2$",
+      "accept": [
+        "2"
+      ]
+    },
+    "17c": {
+      "check": false,
+      "why": "open",
+      "show": "cele 6 transpoziții din $S_{4}$"
+    },
+    "28a": {
+      "kind": "number",
+      "show": "$12$",
+      "accept": [
+        "12"
+      ]
+    },
+    "28b": {
+      "kind": "number",
+      "show": "5 permutări",
+      "accept": [
+        "5"
+      ],
+      "hint": {
+        "ro": "câte sunt",
+        "en": "how many there are"
+      }
+    },
+    "33a": {
+      "check": false,
+      "why": "proof",
+      "show": "$\\tau^{2} = e$, $\\tau^{-1} = \\tau$"
+    },
+    "33b": {
+      "check": false,
+      "why": "proof",
+      "show": "$C_{n}^{2} = \\frac{n(n - 1)}{2}$"
+    },
+    "33c": {
+      "kind": "number",
+      "show": "$n = 8$",
+      "accept": [
+        "8"
+      ]
+    },
+    "36a": {
+      "check": false,
+      "why": "proof",
+      "show": "$m(\\sigma) = \\frac{n(n + 1)}{2}$"
+    },
+    "36b": {
+      "kind": "number",
+      "show": "$\\varepsilon(\\sigma) = -1$",
+      "accept": [
+        "-1"
+      ],
+      "hint": {
+        "ro": "semnul permutării: $1$ sau $-1$",
+        "en": "the sign of the permutation: $1$ or $-1$"
+      }
+    },
+    "49a": {
+      "kind": "list",
+      "show": "$m(\\sigma) = 3$, $\\varepsilon(\\sigma) = -1$",
+      "accept": [
+        "3; -1"
+      ],
+      "hint": {
+        "ro": "în ordinea $m(\\sigma)$; $\\varepsilon(\\sigma)$",
+        "en": "in the order $m(\\sigma)$; $\\varepsilon(\\sigma)$"
+      }
+    },
+    "49b": {
+      "check": false,
+      "why": "proof",
+      "show": "$\\sigma^{6} = (\\sigma^{3})^{2} = e$"
+    },
+    "49c": {
+      "kind": "perm",
+      "show": "$\\sigma^{2026} = \\sigma^{4} = \\begin{pmatrix} 1 & 2 & 3 & 4 & 5 \\\\ 2 & 3 & 1 & 4 & 5 \\end{pmatrix}$",
+      "accept": [
+        "2; 3; 1; 4; 5"
+      ],
+      "hint": {
+        "ro": "$\\sigma^{2026}$",
+        "en": "$\\sigma^{2026}$"
+      },
+      "sizes": [
+        5
+      ]
+    },
+    "49d": {
+      "check": false,
+      "why": "proof",
+      "show": "$\\varepsilon(x^{2}) = 1 \\neq -1 = \\varepsilon(\\sigma)$"
+    },
+    "50a": {
+      "kind": "perm",
+      "show": "$\\sigma^{-1} = \\begin{pmatrix} 1 & 2 & 3 & 4 \\\\ 4 & 3 & 1 & 2 \\end{pmatrix}$",
+      "accept": [
+        "4; 3; 1; 2"
+      ],
+      "hint": {
+        "ro": "$\\sigma^{-1}$",
+        "en": "$\\sigma^{-1}$"
+      },
+      "sizes": [
+        4
+      ]
+    },
+    "50b": {
+      "kind": "number",
+      "show": "12 permutări",
+      "accept": [
+        "12"
+      ]
+    },
+    "50c": {
+      "kind": "perm",
+      "show": "$x = \\sigma^{-2} = \\begin{pmatrix} 1 & 2 & 3 & 4 \\\\ 2 & 1 & 4 & 3 \\end{pmatrix}$",
+      "accept": [
+        "2; 1; 4; 3"
+      ],
+      "hint": {
+        "ro": "$x$",
+        "en": "$x$"
+      },
+      "sizes": [
+        4
+      ]
+    }
+  }
+}

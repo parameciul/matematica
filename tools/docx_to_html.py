@@ -106,8 +106,10 @@ ANSWER_HEADINGS = [
 
 def top_blocks(html):
     """The top-level block elements of pandoc output, in order."""
+    # The closing tag must match the opening one: a table that holds <p> lines
+    # is one block, not cut at its first </p>.
     return [m.group(0) for m in re.finditer(
-        r'<(?:p|h[1-6]|table|ul|ol|div|pre|blockquote)\b[^>]*>.*?</(?:p|h[1-6]|table|ul|ol|div|pre|blockquote)>'
+        r'<(p|h[1-6]|table|ul|ol|div|pre|blockquote)\b[^>]*>.*?</\1>'
         r'|<hr\s*/?>',
         html, re.S)]
 
@@ -142,7 +144,18 @@ def split_answers(html):
     return html, None
 
 
-SECTION_NUMBER_RE = re.compile(r'^(?:[IVXLCDM]+\.|\d+\.)\s')
+SECTION_NUMBER_RE = re.compile(r'^(?:[IVXLCDM]+\.|\d+\.)\s|^(?i:nivelul)\s+[IVX]+\b')
+
+# A one-cell table with only a bold line: a section heading drawn as a
+# coloured band in Word ("NIVELUL I – …"). A box with several lines stays.
+HEADING_TABLE_RE = re.compile(
+    r'<table>\s*(?:<thead>\s*)?<tr>\s*<t[hd]>\s*<strong>([^<]*)</strong>\s*</t[hd]>\s*</tr>'
+    r'\s*(?:</thead>\s*)?(?:<tbody>\s*</tbody>\s*)?</table>\n?')
+
+
+def unwrap_heading_tables(html):
+    """Turn one-line heading tables into bold paragraphs, like the other section titles."""
+    return HEADING_TABLE_RE.sub(lambda m: f'<p><strong>{m.group(1).strip()}</strong></p>\n', html)
 
 
 def drop_title_block(html):
@@ -184,7 +197,7 @@ def main(argv=None):
     html = tidy(math_to_dollars(raw))
     if args.answers_only:
         try:
-            html, dropped = drop_title_block(html)
+            html, dropped = drop_title_block(unwrap_heading_tables(html))
         except ValueError as error:
             print(f'ERROR: {error}', file=sys.stderr)
             return 1

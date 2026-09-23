@@ -112,3 +112,49 @@ def test_answers_only_refuses_too_many_leading_blocks():
 def test_exercise_numbers_lists_the_numbered_exercises():
     html = '<p><strong>1.</strong> a</p>\n<p><strong>2.</strong> b</p>\n<p><strong>2.</strong> c</p>\n'
     assert docx_to_html.exercise_numbers(html) == [1, 2]
+
+
+LEVEL_TEMPLATE = (
+    '<p><strong>Fișă de lucru</strong></p>\n'
+    '<p><strong>Partea întreagă</strong></p>\n'
+    '<p><em>Clasa a IX-a · Barem și rezolvări</em></p>\n'
+    '<table>\n<thead>\n<tr>\n<th><p><strong>Reamintim</strong></p>\n'
+    '<p>$x = \\lbrack x\\rbrack + \\{ x\\}$</p>\n<p>$0 \\leq \\{ x\\} &lt; 1$</p></th>\n'
+    '</tr>\n</thead>\n<tbody>\n</tbody>\n</table>\n'
+    '<table>\n<thead>\n<tr>\n<th><strong>NIVELUL I – Calcul direct</strong></th>\n'
+    '</tr>\n</thead>\n<tbody>\n</tbody>\n</table>\n'
+    '<p><strong>1.</strong> Calculați $\\lbrack 7,3\\rbrack$.</p>\n'
+    '<p><em>Rezolvare:</em> $7$.</p>\n'
+    '<table>\n<thead>\n<tr>\n<th><strong>NIVELUL II – Ecuații</strong></th>\n'
+    '</tr>\n</thead>\n<tbody>\n</tbody>\n</table>\n'
+    '<p><strong>2.</strong> Rezolvați $\\lbrack x\\rbrack = 4$.</p>\n'
+)
+
+
+def test_top_blocks_keeps_a_table_with_paragraphs_as_one_block():
+    html = '<table>\n<tr><th><p>a</p>\n<p>b</p></th></tr>\n</table>\n<p>c</p>\n'
+    assert docx_to_html.top_blocks(html) == [
+        '<table>\n<tr><th><p>a</p>\n<p>b</p></th></tr>\n</table>', '<p>c</p>']
+
+
+def test_heading_tables_become_bold_paragraphs():
+    html = docx_to_html.unwrap_heading_tables(LEVEL_TEMPLATE)
+    assert '<p><strong>NIVELUL I – Calcul direct</strong></p>' in html
+    assert '<p><strong>NIVELUL II – Ecuații</strong></p>' in html
+    assert html.count('<table>') == 1  # the Reamintim box is not a one-line heading
+
+
+def test_answers_only_drops_the_title_and_reminder_box_before_a_level_heading():
+    html = docx_to_html.unwrap_heading_tables(LEVEL_TEMPLATE)
+    kept, dropped = docx_to_html.drop_title_block(html)
+    assert kept.startswith('<p><strong>NIVELUL I – Calcul direct</strong></p>')
+    assert len(dropped) == 4
+    assert 'Reamintim' not in kept and 'Clasa' not in kept
+    assert '<p><strong>NIVELUL II – Ecuații</strong></p>' in kept
+    assert docx_to_html.exercise_numbers(kept) == [1, 2]
+
+
+def test_a_level_word_inside_a_title_is_not_a_section():
+    html = '<p><strong>Nivelul clasei</strong></p>\n<p><strong>1.</strong> $4$.</p>\n'
+    kept, dropped = docx_to_html.drop_title_block(html)
+    assert kept.startswith('<p><strong>1.</strong>') and len(dropped) == 1

@@ -19,6 +19,7 @@
   var KIND_LABEL = {
     number: 'număr',
     list: 'listă',
+    perm: 'permutare',
     set: 'mulțime',
     interval: 'interval',
     text: 'text',

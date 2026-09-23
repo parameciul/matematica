@@ -202,6 +202,61 @@ test('a choice option without data-value fails', (t) => {
   assert.match(res.out, /needs its value in data-value/);
 });
 
+test('a perm without sizes fails', (t) => {
+  const res = fails(t,
+    { items: { 1: { kind: 'perm', show: '$x$', accept: ['3; 1; 2'], hint: { ro: '$x$', en: '$x$' } } } },
+    { answers: ONE_EXERCISE });
+  assert.match(res.out, /sizes must be/);
+});
+
+test('a perm with the wrong value count fails', (t) => {
+  const res = fails(t,
+    { items: { 1: { kind: 'perm', show: '$x$', accept: ['2; 1'], sizes: [3], hint: { ro: '$x$', en: '$x$' } } } },
+    { answers: ONE_EXERCISE });
+  assert.match(res.out, /holds 2 values but prefix \+ sizes need 3/);
+});
+
+test('a perm table that is no permutation fails', (t) => {
+  const res = fails(t,
+    { items: { 1: { kind: 'perm', show: '$x$', accept: ['2; 2; 1'], sizes: [3], hint: { ro: '$x$', en: '$x$' } } } },
+    { answers: ONE_EXERCISE });
+  assert.match(res.out, /not a permutation of 1\.\.3/);
+});
+
+test('a perm hint with separator help fails', (t) => {
+  const res = fails(t,
+    { items: { 1: { kind: 'perm', show: '$x$', accept: ['3; 1; 2'], sizes: [3], hint: { ro: '$x$: a doua linie, cu ;', en: '$x$' } } } },
+    { answers: ONE_EXERCISE });
+  assert.match(res.out, /must only name the order/);
+});
+
+test('a perm with sizes and a short hint saves', (t) => {
+  const dir = makeRoot(t);
+  const { uid, name, work } = setup(t, dir, { items: { 1: {
+    kind: 'perm', show: '$x$', accept: ['3; 1; 2'], sizes: [3], hint: { ro: '$x$', en: '$x$' },
+  } } });
+  for (const page of [join(dir, 'materiale', `${name}.html`), join(dir, 'en', 'materiale', `${name}.html`)]) {
+    writeFileSync(page, readFileSync(page, 'utf8').replace('</article>', '<p data-ex="1">x</p></article>'));
+  }
+  writeFileSync(join(work, 'answers.html'), ONE_EXERCISE);
+  const res = run(dir, RESULTS, ['save', uid]);
+  assert.equal(res.code, 0, res.out);
+});
+
+test('a perm with a prefix before the table saves', (t) => {
+  const dir = makeRoot(t);
+  const { uid, name, work } = setup(t, dir, { items: { 1: {
+    kind: 'perm', show: '$k$', accept: ['6; 1; 2'], sizes: [2], prefix: 1,
+    hint: { ro: 'mai întâi $k$, apoi $x$', en: 'first $k$, then $x$' },
+  } } });
+  for (const page of [join(dir, 'materiale', `${name}.html`), join(dir, 'en', 'materiale', `${name}.html`)]) {
+    writeFileSync(page, readFileSync(page, 'utf8').replace('</article>', '<p data-ex="1">x</p></article>'));
+  }
+  writeFileSync(join(work, 'answers.html'), ONE_EXERCISE);
+  const res = run(dir, RESULTS, ['save', uid]);
+  assert.equal(res.code, 0, res.out);
+});
+
 function makeDocx(t, dir, paragraphs) {
   const target = join(dir, `fixture-${Date.now()}-${Math.floor(Math.random() * 1e6)}.docx`);
   const pars = paragraphs.map(([bold, text]) => `[${bold ? 'True' : 'False'}, ${JSON.stringify(text)}]`).join(', ');

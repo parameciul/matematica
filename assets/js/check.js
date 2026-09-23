@@ -208,6 +208,10 @@
         label.appendChild(el('span', null, text));
         body.appendChild(label);
       });
+    } else if (kind === 'perm' && permSizes(item).length) {
+      // The table template replaces the single text field (and its symbol
+      // buttons: a second row holds plain numbers only).
+      openPerm(body, item);
     } else if (kind) {
       const field = el('input', 'check-field');
       field.type = 'text';
@@ -246,6 +250,63 @@
     field.setSelectionRange(s + text.length, s + text.length);
   }
 
+  // A permutation in two-line notation: the tables the answer is written in,
+  // with the first row fixed (1..n) and one small box per value of the second
+  // row. Plain numbers before the tables (like k in "first k, then σ¹⁰⁰") get
+  // their own boxes in front. The boxes read back in DOM order, so the joined
+  // text matches the accept strings ("3; 4; 1; 5; 2").
+  function permSizes(item) {
+    const sizes = Array.isArray(item.sizes) ? item.sizes : [];
+    return sizes.filter((n) => Number.isInteger(n) && n >= 2);
+  }
+
+  function permBox(label) {
+    const inp = el('input', 'perm-cell');
+    inp.type = 'text';
+    inp.autocomplete = 'off';
+    inp.spellcheck = false;
+    inp.setAttribute('inputmode', 'numeric');
+    inp.setAttribute('aria-label', label);
+    return inp;
+  }
+
+  function openPerm(host, item) {
+    const sizes = permSizes(item);
+    const prefix = Number.isInteger(item.prefix) && item.prefix > 0 ? item.prefix : 0;
+    host.appendChild(el('p', 'check-example', t('check.permHelp')));
+    if (item.hint) {
+      // Hints may hold $…$ math; the render below handles them like the article.
+      host.appendChild(el('p', 'check-hint', item.hint[getLang()] || item.hint.ro || ''));
+    }
+    if (prefix > 0) {
+      const row = el('div', 'perm-prefix');
+      for (let i = 0; i < prefix; i++) {
+        row.appendChild(permBox(t('check.permValue').replace('{n}', String(i + 1))));
+      }
+      host.appendChild(row);
+    }
+    const list = el('div', 'perm-list');
+    sizes.forEach((n, ti) => {
+      const wrap = el('div', 'perm-item');
+      const caption = t('check.permTable').replace('{n}', String(ti + 1));
+      if (sizes.length > 1) wrap.appendChild(el('p', 'perm-cap', caption));
+      const grid = el('div', 'perm-grid');
+      grid.setAttribute('role', 'group');
+      grid.setAttribute('aria-label', caption);
+      for (let c = 0; c < n; c++) {
+        const col = el('div', 'perm-col');
+        col.appendChild(el('span', 'perm-top', String(c + 1)));
+        col.appendChild(permBox(
+          t('check.permCell').replace('{t}', String(ti + 1)).replace('{n}', String(c + 1))
+        ));
+        grid.appendChild(col);
+      }
+      wrap.appendChild(grid);
+      list.appendChild(wrap);
+    });
+    host.appendChild(list);
+  }
+
   function currentAnswer(key, item) {
     if (item.kind === 'choice') {
       const checked = body.querySelector('input[type="radio"]:checked');
@@ -258,6 +319,12 @@
     if (item.kind === 'truefalse') {
       const checked = body.querySelector('input[type="radio"]:checked');
       return checked ? { value: checked.value } : null;
+    }
+    if (item.kind === 'perm' && body.querySelector('input.perm-cell')) {
+      // DOM order is answer order: plain boxes first, then the tables.
+      const inputs = Array.from(body.querySelectorAll('input.perm-cell'));
+      const parts = inputs.map((i) => i.value.trim());
+      return { value: parts.join('; '), incomplete: parts.some((p) => !p) };
     }
     const field = body.querySelector('.check-field');
     return field ? { value: field.value } : null;
@@ -325,6 +392,10 @@
     if (!given) {
       // Radio kinds with nothing picked: say so instead of doing nothing.
       say(t('check.pick'), 'error');
+      return;
+    }
+    if (given.incomplete) {
+      say(t('check.fillAll'), 'error');
       return;
     }
     const read = window.Answers.read(item.kind, given.value);
