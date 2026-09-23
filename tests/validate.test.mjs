@@ -327,6 +327,57 @@ test('a material with a valid video passes', () => {
   assert.equal(result.code, 0, result.out);
 });
 
+// The sample page gets a real article with two sections, then the pages are generated again.
+function sampleArticle(dir, roInner, enInner) {
+  for (const [rel, inner] of [[SAMPLE_PAGE, roInner], [SAMPLE_EN_PAGE, enInner]]) {
+    editFile(dir, rel, (s) => s.replace(/(<article\b[^>]*>)[\s\S]*?(<\/article>)/, `$1${inner}$2`));
+  }
+}
+const TWO_SECTIONS = '<h2>1. Unu</h2>\n<p>a</p>\n<h2>2. Doi</h2>\n<p>b</p>';
+
+test('two clips with the same id fail', () => {
+  expectFailure(withSite((dir) => editData(dir, (d) => { sample(d).youtube = [{ ...CLIP_OK }, { ...CLIP_OK }]; })), /youtube: clip "dQw4w9WgXcQ" appears twice/);
+});
+
+test('clip sections going down fail', () => {
+  expectFailure(
+    withSite((dir) => editData(dir, (d) => { sample(d).youtube = [{ ...CLIP_OK, section: 2 }, { ...CLIP_OK, id: 'aKzam7LMZ_4', section: 1 }]; })),
+    /youtube\[1\]\.section must not be lower than the clip before it/,
+  );
+});
+
+test('a quiz with a clip fails', () => {
+  expectFailure(withSite((dir) => editData(dir, (d) => {
+    const quiz = d.materials.find((m) => m.kind === 'quiz');
+    quiz.youtube = [{ ...CLIP_OK }];
+  })), /youtube must be null for a quiz/);
+});
+
+test('a clip section past the last heading fails', () => {
+  expectFailure(withSite((dir) => {
+    sampleArticle(dir, TWO_SECTIONS, TWO_SECTIONS);
+    editData(dir, (d) => { sample(d).youtube = [{ ...CLIP_OK, section: 1 }, { ...CLIP_OK, id: 'aKzam7LMZ_4', section: 3 }]; });
+    writeSite(dir);
+  }), /youtube\[1\]\.section 3 but the article has 2 <h2>/);
+});
+
+test('clips placed in sections pass', () => {
+  const result = withSite((dir) => {
+    sampleArticle(dir, TWO_SECTIONS, TWO_SECTIONS);
+    editData(dir, (d) => { sample(d).youtube = [{ ...CLIP_OK, section: 1 }, { ...CLIP_OK, id: 'aKzam7LMZ_4', section: 2 }]; });
+    writeSite(dir);
+  });
+  assert.equal(result.code, 0, result.out);
+});
+
+test('a video id that looks like a class code passes', () => {
+  const result = withSite((dir) => {
+    editData(dir, (d) => { sample(d).youtube = [{ ...CLIP_OK, id: 'abcdefg-9R2' }]; });
+    writeSite(dir);
+  });
+  assert.equal(result.code, 0, result.out);
+});
+
 test('quiz with a PDF fails', () => {
   expectFailure(withSite((dir) => editData(dir, (d) => { sample(d).kind = 'quiz'; })), /pdf must be null for a quiz/);
 });
