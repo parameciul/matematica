@@ -94,7 +94,7 @@ New keys in `assets/js/i18n.js`, `ro` and `en`: the overview heading, the summar
 
 ## Style
 
-New rules in `assets/css/style.css`, only with the existing colour tokens, so both themes work without extra blocks. The current clip row uses `--b-lectii-bg` and `--ink`; the watched mark uses `--marker-edge`. Focus ring: the site's existing `:focus-visible` style. The watched state is text plus ✓, never colour only.
+New rules in `assets/css/style.css`, only with the existing colour tokens, so both themes work without extra blocks. The watched mark uses `--marker-edge`; its number turns into ✓ with dark text for contrast in both themes. Focus ring: the site's existing `:focus-visible` style. The watched state is text plus ✓, never colour only.
 
 ## Scripts
 
