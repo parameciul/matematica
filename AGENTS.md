@@ -106,6 +106,8 @@ Clips are Manim scenes in `video/scenes/<material name>/NN-<slug>.py`, one clip 
 - Write the math in the spoken text as Romanian words ("minus doi", "plus infinit"), never as symbols or digits.
 - Write every math letter in the Romanian text in braces: `{a}`, `{B}`. The voice swallows a lone letter; the braces make it say the letter with a short pause after it, and the subtitles show the plain letter.
 - Leave time to think: keep `SENTENCE_PAUSE = 0.8` (silence after each sentence). `say()` also waits 1 s after each block. The English line must have the same number of sentences as the Romanian one.
+- Avoid cacophony in all Romanian text (spoken, captions, pages): no "că ca…", "că că…", "că co…", "că cu", "la la", "cu cu" and similar. Rephrase the sentence ("Paranteza dreaptă ne spune: capătul aparține…", not "arată că capătul").
+- Avoid the one-letter word "o" in the spoken text ("cu o inegalitate"): the voice swallows it like a letter. Rephrase ("cu inegalitățile", "ambii membri").
 - In a worked example, first write what is being calculated (`A ∪ B =`), then find it on the drawing, and write the value last.
 - Check frames of the draft before the final render, and send the frames with the result.
 

@@ -68,20 +68,24 @@ class RelatiaDeOrdine(BilingualVoiceoverScene):
     def opening(self):
         # The site font draws ℝ thin and pale next to its bold letters, so the set comes from
         # the math font, like everywhere else in the clip.
-        head = VGroup(title("Relația de ordine pe"), MathTex(r"\mathbb{R}", color=INK).scale(1.5))
-        head.arrange(RIGHT, buff=0.25, aligned_edge=DOWN)
+        words = title("Relația de ordine pe")
+        real = MathTex(r"\mathbb{R}", color=INK).scale(1.5)
+        # The bottom of the words is the tail of the p, below the line; the R stands on the
+        # line, so it lines up with the foot of the last letter, the e.
+        real.next_to(words, RIGHT, buff=0.25).align_to(words[-1], DOWN)
+        head = VGroup(words, real)
         sub = ro("Proprietăți ale inegalităților", size=36, color=MUTED, weight="BOLD")
         grade = caption("Clasa a IX-a · Numere reale")
         VGroup(head, sub, grade).arrange(DOWN, buff=0.4)
         with self.say(
             ro=(
                 "Bine ați venit! Astăzi vorbim despre relația de ordine pe mulțimea "
-                "numerelor reale. <bookmark mark='sub'/> Vedem ce se întâmplă cu o inegalitate "
+                "numerelor reale. <bookmark mark='sub'/> Vedem cum se comportă inegalitățile "
                 "când adunăm, când înmulțim și când trecem la inverse."
             ),
             en=(
                 "Welcome! Today we talk about the order relation on the set "
-                "of real numbers. We see what happens to an inequality "
+                "of real numbers. We see how inequalities behave "
                 "when we add, when we multiply and when we take inverses."
             ),
         ) as t:
@@ -251,13 +255,13 @@ class RelatiaDeOrdine(BilingualVoiceoverScene):
         with self.say(
             ro=(
                 "Să reținem ideea principală. "
-                "<bookmark mark='a'/> Când înmulțim o inegalitate cu un număr negativ, "
+                "<bookmark mark='a'/> Când înmulțim ambii membri cu un număr negativ, "
                 "<bookmark mark='b'/> se schimbă sensul inegalității. "
                 "Pe curând!"
             ),
             en=(
                 "Let us keep the main idea. "
-                "When we multiply an inequality by a negative number, "
+                "When we multiply both sides by a negative number, "
                 "the inequality changes direction. "
                 "See you soon!"
             ),
