@@ -33,6 +33,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 from bilingual import BilingualVoiceoverScene  # noqa: E402
 from edge_tts_service import EdgeTTSService  # noqa: E402
 from theme import (  # noqa: E402
+    INK,
     MARKER,
     MATH_COLOR,
     MUTED,
@@ -62,7 +63,10 @@ class RelatiaDeOrdine(BilingualVoiceoverScene):
     # ------------------------------------------------------------------ opening
 
     def opening(self):
-        head = title("Relația de ordine pe ℝ")
+        # The site font draws ℝ thin and pale next to its bold letters, so the set comes from
+        # the math font, like everywhere else in the clip.
+        head = VGroup(title("Relația de ordine pe"), MathTex(r"\mathbb{R}", color=INK).scale(1.5))
+        head.arrange(RIGHT, buff=0.25, aligned_edge=DOWN)
         sub = ro("Proprietăți ale inegalităților", size=36, color=MUTED, weight="BOLD")
         grade = caption("Clasa a IX-a · Numere reale")
         VGroup(head, sub, grade).arrange(DOWN, buff=0.4)

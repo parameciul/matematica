@@ -96,6 +96,16 @@ Content is sorted per grade, never per school class (9R2, 6E2). Topics hold mate
 3. Set `"youtube": { "id": "<11 chars>", "uploaded": "<ISO date or date-time>", "duration": "PT7M31S" }` in `data/materials.source.json`, run the generator, and check the static player and the `VideoObject` on the page.
 4. Put the material page URL in the first line of the video description.
 
+## Make a lesson clip
+
+Clips are Manim scenes in `video/scenes/<material name>/NN-<slug>.py`, one clip per file, spoken in Romanian by `ro-RO-AlinaNeural` at `-8%`, with Romanian and English subtitles (`BilingualVoiceoverScene.say(ro=…, en=…)`). Render from `video/`: `uv run manim render -ql <file> <Scene>` for a draft, `-qh` for the final. The output goes to `.work/video/videos/`; copy the final `.mp4`, `.srt` (as `.ro.srt`) and `.en.srt` to `.work/video/final/NN-<slug>.*`, with the YouTube title and description beside them (see "Add a YouTube video").
+
+- Every clip stands alone. Never mention what the previous clip covered or what the next clip will cover, neither at the start nor at the end.
+- On an axis, draw the ends of an interval with the same signs as the notation: `[` `]` for an end that belongs to it, `(` `)` for one that does not. No filled dots or hollow circles.
+- Show a wrong form in red with a `greșit` label. Never draw an X over it: the student must still read it.
+- Write the math in the spoken text as Romanian words ("minus doi", "plus infinit"), never as symbols or digits.
+- Check frames of the draft before the final render, and send the frames with the result.
+
 ## Add a material
 
 The source files are in `D:\Projects\Website-Content\`. Never change them. Put work files in `.work/<name>/` (git ignores it). `"import": { "date", "workflow" }` records which version of this workflow produced the article; bump `WORKFLOW` at the top of `tools/material.mjs` whenever a change here affects the article output.
