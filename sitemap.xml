@@ -45,14 +45,14 @@
   </url>
   <url>
     <loc>https://lauramiron.pages.dev/clasa-9</loc>
-    <lastmod>2026-09-20</lastmod>
+    <lastmod>2026-09-23</lastmod>
     <xhtml:link rel="alternate" hreflang="ro" href="https://lauramiron.pages.dev/clasa-9"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://lauramiron.pages.dev/en/clasa-9"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://lauramiron.pages.dev/clasa-9"/>
   </url>
   <url>
     <loc>https://lauramiron.pages.dev/en/clasa-9</loc>
-    <lastmod>2026-09-20</lastmod>
+    <lastmod>2026-09-23</lastmod>
     <xhtml:link rel="alternate" hreflang="ro" href="https://lauramiron.pages.dev/clasa-9"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://lauramiron.pages.dev/en/clasa-9"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://lauramiron.pages.dev/clasa-9"/>
@@ -228,5 +228,19 @@
     <xhtml:link rel="alternate" hreflang="ro" href="https://lauramiron.pages.dev/materiale/fisa-lucru-modulul-unui-numar-real-1012"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://lauramiron.pages.dev/en/materiale/fisa-lucru-modulul-unui-numar-real-1012"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://lauramiron.pages.dev/materiale/fisa-lucru-modulul-unui-numar-real-1012"/>
+  </url>
+  <url>
+    <loc>https://lauramiron.pages.dev/materiale/fisa-lucru-partea-intreaga-partea-fractionara-1014</loc>
+    <lastmod>2026-09-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://lauramiron.pages.dev/materiale/fisa-lucru-partea-intreaga-partea-fractionara-1014"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lauramiron.pages.dev/en/materiale/fisa-lucru-partea-intreaga-partea-fractionara-1014"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lauramiron.pages.dev/materiale/fisa-lucru-partea-intreaga-partea-fractionara-1014"/>
+  </url>
+  <url>
+    <loc>https://lauramiron.pages.dev/en/materiale/fisa-lucru-partea-intreaga-partea-fractionara-1014</loc>
+    <lastmod>2026-09-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://lauramiron.pages.dev/materiale/fisa-lucru-partea-intreaga-partea-fractionara-1014"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lauramiron.pages.dev/en/materiale/fisa-lucru-partea-intreaga-partea-fractionara-1014"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lauramiron.pages.dev/materiale/fisa-lucru-partea-intreaga-partea-fractionara-1014"/>
   </url>
 </urlset>
