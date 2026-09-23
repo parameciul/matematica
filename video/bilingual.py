@@ -11,7 +11,8 @@ Romanian, so each English cue covers the same seconds as its Romanian sentence.
 
 Math letters are written in braces, `{a}`. The voice swallows a lone letter ("a" lasts a
 hundredth of a second), so the spoken text holds it with a short pause after it ("a -"),
-while the captions show the plain letter.
+while the captions show the plain letter. Where the voice reads a letter wrongly, give the
+spoken form after a bar: `{b|be}` is read "be" and shown "b".
 
 After every `say()` the scene waits `idea_pause` seconds, so the viewer has a moment with
 the picture before the next idea starts.
@@ -40,17 +41,20 @@ from edge_tts_service import split_sentences
 # A math letter in braces. Before punctuation the punctuation already makes the pause.
 LETTER_BEFORE_MARK = re.compile(r"\{([A-Za-z])\}(?=[.,;:!?])")
 LETTER = re.compile(r"\{([A-Za-z])\}")
+# A letter with its spoken form, `{b|be}`.
+NAMED_LETTER = re.compile(r"\{([A-Za-z])\|([^}]+)\}")
 MAX_CUE = 70  # characters on one caption, as manim-voiceover uses
 
 
 def spoken(text):
     """The text the voice reads: every `{a}` becomes "a -", which the voice holds."""
+    text = NAMED_LETTER.sub(r"\2", text)
     return LETTER.sub(r"\1 -", LETTER_BEFORE_MARK.sub(r"\1", text))
 
 
 def shown(text):
     """The caption text: every `{a}` becomes the plain letter."""
-    return LETTER.sub(r"\1", text)
+    return LETTER.sub(r"\1", NAMED_LETTER.sub(r"\1", text))
 
 
 def split_cue(text, start, end):
