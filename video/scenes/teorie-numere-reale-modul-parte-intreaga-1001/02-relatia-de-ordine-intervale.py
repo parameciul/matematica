@@ -222,7 +222,7 @@ class RelatiaDeOrdine(BilingualVoiceoverScene):
         ).scale(1.1).arrange(RIGHT, buff=0.35)
         sample[3][1].set_color(RED)
         sample.next_to(warning, DOWN, buff=0.8).align_to(rows, LEFT)
-        VGroup(rows, warning, sample).move_to(DOWN * 0.5)
+        VGroup(rows, warning, sample).move_to(DOWN * 0.9)
 
         with self.say(
             ro=(
@@ -262,7 +262,7 @@ class RelatiaDeOrdine(BilingualVoiceoverScene):
             MathTex(r"x^{2}\ge 0\ \ \text{pentru orice}\ x\in\mathbb{R}", color=MATH_COLOR),
             MathTex(r"x^{2}=0\ \Leftrightarrow\ x=0", color=MATH_COLOR),
         ).scale(1.2).arrange(DOWN, buff=0.8, aligned_edge=LEFT)
-        rows.move_to(DOWN * 0.5)
+        rows.move_to(DOWN * 0.9)
 
         with self.say(
             ro=(
