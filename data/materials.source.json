@@ -135,6 +135,13 @@
           "duration": "PT4M4S",
           "title": { "ro": "Intervale de numere reale", "en": "Intervals of real numbers" },
           "section": 2
+        },
+        {
+          "id": "pkBKdNM77Ts",
+          "uploaded": "2026-09-23T14:03:56-07:00",
+          "duration": "PT2M26S",
+          "title": { "ro": "Partea întreagă și partea fracționară", "en": "Integer part and fractional part" },
+          "section": 4
         }
       ],
       "keywords": {
