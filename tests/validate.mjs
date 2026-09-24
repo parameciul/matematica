@@ -24,6 +24,7 @@ const isText = (v) => typeof v === 'string' && v.trim().length > 0;
 const ID_RE = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 const UID_RE = /^[1-9][0-9]{3,}$/;
 const YT_RE = /^[A-Za-z0-9_-]{11}$/;
+const SEO_TITLE_MAX = 50;
 const YT_DURATION_RE = /^PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?$/;
 const YT_UPLOADED_RE = /^(\d{4}-\d{2}-\d{2})(?:T\d{2}:\d{2}(?::\d{2})?(?:Z|[+-]\d{2}:?\d{2})?)?$/;
 
@@ -233,7 +234,21 @@ for (const [i, m] of materials.entries()) {
       fail(`${where}: description.${lang} must be 70-160 characters (is ${[...d].length})`);
     }
   }
-  const VIDEO_KEYS = ['id', 'uploaded', 'duration', 'title', 'section'];
+  // seoTitle: the short <title> for search results. The page adds the grade
+  // (about 19 characters), so the field itself stays short.
+  if (m.seoTitle !== undefined) {
+    if (!m.seoTitle || typeof m.seoTitle !== 'object' || Array.isArray(m.seoTitle)) {
+      fail(`${where}: seoTitle must be { "ro": text, "en": text }`);
+    } else {
+      for (const key of Object.keys(m.seoTitle)) if (!['ro', 'en'].includes(key)) fail(`${where}: seoTitle: unknown field "${key}"`);
+      for (const lang of ['ro', 'en']) {
+        const t = m.seoTitle[lang];
+        if (!isText(t)) fail(`${where}: seoTitle.${lang} is required when seoTitle is present`);
+        else if ([...t].length > SEO_TITLE_MAX) fail(`${where}: seoTitle.${lang} must be at most ${SEO_TITLE_MAX} characters (is ${[...t].length})`);
+      }
+    }
+  }
+  const VIDEO_KEYS = ['id', 'uploaded', 'duration', 'title', 'section', 'description'];
   if (m.youtube !== null) {
     if (!Array.isArray(m.youtube) || m.youtube.length === 0) {
       fail(`${where}: youtube must be null or a non-empty list of clips`);
@@ -249,6 +264,13 @@ for (const [i, m] of materials.entries()) {
         if (!dur || dur[0] === 'PT' || (!dur[1] && !dur[2] && !dur[3])) fail(`${at}.duration must be an ISO 8601 duration like "PT7M31S"`);
         if (!v.title || !isText(v.title.ro) || !isText(v.title.en)) fail(`${at}.title needs ro and en`);
         if (v.section !== undefined && !parseClipSection(v.section)) fail(`${at}.section must be a whole number from 1 or "N.M" like "4.1"`);
+        if (v.description !== undefined) {
+          for (const lang of ['ro', 'en']) {
+            const d = v.description && v.description[lang];
+            if (!isText(d)) fail(`${at}.description.${lang} is required when description is present`);
+            else if ([...d].length < 70 || [...d].length > 160) fail(`${at}.description.${lang} must be 70-160 characters (is ${[...d].length})`);
+          }
+        }
       });
       const seen = new Set();
       let lastSection = null;

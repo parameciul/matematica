@@ -117,7 +117,7 @@ test('material titles add the grade, unless the title already names a class', ()
   const topic = { grade: 9 };
   assert.equal(
     materialPageTitle({ title: { ro: 'Fișă de lucru: modul', en: 'Worksheet' } }, topic, 'ro'),
-    'Fișă de lucru: modul – Clasa a IX-a | Laura Miron',
+    'Fișă de lucru: modul – clasa a 9-a (IX) | Laura Miron',
   );
   assert.equal(
     materialPageTitle({ title: { ro: 'Fișă (clasa a X-a)', en: 'Worksheet (grade 10)' } }, { grade: 11 }, 'ro'),
@@ -133,6 +133,32 @@ test('material titles add the grade, unless the title already names a class', ()
   );
 });
 
+test('material titles drop the brand when it would pass 60 characters', () => {
+  const long = { title: { ro: 'Teorie sintetizată: numere reale, modul și intervale', en: 'Theory' } };
+  assert.equal(materialPageTitle(long, { grade: 9 }, 'ro'), 'Teorie sintetizată: numere reale, modul și intervale – clasa a 9-a (IX)');
+  // Exactly 60 characters keeps the brand; 61 drops it.
+  const fit = { title: { ro: 'x', en: 'Game: natural numbers and fractions!' } };
+  assert.equal(materialPageTitle(fit, { grade: 6 }, 'en'), 'Game: natural numbers and fractions! – Grade 6 | Laura Miron');
+  assert.equal([...materialPageTitle(fit, { grade: 6 }, 'en')].length, 60);
+  const over = { title: { ro: 'x', en: 'Game: natural numbers and fractions!!' } };
+  assert.equal(materialPageTitle(over, { grade: 6 }, 'en'), 'Game: natural numbers and fractions!! – Grade 6');
+});
+
+test('seoTitle replaces the title in <title> only; the H1 keeps the full title', (t) => {
+  const m = { title: { ro: 'Teorie sintetizată: modul', en: 'Theory summary: absolute value' }, seoTitle: { ro: 'Modul: teorie', en: 'Absolute value: theory' } };
+  assert.equal(materialPageTitle(m, { grade: 9 }, 'ro'), 'Modul: teorie – clasa a 9-a (IX) | Laura Miron');
+  assert.equal(materialPageTitle(m, { grade: 9 }, 'en'), 'Absolute value: theory – Grade 9 | Laura Miron');
+  // A missing language falls back to Romanian, like the title does.
+  assert.equal(materialPageTitle({ title: m.title, seoTitle: { ro: 'Modul: teorie' } }, { grade: 9 }, 'en'), 'Modul: teorie – Grade 9 | Laura Miron');
+  const materials = dataFixture().materials;
+  materials[0].seoTitle = { ro: 'Modul: teorie', en: 'Absolute value: theory' };
+  const page = buildSite(makeRoot(t, { materials, pages: stdPages() })).get(`materiale/${mname('teorie-reale')}.html`);
+  assert.match(page, /<title>Modul: teorie – clasa a 9-a \(IX\) \| Laura Miron<\/title>/);
+  assert.match(page, /<meta property="og:title" content="Modul: teorie – clasa a 9-a \(IX\) \| Laura Miron">/);
+  assert.match(page, /<h1>Teorie: modul<\/h1>/);
+  assert.equal(ldBlocks(page).find((b) => b['@type'] === 'LearningResource').name, 'Teorie: modul');
+});
+
 test('head escapes & " < in titles and descriptions', (t) => {
   const dir = makeRoot(t, { pages: stdPages() });
   const edited = dataFixture();
@@ -140,7 +166,7 @@ test('head escapes & " < in titles and descriptions', (t) => {
   edited.materials[0].description.ro = 'Descriere cu <b>etichete</b> & "ghilimele", suficient de lungă pentru testul generatorului.';
   writeFileSync(join(dir, 'data', 'materials.source.json'), JSON.stringify(edited, null, 2));
   const page = buildSite(dir).get(`materiale/${mname('teorie-reale')}.html`);
-  assert.match(page, /<title>Teorie &quot;avansată&quot; &amp; &lt;modul&gt; – Clasa a IX-a \| Laura Miron<\/title>/);
+  assert.match(page, /<title>Teorie &quot;avansată&quot; &amp; &lt;modul&gt; – clasa a 9-a \(IX\) \| Laura Miron<\/title>/);
   assert.doesNotMatch(page, /<title>Teorie "avansată"/);
   const resource = ldBlocks(page).find((b) => b['@type'] === 'LearningResource');
   assert.equal(resource.name, 'Teorie "avansată" & <modul>');
@@ -661,7 +687,24 @@ test('one VideoObject per clip; site image for 2+ clips', (t) => {
       assert.equal(videos[1].description, 'Clip 2 RO – Teorie: modul');
     }
     assert.match(page, /<meta property="og:image:width" content="1200">/);
+    assert.equal(videos[1].url, 'https://www.youtube.com/watch?v=aKzam7LMZ_4');
+    assert.deepEqual(videos[1].author, { '@type': 'Person', name: 'Laura Miron' });
+    assert.deepEqual(videos[1].publisher, { '@type': 'Person', name: 'Laura Miron' });
+    assert.equal(videos[1].isAccessibleForFree, true);
+    assert.equal(videos[1].educationalLevel, file.startsWith('en/') ? 'Grade 9' : 'Clasa a IX-a');
   }
+});
+
+test('a clip description replaces the generated VideoObject description', (t) => {
+  const clips = THREE.map((c) => ({ ...c }));
+  clips[0].description = { ro: 'Descriere RO a clipului.', en: 'EN description of the clip.' };
+  const site = buildSite(clipRoot(t, clips));
+  const ro = ldBlocks(site.get(`materiale/${mname('teorie-reale')}.html`)).filter((b) => b['@type'] === 'VideoObject');
+  const en = ldBlocks(site.get(`en/materiale/${mname('teorie-reale')}.html`)).filter((b) => b['@type'] === 'VideoObject');
+  assert.equal(ro[0].description, 'Descriere RO a clipului.');
+  assert.equal(en[0].description, 'EN description of the clip.');
+  // A clip without one keeps the generated text.
+  assert.equal(ro[1].description, 'Clip 2 RO – Teorie: modul');
 });
 
 test('material page with clips loads the clip scripts; one without does not', (t) => {

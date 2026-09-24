@@ -97,10 +97,21 @@ export function namesClass(title) {
   return /\bclasa\b|\bclasei\b|\bclasele\b|\bgrade\b/i.test(title || '');
 }
 
+// Search results show about 60 characters of a title. A material may carry a
+// short, keyword-first `seoTitle` for the <title> only; the H1 keeps the full
+// title. The Romanian grade part names both forms, digits first, because
+// students type "clasa a 9-a". The brand is added only when it still fits.
+export const TITLE_FIT = 60;
+const BRAND = ' | Laura Miron';
+
 export function materialPageTitle(material, topic, lang) {
-  const title = (material.title && (material.title[lang] || material.title.ro)) || '';
-  const suffix = namesClass(title) ? '' : ` – ${gradeNameOf(topic.grade, lang)}`;
-  return `${title}${suffix} | Laura Miron`;
+  const pick = (field) => (field && (field[lang] || field.ro)) || '';
+  const title = pick(material.seoTitle) || pick(material.title);
+  const grade = lang === 'en'
+    ? gradeNameOf(topic.grade, lang)
+    : `${gradeNumericOf(topic.grade, lang)} (${Catalog.ROMAN[topic.grade]})`;
+  const base = namesClass(title) ? title : `${title} – ${grade}`;
+  return [...(base + BRAND)].length <= TITLE_FIT ? base + BRAND : base;
 }
 
 function loadI18N(root) {
@@ -676,13 +687,18 @@ function renderMaterialPage({ data, material, topic, lang, dict, assetBase, page
       '@context': 'https://schema.org',
       '@type': 'VideoObject',
       name: clipTitle(c),
-      description: `${clipTitle(c)} – ${materialTitle}`,
+      description: (c.description && (c.description[lang] || c.description.ro)) || `${clipTitle(c)} – ${materialTitle}`,
       thumbnailUrl: thumbFor(c.id),
       uploadDate: c.uploaded,
       duration: c.duration,
       embedUrl: `https://www.youtube.com/embed/${c.id}`,
+      url: `https://www.youtube.com/watch?v=${c.id}`,
       // The clips are spoken in Romanian, also on the English page.
       inLanguage: 'ro',
+      educationalLevel: gradeName,
+      isAccessibleForFree: true,
+      author: personLd(),
+      publisher: personLd(),
     });
   });
   const head = renderHead({
@@ -1109,7 +1125,7 @@ export function renderAdminPage(html, root) {
 // The quiz keeps its own design. The generator owns only the head block
 // between <!-- seo --> and <!-- /seo -->, and normalizes the back link.
 export function renderQuizPage(html, material, topic, opts) {
-  const title = `${material.title.ro} | Laura Miron`;
+  const title = materialPageTitle(material, topic, 'ro');
   const description = material.description.ro;
   const canonical = `${SITE_URL}materiale/${Catalog.nameOf(material)}`;
   const gradeUrl = `${SITE_URL}clasa-${topic.grade}`;

@@ -315,6 +315,48 @@ test('a clip with an unknown field fails', () => {
   expectFailure(withSite((dir) => editData(dir, withClip({ chapter: 2 }))), /unknown field "chapter"/);
 });
 
+const CLIP_DESC = {
+  ro: 'Modulul unui număr real pentru clasa a 9-a: definiția, interpretarea pe axă și un exemplu rezolvat.',
+  en: 'The absolute value of a real number for grade 9: the definition, the number line and a worked example.',
+};
+
+test('a clip with a description passes', () => {
+  const result = withSite((dir) => {
+    editData(dir, withClip({ description: CLIP_DESC }));
+    writeSite(dir);
+  });
+  assert.equal(result.code, 0, result.out);
+});
+
+test('a clip description without English fails', () => {
+  expectFailure(withSite((dir) => editData(dir, withClip({ description: { ro: CLIP_DESC.ro } }))), /youtube\[0\]\.description\.en is required/);
+});
+
+test('a clip description that is too short fails', () => {
+  expectFailure(withSite((dir) => editData(dir, withClip({ description: { ...CLIP_DESC, ro: 'Modulul.' } }))), /youtube\[0\]\.description\.ro must be 70-160 characters/);
+});
+
+test('a material with a short seoTitle passes', () => {
+  const result = withSite((dir) => {
+    editData(dir, (d) => { sample(d).seoTitle = { ro: 'Test: teorie', en: 'Test: theory' }; });
+    writeSite(dir);
+  });
+  assert.equal(result.code, 0, result.out);
+});
+
+test('an seoTitle over 50 characters fails', () => {
+  const long = 'x'.repeat(51);
+  expectFailure(withSite((dir) => editData(dir, (d) => { sample(d).seoTitle = { ro: long, en: 'Test' }; })), /seoTitle\.ro must be at most 50 characters \(is 51\)/);
+});
+
+test('an seoTitle without English fails', () => {
+  expectFailure(withSite((dir) => editData(dir, (d) => { sample(d).seoTitle = { ro: 'Test' }; })), /seoTitle\.en is required/);
+});
+
+test('an seoTitle with an unknown field fails', () => {
+  expectFailure(withSite((dir) => editData(dir, (d) => { sample(d).seoTitle = { ro: 'Test', en: 'Test', de: 'Test' }; })), /seoTitle: unknown field "de"/);
+});
+
 test('a clip with section 0 fails', () => {
   expectFailure(withSite((dir) => editData(dir, withClip({ section: 0 }))), /section must be a whole number from 1/);
 });

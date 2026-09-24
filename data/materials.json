@@ -107,6 +107,10 @@
         "ro": "Teorie sintetizată: numere reale, modul, partea întreagă și partea fracționară",
         "en": "Theory summary: real numbers, absolute value, integer and fractional part"
       },
+      "seoTitle": {
+        "ro": "Numere reale, modul, partea întreagă: teorie",
+        "en": "Real numbers, absolute value, integer part: theory"
+      },
       "published": "2026-09-14",
       "updated": "2026-09-23",
       "description": {
@@ -123,6 +127,10 @@
             "ro": "Mulțimi de numere",
             "en": "Sets of numbers"
           },
+          "description": {
+            "ro": "Mulțimile de numere ℕ, ℤ, ℚ și ℝ pentru clasa a 9-a: numere naturale, întregi, raționale, iraționale și notațiile ℝ*, ℝ₊, ℝ₋.",
+            "en": "Sets of numbers ℕ, ℤ, ℚ and ℝ for grade 9: natural, integer, rational and irrational numbers, and the notations ℝ*, ℝ₊, ℝ₋."
+          },
           "section": 1
         },
         {
@@ -132,6 +140,10 @@
           "title": {
             "ro": "Proprietăți ale inegalităților",
             "en": "Properties of inequalities"
+          },
+          "description": {
+            "ro": "Proprietățile inegalităților pentru clasa a 9-a: tranzitivitatea, adunarea inegalităților și înmulțirea cu un număr pozitiv sau negativ.",
+            "en": "Properties of inequalities for grade 9: transitivity, adding inequalities, and multiplying by a positive or a negative number."
           },
           "section": "2.1"
         },
@@ -143,6 +155,10 @@
             "ro": "Intervale de numere reale",
             "en": "Intervals of real numbers"
           },
+          "description": {
+            "ro": "Intervale de numere reale pentru clasa a 9-a: închise, deschise, semideschise și nemărginite, pe axă, cu intersecția și reuniunea lor.",
+            "en": "Intervals of real numbers for grade 9: closed, open, half-open and unbounded, on the number line, with their intersection and union."
+          },
           "section": "2.2"
         },
         {
@@ -152,6 +168,10 @@
           "title": {
             "ro": "Partea întreagă și partea fracționară",
             "en": "Integer part and fractional part"
+          },
+          "description": {
+            "ro": "Partea întreagă și partea fracționară a unui număr real, pentru clasa a 9-a: definiții, exemple pe axă și capcana numerelor negative.",
+            "en": "The integer part and the fractional part of a real number, for grade 9: definitions, examples on the number line and the negative-number trap."
           },
           "section": "4.1"
         },
@@ -163,6 +183,10 @@
             "ro": "Proprietăți ale părții întregi și ale părții fracționare",
             "en": "Properties of the integer and fractional parts"
           },
+          "description": {
+            "ro": "Proprietățile părții întregi și ale părții fracționare, pentru clasa a 9-a: încadrarea, întregul care iese din paranteze și numerele opuse.",
+            "en": "Properties of the integer and fractional parts, for grade 9: the basic bounds, pulling out a whole number, and opposite numbers."
+          },
           "section": "4.2"
         },
         {
@@ -172,6 +196,10 @@
           "title": {
             "ro": "Ecuații cu parte întreagă și parte fracționară",
             "en": "Equations with integer and fractional part"
+          },
+          "description": {
+            "ro": "Ecuații cu parte întreagă pentru clasa a 9-a: metoda dublei inegalități și un exemplu rezolvat pas cu pas, cu soluția pe axă.",
+            "en": "Equations with the integer part for grade 9: the double-inequality method and a worked example, step by step, with the solution on the number line."
           },
           "section": "4.4"
         }
@@ -217,6 +245,10 @@
       "title": {
         "ro": "Fișă de lucru: numere reale, modul, partea întreagă și partea fracționară",
         "en": "Worksheet: real numbers, absolute value, integer and fractional part"
+      },
+      "seoTitle": {
+        "ro": "Fișă de lucru: modul și partea întreagă",
+        "en": "Worksheet: absolute value and integer part"
       },
       "published": "2026-09-14",
       "description": {
@@ -267,6 +299,10 @@
         "ro": "Fișă recapitulativă: pregătire pentru testul inițial (model Evaluare Națională)",
         "en": "Review worksheet: getting ready for the initial test (National Evaluation format)"
       },
+      "seoTitle": {
+        "ro": "Test inițial, model Evaluare Națională",
+        "en": "Initial test, National Evaluation format"
+      },
       "published": "2026-09-13",
       "description": {
         "ro": "Fișă recapitulativă pentru clasa a IX-a: pregătire pentru testul inițial, în format de Evaluare Națională, cu algebră și geometrie.",
@@ -315,6 +351,10 @@
       "title": {
         "ro": "Fișă de recapitulare și evaluare inițială (profil matematică-informatică)",
         "en": "Review and initial assessment worksheet (mathematics and computer science track)"
+      },
+      "seoTitle": {
+        "ro": "Evaluare inițială mate-info: recapitulare",
+        "en": "Initial assessment, math-CS track: review"
       },
       "published": "2026-09-13",
       "description": {
@@ -407,6 +447,10 @@
       "title": {
         "ro": "Joc: Mesajul secret (numere naturale și fracții)",
         "en": "Game: The secret message (natural numbers and fractions)"
+      },
+      "seoTitle": {
+        "ro": "Joc cu numere naturale și fracții",
+        "en": "Game: natural numbers and fractions"
       },
       "published": "2026-09-15",
       "description": {
@@ -508,6 +552,10 @@
         "ro": "Fișă recapitulativă: clasele a V-a – a VII-a, pregătire pentru testul inițial",
         "en": "Review worksheet: grades 5-7, getting ready for the initial test"
       },
+      "seoTitle": {
+        "ro": "Test inițial clasa a 8-a: recapitulare V–VII",
+        "en": "Grade 8 initial test: review of grades 5-7"
+      },
       "published": "2026-09-17",
       "description": {
         "ro": "Fișă recapitulativă pentru clasa a VIII-a: materia claselor a V-a – a VII-a, pregătire pentru testul inițial, algebră și geometrie.",
@@ -567,6 +615,10 @@
         "ro": "Fișă recapitulativă 1: numere naturale și fracții",
         "en": "Review worksheet 1: natural numbers and fractions"
       },
+      "seoTitle": {
+        "ro": "Recapitulare: numere naturale și fracții",
+        "en": "Review: natural numbers and fractions"
+      },
       "published": "2026-09-17",
       "description": {
         "ro": "Fișă recapitulativă pentru clasa a VI-a: numere naturale, puteri, divizibilitate, fracții, procente și organizarea datelor.",
@@ -615,6 +667,10 @@
       "title": {
         "ro": "Fișă recapitulativă 2: geometrie și unități de măsură",
         "en": "Review worksheet 2: geometry and measurement units"
+      },
+      "seoTitle": {
+        "ro": "Recapitulare: geometrie și unități de măsură",
+        "en": "Review: geometry and measurement units"
       },
       "published": "2026-09-17",
       "description": {
@@ -666,6 +722,10 @@
       "title": {
         "ro": "Teorie sintetizată: vectori și geometrie analitică",
         "en": "Theory summary: vectors and analytic geometry"
+      },
+      "seoTitle": {
+        "ro": "Vectori și geometrie analitică: teorie",
+        "en": "Vectors and analytic geometry: theory"
       },
       "published": "2026-09-17",
       "description": {
@@ -740,6 +800,10 @@
       "kind": "fisa-lucru",
       "title": {
         "ro": "Fișă de lucru: partea întreagă și partea fracționară",
+        "en": "Worksheet: integer part and fractional part"
+      },
+      "seoTitle": {
+        "ro": "Fișă de lucru: partea întreagă și fracționară",
         "en": "Worksheet: integer part and fractional part"
       },
       "published": "2026-09-23",
