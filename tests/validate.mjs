@@ -7,7 +7,7 @@ import { join, dirname, extname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createRequire } from 'node:module';
 import vm from 'node:vm';
-import { buildSite, esc, KATEX_VERSION, ADMIN_FOLDER, FONTS, readArticle, countHeadings } from '../tools/build_pages.mjs';
+import { buildSite, esc, KATEX_VERSION, ADMIN_FOLDER, FONTS, readArticle, countHeadings, parseClipSection, compareClipSections, subheadingCounts } from '../tools/build_pages.mjs';
 import { checkItems, checkTrueKeys } from '../tools/results.mjs';
 
 const require = createRequire(import.meta.url);
@@ -165,16 +165,23 @@ for (const [i, t] of topics.entries()) {
   if (!t.title || !isText(t.title.en)) fail(`${where}: title.en is required`);
 }
 
-// A clip's section is the n-th <h2> of the article. An empty article shows
-// every card above it, so it needs no headings.
+// A clip's section is the n-th <h2> of the article, or "N.M" for the m-th
+// <h3> inside the n-th <h2>. An empty article shows every card above it, so
+// it needs no headings.
 function checkClipSections(where, m, page, html, lang) {
   if (!Array.isArray(m.youtube) || m.youtube.length < 2) return;
   const article = readArticle(html, lang) || '';
   if (!Catalog.hasArticleContent(article)) return;
   const count = countHeadings(article);
+  const subs = subheadingCounts(article);
   m.youtube.forEach((v, i) => {
-    if (v && Number.isInteger(v.section) && v.section > count) {
+    if (!v || v.section === undefined) return;
+    const parsed = parseClipSection(v.section);
+    if (!parsed) return;
+    if (parsed.h2 > count) {
       fail(`${page}: youtube[${i}].section ${v.section} but the article has ${count} <h2>`);
+    } else if (parsed.h3 > 0 && parsed.h3 > (subs[parsed.h2 - 1] || 0)) {
+      fail(`${page}: youtube[${i}].section ${v.section} but section ${parsed.h2} has ${subs[parsed.h2 - 1] || 0} <h3>`);
     }
   });
 }
@@ -241,16 +248,16 @@ for (const [i, m] of materials.entries()) {
         const dur = YT_DURATION_RE.exec(String(v.duration || ''));
         if (!dur || dur[0] === 'PT' || (!dur[1] && !dur[2] && !dur[3])) fail(`${at}.duration must be an ISO 8601 duration like "PT7M31S"`);
         if (!v.title || !isText(v.title.ro) || !isText(v.title.en)) fail(`${at}.title needs ro and en`);
-        if (v.section !== undefined && !(Number.isInteger(v.section) && v.section >= 1)) fail(`${at}.section must be a whole number from 1`);
+        if (v.section !== undefined && !parseClipSection(v.section)) fail(`${at}.section must be a whole number from 1 or "N.M" like "4.1"`);
       });
       const seen = new Set();
-      let lastSection = 0;
+      let lastSection = null;
       m.youtube.forEach((v, i) => {
         if (!v || typeof v !== 'object') return;
         if (seen.has(v.id)) fail(`${where}: youtube: clip "${v.id}" appears twice`);
         seen.add(v.id);
-        if (Number.isInteger(v.section)) {
-          if (v.section < lastSection) fail(`${where}: youtube[${i}].section must not be lower than the clip before it`);
+        if (v.section !== undefined && parseClipSection(v.section)) {
+          if (lastSection !== null && compareClipSections(v.section, lastSection) < 0) fail(`${where}: youtube[${i}].section must not be lower than the clip before it`);
           lastSection = v.section;
         }
       });

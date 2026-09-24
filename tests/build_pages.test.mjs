@@ -10,6 +10,7 @@ import { spawnSync } from 'node:child_process';
 import {
   buildSite, writeSite, canonicalFor, materialPageTitle, relHref, SITE_URL,
   stripClipSlots, insertClipSlots, countHeadings, readArticle,
+  parseClipSection, compareClipSections, subheadingCounts,
 } from '../tools/build_pages.mjs';
 
 const REPO = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -571,6 +572,20 @@ test('insertClipSlots and stripClipSlots are exact inverses', () => {
   assert.match(withSlots, /<h2>3\. Trei<\/h2>\n        <div class="clip-slot" data-generated="clips"><a>three<\/a><\/div><!-- \/clip-slot -->$/);
   assert.equal(stripClipSlots(withSlots), art);
   assert.equal(countHeadings(withSlots), 3);
+});
+
+test('insertClipSlots puts a dotted section after its h3, not after the h2', () => {
+  const art = '<h2>1. Unu</h2>\n<p>intro</p>\n<h2>2. Doi</h2>\n<h3>2.1. Unu</h3>\n<p>a</p>\n<h3>2.2. Doi</h3>\n<p>b</p>';
+  assert.deepEqual(subheadingCounts(art), [0, 2]);
+  assert.deepEqual(parseClipSection('2.1'), { h2: 2, h3: 1 });
+  assert.deepEqual(parseClipSection(2), { h2: 2, h3: 0 });
+  assert.ok(compareClipSections(2, '2.1') < 0);
+  assert.ok(compareClipSections('2.2', '4.1') < 0);
+  const withSlots = insertClipSlots(art, new Map([['2.1', '<a>one</a>'], ['2.2', '<a>two</a>']]));
+  assert.match(withSlots, /<h3>2\.1\. Unu<\/h3>\n        <div class="clip-slot" data-generated="clips"><a>one<\/a><\/div><!-- \/clip-slot -->\n<p>a<\/p>/);
+  assert.match(withSlots, /<h3>2\.2\. Doi<\/h3>\n        <div class="clip-slot" data-generated="clips"><a>two<\/a><\/div><!-- \/clip-slot -->\n<p>b<\/p>/);
+  assert.doesNotMatch(withSlots, /<h2>2\. Doi<\/h2>\n        <div class="clip-slot"/);
+  assert.equal(stripClipSlots(withSlots), art);
 });
 
 test('three clips: overview above the article, cards under their sections', (t) => {

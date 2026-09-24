@@ -319,6 +319,30 @@ test('a clip with section 0 fails', () => {
   expectFailure(withSite((dir) => editData(dir, withClip({ section: 0 }))), /section must be a whole number from 1/);
 });
 
+test('a clip with a dotted section like 2.1 passes', () => {
+  const result = withSite((dir) => {
+    sampleArticle(dir, '<h2>1. Unu</h2>\n<h3>1.1. Uno</h3>\n<p>a</p>\n<h2>2. Doi</h2>\n<h3>2.1. Uno</h3>\n<p>b</p>', '<h2>1. Unu</h2>\n<h3>1.1. Uno</h3>\n<p>a</p>\n<h2>2. Doi</h2>\n<h3>2.1. Uno</h3>\n<p>b</p>');
+    editData(dir, (d) => { sample(d).youtube = [{ ...CLIP_OK, section: '2.1' }, { ...CLIP_OK, id: 'aKzam7LMZ_4', section: '2.1' }]; });
+    writeSite(dir);
+  });
+  assert.equal(result.code, 0, result.out);
+});
+
+test('a dotted section past the last h3 fails', () => {
+  expectFailure(withSite((dir) => {
+    sampleArticle(dir, '<h2>1. Unu</h2>\n<h3>1.1. Uno</h3>\n<p>a</p>\n<h2>2. Doi</h2>\n<p>b</p>', '<h2>1. Unu</h2>\n<h3>1.1. Uno</h3>\n<p>a</p>\n<h2>2. Doi</h2>\n<p>b</p>');
+    editData(dir, (d) => { sample(d).youtube = [{ ...CLIP_OK, section: 1 }, { ...CLIP_OK, id: 'aKzam7LMZ_4', section: '2.1' }]; });
+    writeSite(dir);
+  }), /youtube\[1\]\.section 2\.1 but section 2 has 0 <h3>/);
+});
+
+test('dotted clip sections going down fail', () => {
+  expectFailure(
+    withSite((dir) => editData(dir, (d) => { sample(d).youtube = [{ ...CLIP_OK, section: '2.1' }, { ...CLIP_OK, id: 'aKzam7LMZ_4', section: 2 }]; })),
+    /youtube\[1\]\.section must not be lower than the clip before it/,
+  );
+});
+
 test('a material with a valid video passes', () => {
   const result = withSite((dir) => {
     editData(dir, withClip({}));

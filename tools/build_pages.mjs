@@ -133,12 +133,64 @@ export function countHeadings(html) {
   return (String(html).match(/<h2\b/g) || []).length;
 }
 
-// slots: Map of section number (the n-th <h2>, from 1) to the slot's inner HTML.
+// A clip section is either the n-th <h2> (a whole number from 1) or the m-th
+// <h3> inside the n-th <h2>, written "N.M" (for example "4.1" is the first
+// <h3> after the 4th <h2>). A plain N sits right after its <h2>, before any
+// <h3>; "N.M" sits right after that <h3>, where the student reads the text.
+export function parseClipSection(v) {
+  if (Number.isInteger(v)) return v >= 1 ? { h2: v, h3: 0 } : null;
+  if (typeof v === 'string') {
+    const m = /^(\d+)\.(\d+)$/.exec(v.trim());
+    if (!m) return null;
+    const h2 = Number(m[1]);
+    const h3 = Number(m[2]);
+    if (h2 < 1 || h3 < 1) return null;
+    return { h2, h3 };
+  }
+  return null;
+}
+
+export function compareClipSections(a, b) {
+  const pa = parseClipSection(a);
+  const pb = parseClipSection(b);
+  if (!pa || !pb) return 0;
+  if (pa.h2 !== pb.h2) return pa.h2 - pb.h2;
+  return pa.h3 - pb.h3;
+}
+
+// For each <h2> (in order), how many <h3> sit under it before the next <h2>.
+export function subheadingCounts(html) {
+  const counts = [];
+  let h2 = -1;
+  for (const m of String(html).matchAll(/<h[23]\b[\s\S]*?<\/h[23]>/g)) {
+    const tag = m[0].slice(0, 3) === '<h3' ? 'h3' : 'h2';
+    if (tag === 'h2') {
+      h2 += 1;
+      counts[h2] = 0;
+    } else if (h2 >= 0) {
+      counts[h2] += 1;
+    }
+  }
+  return counts;
+}
+
+// slots: Map of section ("N" for the n-th <h2>, "N.M" for its m-th <h3>) to
+// the slot's inner HTML. Number keys still work: they mean the n-th <h2>.
 export function insertClipSlots(html, slots) {
-  let n = 0;
-  return String(html).replace(/<h2\b[\s\S]*?<\/h2>/g, (heading) => {
-    n += 1;
-    return slots.has(n) ? `${heading}\n        ${SLOT_OPEN}${slots.get(n)}${SLOT_CLOSE}` : heading;
+  const byKey = new Map();
+  for (const [k, v] of slots) byKey.set(String(k), v);
+  let h2 = 0;
+  let h3 = 0;
+  return String(html).replace(/<h[23]\b[\s\S]*?<\/h[23]>/g, (heading) => {
+    if (heading.slice(0, 3) === '<h3') {
+      h3 += 1;
+      const key = `${h2}.${h3}`;
+      return byKey.has(key) ? `${heading}\n        ${SLOT_OPEN}${byKey.get(key)}${SLOT_CLOSE}` : heading;
+    }
+    h2 += 1;
+    h3 = 0;
+    const key = String(h2);
+    return byKey.has(key) ? `${heading}\n        ${SLOT_OPEN}${byKey.get(key)}${SLOT_CLOSE}` : heading;
   });
 }
 

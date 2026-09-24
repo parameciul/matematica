@@ -133,7 +133,7 @@
             "ro": "Proprietăți ale inegalităților",
             "en": "Properties of inequalities"
           },
-          "section": 2
+          "section": "2.1"
         },
         {
           "id": "vIF9CkNmF6A",
@@ -143,7 +143,7 @@
             "ro": "Intervale de numere reale",
             "en": "Intervals of real numbers"
           },
-          "section": 2
+          "section": "2.2"
         },
         {
           "id": "pkBKdNM77Ts",
@@ -153,7 +153,7 @@
             "ro": "Partea întreagă și partea fracționară",
             "en": "Integer part and fractional part"
           },
-          "section": 4
+          "section": "4.1"
         },
         {
           "id": "AZJWYsdDOns",
@@ -163,7 +163,7 @@
             "ro": "Proprietăți ale părții întregi și ale părții fracționare",
             "en": "Properties of the integer and fractional parts"
           },
-          "section": 4
+          "section": "4.2"
         },
         {
           "id": "lAPtK1DYPKE",
@@ -173,7 +173,7 @@
             "ro": "Ecuații cu parte întreagă și parte fracționară",
             "en": "Equations with integer and fractional part"
           },
-          "section": 4
+          "section": "4.4"
         }
       ],
       "keywords": {
