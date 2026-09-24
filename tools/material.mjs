@@ -136,6 +136,16 @@ function generatePdf(docx, name, work) {
   return `materiale/pdf/${name}.pdf`;
 }
 
+// Writes the PDF title, author, description and keywords from the data
+// (tools/pdf_meta.py), after the data is saved. A PDF pymupdf cannot open
+// does not stop the command: the warning says what to run, and
+// `python -m pytest tools -q` fails until the metadata is written.
+function writePdfMeta(uid) {
+  const res = runPython([join(ROOT, 'tools', 'pdf_meta.py'), uid]);
+  if (res.code === 0) console.log(res.out.trim());
+  else console.log(`warning: PDF metadata not written (${res.out.trim()}); run: python tools/pdf_meta.py ${uid}`);
+}
+
 function cmdList() {
   const d = data();
   const materials = Array.isArray(d.materials) ? d.materials : [];
@@ -285,6 +295,7 @@ function cmdNew({ pos, flags }) {
   d.materials.push(material);
   d.nextUid += 1;
   save(d);
+  if (pdf !== null) writePdfMeta(uid);
   writeSite(ROOT);
   console.log(`created ${name} (uid ${uid}); pages regenerated`);
   console.log(`note: fill materiale/${name}.html and en/materiale/${name}.html`);
@@ -359,6 +370,7 @@ function cmdPdf({ pos, flags }) {
     material.import = material.import || { date: today(), workflow: WORKFLOW };
     material.import.pdf = 'source';
     save(d);
+    writePdfMeta(uid);
     writeSite(ROOT);
     console.log(`copied teacher PDF for ${name}; pages regenerated`);
     return;
@@ -396,6 +408,7 @@ function cmdPdf({ pos, flags }) {
   if (pdf !== null) material.import.pdf = 'generated';
   else delete material.import.pdf;
   save(d);
+  if (pdf !== null) writePdfMeta(uid);
   writeSite(ROOT);
   console.log(pdf === null ? `no PDF for ${name} (see above); pages regenerated` : `remade PDF for ${name}; pages regenerated`);
 }

@@ -90,6 +90,47 @@ test('new copies a PDF and keeps the file-listing rules happy', (t) => {
   assert.match(m.pdf, /materiale\/pdf\/test-cu-pdf-\d+\.pdf$/);
   assert.ok(existsSync(join(dir, m.pdf)));
   assert.equal(m.import.pdf, 'source');
+  // A file pymupdf cannot open does not stop the import; it says what to run.
+  assert.match(res.out, new RegExp(`warning: PDF metadata not written .*run: python tools/pdf_meta\\.py ${m.uid}`, 's'));
+});
+
+// Skips the test when pymupdf is missing.
+function makeTeacherPdf(t, dir) {
+  const file = join(dir, 'teacher.pdf');
+  const res = spawnSync('python', ['-c',
+    'import sys, pymupdf\n' +
+    'd = pymupdf.open(); d.new_page().insert_text((72, 72), "Exercitiul 1")\n' +
+    'd.set_metadata({"author": "Profesor X", "title": "Draft"}); d.save(sys.argv[1])', file], { encoding: 'utf8' });
+  if (res.status !== 0) {
+    t.skip(`pymupdf failed: ${(res.stderr || '').trim().slice(0, 200)}`);
+    return null;
+  }
+  return file;
+}
+
+test('new --pdf and pdf --pdf write the PDF metadata from the data', (t) => {
+  const dir = makeRoot(t);
+  const before = readData(dir);
+  const teacher = makeTeacherPdf(t, dir);
+  if (!teacher) return;
+  const res = run(dir, ['new', '--pdf', teacher, '--slug', 'fisa-meta', '--topic', before.topics.at(-1).id,
+    '--title-ro', 'Fișă cu metadate', '--title-en', 'Worksheet with metadata',
+    '--desc-ro', 'Material de probă cu fișier PDF, suficient de lung pentru regulile validatorului site-ului.',
+    '--desc-en', 'Sample document with a PDF file, long enough to satisfy the site validator rules.']);
+  assert.equal(res.code, 0, res.out);
+  const m = readData(dir).materials.find((x) => x.slug === 'fisa-meta');
+  assert.match(res.out, new RegExp(`metadata written ${m.pdf}`));
+  const read = () => spawnSync('python', ['-c',
+    'import sys, json, pymupdf; d = pymupdf.open(sys.argv[1]); print(json.dumps(d.metadata))', join(dir, m.pdf)], { encoding: 'utf8' });
+  const meta = JSON.parse(read().stdout);
+  assert.equal(meta.author, 'Laura Miron');
+  assert.match(meta.title, /^Fișă cu metadate – clasa a \d+-a \([IVX]+\)$/);
+  // The teacher file is copied again: its own metadata is replaced once more.
+  const again = run(dir, ['pdf', m.uid, '--pdf', teacher]);
+  assert.equal(again.code, 0, again.out);
+  assert.equal(JSON.parse(read().stdout).author, 'Laura Miron');
+  const check = spawnSync('python', [join(dir, 'tools', 'pdf_meta.py'), '--check', m.uid], { encoding: 'utf8' });
+  assert.equal(check.status, 0, `${check.stdout}${check.stderr}`);
 });
 
 function hasLibreOffice() {
