@@ -154,6 +154,26 @@
             "en": "Integer part and fractional part"
           },
           "section": 4
+        },
+        {
+          "id": "AZJWYsdDOns",
+          "uploaded": "2026-09-23T23:09:50-07:00",
+          "duration": "PT2M25S",
+          "title": {
+            "ro": "Proprietăți ale părții întregi și ale părții fracționare",
+            "en": "Properties of the integer and fractional parts"
+          },
+          "section": 4
+        },
+        {
+          "id": "lAPtK1DYPKE",
+          "uploaded": "2026-09-23T23:03:44-07:00",
+          "duration": "PT1M53S",
+          "title": {
+            "ro": "Ecuații cu parte întreagă și parte fracționară",
+            "en": "Equations with integer and fractional part"
+          },
+          "section": 4
         }
       ],
       "keywords": {
