@@ -1,0 +1,76 @@
+{
+  "uid": "1017",
+  "version": 1,
+  "items": {
+    "2": {
+      "check": false,
+      "why": "open",
+      "show": "$A$: da, da, $-2$, nu există, $-2$, $5$; $B$: da, da, nu există, $1$, $0$, $1$; $C = \\{-1, 1\\}$: da, da, $-1$, $1$, $-1$, $1$; $D$: nu, da, nu există, nu există, $0$, $+\\infty$; $E = \\{-2, -1, 0, 1, 2\\}$: da, da, $-2$, $2$, $-2$, $2$"
+    },
+    "4": {
+      "kind": "list",
+      "show": "$\\min A = - \\frac{1}{2}$ (pentru $x = -1$), $\\max A = \\frac{1}{2}$ (pentru $x = 1$)",
+      "accept": [
+        "-1/2; 1/2"
+      ],
+      "hint": {
+        "ro": "în ordinea $\\min A$; $\\max A$",
+        "en": "in the order $\\min A$; $\\max A$"
+      }
+    },
+    "5": {
+      "kind": "list",
+      "show": "$\\inf A = - 1$, $\\sup A = \\max A = \\frac{3}{2}$; $A$ nu are minim",
+      "accept": [
+        "-1; 3/2"
+      ],
+      "hint": {
+        "ro": "în ordinea $\\inf A$; $\\sup A$",
+        "en": "in the order $\\inf A$; $\\sup A$"
+      }
+    },
+    "1a": {
+      "kind": "interval",
+      "show": "$A = \\lbrack - 2,4\\rbrack$, mărginită",
+      "accept": [
+        "[-2; 4]"
+      ]
+    },
+    "1b": {
+      "kind": "interval",
+      "show": "$B = (1,3)$, mărginită",
+      "accept": [
+        "(1; 3)"
+      ]
+    },
+    "1c": {
+      "kind": "interval",
+      "show": "$C = ( - \\infty, - 3) \\cup (2, + \\infty)$, nici majorată, nici minorată",
+      "accept": [
+        "(-inf; -3) U (2; +inf)"
+      ]
+    },
+    "3a": {
+      "check": false,
+      "why": "proof",
+      "show": "$\\frac{2n + 3}{n + 1} = \\frac{2(n + 1) + 1}{n + 1} = 2 + \\frac{1}{n + 1}$"
+    },
+    "3b": {
+      "check": false,
+      "why": "proof",
+      "show": "$0 &lt; \\frac{1}{n + 1} \\leq 1 \\Rightarrow 2 &lt; x \\leq 3$"
+    },
+    "3c": {
+      "kind": "number",
+      "show": "$\\max A = 3$ (pentru $n = 0$)",
+      "accept": [
+        "3"
+      ]
+    },
+    "3d": {
+      "check": false,
+      "why": "proof",
+      "show": "$\\inf A = 2$; $2 \\notin A$, deci $A$ nu are minim"
+    }
+  }
+}

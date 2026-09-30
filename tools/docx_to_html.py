@@ -53,9 +53,13 @@ def _drop_dangling_backslash(tex):
     return tex
 
 
+# pandoc writes Word's thin math spaces as \mspace{9mu}; KaTeX has no \mspace, but \mkern9mu is the same space.
+MSPACE_RE = re.compile(r'\\mspace\{(-?\d+(?:\.\d+)?)mu\}')
+
+
 def math_to_dollars(html):
     def replace(match):
-        tex = match.group(2).strip()
+        tex = MSPACE_RE.sub(r'\\mkern\1mu', match.group(2).strip())
         if match.group(1) == 'inline':
             if tex.startswith('\\(') and tex.endswith('\\)'):
                 tex = tex[2:-2]

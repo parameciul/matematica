@@ -47,6 +47,14 @@
         "ro": "Permutări",
         "en": "Permutations"
       }
+    },
+    {
+      "id": "multimi-puncte-dreapta-reala",
+      "grade": 11,
+      "title": {
+        "ro": "Mulțimi de puncte pe dreapta reală",
+        "en": "Sets of points on the real line"
+      }
     }
   ],
   "grades": {
@@ -872,6 +880,172 @@
       "results": {
         "version": 2,
         "checks": 41
+      }
+    },
+    {
+      "slug": "teorie-multimi-puncte-dreapta-reala",
+      "uid": "1016",
+      "topic": "multimi-puncte-dreapta-reala",
+      "kind": "teorie",
+      "title": {
+        "ro": "Teorie sintetizată: mulțimi de puncte pe dreapta reală",
+        "en": "Theory summary: sets of points on the real line"
+      },
+      "seoTitle": {
+        "ro": "Mulțimi de puncte pe dreapta reală: teorie",
+        "en": "Sets of points on the real line: theory"
+      },
+      "published": "2026-09-30",
+      "description": {
+        "ro": "Teorie de clasa a XI-a: intervale, mulțimi mărginite, minim și maxim, margine inferioară și superioară, dreapta încheiată.",
+        "en": "Grade 11 theory: intervals, bounded sets, minimum and maximum, infimum and supremum, and the extended real line."
+      },
+      "pdf": "materiale/pdf/teorie-multimi-puncte-dreapta-reala-1016.pdf",
+      "youtube": null,
+      "import": {
+        "date": "2026-09-30",
+        "workflow": 3,
+        "pdf": "generated"
+      },
+      "keywords": {
+        "ro": [
+          "intervale",
+          "mulțimi mărginite",
+          "majorant",
+          "minorant",
+          "margine superioară",
+          "margine inferioară",
+          "supremum",
+          "infimum",
+          "dreapta încheiată",
+          "analiză matematică",
+          "clasa a 11-a",
+          "clasa a XI-a"
+        ],
+        "en": [
+          "intervals",
+          "bounded sets",
+          "upper bound",
+          "lower bound",
+          "supremum",
+          "infimum",
+          "least upper bound",
+          "extended real line",
+          "calculus",
+          "grade 11"
+        ]
+      }
+    },
+    {
+      "slug": "fisa-lucru-multimi-marginite-margini",
+      "uid": "1017",
+      "topic": "multimi-puncte-dreapta-reala",
+      "kind": "fisa-lucru",
+      "title": {
+        "ro": "Fișă de lucru: intervale, mulțimi mărginite și marginile unei mulțimi",
+        "en": "Worksheet: intervals, bounded sets and the bounds of a set"
+      },
+      "seoTitle": {
+        "ro": "Mulțimi mărginite, sup și inf: fișă de lucru",
+        "en": "Bounded sets, sup and inf: worksheet"
+      },
+      "published": "2026-09-30",
+      "description": {
+        "ro": "Fișă de lucru pentru clasa a XI-a: intervale, mulțimi mărginite, minim, maxim, margine inferioară și superioară, caracterizarea cu ε.",
+        "en": "Grade 11 worksheet: intervals, bounded sets, minimum, maximum, infimum and supremum, and the ε characterization."
+      },
+      "pdf": "materiale/pdf/fisa-lucru-multimi-marginite-margini-1017.pdf",
+      "youtube": null,
+      "import": {
+        "date": "2026-09-30",
+        "workflow": 3,
+        "pdf": "generated"
+      },
+      "results": {
+        "version": 1,
+        "checks": 6
+      },
+      "keywords": {
+        "ro": [
+          "intervale",
+          "mulțimi mărginite",
+          "majorant",
+          "minorant",
+          "margine superioară",
+          "margine inferioară",
+          "supremum",
+          "infimum",
+          "dreapta încheiată",
+          "analiză matematică",
+          "clasa a 11-a",
+          "clasa a XI-a"
+        ],
+        "en": [
+          "intervals",
+          "bounded sets",
+          "upper bound",
+          "lower bound",
+          "supremum",
+          "infimum",
+          "least upper bound",
+          "extended real line",
+          "calculus",
+          "grade 11"
+        ]
+      }
+    },
+    {
+      "slug": "probleme-multimi-marginite-margini",
+      "uid": "1018",
+      "topic": "multimi-puncte-dreapta-reala",
+      "kind": "fisa-lucru",
+      "title": {
+        "ro": "Probleme propuse: intervale, mulțimi mărginite și marginile unei mulțimi",
+        "en": "Practice problems: intervals, bounded sets and the bounds of a set"
+      },
+      "seoTitle": {
+        "ro": "Mulțimi mărginite, sup și inf: probleme",
+        "en": "Bounded sets, sup and inf: practice problems"
+      },
+      "published": "2026-09-30",
+      "description": {
+        "ro": "Probleme pentru clasa a XI-a: intervale, mulțimi mărginite, minim și maxim, margine inferioară și superioară, adevărat sau fals.",
+        "en": "Grade 11 practice problems: intervals, bounded sets, minimum and maximum, infimum and supremum, and true-or-false statements."
+      },
+      "pdf": "materiale/pdf/probleme-multimi-marginite-margini-1018.pdf",
+      "youtube": null,
+      "import": {
+        "date": "2026-09-30",
+        "workflow": 3,
+        "pdf": "generated"
+      },
+      "keywords": {
+        "ro": [
+          "intervale",
+          "mulțimi mărginite",
+          "majorant",
+          "minorant",
+          "margine superioară",
+          "margine inferioară",
+          "supremum",
+          "infimum",
+          "dreapta încheiată",
+          "analiză matematică",
+          "clasa a 11-a",
+          "clasa a XI-a"
+        ],
+        "en": [
+          "intervals",
+          "bounded sets",
+          "upper bound",
+          "lower bound",
+          "supremum",
+          "infimum",
+          "least upper bound",
+          "extended real line",
+          "calculus",
+          "grade 11"
+        ]
       }
     }
   ]

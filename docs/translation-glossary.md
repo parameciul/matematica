@@ -8,6 +8,12 @@ Use these terms when you write the English article of a material. The audience i
 | partea întreagă / partea fracționară | integer part / fractional part |
 | mulțime, interval, reuniune, intersecție | set, interval, union, intersection |
 | ecuație, inecuație, sistem | equation, inequality, system |
+| majorant, minorant | upper bound, lower bound |
+| mulțime majorată / minorată / mărginită | set bounded above / bounded below / bounded set |
+| marginea superioară / inferioară ($\sup$, $\inf$) | supremum (least upper bound) / infimum (greatest lower bound) |
+| minim, maxim ($\min$, $\max$) | minimum, maximum |
+| dreapta încheiată ($\overline{\mathbb{R}}$) | extended real line |
+| axioma lui Cantor | Cantor's axiom (the completeness axiom) |
 | număr natural / întreg / rațional / irațional / real | natural / integer / rational / irrational / real number |
 | divizibil, divizor, multiplu, cel mai mic multiplu comun | divisible, divisor, multiple, least common multiple |
 | fracție ordinară / zecimală / ireductibilă / supraunitară | common fraction / decimal / irreducible fraction / improper fraction |

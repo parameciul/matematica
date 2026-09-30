@@ -56,6 +56,19 @@ def test_a_real_line_break_at_the_end_stays():
     assert docx_to_html.math_to_dollars(html) == '<p>$$a \\\\$$</p>'
 
 
+def test_mspace_becomes_mkern_which_katex_knows():
+    html = ('<p><span class="math inline">\\(x \\leq M,\\mspace{9mu}\\forall x\\)</span> '
+            '<span class="math display">\\[\\left\\{ x\\mspace{6mu} \\middle| \\mspace{6mu} x \\right\\}\\]</span></p>')
+    assert docx_to_html.math_to_dollars(html) == (
+        '<p>$x \\leq M,\\mkern9mu\\forall x$ '
+        '$$\\left\\{ x\\mkern6mu \\middle| \\mkern6mu x \\right\\}$$</p>')
+
+
+def test_mspace_outside_a_formula_stays():
+    html = '<p>\\mspace{9mu}</p>'
+    assert docx_to_html.math_to_dollars(html) == html
+
+
 def test_split_answers_cuts_the_section_off():
     main = ('<p><strong>1.</strong> Text $x$.</p>\n'
             '<p><strong>RĂSPUNSURI ȘI INDICAȚII</strong></p>\n'

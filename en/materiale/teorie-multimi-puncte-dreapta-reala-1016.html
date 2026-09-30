@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sets of points on the real line: theory – Grade 11</title>
+  <meta name="description" content="Grade 11 theory: intervals, bounded sets, minimum and maximum, infimum and supremum, and the extended real line.">
+  <meta name="robots" content="max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="google-site-verification" content="lwpe3phdRnlGTaxwvpfcxbuygEudOHDa7i_hl_1wQQc">
+  <link rel="canonical" href="https://lauramiron.pages.dev/en/materiale/teorie-multimi-puncte-dreapta-reala-1016">
+  <link rel="alternate" hreflang="ro" href="https://lauramiron.pages.dev/materiale/teorie-multimi-puncte-dreapta-reala-1016">
+  <link rel="alternate" hreflang="en" href="https://lauramiron.pages.dev/en/materiale/teorie-multimi-puncte-dreapta-reala-1016">
+  <link rel="alternate" hreflang="x-default" href="https://lauramiron.pages.dev/materiale/teorie-multimi-puncte-dreapta-reala-1016">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Sets of points on the real line: theory – Grade 11">
+  <meta property="og:description" content="Grade 11 theory: intervals, bounded sets, minimum and maximum, infimum and supremum, and the extended real line.">
+  <meta property="og:url" content="https://lauramiron.pages.dev/en/materiale/teorie-multimi-puncte-dreapta-reala-1016">
+  <meta property="og:image" content="https://lauramiron.pages.dev/assets/img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Math materials for grades 5–12 – Laura Miron">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="ro_RO">
+  <meta property="og:site_name" content="Laura Miron">
+  <meta property="article:published_time" content="2026-09-30">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../../favicon.ico" sizes="48x48">
+  <link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+  <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('matematica.theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,700;0,800;1,400&family=Caveat:wght@600&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.18.1/dist/katex.min.css" integrity="sha384-1vdNCNel6Tx/NQa8IR1mGOGKsbGreCkOPfbtPPnUURJ5Tu2PRVfQ/7KLZC+Pi1p1" crossorigin="anonymous">
+  <link rel="stylesheet" href="../../assets/css/style.css?v=ebe80e264a">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.18.1/dist/katex.min.js" integrity="sha384-ycJ6GAwiS15LoUPipwJOrWTvkUHl/YqELValBwI5I4awP1EeEQJYarj+w85ntcz7" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.18.1/dist/contrib/auto-render.min.js" integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous"></script>
+  <script defer src="../../assets/js/i18n.js?v=f87f11789b"></script>
+  <script defer src="../../assets/js/catalog.js?v=59ef713730"></script>
+  <script defer src="../../assets/js/shell.js?v=df43b32a7d"></script>
+  <script defer src="../../assets/js/site.js?v=0014821285"></script>
+  <script defer src="../../assets/js/searchbox.js?v=d1e0fd915a"></script>
+  <script defer src="../../assets/js/material.js?v=eb2d425eaf"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","name":"Theory summary: sets of points on the real line","description":"Grade 11 theory: intervals, bounded sets, minimum and maximum, infimum and supremum, and the extended real line.","url":"https://lauramiron.pages.dev/en/materiale/teorie-multimi-puncte-dreapta-reala-1016","inLanguage":"en","datePublished":"2026-09-30","dateModified":"2026-09-30","learningResourceType":"Theory","educationalLevel":"Grade 11","isAccessibleForFree":true,"author":{"@type":"Person","name":"Laura Miron"},"publisher":{"@type":"Person","name":"Laura Miron"},"keywords":"intervals, bounded sets, upper bound, lower bound, supremum, infimum, least upper bound, extended real line, calculus, grade 11","encoding":{"@type":"MediaObject","contentUrl":"https://lauramiron.pages.dev/materiale/pdf/teorie-multimi-puncte-dreapta-reala-1016.pdf","encodingFormat":"application/pdf","inLanguage":"ro"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://lauramiron.pages.dev/"},{"@type":"ListItem","position":2,"name":"Grade 11","item":"https://lauramiron.pages.dev/clasa-11"},{"@type":"ListItem","position":3,"name":"Theory summary: sets of points on the real line","item":"https://lauramiron.pages.dev/en/materiale/teorie-multimi-puncte-dreapta-reala-1016"}]}</script>
+</head>
+<body data-root="../../" data-page-root="../">
+  <header id="site-header" class="site-header"><div class="wrap header-bar"><a class="brand" href="../index.html"><svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M10 48h44" fill="none" stroke="var(--brand-marker)" stroke-width="12" stroke-linecap="round"/><g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"><path d="M25 13c-3 11-6 21-9 31 7 0 13-2 18-6"/><path d="M33 45l4-23 6 13 8-15 2 25"/></g></svg><span class="brand-text"><span class="brand-name" data-i18n="site.title">Math with Laura Miron</span><span class="brand-school" data-i18n="site.school">Liceul William Shakespeare, Timișoara</span></span></a><nav class="grade-nav" id="grade-nav" data-nav aria-label="Choose a grade"><span class="grade-nav-label" aria-hidden="true" data-i18n="nav.gradesLabel">Choose a grade</span><a href="../clasa-5.html" data-grade-link="5" aria-label="Grade 5">5</a><a href="../clasa-6.html" data-grade-link="6" aria-label="Grade 6">6</a><a href="../clasa-7.html" data-grade-link="7" aria-label="Grade 7">7</a><a href="../clasa-8.html" data-grade-link="8" aria-label="Grade 8">8</a><a href="../clasa-9.html" data-grade-link="9" class="gap" aria-label="Grade 9">9</a><a href="../clasa-10.html" data-grade-link="10" aria-label="Grade 10">10</a><a href="../clasa-11.html" data-grade-link="11" aria-label="Grade 11">11</a><a href="../clasa-12.html" data-grade-link="12" aria-label="Grade 12">12</a></nav><form class="search" id="site-search" role="search" action="../cautare.html"><label class="sr-only" for="site-search-input" data-i18n="search.label">Search materials</label><svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="m20 20-3.8-3.8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><input id="site-search-input" name="q" type="search" autocomplete="off" spellcheck="false" enterkeyhint="search" placeholder="Search: absolute value, worksheet…"><input type="hidden" id="site-search-grade" name="c" value=""></form><div class="header-tools"><button type="button" class="icon-btn" data-toggle="search" aria-controls="site-search" aria-expanded="false"><svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="m20 20-3.8-3.8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><span class="sr-only" data-i18n="search.open">Search</span></button><button type="button" class="icon-btn" data-toggle="grades" aria-controls="grade-nav" aria-expanded="false"><span data-i18n="nav.grades">Grades</span></button><button type="button" class="theme-btn" data-theme-toggle aria-pressed="false"><svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 14.5 A8.5 8.5 0 0 1 9.5 4 a8.5 8.5 0 1 0 10.5 10.5 Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2"/><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2.5 v2.2 M12 19.3 v2.2 M2.5 12 h2.2 M19.3 12 h2.2"/><path d="M5.3 5.3 l1.6 1.6 M17.1 17.1 l1.6 1.6 M18.7 5.3 l-1.6 1.6 M6.9 17.1 l-1.6 1.6"/></g></svg><span class="sr-only" data-i18n="theme.dark">Dark theme</span></button><div class="lang" role="group" aria-label="Site language" data-lang-group><a hreflang="ro" href="../../materiale/teorie-multimi-puncte-dreapta-reala-1016.html" lang="ro" aria-label="Română">RO</a><a hreflang="en" lang="en" aria-current="page" aria-label="English" href="teorie-multimi-puncte-dreapta-reala-1016.html">EN</a></div></div></div></header>
+
+  <main id="content" class="wrap">
+    <div class="page" id="material" data-id="1016">
+      <div id="material-head"><nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../clasa-11.html">Grade 11</a></li><li><a href="../clasa-11.html#multimi-puncte-dreapta-reala">Sets of points on the real line</a></li></ol></nav>
+      <span class="badge badge-lectii">Theory</span>
+      <h1>Theory summary: sets of points on the real line</h1>
+      <p class="material-meta">Published <time datetime="2026-09-30">30 September 2026</time></p>
+      <p class="material-actions"><a class="button" href="../../materiale/pdf/teorie-multimi-puncte-dreapta-reala-1016.pdf" target="_blank" rel="noopener">Open PDF</a> <span class="note">The PDF is in Romanian.</span></p></div>
+      
+      
+      <article class="material-body" data-lang="en" lang="en">
+        <h2>1. Intervals</h2>
+        <p>Let $a,b \in {\mathbb{R}}$, $a &lt; b$.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Type of interval</th>
+              <th>Notation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>bounded</strong> (length $\ell = b - a$)</td>
+              <td>$\lbrack a,b\rbrack = \left\{ x \in {\mathbb{R}}\mkern6mu \middle| \mkern6mu a \leq x \leq b \right\}$, $(a,b) = \left\{ x \in {\mathbb{R}}\mkern6mu \middle| \mkern6mu a &lt; x &lt; b \right\}$, $\lbrack a,b)$, $(a,b\rbrack$</td>
+            </tr>
+            <tr>
+              <td><strong>unbounded</strong></td>
+              <td>$\lbrack a, + \infty) = \left\{ x \in {\mathbb{R}}\mkern6mu \middle| \mkern6mu x \geq a \right\}$, $(a, + \infty)$, $( - \infty,a\rbrack$, $( - \infty,a)$, $( - \infty, + \infty) = {\mathbb{R}}$</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="retine">
+          <p class="retine-title">Remember</p>
+          <p>For $r &gt; 0$:</p>
+          <p>$$|x - a| &lt; r \Leftrightarrow x \in (a - r,a + r)$$</p>
+          <p>$$|x - a| \leq r \Leftrightarrow x \in \lbrack a - r,a + r\rbrack$$</p>
+          <p>$$|x - a| &gt; r \Leftrightarrow x \in ( - \infty,a - r) \cup (a + r, + \infty)$$</p>
+        </div>
+
+        <h2>2. Bounded sets. Minimum and maximum</h2>
+        <p>Let $A \subset {\mathbb{R}}$, $A \neq \varnothing$.</p>
+        <div class="retine">
+          <p class="retine-title">Definitions</p>
+          <ul>
+            <li>$M \in {\mathbb{R}}$ is an <strong>upper bound</strong> of $A$ if $x \leq M,\mkern9mu\forall x \in A$; $A$ is <strong>bounded above</strong> if it has at least one upper bound.</li>
+            <li>$m \in {\mathbb{R}}$ is a <strong>lower bound</strong> of $A$ if $m \leq x,\mkern9mu\forall x \in A$; $A$ is <strong>bounded below</strong> if it has at least one lower bound.</li>
+            <li>$A$ is <strong>bounded</strong> if it is bounded above and bounded below $\Leftrightarrow \exists M &gt; 0$ such that $|x| \leq M,\mkern9mu\forall x \in A$.</li>
+            <li>$\max A$ is an element of $A$ that is an upper bound; $\min A$ is an element of $A$ that is a lower bound.</li>
+          </ul>
+        </div>
+        <ul>
+          <li>$A$ is <strong>not</strong> bounded above $\Leftrightarrow \forall M \in {\mathbb{R}},\mkern9mu\exists x \in A$ such that $x &gt; M$.</li>
+          <li><em>Example:</em> $A = (0,1\rbrack$ is bounded, $\max A = 1$, but $A$ has no minimum.</li>
+        </ul>
+
+        <h2>3. The bounds of a set</h2>
+        <div class="retine">
+          <p class="retine-title">Definitions</p>
+          <ul>
+            <li>$\sup A$ (the <strong>supremum</strong>) = the least upper bound of $A$.</li>
+            <li>$\inf A$ (the <strong>infimum</strong>) = the greatest lower bound of $A$.</li>
+            <li><strong>Cantor's axiom:</strong> every nonempty set of real numbers that is bounded above has a supremum in $\mathbb{R}$ (likewise, every nonempty set that is bounded below has an infimum).</li>
+          </ul>
+        </div>
+        <h3>The $\varepsilon$ characterization</h3>
+        <p>$$s = \sup A \Leftrightarrow \text{ (1) }x \leq s,\mkern9mu\forall x \in A\mkern9mu\text{ and (2) }\forall\varepsilon &gt; 0,\mkern9mu\exists x_{\varepsilon} \in A:\mkern9mu x_{\varepsilon} &gt; s - \varepsilon$$</p>
+        <p>$$i = \inf A \Leftrightarrow \text{ (1) }x \geq i,\mkern9mu\forall x \in A\mkern9mu\text{ and (2) }\forall\varepsilon &gt; 0,\mkern9mu\exists x_{\varepsilon} \in A:\mkern9mu x_{\varepsilon} &lt; i + \varepsilon$$</p>
+        <ul>
+          <li>$A$ has a maximum $\Leftrightarrow \sup A \in A$, and then $\max A = \sup A$; $A$ has a minimum $\Leftrightarrow \inf A \in A$, and then $\min A = \inf A$.</li>
+        </ul>
+        <h3>Maximum or supremum?</h3>
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              <th>$\max A$</th>
+              <th>$\sup A$</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>What it is</td>
+              <td>the largest element of $A$</td>
+              <td>the least upper bound of $A$</td>
+            </tr>
+            <tr>
+              <td>Does it belong to $A$?</td>
+              <td>yes, always</td>
+              <td>not necessarily</td>
+            </tr>
+            <tr>
+              <td>Does it exist?</td>
+              <td>not always (e.g. $(0,1)$)</td>
+              <td>yes, if $A$ is bounded above</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="retine">
+          <p class="retine-title">Worked example</p>
+          <p>$A = \left\{ \frac{n}{n + 1}\mkern6mu \middle| \mkern6mu n \in {\mathbb{N}} \right\}$.</p>
+          <ul>
+            <li>Since $\frac{n}{n + 1} = 1 - \frac{1}{n + 1}$, we have $0 \leq x &lt; 1,\mkern9mu\forall x \in A$.</li>
+            <li>$0 \in A$ (for $n = 0$) and $0$ is a lower bound $\Rightarrow \min A = \inf A = 0$.</li>
+            <li>$1$ is an upper bound; for $\varepsilon \in (0,1)$: $\frac{n}{n + 1} &gt; 1 - \varepsilon \Leftrightarrow n &gt; \frac{1}{\varepsilon} - 1$, which has solutions in $\mathbb{N}$ $\Rightarrow \sup A = 1$.</li>
+            <li>$1 \notin A$ $\Rightarrow$ $A$ has no maximum.</li>
+          </ul>
+        </div>
+
+        <h2>4. The extended real line</h2>
+        <div class="retine">
+          <p class="retine-title">Remember</p>
+          <ul>
+            <li>$\overline{\mathbb{R}} = {\mathbb{R}} \cup \left\{ - \infty, + \infty \right\}$, with $- \infty &lt; x &lt; + \infty,\mkern9mu\forall x \in {\mathbb{R}}$.</li>
+            <li>If $A$ is not bounded above: $\sup A = + \infty$. If $A$ is not bounded below: $\inf A = - \infty$.</li>
+          </ul>
+        </div>
+        <ul>
+          <li><em>Examples:</em> $\sup{\mathbb{N}} = + \infty$, $\inf{\mathbb{N}} = \min{\mathbb{N}} = 0$; $\inf{\mathbb{Z}} = - \infty$; $\inf(1, + \infty) = 1$, $\sup(1, + \infty) = + \infty$.</li>
+        </ul>
+      </article>
+
+      <aside class="related" id="material-related"><h2>From the same topic</h2>
+        <ul class="material-list">
+        <li class="m-row"><a class="m-link" href="fisa-lucru-multimi-marginite-margini-1017.html"><span class="m-badges"><span class="badge badge-fise">Worksheet</span><time class="m-date" datetime="2026-09-30">30 Sept 2026</time></span><span class="m-title">Worksheet: intervals, bounded sets and the bounds of a set</span></a></li>
+        <li class="m-row"><a class="m-link" href="probleme-multimi-marginite-margini-1018.html"><span class="m-badges"><span class="badge badge-fise">Worksheet</span><time class="m-date" datetime="2026-09-30">30 Sept 2026</time></span><span class="m-title">Practice problems: intervals, bounded sets and the bounds of a set</span></a></li>
+        </ul>
+        <p><a class="more" href="../clasa-11.html">All materials for Grade 11</a></p></aside>
+    </div>
+  </main>
+
+  <footer id="site-footer" class="site-footer"><div class="wrap"><p>© <span data-year>2026</span> Laura Miron. <span data-i18n="footer.text">Free materials for students.</span></p></div></footer>
+</body>
+</html>
