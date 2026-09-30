@@ -1,0 +1,213 @@
+{
+  "uid": "1018",
+  "version": 1,
+  "items": {
+    "2": {
+      "kind": "interval",
+      "show": "$I \\cup J = \\lbrack - 3,7\\rbrack$, $I \\cap J = (1,5)$, $I \\smallsetminus J = \\lbrack - 3,1\\rbrack$, ${\\mathbb{R}} \\smallsetminus I = ( - \\infty, - 3) \\cup \\lbrack 5, + \\infty)$; lungimea lui $I \\cap J$ este $4$",
+      "accept": [
+        "(1; 5)"
+      ],
+      "hint": {
+        "ro": "intervalul $I \\cap J$",
+        "en": "the interval $I \\cap J$"
+      }
+    },
+    "5": {
+      "kind": "list",
+      "show": "$A = \\left\\lbrack \\frac{2}{3},2 \\right\\rbrack$, $\\min A = \\frac{2}{3}$ (pentru $x = 1$), $\\max A = 2$ (pentru $x = - 1$)",
+      "accept": [
+        "2/3; 2"
+      ],
+      "hint": {
+        "ro": "în ordinea $\\min A$; $\\max A$",
+        "en": "in the order $\\min A$; $\\max A$"
+      }
+    },
+    "6": {
+      "kind": "set",
+      "show": "$m \\in \\left\\{ - 2,4 \\right\\}$",
+      "accept": [
+        "{-2; 4}"
+      ]
+    },
+    "9": {
+      "check": false,
+      "why": "proof",
+      "show": "$s + t$ este majorant al lui $A + B$ și, pentru $\\varepsilon &gt; 0$, există $a &gt; s - \\frac{\\varepsilon}{2}$, $b &gt; t - \\frac{\\varepsilon}{2}$, deci $a + b &gt; (s + t) - \\varepsilon$"
+    },
+    "1a": {
+      "kind": "interval",
+      "show": "$A = ( - 6,2)$",
+      "accept": [
+        "(-6; 2)"
+      ]
+    },
+    "1b": {
+      "kind": "interval",
+      "show": "$B = ( - \\infty,2\\rbrack \\cup \\lbrack 4, + \\infty)$",
+      "accept": [
+        "(-inf; 2] U [4; +inf)"
+      ]
+    },
+    "1c": {
+      "kind": "interval",
+      "show": "$C = \\lbrack - 2,3\\rbrack$",
+      "accept": [
+        "[-2; 3]"
+      ]
+    },
+    "1d": {
+      "kind": "interval",
+      "show": "$D = ( - 2,1\\rbrack$",
+      "accept": [
+        "(-2; 1]"
+      ]
+    },
+    "3a": {
+      "kind": "list",
+      "show": "$\\min A = \\inf A = 0$, $\\sup A = 1$, $A$ nu are maxim",
+      "accept": [
+        "0; 1"
+      ],
+      "hint": {
+        "ro": "în ordinea $\\inf A$; $\\sup A$",
+        "en": "in the order $\\inf A$; $\\sup A$"
+      }
+    },
+    "3b": {
+      "kind": "list",
+      "show": "$\\min B = \\inf B = - 1$, $\\max B = \\sup B = \\frac{1}{2}$",
+      "accept": [
+        "-1; 1/2"
+      ],
+      "hint": {
+        "ro": "în ordinea $\\inf B$; $\\sup B$",
+        "en": "in the order $\\inf B$; $\\sup B$"
+      }
+    },
+    "3c": {
+      "kind": "list",
+      "show": "$\\max C = \\sup C = 1$ (pentru $n = 0$), $\\inf C = 0$, $C$ nu are minim",
+      "accept": [
+        "0; 1"
+      ],
+      "hint": {
+        "ro": "în ordinea $\\inf C$; $\\sup C$",
+        "en": "in the order $\\inf C$; $\\sup C$"
+      }
+    },
+    "3d": {
+      "kind": "list",
+      "show": "$\\inf D = - 1$, $D$ nu are minim; $\\max D = \\sup D = 5$",
+      "accept": [
+        "-1; 5"
+      ],
+      "hint": {
+        "ro": "în ordinea $\\inf D$; $\\sup D$",
+        "en": "in the order $\\inf D$; $\\sup D$"
+      }
+    },
+    "3e": {
+      "kind": "number",
+      "show": "$\\min E = \\inf E = - 2$; $E$ nu este majorată: $\\sup E = + \\infty$, $E$ nu are maxim",
+      "accept": [
+        "-2"
+      ],
+      "hint": {
+        "ro": "$\\inf E$",
+        "en": "$\\inf E$"
+      }
+    },
+    "4a": {
+      "check": false,
+      "why": "proof",
+      "show": "$\\frac{3n - 1}{n + 2} = \\frac{3(n + 2) - 7}{n + 2} = 3 - \\frac{7}{n + 2}$"
+    },
+    "4b": {
+      "kind": "number",
+      "show": "$\\min A = - \\frac{1}{2}$ (pentru $n = 0$)",
+      "accept": [
+        "-1/2"
+      ]
+    },
+    "4c": {
+      "check": false,
+      "why": "proof",
+      "show": "$x &lt; 3,\\ \\forall x \\in A$; $3 - \\frac{7}{n + 2} &gt; 3 - \\varepsilon \\Leftrightarrow n + 2 &gt; \\frac{7}{\\varepsilon}$, deci $\\sup A = 3$"
+    },
+    "4d": {
+      "check": false,
+      "why": "proof",
+      "show": "$3 \\notin A$, deci $A$ nu are maxim"
+    },
+    "7a": {
+      "kind": "list",
+      "show": "$A$ este mărginită, $\\inf A = 0$ ($A$ nu are minim), $\\max A = \\sup A = 1$",
+      "accept": [
+        "0; 1"
+      ],
+      "hint": {
+        "ro": "în ordinea $\\inf A$; $\\sup A$",
+        "en": "in the order $\\inf A$; $\\sup A$"
+      }
+    },
+    "7b": {
+      "kind": "number",
+      "show": "$\\min B = \\inf B = 2$, $\\sup B = + \\infty$; $B$ nu este mărginită",
+      "accept": [
+        "2"
+      ],
+      "hint": {
+        "ro": "$\\inf B$",
+        "en": "$\\inf B$"
+      }
+    },
+    "7c": {
+      "kind": "list",
+      "show": "$C = \\left\\lbrack - \\sqrt{2},\\sqrt{2} \\right\\rbrack$: mărginită, $\\min C = - \\sqrt{2}$, $\\max C = \\sqrt{2}$",
+      "accept": [
+        "-√2; √2"
+      ],
+      "hint": {
+        "ro": "în ordinea $\\inf C$; $\\sup C$",
+        "en": "in the order $\\inf C$; $\\sup C$"
+      }
+    },
+    "8a": {
+      "kind": "truefalse",
+      "show": "F: $(0,1)$ este mărginită, dar nu are maxim",
+      "accept": [
+        "F"
+      ]
+    },
+    "8b": {
+      "kind": "truefalse",
+      "show": "A: maximul este un majorant care aparține mulțimii, deci este cel mai mic majorant",
+      "accept": [
+        "A"
+      ]
+    },
+    "8c": {
+      "kind": "truefalse",
+      "show": "A: dacă $A$ ar avea maxim, atunci $\\sup A = \\max A \\in A$",
+      "accept": [
+        "A"
+      ]
+    },
+    "8d": {
+      "kind": "truefalse",
+      "show": "A: principiul bunei ordonări a lui $\\mathbb{N}$",
+      "accept": [
+        "A"
+      ]
+    },
+    "8e": {
+      "kind": "truefalse",
+      "show": "F: marginea superioară în $\\mathbb{R}$ este $\\sqrt{2} \\notin {\\mathbb{Q}}$",
+      "accept": [
+        "F"
+      ]
+    }
+  }
+}
