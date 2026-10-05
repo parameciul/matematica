@@ -1,0 +1,94 @@
+{
+  "uid": "1019",
+  "version": 1,
+  "items": {
+    "1": {
+      "check": false,
+      "why": "open",
+      "show": "a) DA, $1$ ($\\sqrt{16} = 4$); b) DA, $1$ ($2^{3} + 1 = 9 = 3^{2}$); c) NU (este un îndemn); d) NU (conține variabila $x$: este un predicat); e) DA, $0$ ($- 2$ nu este număr natural); f) DA, $0$ ($2$ este număr prim și par); g) NU (este o exclamație); h) DA, $0$ ($\\sqrt{2}$ este număr irațional)"
+    },
+    "3": {
+      "check": false,
+      "why": "open",
+      "show": "a) „$12 \\vdots 3$” ($1$), „$12 \\vdots 4$” ($1$); b) „$15$ este par” ($0$), „$15$ este multiplu de $5$” ($1$); c) „$2 &gt; 3$” ($0$), „$2^{2} &gt; 3^{2}$” ($0$); d) „$\\sqrt{5}$ este număr rațional” ($0$); enunțul dat este negația acestei propoziții"
+    },
+    "2a": {
+      "kind": "truefalse",
+      "show": "$(\\sqrt{3})^{2} - 1^{2} = 3 - 1 = 2$, deci $v(p) = 1$",
+      "accept": [
+        "A"
+      ]
+    },
+    "2b": {
+      "kind": "truefalse",
+      "show": "$- \\frac{5}{2} = - 2,5$ și $- 3 \\leq - 2,5 &lt; - 2$, deci $\\left\\lbrack - \\frac{5}{2} \\right\\rbrack = - 3 \\neq - 2$; $v(q) = 0$",
+      "accept": [
+        "F"
+      ]
+    },
+    "2c": {
+      "kind": "truefalse",
+      "show": "$\\frac{1}{2} + \\frac{1}{3} = \\frac{5}{6} \\neq \\frac{2}{5}$, deci $v(r) = 0$",
+      "accept": [
+        "F"
+      ]
+    },
+    "2d": {
+      "kind": "truefalse",
+      "show": "$\\sqrt{2} &gt; 1 \\Rightarrow 1 - \\sqrt{2} &lt; 0 \\Rightarrow \\left| 1 - \\sqrt{2} \\right| = \\sqrt{2} - 1$; $v(s) = 1$",
+      "accept": [
+        "A"
+      ]
+    },
+    "4a": {
+      "kind": "list",
+      "show": "$x^{2} - 5x + 6$ ia valorile $6,\\ 2,\\ 0,\\ 0,\\ 2$ pentru $x = 0,\\ 1,\\ 2,\\ 3,\\ 4$; $v(p(x))$: $0,\\ 0,\\ 1,\\ 1,\\ 0$",
+      "accept": [
+        "0; 0; 1; 1; 0"
+      ],
+      "hint": {
+        "ro": "valorile $v(p(x))$, în ordinea $x = 0, 1, 2, 3, 4$",
+        "en": "the values $v(p(x))$, in the order $x = 0, 1, 2, 3, 4$"
+      }
+    },
+    "4b": {
+      "kind": "set",
+      "show": "$A_{p} = \\left\\{ 2,\\ 3 \\right\\}$",
+      "accept": [
+        "{2; 3}"
+      ]
+    },
+    "5a": {
+      "kind": "list",
+      "show": "$2^{n}$: $1,\\ 2,\\ 4,\\ 8,\\ 16,\\ 32,\\ 64$; $n^{2}$: $0,\\ 1,\\ 4,\\ 9,\\ 16,\\ 25,\\ 36$; $v(P(n))$: $1,\\ 1,\\ 0,\\ 0,\\ 0,\\ 1,\\ 1$",
+      "accept": [
+        "1; 1; 0; 0; 0; 1; 1"
+      ],
+      "hint": {
+        "ro": "valorile $v(P(n))$, în ordinea $n = 0, 1, \\dots, 6$",
+        "en": "the values $v(P(n))$, in the order $n = 0, 1, \\dots, 6$"
+      }
+    },
+    "5b": {
+      "check": false,
+      "why": "open",
+      "show": "$P(2)$, $P(3)$, $P(4)$ sunt false; pentru $n \\geq 5$ inegalitatea pare adevărată (se va demonstra prin metoda inducției matematice)"
+    },
+    "6a": {
+      "kind": "list",
+      "show": "$1 + 2 \\cdot 3 = 7$, deci $v(p(1,\\ 3)) = 1$; $3 + 2 \\cdot 1 = 5 \\neq 7$, deci $v(p(3,\\ 1)) = 0$",
+      "accept": [
+        "1; 0"
+      ],
+      "hint": {
+        "ro": "în ordinea $v(p(1, 3))$; $v(p(3, 1))$",
+        "en": "in the order $v(p(1, 3))$; $v(p(3, 1))$"
+      }
+    },
+    "6b": {
+      "check": false,
+      "why": "open",
+      "show": "$x = 7 - 2y \\geq 0 \\Rightarrow y \\in \\left\\{ 0,\\ 1,\\ 2,\\ 3 \\right\\}$; perechile sunt $(7,\\ 0)$, $(5,\\ 1)$, $(3,\\ 2)$, $(1,\\ 3)$"
+    }
+  }
+}
