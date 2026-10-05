@@ -1,16 +1,246 @@
 {
   "uid": "1019",
-  "version": 1,
+  "version": 2,
   "items": {
-    "1": {
-      "check": false,
-      "why": "open",
-      "show": "a) DA, $1$ ($\\sqrt{16} = 4$); b) DA, $1$ ($2^{3} + 1 = 9 = 3^{2}$); c) NU (este un îndemn); d) NU (conține variabila $x$: este un predicat); e) DA, $0$ ($- 2$ nu este număr natural); f) DA, $0$ ($2$ este număr prim și par); g) NU (este o exclamație); h) DA, $0$ ($\\sqrt{2}$ este număr irațional)"
+    "1a": {
+      "kind": "options",
+      "show": "DA, $1$ ($\\sqrt{16} = 4$)",
+      "options": [
+        {
+          "value": "–",
+          "label": {
+            "ro": "NU, nu este propoziție",
+            "en": "NO, it is not a proposition"
+          }
+        },
+        {
+          "value": "1",
+          "label": {
+            "ro": "DA, propoziție adevărată: $v = 1$",
+            "en": "YES, a true proposition: $v = 1$"
+          }
+        },
+        {
+          "value": "0",
+          "label": {
+            "ro": "DA, propoziție falsă: $v = 0$",
+            "en": "YES, a false proposition: $v = 0$"
+          }
+        }
+      ],
+      "accept": [
+        "1"
+      ]
     },
-    "3": {
-      "check": false,
-      "why": "open",
-      "show": "a) „$12 \\vdots 3$” ($1$), „$12 \\vdots 4$” ($1$); b) „$15$ este par” ($0$), „$15$ este multiplu de $5$” ($1$); c) „$2 &gt; 3$” ($0$), „$2^{2} &gt; 3^{2}$” ($0$); d) „$\\sqrt{5}$ este număr rațional” ($0$); enunțul dat este negația acestei propoziții"
+    "1b": {
+      "kind": "options",
+      "show": "DA, $1$ ($2^{3} + 1 = 8 + 1 = 9 = 3^{2}$)",
+      "options": [
+        {
+          "value": "–",
+          "label": {
+            "ro": "NU, nu este propoziție",
+            "en": "NO, it is not a proposition"
+          }
+        },
+        {
+          "value": "1",
+          "label": {
+            "ro": "DA, propoziție adevărată: $v = 1$",
+            "en": "YES, a true proposition: $v = 1$"
+          }
+        },
+        {
+          "value": "0",
+          "label": {
+            "ro": "DA, propoziție falsă: $v = 0$",
+            "en": "YES, a false proposition: $v = 0$"
+          }
+        }
+      ],
+      "accept": [
+        "1"
+      ]
+    },
+    "1c": {
+      "kind": "options",
+      "show": "NU (este un îndemn)",
+      "options": [
+        {
+          "value": "–",
+          "label": {
+            "ro": "NU, nu este propoziție",
+            "en": "NO, it is not a proposition"
+          }
+        },
+        {
+          "value": "1",
+          "label": {
+            "ro": "DA, propoziție adevărată: $v = 1$",
+            "en": "YES, a true proposition: $v = 1$"
+          }
+        },
+        {
+          "value": "0",
+          "label": {
+            "ro": "DA, propoziție falsă: $v = 0$",
+            "en": "YES, a false proposition: $v = 0$"
+          }
+        }
+      ],
+      "accept": [
+        "–"
+      ]
+    },
+    "1d": {
+      "kind": "options",
+      "show": "NU (conține variabila $x$: este un predicat)",
+      "options": [
+        {
+          "value": "–",
+          "label": {
+            "ro": "NU, nu este propoziție",
+            "en": "NO, it is not a proposition"
+          }
+        },
+        {
+          "value": "1",
+          "label": {
+            "ro": "DA, propoziție adevărată: $v = 1$",
+            "en": "YES, a true proposition: $v = 1$"
+          }
+        },
+        {
+          "value": "0",
+          "label": {
+            "ro": "DA, propoziție falsă: $v = 0$",
+            "en": "YES, a false proposition: $v = 0$"
+          }
+        }
+      ],
+      "accept": [
+        "–"
+      ]
+    },
+    "1e": {
+      "kind": "options",
+      "show": "DA, $0$ ($- 2$ nu este număr natural)",
+      "options": [
+        {
+          "value": "–",
+          "label": {
+            "ro": "NU, nu este propoziție",
+            "en": "NO, it is not a proposition"
+          }
+        },
+        {
+          "value": "1",
+          "label": {
+            "ro": "DA, propoziție adevărată: $v = 1$",
+            "en": "YES, a true proposition: $v = 1$"
+          }
+        },
+        {
+          "value": "0",
+          "label": {
+            "ro": "DA, propoziție falsă: $v = 0$",
+            "en": "YES, a false proposition: $v = 0$"
+          }
+        }
+      ],
+      "accept": [
+        "0"
+      ]
+    },
+    "1f": {
+      "kind": "options",
+      "show": "DA, $0$ ($2$ este număr prim și par)",
+      "options": [
+        {
+          "value": "–",
+          "label": {
+            "ro": "NU, nu este propoziție",
+            "en": "NO, it is not a proposition"
+          }
+        },
+        {
+          "value": "1",
+          "label": {
+            "ro": "DA, propoziție adevărată: $v = 1$",
+            "en": "YES, a true proposition: $v = 1$"
+          }
+        },
+        {
+          "value": "0",
+          "label": {
+            "ro": "DA, propoziție falsă: $v = 0$",
+            "en": "YES, a false proposition: $v = 0$"
+          }
+        }
+      ],
+      "accept": [
+        "0"
+      ]
+    },
+    "1g": {
+      "kind": "options",
+      "show": "NU (este o exclamație)",
+      "options": [
+        {
+          "value": "–",
+          "label": {
+            "ro": "NU, nu este propoziție",
+            "en": "NO, it is not a proposition"
+          }
+        },
+        {
+          "value": "1",
+          "label": {
+            "ro": "DA, propoziție adevărată: $v = 1$",
+            "en": "YES, a true proposition: $v = 1$"
+          }
+        },
+        {
+          "value": "0",
+          "label": {
+            "ro": "DA, propoziție falsă: $v = 0$",
+            "en": "YES, a false proposition: $v = 0$"
+          }
+        }
+      ],
+      "accept": [
+        "–"
+      ]
+    },
+    "1h": {
+      "kind": "options",
+      "show": "DA, $0$ ($\\sqrt{2}$ este număr irațional)",
+      "options": [
+        {
+          "value": "–",
+          "label": {
+            "ro": "NU, nu este propoziție",
+            "en": "NO, it is not a proposition"
+          }
+        },
+        {
+          "value": "1",
+          "label": {
+            "ro": "DA, propoziție adevărată: $v = 1$",
+            "en": "YES, a true proposition: $v = 1$"
+          }
+        },
+        {
+          "value": "0",
+          "label": {
+            "ro": "DA, propoziție falsă: $v = 0$",
+            "en": "YES, a false proposition: $v = 0$"
+          }
+        }
+      ],
+      "accept": [
+        "0"
+      ]
     },
     "2a": {
       "kind": "truefalse",
@@ -40,16 +270,56 @@
         "A"
       ]
     },
-    "4a": {
+    "3a": {
       "kind": "list",
-      "show": "$x^{2} - 5x + 6$ ia valorile $6,\\ 2,\\ 0,\\ 0,\\ 2$ pentru $x = 0,\\ 1,\\ 2,\\ 3,\\ 4$; $v(p(x))$: $0,\\ 0,\\ 1,\\ 1,\\ 0$",
+      "show": "„$12 \\vdots 3$” ($1$), „$12 \\vdots 4$” ($1$)",
       "accept": [
-        "0; 0; 1; 1; 0"
+        "1; 1"
       ],
       "hint": {
-        "ro": "valorile $v(p(x))$, în ordinea $x = 0, 1, 2, 3, 4$",
-        "en": "the values $v(p(x))$, in the order $x = 0, 1, 2, 3, 4$"
+        "ro": "valorile de adevăr ale propozițiilor simple, în ordinea din enunț",
+        "en": "the truth values of the simple propositions, in the order of the statement"
       }
+    },
+    "3b": {
+      "kind": "list",
+      "show": "„$15$ este par” ($0$), „$15$ este multiplu de $5$” ($1$)",
+      "accept": [
+        "0; 1"
+      ],
+      "hint": {
+        "ro": "valorile de adevăr ale propozițiilor simple, în ordinea din enunț",
+        "en": "the truth values of the simple propositions, in the order of the statement"
+      }
+    },
+    "3c": {
+      "kind": "list",
+      "show": "„$2 &gt; 3$” ($0$), „$2^{2} &gt; 3^{2}$” ($0$)",
+      "accept": [
+        "0; 0"
+      ],
+      "hint": {
+        "ro": "valorile de adevăr ale propozițiilor simple, în ordinea din enunț",
+        "en": "the truth values of the simple propositions, in the order of the statement"
+      }
+    },
+    "3d": {
+      "kind": "list",
+      "show": "„$\\sqrt{5}$ este număr rațional” ($0$); enunțul dat este negația acestei propoziții",
+      "accept": [
+        "0"
+      ],
+      "hint": {
+        "ro": "valorile de adevăr ale propozițiilor simple, în ordinea din enunț",
+        "en": "the truth values of the simple propositions, in the order of the statement"
+      }
+    },
+    "4a": {
+      "kind": "grid",
+      "show": "$x^{2} - 5x + 6$ ia valorile $6,\\ 2,\\ 0,\\ 0,\\ 2$ pentru $x = 0,\\ 1,\\ 2,\\ 3,\\ 4$; $v(p(x))$: $0,\\ 0,\\ 1,\\ 1,\\ 0$",
+      "accept": [
+        "6; 2; 0; 0; 2; 0; 0; 1; 1; 0"
+      ]
     },
     "4b": {
       "kind": "set",
@@ -59,15 +329,11 @@
       ]
     },
     "5a": {
-      "kind": "list",
+      "kind": "grid",
       "show": "$2^{n}$: $1,\\ 2,\\ 4,\\ 8,\\ 16,\\ 32,\\ 64$; $n^{2}$: $0,\\ 1,\\ 4,\\ 9,\\ 16,\\ 25,\\ 36$; $v(P(n))$: $1,\\ 1,\\ 0,\\ 0,\\ 0,\\ 1,\\ 1$",
       "accept": [
-        "1; 1; 0; 0; 0; 1; 1"
-      ],
-      "hint": {
-        "ro": "valorile $v(P(n))$, în ordinea $n = 0, 1, \\dots, 6$",
-        "en": "the values $v(P(n))$, in the order $n = 0, 1, \\dots, 6$"
-      }
+        "1; 2; 4; 8; 16; 32; 64; 0; 1; 4; 9; 16; 25; 36; 1; 1; 0; 0; 0; 1; 1"
+      ]
     },
     "5b": {
       "check": false,

@@ -8,7 +8,7 @@ import { fileURLToPath } from 'node:url';
 import { createRequire } from 'node:module';
 import vm from 'node:vm';
 import { buildSite, esc, KATEX_VERSION, ADMIN_FOLDER, FONTS, readArticle, countHeadings, parseClipSection, compareClipSections, subheadingCounts } from '../tools/build_pages.mjs';
-import { checkItems, checkTrueKeys } from '../tools/results.mjs';
+import { checkItems, checkTrueKeys, gridPageProblems } from '../tools/results.mjs';
 
 const require = createRequire(import.meta.url);
 const Catalog = require('../assets/js/catalog.js');
@@ -744,6 +744,7 @@ for (const m of materials) {
     const extra = keys.filter((k) => !checks.includes(k));
     if (missing.length) fail(`${page}: data-ex is missing ${missing.join(', ')}`);
     if (extra.length) fail(`${page}: data-ex has no result for ${extra.join(', ')}`);
+    for (const problem of gridPageProblems(saved.items, page, read(page))) fail(problem);
   }
 }
 for (const f of files.filter((x) => x.startsWith('data/results/') || x.startsWith(`${ADMIN_FOLDER}/raspunsuri/`))) {

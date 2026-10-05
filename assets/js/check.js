@@ -87,9 +87,13 @@
     if (options[index]) options[index].classList.add(ok ? 'check-ok' : 'check-bad');
   }
 
-  function markText(box, answer, ok, btn) {
+  // The chip repeats the answer next to the button. A grid answer is a whole
+  // table, too long for a chip: it saves an empty label (c) and shows the mark
+  // only. The label comes from the saved entry, because the results file is
+  // not loaded yet when the marks come back on page load.
+  function markText(box, label, ok, btn) {
     clearMark(box);
-    const chip = el('span', `badge check-chip ${ok ? 'badge-fise' : 'badge-teste'}`, `${answer} ${ok ? '✓' : '✗'}`);
+    const chip = el('span', `badge check-chip ${ok ? 'badge-fise' : 'badge-teste'}`, `${label} ${ok ? '✓' : '✗'}`.trim());
     btn.after(chip);
   }
 
@@ -107,7 +111,7 @@
       if (!entry) return;
       const btn = buttonFor(key);
       if (entry.pick !== undefined) markChoice(box, entry.pick, entry.ok);
-      else if (entry.a !== undefined && btn) markText(box, entry.a, entry.ok, btn);
+      else if (entry.a !== undefined && btn) markText(box, entry.c !== undefined ? entry.c : entry.a, entry.ok, btn);
     });
     refreshReset();
   }
@@ -208,6 +212,20 @@
         label.appendChild(el('span', null, text));
         body.appendChild(label);
       });
+    } else if (kind === 'options') {
+      (Array.isArray(item.options) ? item.options : []).forEach((opt, i) => {
+        const label = el('label', 'check-option');
+        const radio = el('input');
+        radio.type = 'radio';
+        radio.name = `check-${uid}-${key}`;
+        radio.value = String(i);
+        label.appendChild(radio);
+        const text = opt && opt.label ? opt.label[getLang()] || opt.label.ro || '' : '';
+        label.appendChild(el('span', null, text || String(opt && opt.value)));
+        body.appendChild(label);
+      });
+    } else if (kind === 'grid') {
+      openGrid(body, box, item);
     } else if (kind === 'perm' && permSizes(item).length) {
       // The table template replaces the single text field (and its symbol
       // buttons: a second row holds plain numbers only).
@@ -248,6 +266,42 @@
     field.value = field.value.slice(0, s) + text + field.value.slice(e);
     field.focus();
     field.setSelectionRange(s + text.length, s + text.length);
+  }
+
+  // A grid: the table right after the exercise line, copied into the popup
+  // with one box per empty cell. The boxes read back in DOM order (row by
+  // row), the order of the accept strings. The copy keeps the math the page
+  // already rendered.
+  function gridTable(box) {
+    const next = box.nextElementSibling;
+    return next && next.tagName === 'TABLE' ? next : null;
+  }
+
+  function openGrid(host, box, item) {
+    const table = gridTable(box);
+    if (!table) return;
+    host.appendChild(el('p', 'check-example', t('check.gridHelp')));
+    if (item.hint) {
+      // Hints may hold $…$ math; the render in openFor handles them.
+      host.appendChild(el('p', 'check-hint', item.hint[getLang()] || item.hint.ro || ''));
+    }
+    const copy = table.cloneNode(true);
+    copy.removeAttribute('id');
+    copy.querySelectorAll('.check-btn, .check-chip').forEach((n) => n.remove());
+    Array.from(copy.rows).forEach((row, r) => {
+      Array.from(row.cells).forEach((cell, c) => {
+        if (cell.tagName !== 'TD' || cell.textContent.trim() || cell.children.length) return;
+        const inp = el('input', 'perm-cell grid-cell');
+        inp.type = 'text';
+        inp.autocomplete = 'off';
+        inp.spellcheck = false;
+        inp.setAttribute('aria-label', t('check.gridCell').replace('{r}', String(r + 1)).replace('{c}', String(c + 1)));
+        cell.appendChild(inp);
+      });
+    });
+    const wrap = el('div', 'grid-wrap');
+    wrap.appendChild(copy);
+    host.appendChild(wrap);
   }
 
   // A permutation in two-line notation: the tables the answer is written in,
@@ -319,6 +373,17 @@
     if (item.kind === 'truefalse') {
       const checked = body.querySelector('input[type="radio"]:checked');
       return checked ? { value: checked.value } : null;
+    }
+    if (item.kind === 'options') {
+      const checked = body.querySelector('input[type="radio"]:checked');
+      const opt = checked && Array.isArray(item.options) ? item.options[Number(checked.value)] : null;
+      return opt ? { value: String(opt.value) } : null;
+    }
+    if (item.kind === 'grid') {
+      const inputs = Array.from(body.querySelectorAll('input.grid-cell'));
+      if (!inputs.length) return null;
+      const parts = inputs.map((i) => i.value.trim());
+      return { value: parts.join('; '), incomplete: parts.some((p) => !p) };
     }
     if (item.kind === 'perm' && body.querySelector('input.perm-cell')) {
       // DOM order is answer order: plain boxes first, then the tables.
@@ -408,6 +473,9 @@
     if (item.kind === 'choice') {
       markChoice(box, given.pick, ok);
       remember(key, { pick: given.pick, ok });
+    } else if (item.kind === 'grid') {
+      if (btn) markText(box, '', ok, btn);
+      remember(key, { a: given.value, ok, c: '' });
     } else {
       if (btn) markText(box, given.value, ok, btn);
       remember(key, { a: given.value, ok });
@@ -427,7 +495,7 @@
       again.type = 'button';
       again.addEventListener('click', () => {
         say('', 'none');
-        const field = body.querySelector('.check-field');
+        const field = body.querySelector('.check-field, input.perm-cell');
         if (field) field.focus();
         again.remove();
       });

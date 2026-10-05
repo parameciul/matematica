@@ -313,8 +313,69 @@ export function checkItems(items) {
         }
       }
     }
+    if (item.kind === 'options') {
+      // The radio options live in the result: a value (what is compared and
+      // what the chip on the page shows) and a label per language (what the
+      // popup shows).
+      const options = item.options;
+      const valid = Array.isArray(options) && options.length >= 2 && options.every((o) => o
+        && typeof o.value === 'string' && o.value.trim()
+        && o.label && typeof o.label.ro === 'string' && o.label.ro.trim()
+        && typeof o.label.en === 'string' && o.label.en.trim());
+      if (!valid) {
+        problems.push(`${where}: options must be a list of 2 or more { value, label: { ro, en } }`);
+      } else {
+        const values = options.map((o) => o.value.trim());
+        if (new Set(values).size !== values.length) problems.push(`${where}: option values must be unique`);
+        if (Array.isArray(item.accept)) {
+          if (item.accept.length !== 1) problems.push(`${where}: an options item accepts exactly one value`);
+          for (const a of item.accept) {
+            if (typeof a === 'string' && a.trim() && !values.includes(a.trim())) {
+              problems.push(`${where}: accept "${a}" is not one of the option values`);
+            }
+          }
+        }
+      }
+    } else if (item.options !== undefined) {
+      problems.push(`${where}: only an options item holds options`);
+    }
   }
   return problems;
+}
+
+// A grid item fills the table right after its data-ex element: the empty
+// <td> cells of that table, in page order, hold the accept values. Shared
+// with the validator, so an article edit that moves the table or changes its
+// cells fails the build instead of breaking the check.
+export function gridPageProblems(items, label, html) {
+  const problems = [];
+  for (const [key, item] of Object.entries(items || {})) {
+    if (!item || item.check === false || item.kind !== 'grid') continue;
+    const cells = gridCellsAfter(html, key);
+    if (cells === undefined) continue; // a missing data-ex is reported elsewhere
+    if (cells === null) {
+      problems.push(`${label}: data-ex="${key}" (grid) is not followed by a <table>`);
+      continue;
+    }
+    for (const a of Array.isArray(item.accept) ? item.accept : []) {
+      const r = Answers.read('grid', a);
+      if (r.ok && r.values.length !== cells) {
+        problems.push(`${label}: data-ex="${key}" (grid): accept "${a}" holds ${r.values.length} values but the table has ${cells} empty cells`);
+      }
+    }
+  }
+  return problems;
+}
+
+// The count of empty <td> cells of the table right after the data-ex
+// element: undefined without that element, null when no table follows it.
+function gridCellsAfter(html, key) {
+  const src = String(html);
+  const m = src.match(new RegExp(`<([a-zA-Z][a-zA-Z0-9]*)[^>]*\\sdata-ex="${key.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')}"[^>]*>[\\s\\S]*?</\\1>`));
+  if (!m) return undefined;
+  const table = /^\s*<table\b[\s\S]*?<\/table>/.exec(src.slice(m.index + m[0].length));
+  if (!table) return null;
+  return (table[0].match(/<td\b[^>]*>\s*<\/td>/g) || []).length;
 }
 
 export function checkTrueKeys(items) {
@@ -389,6 +450,9 @@ function cmdSave({ pos }) {
     if (missing.length) problems.push(`${p.label} page: data-ex is missing ${missing.join(', ')}`);
     if (extra.length) problems.push(`${p.label} page: data-ex has no result for ${extra.join(', ')}`);
   }
+
+  // A grid item: its table follows the data-ex element, one empty cell per value.
+  for (const p of pages) problems.push(...gridPageProblems(draft.items, `${p.label} page`, p.html));
 
   // A choice item: every option carries data-value, exactly one equals the result.
   for (const key of want) {

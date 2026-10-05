@@ -13,8 +13,14 @@
 // a list: the flat values in order, first any leading scalars then the second
 // rows of the tables. Only the popup differs: instead of one text field it
 // shows one small box per value, arranged as tables with the first row fixed.
+// A grid (a table the student fills in) reads and compares like a list too:
+// the values of the empty cells of the page table, row by row. The popup
+// shows a copy of that table with one box per empty cell.
+// An options item is a list of radio options that lives in the result, not on
+// the page (like "not a proposition / true / false"): the answer is the value
+// of the picked option, compared as text.
 (function () {
-  const KINDS = ['choice', 'truefalse', 'number', 'list', 'set', 'interval', 'text', 'perm'];
+  const KINDS = ['choice', 'truefalse', 'number', 'list', 'set', 'interval', 'text', 'perm', 'grid', 'options'];
   const TOL = 1e-9;
 
   function sameValue(a, b) {
@@ -170,7 +176,7 @@
   function read(kind, text) {
     const src = String(text == null ? '' : text).trim();
     if (!src) return { ok: false };
-    if (kind === 'choice') return { ok: true, value: src };
+    if (kind === 'choice' || kind === 'options') return { ok: true, value: src };
     if (kind === 'truefalse') {
       const v = src.toUpperCase();
       return v === 'A' || v === 'F' ? { ok: true, value: v } : { ok: false };
@@ -193,9 +199,9 @@
       if (!values.length) return { ok: false };
       return { ok: true, values };
     }
-    if (kind === 'perm') {
-      // Same shape as a list: the sizes of the tables live on the result item
-      // (sizes/prefix), not in the typed text, so the reader needs no layout.
+    if (kind === 'perm' || kind === 'grid') {
+      // Same shape as a list: the layout lives elsewhere (perm: sizes/prefix
+      // on the result item; grid: the page table), not in the typed text.
       const parts = readListParts(src);
       const values = [];
       const decimalComma = src.includes(';');
@@ -294,10 +300,11 @@
           && r.values.every((v, i) => sameValue(v, student.values[i]));
       });
     }
-    if (kind === 'perm') {
-      // Order matters, like a list: the tables stay in the hint's order.
+    if (kind === 'perm' || kind === 'grid') {
+      // Order matters, like a list: the tables stay in the hint's order, the
+      // cells of a grid in the order of the page table.
       return list.some((a) => {
-        const r = read('perm', String(a));
+        const r = read(kind, String(a));
         return r.ok && r.values.length === student.values.length
           && r.values.every((v, i) => sameValue(v, student.values[i]));
       });
@@ -339,6 +346,9 @@
     if (kind === 'text') {
       return list.some((a) => cleanupText(String(a)) === student.text);
     }
+    if (kind === 'options') {
+      return list.some((a) => String(a).trim() === student.value);
+    }
     return false;
   }
 
@@ -347,6 +357,7 @@
       case 'number': return '-2/3';
       case 'list': return '4; 2';
       case 'perm': return '3; 4; 1; 5; 2';
+      case 'grid': return '-2/3';
       case 'set': return '{-3; 7}';
       case 'interval': return '[-2; 4]';
       case 'text': return '2x+1';

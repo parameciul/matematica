@@ -25,6 +25,8 @@
     text: 'text',
     choice: 'alegere',
     truefalse: 'adevărat/fals',
+    grid: 'tabel',
+    options: 'variante',
   };
 
   var titleEl = document.getElementById('results-title');

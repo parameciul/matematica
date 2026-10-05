@@ -1756,6 +1756,37 @@ ol.clips .clip-dur {
   outline-offset: 1px;
 }
 
+/* A table to fill in: a copy of the page table, one box per empty cell. The
+   dialog sits outside the article, so it gets its own table rules; a wide
+   table scrolls inside the dialog instead of widening it. */
+.grid-wrap {
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: auto;
+  padding-bottom: 0.15rem;
+}
+
+.grid-wrap table {
+  border-collapse: collapse;
+}
+
+.grid-wrap th,
+.grid-wrap td {
+  padding: 0.25rem 0.4rem;
+  border: 1px solid var(--rule);
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.grid-wrap th {
+  background: var(--paper);
+}
+
+.grid-wrap td:first-child {
+  text-align: left;
+}
+
 .check-verdict {
   margin: 0.75rem 0 0;
   font-weight: 700;
