@@ -1783,8 +1783,17 @@ ol.clips .clip-dur {
   background: var(--paper);
 }
 
-.grid-wrap td:first-child {
+/* The row names stay in view while a wide table scrolls on a phone. */
+.grid-wrap tr > :first-child {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  background: var(--sheet);
   text-align: left;
+}
+
+.grid-wrap thead tr > :first-child {
+  background: var(--paper);
 }
 
 .check-verdict {
