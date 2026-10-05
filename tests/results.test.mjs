@@ -257,6 +257,80 @@ test('a perm with a prefix before the table saves', (t) => {
   assert.equal(res.code, 0, res.out);
 });
 
+const GRID = '<p data-ex="1">Completați tabelul.</p>\n<table><thead><tr><th>$x$</th><th>$0$</th><th>$1$</th></tr></thead>'
+  + '<tbody><tr><td>$x + 1$</td><td></td><td></td></tr><tr><td>$2x$</td><td></td><td></td></tr></tbody></table>\n';
+
+function savesWith(t, items, article) {
+  const dir = makeRoot(t);
+  const { uid, name, work } = setup(t, dir, items);
+  for (const page of [join(dir, 'materiale', `${name}.html`), join(dir, 'en', 'materiale', `${name}.html`)]) {
+    writeFileSync(page, readFileSync(page, 'utf8').replace('</article>', `${article}</article>`));
+  }
+  writeFileSync(join(work, 'answers.html'), ONE_EXERCISE);
+  return run(dir, RESULTS, ['save', uid]);
+}
+
+test('a grid with one value per empty cell saves', (t) => {
+  const res = savesWith(t, { items: { 1: { kind: 'grid', show: '$x$', accept: ['1; 2; 0; 2'] } } }, GRID);
+  assert.equal(res.code, 0, res.out);
+});
+
+test('a grid whose accept count differs from the empty cells fails', (t) => {
+  const res = fails(t,
+    { items: { 1: { kind: 'grid', show: '$x$', accept: ['1; 2; 0'] } } },
+    { answers: ONE_EXERCISE, roArticle: GRID, enArticle: GRID });
+  assert.match(res.out, /holds 3 values but the table has 4 empty cells/);
+});
+
+test('a grid without a table right after its line fails', (t) => {
+  const noTable = GRID.replace('</p>\n<table>', '</p>\n<p>Altceva.</p>\n<table>');
+  const res = fails(t,
+    { items: { 1: { kind: 'grid', show: '$x$', accept: ['1; 2; 0; 2'] } } },
+    { answers: ONE_EXERCISE, roArticle: noTable, enArticle: noTable });
+  assert.match(res.out, /\(grid\) is not followed by a <table>/);
+});
+
+const OPTIONS = [
+  { value: '–', label: { ro: 'NU, nu este propoziție', en: 'NO, it is not a proposition' } },
+  { value: '1', label: { ro: 'DA, adevărată', en: 'YES, true' } },
+  { value: '0', label: { ro: 'DA, falsă', en: 'YES, false' } },
+];
+
+test('an options item with labels and one known value saves', (t) => {
+  const res = savesWith(t, { items: { 1: { kind: 'options', show: 'NU', options: OPTIONS, accept: ['–'] } } },
+    '<p data-ex="1">x</p>');
+  assert.equal(res.code, 0, res.out);
+});
+
+test('an options item without both labels fails', (t) => {
+  const bad = [{ value: '1', label: { ro: 'DA' } }, { value: '0', label: { ro: 'NU', en: 'NO' } }];
+  const res = fails(t, { items: { 1: { kind: 'options', show: '$x$', options: bad, accept: ['1'] } } },
+    { answers: ONE_EXERCISE });
+  assert.match(res.out, /options must be a list of 2 or more/);
+});
+
+test('an options accept that is not an option value fails', (t) => {
+  const res = fails(t, { items: { 1: { kind: 'options', show: '$x$', options: OPTIONS, accept: ['DA'] } } },
+    { answers: ONE_EXERCISE });
+  assert.match(res.out, /accept "DA" is not one of the option values/);
+});
+
+test('an options item with two accepted values or repeated values fails', (t) => {
+  const two = fails(t, { items: { 1: { kind: 'options', show: '$x$', options: OPTIONS, accept: ['1', '0'] } } },
+    { answers: ONE_EXERCISE });
+  assert.match(two.out, /accepts exactly one value/);
+  const twice = [OPTIONS[1], { ...OPTIONS[2], value: '1' }];
+  const repeated = fails(t, { items: { 1: { kind: 'options', show: '$x$', options: twice, accept: ['1'] } } },
+    { answers: ONE_EXERCISE });
+  assert.match(repeated.out, /option values must be unique/);
+});
+
+test('options on another kind fails', (t) => {
+  const res = fails(t, { items: { 1: { kind: 'number', show: '$4$', options: OPTIONS, accept: ['4'] } } },
+    { answers: ONE_EXERCISE });
+  assert.match(res.out, /only an options item holds options/);
+});
+
 function makeDocx(t, dir, paragraphs) {
   const target = join(dir, `fixture-${Date.now()}-${Math.floor(Math.random() * 1e6)}.docx`);
   const pars = paragraphs.map(([bold, text]) => `[${bold ? 'True' : 'False'}, ${JSON.stringify(text)}]`).join(', ');

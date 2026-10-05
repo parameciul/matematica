@@ -217,6 +217,45 @@ test('a class code on the admin page fails', () => {
   );
 });
 
+// Gives the sample material results with one grid check: the table to fill in
+// comes right after the line that carries data-ex.
+const GRID_TABLE = '<p data-ex="1">Completați tabelul.</p>\n<table><thead><tr><th>$x$</th><th>$0$</th><th>$1$</th></tr></thead>'
+  + '<tbody><tr><td>$x + 1$</td><td></td><td></td></tr></tbody></table>\n';
+
+function addGridResult(dir, article) {
+  editData(dir, (data) => { sample(data).results = { version: 1, checks: 1 }; });
+  mkdirSync(join(dir, 'data', 'results'), { recursive: true });
+  writeFileSync(join(dir, 'data', 'results', `${SAMPLE_NAME}.json`), JSON.stringify({
+    uid: SAMPLE_UID,
+    version: 1,
+    items: { 1: { kind: 'grid', show: '$1,\\ 2$', accept: ['1; 2'] } },
+  }, null, 2));
+  writeFileSync(join(dir, 'tm25mlg', 'raspunsuri', `${SAMPLE_NAME}.html`), '<p><strong>1.</strong> $1,\\ 2$</p>\n');
+  editFile(dir, SAMPLE_PAGE, addToArticle(article));
+  editFile(dir, SAMPLE_EN_PAGE, addToArticle(article));
+  // The page shell depends on the article (the check bar), so regenerate last.
+  writeSite(dir);
+}
+
+test('a grid check with its table right after it passes', () => {
+  const result = withSite((dir) => addGridResult(dir, GRID_TABLE));
+  assert.equal(result.code, 0, result.out);
+});
+
+test('a grid check whose table moved away fails', () => {
+  expectFailure(
+    withSite((dir) => addGridResult(dir, GRID_TABLE.replace('</p>\n<table>', '</p>\n<p>Altceva.</p>\n<table>'))),
+    /data-ex="1" \(grid\) is not followed by a <table>/,
+  );
+});
+
+test('a grid check whose table lost an empty cell fails', () => {
+  expectFailure(
+    withSite((dir) => addGridResult(dir, GRID_TABLE.replace('<td></td></tr>', '<td>$5$</td></tr>'))),
+    /holds 2 values but the table has 1 empty cells/,
+  );
+});
+
 test('a missing results page fails', () => {
   expectFailure(
     withSite((dir) => unlinkSync(join(dir, 'tm25mlg', 'rezultate.html'))),

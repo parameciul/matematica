@@ -112,6 +112,39 @@ test('perm reads and compares in order, like the second rows of the tables', asy
   assert.equal(await Answers.verify(two, '3; 2; 1; 2; 1; 3'), false);
 });
 
+test('grid reads the cells in table order and compares them like a list', async () => {
+  const item = { kind: 'grid', accept: ['6; 2; 0; 0; 2; 0; 0; 1; 1; 0'] };
+  assert.equal(await Answers.verify(item, '6; 2; 0; 0; 2; 0; 0; 1; 1; 0'), true);
+  // Values compare by value: 4/2 is 2, a decimal comma reads with ";".
+  assert.equal(await Answers.verify(item, '6; 4/2; 0; 0; 2; 0; 0; 1; 1; 0'), true);
+  // One wrong cell, cells in another order, a cell missing: all wrong.
+  assert.equal(await Answers.verify(item, '6; 2; 0; 0; 2; 0; 0; 1; 1; 1'), false);
+  assert.equal(await Answers.verify(item, '0; 0; 1; 1; 0; 6; 2; 0; 0; 2'), false);
+  assert.equal(await Answers.verify(item, '6; 2; 0; 0; 2; 0; 0; 1; 1'), false);
+  const decimals = { kind: 'grid', accept: ['0,5; 1,25'] };
+  assert.equal(await Answers.verify(decimals, '0,5; 1,25'), true);
+});
+
+test('grid rejects a blank or unreadable cell and has an example', () => {
+  // The popup joins the boxes with "; ", so a blank box leaves an empty part.
+  assert.equal(Answers.read('grid', '6; ; 0').ok, false);
+  assert.equal(Answers.read('grid', '6; abc; 0').ok, false);
+  assert.equal(Answers.read('grid', '').ok, false);
+  assert.ok(Answers.exampleFor('grid').length > 0);
+});
+
+test('options compares the value of the picked option', async () => {
+  const item = { kind: 'options', accept: ['–'] };
+  assert.equal(await Answers.verify(item, '–'), true);
+  assert.equal(await Answers.verify(item, '1'), false);
+  assert.equal(await Answers.verify(item, 'nu'), false);
+  const value = { kind: 'options', accept: ['1'] };
+  assert.equal(await Answers.verify(value, '1'), true);
+  assert.equal(await Answers.verify(value, '0'), false);
+  assert.equal(Answers.read('options', '').ok, false);
+  assert.ok(Answers.KINDS.includes('grid') && Answers.KINDS.includes('options'));
+});
+
 test('perm has an example and rejects unreadable text', () => {
   assert.ok(Answers.exampleFor('perm').length > 0);
   assert.equal(Answers.read('perm', 'nu știu').ok, false);
