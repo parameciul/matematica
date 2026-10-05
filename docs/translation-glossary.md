@@ -31,6 +31,8 @@ Use these terms when you write the English article of a material. The audience i
 | Evaluarea Națională | the National Evaluation (Romanian grade 8 exam) |
 | Bacalaureat (BAC) | the Baccalaureate exam (BAC) |
 | „Nota 10” | top-grade problems |
+| enunț, propoziție simplă / compusă, valoarea de adevăr | statement, simple / compound proposition, truth value |
+| predicat, mulțimea de adevăr a unui predicat | predicate, truth set of a predicate |
 | teorie sintetizată, fișă de lucru, fișă recapitulativă | theory summary, worksheet, review worksheet |
 | Încercuiește litera corespunzătoare răspunsului corect. | Circle the letter of the correct answer. |
 | Scrie rezolvările complete. | Write complete solutions. |

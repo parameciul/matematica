@@ -55,6 +55,14 @@
         "ro": "Mulțimi de puncte pe dreapta reală",
         "en": "Sets of points on the real line"
       }
+    },
+    {
+      "id": "elemente-logica-matematica",
+      "grade": 9,
+      "title": {
+        "ro": "Elemente de logică matematică",
+        "en": "Elements of mathematical logic"
+      }
     }
   ],
   "grades": {
@@ -1050,6 +1058,55 @@
       "results": {
         "version": 1,
         "checks": 21
+      }
+    },
+    {
+      "slug": "fisa-lucru-propozitii-valoare-adevar-predicate",
+      "uid": "1019",
+      "topic": "elemente-logica-matematica",
+      "kind": "fisa-lucru",
+      "title": {
+        "ro": "Fișă de lucru: propoziții, valoarea de adevăr, predicate",
+        "en": "Worksheet: propositions, truth value, predicates"
+      },
+      "seoTitle": {
+        "ro": "Propoziții, valoare de adevăr, predicate: fișă",
+        "en": "Propositions, truth value, predicates: worksheet"
+      },
+      "published": "2026-10-05",
+      "description": {
+        "ro": "Fișă de lucru pentru clasa a IX-a: propoziții, valoarea de adevăr, propoziții compuse, predicate și mulțimea de adevăr a unui predicat.",
+        "en": "Grade 9 worksheet: propositions, truth value, compound propositions, predicates and the truth set of a predicate."
+      },
+      "pdf": "materiale/pdf/fisa-lucru-propozitii-valoare-adevar-predicate-1019.pdf",
+      "youtube": null,
+      "import": {
+        "date": "2026-10-05",
+        "workflow": 3,
+        "pdf": "generated"
+      },
+      "keywords": {
+        "ro": [
+          "propoziții",
+          "valoare de adevăr",
+          "propoziții compuse",
+          "predicate",
+          "mulțimea de adevăr",
+          "enunțuri",
+          "logică matematică",
+          "clasa a 9-a",
+          "clasa a IX-a"
+        ],
+        "en": [
+          "propositions",
+          "truth value",
+          "compound propositions",
+          "predicates",
+          "truth set",
+          "statements",
+          "mathematical logic",
+          "grade 9"
+        ]
       }
     }
   ]
