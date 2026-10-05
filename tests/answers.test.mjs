@@ -145,6 +145,15 @@ test('options compares the value of the picked option', async () => {
   assert.ok(Answers.KINDS.includes('grid') && Answers.KINDS.includes('options'));
 });
 
+test('options with parts compares the picked values in part order', async () => {
+  const item = { kind: 'options', accept: ['0; 1'] };
+  assert.equal(await Answers.verify(item, '0; 1'), true);
+  assert.equal(await Answers.verify(item, '0 ;1'), true);
+  assert.equal(await Answers.verify(item, '1; 0'), false);
+  assert.equal(await Answers.verify(item, '0; 0'), false);
+  assert.equal(await Answers.verify(item, '0'), false);
+});
+
 test('perm has an example and rejects unreadable text', () => {
   assert.ok(Answers.exampleFor('perm').length > 0);
   assert.equal(Answers.read('perm', 'nu știu').ok, false);

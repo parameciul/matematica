@@ -18,7 +18,9 @@
 // shows a copy of that table with one box per empty cell.
 // An options item is a list of radio options that lives in the result, not on
 // the page (like "not a proposition / true / false"): the answer is the value
-// of the picked option, compared as text.
+// of the picked option, compared as text. With parts (one radio group per
+// part, like each simple proposition of a statement) the answer is the picked
+// values in part order, joined with ";".
 (function () {
   const KINDS = ['choice', 'truefalse', 'number', 'list', 'set', 'interval', 'text', 'perm', 'grid', 'options'];
   const TOL = 1e-9;
@@ -347,9 +349,15 @@
       return list.some((a) => cleanupText(String(a)) === student.text);
     }
     if (kind === 'options') {
-      return list.some((a) => String(a).trim() === student.value);
+      const got = optionsText(student.value);
+      return list.some((a) => optionsText(a) === got);
     }
     return false;
+  }
+
+  // "1 ;1" and "1; 1" are the same answer of an options item with parts.
+  function optionsText(text) {
+    return String(text).split(';').map((p) => p.trim()).join(';');
   }
 
   function exampleFor(kind) {

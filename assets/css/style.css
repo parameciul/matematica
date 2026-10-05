@@ -1756,6 +1756,24 @@ ol.clips .clip-dur {
   outline-offset: 1px;
 }
 
+/* Options with parts: one small radio group per part, the part named above
+   its options and the options side by side when they fit. */
+.check-part {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.check-part-title {
+  margin: 0;
+  font-weight: 700;
+}
+
+.check-part-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 0.75rem;
+}
+
 /* A table to fill in: a copy of the page table, one box per empty cell. The
    dialog sits outside the article, so it gets its own table rules; a wide
    table scrolls inside the dialog instead of widening it. */

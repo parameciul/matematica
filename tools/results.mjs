@@ -314,30 +314,44 @@ export function checkItems(items) {
       }
     }
     if (item.kind === 'options') {
-      // The radio options live in the result: a value (what is compared and
-      // what the chip on the page shows) and a label per language (what the
-      // popup shows).
+      // The radio options live in the result: a value (what is compared), a
+      // label per language (what the popup shows) and an optional chip per
+      // language (what the page shows after the check; the value otherwise).
+      // With parts the popup shows one group per part and the answer is the
+      // picked values joined with ";", so no value may hold a ";".
       const options = item.options;
-      const valid = Array.isArray(options) && options.length >= 2 && options.every((o) => o
-        && typeof o.value === 'string' && o.value.trim()
-        && o.label && typeof o.label.ro === 'string' && o.label.ro.trim()
-        && typeof o.label.en === 'string' && o.label.en.trim());
+      const isText = (x) => typeof x === 'string' && x.trim();
+      const both = (x) => x && isText(x.ro) && isText(x.en);
+      const valid = Array.isArray(options) && options.length >= 2
+        && options.every((o) => o && isText(o.value) && both(o.label));
       if (!valid) {
         problems.push(`${where}: options must be a list of 2 or more { value, label: { ro, en } }`);
       } else {
         const values = options.map((o) => o.value.trim());
         if (new Set(values).size !== values.length) problems.push(`${where}: option values must be unique`);
+        if (values.some((v) => v.includes(';'))) problems.push(`${where}: an option value must not hold ";"`);
+        if (options.some((o) => o.chip !== undefined && !both(o.chip))) problems.push(`${where}: an option chip needs both ro and en`);
+        const parts = item.parts;
+        if (parts !== undefined && (!Array.isArray(parts) || !parts.length || !parts.every(both))) {
+          problems.push(`${where}: parts must be a list of 1 or more { ro, en } names`);
+        }
+        const count = Array.isArray(parts) && parts.length ? parts.length : 1;
         if (Array.isArray(item.accept)) {
           if (item.accept.length !== 1) problems.push(`${where}: an options item accepts exactly one value`);
           for (const a of item.accept) {
-            if (typeof a === 'string' && a.trim() && !values.includes(a.trim())) {
-              problems.push(`${where}: accept "${a}" is not one of the option values`);
+            if (!isText(a)) continue; // already reported above
+            const pieces = a.split(';').map((p) => p.trim());
+            if (pieces.length !== count) {
+              problems.push(`${where}: accept "${a}" holds ${pieces.length} values but the item has ${count} part(s)`);
+            }
+            for (const piece of pieces) {
+              if (!values.includes(piece)) problems.push(`${where}: accept "${a}": "${piece}" is not one of the option values`);
             }
           }
         }
       }
-    } else if (item.options !== undefined) {
-      problems.push(`${where}: only an options item holds options`);
+    } else if (item.options !== undefined || item.parts !== undefined) {
+      problems.push(`${where}: only an options item holds options or parts`);
     }
   }
   return problems;

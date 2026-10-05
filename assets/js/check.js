@@ -111,7 +111,7 @@
       if (!entry) return;
       const btn = buttonFor(key);
       if (entry.pick !== undefined) markChoice(box, entry.pick, entry.ok);
-      else if (entry.a !== undefined && btn) markText(box, entry.c !== undefined ? entry.c : entry.a, entry.ok, btn);
+      else if (entry.a !== undefined && btn) markText(box, entry.c !== undefined ? chipText(entry.c) : entry.a, entry.ok, btn);
     });
     refreshReset();
   }
@@ -213,17 +213,7 @@
         body.appendChild(label);
       });
     } else if (kind === 'options') {
-      (Array.isArray(item.options) ? item.options : []).forEach((opt, i) => {
-        const label = el('label', 'check-option');
-        const radio = el('input');
-        radio.type = 'radio';
-        radio.name = `check-${uid}-${key}`;
-        radio.value = String(i);
-        label.appendChild(radio);
-        const text = opt && opt.label ? opt.label[getLang()] || opt.label.ro || '' : '';
-        label.appendChild(el('span', null, text || String(opt && opt.value)));
-        body.appendChild(label);
-      });
+      openOptions(body, key, item);
     } else if (kind === 'grid') {
       openGrid(body, box, item);
     } else if (kind === 'perm' && permSizes(item).length) {
@@ -266,6 +256,58 @@
     field.value = field.value.slice(0, s) + text + field.value.slice(e);
     field.focus();
     field.setSelectionRange(s + text.length, s + text.length);
+  }
+
+  // Options: one radio group, or one group per part (each named by its
+  // position only, like "the first simple proposition": naming the parts
+  // themselves would give the answer away).
+  function optionsParts(item) {
+    return Array.isArray(item.parts) && item.parts.length ? item.parts : null;
+  }
+
+  function optionsGroup(key, i) {
+    return i === null ? `check-${uid}-${key}` : `check-${uid}-${key}-${i}`;
+  }
+
+  function openOptions(host, key, item) {
+    const options = Array.isArray(item.options) ? item.options : [];
+    const group = (into, name) => {
+      options.forEach((opt, i) => {
+        const label = el('label', 'check-option');
+        const radio = el('input');
+        radio.type = 'radio';
+        radio.name = name;
+        radio.value = String(i);
+        label.appendChild(radio);
+        const text = opt && opt.label ? opt.label[getLang()] || opt.label.ro || '' : '';
+        label.appendChild(el('span', null, text || String(opt && opt.value)));
+        into.appendChild(label);
+      });
+    };
+    const parts = optionsParts(item);
+    if (!parts) {
+      group(host, optionsGroup(key, null));
+      return;
+    }
+    parts.forEach((part, i) => {
+      const wrap = el('div', 'check-part');
+      wrap.setAttribute('role', 'radiogroup');
+      const title = el('p', 'check-part-title', (part && (part[getLang()] || part.ro)) || '');
+      title.id = `check-part-${key}-${i}`;
+      wrap.setAttribute('aria-labelledby', title.id);
+      wrap.appendChild(title);
+      const row = el('div', 'check-part-options');
+      group(row, optionsGroup(key, i));
+      wrap.appendChild(row);
+      host.appendChild(wrap);
+    });
+  }
+
+  // The chip text: a plain string, or { ro, en } so both pages of a material
+  // (they share one saved entry) show it in their own language.
+  function chipText(c) {
+    if (c && typeof c === 'object') return c[getLang()] || c.ro || '';
+    return String(c);
   }
 
   // A grid: the table right after the exercise line, copied into the popup
@@ -375,9 +417,18 @@
       return checked ? { value: checked.value } : null;
     }
     if (item.kind === 'options') {
-      const checked = body.querySelector('input[type="radio"]:checked');
-      const opt = checked && Array.isArray(item.options) ? item.options[Number(checked.value)] : null;
-      return opt ? { value: String(opt.value) } : null;
+      const options = Array.isArray(item.options) ? item.options : [];
+      const parts = optionsParts(item);
+      const picked = [];
+      for (const i of parts ? parts.map((p, n) => n) : [null]) {
+        const checked = body.querySelector(`input[name="${optionsGroup(key, i)}"]:checked`);
+        const opt = checked ? options[Number(checked.value)] : null;
+        if (!opt) return null; // every group needs a pick
+        picked.push(opt);
+      }
+      const value = picked.map((o) => String(o.value)).join('; ');
+      const one = picked.length === 1 ? picked[0] : null;
+      return { value, chip: one && one.chip ? { ro: one.chip.ro, en: one.chip.en } : value };
     }
     if (item.kind === 'grid') {
       const inputs = Array.from(body.querySelectorAll('input.grid-cell'));
@@ -476,6 +527,9 @@
     } else if (item.kind === 'grid') {
       if (btn) markText(box, '', ok, btn);
       remember(key, { a: given.value, ok, c: '' });
+    } else if (item.kind === 'options') {
+      if (btn) markText(box, chipText(given.chip), ok, btn);
+      remember(key, { a: given.value, ok, c: given.chip });
     } else {
       if (btn) markText(box, given.value, ok, btn);
       remember(key, { a: given.value, ok });

@@ -312,7 +312,45 @@ test('an options item without both labels fails', (t) => {
 test('an options accept that is not an option value fails', (t) => {
   const res = fails(t, { items: { 1: { kind: 'options', show: '$x$', options: OPTIONS, accept: ['DA'] } } },
     { answers: ONE_EXERCISE });
-  assert.match(res.out, /accept "DA" is not one of the option values/);
+  assert.match(res.out, /"DA" is not one of the option values/);
+});
+
+const TF = [
+  { value: '1', label: { ro: 'adevărată', en: 'true' } },
+  { value: '0', label: { ro: 'falsă', en: 'false' } },
+];
+const TWO_PARTS = [{ ro: 'Prima', en: 'The first' }, { ro: 'A doua', en: 'The second' }];
+
+test('an options item with parts and one value per part saves', (t) => {
+  const res = savesWith(t, { items: { 1: { kind: 'options', show: '$x$', options: TF, parts: TWO_PARTS, accept: ['1; 0'] } } },
+    '<p data-ex="1">x</p>');
+  assert.equal(res.code, 0, res.out);
+});
+
+test('an options accept with the wrong count of parts fails', (t) => {
+  const res = fails(t, { items: { 1: { kind: 'options', show: '$x$', options: TF, parts: TWO_PARTS, accept: ['1'] } } },
+    { answers: ONE_EXERCISE });
+  assert.match(res.out, /holds 1 values but the item has 2 part\(s\)/);
+});
+
+test('an options part value that is not an option fails', (t) => {
+  const res = fails(t, { items: { 1: { kind: 'options', show: '$x$', options: TF, parts: TWO_PARTS, accept: ['1; 2'] } } },
+    { answers: ONE_EXERCISE });
+  assert.match(res.out, /"2" is not one of the option values/);
+});
+
+test('an option value with a semicolon fails', (t) => {
+  const bad = [{ value: '1; 1', label: { ro: 'a', en: 'a' } }, { value: '0', label: { ro: 'b', en: 'b' } }];
+  const res = fails(t, { items: { 1: { kind: 'options', show: '$x$', options: bad, accept: ['0'] } } },
+    { answers: ONE_EXERCISE });
+  assert.match(res.out, /must not hold ";"/);
+});
+
+test('an option chip with only ro fails', (t) => {
+  const bad = [{ ...OPTIONS[0], chip: { ro: 'NU' } }, OPTIONS[1], OPTIONS[2]];
+  const res = fails(t, { items: { 1: { kind: 'options', show: '$x$', options: bad, accept: ['–'] } } },
+    { answers: ONE_EXERCISE });
+  assert.match(res.out, /chip needs both ro and en/);
 });
 
 test('an options item with two accepted values or repeated values fails', (t) => {

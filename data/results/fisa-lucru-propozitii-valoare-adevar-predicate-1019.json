@@ -1,6 +1,6 @@
 {
   "uid": "1019",
-  "version": 2,
+  "version": 3,
   "items": {
     "1a": {
       "kind": "options",
@@ -11,6 +11,10 @@
           "label": {
             "ro": "NU, nu este propoziție",
             "en": "NO, it is not a proposition"
+          },
+          "chip": {
+            "ro": "NU",
+            "en": "NO"
           }
         },
         {
@@ -18,6 +22,10 @@
           "label": {
             "ro": "DA, propoziție adevărată: $v = 1$",
             "en": "YES, a true proposition: $v = 1$"
+          },
+          "chip": {
+            "ro": "DA, 1",
+            "en": "YES, 1"
           }
         },
         {
@@ -25,6 +33,10 @@
           "label": {
             "ro": "DA, propoziție falsă: $v = 0$",
             "en": "YES, a false proposition: $v = 0$"
+          },
+          "chip": {
+            "ro": "DA, 0",
+            "en": "YES, 0"
           }
         }
       ],
@@ -41,6 +53,10 @@
           "label": {
             "ro": "NU, nu este propoziție",
             "en": "NO, it is not a proposition"
+          },
+          "chip": {
+            "ro": "NU",
+            "en": "NO"
           }
         },
         {
@@ -48,6 +64,10 @@
           "label": {
             "ro": "DA, propoziție adevărată: $v = 1$",
             "en": "YES, a true proposition: $v = 1$"
+          },
+          "chip": {
+            "ro": "DA, 1",
+            "en": "YES, 1"
           }
         },
         {
@@ -55,6 +75,10 @@
           "label": {
             "ro": "DA, propoziție falsă: $v = 0$",
             "en": "YES, a false proposition: $v = 0$"
+          },
+          "chip": {
+            "ro": "DA, 0",
+            "en": "YES, 0"
           }
         }
       ],
@@ -71,6 +95,10 @@
           "label": {
             "ro": "NU, nu este propoziție",
             "en": "NO, it is not a proposition"
+          },
+          "chip": {
+            "ro": "NU",
+            "en": "NO"
           }
         },
         {
@@ -78,6 +106,10 @@
           "label": {
             "ro": "DA, propoziție adevărată: $v = 1$",
             "en": "YES, a true proposition: $v = 1$"
+          },
+          "chip": {
+            "ro": "DA, 1",
+            "en": "YES, 1"
           }
         },
         {
@@ -85,6 +117,10 @@
           "label": {
             "ro": "DA, propoziție falsă: $v = 0$",
             "en": "YES, a false proposition: $v = 0$"
+          },
+          "chip": {
+            "ro": "DA, 0",
+            "en": "YES, 0"
           }
         }
       ],
@@ -101,6 +137,10 @@
           "label": {
             "ro": "NU, nu este propoziție",
             "en": "NO, it is not a proposition"
+          },
+          "chip": {
+            "ro": "NU",
+            "en": "NO"
           }
         },
         {
@@ -108,6 +148,10 @@
           "label": {
             "ro": "DA, propoziție adevărată: $v = 1$",
             "en": "YES, a true proposition: $v = 1$"
+          },
+          "chip": {
+            "ro": "DA, 1",
+            "en": "YES, 1"
           }
         },
         {
@@ -115,6 +159,10 @@
           "label": {
             "ro": "DA, propoziție falsă: $v = 0$",
             "en": "YES, a false proposition: $v = 0$"
+          },
+          "chip": {
+            "ro": "DA, 0",
+            "en": "YES, 0"
           }
         }
       ],
@@ -131,6 +179,10 @@
           "label": {
             "ro": "NU, nu este propoziție",
             "en": "NO, it is not a proposition"
+          },
+          "chip": {
+            "ro": "NU",
+            "en": "NO"
           }
         },
         {
@@ -138,6 +190,10 @@
           "label": {
             "ro": "DA, propoziție adevărată: $v = 1$",
             "en": "YES, a true proposition: $v = 1$"
+          },
+          "chip": {
+            "ro": "DA, 1",
+            "en": "YES, 1"
           }
         },
         {
@@ -145,6 +201,10 @@
           "label": {
             "ro": "DA, propoziție falsă: $v = 0$",
             "en": "YES, a false proposition: $v = 0$"
+          },
+          "chip": {
+            "ro": "DA, 0",
+            "en": "YES, 0"
           }
         }
       ],
@@ -161,6 +221,10 @@
           "label": {
             "ro": "NU, nu este propoziție",
             "en": "NO, it is not a proposition"
+          },
+          "chip": {
+            "ro": "NU",
+            "en": "NO"
           }
         },
         {
@@ -168,6 +232,10 @@
           "label": {
             "ro": "DA, propoziție adevărată: $v = 1$",
             "en": "YES, a true proposition: $v = 1$"
+          },
+          "chip": {
+            "ro": "DA, 1",
+            "en": "YES, 1"
           }
         },
         {
@@ -175,6 +243,10 @@
           "label": {
             "ro": "DA, propoziție falsă: $v = 0$",
             "en": "YES, a false proposition: $v = 0$"
+          },
+          "chip": {
+            "ro": "DA, 0",
+            "en": "YES, 0"
           }
         }
       ],
@@ -191,6 +263,10 @@
           "label": {
             "ro": "NU, nu este propoziție",
             "en": "NO, it is not a proposition"
+          },
+          "chip": {
+            "ro": "NU",
+            "en": "NO"
           }
         },
         {
@@ -198,6 +274,10 @@
           "label": {
             "ro": "DA, propoziție adevărată: $v = 1$",
             "en": "YES, a true proposition: $v = 1$"
+          },
+          "chip": {
+            "ro": "DA, 1",
+            "en": "YES, 1"
           }
         },
         {
@@ -205,6 +285,10 @@
           "label": {
             "ro": "DA, propoziție falsă: $v = 0$",
             "en": "YES, a false proposition: $v = 0$"
+          },
+          "chip": {
+            "ro": "DA, 0",
+            "en": "YES, 0"
           }
         }
       ],
@@ -221,6 +305,10 @@
           "label": {
             "ro": "NU, nu este propoziție",
             "en": "NO, it is not a proposition"
+          },
+          "chip": {
+            "ro": "NU",
+            "en": "NO"
           }
         },
         {
@@ -228,6 +316,10 @@
           "label": {
             "ro": "DA, propoziție adevărată: $v = 1$",
             "en": "YES, a true proposition: $v = 1$"
+          },
+          "chip": {
+            "ro": "DA, 1",
+            "en": "YES, 1"
           }
         },
         {
@@ -235,6 +327,10 @@
           "label": {
             "ro": "DA, propoziție falsă: $v = 0$",
             "en": "YES, a false proposition: $v = 0$"
+          },
+          "chip": {
+            "ro": "DA, 0",
+            "en": "YES, 0"
           }
         }
       ],
@@ -271,48 +367,132 @@
       ]
     },
     "3a": {
-      "kind": "list",
+      "kind": "options",
       "show": "„$12 \\vdots 3$” ($1$), „$12 \\vdots 4$” ($1$)",
+      "options": [
+        {
+          "value": "1",
+          "label": {
+            "ro": "adevărată: $v = 1$",
+            "en": "true: $v = 1$"
+          }
+        },
+        {
+          "value": "0",
+          "label": {
+            "ro": "falsă: $v = 0$",
+            "en": "false: $v = 0$"
+          }
+        }
+      ],
+      "parts": [
+        {
+          "ro": "Prima propoziție simplă",
+          "en": "The first simple proposition"
+        },
+        {
+          "ro": "A doua propoziție simplă",
+          "en": "The second simple proposition"
+        }
+      ],
       "accept": [
         "1; 1"
-      ],
-      "hint": {
-        "ro": "valorile de adevăr ale propozițiilor simple, în ordinea din enunț",
-        "en": "the truth values of the simple propositions, in the order of the statement"
-      }
+      ]
     },
     "3b": {
-      "kind": "list",
+      "kind": "options",
       "show": "„$15$ este par” ($0$), „$15$ este multiplu de $5$” ($1$)",
+      "options": [
+        {
+          "value": "1",
+          "label": {
+            "ro": "adevărată: $v = 1$",
+            "en": "true: $v = 1$"
+          }
+        },
+        {
+          "value": "0",
+          "label": {
+            "ro": "falsă: $v = 0$",
+            "en": "false: $v = 0$"
+          }
+        }
+      ],
+      "parts": [
+        {
+          "ro": "Prima propoziție simplă",
+          "en": "The first simple proposition"
+        },
+        {
+          "ro": "A doua propoziție simplă",
+          "en": "The second simple proposition"
+        }
+      ],
       "accept": [
         "0; 1"
-      ],
-      "hint": {
-        "ro": "valorile de adevăr ale propozițiilor simple, în ordinea din enunț",
-        "en": "the truth values of the simple propositions, in the order of the statement"
-      }
+      ]
     },
     "3c": {
-      "kind": "list",
+      "kind": "options",
       "show": "„$2 &gt; 3$” ($0$), „$2^{2} &gt; 3^{2}$” ($0$)",
+      "options": [
+        {
+          "value": "1",
+          "label": {
+            "ro": "adevărată: $v = 1$",
+            "en": "true: $v = 1$"
+          }
+        },
+        {
+          "value": "0",
+          "label": {
+            "ro": "falsă: $v = 0$",
+            "en": "false: $v = 0$"
+          }
+        }
+      ],
+      "parts": [
+        {
+          "ro": "Prima propoziție simplă",
+          "en": "The first simple proposition"
+        },
+        {
+          "ro": "A doua propoziție simplă",
+          "en": "The second simple proposition"
+        }
+      ],
       "accept": [
         "0; 0"
-      ],
-      "hint": {
-        "ro": "valorile de adevăr ale propozițiilor simple, în ordinea din enunț",
-        "en": "the truth values of the simple propositions, in the order of the statement"
-      }
+      ]
     },
     "3d": {
-      "kind": "list",
+      "kind": "options",
       "show": "„$\\sqrt{5}$ este număr rațional” ($0$); enunțul dat este negația acestei propoziții",
+      "options": [
+        {
+          "value": "1",
+          "label": {
+            "ro": "adevărată: $v = 1$",
+            "en": "true: $v = 1$"
+          }
+        },
+        {
+          "value": "0",
+          "label": {
+            "ro": "falsă: $v = 0$",
+            "en": "false: $v = 0$"
+          }
+        }
+      ],
+      "parts": [
+        {
+          "ro": "Propoziția simplă",
+          "en": "The simple proposition"
+        }
+      ],
       "accept": [
         "0"
-      ],
-      "hint": {
-        "ro": "valorile de adevăr ale propozițiilor simple, în ordinea din enunț",
-        "en": "the truth values of the simple propositions, in the order of the statement"
-      }
+      ]
     },
     "4a": {
       "kind": "grid",
