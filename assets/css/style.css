@@ -1878,6 +1878,57 @@ ol.clips .clip-dur {
   font-weight: 700;
 }
 
+/* Answer-first blocks above the article: the summary states the idea in
+   words, the contents list jumps to each section. Same box language as the
+   article, so both themes work without new colour tokens. */
+.rezumat {
+  max-width: 50rem;
+  margin: 0 0 1.25rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--rule);
+  border-left: 5px solid var(--marker-edge);
+  border-radius: 4px;
+  background: var(--sheet);
+}
+
+.rezumat h2 {
+  margin: 0 0 0.3rem;
+  font-size: 1.15rem;
+}
+
+.rezumat p {
+  margin: 0;
+}
+
+.cuprins {
+  max-width: 50rem;
+  margin: 0 0 1.5rem;
+}
+
+.cuprins h2 {
+  margin: 0 0 0.4rem;
+  font-size: 1.15rem;
+}
+
+.cuprins ol {
+  margin: 0;
+  padding-left: 1.4rem;
+}
+
+.cuprins ol ol {
+  margin-top: 0.15rem;
+}
+
+.cuprins li {
+  margin-bottom: 0.25rem;
+}
+
+/* Anchored headings must land below the sticky header. */
+.material-body h2[id],
+.material-body h3[id] {
+  scroll-margin-top: calc(var(--header-h) + 1rem);
+}
+
 /* Search: header dropdown and search page */
 
 /* The dropdown is a box with two parts: the list scrolls, the "see all" line

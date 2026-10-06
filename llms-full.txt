@@ -11,7 +11,6 @@
 
 - La itemii cu variante de răspuns, încercuiește litera corespunzătoare singurului răspuns corect.
 - La itemii cu cerințele a) și b), scrie pe caiet rezolvarea completă.
-A. Numere naturale. Puteri. Divizibilitate
 class="exercises">
 -
 Rezultatul calculului $56:7 + 3 \cdot (12 - 5)$ este egal cu:
@@ -55,7 +54,6 @@ class="choices" data-ex="6">
 - b) $3^{5}$
 - c) $5^{7}$
 - d) $7^{3}$
-B. Fracții ordinare și zecimale. Organizarea datelor
 class="exercises" start="7">
 -
 Dintre fracțiile $\frac{7}{9}$, $\frac{9}{9}$, $\frac{11}{8}$ și $\frac{3}{10}$, fracția supraunitară este:
@@ -111,7 +109,6 @@ class="choices" data-ex="12">
 - b) $8$
 - c) $21$
 - d) $4$
-C. Probleme
 class="exercises" start="13">
 -
 Se consideră numerele naturale de forma $\overline{2a4b}$.
@@ -134,7 +131,6 @@ data-ex="16b">b) Află câți iepuri sunt în curte.
 
 - For multiple-choice items, circle the letter of the only correct answer.
 - For items with parts a) and b), write complete solutions in your notebook.
-A. Natural numbers. Powers. Divisibility
 class="exercises">
 -
 The result of $56:7 + 3 \cdot (12 - 5)$ is equal to:
@@ -178,7 +174,6 @@ class="choices" data-ex="6">
 - b) $3^{5}$
 - c) $5^{7}$
 - d) $7^{3}$
-B. Common and decimal fractions. Organizing data
 class="exercises" start="7">
 -
 Among the fractions $\frac{7}{9}$, $\frac{9}{9}$, $\frac{11}{8}$ and $\frac{3}{10}$, the improper fraction is:
@@ -234,7 +229,6 @@ class="choices" data-ex="12">
 - b) $8$
 - c) $21$
 - d) $4$
-C. Problems
 class="exercises" start="13">
 -
 Consider the natural numbers of the form $\overline{2a4b}$.
@@ -262,7 +256,6 @@ data-ex="16b">b) Find how many rabbits are in the yard.
 
 - La itemii cu variante de răspuns, încercuiește litera corespunzătoare singurului răspuns corect.
 - La itemii cu cerințele a) și b), scrie pe caiet rezolvarea completă.
-A. Punct, dreaptă, segment, unghi
 class="exercises">
 -
 Punctele $A$, $B$ și $C$ sunt coliniare, în această ordine, $AB = 7\text{ cm}$ și $BC = 5\text{ cm}$. Lungimea segmentului $AC$ este:
@@ -292,7 +285,6 @@ class="choices" data-ex="4">
 - b) $59{^\circ}75'$
 - c) $59{^\circ}15'$
 - d) $60{^\circ}75'$
-B. Unități de măsură. Perimetre, arii, volume
 class="exercises" start="5">
 -
 Lungimea de $3,2\text{ m}$, exprimată în centimetri, este:
@@ -329,7 +321,6 @@ class="choices" data-ex="9">
 - b) $80$ de litri
 - c) $0,8$ litri
 - d) $800$ de litri
-C. Probleme
 class="exercises" start="10">
 -
 Lucrează pe caiet, cu rigla gradată și raportorul.
@@ -352,7 +343,6 @@ data-ex="13b">b) O cutie de parchet acoperă $2,5\text{ m}^{2}$. Află numărul 
 
 - For multiple-choice items, circle the letter of the only correct answer.
 - For items with parts a) and b), write complete solutions in your notebook.
-A. Point, line, segment, angle
 class="exercises">
 -
 Points $A$, $B$ and $C$ are collinear, in this order, $AB = 7\text{ cm}$ and $BC = 5\text{ cm}$. The length of segment $AC$ is:
@@ -382,7 +372,6 @@ class="choices" data-ex="4">
 - b) $59{^\circ}75'$
 - c) $59{^\circ}15'$
 - d) $60{^\circ}75'$
-B. Measurement units. Perimeters, areas, volumes
 class="exercises" start="5">
 -
 The length $3,2\text{ m}$, expressed in centimetres, is:
@@ -419,7 +408,6 @@ class="choices" data-ex="9">
 - b) $80$ litres
 - c) $0,8$ litres
 - d) $800$ litres
-C. Problems
 class="exercises" start="10">
 -
 Work in your notebook, using a graduated ruler and a protractor.
@@ -672,7 +660,7 @@ The message
 - Fișa conține 50 de itemi, grupați pe cinci teme, cu numerotare continuă.
 - La itemii cu variante de răspuns, încercuiește litera corespunzătoare singurului răspuns corect.
 - La itemii cu cerințele a) și b), scrie pe caiet rezolvarea completă.
-I. Numere naturale. Divizibilitate. Fracții (clasele a V-a și a VI-a)
+(clasele a V-a și a VI-a)
 class="exercises">
 -
 Rezultatul calculului $2^{3} + 5 \cdot (18 - 3 \cdot 4):3$ este egal cu:
@@ -731,7 +719,7 @@ data-ex="8b">b) Determină numărul de pagini ale cărții.
 La un concurs participă între $300$ și $400$ de elevi. Dacă elevii sunt grupați câte $12$, câte $15$ sau câte $18$, de fiecare dată rămân negrupați $5$ elevi.
 a) Arată că cel mai mic multiplu comun al numerelor $12$, $15$ și $18$ este $180$.
 data-ex="9b">b) Determină numărul elevilor care participă la concurs.
-II. Numere întregi, raționale și reale (clasele a VI-a și a VII-a)
+(clasele a VI-a și a VII-a)
 class="exercises" start="10">
 -
 Rezultatul calculului $( - 2)^{3} - ( - 12):( - 3) + 4 \cdot ( - 1)^{2027}$ este egal cu:
@@ -783,7 +771,7 @@ data-ex="16b">b) Arată că $b = 1$ și calculează media geometrică a numerelo
 Se consideră numărul real $N = \frac{10}{\sqrt{5}} - \sqrt{20} + \frac{\sqrt{45}}{3}$.
 a) Arată că $N = \sqrt{5}$.
 b) Arată că $2,2 < N < 2,3$.
-III. Rapoarte și proporții. Ecuații, inecuații, sisteme. Organizarea datelor (clasele a VI-a și a VII-a)
+(clasele a VI-a și a VII-a)
 class="exercises" start="18">
 -
 Numărul elementelor mulțimii $A = \left\{ x \in {\mathbb{Z}}\ |\ \text{−3} < 2x + 1 \leq 7 \right\}$ este:
@@ -847,7 +835,7 @@ $5$
 $3$
 data-ex="25a">a) Determină ce procent din elevii clasei au media cel puțin $8$.
 data-ex="25b">b) Calculează media clasei la matematică (media aritmetică ponderată a mediilor elevilor).
-IV. Unități de măsură. Unghiuri. Triunghiuri (clasele a V-a și a VI-a)
+(clasele a V-a și a VI-a)
 class="exercises" start="26">
 -
 Un acvariu în formă de paralelipiped dreptunghic are dimensiunile de $60\text{ cm}$, $30\text{ cm}$ și $40\text{ cm}$. Capacitatea acvariului este de:
@@ -910,7 +898,7 @@ b) Demonstrează că semidreapta $OM$ este bisectoarea unghiului $xOy$.
 Triunghiul $ABC$ este dreptunghic în $A$, $m(\sphericalangle B) = 30{^\circ}$ și $BC = 12\text{ cm}$. Punctul $M$ este mijlocul segmentului $BC$, iar $AD\bot BC$, $D \in BC$.
 data-ex="35a">a) Calculează lungimea segmentului $AC$.
 data-ex="35b">b) Demonstrează că triunghiul $AMC$ este echilateral și calculează lungimea segmentului $DM$.
-V. Patrulatere. Cercul. Asemănarea triunghiurilor. Relații metrice (clasa a VII-a)
+(clasa a VII-a)
 class="exercises" start="36">
 -
 În paralelogramul $ABCD$, $m(\sphericalangle A) = 3 \cdot m(\sphericalangle B)$. Măsura unghiului $C$ este:
@@ -1008,7 +996,7 @@ data-ex="50b">b) Calculează lungimea segmentului $AC$ și distanța de la punct
 - The worksheet has 50 items, grouped into five topics and numbered continuously.
 - For the multiple-choice items, circle the letter of the only correct answer.
 - For the items with parts a) and b), write the complete solution in your notebook.
-I. Natural numbers. Divisibility. Fractions (grades 5 and 6)
+(grades 5 and 6)
 class="exercises">
 -
 The result of the calculation $2^{3} + 5 \cdot (18 - 3 \cdot 4):3$ is equal to:
@@ -1067,7 +1055,7 @@ data-ex="8b">b) Find the number of pages in the book.
 Between $300$ and $400$ students take part in a contest. If the students are put in groups of $12$, of $15$ or of $18$, each time $5$ students are left without a group.
 a) Show that the least common multiple of the numbers $12$, $15$ and $18$ is $180$.
 data-ex="9b">b) Find the number of students who take part in the contest.
-II. Integers, rational and real numbers (grades 6 and 7)
+(grades 6 and 7)
 class="exercises" start="10">
 -
 The result of the calculation $( - 2)^{3} - ( - 12):( - 3) + 4 \cdot ( - 1)^{2027}$ is equal to:
@@ -1119,7 +1107,7 @@ data-ex="16b">b) Show that $b = 1$ and calculate the geometric mean of the numbe
 Consider the real number $N = \frac{10}{\sqrt{5}} - \sqrt{20} + \frac{\sqrt{45}}{3}$.
 a) Show that $N = \sqrt{5}$.
 b) Show that $2,2 < N < 2,3$.
-III. Ratios and proportions. Equations, inequalities, systems. Organizing data (grades 6 and 7)
+(grades 6 and 7)
 class="exercises" start="18">
 -
 The number of elements of the set $A = \left\{ x \in {\mathbb{Z}}\ |\ \text{−3} < 2x + 1 \leq 7 \right\}$ is:
@@ -1183,7 +1171,7 @@ $5$
 $3$
 data-ex="25a">a) Find what percentage of the students in the class have an average of at least $8$.
 data-ex="25b">b) Calculate the class average in math (the weighted arithmetic mean of the students' averages).
-IV. Units of measurement. Angles. Triangles (grades 5 and 6)
+(grades 5 and 6)
 class="exercises" start="26">
 -
 An aquarium in the shape of a rectangular cuboid has the dimensions $60\text{ cm}$, $30\text{ cm}$ and $40\text{ cm}$. The capacity of the aquarium is:
@@ -1246,7 +1234,7 @@ b) Prove that the ray $OM$ is the bisector of angle $xOy$.
 Triangle $ABC$ is a right triangle with the right angle at $A$, $m(\sphericalangle B) = 30{^\circ}$ and $BC = 12\text{ cm}$. Point $M$ is the midpoint of segment $BC$, and $AD\bot BC$, $D \in BC$.
 data-ex="35a">a) Calculate the length of segment $AC$.
 data-ex="35b">b) Prove that triangle $AMC$ is equilateral and calculate the length of segment $DM$.
-V. Quadrilaterals. The circle. Similar triangles. Metric relations (grade 7)
+(grade 7)
 class="exercises" start="36">
 -
 In parallelogram $ABCD$, $m(\sphericalangle A) = 3 \cdot m(\sphericalangle B)$. The measure of angle $C$ is:
@@ -1682,7 +1670,6 @@ $\lbrack x\rbrack\ \leq \ x\ < \ \lbrack x\rbrack\ + \ 1$ — partea întreagă 
 $\{ x\}\ = \ x\ - \ \lbrack x\rbrack$, $0\ \leq \ \{ x\}\ < \ 1$ — partea fracționară a lui $x$.
 $x\ = \ \lbrack x\rbrack\ + \ \{ x\}$
 $\lbrack x\ + \ n\rbrack\ = \ \lbrack x\rbrack\ + \ n$ și $\{ x\ + \ n\}\ = \ \{ x\}$, oricare ar fi $n\ \in \ {\mathbb{Z}}$.
-Nivelul I – Cunoaștere și calcul direct
 class="exercises">
 -
 Calculați $\lbrack 7,3\rbrack$ și $\{ 7,3\}$.
@@ -1698,7 +1685,6 @@ Calculați $\lbrack - \sqrt{2}\rbrack$ și $\{ - \sqrt{2}\}$, știind că $1\ < 
 Calculați $\lbrack\frac{17}{4}\rbrack$ și $\{\frac{17}{4}\}$.
 -
 Determinați numărul real $x$, știind că $\lbrack x\rbrack\ = \ - 3$ și $\{ x\}\ = \ 0,25$.
-Nivelul II – Ecuații și proprietăți
 class="exercises" start="8">
 -
 Rezolvați în $\mathbb{R}$ ecuația $\lbrack x\rbrack\ = \ 4$.
@@ -1714,7 +1700,6 @@ Arătați că $\{ x\ + \ 7\}\ = \ \{ x\}$, oricare ar fi $x\ \in \ {\mathbb{R}}$
 Rezolvați ecuația ${\lbrack x\rbrack}^{2}\ = \ 9$, pentru $x\ \geq \ 0$.
 -
 Rezolvați ecuația $\lbrack 3x\ - \ 2\rbrack\ = \ 4$.
-Nivelul III – Ecuații, proprietăți și discuții de caz
 class="exercises" start="15">
 -
 Rezolvați ecuația ${\lbrack x\rbrack}^{2}\ - \ 5\lbrack x\rbrack\ + \ 6\ = \ 0$.
@@ -1730,7 +1715,6 @@ Determinați valorile posibile ale expresiei $E\ = \ \{ x\}\ + \ \{ - x\}$, $x\ 
 Arătați că $\lbrack x\ + \ 1\rbrack\ - \ \lbrack x\rbrack\ = \ 1$, oricare ar fi $x\ \in \ {\mathbb{R}}$.
 -
 Rezolvați ecuația $\lbrack x\rbrack\ \cdot \ \{ x\}\ = \ 0$.
-Nivelul IV – Performanță și tip concurs
 class="exercises" start="22">
 -
 Rezolvați ecuația $\lbrack x\rbrack\ + \ \lbrack 2x\rbrack\ = \ 10$, $x\ \in \ {\mathbb{R}}$.
@@ -1749,7 +1733,6 @@ $\lbrack x\rbrack\ \leq \ x\ < \ \lbrack x\rbrack\ + \ 1$ — the integer part o
 $\{ x\}\ = \ x\ - \ \lbrack x\rbrack$, $0\ \leq \ \{ x\}\ < \ 1$ — the fractional part of $x$.
 $x\ = \ \lbrack x\rbrack\ + \ \{ x\}$
 $\lbrack x\ + \ n\rbrack\ = \ \lbrack x\rbrack\ + \ n$ and $\{ x\ + \ n\}\ = \ \{ x\}$, for every $n\ \in \ {\mathbb{Z}}$.
-Level I – Knowledge and direct calculation
 class="exercises">
 -
 Calculate $\lbrack 7,3\rbrack$ and $\{ 7,3\}$.
@@ -1765,7 +1748,6 @@ Calculate $\lbrack - \sqrt{2}\rbrack$ and $\{ - \sqrt{2}\}$, given that $1\ < \ 
 Calculate $\lbrack\frac{17}{4}\rbrack$ and $\{\frac{17}{4}\}$.
 -
 Find the real number $x$, given that $\lbrack x\rbrack\ = \ - 3$ and $\{ x\}\ = \ 0,25$.
-Level II – Equations and properties
 class="exercises" start="8">
 -
 Solve in $\mathbb{R}$ the equation $\lbrack x\rbrack\ = \ 4$.
@@ -1781,7 +1763,6 @@ Show that $\{ x\ + \ 7\}\ = \ \{ x\}$ for every $x\ \in \ {\mathbb{R}}$.
 Solve the equation ${\lbrack x\rbrack}^{2}\ = \ 9$, for $x\ \geq \ 0$.
 -
 Solve the equation $\lbrack 3x\ - \ 2\rbrack\ = \ 4$.
-Level III – Equations, properties and case analysis
 class="exercises" start="15">
 -
 Solve the equation ${\lbrack x\rbrack}^{2}\ - \ 5\lbrack x\rbrack\ + \ 6\ = \ 0$.
@@ -1797,7 +1778,6 @@ Find the possible values of the expression $E\ = \ \{ x\}\ + \ \{ - x\}$, $x\ \i
 Show that $\lbrack x\ + \ 1\rbrack\ - \ \lbrack x\rbrack\ = \ 1$ for every $x\ \in \ {\mathbb{R}}$.
 -
 Solve the equation $\lbrack x\rbrack\ \cdot \ \{ x\}\ = \ 0$.
-Level IV – Advanced and competition problems
 class="exercises" start="22">
 -
 Solve the equation $\lbrack x\rbrack\ + \ \lbrack 2x\rbrack\ = \ 10$, $x\ \in \ {\mathbb{R}}$.
@@ -1815,7 +1795,6 @@ Find $x\ \in \ {\mathbb{R}}$ such that ${\lbrack x\rbrack}^{2}\ = \ x\ + \ \lbra
 - URL (EN): https://lauramiron.pages.dev/en/materiale/fisa-lucru-modulul-unui-numar-real-1012
 - Fișă de lucru pentru clasa a IX-a cu 15 exerciții despre modul: calcul, proprietăți și ecuații cu modul.
 
-I. Calculul modulului. Explicitarea modulului
 class="exercises">
 -
 Calculați:
@@ -1828,7 +1807,6 @@ Arătați că numărul $a = \left| 2\sqrt{3} - 4 \right| + \left| 2\sqrt{3} - 3 
 Arătați că $|x - 2| + |x + 3| = 5$, pentru orice $x \in \lbrack - 3,\ 2\rbrack$.
 -
 Scrieți fără modul expresia $E(x) = |x - 3| + |2x + 4|$, unde $x$ este un număr real.
-II. Proprietățile modulului
 class="exercises" start="5">
 -
 Arătați că numărul $N = \sqrt{\left( 1 - \sqrt{2} \right)^{2}} + \sqrt{\left( 3 - \sqrt{2} \right)^{2}}$ este natural.
@@ -1846,7 +1824,6 @@ data-ex="9a">a) $A = \left\{ x \in {\mathbb{Z}} \mid |2x - 1| \leq 5 \right\}$;
 data-ex="9b">b) $B = \left\{ x \in {\mathbb{R}} \mid |x + 2| > 3 \right\}$.
 -
 Fie $x$ un număr real astfel încât $|x - 1| \leq 2$. Arătați că $|3x + 1| \leq 10$.
-III. Ecuații cu modul
 class="exercises" start="11">
 -
 Rezolvați în mulțimea numerelor reale ecuațiile:
@@ -1873,7 +1850,6 @@ data-ex="15b">b) Rezolvați în mulțimea numerelor reale ecuația $E(x) = 4$.
 
 --- EN ---
 
-I. Evaluating absolute values. Removing the absolute value bars
 class="exercises">
 -
 Calculate:
@@ -1886,7 +1862,6 @@ Show that the number $a = \left| 2\sqrt{3} - 4 \right| + \left| 2\sqrt{3} - 3 \r
 Show that $|x - 2| + |x + 3| = 5$, for any $x \in \lbrack - 3,\ 2\rbrack$.
 -
 Rewrite without the absolute value the expression $E(x) = |x - 3| + |2x + 4|$, where $x$ is a real number.
-II. Properties of the absolute value
 class="exercises" start="5">
 -
 Show that the number $N = \sqrt{\left( 1 - \sqrt{2} \right)^{2}} + \sqrt{\left( 3 - \sqrt{2} \right)^{2}}$ is a natural number.
@@ -1904,7 +1879,6 @@ data-ex="9a">a) $A = \left\{ x \in {\mathbb{Z}} \mid |2x - 1| \leq 5 \right\}$;
 data-ex="9b">b) $B = \left\{ x \in {\mathbb{R}} \mid |x + 2| > 3 \right\}$.
 -
 Let $x$ be a real number such that $|x - 1| \leq 2$. Show that $|3x + 1| \leq 10$.
-III. Equations with absolute values
 class="exercises" start="11">
 -
 Solve in $\mathbb{R}$ the equations:
@@ -1940,19 +1914,15 @@ class="retine">
 class="retine-title">Legătura cu programa
 Mulțimea numerelor reale, modulul (definiție, proprietăți, interpretare ca distanță), intervalele și inecuațiile în $\mathbb{R}$ sunt achiziții din clasele a VII-a – a VIII-a, pe care le reactivăm la începutul clasei a IX-a.
 Partea întreagă și partea fracționară sunt noțiuni noi. Programa de clasa a IX-a le prevede ca exemple de funcții (funcția modul, funcția parte întreagă, funcția parte fracționară) în Unitatea de învățare 4 – Funcții. Proprietăți generale. Aici lucrăm cu ele ca numere; graficele și proprietățile lor ca funcții se studiază în Unitatea 4.
-1. Mulțimi de numere
 - ${\mathbb{N}} = \{ 0,\ 1,\ 2,\ 3,\ \ldots\}$ – numerele naturale; ${\mathbb{Z}} = \{\ldots,\ - 2,\ - 1,\ 0,\ 1,\ 2,\ \ldots\}$ – numerele întregi;
 - ${\mathbb{Q}} = \{\frac{a}{b}\text{ | }a \in {\mathbb{Z}},\ b \in {\mathbb{Z}}^{*}\}$ – numerele raționale (scriere zecimală finită sau periodică);
 - ${\mathbb{R}} \smallsetminus {\mathbb{Q}}$ – numerele iraționale (scriere zecimală infinită și neperiodică), de exemplu $\sqrt{2}$, $\sqrt{3}$, $\pi$;
 - ${\mathbb{N}} \subset {\mathbb{Z}} \subset {\mathbb{Q}} \subset {\mathbb{R}}$; notații: ${\mathbb{R}}^{*} = {\mathbb{R}} \smallsetminus \{ 0\}$, ${\mathbb{R}}_{+} = (0,\ + \infty)$ (numerele reale strict pozitive, fără $0$), ${\mathbb{R}}_{-} = ( - \infty,\ 0)$ (numerele reale strict negative, fără $0$).
-2. Relația de ordine pe ℝ. Intervale
-2.1. Proprietăți ale inegalităților
 Pentru orice $a,\ b,\ c,\ d \in {\mathbb{R}}$:
 - $a \leq b$ și $b \leq c$ $\Rightarrow$ $a \leq c$ (tranzitivitate); $a \leq b$ $\Rightarrow$ $a + c \leq b + c$;
 - $a \leq b$ și $c \leq d$ $\Rightarrow$ $a + c \leq b + d$ (inegalitățile de același sens se adună);
 - $a \leq b$ și $c > 0$ $\Rightarrow$ $ac \leq bc$; $a \leq b$ și $c < 0$ $\Rightarrow$ $ac \geq bc$ (se schimbă sensul inegalității!);
 - $0 < a \leq b$ $\Rightarrow$ $\frac{1}{a} \geq \frac{1}{b}$; $x^{2} \geq 0$ pentru orice $x \in {\mathbb{R}}$, iar $x^{2} = 0 \Leftrightarrow x = 0$.
-2.2. Intervale de numere reale
 Fie $a,\ b \in {\mathbb{R}}$, $a < b$.
 Tipul intervalului
 Notația
@@ -1977,8 +1947,6 @@ class="retine">
 class="retine-title">Exemplu
 Pentru $A = \lbrack - 2,\ 3)$ și $B = (1,\ 5\rbrack$: $A \cap B = (1,\ 3)$, $A \cup B = \lbrack - 2,\ 5\rbrack$, $A \smallsetminus B = \lbrack - 2,\ 1\rbrack$, $B \smallsetminus A = \lbrack 3,\ 5\rbrack$.
 La $\pm \infty$ intervalul este întotdeauna deschis: scriem $\lbrack a,\ + \infty)$, niciodată $\lbrack a,\ + \infty\rbrack$.
-3. Modulul unui număr real
-3.1. Definiție. Interpretare geometrică
 class="retine">
 class="retine-title">Definiție
 Modulul (valoarea absolută) a numărului real $x$ este:
@@ -1988,7 +1956,6 @@ x,\ & \text{dacă }x \geq 0 \\
 \end{matrix} \right.$$
 - $|x|$ este distanța de la punctul de coordonată $x$ la originea axei; $|x - a|$ este distanța dintre punctele de coordonate $x$ și $a$.
 - Exemple: $| - 5| = 5$; $|0| = 0$; $\left| \sqrt{2} - 2 \right| = 2 - \sqrt{2}$ (deoarece $\sqrt{2} < 2$); $|\pi - 3| = \pi - 3$ (deoarece $\pi > 3$).
-3.2. Proprietățile modulului
 Pentru orice $x,\ y \in {\mathbb{R}}$ și $a > 0$:
 Nr.
 Proprietatea
@@ -2020,7 +1987,6 @@ $|x| < a$ $\Leftrightarrow$ $x \in ( - a,\ a)$
 9
 $|x| \geq a$ $\Leftrightarrow$ $x \leq - a$ sau $x \geq a$
 $$x \in ( - \infty,\ - a\rbrack \cup \lbrack a,\ + \infty)$$
-3.3. Calcule: eliminarea modulului
 Stabilim semnul expresiei din modul (comparând numerele), apoi aplicăm definiția.
 class="retine">
 class="retine-title">Exemplul 1
@@ -2031,7 +1997,6 @@ Pentru $x \in \lbrack - 2,\ 1\rbrack$: $x - 1 \leq 0$ și $x + 2 \geq 0$, deci $
 class="retine">
 class="retine-title">Exemplul 3
 $\sqrt{\left( \sqrt{5} - 3 \right)^{2}} + \sqrt{\left( \sqrt{5} - 2 \right)^{2}} = \left| \sqrt{5} - 3 \right| + \left| \sqrt{5} - 2 \right| = 3 - \sqrt{5} + \sqrt{5} - 2 = 1$.
-3.4. Ecuații cu modul
 Tipul ecuației
 Metoda de rezolvare
 $$\left| E(x) \right| = a$$
@@ -2071,7 +2036,6 @@ $2 - 2x = 4 \Rightarrow x = - 1$ ✓
 $2 = 4$, fals
 $2x - 2 = 4 \Rightarrow x = 3$ ✓
 Soluțiile găsite aparțin intervalelor corespunzătoare, deci $S = \{ - 1,\ 3\}$.
-3.5. Inecuații cu modul
 Tipul inecuației
 Echivalență
 $\left| E(x) \right| \leq a$, $a > 0$
@@ -2091,8 +2055,6 @@ $|x + 3| \geq 2$ $\Leftrightarrow$ $x + 3 \leq - 2$ sau $x + 3 \geq 2$ $\Leftrig
 class="retine">
 class="retine-title">Exemplul 9 (distanță)
 $|x - 4| \leq 1$: punctele aflate la distanță cel mult $1$ de punctul $4$, adică $S = \lbrack 3,\ 5\rbrack$.
-4. Partea întreagă și partea fracționară a unui număr real
-4.1. Definiții
 class="retine">
 class="retine-title">Definiție
 Pentru orice $x \in {\mathbb{R}}$ există un singur număr întreg $k$ astfel încât $k \leq x < k + 1$. Acest număr se numește partea întreagă a lui $x$ și se notează $\lbrack x\rbrack$. Așadar $\lbrack x\rbrack$ este cel mai mare număr întreg mai mic sau egal cu $x$.
@@ -2128,7 +2090,6 @@ $$- 2 < - \sqrt{2} < - 1$$
 class="retine">
 class="retine-title">Atenție!
 $\left\lbrack - \text{2,6} \right\rbrack = - 3$, nu $- 2$. Pentru numerele negative, partea întreagă nu se obține „tăind zecimalele”. Partea fracționară este întotdeauna în $\lbrack 0,\ 1)$: $\left\{ - \text{2,6} \right\} = - \text{2,6} - ( - 3) = \text{0,4}$.
-4.2. Proprietăți
 Pentru orice $x,\ y \in {\mathbb{R}}$ și $k \in {\mathbb{Z}}$:
 Nr.
 Proprietatea
@@ -2161,14 +2122,12 @@ utile la inecuații
 9
 $\lbrack x\rbrack + \left\lbrack x + \frac{1}{2} \right\rbrack = \lbrack 2x\rbrack$ (identitatea lui Hermite)
 extindere – demonstrația: fișa de lucru, itemul 29
-4.3. Calcule
 class="retine">
 class="retine-title">Exemplul 10
 $49 \leq 50 < 64$ $\Rightarrow$ $7 \leq \sqrt{50} < 8$, deci $\left\lbrack \sqrt{50} \right\rbrack = 7$, $\left\{ \sqrt{50} \right\} = \sqrt{50} - 7 = 5\sqrt{2} - 7$, iar $\left\lbrack - \sqrt{50} \right\rbrack = - 8$.
 class="retine">
 class="retine-title">Exemplul 11
 $S = \left\lbrack \sqrt{1} \right\rbrack + \left\lbrack \sqrt{2} \right\rbrack + \ldots + \left\lbrack \sqrt{8} \right\rbrack$. Pentru $n \in \{ 1,\ 2,\ 3\}$ avem $\left\lbrack \sqrt{n} \right\rbrack = 1$, iar pentru $n \in \{ 4,\ \ldots,\ 8\}$ avem $\left\lbrack \sqrt{n} \right\rbrack = 2$. Deci $S = 3 \cdot 1 + 5 \cdot 2 = 13$.
-4.4. Ecuații cu parte întreagă și parte fracționară
 Tipul ecuației
 Metoda de rezolvare
 $\left\lbrack E(x) \right\rbrack = k$, $k \in {\mathbb{Z}}$
@@ -2193,14 +2152,12 @@ $k = 0 \Rightarrow f = 0 \Rightarrow x = 0$; $k = 1 \Rightarrow f = \frac{2}{3} 
 class="retine">
 class="retine-title">Exemplul 15
 $\lbrack x\rbrack^{2} - 3\lbrack x\rbrack + 2 = 0$. Cu $t = \lbrack x\rbrack$: $(t - 1)(t - 2) = 0$ $\Rightarrow$ $\lbrack x\rbrack \in \{ 1,\ 2\}$ $\Rightarrow$ $x \in \lbrack 1,\ 2) \cup \lbrack 2,\ 3) = \lbrack 1,\ 3)$.
-4.5. Inecuații cu parte întreagă
 class="retine">
 class="retine-title">Exemplul 16
 $\lbrack 2x - 1\rbrack < 3$ $\Leftrightarrow$ $\lbrack 2x - 1\rbrack \leq 2$ $\Leftrightarrow$ $2x - 1 < 3$ $\Leftrightarrow$ $x < 2$. Deci $S = ( - \infty,\ 2)$.
 class="retine">
 class="retine-title">Exemplul 17
 $- 1 \leq \left\lbrack \frac{x}{2} \right\rbrack \leq 1$ $\Leftrightarrow$ $- 1 \leq \frac{x}{2} < 2$ $\Leftrightarrow$ $- 2 \leq x < 4$. Deci $S = \lbrack - 2,\ 4)$.
-5. Greșeli frecvente
 Greșit
 Corect
 $$\sqrt{x^{2}} = x$$
@@ -2219,7 +2176,6 @@ $$\lbrack 2x\rbrack = 2\lbrack x\rbrack$$
 fals în general: $\left\lbrack 2 \cdot \text{0,5} \right\rbrack = 1$, dar $2\left\lbrack \text{0,5} \right\rbrack = 0$
 $$\lbrack x + y\rbrack = \lbrack x\rbrack + \lbrack y\rbrack$$
 adevărat doar dacă $\left\{ x \right\} + \left\{ y \right\} < 1$
-6. Algoritm general pentru ecuații și inecuații
 - Identific tipul ecuației/inecuației (tabelele de la 3.4, 3.5 și 4.4).
 - Scriu condițiile: membrul drept $\geq 0$ (la $\left| E(x) \right| = F(x)$), $k \in {\mathbb{Z}}$ (la parte întreagă), $f \in \lbrack 0,\ 1)$ (la parte fracționară).
 - Rezolv pe cazuri sau pe intervale.
@@ -2233,19 +2189,15 @@ class="retine">
 class="retine-title">Link to the curriculum
 The set of real numbers, absolute value (definition, properties, interpretation as distance), intervals and inequalities in $\mathbb{R}$ are skills from grades 7-8, which we reactivate at the start of grade 9.
 The integer part and the fractional part are new notions. The grade 9 curriculum introduces them as examples of functions (the absolute value function, the integer part function, the fractional part function) in Learning Unit 4 - Functions. General properties. Here we work with them as numbers; their graphs and properties as functions are studied in Unit 4.
-1. Sets of numbers
 - ${\mathbb{N}} = \{ 0,\ 1,\ 2,\ 3,\ \ldots\}$ - the natural numbers; ${\mathbb{Z}} = \{\ldots,\ - 2,\ - 1,\ 0,\ 1,\ 2,\ \ldots\}$ - the integers;
 - ${\mathbb{Q}} = \{\frac{a}{b}\text{ | }a \in {\mathbb{Z}},\ b \in {\mathbb{Z}}^{*}\}$ - the rational numbers (finite or repeating decimal expansion);
 - ${\mathbb{R}} \smallsetminus {\mathbb{Q}}$ - the irrational numbers (infinite, non-repeating decimal expansion), for example $\sqrt{2}$, $\sqrt{3}$, $\pi$;
 - ${\mathbb{N}} \subset {\mathbb{Z}} \subset {\mathbb{Q}} \subset {\mathbb{R}}$; notation: ${\mathbb{R}}^{*} = {\mathbb{R}} \smallsetminus \{ 0\}$, ${\mathbb{R}}_{+} = (0,\ + \infty)$ (the strictly positive real numbers, without $0$), ${\mathbb{R}}_{-} = ( - \infty,\ 0)$ (the strictly negative real numbers, without $0$).
-2. Order relation on ℝ. Intervals
-2.1. Properties of inequalities
 For any $a,\ b,\ c,\ d \in {\mathbb{R}}$:
 - $a \leq b$ and $b \leq c$ $\Rightarrow$ $a \leq c$ (transitivity); $a \leq b$ $\Rightarrow$ $a + c \leq b + c$;
 - $a \leq b$ and $c \leq d$ $\Rightarrow$ $a + c \leq b + d$ (inequalities pointing the same way can be added);
 - $a \leq b$ and $c > 0$ $\Rightarrow$ $ac \leq bc$; $a \leq b$ and $c < 0$ $\Rightarrow$ $ac \geq bc$ (the inequality reverses!);
 - $0 < a \leq b$ $\Rightarrow$ $\frac{1}{a} \geq \frac{1}{b}$; $x^{2} \geq 0$ for any $x \in {\mathbb{R}}$, and $x^{2} = 0 \Leftrightarrow x = 0$.
-2.2. Intervals of real numbers
 Let $a,\ b \in {\mathbb{R}}$, $a < b$.
 Type of interval
 Notation
@@ -2270,8 +2222,6 @@ class="retine">
 class="retine-title">Example
 For $A = \lbrack - 2,\ 3)$ and $B = (1,\ 5\rbrack$: $A \cap B = (1,\ 3)$, $A \cup B = \lbrack - 2,\ 5\rbrack$, $A \smallsetminus B = \lbrack - 2,\ 1\rbrack$, $B \smallsetminus A = \lbrack 3,\ 5\rbrack$.
 At $\pm \infty$ the interval is always open: we write $\lbrack a,\ + \infty)$, never $\lbrack a,\ + \infty\rbrack$.
-3. Absolute value of a real number
-3.1. Definition. Geometric interpretation
 class="retine">
 class="retine-title">Definition
 The absolute value of the real number $x$ is:
@@ -2281,7 +2231,6 @@ x,\ & \text{if }x \geq 0 \\
 \end{matrix} \right.$$
 - $|x|$ is the distance from the point with coordinate $x$ to the origin of the axis; $|x - a|$ is the distance between the points with coordinates $x$ and $a$.
 - Examples: $| - 5| = 5$; $|0| = 0$; $\left| \sqrt{2} - 2 \right| = 2 - \sqrt{2}$ (because $\sqrt{2} < 2$); $|\pi - 3| = \pi - 3$ (because $\pi > 3$).
-3.2. Properties of absolute value
 For any $x,\ y \in {\mathbb{R}}$ and $a > 0$:
 No.
 Property
@@ -2313,7 +2262,6 @@ $|x| < a$ $\Leftrightarrow$ $x \in ( - a,\ a)$
 9
 $|x| \geq a$ $\Leftrightarrow$ $x \leq - a$ or $x \geq a$
 $$x \in ( - \infty,\ - a\rbrack \cup \lbrack a,\ + \infty)$$
-3.3. Calculations: removing the absolute value
 We determine the sign of the expression inside the absolute value (by comparing the numbers), then apply the definition.
 class="retine">
 class="retine-title">Example 1
@@ -2324,7 +2272,6 @@ For $x \in \lbrack - 2,\ 1\rbrack$: $x - 1 \leq 0$ and $x + 2 \geq 0$, so $|x - 
 class="retine">
 class="retine-title">Example 3
 $\sqrt{\left( \sqrt{5} - 3 \right)^{2}} + \sqrt{\left( \sqrt{5} - 2 \right)^{2}} = \left| \sqrt{5} - 3 \right| + \left| \sqrt{5} - 2 \right| = 3 - \sqrt{5} + \sqrt{5} - 2 = 1$.
-3.4. Equations with absolute value
 Type of equation
 Method of solving
 $$\left| E(x) \right| = a$$
@@ -2364,7 +2311,6 @@ $2 - 2x = 4 \Rightarrow x = - 1$ ✓
 $2 = 4$, false
 $2x - 2 = 4 \Rightarrow x = 3$ ✓
 The solutions found belong to their corresponding intervals, so $S = \{ - 1,\ 3\}$.
-3.5. Inequalities with absolute value
 Type of inequality
 Equivalent to
 $\left| E(x) \right| \leq a$, $a > 0$
@@ -2384,8 +2330,6 @@ $|x + 3| \geq 2$ $\Leftrightarrow$ $x + 3 \leq - 2$ or $x + 3 \geq 2$ $\Leftrigh
 class="retine">
 class="retine-title">Example 9 (distance)
 $|x - 4| \leq 1$: the points at distance at most $1$ from the point $4$, that is $S = \lbrack 3,\ 5\rbrack$.
-4. Integer part and fractional part of a real number
-4.1. Definitions
 class="retine">
 class="retine-title">Definition
 For any $x \in {\mathbb{R}}$ there is a single integer $k$ such that $k \leq x < k + 1$. This number is called the integer part of $x$ and is denoted $\lbrack x\rbrack$. So $\lbrack x\rbrack$ is the largest integer less than or equal to $x$.
@@ -2421,7 +2365,6 @@ $$- 2 < - \sqrt{2} < - 1$$
 class="retine">
 class="retine-title">Careful!
 $\left\lbrack - \text{2,6} \right\rbrack = - 3$, not $- 2$. For negative numbers, the integer part is not obtained by "cutting off the decimals". The fractional part is always in $\lbrack 0,\ 1)$: $\left\{ - \text{2,6} \right\} = - \text{2,6} - ( - 3) = \text{0,4}$.
-4.2. Properties
 For any $x,\ y \in {\mathbb{R}}$ and $k \in {\mathbb{Z}}$:
 No.
 Property
@@ -2454,14 +2397,12 @@ useful for inequalities
 9
 $\lbrack x\rbrack + \left\lbrack x + \frac{1}{2} \right\rbrack = \lbrack 2x\rbrack$ (Hermite's identity)
 extension - proof: worksheet, item 29
-4.3. Calculations
 class="retine">
 class="retine-title">Example 10
 $49 \leq 50 < 64$ $\Rightarrow$ $7 \leq \sqrt{50} < 8$, so $\left\lbrack \sqrt{50} \right\rbrack = 7$, $\left\{ \sqrt{50} \right\} = \sqrt{50} - 7 = 5\sqrt{2} - 7$, and $\left\lbrack - \sqrt{50} \right\rbrack = - 8$.
 class="retine">
 class="retine-title">Example 11
 $S = \left\lbrack \sqrt{1} \right\rbrack + \left\lbrack \sqrt{2} \right\rbrack + \ldots + \left\lbrack \sqrt{8} \right\rbrack$. For $n \in \{ 1,\ 2,\ 3\}$ we have $\left\lbrack \sqrt{n} \right\rbrack = 1$, and for $n \in \{ 4,\ \ldots,\ 8\}$ we have $\left\lbrack \sqrt{n} \right\rbrack = 2$. So $S = 3 \cdot 1 + 5 \cdot 2 = 13$.
-4.4. Equations with integer part and fractional part
 Type of equation
 Method of solving
 $\left\lbrack E(x) \right\rbrack = k$, $k \in {\mathbb{Z}}$
@@ -2486,14 +2427,12 @@ $k = 0 \Rightarrow f = 0 \Rightarrow x = 0$; $k = 1 \Rightarrow f = \frac{2}{3} 
 class="retine">
 class="retine-title">Example 15
 $\lbrack x\rbrack^{2} - 3\lbrack x\rbrack + 2 = 0$. With $t = \lbrack x\rbrack$: $(t - 1)(t - 2) = 0$ $\Rightarrow$ $\lbrack x\rbrack \in \{ 1,\ 2\}$ $\Rightarrow$ $x \in \lbrack 1,\ 2) \cup \lbrack 2,\ 3) = \lbrack 1,\ 3)$.
-4.5. Inequalities with integer part
 class="retine">
 class="retine-title">Example 16
 $\lbrack 2x - 1\rbrack < 3$ $\Leftrightarrow$ $\lbrack 2x - 1\rbrack \leq 2$ $\Leftrightarrow$ $2x - 1 < 3$ $\Leftrightarrow$ $x < 2$. So $S = ( - \infty,\ 2)$.
 class="retine">
 class="retine-title">Example 17
 $- 1 \leq \left\lbrack \frac{x}{2} \right\rbrack \leq 1$ $\Leftrightarrow$ $- 1 \leq \frac{x}{2} < 2$ $\Leftrightarrow$ $- 2 \leq x < 4$. So $S = \lbrack - 2,\ 4)$.
-5. Common mistakes
 Wrong
 Correct
 $$\sqrt{x^{2}} = x$$
@@ -2512,7 +2451,6 @@ $$\lbrack 2x\rbrack = 2\lbrack x\rbrack$$
 false in general: $\left\lbrack 2 \cdot \text{0,5} \right\rbrack = 1$, but $2\left\lbrack \text{0,5} \right\rbrack = 0$
 $$\lbrack x + y\rbrack = \lbrack x\rbrack + \lbrack y\rbrack$$
 true only if $\left\{ x \right\} + \left\{ y \right\} < 1$
-6. General algorithm for equations and inequalities
 - Identify the type of equation/inequality (the tables in 3.4, 3.5 and 4.4).
 - Write the conditions: right-hand side $\geq 0$ (for $\left| E(x) \right| = F(x)$), $k \in {\mathbb{Z}}$ (for the integer part), $f \in \lbrack 0,\ 1)$ (for the fractional part).
 - Solve by cases or by intervals.
@@ -2528,7 +2466,6 @@ true only if $\left\{ x \right\} + \left\{ y \right\} < 1$
 - Fișă de lucru pentru clasa a IX-a, cu exerciții pe niveluri: modul, ecuații și inecuații, partea întreagă și partea fracționară.
 
 Fișa conține 30 de probleme grupate pe cele trei niveluri de performanță din standardele naționale de evaluare (de bază – consolidat – avansat). În fiecare secțiune apar calcule, proprietăți, ecuații și inecuații. Scrie rezolvările complete; criteriile după care se apreciază o rezolvare sunt date mai jos.
-Criterii de evaluare
 Nivel
 Itemi
 Descriptori de performanță – elevul:
@@ -2542,9 +2479,7 @@ Avansat
 23 – 30
 demonstrează inegalități folosind proprietățile modulului; discută numărul de soluții după un parametru; rezolvă ecuații cu module suprapuse, ecuații de tipul $\left\lbrack E(x) \right\rbrack = F(x)$ sau cu $\lbrack x\rbrack$ și $\left\{ x \right\}$; generalizează un calcul, în context complex.
 O rezolvare completă respectă: C1 – identificarea tipului problemei și scrierea condițiilor (semnul expresiei, membrul drept nenegativ, $k \in {\mathbb{Z}}$, $\left\{ x \right\} \in \lbrack 0,\ 1)$); C2 – aplicarea corectă a definițiilor și proprietăților; C3 – corectitudinea calculelor; C4 – redactarea: intersecția cu condițiile, scrierea mulțimii soluțiilor $S$ (mulțime finită, interval sau reuniune de intervale) și verificarea.
-Secțiunea A – Nivel de bază (itemii 1 – 10)
 Scrie rezolvările complete.
-Calcule
 class="exercises">
 -
 Calculați $| - 7| + |3 - 8| - | - 2| \cdot |4|$.
@@ -2554,7 +2489,6 @@ Arătați că $\left| \sqrt{5} - 3 \right| + \left| \sqrt{5} - 2 \right| = 1$.
 Calculați $\left\lbrack \text{3,7} \right\rbrack$, $\left\lbrack - \text{3,7} \right\rbrack$, $\left\{ \text{3,7} \right\}$ și $\left\{ - \text{3,7} \right\}$.
 -
 Determinați $\left\lbrack \sqrt{20} \right\rbrack$, $\left\lbrack - \sqrt{20} \right\rbrack$ și $\left\{ \sqrt{20} \right\}$.
-Proprietăți
 class="exercises" start="5">
 -
 Stabiliți valoarea de adevăr a fiecărei propoziții. Justificați printr-o proprietate sau printr-un contraexemplu.
@@ -2565,7 +2499,6 @@ data-ex="5d">d) $\lbrack x + 2\rbrack = \lbrack x\rbrack + 2$, pentru orice $x \
 data-ex="5e">e) $\lbrack 2x\rbrack = 2\lbrack x\rbrack$, pentru orice $x \in {\mathbb{R}}$.
 -
 Arătați că $|x - 3| + |x + 1| = 4$, pentru orice $x \in \lbrack - 1,\ 3\rbrack$.
-Ecuații
 class="exercises" start="7">
 -
 Rezolvați în $\mathbb{R}$ ecuația $|x - 2| = 5$.
@@ -2575,15 +2508,12 @@ data-ex="8a">a) $|2x + 1| = - 3$;
 data-ex="8b">b) $|3x - 6| = 0$.
 -
 Determinați numerele reale $x$ pentru care $\lbrack x\rbrack = - 2$.
-Inecuații
 class="exercises" start="10">
 -
 Rezolvați în $\mathbb{R}$ inecuațiile și scrieți mulțimea soluțiilor sub formă de interval:
 data-ex="10a">a) $|x - 1| \leq 3$;
 data-ex="10b">b) $\lbrack x\rbrack < 3$.
-Secțiunea B – Nivel consolidat (itemii 11 – 22)
 Scrie rezolvările complete.
-Calcule
 class="exercises" start="11">
 -
 Arătați că numărul $N = \left| 1 - \sqrt{2} \right| + \left| \sqrt{2} - \sqrt{3} \right| + \left| \sqrt{3} - 2 \right|$ este natural.
@@ -2591,7 +2521,6 @@ Arătați că numărul $N = \left| 1 - \sqrt{2} \right| + \left| \sqrt{2} - \sqr
 Arătați că $\sqrt{x^{2} - 2x + 1} + \sqrt{x^{2} - 8x + 16} = 3$, pentru orice $x \in \lbrack 1,\ 4\rbrack$.
 -
 Calculați $S = \left\lbrack \sqrt{1} \right\rbrack + \left\lbrack \sqrt{2} \right\rbrack + \left\lbrack \sqrt{3} \right\rbrack + \ldots + \left\lbrack \sqrt{10} \right\rbrack$.
-Proprietăți
 class="exercises" start="14">
 -
 Fie $a,\ b \in {\mathbb{R}}$ cu $|a| \leq 1$ și $|b| \leq 1$. Arătați că:
@@ -2600,7 +2529,6 @@ b) $|ab| \leq 1$.
 -
 a) Arătați că $\lbrack x\rbrack + \lbrack - x\rbrack = - 1$, pentru orice $x \in {\mathbb{R}} \smallsetminus {\mathbb{Z}}$.
 data-ex="15b">b) Calculați $\left\lbrack \sqrt{3} \right\rbrack + \left\lbrack - \sqrt{3} \right\rbrack + \left\{ \sqrt{3} \right\} + \left\{ - \sqrt{3} \right\}$.
-Ecuații
 class="exercises" start="16">
 -
 Rezolvați în $\mathbb{R}$ ecuația $|2x - 3| = |x + 1|$.
@@ -2610,7 +2538,6 @@ Rezolvați în $\mathbb{R}$ ecuația $|x - 3| = 2x - 1$.
 Rezolvați în $\mathbb{R}$ ecuația $|x - 1| + |x - 2| = 3$.
 -
 Rezolvați în $\mathbb{R}$ ecuația $\left\lbrack \frac{2x + 1}{3} \right\rbrack = 2$.
-Inecuații
 class="exercises" start="20">
 -
 Rezolvați în $\mathbb{R}$ inecuația $|2x - 5| > 3$.
@@ -2620,9 +2547,7 @@ data-ex="21a">a) Scrieți mulțimea $A$ ca reuniune de intervale.
 data-ex="21b">b) Determinați mulțimea $A \cap {\mathbb{Z}}$.
 -
 Rezolvați în $\mathbb{R}$ inecuația $\left| 2\lbrack x\rbrack - 1 \right| \leq 3$.
-Secțiunea C – Nivel avansat (itemii 23 – 30)
 Scrie rezolvările complete, cu toate justificările.
-Proprietăți și demonstrații
 class="exercises" start="23">
 -
 Numerele reale $x$ și $y$ verifică relațiile $|x - 2| \leq 1$ și $|y + 1| \leq 2$. Arătați că $|x + 2y| \leq 5$.
@@ -2630,7 +2555,6 @@ Numerele reale $x$ și $y$ verifică relațiile $|x - 2| \leq 1$ și $|y + 1| \l
 Se consideră expresia $E(x) = |x - 1| + |x + 2|$, unde $x \in {\mathbb{R}}$.
 a) Arătați că $E(x) \geq 3$, pentru orice $x \in {\mathbb{R}}$, și determinați valorile lui $x$ pentru care $E(x) = 3$.
 b) Discutați, după valorile parametrului real $m$, numărul soluțiilor ecuației $E(x) = m$.
-Ecuații
 class="exercises" start="25">
 -
 Rezolvați în $\mathbb{R}$ ecuația $\left| |x - 2| - 3 \right| = 1$.
@@ -2638,11 +2562,9 @@ Rezolvați în $\mathbb{R}$ ecuația $\left| |x - 2| - 3 \right| = 1$.
 Rezolvați în $\mathbb{R}$ ecuația $\lbrack x\rbrack = \frac{3x - 1}{2}$.
 -
 Rezolvați în $\mathbb{R}$ ecuația $\lbrack x\rbrack + 2\left\{ x \right\} = 3$.
-Inecuații
 class="exercises" start="28">
 -
 Rezolvați în $\mathbb{R}$ inecuația $|x + 1| - |x - 2| \geq 1$.
-Probleme de sinteză
 class="exercises" start="29">
 -
 a) Verificați egalitatea $\lbrack x\rbrack + \left\lbrack x + \frac{1}{2} \right\rbrack = \lbrack 2x\rbrack$ pentru $x = \text{2,3}$ și pentru $x = \text{2,7}$, apoi demonstrați că ea este adevărată pentru orice $x \in {\mathbb{R}}$.
@@ -2651,7 +2573,6 @@ data-ex="29b">b) Rezolvați în $\mathbb{R}$ ecuația $\lbrack x\rbrack + \left\
 (Nota 10)
 a) Arătați că, pentru orice $k \in {\mathbb{N}}^{*}$, există exact $2k + 1$ numere naturale $n$ cu $\left\lbrack \sqrt{n} \right\rbrack = k$.
 data-ex="30b">b) Calculați $S = \left\lbrack \sqrt{1} \right\rbrack + \left\lbrack \sqrt{2} \right\rbrack + \left\lbrack \sqrt{3} \right\rbrack + \ldots + \left\lbrack \sqrt{99} \right\rbrack$.
-Autoevaluare
 Secțiunea
 Itemi rezolvați corect
 Criteriul la care am greșit cel mai des (C1–C4)
@@ -2666,7 +2587,6 @@ C – avansat
 --- EN ---
 
 This worksheet has 30 problems grouped into the three performance levels from the national assessment standards (basic – consolidated – advanced). Each section has calculations, properties, equations and inequalities. Write complete solutions; the criteria used to grade a solution are given below.
-Evaluation criteria
 Level
 Items
 Performance descriptors – the student:
@@ -2680,9 +2600,7 @@ Advanced
 23 – 30
 proves inequalities using the properties of absolute value; discusses the number of solutions depending on a parameter; solves equations with nested absolute values, equations of the type $\left\lbrack E(x) \right\rbrack = F(x)$ or with $\lbrack x\rbrack$ and $\left\{ x \right\}$; generalizes a calculation, in a complex context.
 A complete solution meets: C1 – identifying the type of problem and writing the conditions (the sign of the expression, the right-hand side non-negative, $k \in {\mathbb{Z}}$, $\left\{ x \right\} \in \lbrack 0,\ 1)$); C2 – correctly applying the definitions and properties; C3 – the correctness of the calculations; C4 – the write-up: intersecting with the conditions, writing the solution set $S$ (a finite set, an interval or a union of intervals) and checking it.
-Section A – Basic level (items 1 – 10)
 Write complete solutions.
-Calculations
 class="exercises">
 -
 Calculate $| - 7| + |3 - 8| - | - 2| \cdot |4|$.
@@ -2692,7 +2610,6 @@ Show that $\left| \sqrt{5} - 3 \right| + \left| \sqrt{5} - 2 \right| = 1$.
 Calculate $\left\lbrack \text{3,7} \right\rbrack$, $\left\lbrack - \text{3,7} \right\rbrack$, $\left\{ \text{3,7} \right\}$ and $\left\{ - \text{3,7} \right\}$.
 -
 Find $\left\lbrack \sqrt{20} \right\rbrack$, $\left\lbrack - \sqrt{20} \right\rbrack$ and $\left\{ \sqrt{20} \right\}$.
-Properties
 class="exercises" start="5">
 -
 Determine whether each statement is true or false. Justify with a property or with a counterexample.
@@ -2703,7 +2620,6 @@ data-ex="5d">d) $\lbrack x + 2\rbrack = \lbrack x\rbrack + 2$, for any $x \in {\
 data-ex="5e">e) $\lbrack 2x\rbrack = 2\lbrack x\rbrack$, for any $x \in {\mathbb{R}}$.
 -
 Show that $|x - 3| + |x + 1| = 4$, for any $x \in \lbrack - 1,\ 3\rbrack$.
-Equations
 class="exercises" start="7">
 -
 Solve in $\mathbb{R}$ the equation $|x - 2| = 5$.
@@ -2713,15 +2629,12 @@ data-ex="8a">a) $|2x + 1| = - 3$;
 data-ex="8b">b) $|3x - 6| = 0$.
 -
 Find the real numbers $x$ for which $\lbrack x\rbrack = - 2$.
-Inequalities
 class="exercises" start="10">
 -
 Solve in $\mathbb{R}$ the inequalities and write the solution set as an interval:
 data-ex="10a">a) $|x - 1| \leq 3$;
 data-ex="10b">b) $\lbrack x\rbrack < 3$.
-Section B – Consolidated level (items 11 – 22)
 Write complete solutions.
-Calculations
 class="exercises" start="11">
 -
 Show that the number $N = \left| 1 - \sqrt{2} \right| + \left| \sqrt{2} - \sqrt{3} \right| + \left| \sqrt{3} - 2 \right|$ is a natural number.
@@ -2729,7 +2642,6 @@ Show that the number $N = \left| 1 - \sqrt{2} \right| + \left| \sqrt{2} - \sqrt{
 Show that $\sqrt{x^{2} - 2x + 1} + \sqrt{x^{2} - 8x + 16} = 3$, for any $x \in \lbrack 1,\ 4\rbrack$.
 -
 Calculate $S = \left\lbrack \sqrt{1} \right\rbrack + \left\lbrack \sqrt{2} \right\rbrack + \left\lbrack \sqrt{3} \right\rbrack + \ldots + \left\lbrack \sqrt{10} \right\rbrack$.
-Properties
 class="exercises" start="14">
 -
 Let $a,\ b \in {\mathbb{R}}$ with $|a| \leq 1$ and $|b| \leq 1$. Show that:
@@ -2738,7 +2650,6 @@ b) $|ab| \leq 1$.
 -
 a) Show that $\lbrack x\rbrack + \lbrack - x\rbrack = - 1$, for any $x \in {\mathbb{R}} \smallsetminus {\mathbb{Z}}$.
 data-ex="15b">b) Calculate $\left\lbrack \sqrt{3} \right\rbrack + \left\lbrack - \sqrt{3} \right\rbrack + \left\{ \sqrt{3} \right\} + \left\{ - \sqrt{3} \right\}$.
-Equations
 class="exercises" start="16">
 -
 Solve in $\mathbb{R}$ the equation $|2x - 3| = |x + 1|$.
@@ -2748,7 +2659,6 @@ Solve in $\mathbb{R}$ the equation $|x - 3| = 2x - 1$.
 Solve in $\mathbb{R}$ the equation $|x - 1| + |x - 2| = 3$.
 -
 Solve in $\mathbb{R}$ the equation $\left\lbrack \frac{2x + 1}{3} \right\rbrack = 2$.
-Inequalities
 class="exercises" start="20">
 -
 Solve in $\mathbb{R}$ the inequality $|2x - 5| > 3$.
@@ -2758,9 +2668,7 @@ data-ex="21a">a) Write the set $A$ as a union of intervals.
 data-ex="21b">b) Find the set $A \cap {\mathbb{Z}}$.
 -
 Solve in $\mathbb{R}$ the inequality $\left| 2\lbrack x\rbrack - 1 \right| \leq 3$.
-Section C – Advanced level (items 23 – 30)
 Write complete solutions, with all justifications.
-Properties and proofs
 class="exercises" start="23">
 -
 The real numbers $x$ and $y$ satisfy $|x - 2| \leq 1$ and $|y + 1| \leq 2$. Show that $|x + 2y| \leq 5$.
@@ -2768,7 +2676,6 @@ The real numbers $x$ and $y$ satisfy $|x - 2| \leq 1$ and $|y + 1| \leq 2$. Show
 Consider the expression $E(x) = |x - 1| + |x + 2|$, where $x \in {\mathbb{R}}$.
 a) Show that $E(x) \geq 3$, for any $x \in {\mathbb{R}}$, and find the values of $x$ for which $E(x) = 3$.
 b) Discuss, depending on the values of the real parameter $m$, the number of solutions of the equation $E(x) = m$.
-Equations
 class="exercises" start="25">
 -
 Solve in $\mathbb{R}$ the equation $\left| |x - 2| - 3 \right| = 1$.
@@ -2776,11 +2683,9 @@ Solve in $\mathbb{R}$ the equation $\left| |x - 2| - 3 \right| = 1$.
 Solve in $\mathbb{R}$ the equation $\lbrack x\rbrack = \frac{3x - 1}{2}$.
 -
 Solve in $\mathbb{R}$ the equation $\lbrack x\rbrack + 2\left\{ x \right\} = 3$.
-Inequalities
 class="exercises" start="28">
 -
 Solve in $\mathbb{R}$ the inequality $|x + 1| - |x - 2| \geq 1$.
-Synthesis problems
 class="exercises" start="29">
 -
 a) Check the equality $\lbrack x\rbrack + \left\lbrack x + \frac{1}{2} \right\rbrack = \lbrack 2x\rbrack$ for $x = \text{2,3}$ and for $x = \text{2,7}$, then prove that it holds for any $x \in {\mathbb{R}}$.
@@ -2789,7 +2694,6 @@ data-ex="29b">b) Solve in $\mathbb{R}$ the equation $\lbrack x\rbrack + \left\lb
 (Top-grade problem)
 a) Show that, for any $k \in {\mathbb{N}}^{*}$, there are exactly $2k + 1$ natural numbers $n$ with $\left\lbrack \sqrt{n} \right\rbrack = k$.
 data-ex="30b">b) Calculate $S = \left\lbrack \sqrt{1} \right\rbrack + \left\lbrack \sqrt{2} \right\rbrack + \left\lbrack \sqrt{3} \right\rbrack + \ldots + \left\lbrack \sqrt{99} \right\rbrack$.
-Self-assessment
 Section
 Items solved correctly
 The criterion I missed most often (C1–C4)
@@ -2809,7 +2713,6 @@ C – advanced
 - Fișă recapitulativă pentru clasa a IX-a: pregătire pentru testul inițial, în format de Evaluare Națională, cu algebră și geometrie.
 
 Structura fișei urmează modelul Evaluării Naționale pentru absolvenții clasei a VIII-a: Partea I și Partea a II-a conțin itemi cu alegere multiplă (un singur răspuns corect), iar Partea a III-a conține probleme la care se cer rezolvări complete.
-Partea I – Numere și calcul algebric
 Încercuiește litera corespunzătoare răspunsului corect.
 class="exercises">
 -
@@ -2880,7 +2783,6 @@ Andrei afirmă că numărul $a = \left( \sqrt{3} - 2 \right)^{2} + 4\sqrt{3}$ es
 class="choices">
 - a) adevărată
 - b) falsă
-Partea a II-a – Geometrie
 Încercuiește litera corespunzătoare răspunsului corect.
 class="exercises" start="11">
 -
@@ -2953,7 +2855,6 @@ class="choices" data-ex="20">
 - b) $5\text{ cm}$
 - c) $7\text{ cm}$
 - d) $10\text{ cm}$
-Partea a III-a – Probleme
 Scrie rezolvările complete.
 class="exercises" start="21">
 -
@@ -3000,7 +2901,6 @@ data-ex="30b">b) Determină distanța de la punctul $O$ la planul $(VBC)$.
 --- EN ---
 
 The worksheet follows the format of the National Evaluation for graduates of grade 8: Part I and Part II contain multiple-choice items (a single correct answer), while Part III contains problems that require complete solutions.
-Part I – Numbers and algebraic computation
 Circle the letter of the correct answer.
 class="exercises">
 -
@@ -3071,7 +2971,6 @@ Andrei claims that the number $a = \left( \sqrt{3} - 2 \right)^{2} + 4\sqrt{3}$ 
 class="choices">
 - a) true
 - b) false
-Part II – Geometry
 Circle the letter of the correct answer.
 class="exercises" start="11">
 -
@@ -3144,7 +3043,6 @@ class="choices" data-ex="20">
 - b) $5\text{ cm}$
 - c) $7\text{ cm}$
 - d) $10\text{ cm}$
-Part III – Problems
 Write complete solutions.
 class="exercises" start="21">
 -
@@ -3196,7 +3094,6 @@ data-ex="30b">b) Find the distance from point $O$ to plane $(VBC)$.
 - Fișă de recapitulare și evaluare inițială pentru clasa a IX-a, matematică-informatică: funcții, trigonometrie și geometrie.
 
 Profil matematică-informatică (M1)
-Secțiunea A. Nivel minim – mediu
 class="exercises">
 -
 Arătați că numărul $A = \sqrt{\left( 2\sqrt{3} - 4 \right)^{2}} - \sqrt{12} + |1 - \sqrt{3}|$ este număr rațional.
@@ -3212,7 +3109,6 @@ Determinați mulțimea $S = \left\{ x \in \mathbb{Z} \mid \frac{3x + 1}{x - 2} \
 Se consideră ecuația de gradul al II-lea $x^{2} - (2m - 1)x + m^{2} - 1 = 0$, unde $m \in \mathbb{R}$.
 data-ex="4a">a) Determinați $m$ astfel încât ecuația să aibă rădăcini reale distincte.
 data-ex="4b">b) Determinați $m$ dacă rădăcinile $x_{1},x_{2}$ verifică relația $x_{1}^{2} + x_{2}^{2} = 7$.
-Secțiunea B. Nivel mediu – avansat
 class="exercises" start="5">
 -
 Fie funcția $f:\mathbb{R} \rightarrow \mathbb{R}$, $f(x) = - \frac{1}{2}x + 3$.
@@ -3226,7 +3122,6 @@ data-ex="6b">b) Calculați valoarea expresiei $E = \sin^{2}B + \sin^{2}C - 2\cos
 În reperul cartezian $xOy$ se dau punctele $A( - 2,1)$, $B(4,5)$ și $C(1, - 2)$.
 a) Calculați lungimile laturilor triunghiului $ABC$ și arătați că este isoscel.
 data-ex="7b">b) Aflați coordonatele mijlocului segmentului $\lbrack AB\rbrack$ și lungimea medianei din $C$.
-Secțiunea C. „Nota 10” – excelență
 class="exercises" start="8">
 -
 Să se determine toate numerele naturale $n$ pentru care numărul:
@@ -3243,7 +3138,6 @@ Arătați că perimetrul triunghiului $CMN$ este constant și independent de poz
 --- EN ---
 
 Mathematics and computer science track (M1)
-Section A. Basic to medium level
 class="exercises">
 -
 Show that the number $A = \sqrt{\left( 2\sqrt{3} - 4 \right)^{2}} - \sqrt{12} + |1 - \sqrt{3}|$ is a rational number.
@@ -3259,7 +3153,6 @@ Find the set $S = \left\{ x \in \mathbb{Z} \mid \frac{3x + 1}{x - 2} \in \mathbb
 Consider the quadratic equation $x^{2} - (2m - 1)x + m^{2} - 1 = 0$, where $m \in \mathbb{R}$.
 data-ex="4a">a) Find $m$ so that the equation has distinct real roots.
 data-ex="4b">b) Find $m$ if the roots $x_{1},x_{2}$ satisfy the relation $x_{1}^{2} + x_{2}^{2} = 7$.
-Section B. Medium to advanced level
 class="exercises" start="5">
 -
 Consider the function $f:\mathbb{R} \rightarrow \mathbb{R}$, $f(x) = - \frac{1}{2}x + 3$.
@@ -3273,7 +3166,6 @@ data-ex="6b">b) Calculate the value of the expression $E = \sin^{2}B + \sin^{2}C
 In the Cartesian coordinate system $xOy$, consider the points $A( - 2,1)$, $B(4,5)$ and $C(1, - 2)$.
 a) Calculate the side lengths of triangle $ABC$ and show that it is isosceles.
 data-ex="7b">b) Find the coordinates of the midpoint of segment $\lbrack AB\rbrack$ and the length of the median from $C$.
-Section C. Top-grade problems
 class="exercises" start="8">
 -
 Find all natural numbers $n$ for which the number:
@@ -3296,7 +3188,6 @@ Show that the perimeter of triangle $CMN$ is constant and independent of the pos
 - URL (EN): https://lauramiron.pages.dev/en/materiale/teorie-multimi-puncte-dreapta-reala-1016
 - Teorie de clasa a XI-a: intervale, mulțimi mărginite, minim și maxim, margine inferioară și superioară, dreapta încheiată.
 
-1. Intervale
 Fie $a,b \in {\mathbb{R}}$, $a < b$.
 Tipul intervalului
 Scriere
@@ -3310,7 +3201,6 @@ Pentru $r > 0$:
 $$|x - a| < r \Leftrightarrow x \in (a - r,a + r)$$
 $$|x - a| \leq r \Leftrightarrow x \in \lbrack a - r,a + r\rbrack$$
 $$|x - a| > r \Leftrightarrow x \in ( - \infty,a - r) \cup (a + r, + \infty)$$
-2. Mulțimi mărginite. Minim și maxim
 Fie $A \subset {\mathbb{R}}$, $A \neq \varnothing$.
 class="retine">
 class="retine-title">Definiții
@@ -3320,17 +3210,14 @@ class="retine-title">Definiții
 - $\max A$ este un element al lui $A$ care este majorant; $\min A$ este un element al lui $A$ care este minorant.
 - $A$ nu este majorată $\Leftrightarrow \forall M \in {\mathbb{R}},\mkern9mu\exists x \in A$ astfel încât $x > M$.
 - Exemplu: $A = (0,1\rbrack$ este mărginită, $\max A = 1$, dar $A$ nu are minim.
-3. Marginile unei mulțimi
 class="retine">
 class="retine-title">Definiții
 - $\sup A$ (marginea superioară) = cel mai mic majorant al lui $A$.
 - $\inf A$ (marginea inferioară) = cel mai mare minorant al lui $A$.
 - Axioma lui Cantor: orice mulțime nevidă și majorată de numere reale are margine superioară în $\mathbb{R}$ (analog, orice mulțime nevidă și minorată are margine inferioară).
-Caracterizarea cu $\varepsilon$
 $$s = \sup A \Leftrightarrow \text{ (1) }x \leq s,\mkern9mu\forall x \in A\mkern9mu\text{ și (2) }\forall\varepsilon > 0,\mkern9mu\exists x_{\varepsilon} \in A:\mkern9mu x_{\varepsilon} > s - \varepsilon$$
 $$i = \inf A \Leftrightarrow \text{ (1) }x \geq i,\mkern9mu\forall x \in A\mkern9mu\text{ și (2) }\forall\varepsilon > 0,\mkern9mu\exists x_{\varepsilon} \in A:\mkern9mu x_{\varepsilon} < i + \varepsilon$$
 - $A$ are maxim $\Leftrightarrow \sup A \in A$ și atunci $\max A = \sup A$; $A$ are minim $\Leftrightarrow \inf A \in A$ și atunci $\min A = \inf A$.
-Maxim sau margine superioară?
 $\max A$
 $\sup A$
 Ce este
@@ -3349,7 +3236,6 @@ $A = \left\{ \frac{n}{n + 1}\mkern6mu \middle| \mkern6mu n \in {\mathbb{N}} \rig
 - $0 \in A$ (pentru $n = 0$) și $0$ este minorant $\Rightarrow \min A = \inf A = 0$.
 - $1$ este majorant; pentru $\varepsilon \in (0,1)$: $\frac{n}{n + 1} > 1 - \varepsilon \Leftrightarrow n > \frac{1}{\varepsilon} - 1$, care are soluții în $\mathbb{N}$ $\Rightarrow \sup A = 1$.
 - $1 \notin A$ $\Rightarrow$ $A$ nu are maxim.
-4. Dreapta încheiată
 class="retine">
 class="retine-title">Reține
 - $\overline{\mathbb{R}} = {\mathbb{R}} \cup \left\{ - \infty, + \infty \right\}$, cu $- \infty < x < + \infty,\mkern9mu\forall x \in {\mathbb{R}}$.
@@ -3358,7 +3244,6 @@ class="retine-title">Reține
 
 --- EN ---
 
-1. Intervals
 Let $a,b \in {\mathbb{R}}$, $a < b$.
 Type of interval
 Notation
@@ -3372,7 +3257,6 @@ For $r > 0$:
 $$|x - a| < r \Leftrightarrow x \in (a - r,a + r)$$
 $$|x - a| \leq r \Leftrightarrow x \in \lbrack a - r,a + r\rbrack$$
 $$|x - a| > r \Leftrightarrow x \in ( - \infty,a - r) \cup (a + r, + \infty)$$
-2. Bounded sets. Minimum and maximum
 Let $A \subset {\mathbb{R}}$, $A \neq \varnothing$.
 class="retine">
 class="retine-title">Definitions
@@ -3382,17 +3266,14 @@ class="retine-title">Definitions
 - $\max A$ is an element of $A$ that is an upper bound; $\min A$ is an element of $A$ that is a lower bound.
 - $A$ is not bounded above $\Leftrightarrow \forall M \in {\mathbb{R}},\mkern9mu\exists x \in A$ such that $x > M$.
 - Example: $A = (0,1\rbrack$ is bounded, $\max A = 1$, but $A$ has no minimum.
-3. The bounds of a set
 class="retine">
 class="retine-title">Definitions
 - $\sup A$ (the supremum) = the least upper bound of $A$.
 - $\inf A$ (the infimum) = the greatest lower bound of $A$.
 - Cantor's axiom: every nonempty set of real numbers that is bounded above has a supremum in $\mathbb{R}$ (likewise, every nonempty set that is bounded below has an infimum).
-The $\varepsilon$ characterization
 $$s = \sup A \Leftrightarrow \text{ (1) }x \leq s,\mkern9mu\forall x \in A\mkern9mu\text{ and (2) }\forall\varepsilon > 0,\mkern9mu\exists x_{\varepsilon} \in A:\mkern9mu x_{\varepsilon} > s - \varepsilon$$
 $$i = \inf A \Leftrightarrow \text{ (1) }x \geq i,\mkern9mu\forall x \in A\mkern9mu\text{ and (2) }\forall\varepsilon > 0,\mkern9mu\exists x_{\varepsilon} \in A:\mkern9mu x_{\varepsilon} < i + \varepsilon$$
 - $A$ has a maximum $\Leftrightarrow \sup A \in A$, and then $\max A = \sup A$; $A$ has a minimum $\Leftrightarrow \inf A \in A$, and then $\min A = \inf A$.
-Maximum or supremum?
 $\max A$
 $\sup A$
 What it is
@@ -3411,7 +3292,6 @@ $A = \left\{ \frac{n}{n + 1}\mkern6mu \middle| \mkern6mu n \in {\mathbb{N}} \rig
 - $0 \in A$ (for $n = 0$) and $0$ is a lower bound $\Rightarrow \min A = \inf A = 0$.
 - $1$ is an upper bound; for $\varepsilon \in (0,1)$: $\frac{n}{n + 1} > 1 - \varepsilon \Leftrightarrow n > \frac{1}{\varepsilon} - 1$, which has solutions in $\mathbb{N}$ $\Rightarrow \sup A = 1$.
 - $1 \notin A$ $\Rightarrow$ $A$ has no maximum.
-4. The extended real line
 class="retine">
 class="retine-title">Remember
 - $\overline{\mathbb{R}} = {\mathbb{R}} \cup \left\{ - \infty, + \infty \right\}$, with $- \infty < x < + \infty,\mkern9mu\forall x \in {\mathbb{R}}$.
@@ -3608,7 +3488,6 @@ data-ex="8e">e) The set $\left\{ x \in {\mathbb{Q}}\mkern6mu \middle| \mkern6mu 
 class="retine">
 class="retine-title">Notații
 $S_{n}$ – mulțimea permutărilor de grad $n$; $e$ – permutarea identică; $m(\sigma)$ – numărul inversiunilor permutării $\sigma$; $\varepsilon(\sigma) = ( - 1)^{m(\sigma)}$ – semnul permutării $\sigma$; $\sigma\tau = \sigma \circ \tau$, unde $(\sigma \circ \tau)(k) = \sigma(\tau(k))$.
-Nivelul I – probleme de bază (problemele 1–17)
 class="exercises">
 -
 a) Scrieți toate elementele mulțimii $S_{3}$.
@@ -3704,7 +3583,6 @@ Fie $\sigma = \begin{pmatrix}
 data-ex="17a">a) Câte permutări $\sigma \in S_{4}$ verifică $\sigma(1) = 1$?
 data-ex="17b">b) Câte permutări $\sigma \in S_{4}$ verifică $\sigma(1) = 2$ și $\sigma(2) = 1$?
 c) Scrieți toate transpozițiile din $S_{4}$.
-Nivelul II – probleme de nivel mediu (problemele 18–35)
 class="exercises" start="18">
 -
 Fie $\sigma = \begin{pmatrix}
@@ -3799,7 +3677,6 @@ Arătați că ecuația $x^{2} = \begin{pmatrix}
 1 & 2 & 3 \\
 2 & 1 & 3
 \end{pmatrix}$ nu are soluții în $S_{3}$.
-Nivelul III – probleme de aprofundare (problemele 36–50)
 class="exercises" start="36">
 -
 Fie $n \in {\mathbb{N}}^{*}$ și $\sigma = \begin{pmatrix}
@@ -3870,7 +3747,6 @@ data-ex="50c">c) Rezolvați în $S_{4}$ ecuația $\sigma x\sigma = e$.
 class="retine">
 class="retine-title">Notation
 $S_{n}$ – the set of permutations of degree $n$; $e$ – the identity permutation; $m(\sigma)$ – the number of inversions of the permutation $\sigma$; $\varepsilon(\sigma) = ( - 1)^{m(\sigma)}$ – the sign of the permutation $\sigma$; $\sigma\tau = \sigma \circ \tau$, where $(\sigma \circ \tau)(k) = \sigma(\tau(k))$.
-Level I – basic problems (problems 1–17)
 class="exercises">
 -
 a) Write all the elements of the set $S_{3}$.
@@ -3966,7 +3842,6 @@ Let $\sigma = \begin{pmatrix}
 data-ex="17a">a) How many permutations $\sigma \in S_{4}$ satisfy $\sigma(1) = 1$?
 data-ex="17b">b) How many permutations $\sigma \in S_{4}$ satisfy $\sigma(1) = 2$ and $\sigma(2) = 1$?
 c) Write all the transpositions in $S_{4}$.
-Level II – intermediate problems (problems 18–35)
 class="exercises" start="18">
 -
 Let $\sigma = \begin{pmatrix}
@@ -4061,7 +3936,6 @@ Show that the equation $x^{2} = \begin{pmatrix}
 1 & 2 & 3 \\
 2 & 1 & 3
 \end{pmatrix}$ has no solutions in $S_{3}$.
-Level III – advanced problems (problems 36–50)
 class="exercises" start="36">
 -
 Let $n \in {\mathbb{N}}^{*}$ and $\sigma = \begin{pmatrix}
@@ -4134,7 +4008,6 @@ data-ex="50c">c) Solve in $S_{4}$ the equation $\sigma x\sigma = e$.
 - URL (EN): https://lauramiron.pages.dev/en/materiale/fisa-recapitulativa-geometrie-clasa-a-x-a-1007
 - Fișă recapitulativă de geometrie pentru clasa a XI-a: vectori, ecuația dreptei, coliniaritate și produs scalar, pentru BAC.
 
-Nivel 1 – Înțelegere și aplicare directă (minimul standard la Bacalaureat)
 class="exercises">
 -
 În sistemul de axe $xOy$ se dau punctele $A(2,3)$ și $B(4,7)$. Determinați coordonatele vectorului $\overrightarrow{AB}$ și modulul acestuia.
@@ -4167,7 +4040,6 @@ Calculați distanța de la punctul $A(3,2)$ la dreapta $d:3x + 4y - 2 = 0$.
 Determinați centrul de greutate al triunghiului cu vârfurile $A(1,2)$, $B(5,0)$ și $C(3,7)$.
 -
 Verificați dacă punctele $A(1,1)$, $B(2,3)$ și $C(4,7)$ sunt coliniare.
-Nivel 2 – Aplicare medie (format standard Subiectul I5 BAC)
 class="exercises" start="16">
 -
 Determinați ecuația dreptei care trece prin punctul $A(3, - 2)$ și este paralelă cu dreapta de ecuație $x + 2y - 5 = 0$.
@@ -4209,7 +4081,6 @@ Calculați produsul scalar $\overrightarrow{u} \cdot \overrightarrow{v}$, știin
 Determinați ecuațiile dreptelor paralele cu $d:4x - 3y + 1 = 0$ aflate la distanța $2$ față de aceasta.
 -
 În triunghiul $ABC$ se cunosc $A(1,1)$ și ecuațiile mediatoarelor: $x - y + 1 = 0$ și $2x + y - 4 = 0$. Determinați centrul cercului circumscris triunghiului.
-Nivel 3 – Aprofundare și consolidare (raționament matematic integrat)
 class="exercises" start="36">
 -
 Se consideră dreptele $d_{m}:(2m + 1)x + (m - 1)y + 3m - 2 = 0$, $m \in \mathbb{R}$. Arătați că toate dreptele $d_{m}$ trec printr-un punct fix $P$ și determinați coordonatele acestuia.
@@ -4244,7 +4115,6 @@ Determinați ecuația dreptei care trece prin punctul de intersecție al dreptel
 
 --- EN ---
 
-Level 1 – Understanding and direct application (minimum standard for the Baccalaureate)
 class="exercises">
 -
 In the coordinate system $xOy$, the points $A(2,3)$ and $B(4,7)$ are given. Find the coordinates of the vector $\overrightarrow{AB}$ and its magnitude.
@@ -4277,7 +4147,6 @@ Calculate the distance from the point $A(3,2)$ to the line $d:3x + 4y - 2 = 0$.
 Find the centroid of the triangle with vertices $A(1,2)$, $B(5,0)$ and $C(3,7)$.
 -
 Check whether the points $A(1,1)$, $B(2,3)$ and $C(4,7)$ are collinear.
-Level 2 – Average application (standard format, item I5 of the BAC)
 class="exercises" start="16">
 -
 Find the equation of the line passing through the point $A(3, - 2)$ and parallel to the line $x + 2y - 5 = 0$.
@@ -4319,7 +4188,6 @@ Calculate the dot product $\overrightarrow{u} \cdot \overrightarrow{v}$, knowing
 Find the equations of the lines parallel to $d:4x - 3y + 1 = 0$ at distance $2$ from it.
 -
 In triangle $ABC$, the point $A(1,1)$ and the equations of the perpendicular bisectors $x - y + 1 = 0$ and $2x + y - 4 = 0$ are known. Find the circumcenter of the triangle.
-Level 3 – Deepening and consolidation (integrated mathematical reasoning)
 class="exercises" start="36">
 -
 Consider the lines $d_{m}:(2m + 1)x + (m - 1)y + 3m - 2 = 0$, $m \in \mathbb{R}$. Show that all the lines $d_{m}$ pass through a fixed point $P$ and find its coordinates.
@@ -4360,7 +4228,6 @@ In $\bigtriangleup ABC$, the point $A(1,3)$ and the equations of the perpendicul
 - Teorie sintetizată pentru clasa a XI-a: vectori și geometrie analitică — ecuația dreptei, panta, distanțe și produs scalar.
 
 Profil: Matematică-Informatică | Pondere Bacalaureat: Subiectul I, Exercițiul 5
-1. Vectori în plan (sistemul cartezian)
 Fie punctele $A\left( x_{A},y_{A} \right)$ și $B\left( x_{B},y_{B} \right)$ și vectorii de poziție $\overrightarrow{r_{A}} = x_{A}\overrightarrow{i} + y_{A}\overrightarrow{j}$, $\overrightarrow{r_{B}} = x_{B}\overrightarrow{i} + y_{B}\overrightarrow{j}$.
 -
 Vectorul liber $\overrightarrow{AB}$:
@@ -4390,7 +4257,6 @@ $$\cos(\theta) = \frac{a_{1}a_{2} + b_{1}b_{2}}{\sqrt{a_{1}^{2} + b_{1}^{2}} \cd
 -
 Condiția de perpendicularitate a doi vectori:
 $$\overrightarrow{u}\bot\overrightarrow{v} < = > \overrightarrow{u} \cdot \overrightarrow{v} = 0 < = > a_{1}a_{2} + b_{1}b_{2} = 0$$
-2. Puncte remarcabile și segmente
 -
 Mijlocul $M$ al segmentului $\lbrack AB\rbrack$:
 $$x_{M} = \frac{x_{A} + x_{B}}{2},\quad y_{M} = \frac{y_{A} + y_{B}}{2} = > \overrightarrow{r_{M}} = \frac{\overrightarrow{r_{A}} + \overrightarrow{r_{B}}}{2}$$
@@ -4400,7 +4266,6 @@ $$x_{M} = \frac{x_{A} + kx_{B}}{1 + k},\quad y_{M} = \frac{y_{A} + ky_{B}}{1 + k
 -
 Centrul de greutate $G$ al $\bigtriangleup ABC$:
 $$x_{G} = \frac{x_{A} + x_{B} + x_{C}}{3},\quad y_{G} = \frac{y_{A} + y_{B} + y_{C}}{3} = > \overrightarrow{r_{G}} = \frac{\overrightarrow{r_{A}} + \overrightarrow{r_{B}} + \overrightarrow{r_{C}}}{3}$$
-3. Ecuațiile dreptei în plan
 -
 Panta unei drepte ($m$):
 -
@@ -4421,7 +4286,6 @@ Prin două puncte $A\left( x_{A},y_{A} \right)$ și $B\left( x_{B},y_{B} \right)
 $$\frac{x - x_{A}}{x_{B} - x_{A}} = \frac{y - y_{A}}{y_{B} - y_{A}}\quad$$
 -
 Prin tăieturi (intersecțiile cu axele): $\frac{x}{a} + \frac{y}{b} = 1$
-4. Poziții relative a două drepte
 Fie $d_{1}:y = m_{1}x + n_{1}$ și $d_{2}:y = m_{2}x + n_{2}$ (sau în forma generală $a_{1}x + b_{1}y + c_{1} = 0$, $a_{2}x + b_{2}y + c_{2} = 0$):
 -
 Paralelism:
@@ -4435,11 +4299,9 @@ $$d_{1} \equiv d_{2} < = > m_{1} = m_{2}\text{~și~}n_{1} = n_{2} < = > \frac{a_
 -
 Secante (Intersecție într-un punct):
 $$m_{1} \neq m_{2} < = > \text{Sistemul~format~din~ecuațiile~celor~două~drepte~are~soluție~unică.}$$
-5. Distanțe și arii
 -
 Distanța de la un punct $P\left( x_{0},y_{0} \right)$ la o dreaptă $d:aX + bY + c = 0$:
 $${dist}(P,d) = \frac{|ax_{0} + by_{0} + c|}{\sqrt{a^{2} + b^{2}}}$$
-6. Idei și strategii frecvente la BAC (Subiectul I, Ex. 5)
 Tip de problemă
 Strategie de rezolvare
 Dreaptă paralelă cu $d$ prin $A$
@@ -4462,7 +4324,6 @@ $ABCD$ paralelogram $\overrightarrow{AB} = \overrightarrow{DC} < = > \overrighta
 --- EN ---
 
 Track: Mathematics and Computer Science | Baccalaureate exam: Part I, Exercise 5
-1. Vectors in the plane (the Cartesian system)
 Consider the points $A\left( x_{A},y_{A} \right)$ and $B\left( x_{B},y_{B} \right)$ and the position vectors $\overrightarrow{r_{A}} = x_{A}\overrightarrow{i} + y_{A}\overrightarrow{j}$, $\overrightarrow{r_{B}} = x_{B}\overrightarrow{i} + y_{B}\overrightarrow{j}$.
 -
 The free vector $\overrightarrow{AB}$:
@@ -4492,7 +4353,6 @@ $$\cos(\theta) = \frac{a_{1}a_{2} + b_{1}b_{2}}{\sqrt{a_{1}^{2} + b_{1}^{2}} \cd
 -
 The perpendicularity condition for two vectors:
 $$\overrightarrow{u}\bot\overrightarrow{v} < = > \overrightarrow{u} \cdot \overrightarrow{v} = 0 < = > a_{1}a_{2} + b_{1}b_{2} = 0$$
-2. Special points and segments
 -
 The midpoint $M$ of the segment $\lbrack AB\rbrack$:
 $$x_{M} = \frac{x_{A} + x_{B}}{2},\quad y_{M} = \frac{y_{A} + y_{B}}{2} = > \overrightarrow{r_{M}} = \frac{\overrightarrow{r_{A}} + \overrightarrow{r_{B}}}{2}$$
@@ -4502,7 +4362,6 @@ $$x_{M} = \frac{x_{A} + kx_{B}}{1 + k},\quad y_{M} = \frac{y_{A} + ky_{B}}{1 + k
 -
 The centroid $G$ of $\bigtriangleup ABC$:
 $$x_{G} = \frac{x_{A} + x_{B} + x_{C}}{3},\quad y_{G} = \frac{y_{A} + y_{B} + y_{C}}{3} = > \overrightarrow{r_{G}} = \frac{\overrightarrow{r_{A}} + \overrightarrow{r_{B}} + \overrightarrow{r_{C}}}{3}$$
-3. Equations of a line in the plane
 -
 The slope of a line ($m$):
 -
@@ -4523,7 +4382,6 @@ Through two points $A\left( x_{A},y_{A} \right)$ and $B\left( x_{B},y_{B} \right
 $$\frac{x - x_{A}}{x_{B} - x_{A}} = \frac{y - y_{A}}{y_{B} - y_{A}}\quad$$
 -
 Intercept form (intersections with the axes): $\frac{x}{a} + \frac{y}{b} = 1$
-4. Relative positions of two lines
 Let $d_{1}:y = m_{1}x + n_{1}$ and $d_{2}:y = m_{2}x + n_{2}$ (or, in general form, $a_{1}x + b_{1}y + c_{1} = 0$, $a_{2}x + b_{2}y + c_{2} = 0$):
 -
 Parallel lines:
@@ -4537,11 +4395,9 @@ $$d_{1} \equiv d_{2} < = > m_{1} = m_{2}\text{~and~}n_{1} = n_{2} < = > \frac{a_
 -
 Intersecting lines (intersection at one point):
 $$m_{1} \neq m_{2} < = > \text{The~system~of~the~two~line~equations~has~a~unique~solution.}$$
-5. Distances and areas
 -
 The distance from a point $P\left( x_{0},y_{0} \right)$ to a line $d:aX + bY + c = 0$:
 $${dist}(P,d) = \frac{|ax_{0} + by_{0} + c|}{\sqrt{a^{2} + b^{2}}}$$
-6. Frequent ideas and strategies for the BAC (Part I, Exercise 5)
 Problem type
 Solution strategy
 Line parallel to $d$ through $A$

@@ -34,13 +34,16 @@ const TITLE_RO = 'Fișă de probă pentru rezultate';
 const TITLE_EN = 'Sample worksheet for results';
 const DESC_RO = 'Fișă de lucru de probă pentru testarea comenzii de salvare a rezultatelor exercițiilor.';
 const DESC_EN = 'Sample worksheet for testing the exercise results save command, long enough to pass.';
+const SUMMARY_RO = 'Rezumat de probă pentru testarea comenzii de salvare a rezultatelor: ideea principală a lecției, structura ei și noțiunile pe care le recapitulează elevii.';
+const SUMMARY_EN = 'Sample summary for testing the results save command: the main idea of the lesson, its structure and the notions the students review.';
 
 // A fresh material with empty articles, plus a minimal answer key and draft.
 function setup(t, dir, items) {
   const d = readData(dir);
   const uid = String(d.nextUid);
   const created = run(dir, MATERIAL, ['new', '-', '--slug', 'fisa-proba', '--topic', d.topics.at(-1).id,
-    '--title-ro', TITLE_RO, '--title-en', TITLE_EN, '--desc-ro', DESC_RO, '--desc-en', DESC_EN]);
+    '--title-ro', TITLE_RO, '--title-en', TITLE_EN, '--desc-ro', DESC_RO, '--desc-en', DESC_EN,
+    '--summary-ro', SUMMARY_RO, '--summary-en', SUMMARY_EN]);
   assert.equal(created.code, 0, created.out);
   const name = `fisa-proba-${uid}`;
   const work = join(dir, '.work', name);

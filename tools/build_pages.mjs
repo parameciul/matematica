@@ -205,12 +205,84 @@ export function insertClipSlots(html, slots) {
   });
 }
 
-// Inner HTML of the article for a language (without generated clip cards),
-// or null when the file has none.
+// Strips only the ids the generator itself would write at each position
+// (s1, s2-1, …). A hand-written id="s9" on the first heading survives, so
+// the validator can point at it instead of silently renumbering it.
+export function stripHeadingIds(html) {
+  let h2 = 0;
+  let h3 = 0;
+  return String(html).replace(/<h[23]\b[^>]*>[\s\S]*?<\/h[23]>/g, (heading) => {
+    const isH3 = heading.slice(0, 3) === '<h3';
+    if (isH3) h3 += 1;
+    else {
+      h2 += 1;
+      h3 = 0;
+    }
+    const want = isH3 ? `s${h2}-${h3}` : `s${h2}`;
+    return heading.replace(new RegExp(`<(h[23])\\b([^>]*) id="${want}"([^>]*)>`), '<$1$2$3>');
+  });
+}
+
+export function decodeHtmlEntities(text) {
+  return String(text)
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;|&apos;/g, "'")
+    .replace(/&#36;/g, '$')
+    .replace(/&nbsp;|&#160;|&#xa0;/gi, ' ')
+    .replace(/&amp;/g, '&');
+}
+
+// Flat list of { level (2|3), text, id } for the headings of an article.
+// A heading that already has an id keeps it; the rest get generated ids.
+export function headingToc(html) {
+  const out = [];
+  let h2 = 0;
+  let h3 = 0;
+  for (const m of String(html).matchAll(/<(h[23])\b([^>]*)>([\s\S]*?)<\/h[23]>/g)) {
+    const level = m[1] === 'h3' ? 3 : 2;
+    const attrs = m[2] || '';
+    const inner = m[3] || '';
+    const text = decodeHtmlEntities(inner.replace(/<[^>]+>/g, '')).replace(/\s+/g, ' ').trim();
+    const kept = /id="([^"]+)"/.exec(attrs);
+    if (level === 2) {
+      h2 += 1;
+      h3 = 0;
+      out.push({ level, text, id: kept ? kept[1] : `s${h2}` });
+    } else {
+      h3 += 1;
+      out.push({ level, text, id: kept ? kept[1] : `s${h2}-${h3}` });
+    }
+  }
+  return out;
+}
+
+// Adds generated ids (s1, s2-1, …) to the headings that lack one.
+// Tags that already have an id are left alone.
+export function addHeadingIds(html) {
+  let h2 = 0;
+  let h3 = 0;
+  return String(html).replace(/<h[23]\b[^>]*>[\s\S]*?<\/h[23]>/g, (heading) => {
+    const isH3 = heading.slice(0, 3) === '<h3';
+    if (isH3) h3 += 1;
+    else {
+      h2 += 1;
+      h3 = 0;
+    }
+    const open = heading.slice(0, heading.indexOf('>') + 1);
+    if (/\sid="[^"]*"/.test(open)) return heading;
+    const want = isH3 ? `s${h2}-${h3}` : `s${h2}`;
+    return heading.replace(/<(h[23]\b)/, `<$1 id="${want}"`);
+  });
+}
+
+// Inner HTML of the article for a language (without generated clip cards and
+// generated heading ids), or null when the file has none.
 export function readArticle(html, lang) {
   if (!html) return null;
   const m = html.match(new RegExp(`<article\\b[^>]*\\bdata-lang="${lang}"[^>]*>([\\s\\S]*?)</article>`));
-  return m ? stripClipSlots(m[1]) : null;
+  return m ? stripHeadingIds(stripClipSlots(m[1])) : null;
 }
 
 function lastmodOf(material) {
@@ -555,8 +627,27 @@ function renderGradePage({ data, grade, lang, dict, assetBase, pageRoot, selfFil
   });
 }
 
-function renderMaterialPage({ data, material, topic, lang, dict, assetBase, pageRoot, selfFile, pairFile, articleHtml }) {
-  const filled = Catalog.hasArticleContent(articleHtml || '');
+// Table of contents from headingToc entries, with <h3>s nested under their
+// <h2>. Shown when the article has at least two <h2>s, or at least three
+// headings overall; a single short section needs no navigation.
+export function tocNavHtml(toc, dict) {
+  const entries = (toc || []).filter((e) => e.text);
+  const h2count = entries.filter((e) => e.level === 2).length;
+  if (entries.length < 3 && h2count < 2) return '';
+  const tops = [];
+  for (const e of entries) {
+    if (e.level === 2 || tops.length === 0) tops.push({ ...e, kids: [] });
+    else tops[tops.length - 1].kids.push(e);
+  }
+  const kid = (k) => `<li><a href="#${k.id}">${esc(k.text)}</a></li>`;
+  const item = (t) => `<li><a href="#${t.id}">${esc(t.text)}</a>` +
+    (t.kids.length ? `<ol>${t.kids.map(kid).join('')}</ol>` : '') + '</li>';
+  return `<nav class="cuprins" aria-labelledby="cuprins-heading">` +
+    `<h2 id="cuprins-heading" data-i18n="toc.title">${esc(dict['toc.title'])}</h2>` +
+    `<ol>${tops.map(item).join('')}</ol></nav>`;
+}
+
+function renderMaterialPage({ data, material, topic, lang, dict, assetBase, pageRoot, selfFile, pairFile, articleHtml }) { const filled = Catalog.hasArticleContent(articleHtml || '');
   // A not-visible material (hidden or scheduled) keeps its page, because the
   // article lives in that file, but the page stays out of search until the
   // timer or an admin save reveals it.
@@ -629,6 +720,17 @@ function renderMaterialPage({ data, material, topic, lang, dict, assetBase, page
     articleOut = insertClipSlots(articleOut, slots);
   }
 
+  // Answer-first summary and table of contents, both generated in the shell
+  // so the hand-written article stays untouched. Heading ids (s1, s2-1, …)
+  // are generated too; readArticle strips them back out on the next build.
+  const toc = headingToc(articleHtml || '');
+  articleOut = addHeadingIds(articleOut);
+  const summaryText = material.summary && (material.summary[lang] || material.summary.ro);
+  const summaryBlock = summaryText
+    ? `<section class="rezumat" aria-labelledby="rezumat-heading"><h2 id="rezumat-heading" data-i18n="summary.title">${esc(dict['summary.title'])}</h2><p>${esc(summaryText)}</p></section>`
+    : '';
+  const tocBlock = tocNavHtml(toc, dict);
+
   let note = '';
   if (!filled && lang !== 'ro') {
     const roHref = `../../materiale/${Catalog.nameOf(material)}.html`;
@@ -649,6 +751,7 @@ function renderMaterialPage({ data, material, topic, lang, dict, assetBase, page
   const main = `    <div class="page" id="material" data-id="${material.uid}"${material.results ? ` data-name="${Catalog.nameOf(material)}" data-results="${material.results.version}"` : ''}>
       ${headBlock}
       ${videoBlock}
+      ${summaryBlock}${tocBlock}
       ${note}${checkNote}
       <article class="material-body" data-lang="${lang}" lang="${lang}">${articleOut}</article>
 
@@ -672,6 +775,7 @@ function renderMaterialPage({ data, material, topic, lang, dict, assetBase, page
     publisher: personLd(lang),
   };
   if (keywords && keywords.length) learningResource.keywords = keywords.join(', ');
+  if (summaryText) learningResource.abstract = summaryText;
   if (material.pdf) {
     learningResource.encoding = {
       '@type': 'MediaObject',
@@ -841,14 +945,7 @@ export function articleToText(html) {
   text = text.replace(/<li\b[^>]*>/gi, '\n- ');
   text = text.replace(/<(h1|h2|h3|p|div|table|thead|tbody|tr|ul|ol|br)[\b\s>]/gi, '\n');
   text = text.replace(/<[^>]+>/g, '');
-  text = text
-    .replace(/&lt;/g, '<')
-    .replace(/&gt;/g, '>')
-    .replace(/&quot;/g, '"')
-    .replace(/&#39;|&apos;/g, "'")
-    .replace(/&#36;/g, '$')
-    .replace(/&nbsp;|&#160;|&#xa0;/gi, ' ')
-    .replace(/&amp;/g, '&');
+  text = decodeHtmlEntities(text);
   return text
     .split('\n')
     .map((line) => line.replace(/[ \t]+/g, ' ').trim())

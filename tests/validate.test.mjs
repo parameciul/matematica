@@ -53,6 +53,10 @@ function addSample(dir) {
         ro: 'Material de test pentru validarea generatorului de pagini, cu teorie și exerciții.',
         en: 'Test material for checking the static page generator, with theory and exercises.',
       },
+      summary: {
+        ro: 'Material de test pentru validarea generatorului de pagini: rezumatul paginii de teorie, cu ideea principală și structura lecției pentru elevi.',
+        en: 'Test material for checking the static page generator: the summary of the theory page, with the main idea and the structure of the lesson for students.',
+      },
       pdf: SAMPLE_PDF,
       youtube: null,
       keywords: { ro: ['test', 'clasa a 9-a', 'clasa 9'], en: ['test', 'grade 9'] },
@@ -305,6 +309,31 @@ test('description that is too short fails', () => {
 
 test('description that is too long fails', () => {
   expectFailure(withSite((dir) => editData(dir, (d) => { sample(d).description.en = `x${'y'.repeat(200)}`; })), /description\.en must be 70-160 characters/);
+});
+
+test('a theory page without a summary fails', () => {
+  expectFailure(withSite((dir) => editData(dir, (d) => { delete sample(d).summary; })), /summary is required on a teorie page/);
+});
+
+test('a summary that is too short fails', () => {
+  expectFailure(withSite((dir) => editData(dir, (d) => { sample(d).summary.ro = 'Prea scurt.'; })), /summary\.ro must be 120-350 characters/);
+});
+
+test('a summary on a quiz fails', () => {
+  expectFailure(
+    withSite((dir) => editData(dir, (d) => { sample(d).kind = 'quiz'; sample(d).pdf = null; sample(d).summary = { ro: 'x', en: 'y' }; })),
+    /summary is not shown on a quiz/,
+  );
+});
+
+test('a hand-written heading id fails', () => {
+  expectFailure(
+    withSite((dir) => {
+      editFile(dir, SAMPLE_PAGE, addToArticle('<h2 id="s9">Secțiune scrisă de mână</h2>'));
+      writeSite(dir);
+    }),
+    /heading ids are generated/,
+  );
 });
 
 test('updated before published fails', () => {
@@ -740,7 +769,7 @@ test('answer heading in a material page fails', () => {
 });
 
 function makeQuiz(dir, body) {
-  editData(dir, (d) => { sample(d).kind = 'quiz'; sample(d).pdf = null; });
+  editData(dir, (d) => { sample(d).kind = 'quiz'; sample(d).pdf = null; delete sample(d).summary; });
   unlinkSync(join(dir, SAMPLE_PDF));
   writeFileSync(join(dir, SAMPLE_PAGE), `<!doctype html>\n<html lang="ro">\n<head>\n<!-- seo -->\n<!-- /seo -->\n</head>\n<body>${body}</body>\n</html>\n`);
   if (existsSync(join(dir, SAMPLE_EN_PAGE))) unlinkSync(join(dir, SAMPLE_EN_PAGE));

@@ -202,6 +202,15 @@ function checkNoLeftoverSlot(page, html, lang) {
   }
 }
 
+// Heading ids (s1, s2-1, …) are generated for the table of contents and
+// stripped back out by readArticle. One left in the stripped article was
+// written by hand: never write them, run node tools/build_pages.mjs instead.
+function checkNoHandHeadingIds(page, html, lang) {
+  const article = readArticle(html, lang) || '';
+  const hit = article.match(/<h[23]\b[^>]*\sid="s\d+(?:-\d+)?"/);
+  if (hit) fail(`${page}: heading ids are generated; remove ${hit[0]} and run node tools/build_pages.mjs`);
+}
+
 const materialUids = new Set();
 const materialNames = new Set();
 const listedPdfs = new Set();
@@ -290,6 +299,31 @@ for (const [i, m] of materials.entries()) {
     }
   }
   if (m.kind === 'quiz' && m.youtube !== null) fail(`${where}: youtube must be null for a quiz`);
+  // summary: the answer-first box above the article (2-3 sentences, plain
+  // words). Required on theory pages, which answer engines quote directly;
+  // allowed anywhere except the standalone quiz page.
+  if (m.kind === 'quiz' && m.summary !== undefined) fail(`${where}: summary is not shown on a quiz`);
+  if ((m.kind === 'teorie' || m.kind === 'lectie') && m.summary === undefined) {
+    fail(`${where}: summary is required on a ${m.kind} page`);
+  }
+  if (m.summary !== undefined) {
+    if (!m.summary || typeof m.summary !== 'object' || Array.isArray(m.summary)) {
+      fail(`${where}: summary must be { "ro": text, "en": text }`);
+    } else {
+      for (const key of Object.keys(m.summary)) if (!['ro', 'en'].includes(key)) fail(`${where}: summary: unknown field "${key}"`);
+      for (const lang of ['ro', 'en']) {
+        const t = m.summary[lang];
+        if (!isText(t)) fail(`${where}: summary.${lang} is required when summary is present`);
+        else if ([...t].length < 120 || [...t].length > 350) {
+          fail(`${where}: summary.${lang} must be 120-350 characters (is ${[...t].length})`);
+        } else {
+          checkClassMarks(`${where} summary.${lang}`, t);
+          checkNoAnswers(`${where} summary.${lang}`, t);
+          if (/[şţŞŢ]/.test(t)) fail(`${where} summary.${lang}: uses cedilla letters (ş ţ). Use comma-below letters (ș ț).`);
+        }
+      }
+    }
+  }
   if (m.keywords !== undefined) {
     const ok = m.keywords && typeof m.keywords === 'object'
       && ['ro', 'en'].every((lang) => m.keywords[lang] === undefined || (Array.isArray(m.keywords[lang]) && m.keywords[lang].every(isText)));
@@ -373,6 +407,7 @@ for (const [i, m] of materials.entries()) {
     if (!html.includes(`katex@${KATEX_VERSION}/`)) fail(`${page}: must load KaTeX ${KATEX_VERSION}`);
     checkClipSections(where, m, page, html, 'ro');
     checkNoLeftoverSlot(page, html, 'ro');
+    checkNoHandHeadingIds(page, html, 'ro');
     const enPage = `en/${page}`;
     if (!exists(enPage)) {
       fail(`${where}: missing file ${enPage}`);
@@ -380,6 +415,7 @@ for (const [i, m] of materials.entries()) {
       const enHtml = read(enPage);
       checkClipSections(where, m, enPage, enHtml, 'en');
       checkNoLeftoverSlot(enPage, enHtml, 'en');
+      checkNoHandHeadingIds(enPage, enHtml, 'en');
       if (!enHtml.includes('data-lang="en"')) fail(`${enPage}: must contain an article with data-lang="en"`);
       if (enHtml.includes('data-lang="ro"')) fail(`${enPage}: the Romanian article lives in ${page}`);
       if (!enHtml.includes('data-root="../../"')) fail(`${enPage}: body must have data-root="../../"`);

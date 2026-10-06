@@ -134,6 +134,8 @@
       'about.what.text': 'Teorie sintetică, fișe de lucru cu exerciții pe niveluri, fișe recapitulative, teste, jocuri și quiz-uri, grupate pe clase, teme și ani școlari. Unele materiale au PDF de tipărit și videoclipuri scurte cu subtitrare în română și engleză.',
       'about.how.title': 'Cum folosești materialele',
       'about.how.text': 'Alege clasa din meniu sau caută o temă, citește teoria, rezolvă fișa, apoi verifică răspunsul cu butonul Verifică. Răspunsurile rămân pe dispozitivul tău și nu ajung pe internet.',
+      'summary.title': 'Rezumat',
+      'toc.title': 'Cuprins',
     },
     en: {
       'site.title': 'Math with Laura Miron',
@@ -268,6 +270,8 @@
       'about.what.text': 'Concise theory, worksheets with leveled exercises, review sheets, tests, games and quizzes, grouped by grade, topic and school year. Some materials have a printable PDF and short videos with Romanian and English subtitles.',
       'about.how.title': 'How to use the materials',
       'about.how.text': 'Pick your grade from the menu or search for a topic, read the theory, solve the worksheet, then check your answer with the Check button. Your answers stay on your device and are never sent online.',
+      'summary.title': 'Summary',
+      'toc.title': 'Contents',
     },
   };
 

@@ -31,6 +31,13 @@ function makeRoot(t) {
 const dataFile = (dir) => join(dir, 'data', 'materials.source.json');
 const readData = (dir) => JSON.parse(readFileSync(dataFile(dir), 'utf8'));
 
+// Summaries for the materials the tests create (the default --kind is
+// teorie, which requires one).
+const SUMMARY_FLAGS = ['--summary-ro',
+  'Rezumat de probă pentru testarea comenzii de creare: ideea principală a lecției, structura ei și noțiunile pe care le recapitulează elevii.',
+  '--summary-en',
+  'Sample summary for testing the creation command: the main idea of the lesson, its structure and the notions the students review.'];
+
 test('list shows live materials and the nextUid counter', (t) => {
   const dir = makeRoot(t);
   const res = run(dir, ['list']);
@@ -58,7 +65,8 @@ test('new allocates the next uid, adds the entry and regenerates the pages', (t)
   const res = run(dir, ['new', '--slug', 'fisa-parabole', '--topic', before.topics.at(-1).id, '--kind', 'teorie',
     '--title-ro', 'Fișă: parabola', '--title-en', 'Worksheet: parabola',
     '--desc-ro', 'Fișă de lucru despre parabola, axa de simetrie și vârful, cu exerciții pentru clasa a 9-a.',
-    '--desc-en', 'Worksheet about the parabola: its axis of symmetry and vertex, with exercises for grade 9.']);
+    '--desc-en', 'Worksheet about the parabola: its axis of symmetry and vertex, with exercises for grade 9.',
+    ...SUMMARY_FLAGS]);
   assert.equal(res.code, 0, res.out);
   assert.match(res.out, new RegExp(`created fisa-parabole-${before.nextUid}`));
   const after = readData(dir);
@@ -84,7 +92,8 @@ test('new copies a PDF and keeps the file-listing rules happy', (t) => {
   const res = run(dir, ['new', '--pdf', pdf, '--slug', 'test-cu-pdf', '--topic', before.topics.at(-1).id,
     '--title-ro', 'Test cu pdf', '--title-en', 'Test with pdf',
     '--desc-ro', 'Material de probă cu fișier PDF, suficient de lung pentru regulile validatorului site-ului.',
-    '--desc-en', 'Sample document with a PDF file, long enough to satisfy the site validator rules.']);
+    '--desc-en', 'Sample document with a PDF file, long enough to satisfy the site validator rules.',
+    ...SUMMARY_FLAGS]);
   assert.equal(res.code, 0, res.out);
   const m = readData(dir).materials.find((x) => x.slug === 'test-cu-pdf');
   assert.match(m.pdf, /materiale\/pdf\/test-cu-pdf-\d+\.pdf$/);
@@ -116,7 +125,8 @@ test('new --pdf and pdf --pdf write the PDF metadata from the data', (t) => {
   const res = run(dir, ['new', '--pdf', teacher, '--slug', 'fisa-meta', '--topic', before.topics.at(-1).id,
     '--title-ro', 'Fișă cu metadate', '--title-en', 'Worksheet with metadata',
     '--desc-ro', 'Material de probă cu fișier PDF, suficient de lung pentru regulile validatorului site-ului.',
-    '--desc-en', 'Sample document with a PDF file, long enough to satisfy the site validator rules.']);
+    '--desc-en', 'Sample document with a PDF file, long enough to satisfy the site validator rules.',
+    ...SUMMARY_FLAGS]);
   assert.equal(res.code, 0, res.out);
   const m = readData(dir).materials.find((x) => x.slug === 'fisa-meta');
   assert.match(res.out, new RegExp(`metadata written ${m.pdf}`));
@@ -174,13 +184,15 @@ const NEW_FLAGS = (topic) => ['--slug', 'fisa-ggomery', '--topic', topic,
   '--title-ro', 'Fișă generată din DOCX pentru testarea comenzii de creare a materialelor noi.',
   '--title-en', 'Worksheet generated from DOCX for testing the material creation command.',
   '--desc-ro', 'Fișă de lucru generată din DOCX pentru testarea comenzii de creare, cu exerciții pentru clasa potrivită.',
-  '--desc-en', 'Worksheet generated from DOCX for testing the creation command, with exercises for the right grade.'];
+  '--desc-en', 'Worksheet generated from DOCX for testing the creation command, with exercises for the right grade.',
+  ...SUMMARY_FLAGS];
 
 const ANSWER_FLAGS = (topic) => ['--no-pdf', '--slug', 'fisa-raspunsuri', '--topic', topic,
   '--title-ro', 'Fișă cu răspunsuri pentru testarea comenzii de creare a materialelor noi.',
   '--title-en', 'Worksheet with answers for testing the material creation command.',
   '--desc-ro', 'Fișă de lucru cu răspunsuri pentru testarea comenzii de creare, cu exerciții pentru clasa potrivită.',
-  '--desc-en', 'Worksheet with answers for testing the creation command, with exercises for the right grade.'];
+  '--desc-en', 'Worksheet with answers for testing the creation command, with exercises for the right grade.',
+  ...SUMMARY_FLAGS];
 
 function contentDocx(t, dir, name, paragraphs) {
   const content = join(dir, 'content');
@@ -328,7 +340,8 @@ test('new refuses --pdf together with --no-pdf', (t) => {
   const res = run(dir, ['new', '--pdf', pdf, '--no-pdf', '--slug', 'x', '--topic', before.topics[0].id,
     '--title-ro', 'A', '--title-en', 'B',
     '--desc-ro', 'Fișă de lucru pentru testarea comenzii de creare, suficient de lungă pentru validator.',
-    '--desc-en', 'Worksheet for testing the creation command, long enough to satisfy the validator.']);
+    '--desc-en', 'Worksheet for testing the creation command, long enough to satisfy the validator.',
+    ...SUMMARY_FLAGS]);
   assert.equal(res.code, 1);
   assert.match(res.out, /--pdf and --no-pdf never appear together/);
 });
@@ -405,13 +418,29 @@ test('new validates the flags before touching the data', (t) => {
   assert.equal(published.nextUid, before.nextUid);
 });
 
+test('new requires a summary on theory pages and refuses one on a quiz', (t) => {
+  const dir = makeRoot(t);
+  const topic = readData(dir).topics[0].id;
+  const base = ['--slug', 'x', '--topic', topic,
+    '--title-ro', 'A', '--title-en', 'B',
+    '--desc-ro', 'Fișă de lucru pentru testarea comenzii de creare, suficient de lungă pentru validator.',
+    '--desc-en', 'Worksheet for testing the creation command, long enough to satisfy the validator.'];
+  const noSummary = run(dir, ['new', '--kind', 'teorie', ...base]);
+  assert.equal(noSummary.code, 1);
+  assert.match(noSummary.out, /--summary-ro and --summary-en are required/);
+  const quizSummary = run(dir, ['new', '--kind', 'quiz', '--no-pdf', ...base, ...SUMMARY_FLAGS]);
+  assert.equal(quizSummary.code, 1);
+  assert.match(quizSummary.out, /a quiz has no summary page/);
+});
+
 test('new --hidden creates a hidden material', (t) => {
   const dir = makeRoot(t);
   const before = readData(dir);
   const res = run(dir, ['new', '--hidden', '--slug', 'fisa-ascunsa', '--topic', before.topics.at(-1).id,
     '--title-ro', 'Fișă ascunsă', '--title-en', 'Hidden worksheet',
     '--desc-ro', 'Fișă de lucru ascunsă pentru testarea comenzii de creare, cu exerciții pentru clasa potrivită.',
-    '--desc-en', 'Hidden worksheet for testing the creation command, with exercises for the right grade level.']);
+    '--desc-en', 'Hidden worksheet for testing the creation command, with exercises for the right grade level.',
+    ...SUMMARY_FLAGS]);
   assert.equal(res.code, 0, res.out);
   const m = readData(dir).materials.find((x) => x.slug === 'fisa-ascunsa');
   assert.ok(m);
@@ -427,7 +456,8 @@ test('new --visible-from creates a scheduled material', (t) => {
   const res = run(dir, ['new', '--visible-from', '2030-09-21 08:00', '--slug', 'fisa-programata', '--topic', before.topics.at(-1).id,
     '--title-ro', 'Fișă programată', '--title-en', 'Scheduled worksheet',
     '--desc-ro', 'Fișă de lucru programată pentru testarea comenzii de creare, cu exerciții pentru clasa potrivită.',
-    '--desc-en', 'Scheduled worksheet for testing the creation command, with exercises for the right grade.']);
+    '--desc-en', 'Scheduled worksheet for testing the creation command, with exercises for the right grade.',
+    ...SUMMARY_FLAGS]);
   assert.equal(res.code, 0, res.out);
   const m = readData(dir).materials.find((x) => x.slug === 'fisa-programata');
   assert.ok(m);
@@ -442,7 +472,8 @@ test('new refuses --hidden together with --visible-from', (t) => {
   const res = run(dir, ['new', '--hidden', '--visible-from', '2030-09-21 08:00', '--slug', 'x', '--topic', readData(dir).topics[0].id,
     '--title-ro', 'A', '--title-en', 'B',
     '--desc-ro', 'Fișă de lucru pentru testarea comenzii de creare, suficient de lungă pentru validator.',
-    '--desc-en', 'Worksheet for testing the creation command, long enough to satisfy the validator.']);
+    '--desc-en', 'Worksheet for testing the creation command, long enough to satisfy the validator.',
+    ...SUMMARY_FLAGS]);
   assert.equal(res.code, 1);
   assert.match(res.out, /never appear together/);
 });

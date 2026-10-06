@@ -204,6 +204,8 @@ function cmdNew({ pos, flags }) {
   const titleEn = flags['title-en'];
   const descRo = flags['desc-ro'];
   const descEn = flags['desc-en'];
+  const summaryRo = flags['summary-ro'];
+  const summaryEn = flags['summary-en'];
   const published = flags['published'] || today();
   if (!slug || !ID_RE.test(slug)) fail('--slug must be lowercase letters, digits and dashes');
   if (topicId === undefined) fail('--topic <topic-id> is required');
@@ -213,6 +215,20 @@ function cmdNew({ pos, flags }) {
   if (!descRo || !descEn) fail('--desc-ro and --desc-en are required');
   if (textLen(descRo) < 70 || textLen(descRo) > 160) fail(`--desc-ro must be 70-160 characters (is ${textLen(descRo)})`);
   if (textLen(descEn) < 70 || textLen(descEn) > 160) fail(`--desc-en must be 70-160 characters (is ${textLen(descEn)})`);
+  // The answer-first box above the article: required on theory pages.
+  if (kind === 'quiz' && (summaryRo !== undefined || summaryEn !== undefined)) fail('a quiz has no summary page');
+  if ((kind === 'teorie' || kind === 'lectie') && (!summaryRo || !summaryEn)) {
+    fail('--summary-ro and --summary-en are required for --kind teorie or lectie');
+  }
+  if ((summaryRo !== undefined || summaryEn !== undefined) && (!summaryRo || !summaryEn)) {
+    fail('--summary-ro and --summary-en go together');
+  }
+  if (summaryRo !== undefined && (textLen(summaryRo) < 120 || textLen(summaryRo) > 350)) {
+    fail(`--summary-ro must be 120-350 characters (is ${textLen(summaryRo)})`);
+  }
+  if (summaryEn !== undefined && (textLen(summaryEn) < 120 || textLen(summaryEn) > 350)) {
+    fail(`--summary-en must be 120-350 characters (is ${textLen(summaryEn)})`);
+  }
   if (!Catalog.isValidDate(published)) fail(`--published must be a real YYYY-MM-DD date (was "${published}")`);
   const hidden = flags['hidden'] === true;
   const visibleFromRaw = flags['visible-from'];
@@ -289,6 +305,7 @@ function cmdNew({ pos, flags }) {
     youtube: null,
     import: { date: today(), workflow: WORKFLOW },
   };
+  if (summaryRo !== undefined) material.summary = { ro: summaryRo, en: summaryEn };
   if (importPdf !== null) material.import.pdf = importPdf;
   if (hidden) material.hidden = true;
   if (visibleFrom) material.visibleFrom = visibleFrom;

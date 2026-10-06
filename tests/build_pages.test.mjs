@@ -11,6 +11,7 @@ import {
   buildSite, writeSite, canonicalFor, materialPageTitle, relHref, SITE_URL,
   stripClipSlots, insertClipSlots, countHeadings, readArticle,
   parseClipSection, compareClipSections, subheadingCounts,
+  headingToc, addHeadingIds, stripHeadingIds, tocNavHtml,
 } from '../tools/build_pages.mjs';
 
 const REPO = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -255,7 +256,7 @@ test('two builds give the same output', (t) => {
   assert.deepEqual([...buildSite(dir)], [...buildSite(dir)]);
 });
 
-test('article HTML is kept byte for byte', (t) => {
+test('article HTML is kept byte for byte, plus generated heading ids', (t) => {
   const roInner = '\n      <h2>Secțiune</h2>\n      <p>Formulă $x^2$ &amp; text.</p>\n    ';
   const enInner = '\n      <h2>Section</h2>\n      <p>Formula $x^2$ &amp; text.</p>\n    ';
   const dir = makeRoot(t, {
@@ -264,9 +265,11 @@ test('article HTML is kept byte for byte', (t) => {
   const site = buildSite(dir);
   const ro = site.get(`materiale/${mname('teorie-reale')}.html`).match(/<article[^>]*data-lang="ro"[^>]*>([\s\S]*?)<\/article>/);
   const en = site.get(`en/materiale/${mname('teorie-reale')}.html`).match(/<article[^>]*data-lang="en"[^>]*>([\s\S]*?)<\/article>/);
-  assert.equal(ro[1], roInner);
-  assert.equal(en[1], enInner);
+  assert.equal(ro[1], roInner.replace('<h2>', '<h2 id="s1">'));
+  assert.equal(en[1], enInner.replace('<h2>', '<h2 id="s1">'));
   assert.doesNotMatch(site.get(`materiale/${mname('teorie-reale')}.html`), /data-lang="en"/);
+  // A single section needs no table of contents.
+  assert.doesNotMatch(site.get(`materiale/${mname('teorie-reale')}.html`), /class="cuprins"/);
 });
 
 test('the migration splits a two-article file', (t) => {
@@ -589,6 +592,59 @@ function clipRoot(t, youtube, roInner = SECTIONS('ro'), enInner = SECTIONS('en')
   });
 }
 
+test('headingToc numbers h2/h3 and keeps a hand-written id', () => {
+  const toc = headingToc('<h2>Unu</h2><p>a</p><h2>Doi</h2><h3>Sub</h3><h2 id="alt">Trei</h2>');
+  assert.deepEqual(toc.map((e) => [e.level, e.text, e.id]), [
+    [2, 'Unu', 's1'],
+    [2, 'Doi', 's2'],
+    [3, 'Sub', 's2-1'],
+    [2, 'Trei', 'alt'],
+  ]);
+});
+
+test('addHeadingIds and stripHeadingIds round-trip', () => {
+  const art = '<h2>Unu</h2><p>a</p><h2>Doi</h2><h3>Sub $x$</h3>';
+  const withIds = addHeadingIds(art);
+  assert.match(withIds, /<h2 id="s1">Unu<\/h2>/);
+  assert.match(withIds, /<h2 id="s2">Doi<\/h2>/);
+  assert.match(withIds, /<h3 id="s2-1">Sub \$x\$<\/h3>/);
+  assert.equal(stripHeadingIds(withIds), art);
+  assert.equal(addHeadingIds(withIds), withIds);
+  // A hand-written id at the wrong position survives, so the validator sees it.
+  assert.equal(stripHeadingIds('<h2 id="s9">Unu</h2>'), '<h2 id="s9">Unu</h2>');
+  assert.equal(stripHeadingIds('<h2 id="s1">Unu</h2>'), '<h2>Unu</h2>');
+});
+
+test('tocNavHtml needs two h2s or three headings, and nests h3s', (t) => {
+  const dict = { 'toc.title': 'Cuprins' };
+  assert.equal(tocNavHtml(headingToc('<h2>Doar una</h2><p>a</p>'), dict), '');
+  const two = tocNavHtml(headingToc('<h2>Unu</h2><h2>Doi</h2>'), dict);
+  assert.match(two, /<nav class="cuprins"/);
+  assert.match(two, /<a href="#s1">Unu<\/a>/);
+  assert.match(two, /<a href="#s2">Doi<\/a>/);
+  const nested = tocNavHtml(headingToc('<h2>Unu</h2><h3>A &amp; B</h3><h2>Doi</h2>'), dict);
+  assert.match(nested, /<a href="#s1">Unu<\/a><ol><li><a href="#s1-1">A &amp; B<\/a><\/li><\/ol>/);
+});
+
+test('a summary shows the rezumat box and the LearningResource abstract', (t) => {
+  const materials = dataFixture().materials;
+  materials[0].summary = {
+    ro: 'Rezumat de test pentru pagina de teorie, cu două propoziții care descriu ideea principală a lecției pentru elevi.',
+    en: 'Test summary for the theory page, with two sentences describing the main idea of the lesson for students.',
+  };
+  const dir = makeRoot(t, { materials, pages: stdPages() });
+  const site = buildSite(dir);
+  const page = site.get(`materiale/${mname('teorie-reale')}.html`);
+  assert.match(page, /<section class="rezumat" aria-labelledby="rezumat-heading">/);
+  assert.match(page, /Rezumat de test pentru pagina de teorie/);
+  const resource = ldBlocks(page).find((b) => b['@type'] === 'LearningResource');
+  assert.equal(resource.abstract, materials[0].summary.ro);
+  // Without a summary there is no box and no abstract.
+  const plain = buildSite(makeRoot(t, { pages: stdPages() })).get(`materiale/${mname('teorie-reale')}.html`);
+  assert.doesNotMatch(plain, /class="rezumat"/);
+  assert.equal(ldBlocks(plain).find((b) => b['@type'] === 'LearningResource').abstract, undefined);
+});
+
 test('insertClipSlots and stripClipSlots are exact inverses', () => {
   const art = SECTIONS('ro');
   const slots = new Map([[1, '<a>one</a>'], [3, '<a>three</a>']]);
@@ -623,8 +679,8 @@ test('three clips: overview above the article, cards under their sections', (t) 
   assert.match(before, /<li data-clip="aKzam7LMZ_4" data-n="2"><a href="#clip-2">/);
   assert.doesNotMatch(before, /class="clip-card/);
   const article = page.slice(page.indexOf('<article'));
-  assert.match(article, /<h2>1\. Unu<\/h2>\n        <div class="clip-slot" data-generated="clips"><a class="clip-card" id="clip-1"/);
-  assert.match(article, /<h2>2\. Doi<\/h2>\n        <div class="clip-slot" data-generated="clips"><a class="clip-card" id="clip-2"[\s\S]*?<a class="clip-card" id="clip-3"/);
+  assert.match(article, /<h2 id="s1">1\. Unu<\/h2>\n        <div class="clip-slot" data-generated="clips"><a class="clip-card" id="clip-1"/);
+  assert.match(article, /<h2 id="s2">2\. Doi<\/h2>\n        <div class="clip-slot" data-generated="clips"><a class="clip-card" id="clip-2"[\s\S]*?<a class="clip-card" id="clip-3"/);
   assert.match(article, /Videoclipul 2 din 3/);
   assert.match(article, /i\.ytimg\.com\/vi\/aKzam7LMZ_4\/mqdefault\.jpg/);
   assert.match(article, /<span class="clip-dur">2:04<\/span>/);
@@ -644,7 +700,7 @@ test('a clip without a section gets its card above the article', (t) => {
   const page = site.get(`materiale/${mname('teorie-reale')}.html`);
   const before = page.slice(0, page.indexOf('<article'));
   assert.match(before, /<div class="clip-top"><a class="clip-card" id="clip-1"/);
-  assert.match(page.slice(page.indexOf('<article')), /<h2>2\. Doi<\/h2>\n        <div class="clip-slot"[^>]*><a class="clip-card" id="clip-2"/);
+  assert.match(page.slice(page.indexOf('<article')), /<h2 id="s2">2\. Doi<\/h2>\n        <div class="clip-slot"[^>]*><a class="clip-card" id="clip-2"/);
 });
 
 test('an empty article puts every card above it', (t) => {
