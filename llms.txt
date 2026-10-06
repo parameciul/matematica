@@ -11,6 +11,9 @@
 - Clasa a VI-a: https://lauramiron.pages.dev/clasa-6
 - Grade 6: https://lauramiron.pages.dev/en/clasa-6
 
+### Mulțimi / Sets
+- [Quiz pe echipe: mulțimi](https://lauramiron.pages.dev/materiale/quiz-multimi-1021): Quiz pe echipe pentru clasa a VI-a despre mulțimi, de proiectat în clasă: elemente, submulțimi, reuniune, intersecție.
+
 ### Recapitularea materiei clasei a V-a / Review of grade 5 math
 - [Fișă recapitulativă 1: numere naturale și fracții](https://lauramiron.pages.dev/materiale/fisa-recapitulativa-1-numere-naturale-fractii-1009): Fișă recapitulativă pentru clasa a VI-a: numere naturale, puteri, divizibilitate, fracții, procente și organizarea datelor.
 - [Fișă recapitulativă 2: geometrie și unități de măsură](https://lauramiron.pages.dev/materiale/fisa-recapitulativa-2-geometrie-unitati-masura-1010): Fișă recapitulativă pentru clasa a VI-a: geometrie și unități de măsură — segmente, unghiuri, perimetre, arii și volume.
