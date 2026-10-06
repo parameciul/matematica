@@ -51,6 +51,7 @@
 
 ### Mulțimi de puncte pe dreapta reală / Sets of points on the real line
 - [Fișă de lucru: vecinătăți și puncte de acumulare](https://lauramiron.pages.dev/materiale/fisa-lucru-vecinatati-puncte-acumulare-1021): Fișă de lucru pentru clasa a XI-a: vecinătăți pe dreapta reală și în puncte infinite, puncte de acumulare și puncte izolate.
+- [Teorie: vecinătăți, puncte de acumulare și puncte izolate](https://lauramiron.pages.dev/materiale/teorie-vecinatati-puncte-acumulare-1022): Teorie sintetizată pentru clasa a XI-a: definiții, proprietăți ale vecinătăților, puncte de acumulare și puncte izolate, cu exemple rezolvate.
 - [Teorie sintetizată: mulțimi de puncte pe dreapta reală](https://lauramiron.pages.dev/materiale/teorie-multimi-puncte-dreapta-reala-1016): Teorie de clasa a XI-a: intervale, mulțimi mărginite, minim și maxim, margine inferioară și superioară, dreapta încheiată.
 - [Fișă de lucru: intervale, mulțimi mărginite și marginile unei mulțimi](https://lauramiron.pages.dev/materiale/fisa-lucru-multimi-marginite-margini-1017): Fișă de lucru pentru clasa a XI-a: intervale, mulțimi mărginite, minim, maxim, margine inferioară și superioară, caracterizarea cu ε.
 - [Probleme propuse: intervale, mulțimi mărginite și marginile unei mulțimi](https://lauramiron.pages.dev/materiale/probleme-multimi-marginite-margini-1018): Probleme pentru clasa a XI-a: intervale, mulțimi mărginite, minim și maxim, margine inferioară și superioară, adevărat sau fals.

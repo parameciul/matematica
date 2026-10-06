@@ -2982,6 +2982,77 @@ Find $a \in {\mathbb{R}}$ for which the set $V = (a - 2,2a + 1)$ is a neighbourh
 
 ---
 
+### Teorie: vecinătăți, puncte de acumulare și puncte izolate
+- URL (RO): https://lauramiron.pages.dev/materiale/teorie-vecinatati-puncte-acumulare-1022
+- URL (EN): https://lauramiron.pages.dev/en/materiale/teorie-vecinatati-puncte-acumulare-1022
+- Teorie sintetizată pentru clasa a XI-a: definiții, proprietăți ale vecinătăților, puncte de acumulare și puncte izolate, cu exemple rezolvate.
+
+1. Vecinătăți ale unui punct din ℝ
+Definiție
+Fie $x_{0} \in {\mathbb{R}}$. O mulțime $V \subset {\mathbb{R}}$ se numește vecinătate a lui $x_{0}$ dacă există $\varepsilon > 0$ astfel încât $\left( x_{0} - \varepsilon,x_{0} + \varepsilon \right) \subset V$. Notăm cu $\mathcal{V}\left( x_{0} \right)$ mulțimea vecinătăților lui $x_{0}$.
+- Echivalent: $V \in \mathcal{V}\left( x_{0} \right) \Leftrightarrow \exists a,b \in {\mathbb{R}}$, $a < x_{0} < b$, astfel încât $(a,b) \subset V$.
+Exemple. $\left( x_{0} - 1,x_{0} + 1 \right)$, $\left\lbrack x_{0} - 1,x_{0} + 2 \right\rbrack$, $\mathbb{R}$ sunt vecinătăți ale lui $x_{0}$; $\left\lbrack x_{0},x_{0} + 1 \right)$ nu este vecinătate a lui $x_{0}$ (nu conține niciun interval centrat în $x_{0}$). Mulțimea $V = \lbrack 1,3) \cup \left\{ 5 \right\}$ este vecinătate a lui $2$, dar nu este vecinătate a lui $1$, a lui $3$ sau a lui $5$. Mulțimile $\mathbb{N}$, $\mathbb{Z}$, $\mathbb{Q}$ nu sunt vecinătăți ale niciunui punct.
+2. Vecinătăți ale lui +∞ și −∞
+Definiții
+- $V \subset {\mathbb{R}}$ este vecinătate a lui $+ \infty$ dacă există $a \in {\mathbb{R}}$ astfel încât $(a, + \infty) \subset V$.
+- $V \subset {\mathbb{R}}$ este vecinătate a lui $- \infty$ dacă există $a \in {\mathbb{R}}$ astfel încât $( - \infty,a) \subset V$.
+Exemple. $(5, + \infty)$, $\lbrack 0, + \infty)$, ${\mathbb{R}} \smallsetminus \lbrack 0,1\rbrack$ sunt vecinătăți ale lui $+ \infty$; $\mathbb{N}$ nu este vecinătate a lui $+ \infty$.
+3. Proprietățile vecinătăților
+Fie $x_{0} \in \overline{\mathbb{R}}$.
+(1) Dacă $x_{0} \in {\mathbb{R}}$ și $V \in \mathcal{V}\left( x_{0} \right)$, atunci $x_{0} \in V$.
+(2) Dacă $V \in \mathcal{V}\left( x_{0} \right)$ și $V \subset W$, atunci $W \in \mathcal{V}\left( x_{0} \right)$.
+(3) Dacă $V_{1},V_{2} \in \mathcal{V}\left( x_{0} \right)$, atunci $V_{1} \cap V_{2} \in \mathcal{V}\left( x_{0} \right)$. Demonstrație ($x_{0} \in {\mathbb{R}}$): dacă $\left( x_{0} - \varepsilon_{1},x_{0} + \varepsilon_{1} \right) \subset V_{1}$ și $\left( x_{0} - \varepsilon_{2},x_{0} + \varepsilon_{2} \right) \subset V_{2}$, pentru $\varepsilon = \min\left\{ \varepsilon_{1},\varepsilon_{2} \right\}$ avem $\left( x_{0} - \varepsilon,x_{0} + \varepsilon \right) \subset V_{1} \cap V_{2}$.
+(4) Proprietatea de separare: dacă $x_{0},y_{0} \in \overline{\mathbb{R}}$, $x_{0} \neq y_{0}$, există $U \in \mathcal{V}\left( x_{0} \right)$ și $W \in \mathcal{V}\left( y_{0} \right)$ cu $U \cap W = \varnothing$. (Pentru $x_{0},y_{0} \in {\mathbb{R}}$ se ia $\varepsilon = \frac{\left| x_{0} - y_{0} \right|}{2}$.)
+4. Puncte de acumulare. Puncte izolate
+Fie $A \subset {\mathbb{R}}$ și $x_{0} \in \overline{\mathbb{R}}$.
+Definiții
+- $x_{0}$ este punct de acumulare al mulțimii $A$ dacă orice vecinătate a lui $x_{0}$ conține cel puțin un punct din $A$, diferit de $x_{0}$:
+$$V \cap \left( A \smallsetminus \left\{ x_{0} \right\} \right) \neq \varnothing,\mkern9mu\forall V \in \mathcal{V}\left( x_{0} \right).$$
+Pentru $x_{0} \in {\mathbb{R}}$: $x_{0} \in A' \Leftrightarrow \forall\varepsilon > 0,\mkern9mu\left( x_{0} - \varepsilon,x_{0} + \varepsilon \right) \cap \left( A \smallsetminus \left\{ x_{0} \right\} \right) \neq \varnothing$.
+- $A'$ – mulțimea punctelor de acumulare ale lui $A$ (mulțimea derivată a lui $A$).
+- Un punct $a \in A$ care nu este punct de acumulare al lui $A$ se numește punct izolat al lui $A$: există $V \in \mathcal{V}(a)$ cu $V \cap A = \left\{ a \right\}$.
+Exemple.
+- $A = (0,1\rbrack$: $A' = \lbrack 0,1\rbrack$; $0 \in A'$, deși $0 \notin A$; $A$ nu are puncte izolate.
+- $A = {\mathbb{N}}$: $A' = \left\{ + \infty \right\}$; toate punctele lui $\mathbb{N}$ sunt izolate.
+- $A = \left\{ \frac{1}{n}\mkern6mu \middle| \mkern6mu n \in {\mathbb{N}}^{*} \right\}$: $A' = \left\{ 0 \right\}$, deoarece pentru orice $\varepsilon > 0$ există $n > \frac{1}{\varepsilon}$, deci $\frac{1}{n} \in ( - \varepsilon,\varepsilon)$; toate punctele lui $A$ sunt izolate.
+- $A = (0,1) \cup \left\{ 2 \right\}$: $A' = \lbrack 0,1\rbrack$, iar $2$ este punct izolat.
+Observații: o mulțime finită nu are puncte de acumulare; $+ \infty \in A' \Leftrightarrow A$ nu este majorată; $- \infty \in A' \Leftrightarrow A$ nu este minorată. Limita unei funcții $f:D \rightarrow {\mathbb{R}}$ se va studia în punctele de acumulare ale lui $D$.
+
+--- EN ---
+
+1. Neighbourhoods of a point in ℝ
+Definition
+Let $x_{0} \in {\mathbb{R}}$. A set $V \subset {\mathbb{R}}$ is called a neighbourhood of $x_{0}$ if there is $\varepsilon > 0$ such that $\left( x_{0} - \varepsilon,x_{0} + \varepsilon \right) \subset V$. We write $\mathcal{V}\left( x_{0} \right)$ for the set of neighbourhoods of $x_{0}$.
+- Equivalently: $V \in \mathcal{V}\left( x_{0} \right) \Leftrightarrow \exists a,b \in {\mathbb{R}}$, $a < x_{0} < b$, such that $(a,b) \subset V$.
+Examples. $\left( x_{0} - 1,x_{0} + 1 \right)$, $\left\lbrack x_{0} - 1,x_{0} + 2 \right\rbrack$ and $\mathbb{R}$ are neighbourhoods of $x_{0}$; $\left\lbrack x_{0},x_{0} + 1 \right)$ is not a neighbourhood of $x_{0}$ (it contains no interval centred at $x_{0}$). The set $V = \lbrack 1,3) \cup \left\{ 5 \right\}$ is a neighbourhood of $2$, but not of $1$, $3$ or $5$. The sets $\mathbb{N}$, $\mathbb{Z}$ and $\mathbb{Q}$ are not neighbourhoods of any point.
+2. Neighbourhoods of +∞ and −∞
+Definitions
+- $V \subset {\mathbb{R}}$ is a neighbourhood of $+ \infty$ if there is $a \in {\mathbb{R}}$ such that $(a, + \infty) \subset V$.
+- $V \subset {\mathbb{R}}$ is a neighbourhood of $- \infty$ if there is $a \in {\mathbb{R}}$ such that $( - \infty,a) \subset V$.
+Examples. $(5, + \infty)$, $\lbrack 0, + \infty)$ and ${\mathbb{R}} \smallsetminus \lbrack 0,1\rbrack$ are neighbourhoods of $+ \infty$; $\mathbb{N}$ is not a neighbourhood of $+ \infty$.
+3. Properties of neighbourhoods
+Let $x_{0} \in \overline{\mathbb{R}}$.
+(1) If $x_{0} \in {\mathbb{R}}$ and $V \in \mathcal{V}\left( x_{0} \right)$, then $x_{0} \in V$.
+(2) If $V \in \mathcal{V}\left( x_{0} \right)$ and $V \subset W$, then $W \in \mathcal{V}\left( x_{0} \right)$.
+(3) If $V_{1},V_{2} \in \mathcal{V}\left( x_{0} \right)$, then $V_{1} \cap V_{2} \in \mathcal{V}\left( x_{0} \right)$. Proof ($x_{0} \in {\mathbb{R}}$): if $\left( x_{0} - \varepsilon_{1},x_{0} + \varepsilon_{1} \right) \subset V_{1}$ and $\left( x_{0} - \varepsilon_{2},x_{0} + \varepsilon_{2} \right) \subset V_{2}$, then for $\varepsilon = \min\left\{ \varepsilon_{1},\varepsilon_{2} \right\}$ we have $\left( x_{0} - \varepsilon,x_{0} + \varepsilon \right) \subset V_{1} \cap V_{2}$.
+(4) Separation property: if $x_{0},y_{0} \in \overline{\mathbb{R}}$, $x_{0} \neq y_{0}$, there are $U \in \mathcal{V}\left( x_{0} \right)$ and $W \in \mathcal{V}\left( y_{0} \right)$ with $U \cap W = \varnothing$. (For $x_{0},y_{0} \in {\mathbb{R}}$ take $\varepsilon = \frac{\left| x_{0} - y_{0} \right|}{2}$.)
+4. Accumulation points. Isolated points
+Let $A \subset {\mathbb{R}}$ and $x_{0} \in \overline{\mathbb{R}}$.
+Definitions
+- $x_{0}$ is an accumulation point of the set $A$ if every neighbourhood of $x_{0}$ contains at least one point of $A$ different from $x_{0}$:
+$$V \cap \left( A \smallsetminus \left\{ x_{0} \right\} \right) \neq \varnothing,\mkern9mu\forall V \in \mathcal{V}\left( x_{0} \right).$$
+For $x_{0} \in {\mathbb{R}}$: $x_{0} \in A' \Leftrightarrow \forall\varepsilon > 0,\mkern9mu\left( x_{0} - \varepsilon,x_{0} + \varepsilon \right) \cap \left( A \smallsetminus \left\{ x_{0} \right\} \right) \neq \varnothing$.
+- $A'$ – the set of accumulation points of $A$ (the derived set of $A$).
+- A point $a \in A$ that is not an accumulation point of $A$ is called an isolated point of $A$: there is $V \in \mathcal{V}(a)$ with $V \cap A = \left\{ a \right\}$.
+Examples.
+- $A = (0,1\rbrack$: $A' = \lbrack 0,1\rbrack$; $0 \in A'$, although $0 \notin A$; $A$ has no isolated points.
+- $A = {\mathbb{N}}$: $A' = \left\{ + \infty \right\}$; all points of $\mathbb{N}$ are isolated.
+- $A = \left\{ \frac{1}{n}\mkern6mu \middle| \mkern6mu n \in {\mathbb{N}}^{*} \right\}$: $A' = \left\{ 0 \right\}$, because for every $\varepsilon > 0$ there is $n > \frac{1}{\varepsilon}$, so $\frac{1}{n} \in ( - \varepsilon,\varepsilon)$; all points of $A$ are isolated.
+- $A = (0,1) \cup \left\{ 2 \right\}$: $A' = \lbrack 0,1\rbrack$, and $2$ is an isolated point.
+Remarks: a finite set has no accumulation points; $+ \infty \in A' \Leftrightarrow A$ is not bounded above; $- \infty \in A' \Leftrightarrow A$ is not bounded below. The limit of a function $f:D \rightarrow {\mathbb{R}}$ will be studied at the accumulation points of $D$.
+
+---
+
 ### Teorie sintetizată: mulțimi de puncte pe dreapta reală
 - URL (RO): https://lauramiron.pages.dev/materiale/teorie-multimi-puncte-dreapta-reala-1016
 - URL (EN): https://lauramiron.pages.dev/en/materiale/teorie-multimi-puncte-dreapta-reala-1016

@@ -1320,6 +1320,57 @@
         "version": 1,
         "checks": 23
       }
+    },
+    {
+      "slug": "teorie-vecinatati-puncte-acumulare",
+      "uid": "1022",
+      "topic": "multimi-puncte-dreapta-reala",
+      "kind": "teorie",
+      "title": {
+        "ro": "Teorie: vecinătăți, puncte de acumulare și puncte izolate",
+        "en": "Theory: neighbourhoods, accumulation points and isolated points"
+      },
+      "seoTitle": {
+        "ro": "Vecinătăți, puncte de acumulare, izolate: teorie",
+        "en": "Neighbourhoods, accumulation points: theory"
+      },
+      "published": "2026-10-06",
+      "description": {
+        "ro": "Teorie sintetizată pentru clasa a XI-a: definiții, proprietăți ale vecinătăților, puncte de acumulare și puncte izolate, cu exemple rezolvate.",
+        "en": "Grade 11 theory summary: definitions, properties of neighbourhoods, accumulation points and isolated points, with worked examples."
+      },
+      "pdf": "materiale/pdf/teorie-vecinatati-puncte-acumulare-1022.pdf",
+      "youtube": null,
+      "import": {
+        "date": "2026-10-06",
+        "workflow": 3,
+        "pdf": "generated"
+      },
+      "summary": {
+        "ro": "O mulțime este vecinătate a unui punct dacă ea conține un interval deschis în jurul punctului; pentru ±∞ se cere să conțină o semidreaptă. Un punct este de acumulare pentru o mulțime A dacă orice vecinătate a lui conține un punct din A, diferit de el; punctele lui A care nu sunt de acumulare se numesc izolate.",
+        "en": "A set is a neighbourhood of a point if it contains an open interval around that point; for ±∞ it must contain a ray. A point is an accumulation point of a set A if every neighbourhood of it contains a point of A different from it; the points of A that are not accumulation points are called isolated."
+      },
+      "keywords": {
+        "ro": [
+          "vecinătăți",
+          "puncte de acumulare",
+          "puncte izolate",
+          "mulțimea derivată",
+          "proprietățile vecinătăților",
+          "analiză matematică",
+          "clasa a 11-a",
+          "clasa a XI-a"
+        ],
+        "en": [
+          "neighbourhoods",
+          "accumulation points",
+          "isolated points",
+          "derived set",
+          "properties of neighbourhoods",
+          "calculus",
+          "grade 11"
+        ]
+      }
     }
   ]
 }
