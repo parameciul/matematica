@@ -2910,8 +2910,8 @@ Show that the perimeter of triangle $CMN$ is constant and independent of the pos
 ## Clasa a XI-a / Grade 11
 
 ### Fișă de lucru: vecinătăți și puncte de acumulare
-- URL (RO): https://lauramiron.pages.dev/materiale/fisa-lucru-vecinatati-puncte-acumulare-1021
-- URL (EN): https://lauramiron.pages.dev/en/materiale/fisa-lucru-vecinatati-puncte-acumulare-1021
+- URL (RO): https://lauramiron.pages.dev/materiale/fisa-lucru-vecinatati-puncte-acumulare-1022
+- URL (EN): https://lauramiron.pages.dev/en/materiale/fisa-lucru-vecinatati-puncte-acumulare-1022
 - Fișă de lucru pentru clasa a XI-a: vecinătăți pe dreapta reală și în puncte infinite, puncte de acumulare și puncte izolate.
 
 Reține
@@ -2983,8 +2983,8 @@ Find $a \in {\mathbb{R}}$ for which the set $V = (a - 2,2a + 1)$ is a neighbourh
 ---
 
 ### Teorie: vecinătăți, puncte de acumulare și puncte izolate
-- URL (RO): https://lauramiron.pages.dev/materiale/teorie-vecinatati-puncte-acumulare-1022
-- URL (EN): https://lauramiron.pages.dev/en/materiale/teorie-vecinatati-puncte-acumulare-1022
+- URL (RO): https://lauramiron.pages.dev/materiale/teorie-vecinatati-puncte-acumulare-1023
+- URL (EN): https://lauramiron.pages.dev/en/materiale/teorie-vecinatati-puncte-acumulare-1023
 - Teorie sintetizată pentru clasa a XI-a: definiții, proprietăți ale vecinătăților, puncte de acumulare și puncte izolate, cu exemple rezolvate.
 
 1. Vecinătăți ale unui punct din ℝ

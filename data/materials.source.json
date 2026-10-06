@@ -1250,7 +1250,7 @@
     },
     {
       "slug": "fisa-lucru-vecinatati-puncte-acumulare",
-      "uid": "1021",
+      "uid": "1022",
       "topic": "multimi-puncte-dreapta-reala",
       "kind": "fisa-lucru",
       "title": {
@@ -1266,7 +1266,7 @@
         "ro": "Fișă de lucru pentru clasa a XI-a: vecinătăți pe dreapta reală și în puncte infinite, puncte de acumulare și puncte izolate.",
         "en": "Grade 11 worksheet: neighbourhoods on the real line and at infinity, accumulation points and isolated points."
       },
-      "pdf": "materiale/pdf/fisa-lucru-vecinatati-puncte-acumulare-1021.pdf",
+      "pdf": "materiale/pdf/fisa-lucru-vecinatati-puncte-acumulare-1022.pdf",
       "youtube": null,
       "import": {
         "date": "2026-10-06",
@@ -1350,7 +1350,7 @@
     },
     {
       "slug": "teorie-vecinatati-puncte-acumulare",
-      "uid": "1022",
+      "uid": "1023",
       "topic": "multimi-puncte-dreapta-reala",
       "kind": "teorie",
       "title": {
@@ -1366,7 +1366,7 @@
         "ro": "Teorie sintetizată pentru clasa a XI-a: definiții, proprietăți ale vecinătăților, puncte de acumulare și puncte izolate, cu exemple rezolvate.",
         "en": "Grade 11 theory summary: definitions, properties of neighbourhoods, accumulation points and isolated points, with worked examples."
       },
-      "pdf": "materiale/pdf/teorie-vecinatati-puncte-acumulare-1022.pdf",
+      "pdf": "materiale/pdf/teorie-vecinatati-puncte-acumulare-1023.pdf",
       "youtube": null,
       "import": {
         "date": "2026-10-06",
@@ -1400,6 +1400,6 @@
       }
     }
   ],
-  "nextUid": 1023,
+  "nextUid": 1024,
   "retired": []
 }
