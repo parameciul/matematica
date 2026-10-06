@@ -3161,6 +3161,97 @@ Remarks: a finite set has no accumulation points; $+ \infty \in A' \Leftrightarr
 
 ---
 
+### Probleme propuse: vecinătăți și puncte de acumulare
+- URL (RO): https://lauramiron.pages.dev/materiale/probleme-vecinatati-puncte-acumulare-1024
+- URL (EN): https://lauramiron.pages.dev/en/materiale/probleme-vecinatati-puncte-acumulare-1024
+- Probleme pentru clasa a XI-a: vecinătăți ale unui punct și ale lui ±∞, puncte de acumulare, puncte izolate, adevărat sau fals.
+
+Problemele 1–8 sunt obligatorii; problema 9 este facultativă.
+-
+Stabiliți care dintre mulțimile următoare sunt vecinătăți ale punctului $x_{0} = - 1$:
+a) $( - 2,0)$;
+b) $\lbrack - 1,1\rbrack$;
+c) $( - 3,1) \smallsetminus \left\{ 0 \right\}$;
+d) $\mathbb{Q}$;
+e) ${\mathbb{R}} \smallsetminus {\mathbb{Z}}$.
+-
+Care dintre mulțimile următoare sunt vecinătăți ale lui $- \infty$?
+a) $( - \infty, - 100)$;
+b) $\mathbb{Z}$;
+c) ${\mathbb{R}} \smallsetminus \lbrack - 1,1\rbrack$;
+d) $( - \infty,0) \cap {\mathbb{Q}}$.
+-
+Determinați $m \in {\mathbb{R}}$ pentru care intervalul $V = \left( m - 1,m^{2} + 1 \right)$ este vecinătate a lui $2$.
+-
+Determinați mulțimea punctelor de acumulare și punctele izolate pentru:
+a) $A = ( - 2,1\rbrack \cup \left\{ 3 \right\}$;
+b) $B = \left\{ \frac{n}{n + 1}\mkern6mu \middle| \mkern6mu n \in {\mathbb{N}} \right\}$;
+c) $C = {\mathbb{N}}$;
+d) $D = \left\{ x \in {\mathbb{R}}\mkern6mu \middle| \mkern6mu x^{2} - 5x + 4 \leq 0 \right\} \cup \left\{ 6 \right\}$;
+e) $E = (0, + \infty)$;
+f) $F = \left\{ ( - 1)^{n} + \frac{1}{n}\mkern6mu \middle| \mkern6mu n \in {\mathbb{N}}^{*} \right\}$.
+-
+a) Arătați că, dacă $V_{1}$ și $V_{2}$ sunt vecinătăți ale lui $+ \infty$, atunci $V_{1} \cap V_{2}$ este vecinătate a lui $+ \infty$.
+b) Arătați că mulțimile $V_{n} = \left( - \frac{1}{n},\frac{1}{n} \right)$, $n \in {\mathbb{N}}^{*}$, sunt vecinătăți ale lui $0$, dar intersecția tuturor acestor mulțimi nu este vecinătate a lui $0$.
+-
+Fie $A = \left\{ \frac{2n - 1}{n + 1}\mkern6mu \middle| \mkern6mu n \in {\mathbb{N}} \right\}$. Determinați $\min A$, $\sup A$ și $A'$.
+-
+Arătați că $+ \infty$ este punct de acumulare al mulțimii $A \subset {\mathbb{R}}$ dacă și numai dacă $A$ nu este majorată. Aplicație: arătați că $+ \infty \in A'$ pentru $A = \left\{ n^{2} - 3n\mkern6mu \middle| \mkern6mu n \in {\mathbb{N}} \right\}$.
+-
+Stabiliți valoarea de adevăr a propozițiilor următoare; justificați:
+a) Orice punct de acumulare al unei mulțimi aparține mulțimii.
+b) O mulțime finită nu are puncte de acumulare.
+c) Orice punct al intervalului $(a,b)$ este punct de acumulare al acestui interval.
+d) Mulțimea $\mathbb{Z}$ este vecinătate a lui $0$.
+e) Dacă $V$ este vecinătate a lui $x_{0}$ și $W \subset {\mathbb{R}}$ este o mulțime oarecare, atunci $V \cup W$ este vecinătate a lui $x_{0}$.
+-
+(facultativ) Arătați că $x_{0} \in {\mathbb{R}}$ este punct de acumulare al mulțimii $A$ dacă și numai dacă orice vecinătate a lui $x_{0}$ conține o infinitate de elemente ale lui $A$.
+
+--- EN ---
+
+Problems 1–8 are required; problem 9 is optional.
+-
+Decide which of the following sets are neighbourhoods of the point $x_{0} = - 1$:
+a) $( - 2,0)$;
+b) $\lbrack - 1,1\rbrack$;
+c) $( - 3,1) \smallsetminus \left\{ 0 \right\}$;
+d) $\mathbb{Q}$;
+e) ${\mathbb{R}} \smallsetminus {\mathbb{Z}}$.
+-
+Which of the following sets are neighbourhoods of $- \infty$?
+a) $( - \infty, - 100)$;
+b) $\mathbb{Z}$;
+c) ${\mathbb{R}} \smallsetminus \lbrack - 1,1\rbrack$;
+d) $( - \infty,0) \cap {\mathbb{Q}}$.
+-
+Find $m \in {\mathbb{R}}$ for which the interval $V = \left( m - 1,m^{2} + 1 \right)$ is a neighbourhood of $2$.
+-
+Find the set of accumulation points and the isolated points of:
+a) $A = ( - 2,1\rbrack \cup \left\{ 3 \right\}$;
+b) $B = \left\{ \frac{n}{n + 1}\mkern6mu \middle| \mkern6mu n \in {\mathbb{N}} \right\}$;
+c) $C = {\mathbb{N}}$;
+d) $D = \left\{ x \in {\mathbb{R}}\mkern6mu \middle| \mkern6mu x^{2} - 5x + 4 \leq 0 \right\} \cup \left\{ 6 \right\}$;
+e) $E = (0, + \infty)$;
+f) $F = \left\{ ( - 1)^{n} + \frac{1}{n}\mkern6mu \middle| \mkern6mu n \in {\mathbb{N}}^{*} \right\}$.
+-
+a) Show that if $V_{1}$ and $V_{2}$ are neighbourhoods of $+ \infty$, then $V_{1} \cap V_{2}$ is a neighbourhood of $+ \infty$.
+b) Show that the sets $V_{n} = \left( - \frac{1}{n},\frac{1}{n} \right)$, $n \in {\mathbb{N}}^{*}$, are neighbourhoods of $0$, but the intersection of all these sets is not a neighbourhood of $0$.
+-
+Let $A = \left\{ \frac{2n - 1}{n + 1}\mkern6mu \middle| \mkern6mu n \in {\mathbb{N}} \right\}$. Find $\min A$, $\sup A$ and $A'$.
+-
+Show that $+ \infty$ is an accumulation point of the set $A \subset {\mathbb{R}}$ if and only if $A$ is not bounded above. Application: show that $+ \infty \in A'$ for $A = \left\{ n^{2} - 3n\mkern6mu \middle| \mkern6mu n \in {\mathbb{N}} \right\}$.
+-
+Decide whether each of the following statements is true or false; justify:
+a) Every accumulation point of a set belongs to the set.
+b) A finite set has no accumulation points.
+c) Every point of the interval $(a,b)$ is an accumulation point of this interval.
+d) The set $\mathbb{Z}$ is a neighbourhood of $0$.
+e) If $V$ is a neighbourhood of $x_{0}$ and $W \subset {\mathbb{R}}$ is any set, then $V \cup W$ is a neighbourhood of $x_{0}$.
+-
+(optional) Show that $x_{0} \in {\mathbb{R}}$ is an accumulation point of the set $A$ if and only if every neighbourhood of $x_{0}$ contains infinitely many elements of $A$.
+
+---
+
 ### Teorie sintetizată: mulțimi de puncte pe dreapta reală
 - URL (RO): https://lauramiron.pages.dev/materiale/teorie-multimi-puncte-dreapta-reala-1016
 - URL (EN): https://lauramiron.pages.dev/en/materiale/teorie-multimi-puncte-dreapta-reala-1016

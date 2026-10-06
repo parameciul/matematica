@@ -1420,6 +1420,55 @@
           "grade 11"
         ]
       }
+    },
+    {
+      "slug": "probleme-vecinatati-puncte-acumulare",
+      "uid": "1024",
+      "topic": "multimi-puncte-dreapta-reala",
+      "kind": "fisa-lucru",
+      "title": {
+        "ro": "Probleme propuse: vecinătăți și puncte de acumulare",
+        "en": "Practice problems: neighbourhoods and accumulation points"
+      },
+      "published": "2026-10-06",
+      "description": {
+        "ro": "Probleme pentru clasa a XI-a: vecinătăți ale unui punct și ale lui ±∞, puncte de acumulare, puncte izolate, adevărat sau fals.",
+        "en": "Grade 11 practice problems: neighbourhoods of a point and of ±∞, accumulation points, isolated points, and true-or-false statements."
+      },
+      "seoTitle": {
+        "ro": "Vecinătăți și puncte de acumulare: probleme",
+        "en": "Neighbourhoods and accumulation points: problems"
+      },
+      "pdf": "materiale/pdf/probleme-vecinatati-puncte-acumulare-1024.pdf",
+      "youtube": null,
+      "import": {
+        "date": "2026-10-06",
+        "workflow": 3,
+        "pdf": "generated"
+      },
+      "keywords": {
+        "ro": [
+          "vecinătăți",
+          "puncte de acumulare",
+          "puncte izolate",
+          "mulțimea derivată",
+          "analiză matematică",
+          "clasa a 11-a",
+          "clasa a XI-a"
+        ],
+        "en": [
+          "neighbourhoods",
+          "accumulation points",
+          "isolated points",
+          "derived set",
+          "calculus",
+          "grade 11"
+        ]
+      },
+      "results": {
+        "version": 1,
+        "checks": 15
+      }
     }
   ]
 }
