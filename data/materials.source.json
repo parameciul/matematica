@@ -1249,6 +1249,55 @@
       }
     },
     {
+      "slug": "fisa-lucru-vecinatati-puncte-acumulare",
+      "uid": "1021",
+      "topic": "multimi-puncte-dreapta-reala",
+      "kind": "fisa-lucru",
+      "title": {
+        "ro": "Fișă de lucru: vecinătăți și puncte de acumulare",
+        "en": "Worksheet: neighbourhoods and accumulation points"
+      },
+      "seoTitle": {
+        "ro": "Vecinătăți și puncte de acumulare: fișă",
+        "en": "Neighbourhoods and accumulation points: worksheet"
+      },
+      "published": "2026-10-06",
+      "description": {
+        "ro": "Fișă de lucru pentru clasa a XI-a: vecinătăți pe dreapta reală și în puncte infinite, puncte de acumulare și puncte izolate.",
+        "en": "Grade 11 worksheet: neighbourhoods on the real line and at infinity, accumulation points and isolated points."
+      },
+      "pdf": "materiale/pdf/fisa-lucru-vecinatati-puncte-acumulare-1021.pdf",
+      "youtube": null,
+      "import": {
+        "date": "2026-10-06",
+        "workflow": 3,
+        "pdf": "generated"
+      },
+      "keywords": {
+        "ro": [
+          "vecinătăți",
+          "puncte de acumulare",
+          "puncte izolate",
+          "mulțimi mărginite",
+          "analiză matematică",
+          "clasa a 11-a",
+          "clasa a XI-a"
+        ],
+        "en": [
+          "neighbourhoods",
+          "accumulation points",
+          "isolated points",
+          "bounded sets",
+          "calculus",
+          "grade 11"
+        ]
+      },
+      "results": {
+        "version": 1,
+        "checks": 12
+      }
+    },
+    {
       "slug": "fisa-lucru-operatii-cu-propozitii",
       "uid": "1020",
       "topic": "elemente-logica-matematica",
@@ -1300,6 +1349,6 @@
       }
     }
   ],
-  "nextUid": 1021,
+  "nextUid": 1022,
   "retired": []
 }

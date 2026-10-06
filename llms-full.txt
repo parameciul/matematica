@@ -2909,6 +2909,79 @@ Show that the perimeter of triangle $CMN$ is constant and independent of the pos
 
 ## Clasa a XI-a / Grade 11
 
+### Fișă de lucru: vecinătăți și puncte de acumulare
+- URL (RO): https://lauramiron.pages.dev/materiale/fisa-lucru-vecinatati-puncte-acumulare-1021
+- URL (EN): https://lauramiron.pages.dev/en/materiale/fisa-lucru-vecinatati-puncte-acumulare-1021
+- Fișă de lucru pentru clasa a XI-a: vecinătăți pe dreapta reală și în puncte infinite, puncte de acumulare și puncte izolate.
+
+Reține
+- $V$ este vecinătate a lui $x_{0} \in {\mathbb{R}}$ dacă $\exists\varepsilon > 0$ astfel încât $\left( x_{0} - \varepsilon,x_{0} + \varepsilon \right) \subset V$.
+- $V$ este vecinătate a lui $+ \infty$ dacă $\exists a \in {\mathbb{R}}$: $(a, + \infty) \subset V$; a lui $- \infty$ dacă $\exists a \in {\mathbb{R}}$: $( - \infty,a) \subset V$.
+- $x_{0} \in \overline{\mathbb{R}}$ este punct de acumulare al lui $A$ dacă orice vecinătate a lui $x_{0}$ conține un punct din $A$ diferit de $x_{0}$. $A'$ = mulțimea punctelor de acumulare.
+- $a \in A$ este punct izolat al lui $A$ dacă $a \notin A'$.
+-
+Stabiliți care dintre mulțimile următoare sunt vecinătăți ale punctului $x_{0} = 2$; justificați.
+a) $V_{1} = (1,3)$;
+b) $V_{2} = \lbrack 2,5\rbrack$;
+c) $V_{3} = (0,4\rbrack \smallsetminus \left\{ 3 \right\}$;
+d) $V_{4} = {\mathbb{Z}}$;
+e) $V_{5} = \left( - \infty,2 + \frac{1}{100} \right)$;
+f) $V_{6} = {\mathbb{R}} \smallsetminus \left\{ 2 \right\}$.
+-
+Care dintre mulțimile următoare sunt vecinătăți ale lui $+ \infty$?
+a) $(5, + \infty)$;
+b) $\mathbb{N}$;
+c) $\lbrack - 3, + \infty) \smallsetminus \left\{ 10 \right\}$;
+d) ${\mathbb{R}} \smallsetminus \lbrack 0,1\rbrack$;
+e) $( - \infty,100)$.
+-
+Determinați mulțimea punctelor de acumulare $A'$ și punctele izolate ale mulțimii $A$:
+a) $A = \lbrack - 1,3)$;
+b) $A = (0,1) \cup \left\{ 2,3 \right\}$;
+c) $A = \left\{ \frac{1}{n}\mkern6mu \middle| \mkern6mu n \in {\mathbb{N}}^{*} \right\}$;
+d) $A = {\mathbb{Z}}$;
+e) $A = \left\{ 1,2,3 \right\}$.
+-
+Determinați $a \in {\mathbb{R}}$ pentru care mulțimea $V = (a - 2,2a + 1)$ este vecinătate a lui $3$.
+-
+(opțional) Fie $A = \left\{ \frac{( - 1)^{n}}{n}\mkern6mu \middle| \mkern6mu n \in {\mathbb{N}}^{*} \right\}$. Arătați, folosind definiția, că $0$ este punct de acumulare al lui $A$ și determinați $A'$.
+
+--- EN ---
+
+Remember
+- $V$ is a neighbourhood of $x_{0} \in {\mathbb{R}}$ if $\exists\varepsilon > 0$ such that $\left( x_{0} - \varepsilon,x_{0} + \varepsilon \right) \subset V$.
+- $V$ is a neighbourhood of $+ \infty$ if $\exists a \in {\mathbb{R}}$: $(a, + \infty) \subset V$; of $- \infty$ if $\exists a \in {\mathbb{R}}$: $( - \infty,a) \subset V$.
+- $x_{0} \in \overline{\mathbb{R}}$ is an accumulation point of $A$ if every neighbourhood of $x_{0}$ contains a point of $A$ different from $x_{0}$. $A'$ = the set of accumulation points.
+- $a \in A$ is an isolated point of $A$ if $a \notin A'$.
+-
+Decide which of the following sets are neighbourhoods of the point $x_{0} = 2$; justify.
+a) $V_{1} = (1,3)$;
+b) $V_{2} = \lbrack 2,5\rbrack$;
+c) $V_{3} = (0,4\rbrack \smallsetminus \left\{ 3 \right\}$;
+d) $V_{4} = {\mathbb{Z}}$;
+e) $V_{5} = \left( - \infty,2 + \frac{1}{100} \right)$;
+f) $V_{6} = {\mathbb{R}} \smallsetminus \left\{ 2 \right\}$.
+-
+Which of the following sets are neighbourhoods of $+ \infty$?
+a) $(5, + \infty)$;
+b) $\mathbb{N}$;
+c) $\lbrack - 3, + \infty) \smallsetminus \left\{ 10 \right\}$;
+d) ${\mathbb{R}} \smallsetminus \lbrack 0,1\rbrack$;
+e) $( - \infty,100)$.
+-
+Find the set of accumulation points $A'$ and the isolated points of the set $A$:
+a) $A = \lbrack - 1,3)$;
+b) $A = (0,1) \cup \left\{ 2,3 \right\}$;
+c) $A = \left\{ \frac{1}{n}\mkern6mu \middle| \mkern6mu n \in {\mathbb{N}}^{*} \right\}$;
+d) $A = {\mathbb{Z}}$;
+e) $A = \left\{ 1,2,3 \right\}$.
+-
+Find $a \in {\mathbb{R}}$ for which the set $V = (a - 2,2a + 1)$ is a neighbourhood of $3$.
+-
+(optional) Let $A = \left\{ \frac{( - 1)^{n}}{n}\mkern6mu \middle| \mkern6mu n \in {\mathbb{N}}^{*} \right\}$. Show, using the definition, that $0$ is an accumulation point of $A$ and find $A'$.
+
+---
+
 ### Teorie sintetizată: mulțimi de puncte pe dreapta reală
 - URL (RO): https://lauramiron.pages.dev/materiale/teorie-multimi-puncte-dreapta-reala-1016
 - URL (EN): https://lauramiron.pages.dev/en/materiale/teorie-multimi-puncte-dreapta-reala-1016

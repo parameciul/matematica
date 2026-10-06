@@ -1,0 +1,364 @@
+{
+  "uid": "1021",
+  "version": 1,
+  "items": {
+    "3": {
+      "check": false,
+      "why": "open",
+      "show": "a) $A' = \\lbrack - 1,3\\rbrack$, fără puncte izolate. b) $A' = \\lbrack 0,1\\rbrack$; $2$ și $3$ sunt puncte izolate. c) $A' = \\left\\{ 0 \\right\\}$; toate punctele lui $A$ sunt izolate. d) $A' = \\left\\{ - \\infty, + \\infty \\right\\}$; toate punctele sunt izolate. e) $A' = \\varnothing$; toate punctele sunt izolate."
+    },
+    "4": {
+      "kind": "interval",
+      "show": "$a - 2 < 3 < 2a + 1 \\Leftrightarrow a < 5$ și $a > 1$, deci $a \\in (1,5)$",
+      "accept": [
+        "(1; 5)"
+      ]
+    },
+    "5": {
+      "check": false,
+      "why": "proof",
+      "show": "$A' = \\left\\{ 0 \\right\\}$: pentru $\\varepsilon > 0$ și $n > \\frac{1}{\\varepsilon}$, $\\left| \\frac{( - 1)^{n}}{n} \\right| < \\varepsilon$"
+    },
+    "1a": {
+      "kind": "options",
+      "show": "Da ($\\varepsilon = 1$)",
+      "options": [
+        {
+          "value": "da",
+          "label": {
+            "ro": "Da, este vecinătate",
+            "en": "Yes, it is a neighbourhood"
+          },
+          "chip": {
+            "ro": "Da",
+            "en": "Yes"
+          }
+        },
+        {
+          "value": "nu",
+          "label": {
+            "ro": "Nu, nu este vecinătate",
+            "en": "No, it is not a neighbourhood"
+          },
+          "chip": {
+            "ro": "Nu",
+            "en": "No"
+          }
+        }
+      ],
+      "accept": [
+        "da"
+      ]
+    },
+    "1b": {
+      "kind": "options",
+      "show": "Nu: nu conține niciun interval $(2 - \\varepsilon,2 + \\varepsilon)$",
+      "options": [
+        {
+          "value": "da",
+          "label": {
+            "ro": "Da, este vecinătate",
+            "en": "Yes, it is a neighbourhood"
+          },
+          "chip": {
+            "ro": "Da",
+            "en": "Yes"
+          }
+        },
+        {
+          "value": "nu",
+          "label": {
+            "ro": "Nu, nu este vecinătate",
+            "en": "No, it is not a neighbourhood"
+          },
+          "chip": {
+            "ro": "Nu",
+            "en": "No"
+          }
+        }
+      ],
+      "accept": [
+        "nu"
+      ]
+    },
+    "1c": {
+      "kind": "options",
+      "show": "Da: $(1,3) \\subset V_{3}$ ($\\varepsilon = 1$)",
+      "options": [
+        {
+          "value": "da",
+          "label": {
+            "ro": "Da, este vecinătate",
+            "en": "Yes, it is a neighbourhood"
+          },
+          "chip": {
+            "ro": "Da",
+            "en": "Yes"
+          }
+        },
+        {
+          "value": "nu",
+          "label": {
+            "ro": "Nu, nu este vecinătate",
+            "en": "No, it is not a neighbourhood"
+          },
+          "chip": {
+            "ro": "Nu",
+            "en": "No"
+          }
+        }
+      ],
+      "accept": [
+        "da"
+      ]
+    },
+    "1d": {
+      "kind": "options",
+      "show": "Nu: $\\mathbb{Z}$ nu conține niciun interval",
+      "options": [
+        {
+          "value": "da",
+          "label": {
+            "ro": "Da, este vecinătate",
+            "en": "Yes, it is a neighbourhood"
+          },
+          "chip": {
+            "ro": "Da",
+            "en": "Yes"
+          }
+        },
+        {
+          "value": "nu",
+          "label": {
+            "ro": "Nu, nu este vecinătate",
+            "en": "No, it is not a neighbourhood"
+          },
+          "chip": {
+            "ro": "Nu",
+            "en": "No"
+          }
+        }
+      ],
+      "accept": [
+        "nu"
+      ]
+    },
+    "1e": {
+      "kind": "options",
+      "show": "Da: $\\varepsilon = \\frac{1}{100}$",
+      "options": [
+        {
+          "value": "da",
+          "label": {
+            "ro": "Da, este vecinătate",
+            "en": "Yes, it is a neighbourhood"
+          },
+          "chip": {
+            "ro": "Da",
+            "en": "Yes"
+          }
+        },
+        {
+          "value": "nu",
+          "label": {
+            "ro": "Nu, nu este vecinătate",
+            "en": "No, it is not a neighbourhood"
+          },
+          "chip": {
+            "ro": "Nu",
+            "en": "No"
+          }
+        }
+      ],
+      "accept": [
+        "da"
+      ]
+    },
+    "1f": {
+      "kind": "options",
+      "show": "Nu: $2 \\notin V_{6}$",
+      "options": [
+        {
+          "value": "da",
+          "label": {
+            "ro": "Da, este vecinătate",
+            "en": "Yes, it is a neighbourhood"
+          },
+          "chip": {
+            "ro": "Da",
+            "en": "Yes"
+          }
+        },
+        {
+          "value": "nu",
+          "label": {
+            "ro": "Nu, nu este vecinătate",
+            "en": "No, it is not a neighbourhood"
+          },
+          "chip": {
+            "ro": "Nu",
+            "en": "No"
+          }
+        }
+      ],
+      "accept": [
+        "nu"
+      ]
+    },
+    "2a": {
+      "kind": "options",
+      "show": "Da",
+      "options": [
+        {
+          "value": "da",
+          "label": {
+            "ro": "Da, este vecinătate",
+            "en": "Yes, it is a neighbourhood"
+          },
+          "chip": {
+            "ro": "Da",
+            "en": "Yes"
+          }
+        },
+        {
+          "value": "nu",
+          "label": {
+            "ro": "Nu, nu este vecinătate",
+            "en": "No, it is not a neighbourhood"
+          },
+          "chip": {
+            "ro": "Nu",
+            "en": "No"
+          }
+        }
+      ],
+      "accept": [
+        "da"
+      ]
+    },
+    "2b": {
+      "kind": "options",
+      "show": "Nu",
+      "options": [
+        {
+          "value": "da",
+          "label": {
+            "ro": "Da, este vecinătate",
+            "en": "Yes, it is a neighbourhood"
+          },
+          "chip": {
+            "ro": "Da",
+            "en": "Yes"
+          }
+        },
+        {
+          "value": "nu",
+          "label": {
+            "ro": "Nu, nu este vecinătate",
+            "en": "No, it is not a neighbourhood"
+          },
+          "chip": {
+            "ro": "Nu",
+            "en": "No"
+          }
+        }
+      ],
+      "accept": [
+        "nu"
+      ]
+    },
+    "2c": {
+      "kind": "options",
+      "show": "Da: $(10, + \\infty) \\subset V$",
+      "options": [
+        {
+          "value": "da",
+          "label": {
+            "ro": "Da, este vecinătate",
+            "en": "Yes, it is a neighbourhood"
+          },
+          "chip": {
+            "ro": "Da",
+            "en": "Yes"
+          }
+        },
+        {
+          "value": "nu",
+          "label": {
+            "ro": "Nu, nu este vecinătate",
+            "en": "No, it is not a neighbourhood"
+          },
+          "chip": {
+            "ro": "Nu",
+            "en": "No"
+          }
+        }
+      ],
+      "accept": [
+        "da"
+      ]
+    },
+    "2d": {
+      "kind": "options",
+      "show": "Da: $(1, + \\infty) \\subset V$",
+      "options": [
+        {
+          "value": "da",
+          "label": {
+            "ro": "Da, este vecinătate",
+            "en": "Yes, it is a neighbourhood"
+          },
+          "chip": {
+            "ro": "Da",
+            "en": "Yes"
+          }
+        },
+        {
+          "value": "nu",
+          "label": {
+            "ro": "Nu, nu este vecinătate",
+            "en": "No, it is not a neighbourhood"
+          },
+          "chip": {
+            "ro": "Nu",
+            "en": "No"
+          }
+        }
+      ],
+      "accept": [
+        "da"
+      ]
+    },
+    "2e": {
+      "kind": "options",
+      "show": "Nu",
+      "options": [
+        {
+          "value": "da",
+          "label": {
+            "ro": "Da, este vecinătate",
+            "en": "Yes, it is a neighbourhood"
+          },
+          "chip": {
+            "ro": "Da",
+            "en": "Yes"
+          }
+        },
+        {
+          "value": "nu",
+          "label": {
+            "ro": "Nu, nu este vecinătate",
+            "en": "No, it is not a neighbourhood"
+          },
+          "chip": {
+            "ro": "Nu",
+            "en": "No"
+          }
+        }
+      ],
+      "accept": [
+        "nu"
+      ]
+    }
+  }
+}
