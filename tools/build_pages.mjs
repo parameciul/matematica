@@ -52,16 +52,15 @@ const KATEX_RENDER = {
 
 export const FONTS = 'https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,700;0,800;1,400&family=Caveat:wght@600&display=swap';
 export const OG_IMAGE = `${SITE_URL}assets/img/og-image.png`;
-// Profiles for the home page Person JSON-LD. Empty now: no public
-// teacher profiles (school staff page, YouTube channel) exist yet (audit F5).
+// Public teacher profiles for the Person JSON-LD sameAs (audit F5).
 // Add URLs here only when they exist.
-const PROFILES = [];
+const PROFILES = ['https://www.youtube.com/@MatematicaLauraMiron'];
 
 // Search-engine verification tokens (audit F1). Empty until the property is
 // verified: paste the code from Search Console / Bing Webmaster Tools here and
 // regenerate. When set, renderHead emits the meta tag.
 export const GOOGLE_SITE_VERIFICATION = 'lwpe3phdRnlGTaxwvpfcxbuygEudOHDa7i_hl_1wQQc';
-export const BING_SITE_VERIFICATION = '';
+export const BING_SITE_VERIFICATION = '79E7F21C210EE6E1F04FDB1E5956620C';
 
 export function esc(text) {
   return Shell.escapeHtml(text);
@@ -488,6 +487,12 @@ function webSiteLd(lang, dict) {
       url: SITE_URL,
       inLanguage: lang,
       description: dict['seo.home.description'],
+      publisher: {
+        '@type': 'Organization',
+        name: 'Laura Miron',
+        url: SITE_URL,
+        logo: OG_IMAGE,
+      },
     },
     { '@context': 'https://schema.org', ...person },
     { '@context': 'https://schema.org', ...org },
@@ -588,6 +593,31 @@ function renderGradePage({ data, grade, lang, dict, assetBase, pageRoot, selfFil
       </div>
     ${blocks || `<p class="message">${esc(dict['class.empty'])}</p>`}
     </div>`;
+  // Answer engines read the grade as a list: each visible material becomes one
+  // ListItem with its canonical URL (the quiz lives only in Romanian).
+  const itemList = [];
+  for (const e of entries) {
+    for (const m of e.materials) {
+      const itemName = Catalog.nameOf(m);
+      itemList.push({
+        '@type': 'ListItem',
+        position: itemList.length + 1,
+        name: m.title[lang] || m.title.ro,
+        item: m.kind === 'quiz'
+          ? `${SITE_URL}materiale/${itemName}`
+          : lang === 'en' ? `${SITE_URL}en/materiale/${itemName}` : `${SITE_URL}materiale/${itemName}`,
+      });
+    }
+  }
+  const collectionPage = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: title,
+    description,
+    url: canonicalFor(selfFile),
+    inLanguage: lang,
+  };
+  if (itemList.length) collectionPage.mainEntity = { '@type': 'ItemList', itemListElement: itemList };
   const head = renderHead({
     lang,
     title,
@@ -599,14 +629,7 @@ function renderGradePage({ data, grade, lang, dict, assetBase, pageRoot, selfFil
     assetBase,
     pageScripts: ['assets/js/i18n.js', 'assets/js/catalog.js', 'assets/js/shell.js', 'assets/js/site.js', 'assets/js/searchbox.js', 'assets/js/clasa.js'],
     jsonLdBlocks: [
-      {
-        '@context': 'https://schema.org',
-        '@type': 'CollectionPage',
-        name: title,
-        description,
-        url: canonicalFor(selfFile),
-        inLanguage: lang,
-      },
+      collectionPage,
       {
         '@context': 'https://schema.org',
         '@type': 'BreadcrumbList',
@@ -673,10 +696,20 @@ function renderMaterialPage({ data, material, topic, lang, dict, assetBase, page
   const pdfButton = material.pdf
     ? `<p class="material-actions"><a class="button" href="${assetBase}${material.pdf}" target="_blank" rel="noopener">${esc(dict['material.pdf'])}</a>${pdfNote}</p>`
     : '';
+  // Visible byline for E-E-A-T: every article names its teacher with a link to
+  // /despre, plus the update date when the data carries one.
+  const pubParts = dict['material.published'].split('{date}');
+  const byParts = (dict['material.by'] || 'de {author}').split('{author}');
+  const updParts = (dict['material.updated'] || '').split('{date}');
+  const aboutHref = `${pageRoot}despre.html`;
+  const updatedMeta = material.updated
+    ? ` · ${esc(updParts[0] || '')}<time datetime="${material.updated}">${esc(Catalog.formatDate(material.updated, lang, 'long'))}</time>${esc(updParts[1] || '')}`
+    : '';
   const headBlock = `<div id="material-head">${crumbs}\n` +
     `      <span class="badge badge-${Catalog.groupOf(material.kind)}">${esc(dict[`kind.${material.kind}`] || material.kind)}</span>\n` +
     `      <h1>${esc(materialTitle)}</h1>\n` +
-    `      <p class="material-meta">${esc(dict['material.published'].split('{date}')[0])}<time datetime="${material.published}">${esc(Catalog.formatDate(material.published, lang, 'long'))}</time>${esc(dict['material.published'].split('{date}')[1] || '')}</p>\n` +
+    `      <p class="material-meta">${esc(pubParts[0])}<time datetime="${material.published}">${esc(Catalog.formatDate(material.published, lang, 'long'))}</time>${esc(pubParts[1] || '')}` +
+    ` · ${esc(byParts[0] || '')}<a href="${aboutHref}" rel="author">Laura Miron</a>${esc(byParts[1] || '')}${updatedMeta}</p>\n` +
     `      ${pdfButton}</div>`;
 
   // Clips. One clip: a large click-to-load player above the article, as the
@@ -775,17 +808,32 @@ function renderMaterialPage({ data, material, topic, lang, dict, assetBase, page
     name: materialTitle,
     description,
     url: pageUrl,
+    mainEntityOfPage: pageUrl,
     inLanguage: lang,
     datePublished: material.published,
     dateModified: lastmodOf(material),
     learningResourceType: dict[`kind.${material.kind}`] || material.kind,
     educationalLevel: gradeName,
+    teaches: topicTitle,
+    educationalAlignment: {
+      '@type': 'AlignmentObject',
+      alignmentType: 'educationalSubject',
+      educationalFramework: lang === 'en' ? 'Romanian curriculum' : 'Programa școlară românească',
+      targetName: `${gradeName} – ${topicTitle}`,
+      targetUrl: `${SITE_URL}${lang === 'en' ? 'en/' : ''}clasa-${topic.grade}#${topic.id}`,
+    },
     isAccessibleForFree: true,
     author: personLd(lang),
     publisher: personLd(lang),
   };
   if (keywords && keywords.length) learningResource.keywords = keywords.join(', ');
   if (summaryText) learningResource.abstract = summaryText;
+  // Voice assistants and answer engines read the answer-first box first.
+  const speakableSelectors = [];
+  if (summaryText) speakableSelectors.push('.rezumat');
+  if (faqItems.length) speakableSelectors.push('.faq');
+  if (!speakableSelectors.length) speakableSelectors.push('.material-body');
+  learningResource.speakable = { '@type': 'SpeakableSpecification', cssSelector: speakableSelectors };
   if (material.pdf) {
     learningResource.encoding = {
       '@type': 'MediaObject',
@@ -964,7 +1012,9 @@ function renderAboutPage({ lang, dict, assetBase, pageRoot, selfFile, altFile })
 export function articleToText(html) {
   let text = String(html || '');
   text = text.replace(/<li\b[^>]*>/gi, '\n- ');
-  text = text.replace(/<(h1|h2|h3|p|div|table|thead|tbody|tr|ul|ol|br)[\b\s>]/gi, '\n');
+  // Match the whole opening tag: the old pattern replaced only "<ol " and left
+  // `class="exercises">` behind in llms-full.txt.
+  text = text.replace(/<(h1|h2|h3|p|div|table|thead|tbody|tr|td|th|ul|ol|br)\b[^>]*>/gi, '\n');
   text = text.replace(/<[^>]+>/g, '');
   text = decodeHtmlEntities(text);
   return text
@@ -1451,17 +1501,26 @@ ${robots}
 <meta property="og:site_name" content="Laura Miron">
 <meta property="article:published_time" content="${material.published}">
 <meta name="twitter:card" content="summary_large_image">
-${jsonLd({
+  ${jsonLd({
     '@context': 'https://schema.org',
     '@type': 'LearningResource',
     name: material.title.ro,
     description,
     url: canonical,
+    mainEntityOfPage: canonical,
     inLanguage: 'ro',
     datePublished: material.published,
     dateModified: lastmodOf(material),
     learningResourceType: 'Quiz',
     educationalLevel: gradeNameOf(topic.grade, 'ro'),
+    teaches: topic.title.ro,
+    educationalAlignment: {
+      '@type': 'AlignmentObject',
+      alignmentType: 'educationalSubject',
+      educationalFramework: 'Programa școlară românească',
+      targetName: `${gradeNameOf(topic.grade, 'ro')} – ${topic.title.ro}`,
+      targetUrl: `${gradeUrl}#${topic.id}`,
+    },
     isAccessibleForFree: true,
     author: personLd('ro'),
     publisher: personLd('ro'),
