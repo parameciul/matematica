@@ -1,0 +1,224 @@
+{
+  "uid": "1020",
+  "version": 1,
+  "items": {
+    "1a": {
+      "accept": [
+        "A"
+      ],
+      "kind": "truefalse",
+      "show": "$p \\land q$: $1 \\land 1 = 1$"
+    },
+    "1b": {
+      "accept": [
+        "A"
+      ],
+      "kind": "truefalse",
+      "show": "$p \\vee q$: $0 \\vee 1 = 1$"
+    },
+    "1c": {
+      "accept": [
+        "A"
+      ],
+      "kind": "truefalse",
+      "show": "$p \\rightarrow q$: $0 \\rightarrow 0 = 1$"
+    },
+    "1d": {
+      "accept": [
+        "A"
+      ],
+      "kind": "truefalse",
+      "show": "$\\overline{p}$: $v(p) = 0$ ($\\sqrt{5}$ este irațional), deci $1$"
+    },
+    "1e": {
+      "accept": [
+        "F"
+      ],
+      "kind": "truefalse",
+      "show": "$p \\leftrightarrow q$: $1 \\leftrightarrow 0 = 0$ ($9 &lt; 4$ este fals)"
+    },
+    "2a": {
+      "accept": [
+        "1; 0"
+      ],
+      "kind": "options",
+      "options": [
+        {
+          "label": {
+            "en": "true: $v = 1$",
+            "ro": "adevărată: $v = 1$"
+          },
+          "value": "1"
+        },
+        {
+          "label": {
+            "en": "false: $v = 0$",
+            "ro": "falsă: $v = 0$"
+          },
+          "value": "0"
+        }
+      ],
+      "parts": [
+        {
+          "en": "$v(p)$",
+          "ro": "$v(p)$"
+        },
+        {
+          "en": "$v(q)$",
+          "ro": "$v(q)$"
+        }
+      ],
+      "show": "$v(p) = 1$ ($\\sqrt{49} = 7$), $v(q) = 0$ ($2^{3} = 8 \\neq 6$)"
+    },
+    "2b": {
+      "accept": [
+        "0; 1; 0; 1; 0; 1; 0; 1"
+      ],
+      "kind": "grid",
+      "show": "$\\overline{p} = 0$, $\\overline{q} = 1$, $p \\land q = 0$, $p \\vee q = 1$, $p \\rightarrow q = 0$, $q \\rightarrow p = 1$, $p \\leftrightarrow q = 0$, $\\overline{p} \\vee \\overline{q} = 1$"
+    },
+    "3a": {
+      "accept": [
+        "F"
+      ],
+      "kind": "truefalse",
+      "show": "$v(p) = 0$ ($51 = 3 \\cdot 17$)"
+    },
+    "3b": {
+      "accept": [
+        "A"
+      ],
+      "kind": "truefalse",
+      "show": "$\\overline{p}$: „Numărul $51$ nu este prim”, $v(\\overline{p}) = 1$"
+    },
+    "3c": {
+      "accept": [
+        "F"
+      ],
+      "kind": "truefalse",
+      "show": "$\\sqrt{2} \\approx 1,41$, deci $v(p) = 0$"
+    },
+    "3d": {
+      "accept": [
+        "A"
+      ],
+      "kind": "truefalse",
+      "show": "$\\overline{p}$: „$\\sqrt{2} \\leq 1,5$”, $v(\\overline{p}) = 1$"
+    },
+    "3e": {
+      "accept": [
+        "A"
+      ],
+      "kind": "truefalse",
+      "show": "$- 3 \\leq - 2,5 &lt; - 2$, deci $v(p) = 1$"
+    },
+    "3f": {
+      "accept": [
+        "F"
+      ],
+      "kind": "truefalse",
+      "show": "$\\overline{p}$: „$\\lbrack - 2,5\\rbrack \\neq - 3$”, $v(\\overline{p}) = 0$"
+    },
+    "3g": {
+      "accept": [
+        "F"
+      ],
+      "kind": "truefalse",
+      "show": "$1 - \\sqrt{3} &lt; 0 \\Rightarrow \\left| 1 - \\sqrt{3} \\right| = \\sqrt{3} - 1$, deci $v(p) = 0$"
+    },
+    "3h": {
+      "accept": [
+        "A"
+      ],
+      "kind": "truefalse",
+      "show": "$\\overline{p}$: „$\\left| 1 - \\sqrt{3} \\right| \\neq 1 - \\sqrt{3}$”, $v(\\overline{p}) = 1$"
+    },
+    "4a": {
+      "accept": [
+        "0; 0; 1; 1; 0; 0; 1; 0; 0; 1; 1; 0; 1; 1; 0; 1; 1; 1; 1; 0"
+      ],
+      "kind": "grid",
+      "show": "Pe linii ($p,\\ q$ = $1,\\ 1$; $1,\\ 0$; $0,\\ 1$; $0,\\ 0$): $0,\\ 0,\\ 1,\\ 1,\\ 0$; $0,\\ 1,\\ 0,\\ 0,\\ 1$; $1,\\ 0,\\ 1,\\ 1,\\ 0$; $1,\\ 1,\\ 1,\\ 1,\\ 0$"
+    },
+    "4b": {
+      "check": false,
+      "show": "$\\overline{p} \\vee q$ și $p \\rightarrow q$ au aceleași valori de adevăr; $p \\land \\overline{q}$ are valori opuse, deci este negația implicației $p \\rightarrow q$",
+      "why": "open"
+    },
+    "5a": {
+      "accept": [
+        "1; 0"
+      ],
+      "kind": "options",
+      "options": [
+        {
+          "label": {
+            "en": "true: $v = 1$",
+            "ro": "adevărată: $v = 1$"
+          },
+          "value": "1"
+        },
+        {
+          "label": {
+            "en": "false: $v = 0$",
+            "ro": "falsă: $v = 0$"
+          },
+          "value": "0"
+        }
+      ],
+      "parts": [
+        {
+          "en": "$v(p)$",
+          "ro": "$v(p)$"
+        },
+        {
+          "en": "$v(q)$",
+          "ro": "$v(q)$"
+        }
+      ],
+      "show": "Implicația este falsă doar dacă $v(p) = 1$ și $v(q) = 0$"
+    },
+    "5b": {
+      "accept": [
+        "A"
+      ],
+      "kind": "truefalse",
+      "show": "$v(p \\vee q) = v(1 \\vee 0) = 1$"
+    },
+    "5c": {
+      "accept": [
+        "A"
+      ],
+      "kind": "truefalse",
+      "show": "$v(\\overline{p} \\leftrightarrow q) = v(0 \\leftrightarrow 0) = 1$"
+    },
+    "5d": {
+      "accept": [
+        "A"
+      ],
+      "kind": "truefalse",
+      "show": "$v(q \\rightarrow p) = v(0 \\rightarrow 1) = 1$"
+    },
+    "6a": {
+      "accept": [
+        "{2}"
+      ],
+      "kind": "set",
+      "show": "$A = \\left\\{ 2 \\right\\}$ ($p(x)$ este adevărată pentru $x \\in \\left\\{ - 2,\\ 2 \\right\\}$, $q(x)$ pentru $x \\in \\left\\{ 1,\\ 2 \\right\\}$)"
+    },
+    "6b": {
+      "accept": [
+        "{-2; 1; 2}"
+      ],
+      "kind": "set",
+      "show": "$\\left\\{ - 2,\\ 1,\\ 2 \\right\\}$"
+    },
+    "6c": {
+      "accept": [
+        "{-1; 0; 1; 2}"
+      ],
+      "kind": "set",
+      "show": "Implicația este falsă doar pentru $x = - 2$ ($p$ adevărată, $q$ falsă), deci $\\left\\{ - 1,\\ 0,\\ 1,\\ 2 \\right\\}$"
+    }
+  }
+}

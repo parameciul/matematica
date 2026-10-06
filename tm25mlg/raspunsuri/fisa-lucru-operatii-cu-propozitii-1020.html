@@ -1,0 +1,137 @@
+<p><strong>1.</strong> Enunțuri compuse:</p>
+<table style="width:93%;">
+<thead>
+<tr>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><strong>Propozițiile simple</strong></th>
+<th style="text-align: center;"><strong>Simbolic</strong></th>
+<th style="text-align: center;"><strong>Calcul</strong></th>
+<th style="text-align: center;"><strong>Valoare</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">a)</td>
+<td style="text-align: left;">$p$: „$12 \vdots 3$”, $q$: „$12 \vdots 4$”</td>
+<td style="text-align: center;">$p \land q$</td>
+<td style="text-align: center;">$1 \land 1$</td>
+<td style="text-align: center;">$1$</td>
+</tr>
+<tr>
+<td style="text-align: center;">b)</td>
+<td style="text-align: left;">$p$: „$15$ este par”, $q$: „$15$ este multiplu de $5$”</td>
+<td style="text-align: center;">$p \vee q$</td>
+<td style="text-align: center;">$0 \vee 1$</td>
+<td style="text-align: center;">$1$</td>
+</tr>
+<tr>
+<td style="text-align: center;">c)</td>
+<td style="text-align: left;">$p$: „$2 &gt; 3$”, $q$: „$2^{2} &gt; 3^{2}$”</td>
+<td style="text-align: center;">$p \rightarrow q$</td>
+<td style="text-align: center;">$0 \rightarrow 0$</td>
+<td style="text-align: center;">$1$</td>
+</tr>
+<tr>
+<td style="text-align: center;">d)</td>
+<td style="text-align: left;">$p$: „$\sqrt{5} \in {\mathbb{Q}}$”</td>
+<td style="text-align: center;">$\overline{p}$</td>
+<td style="text-align: center;">$v(p) = 0$</td>
+<td style="text-align: center;">$1$</td>
+</tr>
+<tr>
+<td style="text-align: center;">e)</td>
+<td style="text-align: left;">$p$: „$- 3 &lt; 2$”, $q$: „$( - 3)^{2} &lt; 2^{2}$” ($9 &lt; 4$)</td>
+<td style="text-align: center;">$p \leftrightarrow q$</td>
+<td style="text-align: center;">$1 \leftrightarrow 0$</td>
+<td style="text-align: center;">$0$</td>
+</tr>
+</tbody>
+</table>
+<p>Observație pentru c): implicația cu ipoteza falsă este întotdeauna adevărată.</p>
+<p><strong>2.</strong> $v(p) = 1$ ($\sqrt{49} = 7$), $v(q) = 0$ ($2^{3} = 8 \neq 6$).</p>
+<table style="width:92%;">
+<thead>
+<tr>
+<th style="text-align: center;">$\overline{p}$</th>
+<th style="text-align: center;">$\overline{q}$</th>
+<th style="text-align: center;">$p \land q$</th>
+<th style="text-align: center;">$p \vee q$</th>
+<th style="text-align: center;">$p \rightarrow q$</th>
+<th style="text-align: center;">$q \rightarrow p$</th>
+<th style="text-align: center;">$p \leftrightarrow q$</th>
+<th style="text-align: center;">$\overline{p} \vee \overline{q}$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$1$</td>
+<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$1$</td>
+<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$1$</td>
+<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$1$</td>
+</tr>
+</tbody>
+</table>
+<p><strong>3.</strong> a) $v(p) = 0$ ($51 = 3 \cdot 17$); $\overline{p}$: „Numărul $51$ nu este prim”, $v(\overline{p}) = 1$.</p>
+<p>b) $\sqrt{2} \approx 1,41$, deci $v(p) = 0$; $\overline{p}$: „$\sqrt{2} \leq 1,5$”, $v(\overline{p}) = 1$.</p>
+<p>c) $- 3 \leq - 2,5 &lt; - 2$, deci $v(p) = 1$; $\overline{p}$: „$\lbrack - 2,5\rbrack \neq - 3$”, $v(\overline{p}) = 0$.</p>
+<p>d) $1 - \sqrt{3} &lt; 0 \Rightarrow \left| 1 - \sqrt{3} \right| = \sqrt{3} - 1$, deci $v(p) = 0$; $\overline{p}$: „$\left| 1 - \sqrt{3} \right| \neq 1 - \sqrt{3}$”, $v(\overline{p}) = 1$.</p>
+<p><strong>4.</strong> Tabelul completat:</p>
+<table style="width:72%;">
+<thead>
+<tr>
+<th style="text-align: center;">$p$</th>
+<th style="text-align: center;">$q$</th>
+<th style="text-align: center;">$\overline{p}$</th>
+<th style="text-align: center;">$\overline{q}$</th>
+<th style="text-align: center;">$\overline{p} \vee q$</th>
+<th style="text-align: center;">$p \rightarrow q$</th>
+<th style="text-align: center;">$p \land \overline{q}$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">$1$</td>
+<td style="text-align: center;">$1$</td>
+<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$1$</td>
+<td style="text-align: center;">$1$</td>
+<td style="text-align: center;">$0$</td>
+</tr>
+<tr>
+<td style="text-align: center;">$1$</td>
+<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$1$</td>
+<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$1$</td>
+</tr>
+<tr>
+<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$1$</td>
+<td style="text-align: center;">$1$</td>
+<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$1$</td>
+<td style="text-align: center;">$1$</td>
+<td style="text-align: center;">$0$</td>
+</tr>
+<tr>
+<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$1$</td>
+<td style="text-align: center;">$1$</td>
+<td style="text-align: center;">$1$</td>
+<td style="text-align: center;">$1$</td>
+<td style="text-align: center;">$0$</td>
+</tr>
+</tbody>
+</table>
+<p>Observație: $\overline{p} \vee q$ și $p \rightarrow q$ au aceleași valori de adevăr; $p \land \overline{q}$ are valori opuse, deci este negația implicației $p \rightarrow q$.</p>
+<p><strong>5.</strong> Implicația este falsă doar dacă $v(p) = 1$ și $v(q) = 0$. Atunci $v(p \vee q) = 1$, $v(\overline{p} \leftrightarrow q) = v(0 \leftrightarrow 0) = 1$, $v(q \rightarrow p) = v(0 \rightarrow 1) = 1$.</p>
+<p><strong>6.</strong> $p(x)$ este adevărată pentru $x \in \left\{ - 2,\ 2 \right\}$, $q(x)$ pentru $x \in \left\{ 1,\ 2 \right\}$.</p>
+<p>a) $x = 2$; b) $x \in \left\{ - 2,\ 1,\ 2 \right\}$; c) implicația este falsă doar pentru $x = - 2$ ($p$ adevărată, $q$ falsă), deci $x \in \left\{ - 1,\ 0,\ 1,\ 2 \right\}$.</p>

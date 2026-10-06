@@ -1139,8 +1139,59 @@
         "version": 3,
         "checks": 20
       }
+    },
+    {
+      "slug": "fisa-lucru-operatii-cu-propozitii",
+      "uid": "1020",
+      "topic": "elemente-logica-matematica",
+      "kind": "fisa-lucru",
+      "title": {
+        "ro": "Fișă de lucru: operații cu propoziții",
+        "en": "Worksheet: operations with propositions"
+      },
+      "published": "2026-10-06",
+      "description": {
+        "ro": "Fișă de lucru pentru clasa a IX-a: negația, conjuncția, disjuncția, implicația, echivalența și tabele de adevăr.",
+        "en": "Grade 9 worksheet: negation, conjunction, disjunction, implication, equivalence and truth tables."
+      },
+      "pdf": "materiale/pdf/fisa-lucru-operatii-cu-propozitii-1020.pdf",
+      "youtube": null,
+      "import": {
+        "date": "2026-10-06",
+        "workflow": 3,
+        "pdf": "generated"
+      },
+      "keywords": {
+        "ro": [
+          "operații cu propoziții",
+          "negația",
+          "conjuncția",
+          "disjuncția",
+          "implicația",
+          "echivalența",
+          "tabele de adevăr",
+          "logică matematică",
+          "clasa a 9-a",
+          "clasa a IX-a"
+        ],
+        "en": [
+          "operations with propositions",
+          "negation",
+          "conjunction",
+          "disjunction",
+          "implication",
+          "equivalence",
+          "truth tables",
+          "mathematical logic",
+          "grade 9"
+        ]
+      },
+      "results": {
+        "version": 1,
+        "checks": 23
+      }
     }
   ],
-  "nextUid": 1020,
+  "nextUid": 1021,
   "retired": []
 }

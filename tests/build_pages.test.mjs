@@ -688,8 +688,13 @@ test('one VideoObject per clip; site image for 2+ clips', (t) => {
     }
     assert.match(page, /<meta property="og:image:width" content="1200">/);
     assert.equal(videos[1].url, 'https://www.youtube.com/watch?v=aKzam7LMZ_4');
-    assert.deepEqual(videos[1].author, { '@type': 'Person', name: 'Laura Miron' });
-    assert.deepEqual(videos[1].publisher, { '@type': 'Person', name: 'Laura Miron' });
+    // The author entity carries the citable identity (url, jobTitle, knowsAbout).
+    for (const role of ['author', 'publisher']) {
+      assert.equal(videos[1][role]['@type'], 'Person');
+      assert.equal(videos[1][role].name, 'Laura Miron');
+      assert.ok(videos[1][role].url.endsWith('/despre'));
+      assert.ok(Array.isArray(videos[1][role].knowsAbout));
+    }
     assert.equal(videos[1].isAccessibleForFree, true);
     assert.equal(videos[1].educationalLevel, file.startsWith('en/') ? 'Grade 9' : 'Clasa a IX-a');
   }

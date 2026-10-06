@@ -3,17 +3,31 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://lauramiron.pages.dev/</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <xhtml:link rel="alternate" hreflang="ro" href="https://lauramiron.pages.dev/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://lauramiron.pages.dev/en/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://lauramiron.pages.dev/"/>
   </url>
   <url>
     <loc>https://lauramiron.pages.dev/en/</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <xhtml:link rel="alternate" hreflang="ro" href="https://lauramiron.pages.dev/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://lauramiron.pages.dev/en/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://lauramiron.pages.dev/"/>
+  </url>
+  <url>
+    <loc>https://lauramiron.pages.dev/despre</loc>
+    <lastmod>2026-10-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://lauramiron.pages.dev/despre"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lauramiron.pages.dev/en/despre"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lauramiron.pages.dev/despre"/>
+  </url>
+  <url>
+    <loc>https://lauramiron.pages.dev/en/despre</loc>
+    <lastmod>2026-10-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://lauramiron.pages.dev/despre"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lauramiron.pages.dev/en/despre"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lauramiron.pages.dev/despre"/>
   </url>
   <url>
     <loc>https://lauramiron.pages.dev/clasa-6</loc>
@@ -45,14 +59,14 @@
   </url>
   <url>
     <loc>https://lauramiron.pages.dev/clasa-9</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <xhtml:link rel="alternate" hreflang="ro" href="https://lauramiron.pages.dev/clasa-9"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://lauramiron.pages.dev/en/clasa-9"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://lauramiron.pages.dev/clasa-9"/>
   </url>
   <url>
     <loc>https://lauramiron.pages.dev/en/clasa-9</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <xhtml:link rel="alternate" hreflang="ro" href="https://lauramiron.pages.dev/clasa-9"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://lauramiron.pages.dev/en/clasa-9"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://lauramiron.pages.dev/clasa-9"/>
@@ -312,5 +326,19 @@
     <xhtml:link rel="alternate" hreflang="ro" href="https://lauramiron.pages.dev/materiale/fisa-lucru-propozitii-valoare-adevar-predicate-1019"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://lauramiron.pages.dev/en/materiale/fisa-lucru-propozitii-valoare-adevar-predicate-1019"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://lauramiron.pages.dev/materiale/fisa-lucru-propozitii-valoare-adevar-predicate-1019"/>
+  </url>
+  <url>
+    <loc>https://lauramiron.pages.dev/materiale/fisa-lucru-operatii-cu-propozitii-1020</loc>
+    <lastmod>2026-10-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://lauramiron.pages.dev/materiale/fisa-lucru-operatii-cu-propozitii-1020"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lauramiron.pages.dev/en/materiale/fisa-lucru-operatii-cu-propozitii-1020"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lauramiron.pages.dev/materiale/fisa-lucru-operatii-cu-propozitii-1020"/>
+  </url>
+  <url>
+    <loc>https://lauramiron.pages.dev/en/materiale/fisa-lucru-operatii-cu-propozitii-1020</loc>
+    <lastmod>2026-10-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://lauramiron.pages.dev/materiale/fisa-lucru-operatii-cu-propozitii-1020"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lauramiron.pages.dev/en/materiale/fisa-lucru-operatii-cu-propozitii-1020"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lauramiron.pages.dev/materiale/fisa-lucru-operatii-cu-propozitii-1020"/>
   </url>
 </urlset>

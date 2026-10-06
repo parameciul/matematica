@@ -275,7 +275,7 @@
   function buildFooter() {
     const footer = document.getElementById('site-footer');
     if (!footer || footer.firstElementChild) return;
-    footer.innerHTML = window.Shell.footerHtml({ dict: window.I18N ? window.I18N[getLang()] : {} });
+    footer.innerHTML = window.Shell.footerHtml({ dict: window.I18N ? window.I18N[getLang()] : {}, pageRoot });
   }
 
   function refreshShell() {

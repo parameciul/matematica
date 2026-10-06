@@ -92,14 +92,18 @@
     );
   }
 
-  // opts: { dict, year }
+  // opts: { dict, year, pageRoot }
+  // pageRoot points at the folder with the same-language pages ('' or '../'),
+  // so the about link resolves to despre.html from any depth.
   function footerHtml(opts) {
     const dict = (opts && opts.dict) || {};
     const year = (opts && opts.year) || new Date().getFullYear();
+    const pageRoot = (opts && opts.pageRoot) || '';
     const text = (key) => dict[key] || key;
     return (
       `<div class="wrap">` +
-      `<p>© <span data-year>${year}</span> Laura Miron. <span data-i18n="footer.text">${escapeHtml(text('footer.text'))}</span></p>` +
+      `<p>© <span data-year>${year}</span> Laura Miron. <span data-i18n="footer.text">${escapeHtml(text('footer.text'))}</span>` +
+      ` · <a href="${pageRoot}despre.html" data-i18n="footer.about">${escapeHtml(text('footer.about'))}</a></p>` +
       `</div>`
     );
   }

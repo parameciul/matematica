@@ -225,8 +225,29 @@ function jsonLd(obj) {
   return `<script type="application/ld+json">${JSON.stringify(obj).replace(/</g, '\\u003c')}</script>`;
 }
 
-function personLd() {
-  return { '@type': 'Person', name: 'Laura Miron' };
+function orgLd() {
+  return {
+    '@type': 'EducationalOrganization',
+    name: 'Liceul William Shakespeare',
+    url: SITE_URL,
+    logo: OG_IMAGE,
+    address: { '@type': 'PostalAddress', addressLocality: 'Timișoara', addressCountry: 'RO' },
+  };
+}
+
+// The author entity every answer engine cites. sameAs stays out until public
+// teacher profiles exist (see PROFILES above): no invented URLs.
+function personLd(lang) {
+  const person = {
+    '@type': 'Person',
+    name: 'Laura Miron',
+    url: `${SITE_URL}${lang === 'en' ? 'en/despre' : 'despre'}`,
+    jobTitle: lang === 'en' ? 'Math teacher' : 'Profesoară de matematică',
+    worksFor: { ...orgLd() },
+    knowsAbout: ['Mathematics', 'Matematică'],
+  };
+  if (PROFILES.length) person.sameAs = [...PROFILES];
+  return person;
 }
 
 // Shared <head>. opts: { lang, title, description, file, altFile (both indexable or null),
@@ -385,19 +406,8 @@ ${main}
 }
 
 function webSiteLd(lang, dict) {
-  const org = {
-    '@type': 'EducationalOrganization',
-    name: 'Liceul William Shakespeare',
-    url: SITE_URL,
-    logo: OG_IMAGE,
-    address: { '@type': 'PostalAddress', addressLocality: 'Timișoara', addressCountry: 'RO' },
-  };
-  const person = {
-    ...personLd(),
-    jobTitle: lang === 'en' ? 'Math teacher' : 'Profesoară de matematică',
-    worksFor: { ...org },
-  };
-  if (PROFILES.length) person.sameAs = [...PROFILES];
+  const org = orgLd();
+  const person = personLd(lang);
   return [
     {
       '@context': 'https://schema.org',
@@ -475,7 +485,7 @@ function renderHome({ data, lang, dict, assetBase, pageRoot, selfFile, altFile }
     bodyAttrs: ` data-root="${assetBase}" data-page-root="${pageRoot}"`,
     header: headerFor({ lang, dict, pageRoot, selfFile, altFile }),
     main,
-    footer: Shell.footerHtml({ dict, year: new Date().getFullYear() }),
+    footer: Shell.footerHtml({ dict, year: new Date().getFullYear(), pageRoot }),
   });
 }
 
@@ -541,7 +551,7 @@ function renderGradePage({ data, grade, lang, dict, assetBase, pageRoot, selfFil
     bodyAttrs: ` data-root="${assetBase}" data-page-root="${pageRoot}" data-grade="${grade}"`,
     header: headerFor({ lang, dict, pageRoot, selfFile, altFile }),
     main,
-    footer: Shell.footerHtml({ dict, year: new Date().getFullYear() }),
+    footer: Shell.footerHtml({ dict, year: new Date().getFullYear(), pageRoot }),
   });
 }
 
@@ -658,8 +668,8 @@ function renderMaterialPage({ data, material, topic, lang, dict, assetBase, page
     learningResourceType: dict[`kind.${material.kind}`] || material.kind,
     educationalLevel: gradeName,
     isAccessibleForFree: true,
-    author: personLd(),
-    publisher: personLd(),
+    author: personLd(lang),
+    publisher: personLd(lang),
   };
   if (keywords && keywords.length) learningResource.keywords = keywords.join(', ');
   if (material.pdf) {
@@ -697,8 +707,8 @@ function renderMaterialPage({ data, material, topic, lang, dict, assetBase, page
       inLanguage: 'ro',
       educationalLevel: gradeName,
       isAccessibleForFree: true,
-      author: personLd(),
-      publisher: personLd(),
+      author: personLd(lang),
+      publisher: personLd(lang),
     });
   });
   const head = renderHead({
@@ -728,7 +738,7 @@ function renderMaterialPage({ data, material, topic, lang, dict, assetBase, page
     bodyAttrs: ` data-root="${assetBase}" data-page-root="${pageRoot}"`,
     header: headerFor({ lang, dict, pageRoot, selfFile, altFile: pairFile || null }),
     main,
-    footer: Shell.footerHtml({ dict, year: new Date().getFullYear() }),
+    footer: Shell.footerHtml({ dict, year: new Date().getFullYear(), pageRoot }),
   });
 }
 
@@ -755,8 +765,168 @@ function renderSearchPage({ lang, dict, assetBase, pageRoot, selfFile }) {
     bodyAttrs: ` data-root="${assetBase}" data-page-root="${pageRoot}"`,
     header: headerFor({ lang, dict, pageRoot, selfFile, altFile: selfFile === 'cautare.html' ? 'en/cautare.html' : 'cautare.html' }),
     main,
-    footer: Shell.footerHtml({ dict, year: new Date().getFullYear() }),
+    footer: Shell.footerHtml({ dict, year: new Date().getFullYear(), pageRoot }),
   });
+}
+
+function renderAboutPage({ lang, dict, assetBase, pageRoot, selfFile, altFile }) {
+  const title = dict['seo.about.title'];
+  const description = dict['seo.about.description'];
+  const main = `    <div class="page" id="about-page">
+      <div class="class-head">
+        <div><h1 data-i18n="about.title">${esc(dict['about.title'])}</h1>
+        <p class="lead" data-i18n="about.lead">${esc(dict['about.lead'])}</p></div>
+      </div>
+      <section class="about" aria-labelledby="about-who">
+        <h2 id="about-who" data-i18n="about.who.title">${esc(dict['about.who.title'])}</h2>
+        <p data-i18n="about.who.text">${esc(dict['about.who.text'])}</p>
+      </section>
+      <section class="about" aria-labelledby="about-what">
+        <h2 id="about-what" data-i18n="about.what.title">${esc(dict['about.what.title'])}</h2>
+        <p data-i18n="about.what.text">${esc(dict['about.what.text'])}</p>
+      </section>
+      <section class="about" aria-labelledby="about-how">
+        <h2 id="about-how" data-i18n="about.how.title">${esc(dict['about.how.title'])}</h2>
+        <p data-i18n="about.how.text">${esc(dict['about.how.text'])}</p>
+      </section>
+    </div>`;
+  const pageUrl = canonicalFor(selfFile);
+  const head = renderHead({
+    lang,
+    title,
+    description,
+    file: selfFile,
+    altFile,
+    ogImage: OG_IMAGE,
+    assetBase,
+    pageScripts: ['assets/js/i18n.js', 'assets/js/catalog.js', 'assets/js/shell.js', 'assets/js/site.js', 'assets/js/searchbox.js'],
+    jsonLdBlocks: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'AboutPage',
+        name: title,
+        description,
+        url: pageUrl,
+        inLanguage: lang,
+        about: personLd(lang),
+        author: personLd(lang),
+      },
+      { '@context': 'https://schema.org', ...personLd(lang) },
+      { '@context': 'https://schema.org', ...orgLd() },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: dict['common.home'], item: SITE_URL },
+          { '@type': 'ListItem', position: 2, name: dict['about.title'], item: pageUrl },
+        ],
+      },
+    ],
+  });
+  return pageShell({
+    lang,
+    head,
+    bodyAttrs: ` data-root="${assetBase}" data-page-root="${pageRoot}"`,
+    header: headerFor({ lang, dict, pageRoot, selfFile, altFile }),
+    main,
+    footer: Shell.footerHtml({ dict, year: new Date().getFullYear(), pageRoot }),
+  });
+}
+
+// Plain-text rendering of one article for llms-full.txt. Headings become
+// markdown headings, list items become "- " lines, everything else becomes
+// paragraphs. Formulas ($...$) are kept as-is: LLMs read LaTeX.
+export function articleToText(html) {
+  let text = String(html || '');
+  text = text.replace(/<li\b[^>]*>/gi, '\n- ');
+  text = text.replace(/<(h1|h2|h3|p|div|table|thead|tbody|tr|ul|ol|br)[\b\s>]/gi, '\n');
+  text = text.replace(/<[^>]+>/g, '');
+  text = text
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;|&apos;/g, "'")
+    .replace(/&#36;/g, '$')
+    .replace(/&nbsp;|&#160;|&#xa0;/gi, ' ')
+    .replace(/&amp;/g, '&');
+  return text
+    .split('\n')
+    .map((line) => line.replace(/[ \t]+/g, ' ').trim())
+    .filter(Boolean)
+    .join('\n');
+}
+
+// Short index for answer engines and crawlers: what the site is, every grade
+// page and every visible material with its one-sentence description.
+export function renderLlmsTxt({ data, root }) {
+  const lines = [
+    '# Laura Miron – Materiale de matematică pentru clasele V–XII',
+    '',
+    '> Math materials for grades 5–12 by teacher Laura Miron (Liceul William Shakespeare, Timișoara).',
+    '> Romanian by default, with an English version. Theory, worksheets, tests, games and quizzes.',
+    '',
+    `- Despre: ${SITE_URL}despre`,
+    `- About: ${SITE_URL}en/despre`,
+    '',
+  ];
+  for (let grade = 5; grade <= 12; grade++) {
+    const entries = Catalog.gradeTopics(data, grade, 'ro');
+    if (!entries.length) continue;
+    lines.push(`## ${gradeNameOf(grade, 'ro')} / Grade ${grade}`);
+    lines.push('');
+    lines.push(`- ${gradeNameOf(grade, 'ro')}: ${SITE_URL}clasa-${grade}`);
+    lines.push(`- Grade ${grade}: ${SITE_URL}en/clasa-${grade}`);
+    for (const entry of entries) {
+      lines.push('');
+      lines.push(`### ${entry.topic.title.ro} / ${entry.topic.title.en}`);
+      for (const m of entry.materials) {
+        const name = Catalog.nameOf(m);
+        const title = m.title.ro || m.title.en;
+        const desc = (m.description && (m.description.ro || m.description.en)) || '';
+        lines.push(`- [${title}](${SITE_URL}materiale/${name}): ${desc}`);
+      }
+    }
+    lines.push('');
+  }
+  void root;
+  return lines.join('\n');
+}
+
+// Full dump for answer engines: every visible material with its article text.
+export function renderLlmsFull({ data, root }) {
+  const lines = [
+    '# Laura Miron – full content',
+    '',
+    '> Complete article text of every visible material. Romanian first, English second.',
+    '',
+  ];
+  for (let grade = 5; grade <= 12; grade++) {
+    const entriesRo = Catalog.gradeTopics(data, grade, 'ro');
+    if (!entriesRo.length) continue;
+    lines.push(`## ${gradeNameOf(grade, 'ro')} / Grade ${grade}`);
+    lines.push('');
+    for (const entry of entriesRo) {
+      for (const m of entry.materials) {
+        if (m.kind === 'quiz') continue;
+        const name = Catalog.nameOf(m);
+        const roArticle = articleToText(readArticle(readIfExists(root, `materiale/${name}.html`), 'ro'));
+        const enHtml = readIfExists(root, `en/materiale/${name}.html`);
+        const enArticle = articleToText(readArticle(enHtml, 'en'));
+        lines.push(`### ${m.title.ro}`);
+        lines.push(`- URL (RO): ${SITE_URL}materiale/${name}`);
+        if (enArticle) lines.push(`- URL (EN): ${SITE_URL}en/materiale/${name}`);
+        if (m.description && m.description.ro) lines.push(`- ${m.description.ro}`);
+        lines.push('');
+        if (roArticle) lines.push(roArticle, '');
+        if (enArticle) {
+          lines.push('--- EN ---', '');
+          lines.push(enArticle, '');
+        }
+        lines.push('---', '');
+      }
+    }
+  }
+  return lines.join('\n');
 }
 
 // clasa.html stays as a small noindex page: old links in class groups keep
@@ -895,7 +1065,21 @@ function notFoundPage({ lang }) {
 }
 
 function renderRobots() {
+  // Answer-engine crawlers are welcome on the public pages. Internal files
+  // stay out of search through X-Robots-Tag in _headers, not through robots.
   return `User-agent: *
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
 Allow: /
 
 Sitemap: ${SITE_URL}sitemap.xml
@@ -1161,8 +1345,8 @@ ${jsonLd({
     learningResourceType: 'Quiz',
     educationalLevel: gradeNameOf(topic.grade, 'ro'),
     isAccessibleForFree: true,
-    author: personLd(),
-    publisher: personLd(),
+    author: personLd('ro'),
+    publisher: personLd('ro'),
   })}
 ${jsonLd({
     '@context': 'https://schema.org',
@@ -1284,6 +1468,23 @@ export function buildSite(root) {
     }));
   }
 
+  // About pages (indexable).
+  for (const lang of ['ro', 'en']) {
+    const dict = I18N[lang];
+    const selfFile = lang === 'en' ? 'en/despre.html' : 'despre.html';
+    const altFile = lang === 'en' ? 'despre.html' : 'en/despre.html';
+    set(selfFile, renderAboutPage({
+      lang, dict,
+      assetBase: lang === 'en' ? '../' : '',
+      pageRoot: '',
+      selfFile,
+      altFile,
+    }));
+  }
+
+  set('llms.txt', renderLlmsTxt({ data: publicData, root }));
+  set('llms-full.txt', renderLlmsFull({ data: publicData, root }));
+
   set('clasa.html', renderClasaForwarder());
   set('404.html', notFoundPage({ lang: 'ro' }));
   set('en/404.html', notFoundPage({ lang: 'en' }));
@@ -1304,6 +1505,8 @@ export function buildSite(root) {
   const push = (file, lastmod, altFile) => indexable.push({ file, lastmod, altFile });
   push('index.html', newestOverall, 'en/index.html');
   push('en/index.html', newestOverallEn, 'index.html');
+  push('despre.html', newestOverall, 'en/despre.html');
+  push('en/despre.html', newestOverallEn, 'despre.html');
   for (let grade = 5; grade <= 12; grade++) {
     const entriesRo = Catalog.gradeTopics(publicData, grade, 'ro');
     const entriesEn = Catalog.gradeTopics(publicData, grade, 'en');

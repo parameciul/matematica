@@ -31,6 +31,10 @@ const YT_UPLOADED_RE = /^(\d{4}-\d{2}-\d{2})(?:T\d{2}:\d{2}(?::\d{2})?(?:Z|[+-]\
 const REQUIRED_FILES = [
   'index.html',
   'en/index.html',
+  'despre.html',
+  'en/despre.html',
+  'llms.txt',
+  'llms-full.txt',
   'clasa.html',
   'cautare.html',
   'en/cautare.html',
@@ -816,6 +820,40 @@ for (const f of ['index.html', 'en/index.html']) {
     const src = read(f);
     if (!src.includes('"EducationalOrganization"')) fail(`${f}: must contain an EducationalOrganization node (audit F5)`);
     if (!src.includes('"logo"')) fail(`${f}: EducationalOrganization must have a logo`);
+  }
+}
+// The about page carries the author entity answer engines cite: AboutPage,
+// Person with jobTitle and knowsAbout, plus the footer link everywhere.
+for (const f of ['despre.html', 'en/despre.html']) {
+  if (exists(f)) {
+    const src = read(f);
+    if (!src.includes('"AboutPage"')) fail(`${f}: must contain an AboutPage node`);
+    if (!src.includes('"Person"')) fail(`${f}: must contain a Person node`);
+    if (!src.includes('knowsAbout')) fail(`${f}: Person must have knowsAbout`);
+  }
+}
+// Every generated page links the about page from the footer.
+for (const f of files.filter((x) => x.endsWith('.html') && !x.startsWith(`${ADMIN_FOLDER}/`))) {
+  const src = read(f);
+  if (!src.includes('<head')) continue;
+  if (src.includes('id="site-footer"') && !src.includes('despre.html')) {
+    fail(`${f}: footer must link to despre.html`);
+  }
+}
+// llms.txt is the answer-engine index: it must name visible materials.
+if (exists('llms.txt')) {
+  const llms = read('llms.txt');
+  for (const m of materials) {
+    if (!Visibility.isVisible(m) || m.supersedes) continue;
+    const name = `${m.slug}-${m.uid}`;
+    if (!llms.includes(`/materiale/${name}`)) fail(`llms.txt: missing visible material ${name}`);
+  }
+  if (!llms.includes('/despre')) fail('llms.txt: must link the about page');
+}
+if (exists('robots.txt')) {
+  const robots = read('robots.txt');
+  for (const bot of ['GPTBot', 'ClaudeBot', 'PerplexityBot', 'Google-Extended']) {
+    if (!robots.includes(bot)) fail(`robots.txt: must allow ${bot}`);
   }
 }
 if (exists('_headers')) {
