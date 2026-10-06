@@ -1929,6 +1929,34 @@ ol.clips .clip-dur {
   scroll-margin-top: calc(var(--header-h) + 1rem);
 }
 
+/* Conceptual Q&A after the article: native details elements, no JS needed. */
+.faq {
+  max-width: 50rem;
+  margin: 1.75rem 0 0;
+}
+
+.faq h2 {
+  margin: 0 0 0.6rem;
+  font-size: 1.25rem;
+}
+
+.faq details {
+  margin: 0 0 0.6rem;
+  padding: 0.6rem 0.9rem;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  background: var(--sheet);
+}
+
+.faq summary {
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.faq details p {
+  margin: 0.5rem 0 0;
+}
+
 /* Search: header dropdown and search page */
 
 /* The dropdown is a box with two parts: the list scrolls, the "see all" line

@@ -137,6 +137,38 @@
         "ro": "Numerele reale cuprind numerele raționale și iraționale, așezate în ordine pe axa numerelor. Modulul unui număr măsoară distanța lui până la zero, iar intervalele descriu mulțimi de numere reale. Partea întreagă și partea fracționară despart orice număr real într-un întreg și o parte subunitară, cu proprietăți folosite în ecuații și inecuații.",
         "en": "Real numbers comprise rational and irrational numbers, laid out in order on the number line. The absolute value of a number measures its distance to zero, and intervals describe sets of real numbers. The integer and fractional parts split any real number into a whole number and a subunitary part, with properties used in equations and inequalities."
       },
+      "faq": [
+        {
+          "q": {
+            "ro": "Ce este un număr irațional?",
+            "en": "What is an irrational number?"
+          },
+          "a": {
+            "ro": "Un număr real care nu se poate scrie ca fracție de numere întregi: zecimalele lui sunt infinite și fără perioadă. Exemple: radical din 2 și numărul pi.",
+            "en": "A real number that cannot be written as a fraction of integers: its decimals go on forever with no repeating pattern. Examples: the square root of 2 and the number pi."
+          }
+        },
+        {
+          "q": {
+            "ro": "Când se schimbă sensul unei inegalități?",
+            "en": "When does an inequality change direction?"
+          },
+          "a": {
+            "ro": "Când înmulțim sau împărțim ambii membri cu un număr negativ. Din $a < b$ obținem $-a > -b$: fiecare membru își schimbă semnul, iar ordinea se răstoarnă.",
+            "en": "When we multiply or divide both sides by a negative number. From $a < b$ we get $-a > -b$: each side changes sign, and the order flips."
+          }
+        },
+        {
+          "q": {
+            "ro": "Cât este partea întreagă a lui $-2,3$?",
+            "en": "What is the integer part of $-2,3$?"
+          },
+          "a": {
+            "ro": "$-3$, adică cel mai mare întreg mai mic sau egal cu numărul. Partea fracționară rămâne pozitivă: $0,7$, pentru că $-2,3 = -3 + 0,7$.",
+            "en": "$-3$: the greatest integer less than or equal to the number. The fractional part stays positive: $0,7$, because $-2,3 = -3 + 0,7$."
+          }
+        }
+      ],
       "pdf": "materiale/pdf/teorie-numere-reale-modul-parte-intreaga-1001.pdf",
       "youtube": [
         {
@@ -756,6 +788,38 @@
         "ro": "Un vector are direcție, sens și lungime și se adună cu regula triunghiului sau a paralelogramului. În coordonate, adunarea vectorilor și înmulțirea cu un număr se fac pe componente. Ecuația dreptei, panta, distanța dintre două puncte și produsul scalar leagă calculul algebric de figurile geometrice.",
         "en": "A vector has direction, orientation and length, and vectors add up with the triangle or parallelogram rule. In coordinates, vector addition and multiplication by a number work component by component. The equation of a line, the slope, the distance between two points and the dot product connect algebraic computation with geometric figures."
       },
+      "faq": [
+        {
+          "q": {
+            "ro": "Ce este un vector?",
+            "en": "What is a vector?"
+          },
+          "a": {
+            "ro": "O mărime cu direcție, sens și lungime, reprezentată printr-o săgeată. Doi vectori sunt egali când au aceeași direcție, același sens și aceeași lungime.",
+            "en": "A quantity with direction, orientation and length, drawn as an arrow. Two vectors are equal when they share the same direction, orientation and length."
+          }
+        },
+        {
+          "q": {
+            "ro": "Cum se adună doi vectori?",
+            "en": "How do you add two vectors?"
+          },
+          "a": {
+            "ro": "Cu regula triunghiului: așezi al doilea vector cu originea în vârful primului, iar suma unește originea primului cu vârful celui de-al doilea. În coordonate, aduni componentele separat.",
+            "en": "With the triangle rule: place the second vector with its tail at the tip of the first, and the sum joins the tail of the first to the tip of the second. In coordinates, add the components separately."
+          }
+        },
+        {
+          "q": {
+            "ro": "Cum recunoști vectorii perpendiculari?",
+            "en": "How do you recognize perpendicular vectors?"
+          },
+          "a": {
+            "ro": "Doi vectori nenuli sunt perpendiculari exact când produsul lor scalar este zero. Din produsul scalar obții și unghiul dintre vectori sau lungimea proiecției unuia pe celălalt.",
+            "en": "Two nonzero vectors are perpendicular exactly when their dot product is zero. The dot product also gives the angle between the vectors or the length of the projection of one onto the other."
+          }
+        }
+      ],
       "pdf": "materiale/pdf/teorie-vectori-geometrie-analitica-1011.pdf",
       "youtube": null,
       "keywords": {
@@ -920,6 +984,38 @@
         "ro": "Intervalele descriu mulțimi de numere reale: închise, deschise, semideschise sau nemărginite. O mulțime este mărginită când are majorant și minorant, iar maximul și minimul, când există, aparțin mulțimii. Marginile superioară și inferioară există pentru orice mulțime mărginită și coincid cu maximul, respectiv minimul, atunci când acestea există.",
         "en": "Intervals describe sets of real numbers: closed, open, half-open or unbounded. A set is bounded when it has an upper and a lower bound, and the maximum and minimum, when they exist, belong to the set. The supremum and infimum exist for every bounded set and coincide with the maximum and minimum whenever those exist."
       },
+      "faq": [
+        {
+          "q": {
+            "ro": "Care este diferența dintre maxim și marginea superioară?",
+            "en": "What is the difference between the maximum and the supremum?"
+          },
+          "a": {
+            "ro": "Maximul aparține mulțimii, pe când marginea superioară este cel mai mic majorant și poate sta în afara ei. Intervalul deschis $(0, 1)$ nu are maxim, dar marginea lui superioară este $1$.",
+            "en": "The maximum belongs to the set, while the supremum is the least upper bound and may lie outside it. The open interval $(0, 1)$ has no maximum, but its supremum is $1$."
+          }
+        },
+        {
+          "q": {
+            "ro": "Orice mulțime mărginită are maxim?",
+            "en": "Does every bounded set have a maximum?"
+          },
+          "a": {
+            "ro": "Nu. O mulțime mărginită are întotdeauna margini, dar maximul există doar când marginea superioară aparține mulțimii. La fel, minimul există doar când marginea inferioară aparține mulțimii.",
+            "en": "No. A bounded set always has bounds, but the maximum exists only when the supremum belongs to the set. Likewise, the minimum exists only when the infimum belongs to the set."
+          }
+        },
+        {
+          "q": {
+            "ro": "Ce este dreapta încheiată?",
+            "en": "What is the extended real line?"
+          },
+          "a": {
+            "ro": "Dreapta reală la care se adaugă cele două capete, $-\\infty$ și $+\\infty$. În ea, orice mulțime nevidă are margine superioară și inferioară, chiar și cele nemărginite.",
+            "en": "The real line with two endpoints added, $-\\infty$ and $+\\infty$. In it, every nonempty set has a supremum and an infimum, even the unbounded ones."
+          }
+        }
+      ],
       "pdf": "materiale/pdf/teorie-multimi-puncte-dreapta-reala-1016.pdf",
       "youtube": null,
       "import": {

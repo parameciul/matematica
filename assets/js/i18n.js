@@ -136,6 +136,7 @@
       'about.how.text': 'Alege clasa din meniu sau caută o temă, citește teoria, rezolvă fișa, apoi verifică răspunsul cu butonul Verifică. Răspunsurile rămân pe dispozitivul tău și nu ajung pe internet.',
       'summary.title': 'Rezumat',
       'toc.title': 'Cuprins',
+      'faq.title': 'Întrebări frecvente',
     },
     en: {
       'site.title': 'Math with Laura Miron',
@@ -272,6 +273,7 @@
       'about.how.text': 'Pick your grade from the menu or search for a topic, read the theory, solve the worksheet, then check your answer with the Check button. Your answers stay on your device and are never sent online.',
       'summary.title': 'Summary',
       'toc.title': 'Contents',
+      'faq.title': 'Frequently asked questions',
     },
   };
 

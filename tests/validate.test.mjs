@@ -336,6 +336,32 @@ test('a hand-written heading id fails', () => {
   );
 });
 
+test('an faq answer that is too short fails', () => {
+  expectFailure(
+    withSite((dir) => {
+      editData(dir, (d) => {
+        sample(d).faq = [{ q: { ro: 'Întrebare de probă pentru pagina de test?', en: 'Sample question for the test page?' }, a: { ro: 'Prea scurt.', en: 'Too short.' } }];
+      });
+      writeSite(dir);
+    }),
+    /faq\[0\]\.a\.ro must be 80-600 characters/,
+  );
+});
+
+test('an faq on a quiz fails', () => {
+  expectFailure(
+    withSite((dir) => {
+      makeQuiz(dir, '<a href="../clasa.html?c=9">Înapoi</a>');
+      editData(dir, (d) => {
+        sample(d).faq = [{ q: { ro: 'Întrebare de probă pentru pagina de test?', en: 'Sample question for the test page?' },
+          a: { ro: 'Răspuns de probă pentru pagina de test, suficient de lung pentru regulile validatorului.', en: 'Sample answer for the test page, long enough for the validator rules.' } }];
+      });
+      writeSite(dir);
+    }),
+    /faq is not shown on a quiz/,
+  );
+});
+
 test('updated before published fails', () => {
   expectFailure(withSite((dir) => editData(dir, (d) => { sample(d).updated = '2026-09-01'; })), /updated must not be before published/);
 });

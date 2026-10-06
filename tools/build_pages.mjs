@@ -748,13 +748,23 @@ function renderMaterialPage({ data, material, topic, lang, dict, assetBase, page
   const checkNote = material.results
     ? `\n      <div class="check-bar"><p class="note" id="check-note">${esc(dict['check.note'])}</p><button class="chip" type="button" id="check-reset" hidden>${esc(dict['check.reset'])}</button></div>`
     : '';
+  // Conceptual Q&A after the article (never exercise answers). The visible
+  // details elements and the FAQPage block come from the same data.
+  const faqItems = Array.isArray(material.faq)
+    ? material.faq.map((f) => ({ q: f.q[lang] || f.q.ro, a: f.a[lang] || f.a.ro }))
+    : [];
+  const faqBlock = faqItems.length
+    ? `<section class="faq" aria-labelledby="faq-heading"><h2 id="faq-heading" data-i18n="faq.title">${esc(dict['faq.title'])}</h2>` +
+      faqItems.map(({ q, a }) => `<details><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join('') +
+      `</section>`
+    : '';
   const main = `    <div class="page" id="material" data-id="${material.uid}"${material.results ? ` data-name="${Catalog.nameOf(material)}" data-results="${material.results.version}"` : ''}>
       ${headBlock}
       ${videoBlock}
       ${summaryBlock}${tocBlock}
       ${note}${checkNote}
       <article class="material-body" data-lang="${lang}" lang="${lang}">${articleOut}</article>
-
+      ${faqBlock}
       ${relatedBlock}
     </div>`;
 
@@ -796,6 +806,17 @@ function renderMaterialPage({ data, material, topic, lang, dict, assetBase, page
       ],
     },
   ];
+  if (faqItems.length) {
+    blocks.push({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faqItems.map(({ q, a }) => ({
+        '@type': 'Question',
+        name: q,
+        acceptedAnswer: { '@type': 'Answer', text: a },
+      })),
+    });
+  }
   clips.forEach((c) => {
     blocks.push({
       '@context': 'https://schema.org',

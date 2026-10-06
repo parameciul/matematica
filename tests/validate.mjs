@@ -329,6 +329,35 @@ for (const [i, m] of materials.entries()) {
       && ['ro', 'en'].every((lang) => m.keywords[lang] === undefined || (Array.isArray(m.keywords[lang]) && m.keywords[lang].every(isText)));
     if (!ok) fail(`${where}: keywords must be { "ro": [text], "en": [text] }`);
   }
+  // faq: conceptual Q&A after the article (never exercise answers). Optional,
+  // at most 6, shown as details elements plus an FAQPage block; not on a quiz.
+  if (m.kind === 'quiz' && m.faq !== undefined) fail(`${where}: faq is not shown on a quiz`);
+  if (m.faq !== undefined) {
+    if (!Array.isArray(m.faq) || m.faq.length === 0 || m.faq.length > 6) {
+      fail(`${where}: faq must be a list of 1-6 { "q", "a" } items`);
+    } else {
+      m.faq.forEach((item, i) => {
+        const at = `${where}: faq[${i}]`;
+        if (!item || typeof item !== 'object' || Array.isArray(item)) { fail(`${at} must be an object`); return; }
+        for (const key of Object.keys(item)) if (!['q', 'a'].includes(key)) fail(`${at}: unknown field "${key}"`);
+        for (const [field, min, max] of [['q', 15, 150], ['a', 80, 600]]) {
+          const both = item[field];
+          if (!both || typeof both !== 'object' || Array.isArray(both)) { fail(`${at}.${field} must be { "ro": text, "en": text }`); continue; }
+          for (const lang of ['ro', 'en']) {
+            const t = both[lang];
+            if (!isText(t)) fail(`${at}.${field}.${lang} is required when faq is present`);
+            else if ([...t].length < min || [...t].length > max) {
+              fail(`${at}.${field}.${lang} must be ${min}-${max} characters (is ${[...t].length})`);
+            } else {
+              checkClassMarks(`${at} ${field}.${lang}`, t);
+              checkNoAnswers(`${at} ${field}.${lang}`, t);
+              if (/[şţŞŢ]/.test(t)) fail(`${at} ${field}.${lang}: uses cedilla letters (ş ţ). Use comma-below letters (ș ț).`);
+            }
+          }
+        }
+      });
+    }
+  }
   // Grade forms in keywords (audit F2): the Arabic form students type.
   // Only checked when the list exists; keywords stay optional per AGENTS.md.
   const gradeOf = topics.find((t) => t.id === m.topic)?.grade;

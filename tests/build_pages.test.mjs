@@ -645,6 +645,29 @@ test('a summary shows the rezumat box and the LearningResource abstract', (t) =>
   assert.equal(ldBlocks(plain).find((b) => b['@type'] === 'LearningResource').abstract, undefined);
 });
 
+test('faq shows details after the article plus an FAQPage block', (t) => {
+  const materials = dataFixture().materials;
+  materials[0].faq = [
+    { q: { ro: 'Întrebare de probă pentru pagina de teorie?', en: 'Sample question for the theory page?' },
+      a: { ro: 'Răspuns de probă pentru pagina de teorie, suficient de lung pentru regulile generatorului.',
+           en: 'Sample answer for the theory page, long enough for the generator rules of the site.' } },
+  ];
+  const dir = makeRoot(t, { materials, pages: stdPages() });
+  const site = buildSite(dir);
+  const page = site.get(`materiale/${mname('teorie-reale')}.html`);
+  assert.match(page, /<section class="faq" aria-labelledby="faq-heading">/);
+  assert.match(page, /<details><summary>Întrebare de probă pentru pagina de teorie\?<\/summary>/);
+  const faq = ldBlocks(page).find((b) => b['@type'] === 'FAQPage');
+  assert.ok(faq);
+  assert.equal(faq.mainEntity.length, 1);
+  assert.equal(faq.mainEntity[0]['@type'], 'Question');
+  assert.equal(faq.mainEntity[0].acceptedAnswer['@type'], 'Answer');
+  // Without faq there is no section and no FAQPage block.
+  const plain = buildSite(makeRoot(t, { pages: stdPages() })).get(`materiale/${mname('teorie-reale')}.html`);
+  assert.doesNotMatch(plain, /class="faq"/);
+  assert.equal(ldBlocks(plain).find((b) => b['@type'] === 'FAQPage'), undefined);
+});
+
 test('insertClipSlots and stripClipSlots are exact inverses', () => {
   const art = SECTIONS('ro');
   const slots = new Map([[1, '<a>one</a>'], [3, '<a>three</a>']]);
