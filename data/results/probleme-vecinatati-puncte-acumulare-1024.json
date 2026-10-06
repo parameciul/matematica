@@ -1,38 +1,40 @@
 {
   "uid": "1024",
-  "version": 1,
+  "version": 2,
   "items": {
     "3": {
       "kind": "interval",
-      "show": "$m - 1 < 2 < m^{2} + 1 Leftrightarrow m < 3$ și $m^{2} > 1$, deci $m in ( - infty, - 1) cup (1,3)$",
+      "show": "$m - 1 < 2 < m^{2} + 1 \\Leftrightarrow m < 3$ și $m^{2} > 1$, deci $m \\in ( - \\infty, - 1) \\cup (1,3)$",
       "accept": [
         "(-inf; -1) U (1; 3)"
       ]
     },
-    "4": {
-      "check": false,
-      "why": "open",
-      "show": "a) $A' = lbrack - 2,1\rbrack$; $3$ este punct izolat. b) $B' = left{ 1 \right}$; toate punctele lui $B$ sunt izolate. c) $C' = left{ + infty \right}$; toate punctele sunt izolate. d) $D = lbrack 1,4\rbrack cup left{ 6 \right}$, $D' = lbrack 1,4\rbrack$; $6$ este punct izolat. e) $E' = lbrack 0, + infty) cup left{ + infty \right}$; fără puncte izolate. f) $F' = left{ - 1,1 \right}$; toate punctele lui $F$ sunt izolate."
-    },
     "5": {
       "check": false,
       "why": "proof",
-      "show": "a) $(a, + infty) subset V_{1} cap V_{2}$ pentru $a = maxleft{ a_{1},a_{2} \right}$. b) Intersecția este $left{ 0 \right}$, care nu conține niciun interval $( - \u000barepsilon,\u000barepsilon)$"
+      "show": "a) $(a, + \\infty) \\subset V_{1} \\cap V_{2}$ pentru $a = \\max\\left\\{ a_{1},a_{2} \\right\\}$. b) Intersecția este $\\left\\{ 0 \\right\\}$, care nu conține niciun interval $( - \\varepsilon,\\varepsilon)$"
     },
     "6": {
-      "check": false,
-      "why": "open",
-      "show": "$min A = - 1$ (pentru $n = 0$), $sup A = 2$ (nu este atins), $A' = left{ 2 \right}$"
+      "kind": "text",
+      "show": "$\\frac{2n - 1}{n + 1} = 2 - \\frac{3}{n + 1}$; $\\min A = - 1$ (pentru $n = 0$), $\\sup A = 2$ (nu este atins), $A' = \\left\\{ 2 \\right\\}$",
+      "accept": [
+        "-1;2;{2}",
+        "-1,2,{2}"
+      ],
+      "hint": {
+        "ro": "în ordinea $\\min A$; $\\sup A$; $A'$",
+        "en": "in the order $\\min A$; $\\sup A$; $A'$"
+      }
     },
     "7": {
       "check": false,
       "why": "proof",
-      "show": "Pentru $n geq 4$, $n^{2} - 3n geq n$, deci $A$ nu este majorată"
+      "show": "Pentru $n \\geq 4$, $n^{2} - 3n \\geq n$, deci $A$ nu este majorată"
     },
     "9": {
       "check": false,
       "why": "proof",
-      "show": "Dacă $left( x_{0} - \u000barepsilon,x_{0} + \u000barepsilon \right)$ ar conține doar elementele $a_{1},ldots,a_{k}$, se alege $delta = minleft{ \u000barepsilon,left| x_{0} - a_{1} \right|,ldots \right} > 0$"
+      "show": "Dacă $\\left( x_{0} - \\varepsilon,x_{0} + \\varepsilon \\right)$ ar conține doar elementele $a_{1},\\ldots,a_{k}$ din $A \\smallsetminus \\left\\{ x_{0} \\right\\}$, intervalul de rază $\\delta = \\min\\left\\{ \\varepsilon,\\left| x_{0} - a_{1} \\right|,\\ldots,\\left| x_{0} - a_{k} \\right| \\right\\} > 0$ nu ar conține niciun punct din $A \\smallsetminus \\left\\{ x_{0} \\right\\}$"
     },
     "1a": {
       "kind": "options",
@@ -98,7 +100,7 @@
     },
     "1c": {
       "kind": "options",
-      "show": "Da: $( - 2,0) subset V$",
+      "show": "Da: $( - 2,0) \\subset V$",
       "options": [
         {
           "value": "da",
@@ -160,7 +162,7 @@
     },
     "1e": {
       "kind": "options",
-      "show": "Nu: $- 1 \notin {mathbb{R}} smallsetminus {mathbb{Z}}$",
+      "show": "Nu: $- 1 \\notin {\\mathbb{R}} \\smallsetminus {\\mathbb{Z}}$",
       "options": [
         {
           "value": "da",
@@ -253,7 +255,7 @@
     },
     "2c": {
       "kind": "options",
-      "show": "Da: $( - infty, - 1) subset V$",
+      "show": "Da: $( - \\infty, - 1) \\subset V$",
       "options": [
         {
           "value": "da",
@@ -313,16 +315,98 @@
         "nu"
       ]
     },
+    "4a": {
+      "kind": "interval",
+      "show": "$A' = \\lbrack - 2,1\\rbrack$; $3$ este punct izolat",
+      "accept": [
+        "[-2; 1]"
+      ],
+      "hint": {
+        "ro": "$A'$",
+        "en": "$A'$"
+      }
+    },
+    "4b": {
+      "kind": "set",
+      "show": "$B' = \\left\\{ 1 \\right\\}$; toate punctele lui $B$ sunt izolate",
+      "accept": [
+        "{1}"
+      ],
+      "hint": {
+        "ro": "$B'$",
+        "en": "$B'$"
+      }
+    },
+    "4c": {
+      "kind": "text",
+      "show": "$C' = \\left\\{ + \\infty \\right\\}$; toate punctele sunt izolate",
+      "accept": [
+        "{+inf}",
+        "{+∞}",
+        "{inf}",
+        "{∞}"
+      ],
+      "hint": {
+        "ro": "$C'$; scrie $+\\infty$ ca +inf",
+        "en": "$C'$; type $+\\infty$ as +inf"
+      }
+    },
+    "4d": {
+      "kind": "interval",
+      "show": "$D = \\lbrack 1,4\\rbrack \\cup \\left\\{ 6 \\right\\}$, $D' = \\lbrack 1,4\\rbrack$; $6$ este punct izolat",
+      "accept": [
+        "[1; 4]"
+      ],
+      "hint": {
+        "ro": "$D'$",
+        "en": "$D'$"
+      }
+    },
+    "4e": {
+      "kind": "text",
+      "show": "$E' = \\lbrack 0, + \\infty) \\cup \\left\\{ + \\infty \\right\\}$; fără puncte izolate",
+      "accept": [
+        "[0;+inf)U{+inf}",
+        "[0;+inf)∪{+inf}",
+        "[0;+∞)U{+∞}",
+        "[0;+∞)∪{+∞}",
+        "[0,+inf)U{+inf}",
+        "[0,+inf)∪{+inf}",
+        "[0,+∞)U{+∞}",
+        "[0,+∞)∪{+∞}",
+        "[0;inf)U{inf}",
+        "[0;∞)∪{∞}",
+        "[0;+inf]",
+        "[0;+∞]",
+        "[0,+inf]",
+        "[0,+∞]"
+      ],
+      "hint": {
+        "ro": "$E'$; scrie $+\\infty$ ca +inf și reuniunea ca U",
+        "en": "$E'$; type $+\\infty$ as +inf and the union as U"
+      }
+    },
+    "4f": {
+      "kind": "set",
+      "show": "$F' = \\left\\{ - 1,1 \\right\\}$; toate punctele lui $F$ sunt izolate",
+      "accept": [
+        "{-1; 1}"
+      ],
+      "hint": {
+        "ro": "$F'$",
+        "en": "$F'$"
+      }
+    },
     "8a": {
       "kind": "truefalse",
-      "show": "F: $0 in (0,1\rbrack'$, dar $0 \notin (0,1\rbrack$",
+      "show": "F: $0 \\in (0,1\\rbrack'$, dar $0 \\notin (0,1\\rbrack$",
       "accept": [
         "F"
       ]
     },
     "8b": {
       "kind": "truefalse",
-      "show": "A: se alege $\u000barepsilon$ mai mic decât distanța de la $x_{0}$ la elementele lui $A smallsetminus left{ x_{0} \right}$",
+      "show": "A: se alege $\\varepsilon$ mai mic decât distanța de la $x_{0}$ la elementele lui $A \\smallsetminus \\left\\{ x_{0} \\right\\}$",
       "accept": [
         "A"
       ]
@@ -336,14 +420,14 @@
     },
     "8d": {
       "kind": "truefalse",
-      "show": "F: $mathbb{Z}$ nu conține niciun interval în jurul lui $0$",
+      "show": "F: $\\mathbb{Z}$ nu conține niciun interval în jurul lui $0$",
       "accept": [
         "F"
       ]
     },
     "8e": {
       "kind": "truefalse",
-      "show": "A: $V subset V cup W$",
+      "show": "A: $V \\subset V \\cup W$",
       "accept": [
         "A"
       ]
