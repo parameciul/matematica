@@ -63,6 +63,14 @@
         "ro": "Elemente de logică matematică",
         "en": "Elements of mathematical logic"
       }
+    },
+    {
+      "id": "multimi-clasa-a-vi-a",
+      "grade": 6,
+      "title": {
+        "ro": "Mulțimi",
+        "en": "Sets"
+      }
     }
   ],
   "grades": {

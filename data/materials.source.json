@@ -63,6 +63,14 @@
         "ro": "Elemente de logică matematică",
         "en": "Elements of mathematical logic"
       }
+    },
+    {
+      "id": "multimi-clasa-a-vi-a",
+      "grade": 6,
+      "title": {
+        "ro": "Mulțimi",
+        "en": "Sets"
+      }
     }
   ],
   "grades": {
@@ -1298,8 +1306,50 @@
         "version": 1,
         "checks": 23
       }
+    },
+    {
+      "slug": "quiz-multimi",
+      "uid": "1021",
+      "topic": "multimi-clasa-a-vi-a",
+      "kind": "quiz",
+      "title": {
+        "ro": "Quiz pe echipe: mulțimi",
+        "en": "Team quiz: sets (in Romanian)"
+      },
+      "published": "2026-10-06",
+      "description": {
+        "ro": "Quiz pe echipe pentru clasa a VI-a despre mulțimi, de proiectat în clasă: elemente, submulțimi, reuniune, intersecție.",
+        "en": "Team quiz for grade 6 on sets, for the classroom projector: elements, subsets, union, intersection (in Romanian)."
+      },
+      "pdf": null,
+      "youtube": null,
+      "keywords": {
+        "ro": [
+          "quiz",
+          "videoproiector",
+          "joc pe echipe",
+          "mulțimi",
+          "multimi",
+          "reuniune",
+          "intersecție",
+          "diferența a două mulțimi",
+          "clasa a 6-a",
+          "clasa 6"
+        ],
+        "en": [
+          "quiz",
+          "projector",
+          "team game",
+          "sets",
+          "union",
+          "intersection",
+          "set difference",
+          "grade 6"
+        ]
+      },
+      "hidden": true
     }
   ],
-  "nextUid": 1021,
+  "nextUid": 1022,
   "retired": []
 }
