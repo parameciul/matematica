@@ -63,6 +63,14 @@
         "ro": "Elemente de logică matematică",
         "en": "Elements of mathematical logic"
       }
+    },
+    {
+      "id": "multimi-clasa-a-vi-a",
+      "grade": 6,
+      "title": {
+        "ro": "Mulțimi",
+        "en": "Sets"
+      }
     }
   ],
   "grades": {
@@ -1222,55 +1230,6 @@
       }
     },
     {
-      "slug": "fisa-lucru-vecinatati-puncte-acumulare",
-      "uid": "1022",
-      "topic": "multimi-puncte-dreapta-reala",
-      "kind": "fisa-lucru",
-      "title": {
-        "ro": "Fișă de lucru: vecinătăți și puncte de acumulare",
-        "en": "Worksheet: neighbourhoods and accumulation points"
-      },
-      "seoTitle": {
-        "ro": "Vecinătăți și puncte de acumulare: fișă",
-        "en": "Neighbourhoods and accumulation points: worksheet"
-      },
-      "published": "2026-10-06",
-      "description": {
-        "ro": "Fișă de lucru pentru clasa a XI-a: vecinătăți pe dreapta reală și în puncte infinite, puncte de acumulare și puncte izolate.",
-        "en": "Grade 11 worksheet: neighbourhoods on the real line and at infinity, accumulation points and isolated points."
-      },
-      "pdf": "materiale/pdf/fisa-lucru-vecinatati-puncte-acumulare-1022.pdf",
-      "youtube": null,
-      "import": {
-        "date": "2026-10-06",
-        "workflow": 3,
-        "pdf": "generated"
-      },
-      "keywords": {
-        "ro": [
-          "vecinătăți",
-          "puncte de acumulare",
-          "puncte izolate",
-          "mulțimi mărginite",
-          "analiză matematică",
-          "clasa a 11-a",
-          "clasa a XI-a"
-        ],
-        "en": [
-          "neighbourhoods",
-          "accumulation points",
-          "isolated points",
-          "bounded sets",
-          "calculus",
-          "grade 11"
-        ]
-      },
-      "results": {
-        "version": 1,
-        "checks": 12
-      }
-    },
-    {
       "slug": "fisa-lucru-operatii-cu-propozitii",
       "uid": "1020",
       "topic": "elemente-logica-matematica",
@@ -1319,6 +1278,96 @@
       "results": {
         "version": 1,
         "checks": 23
+      }
+    },
+    {
+      "slug": "quiz-multimi",
+      "uid": "1021",
+      "topic": "multimi-clasa-a-vi-a",
+      "kind": "quiz",
+      "title": {
+        "ro": "Quiz pe echipe: mulțimi",
+        "en": "Team quiz: sets (in Romanian)"
+      },
+      "published": "2026-10-06",
+      "description": {
+        "ro": "Quiz pe echipe pentru clasa a VI-a despre mulțimi, de proiectat în clasă: elemente, submulțimi, reuniune, intersecție.",
+        "en": "Team quiz for grade 6 on sets, for the classroom projector: elements, subsets, union, intersection (in Romanian)."
+      },
+      "pdf": null,
+      "youtube": null,
+      "keywords": {
+        "ro": [
+          "quiz",
+          "videoproiector",
+          "joc pe echipe",
+          "mulțimi",
+          "multimi",
+          "reuniune",
+          "intersecție",
+          "diferența a două mulțimi",
+          "clasa a 6-a",
+          "clasa 6"
+        ],
+        "en": [
+          "quiz",
+          "projector",
+          "team game",
+          "sets",
+          "union",
+          "intersection",
+          "set difference",
+          "grade 6"
+        ]
+      }
+    },
+    {
+      "slug": "fisa-lucru-vecinatati-puncte-acumulare",
+      "uid": "1022",
+      "topic": "multimi-puncte-dreapta-reala",
+      "kind": "fisa-lucru",
+      "title": {
+        "ro": "Fișă de lucru: vecinătăți și puncte de acumulare",
+        "en": "Worksheet: neighbourhoods and accumulation points"
+      },
+      "seoTitle": {
+        "ro": "Vecinătăți și puncte de acumulare: fișă",
+        "en": "Neighbourhoods and accumulation points: worksheet"
+      },
+      "published": "2026-10-06",
+      "description": {
+        "ro": "Fișă de lucru pentru clasa a XI-a: vecinătăți pe dreapta reală și în puncte infinite, puncte de acumulare și puncte izolate.",
+        "en": "Grade 11 worksheet: neighbourhoods on the real line and at infinity, accumulation points and isolated points."
+      },
+      "pdf": "materiale/pdf/fisa-lucru-vecinatati-puncte-acumulare-1022.pdf",
+      "youtube": null,
+      "import": {
+        "date": "2026-10-06",
+        "workflow": 3,
+        "pdf": "generated"
+      },
+      "keywords": {
+        "ro": [
+          "vecinătăți",
+          "puncte de acumulare",
+          "puncte izolate",
+          "mulțimi mărginite",
+          "analiză matematică",
+          "clasa a 11-a",
+          "clasa a XI-a"
+        ],
+        "en": [
+          "neighbourhoods",
+          "accumulation points",
+          "isolated points",
+          "bounded sets",
+          "calculus",
+          "grade 11"
+        ]
+      },
+      "results": {
+        "version": 1,
+        "checks": 12
       }
     },
     {
