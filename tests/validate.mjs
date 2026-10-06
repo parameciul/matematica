@@ -854,6 +854,11 @@ for (const f of [...codeFiles, 'sitemap.xsl', 'data/materials.source.json', 'dat
   if (exists(f) && /[şţŞŢ]/.test(read(f))) fail(`${f}: uses cedilla letters (ş ţ). Use comma-below letters (ș ț).`);
 }
 
+// A doubled "<" before a heading tag shows as a stray "<" in the browser
+for (const f of files.filter((x) => extname(x) === '.html')) {
+  if (/<<h[1-6]\b/.test(read(f))) fail(`${f}: has a doubled "<" before a heading tag ("<<h2")`);
+}
+
 // 7. Internal links in static HTML point to files that exist
 for (const f of files.filter((x) => extname(x) === '.html')) {
   const src = read(f);

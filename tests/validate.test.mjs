@@ -887,6 +887,13 @@ test('link to a missing page fails', () => {
   );
 });
 
+test('a doubled "<" before a heading fails', () => {
+  expectFailure(
+    withSite((dir) => editFile(dir, SAMPLE_PAGE, (s) => s.replace('<article', '<<h2>Titlu</h2><article'))),
+    /doubled "<" before a heading tag/,
+  );
+});
+
 test('cedilla letters instead of comma-below letters fail', () => {
   expectFailure(withSite((dir) => editData(dir, (d) => { sample(d).title.ro = 'Fracţii'; })), /cedilla/);
 });
