@@ -322,7 +322,7 @@ function personLd(lang) {
 }
 
 // Shared <head>. opts: { lang, title, description, file, altFile (both indexable or null),
-// noindex, ogType, ogImage, published, jsonLdBlocks, extra (katex/css/js), assetBase, pageScripts }.
+// noindex, ogType, ogImage, published, modified, jsonLdBlocks, extra (katex/css/js), assetBase, pageScripts }.
 function renderHead(opts) {
   const canonical = canonicalFor(opts.file);
   const lines = [
@@ -364,7 +364,12 @@ function renderHead(opts) {
   lines.push(`<meta property="og:locale" content="${ogLocale}">`);
   if (opts.altFile) lines.push(`<meta property="og:locale:alternate" content="${ogAlt}">`);
   lines.push('<meta property="og:site_name" content="Laura Miron">');
-  if (opts.published) lines.push(`<meta property="article:published_time" content="${opts.published}">`);
+  const isArticle = (opts.ogType || 'website') === 'article';
+  if (opts.published && isArticle) lines.push(`<meta property="article:published_time" content="${opts.published}">`);
+  if (opts.modified) {
+    if (isArticle) lines.push(`<meta property="article:modified_time" content="${opts.modified}">`);
+    lines.push(`<meta property="og:updated_time" content="${opts.modified}">`);
+  }
   lines.push('<meta name="twitter:card" content="summary_large_image">');
   const base = opts.assetBase || '';
   lines.push(`<link rel="icon" href="${base}favicon.svg" type="image/svg+xml">`);
@@ -552,6 +557,7 @@ function renderHome({ data, lang, dict, assetBase, pageRoot, selfFile, altFile }
     file: selfFile,
     altFile,
     ogImage: OG_IMAGE,
+    modified: data.materials.map(lastmodOf).sort().at(-1),
     assetBase,
     pageScripts: ['assets/js/i18n.js', 'assets/js/catalog.js', 'assets/js/shell.js', 'assets/js/site.js', 'assets/js/searchbox.js', 'assets/js/home.js'],
     jsonLdBlocks: webSiteLd(lang, dict),
@@ -618,6 +624,7 @@ function renderGradePage({ data, grade, lang, dict, assetBase, pageRoot, selfFil
     inLanguage: lang,
   };
   if (itemList.length) collectionPage.mainEntity = { '@type': 'ItemList', itemListElement: itemList };
+  const gradeLatest = entries.map((e) => e.latest).sort().at(-1);
   const head = renderHead({
     lang,
     title,
@@ -626,6 +633,7 @@ function renderGradePage({ data, grade, lang, dict, assetBase, pageRoot, selfFil
     altFile,
     noindex: empty || undefined,
     ogImage: OG_IMAGE,
+    modified: empty ? undefined : gradeLatest,
     assetBase,
     pageScripts: ['assets/js/i18n.js', 'assets/js/catalog.js', 'assets/js/shell.js', 'assets/js/site.js', 'assets/js/searchbox.js', 'assets/js/clasa.js'],
     jsonLdBlocks: [
@@ -898,6 +906,7 @@ function renderMaterialPage({ data, material, topic, lang, dict, assetBase, page
     ogImageHeight: clips.length === 1 ? '360' : '630',
     ogImageAlt: clips.length === 1 ? materialTitle : undefined,
     published: material.published,
+    modified: lastmodOf(material),
     assetBase,
     katex: true,
     pageScripts: ['assets/js/i18n.js', 'assets/js/catalog.js', 'assets/js/shell.js', 'assets/js/site.js', 'assets/js/searchbox.js', 'assets/js/material.js']
@@ -1250,6 +1259,24 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: DuckAssistBot
+Allow: /
+
 Sitemap: ${SITE_URL}sitemap.xml
 `;
 }
@@ -1500,6 +1527,8 @@ ${robots}
 <meta property="og:locale" content="ro_RO">
 <meta property="og:site_name" content="Laura Miron">
 <meta property="article:published_time" content="${material.published}">
+<meta property="article:modified_time" content="${lastmodOf(material)}">
+<meta property="og:updated_time" content="${lastmodOf(material)}">
 <meta name="twitter:card" content="summary_large_image">
   ${jsonLd({
     '@context': 'https://schema.org',

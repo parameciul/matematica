@@ -926,7 +926,7 @@ if (exists('llms.txt')) {
 }
 if (exists('robots.txt')) {
   const robots = read('robots.txt');
-  for (const bot of ['GPTBot', 'ClaudeBot', 'PerplexityBot', 'Google-Extended']) {
+  for (const bot of ['GPTBot', 'ClaudeBot', 'PerplexityBot', 'Google-Extended', 'Applebot-Extended', 'Meta-ExternalAgent', 'FacebookBot', 'Bytespider', 'CCBot', 'DuckAssistBot']) {
     if (!robots.includes(bot)) fail(`robots.txt: must allow ${bot}`);
   }
 }
