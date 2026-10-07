@@ -315,6 +315,32 @@
         "ro": "Fișă de lucru pentru clasa a IX-a, cu exerciții pe niveluri: modul, ecuații și inecuații, partea întreagă și partea fracționară.",
         "en": "Grade 9 worksheet with leveled exercises: absolute value, equations and inequalities, integer and fractional part."
       },
+      "summary": {
+        "ro": "Modulul unui număr măsoară distanța lui până la zero: $|x| = x$ când $x \\ge 0$ și $|x| = -x$ când $x < 0$. Partea întreagă $[x]$ este cel mai mare întreg care nu îl depășește pe $x$, iar partea fracționară $\\{x\\} = x - [x]$ stă mereu între $0$ și $1$. Fișa exersează calculul direct, proprietățile și ecuațiile cu modul, pe niveluri de dificultate.",
+        "en": "The absolute value of a number measures its distance to zero: $|x| = x$ when $x \\ge 0$ and $|x| = -x$ when $x < 0$. The integer part $[x]$ is the greatest integer not exceeding $x$, and the fractional part $\\{x\\} = x - [x]$ always lies between $0$ and $1$. The worksheet trains evaluation, properties and equations with absolute value."
+      },
+      "faq": [
+        {
+          "q": {
+            "ro": "Cum scapi de modul într-un calcul?",
+            "en": "How do you remove the absolute value in a computation?"
+          },
+          "a": {
+            "ro": "Verifici semnul expresiei de sub modul: dacă este pozitivă sau zero, scrii expresia ca atare, iar dacă este negativă, îi schimbi semnul. De exemplu, $|3 - 7| = 4$, pentru că $3 - 7 = -4$. Aceeași regulă se aplică și când sub modul se află o expresie cu litere.",
+            "en": "Check the sign of the expression inside the bars: if it is positive or zero, write it unchanged, and if it is negative, flip its sign. For example, $|3 - 7| = 4$, because $3 - 7 = -4$. The same rule applies when the bars enclose an expression with letters."
+          }
+        },
+        {
+          "q": {
+            "ro": "De ce ecuația $|x| = -2$ nu are soluție?",
+            "en": "Why does the equation $|x| = -2$ have no solution?"
+          },
+          "a": {
+            "ro": "Pentru că modulul oricărui număr real este mai mare sau egal cu zero, deci nu poate fi egal cu un număr negativ. În general, o ecuație cu modul are soluții doar când membrul drept este pozitiv sau zero, iar atunci se rezolvă pe cazuri, după semnul expresiei de sub modul.",
+            "en": "Because the absolute value of any real number is greater than or equal to zero, so it can never equal a negative number. In general, an absolute-value equation has solutions only when the right-hand side is positive or zero, and then it is solved by cases, according to the sign of the expression inside the bars."
+          }
+        }
+      ],
       "pdf": "materiale/pdf/fisa-lucru-numere-reale-modul-parte-intreaga-1002.pdf",
       "youtube": null,
       "keywords": {
@@ -368,6 +394,32 @@
         "ro": "Fișă recapitulativă pentru clasa a IX-a: pregătire pentru testul inițial, în format de Evaluare Națională, cu algebră și geometrie.",
         "en": "Review worksheet for grade 9: getting ready for the initial test in National Evaluation format, with algebra and geometry."
       },
+      "summary": {
+        "ro": "Testul inițial verifică materia de gimnaziu în formatul Evaluării Naționale: calcul algebric, procente, probabilități și geometrie. Fișa recapitulativă adună exact tipurile de subiecte care apar pe modelul oficial, ca să intri în examen știind la ce să te aștepți. Rezolv-o pe timp, ca la examen, apoi verifică fiecare subiect cu butonul Verifică.",
+        "en": "The initial test checks middle-school math in National Evaluation format: algebra, percentages, probability and geometry. The review worksheet gathers exactly the item types of the official model, so you walk in knowing what to expect. Solve it timed, as in the exam, then check each item with the Check button."
+      },
+      "faq": [
+        {
+          "q": {
+            "ro": "Cum folosești eficient o fișă de tip test inițial?",
+            "en": "How do you best use an initial-test worksheet?"
+          },
+          "a": {
+            "ro": "Rezolv-o cap-coadă fără întrerupere, cu ceasul alături, ca să simulezi condițiile de examen. Notează-ți subiectele la care te-ai blocat și reia teoria doar pentru acelea, în loc să recitești tot. La final, verifică răspunsurile și refă greșelile a doua zi, din memorie.",
+            "en": "Solve it end to end without breaks, with a clock nearby, to mimic exam conditions. Mark the items where you got stuck and review the theory for those only, instead of rereading everything. At the end, check your answers and redo the mistakes the next day, from memory."
+          }
+        },
+        {
+          "q": {
+            "ro": "Ce capitole contează cel mai mult la testul inițial?",
+            "en": "Which chapters matter most for the initial test?"
+          },
+          "a": {
+            "ro": "Calculul algebric și geometria aduc cele mai multe puncte: operații cu numere reale, ecuații și figurile studiate în gimnaziu. Procentele și probabilitățile apar în subiecte scurte, sigure, pe care nu merită să le pierzi. Dacă stăpânești aceste patru zone, treci cu bine de orice variantă.",
+            "en": "Algebraic computation and geometry carry the most points: real-number operations, equations and the middle-school figures. Percentages and probability show up as short, safe items you should never drop. Master these four areas and any test version goes well."
+          }
+        }
+      ],
       "pdf": "materiale/pdf/fisa-recapitulativa-gimnaziu-test-initial-1003.pdf",
       "youtube": null,
       "keywords": {
@@ -421,6 +473,32 @@
         "ro": "Fișă de recapitulare și evaluare inițială pentru clasa a IX-a, matematică-informatică: funcții, trigonometrie și geometrie.",
         "en": "Review and initial assessment worksheet for grade 9, math track: functions, trigonometry and analytic geometry."
       },
+      "summary": {
+        "ro": "Profilul matematică-informatică începe cu un test inițial mai tehnic: funcții, trigonometrie și geometrie analitică, peste baza de algebră. Fișa recapitulează materia de gimnaziu la nivelul cerut la mate-info, cu accent pe calculul exact și pe demonstrație. Este etalonul după care îți măsori startul în clasa a IX-a.",
+        "en": "The mathematics-computer-science track starts with a more technical initial test: functions, trigonometry and analytic geometry, on top of the algebra base. The worksheet reviews middle-school content at the math-track level, stressing exact computation and proof. It is the yardstick for measuring your start in grade 9."
+      },
+      "faq": [
+        {
+          "q": {
+            "ro": "Ce înseamnă profilul matematică-informatică la evaluarea inițială?",
+            "en": "What does the math-CS track mean for the initial assessment?"
+          },
+          "a": {
+            "ro": "Că testul cere mai mult decât calculul de bază: funcții studiate complet, valori trigonometrice exacte și probleme de geometrie analitică. Subiectele verifică rigoarea, nu doar rezultatul, așa că soluțiile trebuie scrise cu justificări. Fișa reproduce acest nivel pentru ca ziua testului să nu aducă surprize.",
+            "en": "That the test demands more than basic computation: fully studied functions, exact trigonometric values and analytic-geometry problems. The items check rigour, not just the result, so solutions need justifications. The worksheet reproduces this level so test day brings no surprises."
+          }
+        },
+        {
+          "q": {
+            "ro": "Cum recapitulezi trigonometria pentru testul inițial?",
+            "en": "How do you review trigonometry for the initial test?"
+          },
+          "a": {
+            "ro": "Pornind de la cercul trigonometric: valorile pentru unghiurile uzuale, semnele pe cadrane și formulele de bază. Apoi exersezi ecuații simple și aplicații în triunghiul dreptunghic, unde apar cel mai des la testul inițial. Reține că la mate-info se cere valoarea exactă, nu aproximarea zecimală.",
+            "en": "Starting from the unit circle: the values for standard angles, the signs per quadrant and the basic identities. Then train simple equations and right-triangle applications, where they appear most often in the initial test. Remember that the math track asks for the exact value, not the decimal approximation."
+          }
+        }
+      ],
       "pdf": "materiale/pdf/fisa-recapitulare-evaluare-initiala-1004.pdf",
       "youtube": null,
       "keywords": {
@@ -517,6 +595,32 @@
         "ro": "Joc de recapitulare pentru clasa a VI-a: mesajul secret, cu numere naturale, fracții, puteri, procente și media aritmetică.",
         "en": "Review game for grade 6: the secret message, with natural numbers, fractions, powers, percentages and averages."
       },
+      "summary": {
+        "ro": "Mesajul secret este un joc de recapitulare pe echipe: rezolvi corect exerciții cu numere naturale, fracții, puteri, procente și medie aritmetică, iar fiecare răspuns corect dezvăluie o literă din mesajul ascuns. Greșelile te costă timp, nu puncte: verifici, corectezi și continui. Jocul se proiectează în clasă și se joacă în echipe.",
+        "en": "The secret message is a team review game: solve exercises with natural numbers, fractions, powers, percentages and averages correctly, and each right answer reveals one letter of the hidden message. Mistakes cost time, not points: check, correct and carry on. The game is projected in class and played in teams."
+      },
+      "faq": [
+        {
+          "q": {
+            "ro": "Cum se joacă Mesajul secret?",
+            "en": "How do you play The secret message?"
+          },
+          "a": {
+            "ro": "Clasa se împarte în echipe, iar fiecare echipă primește aceleași exerciții de recapitulare. Fiecare răspuns corect aduce o literă, iar literele adunate dezvăluie treptat mesajul ascuns. Câștigă echipa care decodează prima mesajul, cu cele mai multe răspunsuri corecte.",
+            "en": "The class splits into teams, and every team gets the same review exercises. Each correct answer earns one letter, and the collected letters gradually reveal the hidden message. The team that decodes the message first, with the most correct answers, wins."
+          }
+        },
+        {
+          "q": {
+            "ro": "Ce recapitulezi prin acest joc?",
+            "en": "What do you review with this game?"
+          },
+          "a": {
+            "ro": "Calculul cu numere naturale și fracții, puterile cu exponent natural, procentele și media aritmetică: exact capitolele clasei a V-a reluate la începutul clasei a VI-a. Exercițiile sunt gradate, așa că fiecare membru al echipei găsește probleme pe măsura lui.",
+            "en": "Computing with natural numbers and fractions, powers with natural exponent, percentages and the arithmetic mean: exactly the grade 5 chapters reviewed at the start of grade 6. The exercises are graded, so every team member finds problems at their level."
+          }
+        }
+      ],
       "pdf": "materiale/pdf/joc-mesajul-secret-1006.pdf",
       "youtube": null,
       "keywords": {
@@ -562,6 +666,32 @@
         "ro": "Fișă recapitulativă de geometrie pentru clasa a XI-a: vectori, ecuația dreptei, coliniaritate și produs scalar, pentru BAC.",
         "en": "Geometry review worksheet for grade 11: vectors, line equations, collinearity and dot product, for the baccalaureate."
       },
+      "summary": {
+        "ro": "Vectorii leagă algebra de geometrie: adunarea pe componente, produsul scalar și ecuația dreptei rezolvă probleme de coliniaritate, perpendicularitate și distanțe. Fișa recapitulează geometria clasei a X-a exact în forma cerută la bacalaureat: scurt, aplicat, fără teorie în exces. Este baza geometriei analitice din clasa a XI-a.",
+        "en": "Vectors bridge algebra and geometry: component-wise addition, the dot product and the line equation solve collinearity, perpendicularity and distance problems. The worksheet reviews grade 10 geometry exactly as the baccalaureate asks: short, applied, with no excess theory. It is the base for grade 11 analytic geometry."
+      },
+      "faq": [
+        {
+          "q": {
+            "ro": "Când sunt doi vectori coliniari?",
+            "en": "When are two vectors collinear?"
+          },
+          "a": {
+            "ro": "Când au aceeași direcție, adică unul este multiplul scalar al celuilalt. În coordonate, vectorii $(a, b)$ și $(c, d)$ sunt coliniari exact când $a \\cdot d = b \\cdot c$. Verificarea se face deci printr-un singur calcul, fără desen.",
+            "en": "When they share the same direction, meaning one is a scalar multiple of the other. In coordinates, the vectors $(a, b)$ and $(c, d)$ are collinear exactly when $a \\cdot d = b \\cdot c$. So the check takes a single computation, with no drawing."
+          }
+        },
+        {
+          "q": {
+            "ro": "La ce folosește produsul scalar în probleme?",
+            "en": "What is the dot product used for in problems?"
+          },
+          "a": {
+            "ro": "Ca să testezi perpendicularitatea și să calculezi unghiuri și lungimi de proiecții. Doi vectori nenuli sunt perpendiculari exact când produsul lor scalar este zero. Din aceeași formulă scoți cosinusul unghiului dintre vectori, instrumentul principal în problemele de geometrie analitică.",
+            "en": "To test perpendicularity and to compute angles and projection lengths. Two nonzero vectors are perpendicular exactly when their dot product is zero. The same formula yields the cosine of the angle between vectors, the main tool of analytic-geometry problems."
+          }
+        }
+      ],
       "pdf": "materiale/pdf/fisa-recapitulativa-geometrie-clasa-a-x-a-1007.pdf",
       "youtube": null,
       "keywords": {
@@ -621,6 +751,32 @@
         "ro": "Fișă recapitulativă pentru clasa a VIII-a: materia claselor a V-a – a VII-a, pregătire pentru testul inițial, algebră și geometrie.",
         "en": "Review worksheet for grade 8: grades 5-7 math to get ready for the initial test, with algebra and geometry."
       },
+      "summary": {
+        "ro": "Intrarea în clasa a VIII-a se face cu un test din materia claselor a V-a – a VII-a: divizibilitate, fracții, radicali, ecuații și geometria figurilor plane. Fișa adună aceste capitole într-o singură recapitulare, ca să repari golurile înainte să înceapă materia nouă. Lucreaz-o integral, apoi revino asupra subiectelor greșite până ies din prima.",
+        "en": "Grade 8 starts with a test on grades 5-7 math: divisibility, fractions, square roots, equations and plane-figure geometry. The worksheet packs these chapters into one review, so you fix the gaps before new content begins. Work through it fully, then revisit the missed items until they come out right first try."
+      },
+      "faq": [
+        {
+          "q": {
+            "ro": "De ce se dă test inițial la începutul clasei a VIII-a?",
+            "en": "Why is there an initial test at the start of grade 8?"
+          },
+          "a": {
+            "ro": "Ca să măsoare ce a rămas din materia claselor a V-a – a VII-a, înainte de anul Evaluării Naționale. Rezultatul arată exact capitolele de reluat, iar profesorul își calibrează ritmul după el. Pentru tine, testul este o hartă a golurilor, nu o sentință.",
+            "en": "To measure what stuck from grades 5-7 math, before the National Evaluation year. The result pinpoints the chapters to revisit, and the teacher sets the pace by it. For you, the test is a map of the gaps, not a verdict."
+          }
+        },
+        {
+          "q": {
+            "ro": "Cum recapitulezi trei ani de matematică dintr-o fișă?",
+            "en": "How do you review three years of math from one worksheet?"
+          },
+          "a": {
+            "ro": "Pe straturi: mai întâi calculul numeric, apoi algebra cu litere și la final geometria, fără să le amesteci. La fiecare subiect greșit notezi capitolul și refaci teoria doar pentru el. Trei astfel de runde, la câteva zile distanță, fixează mai mult decât o singură citire integrală.",
+            "en": "In layers: first numeric computation, then algebra with letters, and geometry last, without mixing them. For each missed item note the chapter and redo only its theory. Three such rounds, days apart, fix more than a single full read."
+          }
+        }
+      ],
       "pdf": "materiale/pdf/fisa-recapitulativa-clasele-v-vii-test-initial-1008.pdf",
       "youtube": null,
       "keywords": {
@@ -684,6 +840,32 @@
         "ro": "Fișă recapitulativă pentru clasa a VI-a: numere naturale, puteri, divizibilitate, fracții, procente și organizarea datelor.",
         "en": "Review worksheet for grade 6: natural numbers, powers, divisibility, fractions, percentages and data organization."
       },
+      "summary": {
+        "ro": "Recapitularea clasei a V-a începe cu numerele: naturale și operații cu ele, puteri cu exponent natural, divizibilitate și apoi fracțiile, ordinare și zecimale. Prima fișă adună calculul numeric și procentele, plus organizarea datelor în tabele. Este fundamentul pe care se sprijină toată matematica clasei a VI-a.",
+        "en": "The grade 5 review starts with numbers: naturals and their operations, powers with natural exponent, divisibility, then fractions, common and decimal. The first worksheet gathers numeric computation and percentages, plus organizing data into tables. It is the foundation for all of grade 6 math."
+      },
+      "faq": [
+        {
+          "q": {
+            "ro": "Cum ții minte criteriile de divizibilitate?",
+            "en": "How do you remember the divisibility rules?"
+          },
+          "a": {
+            "ro": "Legându-le de ultima cifră sau de suma cifrelor: un număr se divide cu $2$ sau $5$ după ultima cifră, iar cu $3$ sau $9$ după suma cifrelor. Pentru $4$ te uiți la ultimele două cifre, iar pentru $10$ și $100$ la zerourile finale. Exersează-le pe numere din viața reală, nu pe liste memorate mecanic.",
+            "en": "By tying them to the last digit or the digit sum: a number divides by $2$ or $5$ by its last digit, and by $3$ or $9$ by its digit sum. For $4$ look at the last two digits, and for $10$ and $100$ at the trailing zeros. Train them on real-life numbers, not on mechanically memorized lists."
+          }
+        },
+        {
+          "q": {
+            "ro": "Fracție ordinară sau zecimală: când folosești fiecare formă?",
+            "en": "Common or decimal fraction: when do you use each form?"
+          },
+          "a": {
+            "ro": "Fracțiile ordinare păstrează valoarea exactă și sunt obligatorii în calculele cu radicali și în demonstrații. Forma zecimală ajută la comparații rapide și la estimări, fiindcă vezi imediat ordinul de mărime. Regula practică: calculezi exact cu ordinare, verifici și compari cu zecimale.",
+            "en": "Common fractions keep the exact value and are mandatory in radical computations and proofs. The decimal form helps quick comparisons and estimates, since you see the size at once. The practical rule: compute exactly with common fractions, check and compare with decimals."
+          }
+        }
+      ],
       "pdf": "materiale/pdf/fisa-recapitulativa-1-numere-naturale-fractii-1009.pdf",
       "youtube": null,
       "keywords": {
@@ -737,6 +919,32 @@
         "ro": "Fișă recapitulativă pentru clasa a VI-a: geometrie și unități de măsură — segmente, unghiuri, perimetre, arii și volume.",
         "en": "Review worksheet for grade 6: geometry and measurement units — segments, angles, perimeters, areas and volumes."
       },
+      "summary": {
+        "ro": "A doua fișă trece la geometrie: segmente și unghiuri măsurate corect, perimetre și arii ale figurilor plane, plus volumele corpurilor studiate. Unitățile de măsură leagă totul: transformările corecte între multipli și submultipli decid rezultatul. Desenează fiecare problemă înainte să calculezi, cu instrumentele pe hârtie.",
+        "en": "The second worksheet moves to geometry: correctly measured segments and angles, perimeters and areas of plane figures, plus the volumes of the studied solids. Measurement units tie it all together: correct conversions between multiples and submultiples decide the result. Draw each problem before computing, with instruments on paper."
+      },
+      "faq": [
+        {
+          "q": {
+            "ro": "Cum eviți greșelile la transformările de unități?",
+            "en": "How do you avoid mistakes in unit conversions?"
+          },
+          "a": {
+            "ro": "Scriind scara unităților și numărând treptele la fiecare transformare, în loc să sari direct la rezultat. La lungimi treptele sunt din $10$ în $10$, la suprafețe din $100$ în $100$, iar la volume din $1000$ în $1000$. Cea mai frecventă greșeală este folosirea scării de lungimi pentru arii și volume.",
+            "en": "By writing the unit ladder and counting the steps at each conversion, instead of jumping to the result. Length steps go by $10$, area steps by $100$ and volume steps by $1000$. The most frequent mistake is using the length ladder for areas and volumes."
+          }
+        },
+        {
+          "q": {
+            "ro": "Perimetru, arie sau volum: cum alegi formula bună?",
+            "en": "Perimeter, area or volume: how do you pick the right formula?"
+          },
+          "a": {
+            "ro": "După ce ți se cere: perimetrul adună lungimi de contur, aria măsoară suprafața din interior, iar volumul măsoară spațiul ocupat de un corp. Citește întrebarea până la capăt și subliniază cuvântul-cheie înainte să scrii vreo formulă. Un desen etichetat cu datele problemei face alegerea aproape automată.",
+            "en": "By what is asked: the perimeter adds contour lengths, the area measures the surface inside, and the volume measures the space a solid takes. Read the question to the end and underline the keyword before writing any formula. A sketch labelled with the problem data makes the choice nearly automatic."
+          }
+        }
+      ],
       "pdf": "materiale/pdf/fisa-recapitulativa-2-geometrie-unitati-masura-1010.pdf",
       "youtube": null,
       "keywords": {
@@ -877,6 +1085,42 @@
         "ro": "Fișă de lucru pentru clasa a IX-a cu 15 exerciții despre modul: calcul, proprietăți și ecuații cu modul.",
         "en": "Grade 9 worksheet with 15 exercises on absolute value: evaluation, properties and equations with absolute value."
       },
+      "summary": {
+        "ro": "Modulul $|a|$ al unui număr real $a$ este distanța de la $a$ până la origine: $|a| = a$ dacă $a \\ge 0$ și $|a| = -a$ dacă $a < 0$. Din definiție decurg regulile de calcul: $|ab| = |a|\\cdot|b|$ și $|a|^2 = a^2$. Fișa cu $15$ exerciții exersează calculul direct, proprietățile și ecuațiile simple cu modul.",
+        "en": "The absolute value $|a|$ of a real number $a$ is its distance to the origin: $|a| = a$ if $a \\ge 0$ and $|a| = -a$ if $a < 0$. The computation rules follow from the definition: $|ab| = |a|\\cdot|b|$ and $|a|^2 = a^2$. The worksheet with $15$ exercises trains direct evaluation, the properties and simple absolute-value equations."
+      },
+      "faq": [
+        {
+          "q": {
+            "ro": "Cât este $|-5|$ și de ce?",
+            "en": "What is $|-5|$ and why?"
+          },
+          "a": {
+            "ro": "$5$, pentru că modulul măsoară distanța până la zero, iar distanța este mereu pozitivă. Cum $-5 < 0$, definiția spune $|-5| = -(-5) = 5$. Cu alte cuvinte, modulul șterge semnul minus al unui număr negativ.",
+            "en": "$5$, because the absolute value measures the distance to zero, and a distance is always positive. Since $-5 < 0$, the definition gives $|-5| = -(-5) = 5$. In other words, the absolute value erases the minus sign of a negative number."
+          }
+        },
+        {
+          "q": {
+            "ro": "Este adevărat că $|a + b| = |a| + |b|$?",
+            "en": "Is $|a + b| = |a| + |b|$ true?"
+          },
+          "a": {
+            "ro": "Nu, în general nu: egalitatea are loc doar când $a$ și $b$ au același semn sau unul dintre ele este zero. Regula generală este inegalitatea triunghiului, $|a + b| \\le |a| + |b|$. De exemplu, $|{-3} + 5| = 2$, pe când $|-3| + |5| = 8$.",
+            "en": "No, not in general: equality holds only when $a$ and $b$ share the same sign or one of them is zero. The general rule is the triangle inequality, $|a + b| \\le |a| + |b|$. For example, $|{-3} + 5| = 2$, while $|-3| + |5| = 8$."
+          }
+        },
+        {
+          "q": {
+            "ro": "Cum se rezolvă ecuația $|x - 1| = 3$?",
+            "en": "How do you solve the equation $|x - 1| = 3$?"
+          },
+          "a": {
+            "ro": "Cauți numerele aflate la distanța $3$ de $1$ pe axa reală, deci $x - 1 = 3$ sau $x - 1 = -3$, adică $x = 4$ sau $x = -2$. Verificarea este rapidă: $|4 - 1| = 3$ și $|-2 - 1| = 3$. Metoda funcționează pentru orice ecuație de forma $|x - a| = r$ cu $r \\ge 0$.",
+            "en": "Look for the numbers at distance $3$ from $1$ on the real line, so $x - 1 = 3$ or $x - 1 = -3$, giving $x = 4$ or $x = -2$. Checking is quick: $|4 - 1| = 3$ and $|-2 - 1| = 3$. The method works for any equation of the form $|x - a| = r$ with $r \\ge 0$."
+          }
+        }
+      ],
       "pdf": "materiale/pdf/fisa-lucru-modulul-unui-numar-real-1012.pdf",
       "youtube": null,
       "import": {
@@ -907,6 +1151,42 @@
         "ro": "Fișă de lucru pentru clasa a IX-a cu 25 de exerciții despre partea întreagă și partea fracționară: calcul, ecuații și proprietăți.",
         "en": "Grade 9 worksheet with 25 exercises on the integer and fractional parts of a real number: evaluation, equations and properties."
       },
+      "summary": {
+        "ro": "Partea întreagă $[x]$ este cel mai mare număr întreg mai mic sau egal cu $x$, iar partea fracționară $\\{x\\} = x - [x]$ este mereu cuprinsă între $0$ și $1$. Capcana apare la numerele negative: $[-2,3] = -3$ și $\\{-2,3\\} = 0,7$. Fișa cu $25$ de exerciții exersează calculul direct, proprietățile și ecuațiile cu partea întreagă.",
+        "en": "The integer part $[x]$ is the greatest integer less than or equal to $x$, and the fractional part $\\{x\\} = x - [x]$ always lies between $0$ and $1$. The trap hides in negative numbers: $[-2,3] = -3$ and $\\{-2,3\\} = 0,7$. The worksheet with $25$ exercises trains direct evaluation, the properties and equations with the integer part."
+      },
+      "faq": [
+        {
+          "q": {
+            "ro": "De ce $[-2,3]$ este $-3$, nu $-2$?",
+            "en": "Why is $[-2,3]$ equal to $-3$, not $-2$?"
+          },
+          "a": {
+            "ro": "Pentru că partea întreagă este cel mai mare întreg mai mic sau egal cu numărul, iar $-3 < -2,3 < -2$. Pe axă, $-2,3$ stă între $-3$ și $-2$, iar întregul din stânga lui este $-3$. Din același motiv partea fracționară rămâne pozitivă: $\\{-2,3\\} = -2,3 - (-3) = 0,7$.",
+            "en": "Because the integer part is the greatest integer below the number, and $-3 < -2,3 < -2$. On the number line, $-2,3$ sits between $-3$ and $-2$, and the integer to its left is $-3$. For the same reason the fractional part stays positive: $\\{-2,3\\} = -2,3 - (-3) = 0,7$."
+          }
+        },
+        {
+          "q": {
+            "ro": "Ce valori poate lua partea fracționară?",
+            "en": "Which values can the fractional part take?"
+          },
+          "a": {
+            "ro": "Doar valori între $0$ și $1$, adică $0 \\le \\{x\\} < 1$ pentru orice număr real $x$. Partea fracționară este zero exact când $x$ este întreg și este strict subunitară în rest. De aceea ecuația $\\{x\\} = 2$ nu are soluție, pe când $\\{x\\} = 0,2$ are o infinitate de soluții.",
+            "en": "Only values between $0$ and $1$: $0 \\le \\{x\\} < 1$ for every real number $x$. The fractional part is zero exactly when $x$ is an integer, and strictly below one otherwise. That is why $\\{x\\} = 2$ has no solution, while $\\{x\\} = 0,2$ has infinitely many solutions."
+          }
+        },
+        {
+          "q": {
+            "ro": "Cum se rezolvă o ecuație cu partea întreagă?",
+            "en": "How do you solve an integer-part equation?"
+          },
+          "a": {
+            "ro": "Cu metoda dublei inegalități: din $[x] = k$ treci la $k \\le x < k + 1$, unde $k$ este întreg. De exemplu, $[x] = 2$ înseamnă $2 \\le x < 3$. La final verifici că soluțiile găsite respectă încadrarea, mai ales când ecuația conține și alți termeni.",
+            "en": "With the double-inequality method: from $[x] = k$ pass to $k \\le x < k + 1$, where $k$ is an integer. For example, $[x] = 2$ means $2 \\le x < 3$. At the end check that the solutions found respect the bounds, especially when the equation contains other terms."
+          }
+        }
+      ],
       "pdf": "materiale/pdf/fisa-lucru-partea-intreaga-partea-fractionara-1014.pdf",
       "youtube": null,
       "import": {
@@ -933,6 +1213,32 @@
         "ro": "Fișă recapitulativă pentru clasa a XI-a cu 50 de probleme pe trei niveluri despre permutări: compunere, inversă, inversiuni și semn.",
         "en": "Grade 11 review worksheet with 50 problems on three levels about permutations: composition, inverse, inversions and sign."
       },
+      "summary": {
+        "ro": "Permutările sunt rearanjări ale unei mulțimi finite: se compun ca funcțiile, au inversă și se descompun în transpoziții. Semnul unei permutări se citește din numărul de inversiuni: par înseamnă pară, impar înseamnă impară. Fișa cu $50$ de probleme pe trei niveluri exersează compunerea, inversa, inversiunile și ecuațiile cu permutări.",
+        "en": "Permutations are rearrangements of a finite set: they compose like functions, own inverses and split into transpositions. The sign of a permutation reads from its inversion count: even means even, odd means odd. The worksheet with $50$ problems on three levels trains composition, inverses, inversions and permutation equations."
+      },
+      "faq": [
+        {
+          "q": {
+            "ro": "Contează ordinea la compunerea permutărilor?",
+            "en": "Does the order matter when composing permutations?"
+          },
+          "a": {
+            "ro": "Da, compunerea permutărilor nu este comutativă: în general compusul $ab$ diferă de compusul $ba$. Se aplică de la dreapta la stânga, ca la funcții: mai întâi permutarea din dreapta. De aceea fișa cere mereu ambele ordine, ca să vezi diferența pe tabele.",
+            "en": "Yes, permutation composition is not commutative: in general the composite $ab$ differs from the composite $ba$. It applies right to left, like functions: the rightmost permutation first. That is why the worksheet always asks for both orders, so you see the difference on the tables."
+          }
+        },
+        {
+          "q": {
+            "ro": "Cum afli semnul unei permutări?",
+            "en": "How do you find the sign of a permutation?"
+          },
+          "a": {
+            "ro": "Numeri inversiunile, adică perechile aflate în ordine greșită, și te uiți la paritate: număr par de inversiuni înseamnă permutare pară, cu semnul $+1$, iar număr impar înseamnă permutare impară, cu semnul $-1$. Alternativ, descompui permutarea în transpoziții și numeri câte sunt: aceeași regulă de paritate decide.",
+            "en": "Count the inversions, the pairs in the wrong order, and look at parity: an even inversion count means an even permutation, with sign $+1$, while an odd count means an odd permutation, with sign $-1$. Alternatively, split the permutation into transpositions and count them: the same parity rule decides."
+          }
+        }
+      ],
       "pdf": "materiale/pdf/fisa-recapitulativa-permutari-1015.pdf",
       "youtube": null,
       "import": {
@@ -1078,6 +1384,32 @@
         "ro": "Fișă de lucru pentru clasa a XI-a: intervale, mulțimi mărginite, minim, maxim, margine inferioară și superioară, caracterizarea cu ε.",
         "en": "Grade 11 worksheet: intervals, bounded sets, minimum, maximum, infimum and supremum, and the ε characterization."
       },
+      "summary": {
+        "ro": "Intervalele descriu mulțimi de numere reale: paranteza dreaptă include capătul, cea rotundă îl exclude. O mulțime este mărginită când are și majorant, și minorant; marginile sunt cel mai mic majorant și cel mai mare minorant. Fișa exersează scrierea intervalelor și determinarea marginilor, inclusiv caracterizarea cu epsilon.",
+        "en": "Intervals describe sets of real numbers: a square bracket includes the endpoint, a round one excludes it. A set is bounded with both an upper and a lower bound; the supremum and infimum are the least upper bound and the greatest lower bound. The worksheet trains writing intervals and finding bounds, including the epsilon characterization."
+      },
+      "faq": [
+        {
+          "q": {
+            "ro": "Cum deosebești un interval închis de unul deschis?",
+            "en": "How do you tell a closed interval from an open one?"
+          },
+          "a": {
+            "ro": "După capete: în intervalul închis $[a, b]$ ambele capete aparțin mulțimii, iar în cel deschis $(a, b)$ niciun capăt nu aparține. Pe axă, capetele care aparțin se desenează cu paranteză dreaptă, ca în notație. Intervalele semideschise, $[a, b)$ sau $(a, b]$, conțin exact un capăt.",
+            "en": "By the endpoints: in the closed interval $[a, b]$ both endpoints belong to the set, while in the open interval $(a, b)$ neither endpoint belongs. On the number line, endpoints that belong are drawn with square brackets, as in the notation. Half-open intervals, $[a, b)$ or $(a, b]$, contain exactly one endpoint."
+          }
+        },
+        {
+          "q": {
+            "ro": "Orice mulțime mărginită are maxim?",
+            "en": "Does every bounded set have a maximum?"
+          },
+          "a": {
+            "ro": "Nu: maximul există doar când marginea superioară aparține mulțimii. Intervalul deschis $(0, 1)$ este mărginit, are marginea superioară $1$, dar nu are maxim, pentru că $1 \\notin (0, 1)$. În schimb, orice mulțime mărginită are margini, chiar dacă nu are maxim sau minim.",
+            "en": "No: the maximum exists only when the supremum belongs to the set. The open interval $(0, 1)$ is bounded, its supremum is $1$, but it has no maximum, because $1 \\notin (0, 1)$. Every bounded set has bounds, though, even without a maximum or a minimum."
+          }
+        }
+      ],
       "pdf": "materiale/pdf/fisa-lucru-multimi-marginite-margini-1017.pdf",
       "youtube": null,
       "import": {
@@ -1136,6 +1468,32 @@
         "ro": "Probleme pentru clasa a XI-a: intervale, mulțimi mărginite, minim și maxim, margine inferioară și superioară, adevărat sau fals.",
         "en": "Grade 11 practice problems: intervals, bounded sets, minimum and maximum, infimum and supremum, and true-or-false statements."
       },
+      "summary": {
+        "ro": "Marginile se caută în doi pași: arăți că un număr este majorant sau minorant, apoi că niciunul mai bun nu funcționează. Caracterizarea cu epsilon spune că $M$ este marginea superioară când niciun număr mai mic decât $M$ nu mai este majorant. Problemele propuse exersează demonstrarea marginilor și enunțuri de tip adevărat sau fals.",
+        "en": "The bounds of a set are found in two steps: show that a number is an upper or lower bound, then show that no better number works. The epsilon characterization says that $M$ is the supremum when no number below $M$ is still an upper bound. The proposed problems train proving bounds and true-or-false statements."
+      },
+      "faq": [
+        {
+          "q": {
+            "ro": "Cum arăți că $5$ este marginea superioară a unei mulțimi?",
+            "en": "How do you show that $5$ is the supremum of a set?"
+          },
+          "a": {
+            "ro": "În doi pași: mai întâi verifici că $5$ este majorant, adică fiecare element al mulțimii este mai mic sau egal cu $5$. Apoi iei un număr oarecare mai mic decât $5$ și găsești un element al mulțimii peste el, ceea ce dovedește că $5$ este cel mai mic majorant.",
+            "en": "In two steps: first check that $5$ is an upper bound, meaning every element of the set is below or equal to $5$. Then take an arbitrary number below $5$ and find an element of the set above it, proving that $5$ is the least upper bound."
+          }
+        },
+        {
+          "q": {
+            "ro": "Ce spune caracterizarea cu epsilon a marginii superioare?",
+            "en": "What does the epsilon characterization of the supremum say?"
+          },
+          "a": {
+            "ro": "Că $M$ este marginea superioară a mulțimii $A$ atunci când $M$ este majorant și, oricât de puțin cobori sub $M$, găsești elemente din $A$ deasupra. Formal: pentru orice $\\varepsilon > 0$ există $x \\in A$ cu $M - \\varepsilon < x \\le M$. Este instrumentul standard pentru demonstrarea marginilor.",
+            "en": "That $M$ is the supremum of the set $A$ when $M$ is an upper bound and, however slightly you step below $M$, you find elements of $A$ above. Formally: for every $\\varepsilon > 0$ there is $x \\in A$ with $M - \\varepsilon < x \\le M$. It is the standard tool for proving bounds."
+          }
+        }
+      ],
       "pdf": "materiale/pdf/probleme-multimi-marginite-margini-1018.pdf",
       "youtube": null,
       "import": {
@@ -1194,6 +1552,42 @@
         "ro": "Fișă de lucru pentru clasa a IX-a: propoziții, valoarea de adevăr, propoziții compuse, predicate și mulțimea de adevăr a unui predicat.",
         "en": "Grade 9 worksheet: propositions, truth value, compound propositions, predicates and the truth set of a predicate."
       },
+      "summary": {
+        "ro": "O propoziție este un enunț cu valoare de adevăr: $1$ pentru adevărat, $0$ pentru fals. Un predicat este un enunț cu variabile care devine propoziție când fixezi variabilele, iar mulțimea lui de adevăr adună valorile care îl fac adevărat. Fișa exersează recunoașterea propozițiilor și lucrul cu predicate.",
+        "en": "A proposition is a statement with a truth value: $1$ for true, $0$ for false. A predicate is a statement with variables that turns into a proposition once values are fixed, and its truth set gathers the values that make it true. The worksheet trains spotting propositions and working with predicates."
+      },
+      "faq": [
+        {
+          "q": {
+            "ro": "Orice enunț este propoziție?",
+            "en": "Is every sentence a proposition?"
+          },
+          "a": {
+            "ro": "Nu. O întrebare, un ordin sau o exclamație nu sunt propoziții, pentru că nu li se poate atribui adevărat sau fals. Nici enunțurile vagi nu sunt propoziții: ca să fie propoziție, un enunț trebuie să aibă o valoare de adevăr clară, $1$ sau $0$.",
+            "en": "No. A question, a command or an exclamation is not a proposition, because none can be labelled true or false. Vague statements fail too: to be a proposition, a sentence must carry a clear truth value, $1$ or $0$."
+          }
+        },
+        {
+          "q": {
+            "ro": "Ce este mulțimea de adevăr a unui predicat?",
+            "en": "What is the truth set of a predicate?"
+          },
+          "a": {
+            "ro": "Mulțimea valorilor variabilei pentru care predicatul devine o propoziție adevărată. De exemplu, pentru predicatul $x > 2$ pe mulțimea $\\{1, 2, 3, 4\\}$, mulțimea de adevăr este $\\{3, 4\\}$. Dacă mulțimea de adevăr este toată mulțimea de lucru, predicatul este adevărat pentru orice valoare.",
+            "en": "The set of values of the variable for which the predicate turns into a true proposition. For instance, for the predicate $x > 2$ on the set $\\{1, 2, 3, 4\\}$, the truth set is $\\{3, 4\\}$. When the truth set equals the whole working set, the predicate holds for every value."
+          }
+        },
+        {
+          "q": {
+            "ro": "Enunțul $x + 3 = 7$ este propoziție?",
+            "en": "Is the statement $x + 3 = 7$ a proposition?"
+          },
+          "a": {
+            "ro": "Nu, cât timp $x$ rămâne o variabilă liberă: este un predicat, pentru că valoarea lui de adevăr depinde de $x$. Devine propoziție abia după ce înlocuiești variabila: $2 + 3 = 7$ este o propoziție falsă, iar $4 + 3 = 7$ este o propoziție adevărată.",
+            "en": "Not while $x$ stays a free variable: it is a predicate, because its truth value depends on $x$. It becomes a proposition only after substituting the variable: $2 + 3 = 7$ is a false proposition, and $4 + 3 = 7$ is a true one."
+          }
+        }
+      ],
       "pdf": "materiale/pdf/fisa-lucru-propozitii-valoare-adevar-predicate-1019.pdf",
       "youtube": null,
       "import": {
@@ -1243,6 +1637,42 @@
         "ro": "Fișă de lucru pentru clasa a IX-a: negația, conjuncția, disjuncția, implicația, echivalența și tabele de adevăr.",
         "en": "Grade 9 worksheet: negation, conjunction, disjunction, implication, equivalence and truth tables."
       },
+      "summary": {
+        "ro": "Din propoziții simple construiești propoziții compuse cu cinci operații: negația, conjuncția (și), disjuncția (sau), implicația (dacă… atunci) și echivalența (dacă și numai dacă). Valoarea de adevăr a rezultatului se citește din tabelele de adevăr ale fiecărei operații. Fișa exersează calculul valorilor de adevăr și scrierea tabelelor complete.",
+        "en": "From simple propositions you build compound ones with five operations: negation, conjunction (and), disjunction (or), implication (if… then) and equivalence (if and only if). The truth value of the result is read from the truth table of each operation. The worksheet trains computing truth values and writing complete tables."
+      },
+      "faq": [
+        {
+          "q": {
+            "ro": "Când este falsă o implicație?",
+            "en": "When is an implication false?"
+          },
+          "a": {
+            "ro": "Într-un singur caz: când ipoteza este adevărată și concluzia este falsă. În celelalte trei cazuri implicația este adevărată, inclusiv când ipoteza este falsă. De aceea, ca să arăți că o implicație este falsă, trebuie să produci un exemplu cu ipoteză adevărată și concluzie falsă.",
+            "en": "In a single case: when the hypothesis is true and the conclusion is false. In the other three cases the implication is true, including when the hypothesis is false. So to show that an implication is false, you must produce an example with a true hypothesis and a false conclusion."
+          }
+        },
+        {
+          "q": {
+            "ro": "Care este diferența dintre și și sau în logică?",
+            "en": "What is the difference between and and or in logic?"
+          },
+          "a": {
+            "ro": "Conjuncția (și) este adevărată doar când ambele propoziții sunt adevărate, pe când disjuncția (sau) este falsă doar când ambele sunt false. Altfel spus, este mai ușor să fie adevărat un sau decât un și. Tabelele lor de adevăr diferă pe liniile mixte, $1$-$0$ și $0$-$1$.",
+            "en": "The conjunction (and) is true only when both propositions are true, while the disjunction (or) is false only when both are false. In other words, an or is easier to make true than an and. Their truth tables differ on the mixed rows, $1$-$0$ and $0$-$1$."
+          }
+        },
+        {
+          "q": {
+            "ro": "La ce folosește un tabel de adevăr?",
+            "en": "What is a truth table for?"
+          },
+          "a": {
+            "ro": "Ca să verifici valoarea unei propoziții compuse pentru toate combinațiile posibile ale componentelor. Scrii pe coloane propozițiile simple și operațiile intermediare, iar ultima coloană dă rezultatul final. Dacă ultima coloană conține doar $1$, propoziția este adevărată mereu, adică o tautologie.",
+            "en": "To check the value of a compound proposition under every possible combination of its parts. You list the simple propositions and the intermediate operations in columns, and the last column gives the final result. When the last column holds only $1$, the proposition is always true, a tautology."
+          }
+        }
+      ],
       "pdf": "materiale/pdf/fisa-lucru-operatii-cu-propozitii-1020.pdf",
       "youtube": null,
       "import": {
@@ -1339,6 +1769,32 @@
         "ro": "Fișă de lucru pentru clasa a XI-a: vecinătăți pe dreapta reală și în puncte infinite, puncte de acumulare și puncte izolate.",
         "en": "Grade 11 worksheet: neighbourhoods on the real line and at infinity, accumulation points and isolated points."
       },
+      "summary": {
+        "ro": "O mulțime este vecinătate a unui punct dacă prinde un interval deschis în jurul lui, iar pentru $+\\infty$ sau $-\\infty$ trebuie să prindă o semidreaptă. Un punct de acumulare atrage puncte ale mulțimii în orice vecinătate a lui; un punct izolat rămâne singur într-o vecinătate mică. Fișa exersează vecinătățile și clasificarea punctelor.",
+        "en": "A set is a neighbourhood of a point when it catches an open interval around it, and for $+\\infty$ or $-\\infty$ it must catch a ray. An accumulation point draws points of the set into each of its neighbourhoods, while an isolated point stays alone in a small enough neighbourhood. The worksheet trains spotting neighbourhoods and classifying points."
+      },
+      "faq": [
+        {
+          "q": {
+            "ro": "Este orice interval deschis o vecinătate a fiecărui punct al său?",
+            "en": "Is every open interval a neighbourhood of each of its points?"
+          },
+          "a": {
+            "ro": "Da. Dacă $x_0 \\in (a, b)$, poți alege un interval mic $(x_0 - d, x_0 + d)$ inclus în $(a, b)$, luând $d$ mai mic decât distanțele până la capete. Tocmai de aceea definiția vecinătății cere un interval deschis în jurul punctului, nu neapărat centrat pe el.",
+            "en": "Yes. When $x_0 \\in (a, b)$, you can fit a small interval $(x_0 - d, x_0 + d)$ inside $(a, b)$ by taking $d$ below the distances to the endpoints. That is exactly why the neighbourhood definition asks for an open interval around the point, not necessarily centred on it."
+          }
+        },
+        {
+          "q": {
+            "ro": "Poate un punct izolat să fie și punct de acumulare?",
+            "en": "Can an isolated point also be an accumulation point?"
+          },
+          "a": {
+            "ro": "Nu, cele două noțiuni se exclud: un punct izolat al lui $A$ are o vecinătate fără alte puncte din $A$, pe când un punct de acumulare găsește puncte din $A$ în fiecare vecinătate. Un punct al lui $A$ este fie de acumulare, fie izolat, fără cale de mijloc.",
+            "en": "No, the two notions exclude each other: an isolated point of $A$ owns a neighbourhood with no other points of $A$, while an accumulation point finds points of $A$ in every neighbourhood. A point of $A$ is either an accumulation point or an isolated one, with nothing in between."
+          }
+        }
+      ],
       "pdf": "materiale/pdf/fisa-lucru-vecinatati-puncte-acumulare-1022.pdf",
       "youtube": null,
       "import": {
@@ -1467,6 +1923,32 @@
         "ro": "Probleme pentru clasa a XI-a: vecinătăți ale unui punct și ale lui ±∞, puncte de acumulare, puncte izolate, adevărat sau fals.",
         "en": "Grade 11 practice problems: neighbourhoods of a point and of ±∞, accumulation points, isolated points, and true-or-false statements."
       },
+      "summary": {
+        "ro": "Problemele verifică înțelegerea definițiilor: când o mulțime este vecinătate, când un punct este de acumulare și când este izolat. Cazurile delicate sunt capetele intervalelor, mulțimile finite și vecinătățile lui $\\pm\\infty$. Enunțurile de tip adevărat sau fals cer de fiecare dată un exemplu sau un contraexemplu precis.",
+        "en": "The problems check the grasp of the definitions: when a set is a neighbourhood, when a point accumulates and when it stands isolated. The delicate cases are interval endpoints, finite sets and neighbourhoods of $\\pm\\infty$. Each true-or-false statement calls for a sharp example or counterexample."
+      },
+      "faq": [
+        {
+          "q": {
+            "ro": "Cum demonstrezi că un enunț cu vecinătăți este fals?",
+            "en": "How do you disprove a statement about neighbourhoods?"
+          },
+          "a": {
+            "ro": "Cu un contraexemplu concret: o mulțime și un punct pentru care concluzia pică, verificate direct din definiție. De pildă, afirmația că orice mulțime care îl conține pe $2$ este vecinătate a lui $2$ este falsă, iar mulțimea $\\{2\\}$ este contraexemplul, fiindcă nu prinde niciun interval deschis în jurul lui $2$.",
+            "en": "With a concrete counterexample: a set and a point where the conclusion fails, checked straight from the definition. For instance, the claim that any set containing $2$ is a neighbourhood of $2$ is false, and the set $\\{2\\}$ is the counterexample, since it catches no open interval around $2$."
+          }
+        },
+        {
+          "q": {
+            "ro": "De ce contează capetele intervalelor la punctele de acumulare?",
+            "en": "Why do interval endpoints matter for accumulation points?"
+          },
+          "a": {
+            "ro": "Pentru că un capăt poate fi punct de acumulare fără să aparțină mulțimii: orice vecinătate a lui $0$ întâlnește intervalul $(0, 1]$, deși $0 \\notin (0, 1]$. Greșeala tipică este să confunzi apartenența la mulțime cu proprietatea de a fi punct de acumulare, care privește vecinătățile, nu lista elementelor.",
+            "en": "Because an endpoint may accumulate without belonging to the set: every neighbourhood of $0$ meets the interval $(0, 1]$, although $0 \\notin (0, 1]$. The typical mistake is confusing membership with being an accumulation point, which concerns neighbourhoods, not the roster of elements."
+          }
+        }
+      ],
       "seoTitle": {
         "ro": "Vecinătăți și puncte de acumulare: probleme",
         "en": "Neighbourhoods and accumulation points: problems"

@@ -20,7 +20,7 @@ const ID_RE = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 const UID_RE = /^[1-9][0-9]{3,}$/;
 // Version of the add-material workflow in AGENTS.md that produced the articles.
 // Bump it whenever that section changes in a way that affects the output.
-const WORKFLOW = 4;
+const WORKFLOW = 5;
 const KINDS = ['lectie', 'teorie', 'fisa-lucru', 'fisa-recapitulativa', 'test', 'joc', 'quiz'];
 
 const require = createRequire(import.meta.url);
@@ -217,8 +217,8 @@ function cmdNew({ pos, flags }) {
   if (textLen(descEn) < 70 || textLen(descEn) > 160) fail(`--desc-en must be 70-160 characters (is ${textLen(descEn)})`);
   // The answer-first box above the article: required on theory pages.
   if (kind === 'quiz' && (summaryRo !== undefined || summaryEn !== undefined)) fail('a quiz has no summary page');
-  if ((kind === 'teorie' || kind === 'lectie') && (!summaryRo || !summaryEn)) {
-    fail('--summary-ro and --summary-en are required for --kind teorie or lectie');
+  if (kind !== 'quiz' && (!summaryRo || !summaryEn)) {
+    fail('--summary-ro and --summary-en are required for every --kind except quiz');
   }
   if ((summaryRo !== undefined || summaryEn !== undefined) && (!summaryRo || !summaryEn)) {
     fail('--summary-ro and --summary-en go together');
@@ -229,13 +229,13 @@ function cmdNew({ pos, flags }) {
   if (summaryEn !== undefined && (textLen(summaryEn) < 120 || textLen(summaryEn) > 350)) {
     fail(`--summary-en must be 120-350 characters (is ${textLen(summaryEn)})`);
   }
-  // Conceptual Q&A after the article: required on theory pages, like the summary.
+  // Conceptual Q&A after the article: required on every page except the quiz, like the summary.
   const faqJson = flags['faq-json'];
   const faqFile = flags['faq-file'];
   if (kind === 'quiz' && (faqJson !== undefined || faqFile !== undefined)) fail('a quiz has no faq');
   if (faqJson !== undefined && faqFile !== undefined) fail('--faq-json and --faq-file never appear together');
-  if ((kind === 'teorie' || kind === 'lectie') && faqJson === undefined && faqFile === undefined) {
-    fail('--faq-json or --faq-file is required for --kind teorie or lectie');
+  if (kind !== 'quiz' && faqJson === undefined && faqFile === undefined) {
+    fail('--faq-json or --faq-file is required for every --kind except quiz');
   }
   let faq = null;
   if (faqJson !== undefined || faqFile !== undefined) {

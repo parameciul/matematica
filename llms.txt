@@ -2,6 +2,8 @@
 
 > Math materials for grades 5–12 by teacher Laura Miron (Liceul William Shakespeare, Timișoara).
 > Romanian by default, with an English version. Theory, worksheets, tests, games and quizzes.
+> License: CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/): free educational reuse with attribution.
+> Machine-readable index: https://lauramiron.pages.dev/data/materials.json
 
 - Despre: https://lauramiron.pages.dev/despre
 - About: https://lauramiron.pages.dev/en/despre
@@ -12,13 +14,13 @@
 - Grade 6: https://lauramiron.pages.dev/en/clasa-6
 
 ### Mulțimi / Sets
-- [Quiz pe echipe: mulțimi](https://lauramiron.pages.dev/materiale/quiz-multimi-1021): Quiz pe echipe pentru clasa a VI-a despre mulțimi, de proiectat în clasă: elemente, submulțimi, reuniune, intersecție.
+- [Quiz pe echipe: mulțimi](https://lauramiron.pages.dev/materiale/quiz-multimi-1021): Quiz pe echipe pentru clasa a VI-a despre mulțimi, de proiectat în clasă: elemente, submulțimi, reuniune, intersecție. (quiz, clasa a 6-a / grade 6, updated 2026-10-06)
 
 ### Recapitularea materiei clasei a V-a / Review of grade 5 math
-- [Fișă recapitulativă 1: numere naturale și fracții](https://lauramiron.pages.dev/materiale/fisa-recapitulativa-1-numere-naturale-fractii-1009): Fișă recapitulativă pentru clasa a VI-a: numere naturale, puteri, divizibilitate, fracții, procente și organizarea datelor.
-- [Fișă recapitulativă 2: geometrie și unități de măsură](https://lauramiron.pages.dev/materiale/fisa-recapitulativa-2-geometrie-unitati-masura-1010): Fișă recapitulativă pentru clasa a VI-a: geometrie și unități de măsură — segmente, unghiuri, perimetre, arii și volume.
-- [Quiz pe echipe: recapitularea clasei a V-a](https://lauramiron.pages.dev/materiale/quiz-recapitulare-clasa-a-v-a-1005): Quiz pe echipe pentru clasa a VI-a: recapitularea materiei clasei a V-a, de proiectat cu videoproiectorul în clasă.
-- [Joc: Mesajul secret (numere naturale și fracții)](https://lauramiron.pages.dev/materiale/joc-mesajul-secret-1006): Joc de recapitulare pentru clasa a VI-a: mesajul secret, cu numere naturale, fracții, puteri, procente și media aritmetică.
+- [Fișă recapitulativă 1: numere naturale și fracții](https://lauramiron.pages.dev/materiale/fisa-recapitulativa-1-numere-naturale-fractii-1009) ([EN](https://lauramiron.pages.dev/en/materiale/fisa-recapitulativa-1-numere-naturale-fractii-1009)): Fișă recapitulativă pentru clasa a VI-a: numere naturale, puteri, divizibilitate, fracții, procente și organizarea datelor. (fisa-recapitulativa, clasa a 6-a / grade 6, updated 2026-09-17)
+- [Fișă recapitulativă 2: geometrie și unități de măsură](https://lauramiron.pages.dev/materiale/fisa-recapitulativa-2-geometrie-unitati-masura-1010) ([EN](https://lauramiron.pages.dev/en/materiale/fisa-recapitulativa-2-geometrie-unitati-masura-1010)): Fișă recapitulativă pentru clasa a VI-a: geometrie și unități de măsură — segmente, unghiuri, perimetre, arii și volume. (fisa-recapitulativa, clasa a 6-a / grade 6, updated 2026-09-17)
+- [Quiz pe echipe: recapitularea clasei a V-a](https://lauramiron.pages.dev/materiale/quiz-recapitulare-clasa-a-v-a-1005): Quiz pe echipe pentru clasa a VI-a: recapitularea materiei clasei a V-a, de proiectat cu videoproiectorul în clasă. (quiz, clasa a 6-a / grade 6, updated 2026-09-15)
+- [Joc: Mesajul secret (numere naturale și fracții)](https://lauramiron.pages.dev/materiale/joc-mesajul-secret-1006) ([EN](https://lauramiron.pages.dev/en/materiale/joc-mesajul-secret-1006)): Joc de recapitulare pentru clasa a VI-a: mesajul secret, cu numere naturale, fracții, puteri, procente și media aritmetică. (joc, clasa a 6-a / grade 6, updated 2026-09-15)
 
 ## Clasa a VIII-a / Grade 8
 
@@ -26,7 +28,7 @@
 - Grade 8: https://lauramiron.pages.dev/en/clasa-8
 
 ### Recapitulare inițială: materia claselor a V-a – a VII-a / Start-of-year review: grades 5-7 math
-- [Fișă recapitulativă: clasele a V-a – a VII-a, pregătire pentru testul inițial](https://lauramiron.pages.dev/materiale/fisa-recapitulativa-clasele-v-vii-test-initial-1008): Fișă recapitulativă pentru clasa a VIII-a: materia claselor a V-a – a VII-a, pregătire pentru testul inițial, algebră și geometrie.
+- [Fișă recapitulativă: clasele a V-a – a VII-a, pregătire pentru testul inițial](https://lauramiron.pages.dev/materiale/fisa-recapitulativa-clasele-v-vii-test-initial-1008) ([EN](https://lauramiron.pages.dev/en/materiale/fisa-recapitulativa-clasele-v-vii-test-initial-1008)): Fișă recapitulativă pentru clasa a VIII-a: materia claselor a V-a – a VII-a, pregătire pentru testul inițial, algebră și geometrie. (fisa-recapitulativa, clasa a 8-a / grade 8, updated 2026-09-17)
 
 ## Clasa a IX-a / Grade 9
 
@@ -34,18 +36,18 @@
 - Grade 9: https://lauramiron.pages.dev/en/clasa-9
 
 ### Elemente de logică matematică / Elements of mathematical logic
-- [Fișă de lucru: operații cu propoziții](https://lauramiron.pages.dev/materiale/fisa-lucru-operatii-cu-propozitii-1020): Fișă de lucru pentru clasa a IX-a: negația, conjuncția, disjuncția, implicația, echivalența și tabele de adevăr.
-- [Fișă de lucru: propoziții, valoarea de adevăr, predicate](https://lauramiron.pages.dev/materiale/fisa-lucru-propozitii-valoare-adevar-predicate-1019): Fișă de lucru pentru clasa a IX-a: propoziții, valoarea de adevăr, propoziții compuse, predicate și mulțimea de adevăr a unui predicat.
+- [Fișă de lucru: operații cu propoziții](https://lauramiron.pages.dev/materiale/fisa-lucru-operatii-cu-propozitii-1020) ([EN](https://lauramiron.pages.dev/en/materiale/fisa-lucru-operatii-cu-propozitii-1020)): Fișă de lucru pentru clasa a IX-a: negația, conjuncția, disjuncția, implicația, echivalența și tabele de adevăr. (fisa-lucru, clasa a 9-a / grade 9, updated 2026-10-06)
+- [Fișă de lucru: propoziții, valoarea de adevăr, predicate](https://lauramiron.pages.dev/materiale/fisa-lucru-propozitii-valoare-adevar-predicate-1019) ([EN](https://lauramiron.pages.dev/en/materiale/fisa-lucru-propozitii-valoare-adevar-predicate-1019)): Fișă de lucru pentru clasa a IX-a: propoziții, valoarea de adevăr, propoziții compuse, predicate și mulțimea de adevăr a unui predicat. (fisa-lucru, clasa a 9-a / grade 9, updated 2026-10-05)
 
 ### Numere reale. Modulul. Partea întreagă și partea fracționară / Real numbers. Absolute value. Integer and fractional part
-- [Fișă de lucru: partea întreagă și partea fracționară](https://lauramiron.pages.dev/materiale/fisa-lucru-partea-intreaga-partea-fractionara-1014): Fișă de lucru pentru clasa a IX-a cu 25 de exerciții despre partea întreagă și partea fracționară: calcul, ecuații și proprietăți.
-- [Fișă de lucru: modulul unui număr real](https://lauramiron.pages.dev/materiale/fisa-lucru-modulul-unui-numar-real-1012): Fișă de lucru pentru clasa a IX-a cu 15 exerciții despre modul: calcul, proprietăți și ecuații cu modul.
-- [Teorie sintetizată: numere reale, modul, partea întreagă și partea fracționară](https://lauramiron.pages.dev/materiale/teorie-numere-reale-modul-parte-intreaga-1001): Teorie de clasa a IX-a: numere reale, modul, intervale, partea întreagă și partea fracționară, cu definiții și proprietăți.
-- [Fișă de lucru: numere reale, modul, partea întreagă și partea fracționară](https://lauramiron.pages.dev/materiale/fisa-lucru-numere-reale-modul-parte-intreaga-1002): Fișă de lucru pentru clasa a IX-a, cu exerciții pe niveluri: modul, ecuații și inecuații, partea întreagă și partea fracționară.
+- [Fișă de lucru: partea întreagă și partea fracționară](https://lauramiron.pages.dev/materiale/fisa-lucru-partea-intreaga-partea-fractionara-1014) ([EN](https://lauramiron.pages.dev/en/materiale/fisa-lucru-partea-intreaga-partea-fractionara-1014)): Fișă de lucru pentru clasa a IX-a cu 25 de exerciții despre partea întreagă și partea fracționară: calcul, ecuații și proprietăți. (fisa-lucru, clasa a 9-a / grade 9, updated 2026-09-23)
+- [Fișă de lucru: modulul unui număr real](https://lauramiron.pages.dev/materiale/fisa-lucru-modulul-unui-numar-real-1012) ([EN](https://lauramiron.pages.dev/en/materiale/fisa-lucru-modulul-unui-numar-real-1012)): Fișă de lucru pentru clasa a IX-a cu 15 exerciții despre modul: calcul, proprietăți și ecuații cu modul. (fisa-lucru, clasa a 9-a / grade 9, updated 2026-09-20)
+- [Teorie sintetizată: numere reale, modul, partea întreagă și partea fracționară](https://lauramiron.pages.dev/materiale/teorie-numere-reale-modul-parte-intreaga-1001) ([EN](https://lauramiron.pages.dev/en/materiale/teorie-numere-reale-modul-parte-intreaga-1001)): Teorie de clasa a IX-a: numere reale, modul, intervale, partea întreagă și partea fracționară, cu definiții și proprietăți. (teorie, clasa a 9-a / grade 9, updated 2026-09-23)
+- [Fișă de lucru: numere reale, modul, partea întreagă și partea fracționară](https://lauramiron.pages.dev/materiale/fisa-lucru-numere-reale-modul-parte-intreaga-1002) ([EN](https://lauramiron.pages.dev/en/materiale/fisa-lucru-numere-reale-modul-parte-intreaga-1002)): Fișă de lucru pentru clasa a IX-a, cu exerciții pe niveluri: modul, ecuații și inecuații, partea întreagă și partea fracționară. (fisa-lucru, clasa a 9-a / grade 9, updated 2026-09-14)
 
 ### Recapitulare inițială: materia de gimnaziu / Start-of-year review: middle school math
-- [Fișă recapitulativă: pregătire pentru testul inițial (model Evaluare Națională)](https://lauramiron.pages.dev/materiale/fisa-recapitulativa-gimnaziu-test-initial-1003): Fișă recapitulativă pentru clasa a IX-a: pregătire pentru testul inițial, în format de Evaluare Națională, cu algebră și geometrie.
-- [Fișă de recapitulare și evaluare inițială (profil matematică-informatică)](https://lauramiron.pages.dev/materiale/fisa-recapitulare-evaluare-initiala-1004): Fișă de recapitulare și evaluare inițială pentru clasa a IX-a, matematică-informatică: funcții, trigonometrie și geometrie.
+- [Fișă recapitulativă: pregătire pentru testul inițial (model Evaluare Națională)](https://lauramiron.pages.dev/materiale/fisa-recapitulativa-gimnaziu-test-initial-1003) ([EN](https://lauramiron.pages.dev/en/materiale/fisa-recapitulativa-gimnaziu-test-initial-1003)): Fișă recapitulativă pentru clasa a IX-a: pregătire pentru testul inițial, în format de Evaluare Națională, cu algebră și geometrie. (fisa-recapitulativa, clasa a 9-a / grade 9, updated 2026-09-13)
+- [Fișă de recapitulare și evaluare inițială (profil matematică-informatică)](https://lauramiron.pages.dev/materiale/fisa-recapitulare-evaluare-initiala-1004) ([EN](https://lauramiron.pages.dev/en/materiale/fisa-recapitulare-evaluare-initiala-1004)): Fișă de recapitulare și evaluare inițială pentru clasa a IX-a, matematică-informatică: funcții, trigonometrie și geometrie. (fisa-recapitulativa, clasa a 9-a / grade 9, updated 2026-09-13)
 
 ## Clasa a XI-a / Grade 11
 
@@ -53,16 +55,16 @@
 - Grade 11: https://lauramiron.pages.dev/en/clasa-11
 
 ### Mulțimi de puncte pe dreapta reală / Sets of points on the real line
-- [Fișă de lucru: vecinătăți și puncte de acumulare](https://lauramiron.pages.dev/materiale/fisa-lucru-vecinatati-puncte-acumulare-1022): Fișă de lucru pentru clasa a XI-a: vecinătăți pe dreapta reală și în puncte infinite, puncte de acumulare și puncte izolate.
-- [Teorie: vecinătăți, puncte de acumulare și puncte izolate](https://lauramiron.pages.dev/materiale/teorie-vecinatati-puncte-acumulare-1023): Teorie sintetizată pentru clasa a XI-a: definiții, proprietăți ale vecinătăților, puncte de acumulare și puncte izolate, cu exemple rezolvate.
-- [Probleme propuse: vecinătăți și puncte de acumulare](https://lauramiron.pages.dev/materiale/probleme-vecinatati-puncte-acumulare-1024): Probleme pentru clasa a XI-a: vecinătăți ale unui punct și ale lui ±∞, puncte de acumulare, puncte izolate, adevărat sau fals.
-- [Teorie sintetizată: mulțimi de puncte pe dreapta reală](https://lauramiron.pages.dev/materiale/teorie-multimi-puncte-dreapta-reala-1016): Teorie de clasa a XI-a: intervale, mulțimi mărginite, minim și maxim, margine inferioară și superioară, dreapta încheiată.
-- [Fișă de lucru: intervale, mulțimi mărginite și marginile unei mulțimi](https://lauramiron.pages.dev/materiale/fisa-lucru-multimi-marginite-margini-1017): Fișă de lucru pentru clasa a XI-a: intervale, mulțimi mărginite, minim, maxim, margine inferioară și superioară, caracterizarea cu ε.
-- [Probleme propuse: intervale, mulțimi mărginite și marginile unei mulțimi](https://lauramiron.pages.dev/materiale/probleme-multimi-marginite-margini-1018): Probleme pentru clasa a XI-a: intervale, mulțimi mărginite, minim și maxim, margine inferioară și superioară, adevărat sau fals.
+- [Fișă de lucru: vecinătăți și puncte de acumulare](https://lauramiron.pages.dev/materiale/fisa-lucru-vecinatati-puncte-acumulare-1022) ([EN](https://lauramiron.pages.dev/en/materiale/fisa-lucru-vecinatati-puncte-acumulare-1022)): Fișă de lucru pentru clasa a XI-a: vecinătăți pe dreapta reală și în puncte infinite, puncte de acumulare și puncte izolate. (fisa-lucru, clasa a 11-a / grade 11, updated 2026-10-06)
+- [Teorie: vecinătăți, puncte de acumulare și puncte izolate](https://lauramiron.pages.dev/materiale/teorie-vecinatati-puncte-acumulare-1023) ([EN](https://lauramiron.pages.dev/en/materiale/teorie-vecinatati-puncte-acumulare-1023)): Teorie sintetizată pentru clasa a XI-a: definiții, proprietăți ale vecinătăților, puncte de acumulare și puncte izolate, cu exemple rezolvate. (teorie, clasa a 11-a / grade 11, updated 2026-10-06)
+- [Probleme propuse: vecinătăți și puncte de acumulare](https://lauramiron.pages.dev/materiale/probleme-vecinatati-puncte-acumulare-1024) ([EN](https://lauramiron.pages.dev/en/materiale/probleme-vecinatati-puncte-acumulare-1024)): Probleme pentru clasa a XI-a: vecinătăți ale unui punct și ale lui ±∞, puncte de acumulare, puncte izolate, adevărat sau fals. (fisa-lucru, clasa a 11-a / grade 11, updated 2026-10-06)
+- [Teorie sintetizată: mulțimi de puncte pe dreapta reală](https://lauramiron.pages.dev/materiale/teorie-multimi-puncte-dreapta-reala-1016) ([EN](https://lauramiron.pages.dev/en/materiale/teorie-multimi-puncte-dreapta-reala-1016)): Teorie de clasa a XI-a: intervale, mulțimi mărginite, minim și maxim, margine inferioară și superioară, dreapta încheiată. (teorie, clasa a 11-a / grade 11, updated 2026-09-30)
+- [Fișă de lucru: intervale, mulțimi mărginite și marginile unei mulțimi](https://lauramiron.pages.dev/materiale/fisa-lucru-multimi-marginite-margini-1017) ([EN](https://lauramiron.pages.dev/en/materiale/fisa-lucru-multimi-marginite-margini-1017)): Fișă de lucru pentru clasa a XI-a: intervale, mulțimi mărginite, minim, maxim, margine inferioară și superioară, caracterizarea cu ε. (fisa-lucru, clasa a 11-a / grade 11, updated 2026-09-30)
+- [Probleme propuse: intervale, mulțimi mărginite și marginile unei mulțimi](https://lauramiron.pages.dev/materiale/probleme-multimi-marginite-margini-1018) ([EN](https://lauramiron.pages.dev/en/materiale/probleme-multimi-marginite-margini-1018)): Probleme pentru clasa a XI-a: intervale, mulțimi mărginite, minim și maxim, margine inferioară și superioară, adevărat sau fals. (fisa-lucru, clasa a 11-a / grade 11, updated 2026-09-30)
 
 ### Permutări / Permutations
-- [Fișă recapitulativă: permutări](https://lauramiron.pages.dev/materiale/fisa-recapitulativa-permutari-1015): Fișă recapitulativă pentru clasa a XI-a cu 50 de probleme pe trei niveluri despre permutări: compunere, inversă, inversiuni și semn.
+- [Fișă recapitulativă: permutări](https://lauramiron.pages.dev/materiale/fisa-recapitulativa-permutari-1015) ([EN](https://lauramiron.pages.dev/en/materiale/fisa-recapitulativa-permutari-1015)): Fișă recapitulativă pentru clasa a XI-a cu 50 de probleme pe trei niveluri despre permutări: compunere, inversă, inversiuni și semn. (fisa-recapitulativa, clasa a 11-a / grade 11, updated 2026-09-23)
 
 ### Recapitulare: vectori și geometrie analitică (clasa a X-a) / Review: vectors and analytic geometry (grade 10)
-- [Fișă recapitulativă: geometrie (clasa a X-a)](https://lauramiron.pages.dev/materiale/fisa-recapitulativa-geometrie-clasa-a-x-a-1007): Fișă recapitulativă de geometrie pentru clasa a XI-a: vectori, ecuația dreptei, coliniaritate și produs scalar, pentru BAC.
-- [Teorie sintetizată: vectori și geometrie analitică](https://lauramiron.pages.dev/materiale/teorie-vectori-geometrie-analitica-1011): Teorie sintetizată pentru clasa a XI-a: vectori și geometrie analitică — ecuația dreptei, panta, distanțe și produs scalar.
+- [Fișă recapitulativă: geometrie (clasa a X-a)](https://lauramiron.pages.dev/materiale/fisa-recapitulativa-geometrie-clasa-a-x-a-1007) ([EN](https://lauramiron.pages.dev/en/materiale/fisa-recapitulativa-geometrie-clasa-a-x-a-1007)): Fișă recapitulativă de geometrie pentru clasa a XI-a: vectori, ecuația dreptei, coliniaritate și produs scalar, pentru BAC. (fisa-recapitulativa, clasa a 11-a / grade 11, updated 2026-09-17)
+- [Teorie sintetizată: vectori și geometrie analitică](https://lauramiron.pages.dev/materiale/teorie-vectori-geometrie-analitica-1011) ([EN](https://lauramiron.pages.dev/en/materiale/teorie-vectori-geometrie-analitica-1011)): Teorie sintetizată pentru clasa a XI-a: vectori și geometrie analitică — ecuația dreptei, panta, distanțe și produs scalar. (teorie, clasa a 11-a / grade 11, updated 2026-09-17)

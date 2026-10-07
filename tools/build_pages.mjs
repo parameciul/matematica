@@ -52,6 +52,10 @@ const KATEX_RENDER = {
 
 export const FONTS = 'https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,700;0,800;1,400&family=Caveat:wght@600&display=swap';
 export const OG_IMAGE = `${SITE_URL}assets/img/og-image.png`;
+// Reuse license for the public content: free for education with attribution.
+// Shown in the footer (rel="license"), in LearningResource JSON-LD and in llms.txt.
+export const LICENSE_URL = 'https://creativecommons.org/licenses/by-nc-sa/4.0/';
+export const LICENSE_NAME = 'CC BY-NC-SA 4.0';
 // Public teacher profiles for the Person JSON-LD sameAs (audit F5).
 // Add URLs here only when they exist.
 const PROFILES = ['https://www.youtube.com/@MatematicaLauraMiron'];
@@ -301,7 +305,7 @@ function orgLd() {
     '@type': 'EducationalOrganization',
     name: 'Liceul William Shakespeare',
     url: SITE_URL,
-    logo: OG_IMAGE,
+    logo: { '@type': 'ImageObject', url: OG_IMAGE, width: 1200, height: 630 },
     address: { '@type': 'PostalAddress', addressLocality: 'Timișoara', addressCountry: 'RO' },
   };
 }
@@ -496,7 +500,14 @@ function webSiteLd(lang, dict) {
         '@type': 'Organization',
         name: 'Laura Miron',
         url: SITE_URL,
-        logo: OG_IMAGE,
+        logo: { '@type': 'ImageObject', url: OG_IMAGE, width: 1200, height: 630 },
+      },
+      // Sitelinks searchbox is retired by Google, but the action still
+      // describes the site search to other consumers.
+      potentialAction: {
+        '@type': 'SearchAction',
+        target: `${SITE_URL}cautare?q={search_term_string}`,
+        'query-input': 'required name=search_term_string',
       },
     },
     { '@context': 'https://schema.org', ...person },
@@ -831,6 +842,7 @@ function renderMaterialPage({ data, material, topic, lang, dict, assetBase, page
       targetUrl: `${SITE_URL}${lang === 'en' ? 'en/' : ''}clasa-${topic.grade}#${topic.id}`,
     },
     isAccessibleForFree: true,
+    license: LICENSE_URL,
     author: personLd(lang),
     publisher: personLd(lang),
   };
@@ -1041,6 +1053,8 @@ export function renderLlmsTxt({ data, root }) {
     '',
     '> Math materials for grades 5–12 by teacher Laura Miron (Liceul William Shakespeare, Timișoara).',
     '> Romanian by default, with an English version. Theory, worksheets, tests, games and quizzes.',
+    `> License: ${LICENSE_NAME} (${LICENSE_URL}): free educational reuse with attribution.`,
+    `> Machine-readable index: ${SITE_URL}data/materials.json`,
     '',
     `- Despre: ${SITE_URL}despre`,
     `- About: ${SITE_URL}en/despre`,
@@ -1060,7 +1074,11 @@ export function renderLlmsTxt({ data, root }) {
         const name = Catalog.nameOf(m);
         const title = m.title.ro || m.title.en;
         const desc = (m.description && (m.description.ro || m.description.en)) || '';
-        lines.push(`- [${title}](${SITE_URL}materiale/${name}): ${desc}`);
+        // Both language URLs when the English page exists (the quiz is Romanian only),
+        // plus kind, grade and freshness so answer engines can cite precisely.
+        const enUrl = m.kind === 'quiz' ? null : `${SITE_URL}en/materiale/${name}`;
+        const where = enUrl ? `[${title}](${SITE_URL}materiale/${name}) ([EN](${enUrl}))` : `[${title}](${SITE_URL}materiale/${name})`;
+        lines.push(`- ${where}: ${desc} (${m.kind}, clasa a ${grade}-a / grade ${grade}, updated ${lastmodOf(m)})`);
       }
     }
     lines.push('');
@@ -1075,6 +1093,7 @@ export function renderLlmsFull({ data, root }) {
     '# Laura Miron – full content',
     '',
     '> Complete article text of every visible material. Romanian first, English second.',
+    `> Author: Laura Miron. License: ${LICENSE_NAME} (${LICENSE_URL}).`,
     '',
   ];
   for (let grade = 5; grade <= 12; grade++) {
@@ -1090,8 +1109,10 @@ export function renderLlmsFull({ data, root }) {
         const enHtml = readIfExists(root, `en/materiale/${name}.html`);
         const enArticle = articleToText(readArticle(enHtml, 'en'));
         lines.push(`### ${m.title.ro}`);
-        lines.push(`- URL (RO): ${SITE_URL}materiale/${name}`);
-        if (enArticle) lines.push(`- URL (EN): ${SITE_URL}en/materiale/${name}`);
+        lines.push(`- Source (RO): ${SITE_URL}materiale/${name}`);
+        if (enArticle) lines.push(`- Source (EN): ${SITE_URL}en/materiale/${name}`);
+        lines.push(`- Author: Laura Miron. License: ${LICENSE_NAME} (${LICENSE_URL}).`);
+        lines.push(`- Published: ${m.published}. Updated: ${lastmodOf(m)}.`);
         if (m.description && m.description.ro) lines.push(`- ${m.description.ro}`);
         lines.push('');
         if (roArticle) lines.push(roArticle, '');
@@ -1551,6 +1572,7 @@ ${robots}
       targetUrl: `${gradeUrl}#${topic.id}`,
     },
     isAccessibleForFree: true,
+    license: LICENSE_URL,
     author: personLd('ro'),
     publisher: personLd('ro'),
   })}

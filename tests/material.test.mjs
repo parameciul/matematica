@@ -53,13 +53,13 @@ after(() => {
 const dataFile = (dir) => join(dir, 'data', 'materials.source.json');
 const readData = (dir) => JSON.parse(readFileSync(dataFile(dir), 'utf8'));
 
-// Summaries for the materials the tests create (the default --kind is
-// teorie, which requires one).
+// Summaries for the materials the tests create (every kind except quiz
+// requires one).
 const SUMMARY_FLAGS = ['--summary-ro',
   'Rezumat de probă pentru testarea comenzii de creare: ideea principală a lecției, structura ei și noțiunile pe care le recapitulează elevii.',
   '--summary-en',
   'Sample summary for testing the creation command: the main idea of the lesson, its structure and the notions the students review.'];
-// FAQ for the same materials (teorie requires one, like the summary).
+// FAQ for the same materials (required like the summary, except on a quiz).
 const FAQ_FLAGS = ['--faq-json', JSON.stringify([
   {
     q: { ro: 'Întrebare de probă pentru comanda de creare a materialelor noi?', en: 'Sample question for testing the material creation command?' },
@@ -105,7 +105,7 @@ test('new allocates the next uid, adds the entry and regenerates the pages', (t)
   assert.equal(after.nextUid, before.nextUid + 1);
   assert.equal(m.pdf, null);
   assert.equal(m.youtube, null);
-  assert.deepEqual(m.import, { date: m.import.date, workflow: 4 });
+  assert.deepEqual(m.import, { date: m.import.date, workflow: 5 });
   assert.ok(existsSync(join(dir, '.work', `fisa-parabole-${before.nextUid}`)));
   assert.match(res.out, /pages regenerated/);
   // The new material passes the validator: run it against the copied site.
@@ -354,7 +354,8 @@ test('new --no-pdf writes no PDF file', (t) => {
   const res = run(dir, ['new', '--no-pdf', '--slug', 'joc-fara-pdf', '--topic', before.topics.at(-1).id, '--kind', 'joc',
     '--title-ro', 'Joc fără PDF', '--title-en', 'Game with no PDF',
     '--desc-ro', 'Joc de recapitulare fără fișier PDF, suficient de lung pentru regulile validatorului site-ului.',
-    '--desc-en', 'Review game with no PDF file, long enough to satisfy the site validator rules.']);
+    '--desc-en', 'Review game with no PDF file, long enough to satisfy the site validator rules.',
+    ...SUMMARY_FLAGS, ...FAQ_FLAGS]);
   assert.equal(res.code, 0, res.out);
   const m = readData(dir).materials.find((x) => x.slug === 'joc-fara-pdf');
   assert.equal(m.pdf, null);
@@ -447,7 +448,7 @@ test('new validates the flags before touching the data', (t) => {
   assert.equal(published.nextUid, before.nextUid);
 });
 
-test('new requires a summary and an faq on theory pages and refuses them on a quiz', (t) => {
+test('new requires a summary and an faq on every kind except quiz, and refuses them on a quiz', (t) => {
   const dir = makeRoot(t);
   const topic = readData(dir).topics[0].id;
   const base = ['--slug', 'x', '--topic', topic,
@@ -456,10 +457,13 @@ test('new requires a summary and an faq on theory pages and refuses them on a qu
     '--desc-en', 'Worksheet for testing the creation command, long enough to satisfy the validator.'];
   const noSummary = run(dir, ['new', '--kind', 'teorie', ...base]);
   assert.equal(noSummary.code, 1);
-  assert.match(noSummary.out, /--summary-ro and --summary-en are required/);
+  assert.match(noSummary.out, /--summary-ro and --summary-en are required for every --kind except quiz/);
   const noFaq = run(dir, ['new', '--kind', 'teorie', ...base, ...SUMMARY_FLAGS]);
   assert.equal(noFaq.code, 1);
-  assert.match(noFaq.out, /--faq-json or --faq-file is required/);
+  assert.match(noFaq.out, /--faq-json or --faq-file is required for every --kind except quiz/);
+  const worksheetNoSummary = run(dir, ['new', '--kind', 'fisa-lucru', ...base]);
+  assert.equal(worksheetNoSummary.code, 1);
+  assert.match(worksheetNoSummary.out, /--summary-ro and --summary-en are required for every --kind except quiz/);
   const quizSummary = run(dir, ['new', '--kind', 'quiz', '--no-pdf', ...base, ...SUMMARY_FLAGS]);
   assert.equal(quizSummary.code, 1);
   assert.match(quizSummary.out, /a quiz has no summary page/);

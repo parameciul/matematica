@@ -300,11 +300,11 @@ for (const [i, m] of materials.entries()) {
   }
   if (m.kind === 'quiz' && m.youtube !== null) fail(`${where}: youtube must be null for a quiz`);
   // summary: the answer-first box above the article (2-3 sentences, plain
-  // words). Required on theory pages, which answer engines quote directly;
-  // allowed anywhere except the standalone quiz page.
+  // words). Required on every page except the standalone quiz, which answer
+  // engines quote directly; allowed anywhere except the standalone quiz page.
   if (m.kind === 'quiz' && m.summary !== undefined) fail(`${where}: summary is not shown on a quiz`);
-  if ((m.kind === 'teorie' || m.kind === 'lectie') && m.summary === undefined) {
-    fail(`${where}: summary is required on a ${m.kind} page`);
+  if (m.kind !== 'quiz' && m.summary === undefined) {
+    fail(`${where}: summary is required on every kind except quiz`);
   }
   if (m.summary !== undefined) {
     if (!m.summary || typeof m.summary !== 'object' || Array.isArray(m.summary)) {
@@ -330,11 +330,11 @@ for (const [i, m] of materials.entries()) {
     if (!ok) fail(`${where}: keywords must be { "ro": [text], "en": [text] }`);
   }
   // faq: conceptual Q&A after the article (never exercise answers). Required
-  // on theory pages, shown as details elements plus an FAQPage block; not on
-  // a quiz.
+  // on every page except the quiz, shown as details elements plus an FAQPage
+  // block; not on a quiz.
   if (m.kind === 'quiz' && m.faq !== undefined) fail(`${where}: faq is not shown on a quiz`);
-  if ((m.kind === 'teorie' || m.kind === 'lectie') && m.faq === undefined) {
-    fail(`${where}: faq is required on a ${m.kind} page`);
+  if (m.kind !== 'quiz' && m.faq === undefined) {
+    fail(`${where}: faq is required on every kind except quiz`);
   }
   if (m.faq !== undefined) {
     if (!Array.isArray(m.faq) || m.faq.length === 0 || m.faq.length > 6) {

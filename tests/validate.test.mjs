@@ -344,11 +344,19 @@ test('description that is too long fails', () => {
 });
 
 test('a theory page without a summary fails', () => {
-  expectFailure(withSite((dir) => editData(dir, (d) => { delete sample(d).summary; })), /summary is required on a teorie page/);
+  expectFailure(withSite((dir) => editData(dir, (d) => { delete sample(d).summary; })), /summary is required on every kind except quiz/);
+});
+
+test('a worksheet without a summary fails', () => {
+  expectFailure(withSite((dir) => editData(dir, (d) => { sample(d).kind = 'fisa-lucru'; delete sample(d).summary; })), /summary is required on every kind except quiz/);
 });
 
 test('a theory page without an faq fails', () => {
-  expectFailure(withSite((dir) => editData(dir, (d) => { delete sample(d).faq; })), /faq is required on a teorie page/);
+  expectFailure(withSite((dir) => editData(dir, (d) => { delete sample(d).faq; })), /faq is required on every kind except quiz/);
+});
+
+test('a worksheet without an faq fails', () => {
+  expectFailure(withSite((dir) => editData(dir, (d) => { sample(d).kind = 'fisa-lucru'; delete sample(d).faq; })), /faq is required on every kind except quiz/);
 });
 
 test('a summary that is too short fails', () => {

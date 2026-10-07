@@ -1,12 +1,15 @@
 # Laura Miron – full content
 
 > Complete article text of every visible material. Romanian first, English second.
+> Author: Laura Miron. License: CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/).
 
 ## Clasa a VI-a / Grade 6
 
 ### Fișă recapitulativă 1: numere naturale și fracții
-- URL (RO): https://lauramiron.pages.dev/materiale/fisa-recapitulativa-1-numere-naturale-fractii-1009
-- URL (EN): https://lauramiron.pages.dev/en/materiale/fisa-recapitulativa-1-numere-naturale-fractii-1009
+- Source (RO): https://lauramiron.pages.dev/materiale/fisa-recapitulativa-1-numere-naturale-fractii-1009
+- Source (EN): https://lauramiron.pages.dev/en/materiale/fisa-recapitulativa-1-numere-naturale-fractii-1009
+- Author: Laura Miron. License: CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/).
+- Published: 2026-09-17. Updated: 2026-09-17.
 - Fișă recapitulativă pentru clasa a VI-a: numere naturale, puteri, divizibilitate, fracții, procente și organizarea datelor.
 
 - La itemii cu variante de răspuns, încercuiește litera corespunzătoare singurului răspuns corect.
@@ -226,8 +229,10 @@ b) Find how many rabbits are in the yard.
 ---
 
 ### Fișă recapitulativă 2: geometrie și unități de măsură
-- URL (RO): https://lauramiron.pages.dev/materiale/fisa-recapitulativa-2-geometrie-unitati-masura-1010
-- URL (EN): https://lauramiron.pages.dev/en/materiale/fisa-recapitulativa-2-geometrie-unitati-masura-1010
+- Source (RO): https://lauramiron.pages.dev/materiale/fisa-recapitulativa-2-geometrie-unitati-masura-1010
+- Source (EN): https://lauramiron.pages.dev/en/materiale/fisa-recapitulativa-2-geometrie-unitati-masura-1010
+- Author: Laura Miron. License: CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/).
+- Published: 2026-09-17. Updated: 2026-09-17.
 - Fișă recapitulativă pentru clasa a VI-a: geometrie și unități de măsură — segmente, unghiuri, perimetre, arii și volume.
 
 - La itemii cu variante de răspuns, încercuiește litera corespunzătoare singurului răspuns corect.
@@ -387,8 +392,10 @@ b) One box of parquet flooring covers $2,5\text{ m}^{2}$. Find the minimum numbe
 ---
 
 ### Joc: Mesajul secret (numere naturale și fracții)
-- URL (RO): https://lauramiron.pages.dev/materiale/joc-mesajul-secret-1006
-- URL (EN): https://lauramiron.pages.dev/en/materiale/joc-mesajul-secret-1006
+- Source (RO): https://lauramiron.pages.dev/materiale/joc-mesajul-secret-1006
+- Source (EN): https://lauramiron.pages.dev/en/materiale/joc-mesajul-secret-1006
+- Author: Laura Miron. License: CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/).
+- Published: 2026-09-15. Updated: 2026-09-15.
 - Joc de recapitulare pentru clasa a VI-a: mesajul secret, cu numere naturale, fracții, puteri, procente și media aritmetică.
 
 Joc de recapitulare: numere naturale și fracții.
@@ -611,8 +618,10 @@ The message
 ## Clasa a VIII-a / Grade 8
 
 ### Fișă recapitulativă: clasele a V-a – a VII-a, pregătire pentru testul inițial
-- URL (RO): https://lauramiron.pages.dev/materiale/fisa-recapitulativa-clasele-v-vii-test-initial-1008
-- URL (EN): https://lauramiron.pages.dev/en/materiale/fisa-recapitulativa-clasele-v-vii-test-initial-1008
+- Source (RO): https://lauramiron.pages.dev/materiale/fisa-recapitulativa-clasele-v-vii-test-initial-1008
+- Source (EN): https://lauramiron.pages.dev/en/materiale/fisa-recapitulativa-clasele-v-vii-test-initial-1008
+- Author: Laura Miron. License: CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/).
+- Published: 2026-09-17. Updated: 2026-09-17.
 - Fișă recapitulativă pentru clasa a VIII-a: materia claselor a V-a – a VII-a, pregătire pentru testul inițial, algebră și geometrie.
 
 - Fișa conține 50 de itemi, grupați pe cinci teme, cu numerotare continuă.
@@ -1210,8 +1219,10 @@ b) Calculate the length of segment $AC$ and the distance from point $O$ to the l
 ## Clasa a IX-a / Grade 9
 
 ### Fișă de lucru: operații cu propoziții
-- URL (RO): https://lauramiron.pages.dev/materiale/fisa-lucru-operatii-cu-propozitii-1020
-- URL (EN): https://lauramiron.pages.dev/en/materiale/fisa-lucru-operatii-cu-propozitii-1020
+- Source (RO): https://lauramiron.pages.dev/materiale/fisa-lucru-operatii-cu-propozitii-1020
+- Source (EN): https://lauramiron.pages.dev/en/materiale/fisa-lucru-operatii-cu-propozitii-1020
+- Author: Laura Miron. License: CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/).
+- Published: 2026-10-06. Updated: 2026-10-06.
 - Fișă de lucru pentru clasa a IX-a: negația, conjuncția, disjuncția, implicația, echivalența și tabele de adevăr.
 
 Notații: $\overline{p}$ (non $p$), $p \land q$ ($p$ și $q$), $p \vee q$ ($p$ sau $q$), $p \rightarrow q$ (dacă $p$, atunci $q$), $p \leftrightarrow q$ ($p$ dacă și numai dacă $q$).
@@ -1365,8 +1376,10 @@ c) $p(x) \rightarrow q(x)$: $x \in$ …
 ---
 
 ### Fișă de lucru: propoziții, valoarea de adevăr, predicate
-- URL (RO): https://lauramiron.pages.dev/materiale/fisa-lucru-propozitii-valoare-adevar-predicate-1019
-- URL (EN): https://lauramiron.pages.dev/en/materiale/fisa-lucru-propozitii-valoare-adevar-predicate-1019
+- Source (RO): https://lauramiron.pages.dev/materiale/fisa-lucru-propozitii-valoare-adevar-predicate-1019
+- Source (EN): https://lauramiron.pages.dev/en/materiale/fisa-lucru-propozitii-valoare-adevar-predicate-1019
+- Author: Laura Miron. License: CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/).
+- Published: 2026-10-05. Updated: 2026-10-05.
 - Fișă de lucru pentru clasa a IX-a: propoziții, valoarea de adevăr, propoziții compuse, predicate și mulțimea de adevăr a unui predicat.
 
 Notație: $v(p) = 1$ dacă propoziția $p$ este adevărată și $v(p) = 0$ dacă $p$ este falsă. Calculele se fac în caiet; pe fișă completați tabelele.
@@ -1534,8 +1547,10 @@ b) Find all pairs $(x,\ y)$ of natural numbers for which $p(x,\ y)$ is a true pr
 ---
 
 ### Fișă de lucru: partea întreagă și partea fracționară
-- URL (RO): https://lauramiron.pages.dev/materiale/fisa-lucru-partea-intreaga-partea-fractionara-1014
-- URL (EN): https://lauramiron.pages.dev/en/materiale/fisa-lucru-partea-intreaga-partea-fractionara-1014
+- Source (RO): https://lauramiron.pages.dev/materiale/fisa-lucru-partea-intreaga-partea-fractionara-1014
+- Source (EN): https://lauramiron.pages.dev/en/materiale/fisa-lucru-partea-intreaga-partea-fractionara-1014
+- Author: Laura Miron. License: CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/).
+- Published: 2026-09-23. Updated: 2026-09-23.
 - Fișă de lucru pentru clasa a IX-a cu 25 de exerciții despre partea întreagă și partea fracționară: calcul, ecuații și proprietăți.
 
 Reamintim
@@ -1663,8 +1678,10 @@ Find $x\ \in \ {\mathbb{R}}$ such that ${\lbrack x\rbrack}^{2}\ = \ x\ + \ \lbra
 ---
 
 ### Fișă de lucru: modulul unui număr real
-- URL (RO): https://lauramiron.pages.dev/materiale/fisa-lucru-modulul-unui-numar-real-1012
-- URL (EN): https://lauramiron.pages.dev/en/materiale/fisa-lucru-modulul-unui-numar-real-1012
+- Source (RO): https://lauramiron.pages.dev/materiale/fisa-lucru-modulul-unui-numar-real-1012
+- Source (EN): https://lauramiron.pages.dev/en/materiale/fisa-lucru-modulul-unui-numar-real-1012
+- Author: Laura Miron. License: CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/).
+- Published: 2026-09-20. Updated: 2026-09-20.
 - Fișă de lucru pentru clasa a IX-a cu 15 exerciții despre modul: calcul, proprietăți și ecuații cu modul.
 
 I. Calculul modulului. Explicitarea modulului
@@ -1778,8 +1795,10 @@ b) Solve in $\mathbb{R}$ the equation $E(x) = 4$.
 ---
 
 ### Teorie sintetizată: numere reale, modul, partea întreagă și partea fracționară
-- URL (RO): https://lauramiron.pages.dev/materiale/teorie-numere-reale-modul-parte-intreaga-1001
-- URL (EN): https://lauramiron.pages.dev/en/materiale/teorie-numere-reale-modul-parte-intreaga-1001
+- Source (RO): https://lauramiron.pages.dev/materiale/teorie-numere-reale-modul-parte-intreaga-1001
+- Source (EN): https://lauramiron.pages.dev/en/materiale/teorie-numere-reale-modul-parte-intreaga-1001
+- Author: Laura Miron. License: CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/).
+- Published: 2026-09-14. Updated: 2026-09-23.
 - Teorie de clasa a IX-a: numere reale, modul, intervale, partea întreagă și partea fracționară, cu definiții și proprietăți.
 
 Legătura cu programa
@@ -2325,8 +2344,10 @@ true only if $\left\{ x \right\} + \left\{ y \right\} < 1$
 ---
 
 ### Fișă de lucru: numere reale, modul, partea întreagă și partea fracționară
-- URL (RO): https://lauramiron.pages.dev/materiale/fisa-lucru-numere-reale-modul-parte-intreaga-1002
-- URL (EN): https://lauramiron.pages.dev/en/materiale/fisa-lucru-numere-reale-modul-parte-intreaga-1002
+- Source (RO): https://lauramiron.pages.dev/materiale/fisa-lucru-numere-reale-modul-parte-intreaga-1002
+- Source (EN): https://lauramiron.pages.dev/en/materiale/fisa-lucru-numere-reale-modul-parte-intreaga-1002
+- Author: Laura Miron. License: CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/).
+- Published: 2026-09-14. Updated: 2026-09-14.
 - Fișă de lucru pentru clasa a IX-a, cu exerciții pe niveluri: modul, ecuații și inecuații, partea întreagă și partea fracționară.
 
 Fișa conține 30 de probleme grupate pe cele trei niveluri de performanță din standardele naționale de evaluare (de bază – consolidat – avansat). În fiecare secțiune apar calcule, proprietăți, ecuații și inecuații. Scrie rezolvările complete; criteriile după care se apreciază o rezolvare sunt date mai jos.
@@ -2582,8 +2603,10 @@ C – advanced
 ---
 
 ### Fișă recapitulativă: pregătire pentru testul inițial (model Evaluare Națională)
-- URL (RO): https://lauramiron.pages.dev/materiale/fisa-recapitulativa-gimnaziu-test-initial-1003
-- URL (EN): https://lauramiron.pages.dev/en/materiale/fisa-recapitulativa-gimnaziu-test-initial-1003
+- Source (RO): https://lauramiron.pages.dev/materiale/fisa-recapitulativa-gimnaziu-test-initial-1003
+- Source (EN): https://lauramiron.pages.dev/en/materiale/fisa-recapitulativa-gimnaziu-test-initial-1003
+- Author: Laura Miron. License: CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/).
+- Published: 2026-09-13. Updated: 2026-09-13.
 - Fișă recapitulativă pentru clasa a IX-a: pregătire pentru testul inițial, în format de Evaluare Națională, cu algebră și geometrie.
 
 Structura fișei urmează modelul Evaluării Naționale pentru absolvenții clasei a VIII-a: Partea I și Partea a II-a conțin itemi cu alegere multiplă (un singur răspuns corect), iar Partea a III-a conține probleme la care se cer rezolvări complete.
@@ -2923,8 +2946,10 @@ b) Find the distance from point $O$ to plane $(VBC)$.
 ---
 
 ### Fișă de recapitulare și evaluare inițială (profil matematică-informatică)
-- URL (RO): https://lauramiron.pages.dev/materiale/fisa-recapitulare-evaluare-initiala-1004
-- URL (EN): https://lauramiron.pages.dev/en/materiale/fisa-recapitulare-evaluare-initiala-1004
+- Source (RO): https://lauramiron.pages.dev/materiale/fisa-recapitulare-evaluare-initiala-1004
+- Source (EN): https://lauramiron.pages.dev/en/materiale/fisa-recapitulare-evaluare-initiala-1004
+- Author: Laura Miron. License: CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/).
+- Published: 2026-09-13. Updated: 2026-09-13.
 - Fișă de recapitulare și evaluare inițială pentru clasa a IX-a, matematică-informatică: funcții, trigonometrie și geometrie.
 
 Profil matematică-informatică (M1)
@@ -3018,8 +3043,10 @@ Show that the perimeter of triangle $CMN$ is constant and independent of the pos
 ## Clasa a XI-a / Grade 11
 
 ### Fișă de lucru: vecinătăți și puncte de acumulare
-- URL (RO): https://lauramiron.pages.dev/materiale/fisa-lucru-vecinatati-puncte-acumulare-1022
-- URL (EN): https://lauramiron.pages.dev/en/materiale/fisa-lucru-vecinatati-puncte-acumulare-1022
+- Source (RO): https://lauramiron.pages.dev/materiale/fisa-lucru-vecinatati-puncte-acumulare-1022
+- Source (EN): https://lauramiron.pages.dev/en/materiale/fisa-lucru-vecinatati-puncte-acumulare-1022
+- Author: Laura Miron. License: CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/).
+- Published: 2026-10-06. Updated: 2026-10-06.
 - Fișă de lucru pentru clasa a XI-a: vecinătăți pe dreapta reală și în puncte infinite, puncte de acumulare și puncte izolate.
 
 Reține
@@ -3091,8 +3118,10 @@ Find $a \in {\mathbb{R}}$ for which the set $V = (a - 2,2a + 1)$ is a neighbourh
 ---
 
 ### Teorie: vecinătăți, puncte de acumulare și puncte izolate
-- URL (RO): https://lauramiron.pages.dev/materiale/teorie-vecinatati-puncte-acumulare-1023
-- URL (EN): https://lauramiron.pages.dev/en/materiale/teorie-vecinatati-puncte-acumulare-1023
+- Source (RO): https://lauramiron.pages.dev/materiale/teorie-vecinatati-puncte-acumulare-1023
+- Source (EN): https://lauramiron.pages.dev/en/materiale/teorie-vecinatati-puncte-acumulare-1023
+- Author: Laura Miron. License: CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/).
+- Published: 2026-10-06. Updated: 2026-10-06.
 - Teorie sintetizată pentru clasa a XI-a: definiții, proprietăți ale vecinătăților, puncte de acumulare și puncte izolate, cu exemple rezolvate.
 
 1. Vecinătăți ale unui punct din ℝ
@@ -3162,8 +3191,10 @@ Remarks: a finite set has no accumulation points; $+ \infty \in A' \Leftrightarr
 ---
 
 ### Probleme propuse: vecinătăți și puncte de acumulare
-- URL (RO): https://lauramiron.pages.dev/materiale/probleme-vecinatati-puncte-acumulare-1024
-- URL (EN): https://lauramiron.pages.dev/en/materiale/probleme-vecinatati-puncte-acumulare-1024
+- Source (RO): https://lauramiron.pages.dev/materiale/probleme-vecinatati-puncte-acumulare-1024
+- Source (EN): https://lauramiron.pages.dev/en/materiale/probleme-vecinatati-puncte-acumulare-1024
+- Author: Laura Miron. License: CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/).
+- Published: 2026-10-06. Updated: 2026-10-06.
 - Probleme pentru clasa a XI-a: vecinătăți ale unui punct și ale lui ±∞, puncte de acumulare, puncte izolate, adevărat sau fals.
 
 Problemele 1–8 sunt obligatorii; problema 9 este facultativă.
@@ -3253,8 +3284,10 @@ e) If $V$ is a neighbourhood of $x_{0}$ and $W \subset {\mathbb{R}}$ is any set,
 ---
 
 ### Teorie sintetizată: mulțimi de puncte pe dreapta reală
-- URL (RO): https://lauramiron.pages.dev/materiale/teorie-multimi-puncte-dreapta-reala-1016
-- URL (EN): https://lauramiron.pages.dev/en/materiale/teorie-multimi-puncte-dreapta-reala-1016
+- Source (RO): https://lauramiron.pages.dev/materiale/teorie-multimi-puncte-dreapta-reala-1016
+- Source (EN): https://lauramiron.pages.dev/en/materiale/teorie-multimi-puncte-dreapta-reala-1016
+- Author: Laura Miron. License: CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/).
+- Published: 2026-09-30. Updated: 2026-09-30.
 - Teorie de clasa a XI-a: intervale, mulțimi mărginite, minim și maxim, margine inferioară și superioară, dreapta încheiată.
 
 1. Intervale
@@ -3372,8 +3405,10 @@ Remember
 ---
 
 ### Fișă de lucru: intervale, mulțimi mărginite și marginile unei mulțimi
-- URL (RO): https://lauramiron.pages.dev/materiale/fisa-lucru-multimi-marginite-margini-1017
-- URL (EN): https://lauramiron.pages.dev/en/materiale/fisa-lucru-multimi-marginite-margini-1017
+- Source (RO): https://lauramiron.pages.dev/materiale/fisa-lucru-multimi-marginite-margini-1017
+- Source (EN): https://lauramiron.pages.dev/en/materiale/fisa-lucru-multimi-marginite-margini-1017
+- Author: Laura Miron. License: CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/).
+- Published: 2026-09-30. Updated: 2026-09-30.
 - Fișă de lucru pentru clasa a XI-a: intervale, mulțimi mărginite, minim, maxim, margine inferioară și superioară, caracterizarea cu ε.
 
 Reține
@@ -3455,8 +3490,10 @@ Hint: $x^{2} + 1 \geq 2|x|$ for every $x \in {\mathbb{R}}$.
 ---
 
 ### Probleme propuse: intervale, mulțimi mărginite și marginile unei mulțimi
-- URL (RO): https://lauramiron.pages.dev/materiale/probleme-multimi-marginite-margini-1018
-- URL (EN): https://lauramiron.pages.dev/en/materiale/probleme-multimi-marginite-margini-1018
+- Source (RO): https://lauramiron.pages.dev/materiale/probleme-multimi-marginite-margini-1018
+- Source (EN): https://lauramiron.pages.dev/en/materiale/probleme-multimi-marginite-margini-1018
+- Author: Laura Miron. License: CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/).
+- Published: 2026-09-30. Updated: 2026-09-30.
 - Probleme pentru clasa a XI-a: intervale, mulțimi mărginite, minim și maxim, margine inferioară și superioară, adevărat sau fals.
 
 -
@@ -3546,8 +3583,10 @@ e) The set $\left\{ x \in {\mathbb{Q}}\mkern6mu \middle| \mkern6mu x^{2} < 2 \ri
 ---
 
 ### Fișă recapitulativă: permutări
-- URL (RO): https://lauramiron.pages.dev/materiale/fisa-recapitulativa-permutari-1015
-- URL (EN): https://lauramiron.pages.dev/en/materiale/fisa-recapitulativa-permutari-1015
+- Source (RO): https://lauramiron.pages.dev/materiale/fisa-recapitulativa-permutari-1015
+- Source (EN): https://lauramiron.pages.dev/en/materiale/fisa-recapitulativa-permutari-1015
+- Author: Laura Miron. License: CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/).
+- Published: 2026-09-23. Updated: 2026-09-23.
 - Fișă recapitulativă pentru clasa a XI-a cu 50 de probleme pe trei niveluri despre permutări: compunere, inversă, inversiuni și semn.
 
 Notații
@@ -4067,8 +4106,10 @@ c) Solve in $S_{4}$ the equation $\sigma x\sigma = e$.
 ---
 
 ### Fișă recapitulativă: geometrie (clasa a X-a)
-- URL (RO): https://lauramiron.pages.dev/materiale/fisa-recapitulativa-geometrie-clasa-a-x-a-1007
-- URL (EN): https://lauramiron.pages.dev/en/materiale/fisa-recapitulativa-geometrie-clasa-a-x-a-1007
+- Source (RO): https://lauramiron.pages.dev/materiale/fisa-recapitulativa-geometrie-clasa-a-x-a-1007
+- Source (EN): https://lauramiron.pages.dev/en/materiale/fisa-recapitulativa-geometrie-clasa-a-x-a-1007
+- Author: Laura Miron. License: CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/).
+- Published: 2026-09-17. Updated: 2026-09-17.
 - Fișă recapitulativă de geometrie pentru clasa a XI-a: vectori, ecuația dreptei, coliniaritate și produs scalar, pentru BAC.
 
 Nivel 1 – Înțelegere și aplicare directă (minimul standard la Bacalaureat)
@@ -4286,8 +4327,10 @@ In $\bigtriangleup ABC$, the point $A(1,3)$ and the equations of the perpendicul
 ---
 
 ### Teorie sintetizată: vectori și geometrie analitică
-- URL (RO): https://lauramiron.pages.dev/materiale/teorie-vectori-geometrie-analitica-1011
-- URL (EN): https://lauramiron.pages.dev/en/materiale/teorie-vectori-geometrie-analitica-1011
+- Source (RO): https://lauramiron.pages.dev/materiale/teorie-vectori-geometrie-analitica-1011
+- Source (EN): https://lauramiron.pages.dev/en/materiale/teorie-vectori-geometrie-analitica-1011
+- Author: Laura Miron. License: CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/).
+- Published: 2026-09-17. Updated: 2026-09-17.
 - Teorie sintetizată pentru clasa a XI-a: vectori și geometrie analitică — ecuația dreptei, panta, distanțe și produs scalar.
 
 Profil: Matematică-Informatică | Pondere Bacalaureat: Subiectul I, Exercițiul 5
