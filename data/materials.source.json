@@ -1426,6 +1426,38 @@
         "ro": "O mulțime este vecinătate a unui punct dacă ea conține un interval deschis în jurul punctului; pentru ±∞ se cere să conțină o semidreaptă. Un punct este de acumulare pentru o mulțime A dacă orice vecinătate a lui conține un punct din A, diferit de el; punctele lui A care nu sunt de acumulare se numesc izolate.",
         "en": "A set is a neighbourhood of a point if it contains an open interval around that point; for ±∞ it must contain a ray. A point is an accumulation point of a set A if every neighbourhood of it contains a point of A different from it; the points of A that are not accumulation points are called isolated."
       },
+      "faq": [
+        {
+          "q": {
+            "ro": "Un punct de acumulare aparține întotdeauna mulțimii?",
+            "en": "Does an accumulation point always belong to the set?"
+          },
+          "a": {
+            "ro": "Nu. Un punct de acumulare poate sta în afara mulțimii, atunci când orice vecinătate a lui întâlnește mulțimea într-un alt punct. Capătul $0$ este punct de acumulare pentru $(0, 1]$, deși $0 \\notin (0, 1]$.",
+            "en": "No. An accumulation point may lie outside the set, when every neighbourhood of it meets the set in a different point. The endpoint $0$ is an accumulation point of $(0, 1]$, although $0 \\notin (0, 1]$."
+          }
+        },
+        {
+          "q": {
+            "ro": "Orice mulțime finită are puncte de acumulare?",
+            "en": "Does a finite set have any accumulation points?"
+          },
+          "a": {
+            "ro": "Nu. O mulțime finită nu are niciun punct de acumulare, deoarece în jurul fiecărui punct există o vecinătate care nu conține alte puncte ale mulțimii. Toate punctele unei mulțimi finite sunt puncte izolate.",
+            "en": "No. A finite set has no accumulation points, because around each point there is a small enough neighbourhood meeting no other point of the set. Every point of a finite set is an isolated point."
+          }
+        },
+        {
+          "q": {
+            "ro": "Ce este o vecinătate a lui plus infinit?",
+            "en": "What is a neighbourhood of plus infinity?"
+          },
+          "a": {
+            "ro": "O mulțime care conține o semidreaptă $(a, +\\infty)$. De pildă, $(5, +\\infty)$ și $\\mathbb{R} \\setminus [0, 1]$ sunt vecinătăți ale lui $+\\infty$, pe când $\\mathbb{N}$ nu este vecinătate a lui $+\\infty$.",
+            "en": "A set containing a ray $(a, +\\infty)$. For instance, $(5, +\\infty)$ and $\\mathbb{R} \\setminus [0, 1]$ are neighbourhoods of $+\\infty$, while $\\mathbb{N}$ is not a neighbourhood of $+\\infty$."
+          }
+        }
+      ],
       "keywords": {
         "ro": [
           "vecinătăți",

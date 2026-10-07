@@ -59,6 +59,13 @@ const SUMMARY_FLAGS = ['--summary-ro',
   'Rezumat de probă pentru testarea comenzii de creare: ideea principală a lecției, structura ei și noțiunile pe care le recapitulează elevii.',
   '--summary-en',
   'Sample summary for testing the creation command: the main idea of the lesson, its structure and the notions the students review.'];
+// FAQ for the same materials (teorie requires one, like the summary).
+const FAQ_FLAGS = ['--faq-json', JSON.stringify([
+  {
+    q: { ro: 'Întrebare de probă pentru comanda de creare a materialelor noi?', en: 'Sample question for testing the material creation command?' },
+    a: { ro: 'Răspuns de probă pentru comanda de creare a materialelor noi, suficient de lung pentru regulile validatorului site-ului.', en: 'Sample answer for testing the material creation command, long enough to satisfy the site validator rules.' },
+  },
+])];
 
 test('list shows live materials and the nextUid counter', (t) => {
   const dir = makeRoot(t);
@@ -88,7 +95,7 @@ test('new allocates the next uid, adds the entry and regenerates the pages', (t)
     '--title-ro', 'Fișă: parabola', '--title-en', 'Worksheet: parabola',
     '--desc-ro', 'Fișă de lucru despre parabola, axa de simetrie și vârful, cu exerciții pentru clasa a 9-a.',
     '--desc-en', 'Worksheet about the parabola: its axis of symmetry and vertex, with exercises for grade 9.',
-    ...SUMMARY_FLAGS]);
+    ...SUMMARY_FLAGS, ...FAQ_FLAGS]);
   assert.equal(res.code, 0, res.out);
   assert.match(res.out, new RegExp(`created fisa-parabole-${before.nextUid}`));
   const after = readData(dir);
@@ -98,7 +105,7 @@ test('new allocates the next uid, adds the entry and regenerates the pages', (t)
   assert.equal(after.nextUid, before.nextUid + 1);
   assert.equal(m.pdf, null);
   assert.equal(m.youtube, null);
-  assert.deepEqual(m.import, { date: m.import.date, workflow: 3 });
+  assert.deepEqual(m.import, { date: m.import.date, workflow: 4 });
   assert.ok(existsSync(join(dir, '.work', `fisa-parabole-${before.nextUid}`)));
   assert.match(res.out, /pages regenerated/);
   // The new material passes the validator: run it against the copied site.
@@ -115,7 +122,7 @@ test('new copies a PDF and keeps the file-listing rules happy', (t) => {
     '--title-ro', 'Test cu pdf', '--title-en', 'Test with pdf',
     '--desc-ro', 'Material de probă cu fișier PDF, suficient de lung pentru regulile validatorului site-ului.',
     '--desc-en', 'Sample document with a PDF file, long enough to satisfy the site validator rules.',
-    ...SUMMARY_FLAGS]);
+    ...SUMMARY_FLAGS, ...FAQ_FLAGS]);
   assert.equal(res.code, 0, res.out);
   const m = readData(dir).materials.find((x) => x.slug === 'test-cu-pdf');
   assert.match(m.pdf, /materiale\/pdf\/test-cu-pdf-\d+\.pdf$/);
@@ -148,7 +155,7 @@ test('new --pdf and pdf --pdf write the PDF metadata from the data', (t) => {
     '--title-ro', 'Fișă cu metadate', '--title-en', 'Worksheet with metadata',
     '--desc-ro', 'Material de probă cu fișier PDF, suficient de lung pentru regulile validatorului site-ului.',
     '--desc-en', 'Sample document with a PDF file, long enough to satisfy the site validator rules.',
-    ...SUMMARY_FLAGS]);
+    ...SUMMARY_FLAGS, ...FAQ_FLAGS]);
   assert.equal(res.code, 0, res.out);
   const m = readData(dir).materials.find((x) => x.slug === 'fisa-meta');
   assert.match(res.out, new RegExp(`metadata written ${m.pdf}`));
@@ -207,14 +214,14 @@ const NEW_FLAGS = (topic) => ['--slug', 'fisa-ggomery', '--topic', topic,
   '--title-en', 'Worksheet generated from DOCX for testing the material creation command.',
   '--desc-ro', 'Fișă de lucru generată din DOCX pentru testarea comenzii de creare, cu exerciții pentru clasa potrivită.',
   '--desc-en', 'Worksheet generated from DOCX for testing the creation command, with exercises for the right grade.',
-  ...SUMMARY_FLAGS];
+  ...SUMMARY_FLAGS, ...FAQ_FLAGS];
 
 const ANSWER_FLAGS = (topic) => ['--no-pdf', '--slug', 'fisa-raspunsuri', '--topic', topic,
   '--title-ro', 'Fișă cu răspunsuri pentru testarea comenzii de creare a materialelor noi.',
   '--title-en', 'Worksheet with answers for testing the material creation command.',
   '--desc-ro', 'Fișă de lucru cu răspunsuri pentru testarea comenzii de creare, cu exerciții pentru clasa potrivită.',
   '--desc-en', 'Worksheet with answers for testing the creation command, with exercises for the right grade.',
-  ...SUMMARY_FLAGS];
+  ...SUMMARY_FLAGS, ...FAQ_FLAGS];
 
 function contentDocx(t, dir, name, paragraphs) {
   const content = join(dir, 'content');
@@ -363,7 +370,7 @@ test('new refuses --pdf together with --no-pdf', (t) => {
     '--title-ro', 'A', '--title-en', 'B',
     '--desc-ro', 'Fișă de lucru pentru testarea comenzii de creare, suficient de lungă pentru validator.',
     '--desc-en', 'Worksheet for testing the creation command, long enough to satisfy the validator.',
-    ...SUMMARY_FLAGS]);
+    ...SUMMARY_FLAGS, ...FAQ_FLAGS]);
   assert.equal(res.code, 1);
   assert.match(res.out, /--pdf and --no-pdf never appear together/);
 });
@@ -440,7 +447,7 @@ test('new validates the flags before touching the data', (t) => {
   assert.equal(published.nextUid, before.nextUid);
 });
 
-test('new requires a summary on theory pages and refuses one on a quiz', (t) => {
+test('new requires a summary and an faq on theory pages and refuses them on a quiz', (t) => {
   const dir = makeRoot(t);
   const topic = readData(dir).topics[0].id;
   const base = ['--slug', 'x', '--topic', topic,
@@ -450,9 +457,15 @@ test('new requires a summary on theory pages and refuses one on a quiz', (t) => 
   const noSummary = run(dir, ['new', '--kind', 'teorie', ...base]);
   assert.equal(noSummary.code, 1);
   assert.match(noSummary.out, /--summary-ro and --summary-en are required/);
+  const noFaq = run(dir, ['new', '--kind', 'teorie', ...base, ...SUMMARY_FLAGS]);
+  assert.equal(noFaq.code, 1);
+  assert.match(noFaq.out, /--faq-json or --faq-file is required/);
   const quizSummary = run(dir, ['new', '--kind', 'quiz', '--no-pdf', ...base, ...SUMMARY_FLAGS]);
   assert.equal(quizSummary.code, 1);
   assert.match(quizSummary.out, /a quiz has no summary page/);
+  const quizFaq = run(dir, ['new', '--kind', 'quiz', '--no-pdf', ...base, ...FAQ_FLAGS]);
+  assert.equal(quizFaq.code, 1);
+  assert.match(quizFaq.out, /a quiz has no faq/);
 });
 
 test('new --hidden creates a hidden material', (t) => {
@@ -462,7 +475,7 @@ test('new --hidden creates a hidden material', (t) => {
     '--title-ro', 'Fișă ascunsă', '--title-en', 'Hidden worksheet',
     '--desc-ro', 'Fișă de lucru ascunsă pentru testarea comenzii de creare, cu exerciții pentru clasa potrivită.',
     '--desc-en', 'Hidden worksheet for testing the creation command, with exercises for the right grade level.',
-    ...SUMMARY_FLAGS]);
+    ...SUMMARY_FLAGS, ...FAQ_FLAGS]);
   assert.equal(res.code, 0, res.out);
   const m = readData(dir).materials.find((x) => x.slug === 'fisa-ascunsa');
   assert.ok(m);
@@ -479,7 +492,7 @@ test('new --visible-from creates a scheduled material', (t) => {
     '--title-ro', 'Fișă programată', '--title-en', 'Scheduled worksheet',
     '--desc-ro', 'Fișă de lucru programată pentru testarea comenzii de creare, cu exerciții pentru clasa potrivită.',
     '--desc-en', 'Scheduled worksheet for testing the creation command, with exercises for the right grade.',
-    ...SUMMARY_FLAGS]);
+    ...SUMMARY_FLAGS, ...FAQ_FLAGS]);
   assert.equal(res.code, 0, res.out);
   const m = readData(dir).materials.find((x) => x.slug === 'fisa-programata');
   assert.ok(m);
@@ -495,7 +508,7 @@ test('new refuses --hidden together with --visible-from', (t) => {
     '--title-ro', 'A', '--title-en', 'B',
     '--desc-ro', 'Fișă de lucru pentru testarea comenzii de creare, suficient de lungă pentru validator.',
     '--desc-en', 'Worksheet for testing the creation command, long enough to satisfy the validator.',
-    ...SUMMARY_FLAGS]);
+    ...SUMMARY_FLAGS, ...FAQ_FLAGS]);
   assert.equal(res.code, 1);
   assert.match(res.out, /never appear together/);
 });

@@ -63,6 +63,12 @@ function addSample(dir) {
         ro: 'Material de test pentru validarea generatorului de pagini: rezumatul paginii de teorie, cu ideea principală și structura lecției pentru elevi.',
         en: 'Test material for checking the static page generator: the summary of the theory page, with the main idea and the structure of the lesson for students.',
       },
+      faq: [
+        {
+          q: { ro: 'Întrebare de probă pentru pagina de test?', en: 'Sample question for the test page?' },
+          a: { ro: 'Răspuns de probă pentru pagina de test, suficient de lung pentru regulile validatorului.', en: 'Sample answer for the test page, long enough to satisfy the site validator rules.' },
+        },
+      ],
       pdf: SAMPLE_PDF,
       youtube: null,
       keywords: { ro: ['test', 'clasa a 9-a', 'clasa 9'], en: ['test', 'grade 9'] },
@@ -339,6 +345,10 @@ test('description that is too long fails', () => {
 
 test('a theory page without a summary fails', () => {
   expectFailure(withSite((dir) => editData(dir, (d) => { delete sample(d).summary; })), /summary is required on a teorie page/);
+});
+
+test('a theory page without an faq fails', () => {
+  expectFailure(withSite((dir) => editData(dir, (d) => { delete sample(d).faq; })), /faq is required on a teorie page/);
 });
 
 test('a summary that is too short fails', () => {
@@ -821,7 +831,7 @@ test('answer heading in a material page fails', () => {
 });
 
 function makeQuiz(dir, body) {
-  editData(dir, (d) => { sample(d).kind = 'quiz'; sample(d).pdf = null; delete sample(d).summary; });
+  editData(dir, (d) => { sample(d).kind = 'quiz'; sample(d).pdf = null; delete sample(d).summary; delete sample(d).faq; });
   unlinkSync(join(dir, SAMPLE_PDF));
   writeFileSync(join(dir, SAMPLE_PAGE), `<!doctype html>\n<html lang="ro">\n<head>\n<!-- seo -->\n<!-- /seo -->\n</head>\n<body>${body}</body>\n</html>\n`);
   if (existsSync(join(dir, SAMPLE_EN_PAGE))) unlinkSync(join(dir, SAMPLE_EN_PAGE));

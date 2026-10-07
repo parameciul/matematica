@@ -329,9 +329,13 @@ for (const [i, m] of materials.entries()) {
       && ['ro', 'en'].every((lang) => m.keywords[lang] === undefined || (Array.isArray(m.keywords[lang]) && m.keywords[lang].every(isText)));
     if (!ok) fail(`${where}: keywords must be { "ro": [text], "en": [text] }`);
   }
-  // faq: conceptual Q&A after the article (never exercise answers). Optional,
-  // at most 6, shown as details elements plus an FAQPage block; not on a quiz.
+  // faq: conceptual Q&A after the article (never exercise answers). Required
+  // on theory pages, shown as details elements plus an FAQPage block; not on
+  // a quiz.
   if (m.kind === 'quiz' && m.faq !== undefined) fail(`${where}: faq is not shown on a quiz`);
+  if ((m.kind === 'teorie' || m.kind === 'lectie') && m.faq === undefined) {
+    fail(`${where}: faq is required on a ${m.kind} page`);
+  }
   if (m.faq !== undefined) {
     if (!Array.isArray(m.faq) || m.faq.length === 0 || m.faq.length > 6) {
       fail(`${where}: faq must be a list of 1-6 { "q", "a" } items`);

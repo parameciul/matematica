@@ -20,7 +20,7 @@ const ID_RE = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 const UID_RE = /^[1-9][0-9]{3,}$/;
 // Version of the add-material workflow in AGENTS.md that produced the articles.
 // Bump it whenever that section changes in a way that affects the output.
-const WORKFLOW = 3;
+const WORKFLOW = 4;
 const KINDS = ['lectie', 'teorie', 'fisa-lucru', 'fisa-recapitulativa', 'test', 'joc', 'quiz'];
 
 const require = createRequire(import.meta.url);
@@ -229,6 +229,48 @@ function cmdNew({ pos, flags }) {
   if (summaryEn !== undefined && (textLen(summaryEn) < 120 || textLen(summaryEn) > 350)) {
     fail(`--summary-en must be 120-350 characters (is ${textLen(summaryEn)})`);
   }
+  // Conceptual Q&A after the article: required on theory pages, like the summary.
+  const faqJson = flags['faq-json'];
+  const faqFile = flags['faq-file'];
+  if (kind === 'quiz' && (faqJson !== undefined || faqFile !== undefined)) fail('a quiz has no faq');
+  if (faqJson !== undefined && faqFile !== undefined) fail('--faq-json and --faq-file never appear together');
+  if ((kind === 'teorie' || kind === 'lectie') && faqJson === undefined && faqFile === undefined) {
+    fail('--faq-json or --faq-file is required for --kind teorie or lectie');
+  }
+  let faq = null;
+  if (faqJson !== undefined || faqFile !== undefined) {
+    let raw = faqJson;
+    if (faqFile !== undefined) {
+      if (!existsSync(faqFile)) fail(`--faq-file ${faqFile} does not exist`);
+      try {
+        raw = readFileSync(faqFile, 'utf8');
+      } catch (e) {
+        fail(`--faq-file ${faqFile} cannot be read: ${e.message}`);
+      }
+    }
+    try {
+      faq = JSON.parse(raw);
+    } catch (e) {
+      fail(`faq JSON is not valid JSON: ${e.message}`);
+    }
+    if (!Array.isArray(faq) || faq.length === 0 || faq.length > 6) {
+      fail('faq must be a list of 1-6 { "q": { "ro", "en" }, "a": { "ro", "en" } } items');
+    }
+    faq.forEach((item, i) => {
+      if (!item || typeof item !== 'object' || Array.isArray(item)) fail(`faq[${i}] must be an object`);
+      for (const [field, min, max] of [['q', 15, 150], ['a', 80, 600]]) {
+        const both = item && item[field];
+        if (!both || typeof both !== 'object' || Array.isArray(both)) fail(`faq[${i}].${field} must be { "ro": text, "en": text }`);
+        for (const lang of ['ro', 'en']) {
+          const t = both && both[lang];
+          if (typeof t !== 'string' || !t.trim()) fail(`faq[${i}].${field}.${lang} is required`);
+          else if (textLen(t) < min || textLen(t) > max) {
+            fail(`faq[${i}].${field}.${lang} must be ${min}-${max} characters (is ${textLen(t)})`);
+          }
+        }
+      }
+    });
+  }
   if (!Catalog.isValidDate(published)) fail(`--published must be a real YYYY-MM-DD date (was "${published}")`);
   const hidden = flags['hidden'] === true;
   const visibleFromRaw = flags['visible-from'];
@@ -306,6 +348,7 @@ function cmdNew({ pos, flags }) {
     import: { date: today(), workflow: WORKFLOW },
   };
   if (summaryRo !== undefined) material.summary = { ro: summaryRo, en: summaryEn };
+  if (faq !== null) material.faq = faq;
   if (importPdf !== null) material.import.pdf = importPdf;
   if (hidden) material.hidden = true;
   if (visibleFrom) material.visibleFrom = visibleFrom;
