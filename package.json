@@ -4,6 +4,7 @@
   "description": "Math lessons for classes 5-12 by Laura Miron",
   "scripts": {
     "test": "node tests/validate.mjs && node --test \"tests/*.test.mjs\"",
+    "test:unit": "node --test \"tests/catalog.test.mjs\" \"tests/answers.test.mjs\" \"tests/visibility.test.mjs\" \"tests/clips.test.mjs\" \"tests/admin_api.test.mjs\"",
     "serve": "python -m http.server 8000"
   }
 }

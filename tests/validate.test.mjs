@@ -1,6 +1,6 @@
 // Tests for the site validator: the real site passes, broken copies fail with a clear message.
 // Run: npm test (do not use node --test tests/ on this machine)
-import { test } from 'node:test';
+import { test, after } from 'node:test';
 import assert from 'node:assert/strict';
 import { cpSync, existsSync, mkdtempSync, mkdirSync, readFileSync, writeFileSync, rmSync, unlinkSync } from 'node:fs';
 import { tmpdir } from 'node:os';
@@ -11,8 +11,14 @@ import { writeSite } from '../tools/build_pages.mjs';
 
 const REPO = join(dirname(fileURLToPath(import.meta.url)), '..');
 const VALIDATOR = join(REPO, 'tests', 'validate.mjs');
-// Local work files that are not part of the site.
-const SKIP = [/\.git([/\\]|$)/, /\.work([/\\]|$)/, /\.venv([/\\]|$)/, /__pycache__/, /\.pytest_cache/, /SEO Improvements plan\.md$/];
+// Local work files that are not part of the site. video/, docs/, .claude/
+// and .superpowers/ are also skipped: the validator never reads them (walk
+// skips dot-dirs, docs, tests and tools; the generator only reads data,
+// pages and assets), but copying them costs ~0.5s per test (video/ alone is
+// ~300MB in ~7000 files).
+const SKIP = [/\.git([/\\]|$)/, /\.work([/\\]|$)/, /\.venv([/\\]|$)/, /__pycache__/, /\.pytest_cache/, /SEO Improvements plan\.md$/,
+  /[\\/]video([/\\]|$)/, /[\\/]docs([/\\]|$)/, /[\\/]\.claude([/\\]|$)/, /[\\/]\.superpowers([/\\]|$)/];
+const skipPath = (src) => !SKIP.some((re) => re.test(src));
 const SAMPLE = 'sample-material';
 const SAMPLE_UID = '9901';
 const SAMPLE_NAME = `${SAMPLE}-${SAMPLE_UID}`;
@@ -71,14 +77,34 @@ function addSample(dir) {
 function withSite(mutate) {
   const dir = mkdtempSync(join(tmpdir(), 'site-'));
   try {
-    cpSync(REPO, dir, { recursive: true, filter: (src) => !SKIP.some((re) => re.test(src)) });
-    addSample(dir);
+    // Every test starts from the same pristine template (repo + sample +
+    // generated pages, built once). This saves a full writeSite (~1s) per
+    // test; failing tests never regenerate, passing ones call writeSite
+    // themselves after mutating (e.g. addGridResult below).
+    cpSync(templateDir(), dir, { recursive: true });
     mutate(dir);
     return run(dir);
   } finally {
     rmSync(dir, { recursive: true, force: true });
   }
 }
+
+// Pristine template for withSite: built once per test process, removed when
+// the file's tests finish. Per-test copies stay on the same drive (tmpdir),
+// which is faster than copying from the repo on another drive.
+let template = null;
+function templateDir() {
+  if (template && existsSync(template)) return template;
+  template = mkdtempSync(join(tmpdir(), 'site-template-'));
+  cpSync(REPO, template, { recursive: true, filter: skipPath });
+  addSample(template);
+  return template;
+}
+
+after(() => {
+  if (template) rmSync(template, { recursive: true, force: true });
+  template = null;
+});
 
 function editFile(dir, rel, fn) {
   const file = join(dir, rel);

@@ -1,6 +1,6 @@
 // Tests for the material helper (tools/material.mjs): list, new and delete.
 // Run: npm test (do not use node --test tests/ on this machine)
-import { test } from 'node:test';
+import { test, after } from 'node:test';
 import assert from 'node:assert/strict';
 import { cpSync, mkdtempSync, readFileSync, writeFileSync, mkdirSync, existsSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
@@ -11,7 +11,11 @@ import { writeSite } from '../tools/build_pages.mjs';
 
 const REPO = join(dirname(fileURLToPath(import.meta.url)), '..');
 const TOOL = join(REPO, 'tools', 'material.mjs');
-const SKIP = [/\.git([/\\]|$)/, /\.work([/\\]|$)/, /node_modules/, /\.venv([/\\]|$)/, /__pycache__/, /\.pytest_cache/];
+// video/, docs/, .claude/ and .superpowers/ are never read by the tool, the
+// generator or the validator: skipping them saves ~0.5s of copy per test
+// (video/ alone is ~300MB in ~7000 files).
+const SKIP = [/\.git([/\\]|$)/, /\.work([/\\]|$)/, /node_modules/, /\.venv([/\\]|$)/, /__pycache__/, /\.pytest_cache/,
+  /[\\/]video([/\\]|$)/, /[\\/]docs([/\\]|$)/, /[\\/]\.claude([/\\]|$)/, /[\\/]\.superpowers([/\\]|$)/];
 
 function run(root, args) {
   const res = spawnSync(process.execPath, [TOOL, ...args], {
@@ -24,9 +28,27 @@ function run(root, args) {
 function makeRoot(t) {
   const dir = mkdtempSync(join(tmpdir(), 'mat-'));
   t.after(() => rmSync(dir, { recursive: true, force: true }));
-  cpSync(REPO, dir, { recursive: true, filter: (src) => !SKIP.some((re) => re.test(src)) });
+  // Every test starts from the same pristine template, built once. Per-test
+  // copies stay on the same drive (tmpdir), faster than copying from the repo.
+  cpSync(templateDir(), dir, { recursive: true });
   return dir;
 }
+
+// Pristine template for makeRoot: built once per test process, removed when
+// the file's tests finish. The tool under test never runs against it, only
+// against the per-test copies.
+let template = null;
+function templateDir() {
+  if (template && existsSync(template)) return template;
+  template = mkdtempSync(join(tmpdir(), 'mat-template-'));
+  cpSync(REPO, template, { recursive: true, filter: (src) => !SKIP.some((re) => re.test(src)) });
+  return template;
+}
+
+after(() => {
+  if (template) rmSync(template, { recursive: true, force: true });
+  template = null;
+});
 
 const dataFile = (dir) => join(dir, 'data', 'materials.source.json');
 const readData = (dir) => JSON.parse(readFileSync(dataFile(dir), 'utf8'));
