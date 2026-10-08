@@ -123,17 +123,23 @@ test('findMaterial and relatedMaterials', () => {
   const data = sampleData();
   assert.equal(C.findMaterial(data, '1004').topic.id, 'reale');
   assert.equal(C.findMaterial(data, 'nope'), null);
-  // Same-topic first, then newest same-grade materials from other topics.
-  assert.deepEqual(ids(C.relatedMaterials(data, '1004')), ['teorie-reale', 'fisa-recap', 'test-recap', 'functii-vechi']);
+  // Same topic only: no fallback to other topics of the grade.
+  assert.deepEqual(ids(C.relatedMaterials(data, '1004')), ['teorie-reale']);
   assert.deepEqual(C.relatedMaterials(data, 'nope'), []);
 });
 
-test('relatedMaterials stays in its grade and caps at 6', () => {
+test('relatedMaterials stays in its topic and caps at 6', () => {
   const data = sampleData();
-  // Grade 11 has a single material: no same-grade fallback exists.
+  // Grade 11 has a single material: no same-topic fallback exists.
   assert.deepEqual(ids(C.relatedMaterials(data, '1006')), []);
-  // An explicit limit caps the list; same-topic items come first.
-  assert.deepEqual(ids(C.relatedMaterials(data, '1004', undefined, 2)), ['teorie-reale', 'fisa-recap']);
+  // An explicit limit caps the list.
+  assert.deepEqual(ids(C.relatedMaterials(data, '1004', undefined, 2)), ['teorie-reale']);
+  // A large topic is capped at 6 same-topic materials, newest first.
+  for (let i = 0; i < 8; i++) {
+    data.materials.push({ slug: `extra-${i}`, uid: `20${10 + i}`, topic: 'reale', kind: 'fisa-lucru', title: { ro: `Extra ${i}`, en: `Extra ${i}` }, published: `2026-09-${String(15 + i).padStart(2, '0')}` });
+  }
+  assert.equal(C.relatedMaterials(data, '1004').length, 6);
+  assert.deepEqual(ids(C.relatedMaterials(data, '1004')).slice(0, 2), ['extra-7', 'extra-6']);
 });
 
 test('nameOf, parseName and isUid', () => {

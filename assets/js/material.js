@@ -19,8 +19,7 @@
     related.textContent = '';
     const others = Catalog.relatedMaterials(data, material.uid, getLang());
     if (others.length) {
-      const mixed = others.some((m) => m.topic !== material.topic);
-      related.appendChild(el('h2', null, t(mixed ? 'material.relatedGrade' : 'material.related')));
+      related.appendChild(el('h2', null, t('material.related')));
       const list = el('ul', 'material-list');
       others.forEach((m) => list.appendChild(Site.materialRow(m, topic)));
       related.appendChild(list);

@@ -821,10 +821,8 @@ function renderMaterialPage({ data, material, topic, lang, dict, assetBase, page
   const relatedRows = others
     .map((m) => materialRow({ material: m, topic, lang, dict, matBase: '', root: assetBase, showGrade: false, showTopic: false }))
     .join('\n        ');
-  // Same-topic list keeps the topic heading; the grade fallback says so.
-  const relatedHeading = others.some((m) => m.topic !== material.topic)
-    ? dict['material.relatedGrade']
-    : dict['material.related'];
+  // Related list holds same-topic materials only, so it keeps the topic heading.
+  const relatedHeading = dict['material.related'];
   const relatedBlock = `<aside class="related" id="material-related">` +
     `${others.length ? `<h2>${esc(relatedHeading)}</h2>\n        <ul class="material-list">\n        ${relatedRows}\n        </ul>\n        ` : ''}` +
     `<p><a class="more" href="${pageRoot}clasa-${topic.grade}.html">${esc(dict['material.allGrade'].replace('{grade}', gradeName))}</a></p></aside>`;
