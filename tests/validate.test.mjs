@@ -879,7 +879,7 @@ test('an English page for the quiz fails', () => {
 });
 
 test('missing generated SEO files fail', () => {
-  const deleted = ['robots.txt', 'sitemap.xml', 'sitemap.xsl', '_headers', '_redirects', '404.html', 'en/404.html', 'favicon.svg', 'assets/img/og-image.png'];
+  const deleted = ['robots.txt', 'sitemap.xml', 'sitemap.xsl', '_headers', '_redirects', '404.html', 'en/404.html', 'favicon.svg', 'site.webmanifest', 'assets/img/og-image.png'];
   const result = withSite((dir) => {
     for (const f of deleted) unlinkSync(join(dir, f));
   });

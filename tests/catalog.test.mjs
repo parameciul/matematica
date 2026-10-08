@@ -123,8 +123,17 @@ test('findMaterial and relatedMaterials', () => {
   const data = sampleData();
   assert.equal(C.findMaterial(data, '1004').topic.id, 'reale');
   assert.equal(C.findMaterial(data, 'nope'), null);
-  assert.deepEqual(ids(C.relatedMaterials(data, '1004')), ['teorie-reale']);
+  // Same-topic first, then newest same-grade materials from other topics.
+  assert.deepEqual(ids(C.relatedMaterials(data, '1004')), ['teorie-reale', 'fisa-recap', 'test-recap', 'functii-vechi']);
   assert.deepEqual(C.relatedMaterials(data, 'nope'), []);
+});
+
+test('relatedMaterials stays in its grade and caps at 6', () => {
+  const data = sampleData();
+  // Grade 11 has a single material: no same-grade fallback exists.
+  assert.deepEqual(ids(C.relatedMaterials(data, '1006')), []);
+  // An explicit limit caps the list; same-topic items come first.
+  assert.deepEqual(ids(C.relatedMaterials(data, '1004', undefined, 2)), ['teorie-reale', 'fisa-recap']);
 });
 
 test('nameOf, parseName and isUid', () => {

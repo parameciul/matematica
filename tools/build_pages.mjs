@@ -319,10 +319,30 @@ function personLd(lang) {
     url: `${SITE_URL}${lang === 'en' ? 'en/despre' : 'despre'}`,
     jobTitle: lang === 'en' ? 'Math teacher' : 'Profesoară de matematică',
     worksFor: { ...orgLd() },
-    knowsAbout: ['Mathematics', 'Matematică'],
+    knowsAbout: ['Mathematics', 'Matematică', 'Algebră', 'Geometrie', 'Analiză matematică', 'Algebra', 'Geometry', 'Mathematical analysis'],
   };
   if (PROFILES.length) person.sameAs = [...PROFILES];
   return person;
+}
+
+// Schema.org use of a material, by kind. Kept in one place so the
+// LearningResource educationalUse never drifts between the material page
+// and the quiz block.
+export function educationalUseOf(kind) {
+  if (kind === 'test') return 'assessment';
+  if (kind === 'joc' || kind === 'quiz') return 'game';
+  if (kind === 'fisa-lucru' || kind === 'fisa-recapitulativa') return 'practice';
+  return 'instruction';
+}
+
+// Per-grade share image: assets/img/og-clasa-<grade>.png when it exists,
+// otherwise the site image. Missing files fall back silently so a grade
+// without its own image never emits a broken og:image.
+function gradeOgImage(grade) {
+  const rel = `assets/img/og-clasa-${grade}.png`;
+  const base = ASSET_ROOT || ROOT;
+  if (base && existsSync(join(base, ...rel.split('/')))) return SITE_URL + rel;
+  return OG_IMAGE;
 }
 
 // Shared <head>. opts: { lang, title, description, file, altFile (both indexable or null),
@@ -375,7 +395,15 @@ function renderHead(opts) {
     lines.push(`<meta property="og:updated_time" content="${opts.modified}">`);
   }
   lines.push('<meta name="twitter:card" content="summary_large_image">');
+  lines.push(`<meta name="twitter:title" content="${esc(opts.title)}">`);
+  if (opts.description) lines.push(`<meta name="twitter:description" content="${esc(opts.description)}">`);
+  lines.push(`<meta name="twitter:image" content="${esc(opts.ogImage || OG_IMAGE)}">`);
+  // Match the reader's theme background so the browser chrome never flashes
+  // a contrasting bar: --paper in style.css, light and dark.
+  lines.push('<meta name="theme-color" media="(prefers-color-scheme: light)" content="#fbfcfe">');
+  lines.push('<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1d2925">');
   const base = opts.assetBase || '';
+  lines.push(`<link rel="manifest" href="${base}site.webmanifest">`);
   lines.push(`<link rel="icon" href="${base}favicon.svg" type="image/svg+xml">`);
   lines.push('<link rel="icon" href="' + base + 'favicon.ico" sizes="48x48">');
   lines.push(`<link rel="apple-touch-icon" href="${base}apple-touch-icon.png">`);
@@ -643,7 +671,7 @@ function renderGradePage({ data, grade, lang, dict, assetBase, pageRoot, selfFil
     file: selfFile,
     altFile,
     noindex: empty || undefined,
-    ogImage: OG_IMAGE,
+    ogImage: gradeOgImage(grade),
     modified: empty ? undefined : gradeLatest,
     assetBase,
     pageScripts: ['assets/js/i18n.js', 'assets/js/catalog.js', 'assets/js/shell.js', 'assets/js/site.js', 'assets/js/searchbox.js', 'assets/js/clasa.js'],
@@ -793,8 +821,12 @@ function renderMaterialPage({ data, material, topic, lang, dict, assetBase, page
   const relatedRows = others
     .map((m) => materialRow({ material: m, topic, lang, dict, matBase: '', root: assetBase, showGrade: false, showTopic: false }))
     .join('\n        ');
+  // Same-topic list keeps the topic heading; the grade fallback says so.
+  const relatedHeading = others.some((m) => m.topic !== material.topic)
+    ? dict['material.relatedGrade']
+    : dict['material.related'];
   const relatedBlock = `<aside class="related" id="material-related">` +
-    `${others.length ? `<h2>${esc(dict['material.related'])}</h2>\n        <ul class="material-list">\n        ${relatedRows}\n        </ul>\n        ` : ''}` +
+    `${others.length ? `<h2>${esc(relatedHeading)}</h2>\n        <ul class="material-list">\n        ${relatedRows}\n        </ul>\n        ` : ''}` +
     `<p><a class="more" href="${pageRoot}clasa-${topic.grade}.html">${esc(dict['material.allGrade'].replace('{grade}', gradeName))}</a></p></aside>`;
 
   const checkNote = material.results
@@ -845,6 +877,8 @@ function renderMaterialPage({ data, material, topic, lang, dict, assetBase, page
     license: LICENSE_URL,
     author: personLd(lang),
     publisher: personLd(lang),
+    audience: { '@type': 'EducationalAudience', educationalRole: 'student' },
+    educationalUse: educationalUseOf(material.kind),
   };
   if (keywords && keywords.length) learningResource.keywords = keywords.join(', ');
   if (summaryText) learningResource.abstract = summaryText;
@@ -1114,10 +1148,29 @@ export function renderLlmsFull({ data, root }) {
         lines.push(`- Author: Laura Miron. License: ${LICENSE_NAME} (${LICENSE_URL}).`);
         lines.push(`- Published: ${m.published}. Updated: ${lastmodOf(m)}.`);
         if (m.description && m.description.ro) lines.push(`- ${m.description.ro}`);
+        // The answer-first box and the conceptual Q&A live in the data, not
+        // in <article>: repeat them here so answer engines see the same
+        // summary and FAQ as the page shows.
+        if (m.summary && m.summary.ro) lines.push(`- Rezumat: ${m.summary.ro}`);
+        if (Array.isArray(m.faq) && m.faq.length) {
+          lines.push('- Întrebări frecvente:');
+          for (const f of m.faq) {
+            if (f.q && f.q.ro) lines.push(`  - Q: ${f.q.ro}`);
+            if (f.a && f.a.ro) lines.push(`  - A: ${f.a.ro}`);
+          }
+        }
         lines.push('');
         if (roArticle) lines.push(roArticle, '');
         if (enArticle) {
           lines.push('--- EN ---', '');
+          if (m.summary && m.summary.en) lines.push(`${m.summary.en}`, '');
+          if (Array.isArray(m.faq) && m.faq.length) {
+            for (const f of m.faq) {
+              if (f.q && (f.q.en || f.q.ro)) lines.push(`Q: ${f.q.en || f.q.ro}`);
+              if (f.a && (f.a.en || f.a.ro)) lines.push(`A: ${f.a.en || f.a.ro}`);
+            }
+            lines.push('');
+          }
           lines.push(enArticle, '');
         }
         lines.push('---', '');
@@ -1192,6 +1245,9 @@ function notFoundPage({ lang }) {
   <link rel="icon" href="${home}favicon.svg" type="image/svg+xml">
   <link rel="icon" href="${home}favicon.ico" sizes="48x48">
   <link rel="apple-touch-icon" href="${home}apple-touch-icon.png">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fbfcfe">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1d2925">
+  <link rel="manifest" href="${home}site.webmanifest">
   <style>
     /* Self-contained on purpose: this page is served for missing URLs at any
        depth, so relative asset paths would break. No external CSS or JS. */
@@ -1551,6 +1607,12 @@ ${robots}
 <meta property="article:modified_time" content="${lastmodOf(material)}">
 <meta property="og:updated_time" content="${lastmodOf(material)}">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="${esc(title)}">
+<meta name="twitter:description" content="${esc(description)}">
+<meta name="twitter:image" content="${OG_IMAGE}">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#fbfcfe">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1d2925">
+<link rel="manifest" href="../site.webmanifest">
   ${jsonLd({
     '@context': 'https://schema.org',
     '@type': 'LearningResource',
@@ -1575,6 +1637,8 @@ ${robots}
     license: LICENSE_URL,
     author: personLd('ro'),
     publisher: personLd('ro'),
+    audience: { '@type': 'EducationalAudience', educationalRole: 'student' },
+    educationalUse: educationalUseOf(material.kind),
   })}
 ${jsonLd({
     '@context': 'https://schema.org',

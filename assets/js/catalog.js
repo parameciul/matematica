@@ -165,10 +165,36 @@
     return { material, topic: topicMap(data).get(material.topic) || null };
   }
 
-  function relatedMaterials(data, uid, lang) {
+  // Related materials for the "related" block: same-topic first (strongest
+  // signal), then the newest same-grade materials from other topics, so a
+  // topic with one or two materials still links to a useful list.
+  // Capped at 6 so a large grade does not flood the block. The optional
+  // limit keeps old callers working: relatedMaterials(data, uid, lang).
+  function relatedMaterials(data, uid, lang, limit) {
     const found = findMaterial(data, uid);
     if (!found) return [];
-    return topicMaterials(data, found.material.topic, lang).filter((m) => m.uid !== uid);
+    const max = limit === undefined ? 6 : limit;
+    const sameTopic = topicMaterials(data, found.material.topic, lang).filter((m) => m.uid !== uid);
+    if (sameTopic.length >= max) return sameTopic.slice(0, max);
+    const seen = new Set(sameTopic.map((m) => m.uid));
+    seen.add(found.material.uid);
+    const grade = found.topic ? found.topic.grade : null;
+    const others = [];
+    if (grade !== null && grade !== undefined) {
+      const topics = topicMap(data);
+      const gradeMats = newestFirst(
+        visibleMaterials(data.materials, lang).filter((m) => {
+          const t = topics.get(m.topic);
+          return t && t.grade === grade && m.topic !== found.material.topic && !seen.has(m.uid);
+        }),
+        (m) => m.published
+      );
+      for (const m of gradeMats) {
+        if (sameTopic.length + others.length >= max) break;
+        others.push(m);
+      }
+    }
+    return sameTopic.concat(others);
   }
 
   function normalize(text) {

@@ -828,3 +828,51 @@ test('a hand re-indented clip slot is stripped, not duplicated, on rebuild', (t)
   assert.equal(rebuilt, original, 'a rebuild after a hand re-indent must give the same bytes back');
   assert.equal((rebuilt.match(/id="clip-1"/g) || []).length, 1, 'the slot must not be duplicated');
 });
+
+test('head carries twitter tags, theme-color and the manifest', (t) => {
+  const site = buildSite(makeRoot(t, { pages: stdPages() }));
+  for (const file of ['index.html', 'clasa-9.html', `materiale/${mname('teorie-reale')}.html`, `en/materiale/${mname('teorie-reale')}.html`]) {
+    const page = site.get(file);
+    assert.match(page, /<meta name="twitter:card" content="summary_large_image">/, `${file}: twitter card`);
+    assert.match(page, /<meta name="twitter:title" content="/, `${file}: twitter title`);
+    assert.match(page, /<meta name="twitter:image" content="https:\/\//, `${file}: twitter image`);
+    assert.match(page, /<meta name="theme-color" media="\(prefers-color-scheme: light\)" content="#fbfcfe">/, `${file}: light theme-color`);
+    assert.match(page, /<meta name="theme-color" media="\(prefers-color-scheme: dark\)" content="#1d2925">/, `${file}: dark theme-color`);
+    assert.match(page, /<link rel="manifest" href="[^"]*site\.webmanifest">/, `${file}: manifest`);
+  }
+  // The quiz seo block carries the same tags with a materiale/-relative manifest.
+  assert.match(site.get(`materiale/${mname('quiz-recap')}.html`), /<meta name="twitter:title"/);
+  assert.match(site.get(`materiale/${mname('quiz-recap')}.html`), /<link rel="manifest" href="\.\.\/site\.webmanifest">/);
+});
+
+test('LearningResource names its audience and educational use', (t) => {
+  const site = buildSite(makeRoot(t, { pages: stdPages() }));
+  const resource = ldBlocks(site.get(`materiale/${mname('teorie-reale')}.html`)).find((b) => b['@type'] === 'LearningResource');
+  assert.deepEqual(resource.audience, { '@type': 'EducationalAudience', educationalRole: 'student' });
+  assert.equal(resource.educationalUse, 'instruction');
+  const quiz = ldBlocks(site.get(`materiale/${mname('quiz-recap')}.html`)).find((b) => b['@type'] === 'LearningResource');
+  assert.equal(quiz.educationalUse, 'game');
+});
+
+test('llms-full repeats the summary and FAQ from the data', (t) => {
+  const materials = dataFixture().materials;
+  materials[0].summary = {
+    ro: 'Rezumat de test pentru llms-full, cu două propoziții despre ideea lecției.',
+    en: 'Test summary for llms-full, with two sentences about the lesson idea.',
+  };
+  materials[0].faq = [
+    { q: { ro: 'Întrebare de probă pentru llms-full?', en: 'Sample question for llms-full?' },
+      a: { ro: 'Răspuns de probă pentru llms-full, suficient de lung pentru reguli.',
+           en: 'Sample answer for llms-full, long enough for the rules.' } },
+  ];
+  const pages = {
+    ...stdPages(),
+    [`en/materiale/${mname('teorie-reale')}.html`]: articlePage('1001', '<p>RO</p>', '<p>EN article</p>'),
+  };
+  const site = buildSite(makeRoot(t, { materials, pages }));
+  const full = site.get('llms-full.txt');
+  assert.match(full, /- Rezumat: Rezumat de test pentru llms-full/);
+  assert.match(full, /Întrebări frecvente:/);
+  assert.match(full, /Q: Întrebare de probă pentru llms-full\?/);
+  assert.match(full, /Test summary for llms-full/);
+});

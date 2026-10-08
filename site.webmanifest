@@ -1,0 +1,26 @@
+{
+  "name": "Matematică cu Laura Miron",
+  "short_name": "Matematică",
+  "description": "Materiale gratuite de matematică pentru clasele V–XII, de prof. Laura Miron.",
+  "lang": "ro",
+  "dir": "ltr",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "background_color": "#fbfcfe",
+  "theme_color": "#fbfcfe",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

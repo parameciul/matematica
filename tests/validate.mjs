@@ -49,6 +49,7 @@ const REQUIRED_FILES = [
   'favicon.svg',
   'favicon.ico',
   'apple-touch-icon.png',
+  'site.webmanifest',
   'assets/img/og-image.png',
   'assets/css/style.css',
   'assets/js/i18n.js',
@@ -887,6 +888,10 @@ for (const f of files.filter((x) => extname(x) === '.html')) {
     for (const tag of ['og:image:width', 'og:image:height', 'og:image:alt']) {
       if (!src.includes(tag)) fail(`${f}: indexable page must contain ${tag}`);
     }
+    // Share and browser-chrome tags every indexable page carries.
+    for (const tag of ['twitter:title', 'twitter:image', 'theme-color', 'site.webmanifest']) {
+      if (!src.includes(tag)) fail(`${f}: indexable page must contain ${tag}`);
+    }
   }
 }
 for (const f of ['index.html', 'en/index.html']) {
@@ -923,6 +928,39 @@ if (exists('llms.txt')) {
     if (!llms.includes(`/materiale/${name}`)) fail(`llms.txt: missing visible material ${name}`);
   }
   if (!llms.includes('/despre')) fail('llms.txt: must link the about page');
+}
+// llms-full.txt repeats the answer-first content from the data (summary and
+// FAQ), not just the article text, so answer engines see the same Q&A.
+if (exists('llms-full.txt')) {
+  const full = read('llms-full.txt');
+  const withSummary = materials.filter((m) => Visibility.isVisible(m) && !m.supersedes && m.kind !== 'quiz' && m.summary && m.summary.ro);
+  if (withSummary.length && !full.includes('- Rezumat:')) fail('llms-full.txt: must repeat the material summaries ("- Rezumat:")');
+  const withFaq = materials.filter((m) => Visibility.isVisible(m) && !m.supersedes && m.kind !== 'quiz' && Array.isArray(m.faq) && m.faq.length);
+  if (withFaq.length && !full.includes('Întrebări frecvente:')) fail('llms-full.txt: must repeat the material FAQs ("Întrebări frecvente:")');
+}
+// Material pages name their audience and use for answer engines.
+for (const f of files.filter((x) => x.includes('materiale/') && extname(x) === '.html' && !x.includes('/pdf/'))) {
+  const src = read(f);
+  if (src.includes('noindex')) continue;
+  if (!src.includes('"LearningResource"')) continue;
+  if (!src.includes('"EducationalAudience"')) fail(`${f}: LearningResource must name its audience (EducationalAudience)`);
+  if (!src.includes('"educationalUse"')) fail(`${f}: LearningResource must name its educationalUse`);
+}
+// The web manifest must parse and point at files that exist.
+if (exists('site.webmanifest')) {
+  let manifest = null;
+  try {
+    manifest = JSON.parse(read('site.webmanifest'));
+  } catch {
+    fail('site.webmanifest: must be valid JSON');
+  }
+  if (manifest) {
+    if (!manifest.name || !manifest.short_name) fail('site.webmanifest: must have a name and a short_name');
+    for (const icon of manifest.icons || []) {
+      if (!icon.src) { fail('site.webmanifest: every icon must have a src'); continue; }
+      if (!exists(icon.src)) fail(`site.webmanifest: icon "${icon.src}" does not exist`);
+    }
+  }
 }
 if (exists('robots.txt')) {
   const robots = read('robots.txt');
