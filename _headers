@@ -44,6 +44,8 @@ https://:version.:project.pages.dev/*
 /tm25mlg/*
   X-Robots-Tag: noindex
   Cache-Control: no-store
+/materiale/pdf/fisa-lucru-formule-echivalente-negarea-enunturilor-1026.pdf
+  Link: <https://lauramiron.pages.dev/materiale/fisa-lucru-formule-echivalente-negarea-enunturilor-1026>; rel="canonical"
 /materiale/pdf/fisa-lucru-modulul-unui-numar-real-1012.pdf
   Link: <https://lauramiron.pages.dev/materiale/fisa-lucru-modulul-unui-numar-real-1012>; rel="canonical"
 /materiale/pdf/fisa-lucru-multimi-marginite-margini-1017.pdf
@@ -74,10 +76,14 @@ https://:version.:project.pages.dev/*
   Link: <https://lauramiron.pages.dev/materiale/fisa-recapitulativa-permutari-1015>; rel="canonical"
 /materiale/pdf/joc-mesajul-secret-1006.pdf
   Link: <https://lauramiron.pages.dev/materiale/joc-mesajul-secret-1006>; rel="canonical"
+/materiale/pdf/probleme-formule-echivalente-negarea-enunturilor-1027.pdf
+  Link: <https://lauramiron.pages.dev/materiale/probleme-formule-echivalente-negarea-enunturilor-1027>; rel="canonical"
 /materiale/pdf/probleme-multimi-marginite-margini-1018.pdf
   Link: <https://lauramiron.pages.dev/materiale/probleme-multimi-marginite-margini-1018>; rel="canonical"
 /materiale/pdf/probleme-vecinatati-puncte-acumulare-1024.pdf
   Link: <https://lauramiron.pages.dev/materiale/probleme-vecinatati-puncte-acumulare-1024>; rel="canonical"
+/materiale/pdf/teorie-formule-echivalente-negarea-enunturilor-1025.pdf
+  Link: <https://lauramiron.pages.dev/materiale/teorie-formule-echivalente-negarea-enunturilor-1025>; rel="canonical"
 /materiale/pdf/teorie-multimi-puncte-dreapta-reala-1016.pdf
   Link: <https://lauramiron.pages.dev/materiale/teorie-multimi-puncte-dreapta-reala-1016>; rel="canonical"
 /materiale/pdf/teorie-numere-reale-modul-parte-intreaga-1001.pdf

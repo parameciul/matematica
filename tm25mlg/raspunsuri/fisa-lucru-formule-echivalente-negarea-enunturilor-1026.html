@@ -1,0 +1,143 @@
+<p><em>Liniile tabelelor sunt în ordinea:</em> $p,\ q$ = $11,\ 10,\ 01,\ 00$; <em>pentru trei variabile,</em> $p,\ q,\ r$ = $111,\ 110,\ 101,\ 100,\ 011,\ 010,\ 001,\ 000$.</p>
+<p><strong>1.</strong> $p \rightarrow q$: $1,\ 0,\ 1,\ 1$; $p \land (p \rightarrow q)$: $1,\ 0,\ 0,\ 0$; $(p \land (p \rightarrow q)) \rightarrow q$: $1,\ 1,\ 1,\ 1$ – tautologie.</p>
+<p><strong>2.</strong> Tabelul completat:</p>
+<table style="width:83%;">
+<thead>
+<tr>
+<th style="text-align: center;">$p$</th>
+<th style="text-align: center;">$q$</th>
+<th style="text-align: center;">$r$</th>
+<th style="text-align: center;">$q \vee r$</th>
+<th style="text-align: center;">$p \land (q \vee r)$</th>
+<th style="text-align: center;">$p \land q$</th>
+<th style="text-align: center;">$p \land r$</th>
+<th style="text-align: center;">$(p \land q) \vee (p \land r)$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">$1$</td>
+<td style="text-align: center;">$1$</td>
+<td style="text-align: center;">$1$</td>
+<td style="text-align: center;">$1$</td>
+<td style="text-align: center;">$1$</td>
+<td style="text-align: center;">$1$</td>
+<td style="text-align: center;">$1$</td>
+<td style="text-align: center;">$1$</td>
+</tr>
+<tr>
+<td style="text-align: center;">$1$</td>
+<td style="text-align: center;">$1$</td>
+<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$1$</td>
+<td style="text-align: center;">$1$</td>
+<td style="text-align: center;">$1$</td>
+<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$1$</td>
+</tr>
+<tr>
+<td style="text-align: center;">$1$</td>
+<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$1$</td>
+<td style="text-align: center;">$1$</td>
+<td style="text-align: center;">$1$</td>
+<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$1$</td>
+<td style="text-align: center;">$1$</td>
+</tr>
+<tr>
+<td style="text-align: center;">$1$</td>
+<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$0$</td>
+</tr>
+<tr>
+<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$1$</td>
+<td style="text-align: center;">$1$</td>
+<td style="text-align: center;">$1$</td>
+<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$0$</td>
+</tr>
+<tr>
+<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$1$</td>
+<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$1$</td>
+<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$0$</td>
+</tr>
+<tr>
+<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$1$</td>
+<td style="text-align: center;">$1$</td>
+<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$0$</td>
+</tr>
+<tr>
+<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$0$</td>
+<td style="text-align: center;">$0$</td>
+</tr>
+</tbody>
+</table>
+<p>Coloanele a cincea și a opta coincid, deci formulele sunt echivalente.</p>
+<p><strong>3.</strong> Negațiile:</p>
+<table style="width:91%;">
+<thead>
+<tr>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><strong>Negația</strong></th>
+<th style="text-align: center;"><strong>Enunț</strong></th>
+<th style="text-align: center;"><strong>Negație</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">a)</td>
+<td style="text-align: left;">„$6$ nu este divizibil cu $2$ sau nu este divizibil cu $4$.”</td>
+<td style="text-align: center;">$1 \land 0 = 0$</td>
+<td style="text-align: center;">$1$</td>
+</tr>
+<tr>
+<td style="text-align: center;">b)</td>
+<td style="text-align: left;">„$\pi \leq 3$ și $\pi \geq 2$.”</td>
+<td style="text-align: center;">$1 \vee 0 = 1$</td>
+<td style="text-align: center;">$0$</td>
+</tr>
+<tr>
+<td style="text-align: center;">c)</td>
+<td style="text-align: left;">„$3 &gt; 2$ și $3^{2} \leq 2^{2}$.”</td>
+<td style="text-align: center;">$1 \rightarrow 1 = 1$</td>
+<td style="text-align: center;">$0$</td>
+</tr>
+<tr>
+<td style="text-align: center;">d)</td>
+<td style="text-align: left;">„$- 1 \notin {\mathbb{N}}$ și $( - 1)^{2} \notin {\mathbb{N}}$.”</td>
+<td style="text-align: center;">$0 \vee 1 = 1$</td>
+<td style="text-align: center;">$0$</td>
+</tr>
+</tbody>
+</table>
+<p><strong>4.</strong> Implicația dată este adevărată ($6 = 2 \cdot 3$).</p>
+<p>Reciproca: „Dacă un număr natural este divizibil cu $3$, atunci este divizibil cu $6$” – falsă (de exemplu, $3$).</p>
+<p>Contrara: „Dacă un număr natural nu este divizibil cu $6$, atunci nu este divizibil cu $3$” – falsă (tot $3$).</p>
+<p>Contrara reciprocei: „Dacă un număr natural nu este divizibil cu $3$, atunci nu este divizibil cu $6$” – adevărată (are aceeași valoare ca implicația inițială).</p>
+<p><strong>5.</strong> Implicația este falsă doar dacă $v(p \land \overline{q}) = 1$ și $v(r) = 0$, deci $v(p) = 1$, $v(q) = 0$, $v(r) = 0$. Atunci $v((p \rightarrow r) \vee q) = v((1 \rightarrow 0) \vee 0) = 0$ și $v(\overline{q} \leftrightarrow p) = v(1 \leftrightarrow 1) = 1$.</p>
+<p><strong>6.</strong> $p \rightarrow q$: $1,\ 0,\ 1,\ 1$; $q \rightarrow p$: $1,\ 1,\ 0,\ 1$; disjuncția: $1,\ 1,\ 1,\ 1$ – tautologie. Oricare ar fi propozițiile $p$ și $q$, cel puțin una dintre implicațiile $p \rightarrow q$, $q \rightarrow p$ este adevărată.</p>

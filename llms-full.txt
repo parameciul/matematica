@@ -1270,6 +1270,524 @@ b) Calculate the length of segment $AC$ and the distance from point $O$ to the l
 
 ## Clasa a IX-a / Grade 9
 
+### Teorie: formule echivalente și negarea enunțurilor
+- Source (RO): https://lauramiron.pages.dev/materiale/teorie-formule-echivalente-negarea-enunturilor-1025
+- Source (EN): https://lauramiron.pages.dev/en/materiale/teorie-formule-echivalente-negarea-enunturilor-1025
+- Author: Laura Miron. License: CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/).
+- Published: 2026-10-08. Updated: 2026-10-08.
+- Teorie pentru clasa a IX-a: formule propoziționale, tautologii, formule echivalente, legile lui De Morgan, negarea enunțurilor, reciproca și contrara.
+- Rezumat: Două formule sunt echivalente când au aceleași valori de adevăr pe fiecare linie a tabelului, iar o tautologie este adevărată pe toate liniile. Legile lui De Morgan arată cum se neagă un enunț compus: „și” devine „sau”, iar negația lui „dacă $p$, atunci $q$” este „$p$ și non $q$”. O implicație și contrara reciprocei ei au mereu aceeași valoare.
+- Întrebări frecvente:
+  - Q: Care este negația unei implicații?
+  - A: Negația lui „dacă $p$, atunci $q$” este „$p$ și non $q$”: $\overline{p \rightarrow q} \equiv p \land \overline{q}$. Implicația este falsă doar când ipoteza este adevărată și concluzia falsă, iar negația spune exact acest lucru. O greșeală frecventă este să scrii „dacă non $p$, atunci non $q$”: aceea este contrara, nu negația.
+  - Q: Ce spun legile lui De Morgan?
+  - A: Negația unei conjuncții este disjuncția negațiilor, iar negația unei disjuncții este conjuncția negațiilor: $\overline{p \land q} \equiv \overline{p} \vee \overline{q}$ și $\overline{p \vee q} \equiv \overline{p} \land \overline{q}$. Când negi un enunț, „și” devine „sau”, iar „sau” devine „și”.
+  - Q: Care este diferența dintre reciprocă și contrara reciprocei?
+  - A: Pentru $p \rightarrow q$, reciproca este $q \rightarrow p$, iar contrara reciprocei este $\overline{q} \rightarrow \overline{p}$. Contrara reciprocei are mereu aceeași valoare de adevăr ca implicația inițială; reciproca poate avea altă valoare. Pe această echivalență se sprijină metoda reducerii la absurd.
+  - Q: Cum verific dacă două formule sunt echivalente?
+  - A: Construiești tabelul de adevăr pentru ambele formule, cu toate cele $2^{n}$ combinații de valori ale celor $n$ variabile. Dacă cele două coloane coincid pe fiecare linie, formulele sunt echivalente și scrii $A \equiv B$. O singură linie diferită ajunge pentru a arăta că nu sunt echivalente.
+
+1. Formule propoziționale
+Se formează din propoziții $p,\ q,\ r,\ \ldots$, operatori logici și paranteze. Ordinea operatorilor: non, $\land$, $\vee$, $\rightarrow$, $\leftrightarrow$. Pentru $n$ variabile, tabelul de adevăr are $2^{n}$ linii.
+2. Tautologii. Formule echivalente
+Definiții
+Tautologie = formulă adevărată pentru orice valori ale variabilelor. Exemple: $p \vee \overline{p}$, $p \rightarrow p$.
+$A \equiv B$ („$A$ este echivalentă cu $B$”): $A$ și $B$ au aceleași valori de adevăr pe fiecare linie.
+Exemplu: $p \rightarrow q \equiv \overline{p} \vee q$.
+3. Reguli de negare
+Regula
+Formula
+dubla negație
+$\overline{\overline{p}} \equiv p$
+legile lui De Morgan
+$\overline{p \land q} \equiv \overline{p} \vee \overline{q}$
+$\overline{p \vee q} \equiv \overline{p} \land \overline{q}$
+negația implicației
+$\overline{p \rightarrow q} \equiv p \land \overline{q}$
+Verificare pentru $\overline{p \land q} \equiv \overline{p} \vee \overline{q}$:
+$p$
+$q$
+$p \land q$
+$\overline{p \land q}$
+$\overline{p}$
+$\overline{q}$
+$\overline{p} \vee \overline{q}$
+$1$
+$1$
+$1$
+$0$
+$0$
+$0$
+$0$
+$1$
+$0$
+$0$
+$1$
+$0$
+$1$
+$1$
+$0$
+$1$
+$0$
+$1$
+$1$
+$0$
+$1$
+$0$
+$0$
+$0$
+$1$
+$1$
+$1$
+$1$
+Negarea relațiilor: $=$ devine $\neq$; $<$ devine $\geq$; $>$ devine $\leq$; $\in$ devine $\notin$.
+4. Negarea enunțurilor – exemple
+- „$x > 0$ și $y > 0$” → „$x \leq 0$ sau $y \leq 0$”.
+- „$x = 1$ sau $x = 2$” → „$x \neq 1$ și $x \neq 2$”.
+- „Dacă plouă, iau umbrela” → „Plouă și nu iau umbrela”.
+5. Reciproca și contrara unei implicații
+Definiții
+Pentru implicația $p \rightarrow q$: reciproca $q \rightarrow p$; contrara $\overline{p} \rightarrow \overline{q}$; contrara reciprocei $\overline{q} \rightarrow \overline{p}$.
+$p$
+$q$
+$p \rightarrow q$
+$q \rightarrow p$
+$\overline{p} \rightarrow \overline{q}$
+$\overline{q} \rightarrow \overline{p}$
+$1$
+$1$
+$1$
+$1$
+$1$
+$1$
+$1$
+$0$
+$0$
+$1$
+$1$
+$0$
+$0$
+$1$
+$1$
+$0$
+$0$
+$1$
+$0$
+$0$
+$1$
+$1$
+$1$
+$1$
+Reține
+$p \rightarrow q \equiv \overline{q} \rightarrow \overline{p}$ și $q \rightarrow p \equiv \overline{p} \rightarrow \overline{q}$. O implicație și reciproca ei pot avea valori diferite.
+Exemplu
+„Dacă $n \vdots 4$, atunci $n \vdots 2$” – adevărată; reciproca „Dacă $n \vdots 2$, atunci $n \vdots 4$” – falsă ($n = 6$); contrara reciprocei „Dacă $n$ nu este divizibil cu $2$, atunci nu este divizibil cu $4$” – adevărată.
+
+--- EN ---
+
+Two formulas are equivalent when they have the same truth values on every row of the table, and a tautology is true on all rows. De Morgan's laws show how to negate a compound statement: “and” turns into “or”, and the negation of “if $p$, then $q$” is “$p$ and not $q$”. An implication and its contrapositive always share the same value.
+
+Q: What is the negation of an implication?
+A: The negation of “if $p$, then $q$” is “$p$ and not $q$”: $\overline{p \rightarrow q} \equiv p \land \overline{q}$. The implication is false only when the hypothesis is true and the conclusion is false, and the negation states exactly that. A common mistake is to write “if not $p$, then not $q$”: that is the inverse, not the negation.
+Q: What do De Morgan's laws say?
+A: The negation of a conjunction is the disjunction of the negations, and the negation of a disjunction is the conjunction of the negations: $\overline{p \land q} \equiv \overline{p} \vee \overline{q}$ and $\overline{p \vee q} \equiv \overline{p} \land \overline{q}$. When you negate a statement, “and” turns into “or”, and “or” turns into “and”.
+Q: What is the difference between the converse and the contrapositive?
+A: For $p \rightarrow q$, the converse is $q \rightarrow p$ and the contrapositive is $\overline{q} \rightarrow \overline{p}$. The contrapositive always has the same truth value as the original implication; the converse may have a different one. Proof by contradiction rests on this equivalence.
+Q: How do I check whether two formulas are equivalent?
+A: You build the truth table of both formulas, with all $2^{n}$ combinations of values of the $n$ variables. If the two columns agree on every row, the formulas are equivalent and you write $A \equiv B$. A single different row is enough to show that they are not equivalent.
+
+1. Propositional formulas
+They are built from propositions $p,\ q,\ r,\ \ldots$, logical operators and brackets. Order of the operators: not, $\land$, $\vee$, $\rightarrow$, $\leftrightarrow$. For $n$ variables, the truth table has $2^{n}$ rows.
+2. Tautologies. Equivalent formulas
+Definitions
+Tautology = a formula that is true for all values of its variables. Examples: $p \vee \overline{p}$, $p \rightarrow p$.
+$A \equiv B$ (“$A$ is equivalent to $B$”): $A$ and $B$ have the same truth values on every row.
+Example: $p \rightarrow q \equiv \overline{p} \vee q$.
+3. Negation rules
+Rule
+Formula
+double negation
+$\overline{\overline{p}} \equiv p$
+De Morgan's laws
+$\overline{p \land q} \equiv \overline{p} \vee \overline{q}$
+$\overline{p \vee q} \equiv \overline{p} \land \overline{q}$
+negation of an implication
+$\overline{p \rightarrow q} \equiv p \land \overline{q}$
+Check for $\overline{p \land q} \equiv \overline{p} \vee \overline{q}$:
+$p$
+$q$
+$p \land q$
+$\overline{p \land q}$
+$\overline{p}$
+$\overline{q}$
+$\overline{p} \vee \overline{q}$
+$1$
+$1$
+$1$
+$0$
+$0$
+$0$
+$0$
+$1$
+$0$
+$0$
+$1$
+$0$
+$1$
+$1$
+$0$
+$1$
+$0$
+$1$
+$1$
+$0$
+$1$
+$0$
+$0$
+$0$
+$1$
+$1$
+$1$
+$1$
+Negating relations: $=$ becomes $\neq$; $<$ becomes $\geq$; $>$ becomes $\leq$; $\in$ becomes $\notin$.
+4. Negating statements – examples
+- “$x > 0$ and $y > 0$” → “$x \leq 0$ or $y \leq 0$”.
+- “$x = 1$ or $x = 2$” → “$x \neq 1$ and $x \neq 2$”.
+- “If it rains, I take my umbrella” → “It rains and I do not take my umbrella”.
+5. The converse and the inverse of an implication
+Definitions
+For the implication $p \rightarrow q$: the converse $q \rightarrow p$; the inverse $\overline{p} \rightarrow \overline{q}$; the contrapositive $\overline{q} \rightarrow \overline{p}$.
+$p$
+$q$
+$p \rightarrow q$
+$q \rightarrow p$
+$\overline{p} \rightarrow \overline{q}$
+$\overline{q} \rightarrow \overline{p}$
+$1$
+$1$
+$1$
+$1$
+$1$
+$1$
+$1$
+$0$
+$0$
+$1$
+$1$
+$0$
+$0$
+$1$
+$1$
+$0$
+$0$
+$1$
+$0$
+$0$
+$1$
+$1$
+$1$
+$1$
+Remember
+$p \rightarrow q \equiv \overline{q} \rightarrow \overline{p}$ and $q \rightarrow p \equiv \overline{p} \rightarrow \overline{q}$. An implication and its converse may have different values.
+Example
+“If $n \vdots 4$, then $n \vdots 2$” – true; the converse “If $n \vdots 2$, then $n \vdots 4$” – false ($n = 6$); the contrapositive “If $n$ is not divisible by $2$, then it is not divisible by $4$” – true.
+
+---
+
+### Fișă de lucru: formule echivalente, negarea enunțurilor
+- Source (RO): https://lauramiron.pages.dev/materiale/fisa-lucru-formule-echivalente-negarea-enunturilor-1026
+- Source (EN): https://lauramiron.pages.dev/en/materiale/fisa-lucru-formule-echivalente-negarea-enunturilor-1026
+- Author: Laura Miron. License: CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/).
+- Published: 2026-10-08. Updated: 2026-10-08.
+- Fișă de lucru pentru clasa a IX-a: tabele de adevăr, tautologii, formule echivalente, negarea enunțurilor, reciproca și contrara unei implicații.
+- Rezumat: O tautologie este o formulă adevărată pe toate liniile tabelului de adevăr, iar două formule sunt echivalente când coloanele lor coincid. Un enunț compus se neagă cu legile lui De Morgan și cu negația implicației. Fișa exersează tabelele de adevăr, negarea enunțurilor și reciproca, contrara și contrara reciprocei.
+- Întrebări frecvente:
+  - Q: Ce este o tautologie?
+  - A: O formulă care ia valoarea $1$ pe fiecare linie a tabelului de adevăr, oricare ar fi valorile variabilelor. Exemple simple sunt $p \vee \overline{p}$ și $p \rightarrow p$. Pentru a arăta că o formulă nu este tautologie, ajunge să găsești o linie pe care ia valoarea $0$.
+  - Q: Cum neg un enunț care conține „și” sau „sau”?
+  - A: Negi fiecare propoziție simplă și schimbi operatorul: „și” devine „sau”, iar „sau” devine „și” (legile lui De Morgan). De exemplu, negația lui „$x > 0$ și $y > 0$” este „$x \leq 0$ sau $y \leq 0$”. Relațiile se neagă și ele: $<$ devine $\geq$, iar $\in$ devine $\notin$.
+  - Q: Este contrara unei implicații același lucru cu negația ei?
+  - A: Nu. Contrara lui $p \rightarrow q$ este tot o implicație, $\overline{p} \rightarrow \overline{q}$, pe când negația este $p \land \overline{q}$. Contrara are mereu aceeași valoare de adevăr ca reciproca, nu ca implicația inițială.
+
+Reține
+$A \equiv B$ înseamnă că formulele $A$ și $B$ au aceleași valori de adevăr pe fiecare linie a tabelului. O formulă adevărată pe toate liniile este o tautologie.
+-
+Arătați, completând tabelul, că formula $(p \land (p \rightarrow q)) \rightarrow q$ este o tautologie.
+$p$
+$q$
+$p \rightarrow q$
+$p \land (p \rightarrow q)$
+$(p \land (p \rightarrow q)) \rightarrow q$
+$1$
+$1$
+$1$
+$0$
+$0$
+$1$
+$0$
+$0$
+-
+Arătați, completând tabelul, că $p \land (q \vee r) \equiv (p \land q) \vee (p \land r)$.
+$p$
+$q$
+$r$
+$q \vee r$
+$p \land (q \vee r)$
+$p \land q$
+$p \land r$
+$(p \land q) \vee (p \land r)$
+$1$
+$1$
+$1$
+$1$
+$1$
+$0$
+$1$
+$0$
+$1$
+$1$
+$0$
+$0$
+$0$
+$1$
+$1$
+$0$
+$1$
+$0$
+$0$
+$0$
+$1$
+$0$
+$0$
+$0$
+-
+Scrieți negația fiecărui enunț, folosind legile lui De Morgan sau negația implicației. Precizați valoarea de adevăr a enunțului și a negației lui.
+Enunțul
+Negația
+Valori
+a)
+„$6$ este divizibil cu $2$ și cu $4$.”
+b)
+„$\pi > 3$ sau $\pi < 2$.”
+c)
+„Dacă $3 > 2$, atunci $3^{2} > 2^{2}$.”
+d)
+„$- 1 \in {\mathbb{N}}$ sau $( - 1)^{2} \in {\mathbb{N}}$.”
+-
+Se consideră implicația: „Dacă un număr natural este divizibil cu $6$, atunci este divizibil cu $3$.” Formulați reciproca, contrara și contrara reciprocei și precizați care dintre cele patru enunțuri sunt adevărate.
+Reciproca: …
+Contrara: …
+Contrara reciprocei: …
+Valorile de adevăr ale celor patru enunțuri: …
+-
+Știind că propoziția $(p \land \overline{q}) \rightarrow r$ este falsă, determinați $v(p)$, $v(q)$, $v(r)$, apoi valoarea de adevăr a propozițiilor $(p \rightarrow r) \vee q$ și $\overline{q} \leftrightarrow p$.
+a) $v(p)$ = … ; $v(q)$ = … ; $v(r)$ = …
+b) $v((p \rightarrow r) \vee q)$ = …
+c) $v(\overline{q} \leftrightarrow p)$ = …
+-
+Arătați că formula $(p \rightarrow q) \vee (q \rightarrow p)$ este o tautologie. Ce înseamnă acest lucru, pentru două propoziții oarecare?
+
+--- EN ---
+
+A tautology is a formula that is true on every row of its truth table, and two formulas are equivalent when their columns agree. A compound statement is negated with De Morgan's laws and the negation of an implication. The worksheet trains truth tables, negating statements and the converse, inverse and contrapositive.
+
+Q: What is a tautology?
+A: A formula that takes the value $1$ on every row of its truth table, whatever the values of the variables. Simple examples are $p \vee \overline{p}$ and $p \rightarrow p$. To show that a formula is not a tautology, it is enough to find one row where it takes the value $0$.
+Q: How do I negate a statement that contains “and” or “or”?
+A: You negate each simple proposition and switch the operator: “and” turns into “or”, and “or” turns into “and” (De Morgan's laws). For example, the negation of “$x > 0$ and $y > 0$” is “$x \leq 0$ or $y \leq 0$”. Relations are negated too: $<$ becomes $\geq$, and $\in$ becomes $\notin$.
+Q: Is the inverse of an implication the same as its negation?
+A: No. The inverse of $p \rightarrow q$ is still an implication, $\overline{p} \rightarrow \overline{q}$, while the negation is $p \land \overline{q}$. The inverse always has the same truth value as the converse, not as the original implication.
+
+Remember
+$A \equiv B$ means that the formulas $A$ and $B$ have the same truth values on every row of the table. A formula that is true on all rows is a tautology.
+-
+Complete the table to show that the formula $(p \land (p \rightarrow q)) \rightarrow q$ is a tautology.
+$p$
+$q$
+$p \rightarrow q$
+$p \land (p \rightarrow q)$
+$(p \land (p \rightarrow q)) \rightarrow q$
+$1$
+$1$
+$1$
+$0$
+$0$
+$1$
+$0$
+$0$
+-
+Complete the table to show that $p \land (q \vee r) \equiv (p \land q) \vee (p \land r)$.
+$p$
+$q$
+$r$
+$q \vee r$
+$p \land (q \vee r)$
+$p \land q$
+$p \land r$
+$(p \land q) \vee (p \land r)$
+$1$
+$1$
+$1$
+$1$
+$1$
+$0$
+$1$
+$0$
+$1$
+$1$
+$0$
+$0$
+$0$
+$1$
+$1$
+$0$
+$1$
+$0$
+$0$
+$0$
+$1$
+$0$
+$0$
+$0$
+-
+Write the negation of each statement, using De Morgan's laws or the negation of an implication. State the truth value of the statement and of its negation.
+Statement
+Negation
+Values
+a)
+“$6$ is divisible by $2$ and by $4$.”
+b)
+“$\pi > 3$ or $\pi < 2$.”
+c)
+“If $3 > 2$, then $3^{2} > 2^{2}$.”
+d)
+“$- 1 \in {\mathbb{N}}$ or $( - 1)^{2} \in {\mathbb{N}}$.”
+-
+Consider the implication: “If a natural number is divisible by $6$, then it is divisible by $3$.” Write its converse, its inverse and its contrapositive, and state which of the four statements are true.
+Converse: …
+Inverse: …
+Contrapositive: …
+Truth values of the four statements: …
+-
+Given that the proposition $(p \land \overline{q}) \rightarrow r$ is false, find $v(p)$, $v(q)$, $v(r)$, then the truth value of the propositions $(p \rightarrow r) \vee q$ and $\overline{q} \leftrightarrow p$.
+a) $v(p)$ = … ; $v(q)$ = … ; $v(r)$ = …
+b) $v((p \rightarrow r) \vee q)$ = …
+c) $v(\overline{q} \leftrightarrow p)$ = …
+-
+Show that the formula $(p \rightarrow q) \vee (q \rightarrow p)$ is a tautology. What does this mean for any two propositions?
+
+---
+
+### Probleme propuse: formule echivalente, negarea enunțurilor
+- Source (RO): https://lauramiron.pages.dev/materiale/probleme-formule-echivalente-negarea-enunturilor-1027
+- Source (EN): https://lauramiron.pages.dev/en/materiale/probleme-formule-echivalente-negarea-enunturilor-1027
+- Author: Laura Miron. License: CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/).
+- Published: 2026-10-08. Updated: 2026-10-08.
+- Probleme pentru clasa a IX-a: tautologii, legile lui De Morgan, negarea enunțurilor, reciproca și contrara unei implicații, plus o problemă de logică.
+- Rezumat: Problemele exersează tabelele de adevăr, recunoașterea tautologiilor și demonstrarea echivalențelor. Enunțurile se neagă în cuvinte, cu legile lui De Morgan și cu negația implicației, iar pentru fiecare implicație se formulează reciproca, contrara și contrara reciprocei. Ultima problemă este un mic puzzle de logică.
+- Întrebări frecvente:
+  - Q: Când sunt adevărate atât o implicație, cât și reciproca ei?
+  - A: Atunci propozițiile sunt echivalente: $p \leftrightarrow q$ este adevărată, iar în matematică spunem „$p$ dacă și numai dacă $q$”. Pentru a arăta acest lucru, demonstrezi separat $p \rightarrow q$ și $q \rightarrow p$; a doua se poate înlocui cu contrara ei, $\overline{p} \rightarrow \overline{q}$, care are aceeași valoare de adevăr.
+  - Q: Cum scriu în cuvinte negația unui enunț compus?
+  - A: Pornești de la forma simbolică: identifici propozițiile simple și operatorul care le leagă, aplici regula de negare, apoi traduci înapoi în cuvinte. Formularea „Nu este adevărat…” este corectă, dar o negație bine scrisă mută negația pe propozițiile simple, de forma „nu este … sau nu este …”.
+  - Q: Cum arăt că o implicație este falsă?
+  - A: Cauți un caz în care ipoteza este adevărată și concluzia este falsă; un singur astfel de caz, numit contraexemplu, arată că implicația este falsă. Verifici ambele părți: ipoteza să fie îndeplinită, iar concluzia să nu fie. Pentru o implicație adevărată, în schimb, un exemplu nu ajunge: este nevoie de o demonstrație.
+
+Problemele se rezolvă în caiet, cu justificări.
+-
+Construiți tabelul de adevăr și stabiliți care dintre formule sunt tautologii:
+a) $p \rightarrow (p \vee q)$;
+b) $(p \vee q) \rightarrow p$;
+c) $\overline{p \land \overline{p}}$;
+d) $(p \rightarrow q) \leftrightarrow (\overline{q} \rightarrow \overline{p})$.
+-
+Demonstrați, cu ajutorul tabelelor de adevăr, echivalențele:
+a) $\overline{p \land q} \equiv \overline{p} \vee \overline{q}$ (legea lui De Morgan);
+b) $p \rightarrow (q \rightarrow r) \equiv (p \land q) \rightarrow r$.
+-
+Scrieți în cuvinte negația fiecărei propoziții. Pentru a)–d) precizați valoarea de adevăr a propoziției și a negației ei.
+a) „Numărul $35$ este divizibil cu $5$ și cu $7$.”
+b) „$\sqrt{9} = 3$ sau $\sqrt{9} = - 3$.”
+c) „Dacă $10 \vdots 4$, atunci $10 \vdots 8$.”
+d) „$2 < \sqrt{5} < 3$” (adică „$2 < \sqrt{5}$ și $\sqrt{5} < 3$”).
+e) „Triunghiul $ABC$ este isoscel sau dreptunghic.”
+-
+Fie $x$ un număr real. Scrieți negația fiecărui enunț:
+a) „$x > 1$ și $x \leq 5$”;
+b) „$x < - 2$ sau $x \geq 3$”;
+c) „Dacă $x^{2} = 9$, atunci $x = 3$.”
+Pentru c), găsiți o valoare a lui $x$ pentru care negația este adevărată.
+-
+Formulați reciproca, contrara și contrara reciprocei fiecărei implicații și precizați valoarea de adevăr a celor patru enunțuri:
+a) „Dacă un patrulater este pătrat, atunci are diagonalele congruente.”
+b) „Dacă un număr natural este par, atunci pătratul lui este par.”
+-
+Știind că propoziția $(p \vee q) \rightarrow r$ este falsă și că $v(p) = 0$, determinați $v(q)$, $v(r)$ și valoarea de adevăr a propoziției $\overline{q} \rightarrow (p \land r)$.
+-
+Fie $p$: „Ana merge la film” și $q$: „Ana învață”.
+a) Exprimați în cuvinte: $\overline{p} \land q$, $\overline{p \vee q}$, $p \rightarrow \overline{q}$, $\overline{p \rightarrow q}$.
+b) Care dintre aceste propoziții spune același lucru ca „Ana nici nu merge la film, nici nu învață”?
+-
+Câte linii are tabelul de adevăr al unei formule cu $3$ variabile?
+Dar cu $n$ variabile?
+Construiți tabelul formulei $(p \vee q) \rightarrow r$ și precizați pentru ce valori ale lui $p$, $q$, $r$ formula este falsă.
+-
+Provocare. Unul dintre Radu, Sorin și Tudor a mâncat prăjitura. Radu spune: „Sorin a mâncat-o.” Sorin spune: „Eu nu am mâncat-o.” Tudor spune: „Eu nu am mâncat-o.” Știind că exact unul dintre ei spune adevărul, aflați cine a mâncat prăjitura. (Indicație: comparați afirmațiile lui Radu și Sorin.)
+
+--- EN ---
+
+The problems train truth tables, spotting tautologies and proving equivalences. Statements are negated in words, with De Morgan's laws and the negation of an implication, and each implication gets its converse, inverse and contrapositive. The last problem is a small logic puzzle.
+
+Q: When are both an implication and its converse true?
+A: Then the propositions are equivalent: $p \leftrightarrow q$ is true, and in mathematics we say “$p$ if and only if $q$”. To show this, you prove $p \rightarrow q$ and $q \rightarrow p$ separately; the second one can be replaced by the inverse of the original implication, $\overline{p} \rightarrow \overline{q}$, which has the same truth value.
+Q: How do I write the negation of a compound statement in words?
+A: Start from the symbolic form: find the simple propositions and the operator that links them, apply the negation rule, then translate back into words. Writing “It is not true that…” is correct, but a well-written negation moves the “not” onto the simple propositions, as in “is not … or is not …”.
+Q: How do I show that an implication is false?
+A: Look for a case where the hypothesis is true and the conclusion is false; a single such case, called a counterexample, shows that the implication is false. Check both parts: the hypothesis must hold and the conclusion must fail. For a true implication, on the other hand, an example is not enough: you need a proof.
+
+Solve the problems in your notebook, with justifications.
+-
+Build the truth table and decide which of the formulas are tautologies:
+a) $p \rightarrow (p \vee q)$;
+b) $(p \vee q) \rightarrow p$;
+c) $\overline{p \land \overline{p}}$;
+d) $(p \rightarrow q) \leftrightarrow (\overline{q} \rightarrow \overline{p})$.
+-
+Prove the following equivalences with truth tables:
+a) $\overline{p \land q} \equiv \overline{p} \vee \overline{q}$ (De Morgan's law);
+b) $p \rightarrow (q \rightarrow r) \equiv (p \land q) \rightarrow r$.
+-
+Write the negation of each proposition in words. For a)–d), state the truth value of the proposition and of its negation.
+a) “The number $35$ is divisible by $5$ and by $7$.”
+b) “$\sqrt{9} = 3$ or $\sqrt{9} = - 3$.”
+c) “If $10 \vdots 4$, then $10 \vdots 8$.”
+d) “$2 < \sqrt{5} < 3$” (that is, “$2 < \sqrt{5}$ and $\sqrt{5} < 3$”).
+e) “Triangle $ABC$ is isosceles or right-angled.”
+-
+Let $x$ be a real number. Write the negation of each statement:
+a) “$x > 1$ and $x \leq 5$”;
+b) “$x < - 2$ or $x \geq 3$”;
+c) “If $x^{2} = 9$, then $x = 3$.”
+For c), find a value of $x$ for which the negation is true.
+-
+Write the converse, the inverse and the contrapositive of each implication, and state the truth value of the four statements:
+a) “If a quadrilateral is a square, then its diagonals are congruent.”
+b) “If a natural number is even, then its square is even.”
+-
+Given that the proposition $(p \vee q) \rightarrow r$ is false and that $v(p) = 0$, find $v(q)$, $v(r)$ and the truth value of the proposition $\overline{q} \rightarrow (p \land r)$.
+-
+Let $p$: “Ana goes to the cinema” and $q$: “Ana studies”.
+a) Express in words: $\overline{p} \land q$, $\overline{p \vee q}$, $p \rightarrow \overline{q}$, $\overline{p \rightarrow q}$.
+b) Which of these propositions says the same thing as “Ana neither goes to the cinema nor studies”?
+-
+How many rows does the truth table of a formula with $3$ variables have?
+And with $n$ variables?
+Build the table of the formula $(p \vee q) \rightarrow r$ and state for which values of $p$, $q$, $r$ the formula is false.
+-
+Challenge. One of Radu, Sorin and Tudor ate the cake. Radu says: “Sorin ate it.” Sorin says: “I did not eat it.” Tudor says: “I did not eat it.” Knowing that exactly one of them tells the truth, find out who ate the cake. (Hint: compare what Radu and Sorin say.)
+
+---
+
 ### Fișă de lucru: operații cu propoziții
 - Source (RO): https://lauramiron.pages.dev/materiale/fisa-lucru-operatii-cu-propozitii-1020
 - Source (EN): https://lauramiron.pages.dev/en/materiale/fisa-lucru-operatii-cu-propozitii-1020

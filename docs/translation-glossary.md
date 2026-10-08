@@ -33,6 +33,8 @@ Use these terms when you write the English article of a material. The audience i
 | „Nota 10” | top-grade problems |
 | enunț, propoziție simplă / compusă, valoarea de adevăr | statement, simple / compound proposition, truth value |
 | predicat, mulțimea de adevăr a unui predicat | predicate, truth set of a predicate |
+| tautologie, formule echivalente, legile lui De Morgan | tautology, equivalent formulas, De Morgan's laws |
+| reciproca, contrara, contrara reciprocei (unei implicații) | the converse, the inverse, the contrapositive (of an implication) |
 | teorie sintetizată, fișă de lucru, fișă recapitulativă | theory summary, worksheet, review worksheet |
 | Încercuiește litera corespunzătoare răspunsului corect. | Circle the letter of the correct answer. |
 | Scrie rezolvările complete. | Write complete solutions. |

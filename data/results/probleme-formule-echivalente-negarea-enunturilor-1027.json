@@ -1,0 +1,521 @@
+{
+  "uid": "1027",
+  "version": 1,
+  "items": {
+    "2": {
+      "check": false,
+      "why": "proof",
+      "show": "a) $\\overline{p \\land q}$ și $\\overline{p} \\vee \\overline{q}$: $0,\\ 1,\\ 1,\\ 1$; b) ambele formule sunt false doar pe linia $p = 1$, $q = 1$, $r = 0$: $1,\\ 0,\\ 1,\\ 1,\\ 1,\\ 1,\\ 1,\\ 1$"
+    },
+    "6": {
+      "kind": "options",
+      "options": [
+        {
+          "value": "1",
+          "label": {
+            "ro": "$1$ (adevărat)",
+            "en": "$1$ (true)"
+          }
+        },
+        {
+          "value": "0",
+          "label": {
+            "ro": "$0$ (fals)",
+            "en": "$0$ (false)"
+          }
+        }
+      ],
+      "parts": [
+        {
+          "ro": "$v(q)$",
+          "en": "$v(q)$"
+        },
+        {
+          "ro": "$v(r)$",
+          "en": "$v(r)$"
+        },
+        {
+          "ro": "$v(\\overline{q} \\rightarrow (p \\land r))$",
+          "en": "$v(\\overline{q} \\rightarrow (p \\land r))$"
+        }
+      ],
+      "accept": [
+        "1; 0; 1"
+      ],
+      "show": "$v(p \\vee q) = 1$ și $v(r) = 0$; cum $v(p) = 0$, rezultă $v(q) = 1$; $v(\\overline{q} \\rightarrow (p \\land r)) = v(0 \\rightarrow 0) = 1$"
+    },
+    "9": {
+      "kind": "options",
+      "accept": [
+        "tudor"
+      ],
+      "show": "Afirmațiile lui Radu și Sorin sunt una negația celeilalte, deci afirmația lui Tudor este falsă: Tudor a mâncat prăjitura",
+      "options": [
+        {
+          "value": "radu",
+          "label": {
+            "ro": "Radu",
+            "en": "Radu"
+          }
+        },
+        {
+          "value": "sorin",
+          "label": {
+            "ro": "Sorin",
+            "en": "Sorin"
+          }
+        },
+        {
+          "value": "tudor",
+          "label": {
+            "ro": "Tudor",
+            "en": "Tudor"
+          }
+        }
+      ]
+    },
+    "1a": {
+      "kind": "options",
+      "options": [
+        {
+          "value": "da",
+          "label": {
+            "ro": "da, este tautologie",
+            "en": "yes, it is a tautology"
+          },
+          "chip": {
+            "ro": "DA",
+            "en": "YES"
+          }
+        },
+        {
+          "value": "nu",
+          "label": {
+            "ro": "nu, nu este tautologie",
+            "en": "no, it is not a tautology"
+          },
+          "chip": {
+            "ro": "NU",
+            "en": "NO"
+          }
+        }
+      ],
+      "accept": [
+        "da"
+      ],
+      "show": "$1,\\ 1,\\ 1,\\ 1$ – tautologie"
+    },
+    "1b": {
+      "kind": "options",
+      "options": [
+        {
+          "value": "da",
+          "label": {
+            "ro": "da, este tautologie",
+            "en": "yes, it is a tautology"
+          },
+          "chip": {
+            "ro": "DA",
+            "en": "YES"
+          }
+        },
+        {
+          "value": "nu",
+          "label": {
+            "ro": "nu, nu este tautologie",
+            "en": "no, it is not a tautology"
+          },
+          "chip": {
+            "ro": "NU",
+            "en": "NO"
+          }
+        }
+      ],
+      "accept": [
+        "nu"
+      ],
+      "show": "$1,\\ 1,\\ 0,\\ 1$ – nu este tautologie (falsă pentru $p = 0$, $q = 1$)"
+    },
+    "1c": {
+      "kind": "options",
+      "options": [
+        {
+          "value": "da",
+          "label": {
+            "ro": "da, este tautologie",
+            "en": "yes, it is a tautology"
+          },
+          "chip": {
+            "ro": "DA",
+            "en": "YES"
+          }
+        },
+        {
+          "value": "nu",
+          "label": {
+            "ro": "nu, nu este tautologie",
+            "en": "no, it is not a tautology"
+          },
+          "chip": {
+            "ro": "NU",
+            "en": "NO"
+          }
+        }
+      ],
+      "accept": [
+        "da"
+      ],
+      "show": "$p \\land \\overline{p}$ este mereu falsă, deci $\\overline{p \\land \\overline{p}}$: $1,\\ 1,\\ 1,\\ 1$ – tautologie"
+    },
+    "1d": {
+      "kind": "options",
+      "options": [
+        {
+          "value": "da",
+          "label": {
+            "ro": "da, este tautologie",
+            "en": "yes, it is a tautology"
+          },
+          "chip": {
+            "ro": "DA",
+            "en": "YES"
+          }
+        },
+        {
+          "value": "nu",
+          "label": {
+            "ro": "nu, nu este tautologie",
+            "en": "no, it is not a tautology"
+          },
+          "chip": {
+            "ro": "NU",
+            "en": "NO"
+          }
+        }
+      ],
+      "accept": [
+        "da"
+      ],
+      "show": "$p \\rightarrow q$ și $\\overline{q} \\rightarrow \\overline{p}$ au ambele valorile $1,\\ 0,\\ 1,\\ 1$, deci echivalența lor: $1,\\ 1,\\ 1,\\ 1$ – tautologie"
+    },
+    "3a": {
+      "kind": "options",
+      "options": [
+        {
+          "value": "1",
+          "label": {
+            "ro": "$1$ (adevărat)",
+            "en": "$1$ (true)"
+          }
+        },
+        {
+          "value": "0",
+          "label": {
+            "ro": "$0$ (fals)",
+            "en": "$0$ (false)"
+          }
+        }
+      ],
+      "parts": [
+        {
+          "ro": "Propoziția",
+          "en": "The proposition"
+        },
+        {
+          "ro": "Negația",
+          "en": "The negation"
+        }
+      ],
+      "accept": [
+        "1; 0"
+      ],
+      "show": "„$35$ nu este divizibil cu $5$ sau nu este divizibil cu $7$”; propoziția: $1$, negația: $0$"
+    },
+    "3b": {
+      "kind": "options",
+      "options": [
+        {
+          "value": "1",
+          "label": {
+            "ro": "$1$ (adevărat)",
+            "en": "$1$ (true)"
+          }
+        },
+        {
+          "value": "0",
+          "label": {
+            "ro": "$0$ (fals)",
+            "en": "$0$ (false)"
+          }
+        }
+      ],
+      "parts": [
+        {
+          "ro": "Propoziția",
+          "en": "The proposition"
+        },
+        {
+          "ro": "Negația",
+          "en": "The negation"
+        }
+      ],
+      "accept": [
+        "1; 0"
+      ],
+      "show": "„$\\sqrt{9} \\neq 3$ și $\\sqrt{9} \\neq - 3$”; propoziția: $1 \\vee 0 = 1$, negația: $0$"
+    },
+    "3c": {
+      "kind": "options",
+      "options": [
+        {
+          "value": "1",
+          "label": {
+            "ro": "$1$ (adevărat)",
+            "en": "$1$ (true)"
+          }
+        },
+        {
+          "value": "0",
+          "label": {
+            "ro": "$0$ (fals)",
+            "en": "$0$ (false)"
+          }
+        }
+      ],
+      "parts": [
+        {
+          "ro": "Propoziția",
+          "en": "The proposition"
+        },
+        {
+          "ro": "Negația",
+          "en": "The negation"
+        }
+      ],
+      "accept": [
+        "1; 0"
+      ],
+      "show": "„$10 \\vdots 4$ și $10$ nu este divizibil cu $8$”; propoziția: $0 \\rightarrow 0 = 1$, negația: $0$"
+    },
+    "3d": {
+      "kind": "options",
+      "options": [
+        {
+          "value": "1",
+          "label": {
+            "ro": "$1$ (adevărat)",
+            "en": "$1$ (true)"
+          }
+        },
+        {
+          "value": "0",
+          "label": {
+            "ro": "$0$ (fals)",
+            "en": "$0$ (false)"
+          }
+        }
+      ],
+      "parts": [
+        {
+          "ro": "Propoziția",
+          "en": "The proposition"
+        },
+        {
+          "ro": "Negația",
+          "en": "The negation"
+        }
+      ],
+      "accept": [
+        "1; 0"
+      ],
+      "show": "„$\\sqrt{5} \\leq 2$ sau $\\sqrt{5} \\geq 3$”; cum $4 &lt; 5 &lt; 9$, $2 &lt; \\sqrt{5} &lt; 3$: propoziția: $1$, negația: $0$"
+    },
+    "3e": {
+      "check": false,
+      "why": "open",
+      "show": "„Triunghiul $ABC$ nu este isoscel și nu este dreptunghic.”"
+    },
+    "4a": {
+      "check": false,
+      "why": "open",
+      "show": "„$x \\leq 1$ sau $x &gt; 5$”"
+    },
+    "4b": {
+      "check": false,
+      "why": "open",
+      "show": "„$x \\geq - 2$ și $x &lt; 3$”"
+    },
+    "4c": {
+      "kind": "number",
+      "accept": [
+        "-3"
+      ],
+      "show": "Negația: „$x^{2} = 9$ și $x \\neq 3$”; este adevărată pentru $x = - 3$"
+    },
+    "5a": {
+      "kind": "options",
+      "options": [
+        {
+          "value": "1",
+          "label": {
+            "ro": "$1$ (adevărat)",
+            "en": "$1$ (true)"
+          }
+        },
+        {
+          "value": "0",
+          "label": {
+            "ro": "$0$ (fals)",
+            "en": "$0$ (false)"
+          }
+        }
+      ],
+      "parts": [
+        {
+          "ro": "Implicația",
+          "en": "The implication"
+        },
+        {
+          "ro": "Reciproca",
+          "en": "The converse"
+        },
+        {
+          "ro": "Contrara",
+          "en": "The inverse"
+        },
+        {
+          "ro": "Contrara reciprocei",
+          "en": "The contrapositive"
+        }
+      ],
+      "accept": [
+        "1; 0; 0; 1"
+      ],
+      "show": "Reciproca și contrara sunt false: dreptunghiul are diagonalele congruente, dar nu este pătrat"
+    },
+    "5b": {
+      "kind": "options",
+      "options": [
+        {
+          "value": "1",
+          "label": {
+            "ro": "$1$ (adevărat)",
+            "en": "$1$ (true)"
+          }
+        },
+        {
+          "value": "0",
+          "label": {
+            "ro": "$0$ (fals)",
+            "en": "$0$ (false)"
+          }
+        }
+      ],
+      "parts": [
+        {
+          "ro": "Implicația",
+          "en": "The implication"
+        },
+        {
+          "ro": "Reciproca",
+          "en": "The converse"
+        },
+        {
+          "ro": "Contrara",
+          "en": "The inverse"
+        },
+        {
+          "ro": "Contrara reciprocei",
+          "en": "The contrapositive"
+        }
+      ],
+      "accept": [
+        "1; 1; 1; 1"
+      ],
+      "show": "Toate patru sunt adevărate: $(2k + 1)^{2} = 2(2k^{2} + 2k) + 1$, deci „$n$ este par $\\Leftrightarrow$ $n^{2}$ este par”"
+    },
+    "7a": {
+      "check": false,
+      "why": "open",
+      "show": "$\\overline{p} \\land q$: „Ana nu merge la film și învață”; $\\overline{p \\vee q}$: „Nu este adevărat că Ana merge la film sau învață”; $p \\rightarrow \\overline{q}$: „Dacă Ana merge la film, atunci nu învață”; $\\overline{p \\rightarrow q}$: „Ana merge la film și nu învață”"
+    },
+    "7b": {
+      "kind": "options",
+      "accept": [
+        "b"
+      ],
+      "show": "$\\overline{p \\vee q}$, deoarece $\\overline{p \\vee q} \\equiv \\overline{p} \\land \\overline{q}$ (De Morgan)",
+      "options": [
+        {
+          "value": "a",
+          "label": {
+            "ro": "$\\overline{p} \\land q$",
+            "en": "$\\overline{p} \\land q$"
+          },
+          "chip": {
+            "ro": "non p și q",
+            "en": "not p and q"
+          }
+        },
+        {
+          "value": "b",
+          "label": {
+            "ro": "$\\overline{p \\vee q}$",
+            "en": "$\\overline{p \\vee q}$"
+          },
+          "chip": {
+            "ro": "non (p sau q)",
+            "en": "not (p or q)"
+          }
+        },
+        {
+          "value": "c",
+          "label": {
+            "ro": "$p \\rightarrow \\overline{q}$",
+            "en": "$p \\rightarrow \\overline{q}$"
+          },
+          "chip": {
+            "ro": "p → non q",
+            "en": "p → not q"
+          }
+        },
+        {
+          "value": "d",
+          "label": {
+            "ro": "$\\overline{p \\rightarrow q}$",
+            "en": "$\\overline{p \\rightarrow q}$"
+          },
+          "chip": {
+            "ro": "non (p → q)",
+            "en": "not (p → q)"
+          }
+        }
+      ]
+    },
+    "8a": {
+      "kind": "number",
+      "accept": [
+        "8"
+      ],
+      "show": "$2^{3} = 8$ linii"
+    },
+    "8b": {
+      "kind": "text",
+      "accept": [
+        "2^n",
+        "2ⁿ",
+        "2**n"
+      ],
+      "show": "$2^{n}$ linii",
+      "hint": {
+        "ro": "scrie puterea cu ^, de exemplu 3^n",
+        "en": "type the power with ^, for example 3^n"
+      }
+    },
+    "8c": {
+      "check": false,
+      "why": "open",
+      "show": "$(p \\vee q) \\rightarrow r$ este falsă când $r$ este falsă și $p \\vee q$ este adevărată: $(p,\\ q,\\ r) \\in \\left\\{ (1,\\ 1,\\ 0),\\ (1,\\ 0,\\ 0),\\ (0,\\ 1,\\ 0) \\right\\}$"
+    }
+  }
+}

@@ -1,0 +1,249 @@
+{
+  "uid": "1026",
+  "version": 1,
+  "items": {
+    "1": {
+      "kind": "grid",
+      "accept": [
+        "1; 1; 1; 0; 0; 1; 1; 0; 1; 1; 0; 1"
+      ],
+      "show": "$p \\rightarrow q$: $1,\\ 0,\\ 1,\\ 1$; $p \\land (p \\rightarrow q)$: $1,\\ 0,\\ 0,\\ 0$; $(p \\land (p \\rightarrow q)) \\rightarrow q$: $1,\\ 1,\\ 1,\\ 1$ – tautologie"
+    },
+    "2": {
+      "kind": "grid",
+      "accept": [
+        "1; 1; 1; 1; 1; 1; 1; 1; 0; 1; 1; 1; 0; 1; 1; 0; 0; 0; 0; 0; 1; 0; 0; 0; 0; 1; 0; 0; 0; 0; 1; 0; 0; 0; 0; 0; 0; 0; 0; 0"
+      ],
+      "show": "Coloanele a cincea și a opta coincid ($1,\\ 1,\\ 1,\\ 0,\\ 0,\\ 0,\\ 0,\\ 0$), deci formulele sunt echivalente"
+    },
+    "4": {
+      "kind": "options",
+      "options": [
+        {
+          "value": "1",
+          "label": {
+            "ro": "$1$ (adevărat)",
+            "en": "$1$ (true)"
+          }
+        },
+        {
+          "value": "0",
+          "label": {
+            "ro": "$0$ (fals)",
+            "en": "$0$ (false)"
+          }
+        }
+      ],
+      "parts": [
+        {
+          "ro": "Implicația",
+          "en": "The implication"
+        },
+        {
+          "ro": "Reciproca",
+          "en": "The converse"
+        },
+        {
+          "ro": "Contrara",
+          "en": "The inverse"
+        },
+        {
+          "ro": "Contrara reciprocei",
+          "en": "The contrapositive"
+        }
+      ],
+      "accept": [
+        "1; 0; 0; 1"
+      ],
+      "show": "Implicația: adevărată ($6 = 2 \\cdot 3$); reciproca și contrara: false (de exemplu, $3$); contrara reciprocei: adevărată"
+    },
+    "6": {
+      "check": false,
+      "why": "proof",
+      "show": "$p \\rightarrow q$: $1,\\ 0,\\ 1,\\ 1$; $q \\rightarrow p$: $1,\\ 1,\\ 0,\\ 1$; disjuncția: $1,\\ 1,\\ 1,\\ 1$ – tautologie. Oricare ar fi propozițiile $p$ și $q$, cel puțin una dintre implicațiile $p \\rightarrow q$, $q \\rightarrow p$ este adevărată"
+    },
+    "3a": {
+      "kind": "options",
+      "options": [
+        {
+          "value": "1",
+          "label": {
+            "ro": "$1$ (adevărat)",
+            "en": "$1$ (true)"
+          }
+        },
+        {
+          "value": "0",
+          "label": {
+            "ro": "$0$ (fals)",
+            "en": "$0$ (false)"
+          }
+        }
+      ],
+      "parts": [
+        {
+          "ro": "Enunțul",
+          "en": "The statement"
+        },
+        {
+          "ro": "Negația",
+          "en": "The negation"
+        }
+      ],
+      "accept": [
+        "0; 1"
+      ],
+      "show": "„$6$ nu este divizibil cu $2$ sau nu este divizibil cu $4$”; enunțul: $1 \\land 0 = 0$, negația: $1$"
+    },
+    "3b": {
+      "kind": "options",
+      "options": [
+        {
+          "value": "1",
+          "label": {
+            "ro": "$1$ (adevărat)",
+            "en": "$1$ (true)"
+          }
+        },
+        {
+          "value": "0",
+          "label": {
+            "ro": "$0$ (fals)",
+            "en": "$0$ (false)"
+          }
+        }
+      ],
+      "parts": [
+        {
+          "ro": "Enunțul",
+          "en": "The statement"
+        },
+        {
+          "ro": "Negația",
+          "en": "The negation"
+        }
+      ],
+      "accept": [
+        "1; 0"
+      ],
+      "show": "„$\\pi \\leq 3$ și $\\pi \\geq 2$”; enunțul: $1 \\vee 0 = 1$, negația: $0$"
+    },
+    "3c": {
+      "kind": "options",
+      "options": [
+        {
+          "value": "1",
+          "label": {
+            "ro": "$1$ (adevărat)",
+            "en": "$1$ (true)"
+          }
+        },
+        {
+          "value": "0",
+          "label": {
+            "ro": "$0$ (fals)",
+            "en": "$0$ (false)"
+          }
+        }
+      ],
+      "parts": [
+        {
+          "ro": "Enunțul",
+          "en": "The statement"
+        },
+        {
+          "ro": "Negația",
+          "en": "The negation"
+        }
+      ],
+      "accept": [
+        "1; 0"
+      ],
+      "show": "„$3 &gt; 2$ și $3^{2} \\leq 2^{2}$”; enunțul: $1 \\rightarrow 1 = 1$, negația: $0$"
+    },
+    "3d": {
+      "kind": "options",
+      "options": [
+        {
+          "value": "1",
+          "label": {
+            "ro": "$1$ (adevărat)",
+            "en": "$1$ (true)"
+          }
+        },
+        {
+          "value": "0",
+          "label": {
+            "ro": "$0$ (fals)",
+            "en": "$0$ (false)"
+          }
+        }
+      ],
+      "parts": [
+        {
+          "ro": "Enunțul",
+          "en": "The statement"
+        },
+        {
+          "ro": "Negația",
+          "en": "The negation"
+        }
+      ],
+      "accept": [
+        "1; 0"
+      ],
+      "show": "„$- 1 \\notin {\\mathbb{N}}$ și $( - 1)^{2} \\notin {\\mathbb{N}}$”; enunțul: $0 \\vee 1 = 1$, negația: $0$"
+    },
+    "5a": {
+      "kind": "options",
+      "options": [
+        {
+          "value": "1",
+          "label": {
+            "ro": "$1$ (adevărat)",
+            "en": "$1$ (true)"
+          }
+        },
+        {
+          "value": "0",
+          "label": {
+            "ro": "$0$ (fals)",
+            "en": "$0$ (false)"
+          }
+        }
+      ],
+      "parts": [
+        {
+          "ro": "$v(p)$",
+          "en": "$v(p)$"
+        },
+        {
+          "ro": "$v(q)$",
+          "en": "$v(q)$"
+        },
+        {
+          "ro": "$v(r)$",
+          "en": "$v(r)$"
+        }
+      ],
+      "accept": [
+        "1; 0; 0"
+      ],
+      "show": "Implicația este falsă doar dacă $v(p \\land \\overline{q}) = 1$ și $v(r) = 0$"
+    },
+    "5b": {
+      "kind": "truefalse",
+      "accept": [
+        "F"
+      ],
+      "show": "$v((1 \\rightarrow 0) \\vee 0) = 0$"
+    },
+    "5c": {
+      "kind": "truefalse",
+      "accept": [
+        "A"
+      ],
+      "show": "$v(1 \\leftrightarrow 1) = 1$"
+    }
+  }
+}

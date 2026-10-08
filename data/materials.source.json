@@ -2036,8 +2036,212 @@
         "version": 2,
         "checks": 22
       }
+    },
+    {
+      "slug": "teorie-formule-echivalente-negarea-enunturilor",
+      "uid": "1025",
+      "topic": "elemente-logica-matematica",
+      "kind": "teorie",
+      "title": {
+        "ro": "Teorie: formule echivalente și negarea enunțurilor",
+        "en": "Theory: equivalent formulas and negating statements"
+      },
+      "seoTitle": {
+        "ro": "Formule echivalente, negarea enunțurilor: teorie",
+        "en": "Equivalent formulas, negating statements: theory"
+      },
+      "published": "2026-10-08",
+      "description": {
+        "ro": "Teorie pentru clasa a IX-a: formule propoziționale, tautologii, formule echivalente, legile lui De Morgan, negarea enunțurilor, reciproca și contrara.",
+        "en": "Grade 9 theory: propositional formulas, tautologies, equivalent formulas, De Morgan's laws, negating statements, the converse and the inverse."
+      },
+      "pdf": "materiale/pdf/teorie-formule-echivalente-negarea-enunturilor-1025.pdf",
+      "youtube": null,
+      "import": {
+        "date": "2026-10-08",
+        "workflow": 5,
+        "pdf": "generated"
+      },
+      "summary": {
+        "ro": "Două formule sunt echivalente când au aceleași valori de adevăr pe fiecare linie a tabelului, iar o tautologie este adevărată pe toate liniile. Legile lui De Morgan arată cum se neagă un enunț compus: „și” devine „sau”, iar negația lui „dacă $p$, atunci $q$” este „$p$ și non $q$”. O implicație și contrara reciprocei ei au mereu aceeași valoare.",
+        "en": "Two formulas are equivalent when they have the same truth values on every row of the table, and a tautology is true on all rows. De Morgan's laws show how to negate a compound statement: “and” turns into “or”, and the negation of “if $p$, then $q$” is “$p$ and not $q$”. An implication and its contrapositive always share the same value."
+      },
+      "faq": [
+        {
+          "q": {
+            "ro": "Care este negația unei implicații?",
+            "en": "What is the negation of an implication?"
+          },
+          "a": {
+            "ro": "Negația lui „dacă $p$, atunci $q$” este „$p$ și non $q$”: $\\overline{p \\rightarrow q} \\equiv p \\land \\overline{q}$. Implicația este falsă doar când ipoteza este adevărată și concluzia falsă, iar negația spune exact acest lucru. O greșeală frecventă este să scrii „dacă non $p$, atunci non $q$”: aceea este contrara, nu negația.",
+            "en": "The negation of “if $p$, then $q$” is “$p$ and not $q$”: $\\overline{p \\rightarrow q} \\equiv p \\land \\overline{q}$. The implication is false only when the hypothesis is true and the conclusion is false, and the negation states exactly that. A common mistake is to write “if not $p$, then not $q$”: that is the inverse, not the negation."
+          }
+        },
+        {
+          "q": {
+            "ro": "Ce spun legile lui De Morgan?",
+            "en": "What do De Morgan's laws say?"
+          },
+          "a": {
+            "ro": "Negația unei conjuncții este disjuncția negațiilor, iar negația unei disjuncții este conjuncția negațiilor: $\\overline{p \\land q} \\equiv \\overline{p} \\vee \\overline{q}$ și $\\overline{p \\vee q} \\equiv \\overline{p} \\land \\overline{q}$. Când negi un enunț, „și” devine „sau”, iar „sau” devine „și”.",
+            "en": "The negation of a conjunction is the disjunction of the negations, and the negation of a disjunction is the conjunction of the negations: $\\overline{p \\land q} \\equiv \\overline{p} \\vee \\overline{q}$ and $\\overline{p \\vee q} \\equiv \\overline{p} \\land \\overline{q}$. When you negate a statement, “and” turns into “or”, and “or” turns into “and”."
+          }
+        },
+        {
+          "q": {
+            "ro": "Care este diferența dintre reciprocă și contrara reciprocei?",
+            "en": "What is the difference between the converse and the contrapositive?"
+          },
+          "a": {
+            "ro": "Pentru $p \\rightarrow q$, reciproca este $q \\rightarrow p$, iar contrara reciprocei este $\\overline{q} \\rightarrow \\overline{p}$. Contrara reciprocei are mereu aceeași valoare de adevăr ca implicația inițială; reciproca poate avea altă valoare. Pe această echivalență se sprijină metoda reducerii la absurd.",
+            "en": "For $p \\rightarrow q$, the converse is $q \\rightarrow p$ and the contrapositive is $\\overline{q} \\rightarrow \\overline{p}$. The contrapositive always has the same truth value as the original implication; the converse may have a different one. Proof by contradiction rests on this equivalence."
+          }
+        },
+        {
+          "q": {
+            "ro": "Cum verific dacă două formule sunt echivalente?",
+            "en": "How do I check whether two formulas are equivalent?"
+          },
+          "a": {
+            "ro": "Construiești tabelul de adevăr pentru ambele formule, cu toate cele $2^{n}$ combinații de valori ale celor $n$ variabile. Dacă cele două coloane coincid pe fiecare linie, formulele sunt echivalente și scrii $A \\equiv B$. O singură linie diferită ajunge pentru a arăta că nu sunt echivalente.",
+            "en": "You build the truth table of both formulas, with all $2^{n}$ combinations of values of the $n$ variables. If the two columns agree on every row, the formulas are equivalent and you write $A \\equiv B$. A single different row is enough to show that they are not equivalent."
+          }
+        }
+      ]
+    },
+    {
+      "slug": "fisa-lucru-formule-echivalente-negarea-enunturilor",
+      "uid": "1026",
+      "topic": "elemente-logica-matematica",
+      "kind": "fisa-lucru",
+      "title": {
+        "ro": "Fișă de lucru: formule echivalente, negarea enunțurilor",
+        "en": "Worksheet: equivalent formulas, negating statements"
+      },
+      "seoTitle": {
+        "ro": "Formule echivalente, negarea enunțurilor: fișă",
+        "en": "Equivalent formulas, negation: worksheet"
+      },
+      "published": "2026-10-08",
+      "description": {
+        "ro": "Fișă de lucru pentru clasa a IX-a: tabele de adevăr, tautologii, formule echivalente, negarea enunțurilor, reciproca și contrara unei implicații.",
+        "en": "Grade 9 worksheet: truth tables, tautologies, equivalent formulas, negating statements, the converse and the inverse of an implication."
+      },
+      "pdf": "materiale/pdf/fisa-lucru-formule-echivalente-negarea-enunturilor-1026.pdf",
+      "youtube": null,
+      "import": {
+        "date": "2026-10-08",
+        "workflow": 5,
+        "pdf": "generated"
+      },
+      "summary": {
+        "ro": "O tautologie este o formulă adevărată pe toate liniile tabelului de adevăr, iar două formule sunt echivalente când coloanele lor coincid. Un enunț compus se neagă cu legile lui De Morgan și cu negația implicației. Fișa exersează tabelele de adevăr, negarea enunțurilor și reciproca, contrara și contrara reciprocei.",
+        "en": "A tautology is a formula that is true on every row of its truth table, and two formulas are equivalent when their columns agree. A compound statement is negated with De Morgan's laws and the negation of an implication. The worksheet trains truth tables, negating statements and the converse, inverse and contrapositive."
+      },
+      "faq": [
+        {
+          "q": {
+            "ro": "Ce este o tautologie?",
+            "en": "What is a tautology?"
+          },
+          "a": {
+            "ro": "O formulă care ia valoarea $1$ pe fiecare linie a tabelului de adevăr, oricare ar fi valorile variabilelor. Exemple simple sunt $p \\vee \\overline{p}$ și $p \\rightarrow p$. Pentru a arăta că o formulă nu este tautologie, ajunge să găsești o linie pe care ia valoarea $0$.",
+            "en": "A formula that takes the value $1$ on every row of its truth table, whatever the values of the variables. Simple examples are $p \\vee \\overline{p}$ and $p \\rightarrow p$. To show that a formula is not a tautology, it is enough to find one row where it takes the value $0$."
+          }
+        },
+        {
+          "q": {
+            "ro": "Cum neg un enunț care conține „și” sau „sau”?",
+            "en": "How do I negate a statement that contains “and” or “or”?"
+          },
+          "a": {
+            "ro": "Negi fiecare propoziție simplă și schimbi operatorul: „și” devine „sau”, iar „sau” devine „și” (legile lui De Morgan). De exemplu, negația lui „$x > 0$ și $y > 0$” este „$x \\leq 0$ sau $y \\leq 0$”. Relațiile se neagă și ele: $<$ devine $\\geq$, iar $\\in$ devine $\\notin$.",
+            "en": "You negate each simple proposition and switch the operator: “and” turns into “or”, and “or” turns into “and” (De Morgan's laws). For example, the negation of “$x > 0$ and $y > 0$” is “$x \\leq 0$ or $y \\leq 0$”. Relations are negated too: $<$ becomes $\\geq$, and $\\in$ becomes $\\notin$."
+          }
+        },
+        {
+          "q": {
+            "ro": "Este contrara unei implicații același lucru cu negația ei?",
+            "en": "Is the inverse of an implication the same as its negation?"
+          },
+          "a": {
+            "ro": "Nu. Contrara lui $p \\rightarrow q$ este tot o implicație, $\\overline{p} \\rightarrow \\overline{q}$, pe când negația este $p \\land \\overline{q}$. Contrara are mereu aceeași valoare de adevăr ca reciproca, nu ca implicația inițială.",
+            "en": "No. The inverse of $p \\rightarrow q$ is still an implication, $\\overline{p} \\rightarrow \\overline{q}$, while the negation is $p \\land \\overline{q}$. The inverse always has the same truth value as the converse, not as the original implication."
+          }
+        }
+      ],
+      "results": {
+        "version": 1,
+        "checks": 10
+      }
+    },
+    {
+      "slug": "probleme-formule-echivalente-negarea-enunturilor",
+      "uid": "1027",
+      "topic": "elemente-logica-matematica",
+      "kind": "fisa-lucru",
+      "title": {
+        "ro": "Probleme propuse: formule echivalente, negarea enunțurilor",
+        "en": "Practice problems: equivalent formulas, negating statements"
+      },
+      "seoTitle": {
+        "ro": "Formule echivalente, negarea enunțurilor: probleme",
+        "en": "Equivalent formulas, negation: practice problems"
+      },
+      "published": "2026-10-08",
+      "description": {
+        "ro": "Probleme pentru clasa a IX-a: tautologii, legile lui De Morgan, negarea enunțurilor, reciproca și contrara unei implicații, plus o problemă de logică.",
+        "en": "Grade 9 practice problems: tautologies, De Morgan's laws, negating statements, the converse and the inverse of an implication, plus a logic puzzle."
+      },
+      "pdf": "materiale/pdf/probleme-formule-echivalente-negarea-enunturilor-1027.pdf",
+      "youtube": null,
+      "import": {
+        "date": "2026-10-08",
+        "workflow": 5,
+        "pdf": "generated"
+      },
+      "summary": {
+        "ro": "Problemele exersează tabelele de adevăr, recunoașterea tautologiilor și demonstrarea echivalențelor. Enunțurile se neagă în cuvinte, cu legile lui De Morgan și cu negația implicației, iar pentru fiecare implicație se formulează reciproca, contrara și contrara reciprocei. Ultima problemă este un mic puzzle de logică.",
+        "en": "The problems train truth tables, spotting tautologies and proving equivalences. Statements are negated in words, with De Morgan's laws and the negation of an implication, and each implication gets its converse, inverse and contrapositive. The last problem is a small logic puzzle."
+      },
+      "faq": [
+        {
+          "q": {
+            "ro": "Când sunt adevărate atât o implicație, cât și reciproca ei?",
+            "en": "When are both an implication and its converse true?"
+          },
+          "a": {
+            "ro": "Atunci propozițiile sunt echivalente: $p \\leftrightarrow q$ este adevărată, iar în matematică spunem „$p$ dacă și numai dacă $q$”. Pentru a arăta acest lucru, demonstrezi separat $p \\rightarrow q$ și $q \\rightarrow p$; a doua se poate înlocui cu contrara ei, $\\overline{p} \\rightarrow \\overline{q}$, care are aceeași valoare de adevăr.",
+            "en": "Then the propositions are equivalent: $p \\leftrightarrow q$ is true, and in mathematics we say “$p$ if and only if $q$”. To show this, you prove $p \\rightarrow q$ and $q \\rightarrow p$ separately; the second one can be replaced by the inverse of the original implication, $\\overline{p} \\rightarrow \\overline{q}$, which has the same truth value."
+          }
+        },
+        {
+          "q": {
+            "ro": "Cum scriu în cuvinte negația unui enunț compus?",
+            "en": "How do I write the negation of a compound statement in words?"
+          },
+          "a": {
+            "ro": "Pornești de la forma simbolică: identifici propozițiile simple și operatorul care le leagă, aplici regula de negare, apoi traduci înapoi în cuvinte. Formularea „Nu este adevărat…” este corectă, dar o negație bine scrisă mută negația pe propozițiile simple, de forma „nu este … sau nu este …”.",
+            "en": "Start from the symbolic form: find the simple propositions and the operator that links them, apply the negation rule, then translate back into words. Writing “It is not true that…” is correct, but a well-written negation moves the “not” onto the simple propositions, as in “is not … or is not …”."
+          }
+        },
+        {
+          "q": {
+            "ro": "Cum arăt că o implicație este falsă?",
+            "en": "How do I show that an implication is false?"
+          },
+          "a": {
+            "ro": "Cauți un caz în care ipoteza este adevărată și concluzia este falsă; un singur astfel de caz, numit contraexemplu, arată că implicația este falsă. Verifici ambele părți: ipoteza să fie îndeplinită, iar concluzia să nu fie. Pentru o implicație adevărată, în schimb, un exemplu nu ajunge: este nevoie de o demonstrație.",
+            "en": "Look for a case where the hypothesis is true and the conclusion is false; a single such case, called a counterexample, shows that the implication is false. Check both parts: the hypothesis must hold and the conclusion must fail. For a true implication, on the other hand, an example is not enough: you need a proof."
+          }
+        }
+      ],
+      "results": {
+        "version": 1,
+        "checks": 16
+      }
     }
   ],
-  "nextUid": 1025,
+  "nextUid": 1028,
   "retired": []
 }
