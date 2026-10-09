@@ -19,7 +19,7 @@ The guides do not load by themselves. Open the guide for your task before you st
 | Change code or data fields: generator, `assets/js/`, admin page and API, timer workflow, brand mark, theme | `docs/agents/architecture.md` |
 | Change page titles, robots meta, `_headers` or search verification | `docs/agents/seo.md` |
 
-This file is the only project instruction file, for every agent. Claude Code reads it directly. Never add a `CLAUDE.md` or `CLAUDE.local.md` to the repo: Claude Code then stops reading this file. Keep this file short, because it loads in every session; put task steps in the guides.
+This file is the only project instruction file, for every agent. Claude Code reads it directly. Never add a `CLAUDE.md`, `.claude/CLAUDE.md` or `CLAUDE.local.md` to the repo: Claude Code then stops reading this file. Keep this file short, because it loads in every session; put task steps in the guides.
 
 ## Map
 
