@@ -1,0 +1,301 @@
+{
+  "uid": "1028",
+  "version": 1,
+  "items": {
+    "1": {
+      "accept": [
+        "100; 80"
+      ],
+      "hint": {
+        "en": "in the order $C$; $D$",
+        "ro": "în ordinea $C$; $D$"
+      },
+      "kind": "list",
+      "show": "$\\sphericalangle C = 100{^\\circ}$, $\\sphericalangle D = 80{^\\circ}$"
+    },
+    "10a": {
+      "check": false,
+      "show": "$MN$ este linie mijlocie în $\\bigtriangleup ABC$, deci $MN \\parallel BC$ și $MN = \\frac{BC}{2}$. Atunci $MD = 2 \\cdot MN = BC$ și $MD \\parallel BC$. Patrulaterul $MBCD$ are două laturi opuse paralele și congruente, deci este paralelogram.",
+      "why": "proof"
+    },
+    "10b": {
+      "check": false,
+      "show": "$N$ este mijlocul lui $AC$ și al lui $MD$, deci diagonalele patrulaterului $AMCD$ se înjumătățesc; $AMCD$ este paralelogram.",
+      "why": "proof"
+    },
+    "10c": {
+      "accept": [
+        "38"
+      ],
+      "kind": "number",
+      "show": "$P_{MBCD} = 2 \\cdot (5 + 14) = 38\\text{ cm}$"
+    },
+    "2a": {
+      "accept": [
+        "A"
+      ],
+      "kind": "truefalse",
+      "show": "A ($CD = AB = 9\\text{ cm}$)"
+    },
+    "2b": {
+      "accept": [
+        "F"
+      ],
+      "kind": "truefalse",
+      "show": "F ($BC = AD = 7\\text{ cm}$)"
+    },
+    "2c": {
+      "accept": [
+        "F"
+      ],
+      "kind": "truefalse",
+      "show": "F ($P_{ABCD} = 2 \\cdot (9 + 7) = 32\\text{ cm}$)"
+    },
+    "2d": {
+      "accept": [
+        "A"
+      ],
+      "kind": "truefalse",
+      "show": "A ($\\sphericalangle BCD = \\sphericalangle DAB = 58{^\\circ}$)"
+    },
+    "2e": {
+      "accept": [
+        "F"
+      ],
+      "kind": "truefalse",
+      "show": "F ($\\sphericalangle ABC = 180{^\\circ} - 58{^\\circ} = 122{^\\circ}$)"
+    },
+    "2f": {
+      "accept": [
+        "A"
+      ],
+      "kind": "truefalse",
+      "show": "A ($OB = OD = 4\\text{ cm}$)"
+    },
+    "2g": {
+      "accept": [
+        "A"
+      ],
+      "kind": "truefalse",
+      "show": "A ($AC = 2 \\cdot AO = 14\\text{ cm}$)"
+    },
+    "2h": {
+      "accept": [
+        "F"
+      ],
+      "kind": "truefalse",
+      "show": "F ($AC = 14\\text{ cm}$, $BD = 8\\text{ cm}$)"
+    },
+    "3a": {
+      "accept": [
+        "da"
+      ],
+      "kind": "options",
+      "options": [
+        {
+          "chip": {
+            "en": "Yes",
+            "ro": "Da"
+          },
+          "label": {
+            "en": "Yes, it is a parallelogram",
+            "ro": "Da, este paralelogram"
+          },
+          "value": "da"
+        },
+        {
+          "chip": {
+            "en": "No",
+            "ro": "Nu"
+          },
+          "label": {
+            "en": "No, it is not a parallelogram",
+            "ro": "Nu, nu este paralelogram"
+          },
+          "value": "nu"
+        }
+      ],
+      "show": "Da: $O$ este mijlocul ambelor diagonale, deci diagonalele se înjumătățesc și $ABCD$ este paralelogram."
+    },
+    "3b": {
+      "accept": [
+        "nu"
+      ],
+      "kind": "options",
+      "options": [
+        {
+          "chip": {
+            "en": "Yes",
+            "ro": "Da"
+          },
+          "label": {
+            "en": "Yes, it is a parallelogram",
+            "ro": "Da, este paralelogram"
+          },
+          "value": "da"
+        },
+        {
+          "chip": {
+            "en": "No",
+            "ro": "Nu"
+          },
+          "label": {
+            "en": "No, it is not a parallelogram",
+            "ro": "Nu, nu este paralelogram"
+          },
+          "value": "nu"
+        }
+      ],
+      "show": "Nu: $OB \\neq OD$, deci $O$ nu este mijlocul lui $BD$; diagonalele nu se înjumătățesc, așa că $ABCD$ nu este paralelogram."
+    },
+    "3c": {
+      "accept": [
+        "7"
+      ],
+      "kind": "number",
+      "show": "$CD = AB = 7\\text{ cm}$"
+    },
+    "4a": {
+      "accept": [
+        "9"
+      ],
+      "kind": "number",
+      "show": "$MN \\parallel BC$ și $BC = 2 \\cdot MN = 2 \\cdot 4,5 = 9\\text{ cm}$"
+    },
+    "4b": {
+      "accept": [
+        "6; 12"
+      ],
+      "hint": {
+        "en": "in the order $MN$; $BC$",
+        "ro": "în ordinea $MN$; $BC$"
+      },
+      "kind": "list",
+      "show": "$MN = 6\\text{ cm}$ și $BC = 12\\text{ cm}$"
+    },
+    "5a": {
+      "accept": [
+        "80; 100; 80; 100"
+      ],
+      "hint": {
+        "en": "in the order $A$; $B$; $C$; $D$",
+        "ro": "în ordinea $A$; $B$; $C$; $D$"
+      },
+      "kind": "list",
+      "show": "$\\sphericalangle A = 80{^\\circ}$, $\\sphericalangle B = 100{^\\circ}$, $\\sphericalangle C = 80{^\\circ}$, $\\sphericalangle D = 100{^\\circ}$"
+    },
+    "5b": {
+      "check": false,
+      "show": "$\\sphericalangle A = \\sphericalangle C = 80{^\\circ}$ și $\\sphericalangle B = \\sphericalangle D = 100{^\\circ}$: unghiurile opuse sunt congruente două câte două, deci $ABCD$ este paralelogram.",
+      "why": "proof"
+    },
+    "6a": {
+      "accept": [
+        "15; 9"
+      ],
+      "hint": {
+        "en": "in the order $AB$; $BC$",
+        "ro": "în ordinea $AB$; $BC$"
+      },
+      "kind": "list",
+      "show": "$AB = CD = 15\\text{ cm}$, $BC = AD = 9\\text{ cm}$"
+    },
+    "6b": {
+      "accept": [
+        "70; 110"
+      ],
+      "hint": {
+        "en": "in the order $\\sphericalangle BAD$; $\\sphericalangle ABC$",
+        "ro": "în ordinea $\\sphericalangle BAD$; $\\sphericalangle ABC$"
+      },
+      "kind": "list",
+      "show": "$\\sphericalangle BAD = \\sphericalangle BCD = 70{^\\circ}$, $\\sphericalangle ABC = \\sphericalangle ADC = 110{^\\circ}$"
+    },
+    "7a": {
+      "accept": [
+        "36"
+      ],
+      "kind": "number",
+      "show": "$P_{ABC} = 2 \\cdot P_{MNP} = 2 \\cdot 18 = 36\\text{ cm}$"
+    },
+    "7b": {
+      "accept": [
+        "9; 12; 15; 6; 4,5; 7,5"
+      ],
+      "hint": {
+        "en": "in the order $AB$; $BC$; $AC$; $MN$; $NP$; $MP$",
+        "ro": "în ordinea $AB$; $BC$; $AC$; $MN$; $NP$; $MP$"
+      },
+      "kind": "list",
+      "show": "$AB = 9\\text{ cm}$, $BC = 12\\text{ cm}$, $AC = 15\\text{ cm}$; $MN = 6\\text{ cm}$, $NP = 4,5\\text{ cm}$, $MP = 7,5\\text{ cm}$"
+    },
+    "8a": {
+      "accept": [
+        "90; 90; 60; 120"
+      ],
+      "hint": {
+        "en": "in the order $A$; $B$; $C$; $D$",
+        "ro": "în ordinea $A$; $B$; $C$; $D$"
+      },
+      "kind": "list",
+      "show": "$\\sphericalangle A = 90{^\\circ}$, $\\sphericalangle B = 90{^\\circ}$, $\\sphericalangle C = 60{^\\circ}$, $\\sphericalangle D = 120{^\\circ}$"
+    },
+    "8b": {
+      "check": false,
+      "show": "Dreptele $AD$ și $BC$ sunt tăiate de secanta $AB$; $\\sphericalangle A + \\sphericalangle B = 90{^\\circ} + 90{^\\circ} = 180{^\\circ}$, deci $AD \\parallel BC$.",
+      "why": "open"
+    },
+    "8c": {
+      "accept": [
+        "nu"
+      ],
+      "kind": "options",
+      "options": [
+        {
+          "chip": {
+            "en": "Yes",
+            "ro": "Da"
+          },
+          "label": {
+            "en": "Yes, it is a parallelogram",
+            "ro": "Da, este paralelogram"
+          },
+          "value": "da"
+        },
+        {
+          "chip": {
+            "en": "No",
+            "ro": "Nu"
+          },
+          "label": {
+            "en": "No, it is not a parallelogram",
+            "ro": "Nu, nu este paralelogram"
+          },
+          "value": "nu"
+        }
+      ],
+      "show": "Nu. Unghiurile opuse $A$ și $C$ nu sunt congruente ($90{^\\circ} \\neq 60{^\\circ}$), iar într-un paralelogram unghiurile opuse sunt congruente."
+    },
+    "9a": {
+      "check": false,
+      "show": "$DA = DE = 7\\text{ cm}$, deci $\\bigtriangleup ADE$ este isoscel, cu baza $AE$; unghiurile de la bază sunt congruente: $\\sphericalangle DAE \\equiv \\sphericalangle DEA$.",
+      "why": "proof"
+    },
+    "9b": {
+      "check": false,
+      "show": "$AB \\parallel CD$ și $AE$ secantă, deci $\\sphericalangle DEA \\equiv \\sphericalangle EAB$ (alterne interne). Din a) rezultă $\\sphericalangle DAE \\equiv \\sphericalangle EAB$, deci $AE$ este bisectoarea unghiului $BAD$.",
+      "why": "proof"
+    },
+    "9c": {
+      "accept": [
+        "5; 35"
+      ],
+      "hint": {
+        "en": "in the order $EC$; $\\sphericalangle EAB$",
+        "ro": "în ordinea $EC$; $\\sphericalangle EAB$"
+      },
+      "kind": "list",
+      "show": "$EC = 5\\text{ cm}$, $\\sphericalangle EAB = 35{^\\circ}$"
+    }
+  }
+}

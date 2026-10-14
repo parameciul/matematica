@@ -22,6 +22,14 @@
 - [Quiz pe echipe: recapitularea clasei a V-a](https://lauramiron.pages.dev/materiale/quiz-recapitulare-clasa-a-v-a-1005): Quiz pe echipe pentru clasa a VI-a: recapitularea materiei clasei a V-a, de proiectat cu videoproiectorul în clasă. (quiz, clasa a 6-a / grade 6, updated 2026-09-15)
 - [Joc: Mesajul secret (numere naturale și fracții)](https://lauramiron.pages.dev/materiale/joc-mesajul-secret-1006) ([EN](https://lauramiron.pages.dev/en/materiale/joc-mesajul-secret-1006)): Joc de recapitulare pentru clasa a VI-a: mesajul secret, cu numere naturale, fracții, puteri, procente și media aritmetică. (joc, clasa a 6-a / grade 6, updated 2026-09-15)
 
+## Clasa a VII-a / Grade 7
+
+- Clasa a VII-a: https://lauramiron.pages.dev/clasa-7
+- Grade 7: https://lauramiron.pages.dev/en/clasa-7
+
+### Patrulatere / Quadrilaterals
+- [Fișă de lucru: patrulatere — pregătire pentru test](https://lauramiron.pages.dev/materiale/fisa-lucru-patrulatere-pregatire-test-1028) ([EN](https://lauramiron.pages.dev/en/materiale/fisa-lucru-patrulatere-pregatire-test-1028)): Fișă de lucru pentru clasa a VII-a: patrulaterul convex, paralelogramul și linia mijlocie în triunghi, cu exerciții pe trei niveluri. (fisa-lucru, clasa a 7-a / grade 7, updated 2026-10-14)
+
 ## Clasa a VIII-a / Grade 8
 
 - Clasa a VIII-a: https://lauramiron.pages.dev/clasa-8

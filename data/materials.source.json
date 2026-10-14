@@ -71,6 +71,14 @@
         "ro": "Mulțimi",
         "en": "Sets"
       }
+    },
+    {
+      "id": "patrulatere",
+      "grade": 7,
+      "title": {
+        "ro": "Patrulatere",
+        "en": "Quadrilaterals"
+      }
     }
   ],
   "grades": {
@@ -2240,8 +2248,74 @@
         "version": 1,
         "checks": 16
       }
+    },
+    {
+      "slug": "fisa-lucru-patrulatere-pregatire-test",
+      "uid": "1028",
+      "topic": "patrulatere",
+      "kind": "fisa-lucru",
+      "title": {
+        "ro": "Fișă de lucru: patrulatere — pregătire pentru test",
+        "en": "Worksheet: quadrilaterals — test preparation"
+      },
+      "seoTitle": {
+        "ro": "Patrulatere: fișă de lucru pentru test",
+        "en": "Quadrilaterals: test preparation worksheet"
+      },
+      "published": "2026-10-14",
+      "description": {
+        "ro": "Fișă de lucru pentru clasa a VII-a: patrulaterul convex, paralelogramul și linia mijlocie în triunghi, cu exerciții pe trei niveluri.",
+        "en": "Grade 7 worksheet: convex quadrilaterals, parallelograms and the midline in a triangle, with exercises on three levels."
+      },
+      "pdf": "materiale/pdf/fisa-lucru-patrulatere-pregatire-test-1028.pdf",
+      "youtube": null,
+      "import": {
+        "date": "2026-10-14",
+        "workflow": 5,
+        "pdf": "generated"
+      },
+      "summary": {
+        "ro": "Într-un patrulater convex unghiurile au suma de 360 de grade, iar paralelogramul are laturile opuse paralele și congruente, unghiurile opuse congruente și diagonalele care se înjumătățesc. Linia mijlocie unește mijloacele a două laturi ale triunghiului și are jumătate din a treia latură. Fișa exersează toate acestea pe trei niveluri.",
+        "en": "In a convex quadrilateral the angles add up to 360 degrees, and a parallelogram has parallel and equal opposite sides, equal opposite angles and diagonals that bisect each other. The midline joins the midpoints of two sides of a triangle and equals half the third side. The worksheet trains all of this on three levels."
+      },
+      "faq": [
+        {
+          "a": {
+            "en": "A convex quadrilateral is a parallelogram when its opposite sides are parallel in pairs. It is also a parallelogram when the opposite sides are equal in pairs, when the diagonals bisect each other, or when two opposite sides are both parallel and equal. Any one of these gives all the other properties too.",
+            "ro": "Un patrulater convex este paralelogram când laturile opuse sunt paralele două câte două. Tot paralelogram este și când laturile opuse sunt congruente două câte două, când diagonalele se înjumătățesc sau când două laturi opuse sunt și paralele, și congruente. Din oricare dintre acestea rezultă și celelalte proprietăți."
+          },
+          "q": {
+            "en": "How can I tell that a quadrilateral is a parallelogram?",
+            "ro": "Cum recunosc că un patrulater este paralelogram?"
+          }
+        },
+        {
+          "a": {
+            "en": "The segment joining the midpoints of two sides of the triangle; it runs parallel to the third side and equals half of it. That is why the triangle formed by the midlines has half the perimeter of the original triangle. The property works both ways: midpoints give parallelism and half-length, and parallelism plus half-length give midpoints.",
+            "ro": "Segmentul care unește mijloacele a două laturi ale triunghiului; el este paralel cu a treia latură și egal cu jumătate din ea. De aceea triunghiul format de liniile mijlocii are perimetrul jumătate din perimetrul triunghiului inițial. Proprietatea se folosește în ambele sensuri: din mijloc rezultă paralelismul și jumătatea, iar din paralelism și jumătate rezultă mijloacele."
+          },
+          "q": {
+            "en": "What is the midline of a triangle?",
+            "ro": "Ce este linia mijlocie într-un triunghi?"
+          }
+        },
+        {
+          "a": {
+            "en": "The sum is 360 degrees, because a diagonal splits the quadrilateral into two triangles, and the angles of each triangle add up to 180 degrees. In a parallelogram the opposite angles are equal and neighbouring angles are supplementary, that is, they add up to 180 degrees. These relations turn angle data into simple equations.",
+            "ro": "Suma este de 360 de grade, pentru că o diagonală împarte patrulaterul în două triunghiuri, iar unghiurile fiecărui triunghi au suma de 180 de grade. Într-un paralelogram unghiurile opuse sunt congruente, iar unghiurile alăturate sunt suplementare, adică au suma de 180 de grade. Aceste relații transformă datele despre unghiuri în ecuații simple."
+          },
+          "q": {
+            "en": "What is the sum of the angles of a convex quadrilateral?",
+            "ro": "Cât este suma unghiurilor unui patrulater convex?"
+          }
+        }
+      ],
+      "results": {
+        "version": 1,
+        "checks": 23
+      }
     }
   ],
-  "nextUid": 1028,
+  "nextUid": 1029,
   "retired": []
 }

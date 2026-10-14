@@ -654,6 +654,162 @@ The message
 
 ---
 
+## Clasa a VII-a / Grade 7
+
+### Fișă de lucru: patrulatere — pregătire pentru test
+- Source (RO): https://lauramiron.pages.dev/materiale/fisa-lucru-patrulatere-pregatire-test-1028
+- Source (EN): https://lauramiron.pages.dev/en/materiale/fisa-lucru-patrulatere-pregatire-test-1028
+- Author: Laura Miron. License: CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/).
+- Published: 2026-10-14. Updated: 2026-10-14.
+- Fișă de lucru pentru clasa a VII-a: patrulaterul convex, paralelogramul și linia mijlocie în triunghi, cu exerciții pe trei niveluri.
+- Rezumat: Într-un patrulater convex unghiurile au suma de 360 de grade, iar paralelogramul are laturile opuse paralele și congruente, unghiurile opuse congruente și diagonalele care se înjumătățesc. Linia mijlocie unește mijloacele a două laturi ale triunghiului și are jumătate din a treia latură. Fișa exersează toate acestea pe trei niveluri.
+- Întrebări frecvente:
+  - Q: Cum recunosc că un patrulater este paralelogram?
+  - A: Un patrulater convex este paralelogram când laturile opuse sunt paralele două câte două. Tot paralelogram este și când laturile opuse sunt congruente două câte două, când diagonalele se înjumătățesc sau când două laturi opuse sunt și paralele, și congruente. Din oricare dintre acestea rezultă și celelalte proprietăți.
+  - Q: Ce este linia mijlocie într-un triunghi?
+  - A: Segmentul care unește mijloacele a două laturi ale triunghiului; el este paralel cu a treia latură și egal cu jumătate din ea. De aceea triunghiul format de liniile mijlocii are perimetrul jumătate din perimetrul triunghiului inițial. Proprietatea se folosește în ambele sensuri: din mijloc rezultă paralelismul și jumătatea, iar din paralelism și jumătate rezultă mijloacele.
+  - Q: Cât este suma unghiurilor unui patrulater convex?
+  - A: Suma este de 360 de grade, pentru că o diagonală împarte patrulaterul în două triunghiuri, iar unghiurile fiecărui triunghi au suma de 180 de grade. Într-un paralelogram unghiurile opuse sunt congruente, iar unghiurile alăturate sunt suplementare, adică au suma de 180 de grade. Aceste relații transformă datele despre unghiuri în ecuații simple.
+
+Problemele sunt grupate pe cele trei niveluri din „Ce trebuie să știu pentru test”. La fiecare problemă realizează un desen și scrie de fiecare dată proprietatea pe care o folosești.
+Nivel de bază
+-
+Patrulaterul convex $ABCD$ are $\sphericalangle A = 75{^\circ}$ și $\sphericalangle B = 105{^\circ}$, iar unghiul $C$ are cu $20{^\circ}$ mai mult decât unghiul $D$. Aflați măsurile unghiurilor $C$ și $D$.
+-
+În figura de mai jos, $ABCD$ este paralelogram, $AC \cap BD = \{ O\}$, $AB = 9\text{ cm}$, $AD = 7\text{ cm}$, $\sphericalangle DAB = 58{^\circ}$, $AO = 7\text{ cm}$ și $OD = 4\text{ cm}$. Folosind datele din figură, scrieți în căsuță A dacă afirmația este adevărată sau F dacă este falsă.
+Afirmația
+A / F
+a)
+$CD = 9\text{ cm}$
+b)
+$BC = 9\text{ cm}$
+c)
+$P_{ABCD} = 16\text{ cm}$
+d)
+$\sphericalangle BCD = 58{^\circ}$
+e)
+$\sphericalangle ABC = 58{^\circ}$
+f)
+$OB = 4\text{ cm}$
+g)
+$AC = 14\text{ cm}$
+h)
+$AC = BD$
+-
+Diagonalele patrulaterului convex $ABCD$ se intersectează în punctul $O$. Stabiliți, în fiecare caz, dacă $ABCD$ este paralelogram și justificați răspunsul.
+a) $OA = OC = 5\text{ cm}$ și $OB = OD = 3\text{ cm}$;
+b) $OA = OC = 5\text{ cm}$, $OB = 3\text{ cm}$ și $OD = 4\text{ cm}$.
+c) În cazul de la punctul a), știind că $AB = 7\text{ cm}$, aflați lungimea laturii $CD$.
+-
+În triunghiul $ABC$, punctele $M$ și $N$ sunt mijloacele laturilor $AB$, respectiv $AC$.
+a) Dacă $MN = 4,5\text{ cm}$, calculați lungimea laturii $BC$. Ce poziție au dreptele $MN$ și $BC$?
+b) Dacă $MN + BC = 18\text{ cm}$, calculați lungimile segmentelor $MN$ și $BC$.
+Nivel consolidat
+-
+Măsurile unghiurilor $A$, $B$, $C$ și $D$ ale patrulaterului convex $ABCD$ sunt direct proporționale cu numerele $4$, $5$, $4$, respectiv $5$.
+a) Determinați măsurile unghiurilor patrulaterului.
+b) Demonstrați că patrulaterul $ABCD$ este paralelogram.
+-
+Perimetrul paralelogramului $ABCD$ este egal cu $48\text{ cm}$, iar latura $AB$ este cu $6\text{ cm}$ mai lungă decât latura $BC$.
+a) Calculați lungimile laturilor paralelogramului.
+b) Știind că unghiul $BAD$ are cu $40{^\circ}$ mai puțin decât unghiul $ABC$, determinați măsurile unghiurilor paralelogramului.
+-
+În triunghiul $ABC$, punctele $M$, $N$ și $P$ sunt mijloacele laturilor $AB$, $AC$, respectiv $BC$. Lungimile laturilor $AB$, $BC$ și $AC$ sunt direct proporționale cu numerele $3$, $4$, respectiv $5$, iar perimetrul triunghiului $MNP$ este egal cu $18\text{ cm}$.
+a) Calculați perimetrul triunghiului $ABC$.
+b) Calculați lungimile laturilor triunghiului $ABC$ și lungimile segmentelor $MN$, $NP$ și $MP$.
+Nivel avansat
+-
+Măsurile unghiurilor $A$, $B$, $C$ și $D$ ale patrulaterului convex $ABCD$ sunt invers proporționale cu numerele $4$, $4$, $6$, respectiv $3$.
+a) Determinați măsurile unghiurilor patrulaterului $ABCD$.
+b) Precizați care două laturi ale patrulaterului sunt paralele și justificați.
+c) Este $ABCD$ paralelogram? Justificați răspunsul.
+-
+În paralelogramul $ABCD$, $AB = 12\text{ cm}$ și $AD = 7\text{ cm}$. Pe latura $CD$ se consideră punctul $E$ astfel încât $DE = 7\text{ cm}$.
+a) Demonstrați că $\sphericalangle DAE \equiv \sphericalangle DEA$.
+b) Demonstrați că semidreapta $AE$ este bisectoarea unghiului $BAD$.
+c) Calculați lungimea segmentului $EC$ și, știind că $\sphericalangle ADC = 110{^\circ}$, determinați măsura unghiului $EAB$.
+-
+În triunghiul $ABC$, punctele $M$ și $N$ sunt mijloacele laturilor $AB$, respectiv $AC$. Pe semidreapta $MN$ se consideră punctul $D$, astfel încât $N$ să fie mijlocul segmentului $MD$.
+a) Demonstrați că patrulaterul $MBCD$ este paralelogram.
+b) Demonstrați că patrulaterul $AMCD$ este paralelogram.
+c) Știind că $AB = 10\text{ cm}$ și $BC = 14\text{ cm}$, calculați perimetrul paralelogramului $MBCD$.
+
+--- EN ---
+
+In a convex quadrilateral the angles add up to 360 degrees, and a parallelogram has parallel and equal opposite sides, equal opposite angles and diagonals that bisect each other. The midline joins the midpoints of two sides of a triangle and equals half the third side. The worksheet trains all of this on three levels.
+
+Q: How can I tell that a quadrilateral is a parallelogram?
+A: A convex quadrilateral is a parallelogram when its opposite sides are parallel in pairs. It is also a parallelogram when the opposite sides are equal in pairs, when the diagonals bisect each other, or when two opposite sides are both parallel and equal. Any one of these gives all the other properties too.
+Q: What is the midline of a triangle?
+A: The segment joining the midpoints of two sides of the triangle; it runs parallel to the third side and equals half of it. That is why the triangle formed by the midlines has half the perimeter of the original triangle. The property works both ways: midpoints give parallelism and half-length, and parallelism plus half-length give midpoints.
+Q: What is the sum of the angles of a convex quadrilateral?
+A: The sum is 360 degrees, because a diagonal splits the quadrilateral into two triangles, and the angles of each triangle add up to 180 degrees. In a parallelogram the opposite angles are equal and neighbouring angles are supplementary, that is, they add up to 180 degrees. These relations turn angle data into simple equations.
+
+The problems are grouped on the three levels from “What I need to know for the test”. For each problem draw a figure and always write down the property you use.
+Basic level
+-
+The convex quadrilateral $ABCD$ has $\sphericalangle A = 75{^\circ}$ and $\sphericalangle B = 105{^\circ}$, and angle $C$ is $20{^\circ}$ larger than angle $D$. Find the measures of angles $C$ and $D$.
+-
+In the figure below, $ABCD$ is a parallelogram, $AC \cap BD = \{ O\}$, $AB = 9\text{ cm}$, $AD = 7\text{ cm}$, $\sphericalangle DAB = 58{^\circ}$, $AO = 7\text{ cm}$ and $OD = 4\text{ cm}$. Using the data in the figure, write A in the box if the statement is true or F if it is false.
+Statement
+A / F
+a)
+$CD = 9\text{ cm}$
+b)
+$BC = 9\text{ cm}$
+c)
+$P_{ABCD} = 16\text{ cm}$
+d)
+$\sphericalangle BCD = 58{^\circ}$
+e)
+$\sphericalangle ABC = 58{^\circ}$
+f)
+$OB = 4\text{ cm}$
+g)
+$AC = 14\text{ cm}$
+h)
+$AC = BD$
+-
+The diagonals of the convex quadrilateral $ABCD$ meet at the point $O$. Decide, in each case, whether $ABCD$ is a parallelogram and justify your answer.
+a) $OA = OC = 5\text{ cm}$ and $OB = OD = 3\text{ cm}$;
+b) $OA = OC = 5\text{ cm}$, $OB = 3\text{ cm}$ and $OD = 4\text{ cm}$.
+c) In the case at point a), knowing that $AB = 7\text{ cm}$, find the length of the side $CD$.
+-
+In the triangle $ABC$, the points $M$ and $N$ are the midpoints of the sides $AB$ and $AC$ respectively.
+a) If $MN = 4,5\text{ cm}$, calculate the length of the side $BC$. What is the position of the lines $MN$ and $BC$?
+b) If $MN + BC = 18\text{ cm}$, calculate the lengths of the segments $MN$ and $BC$.
+Consolidation level
+-
+The measures of the angles $A$, $B$, $C$ and $D$ of the convex quadrilateral $ABCD$ are directly proportional to the numbers $4$, $5$, $4$ and $5$ respectively.
+a) Find the measures of the angles of the quadrilateral.
+b) Show that the quadrilateral $ABCD$ is a parallelogram.
+-
+The perimeter of the parallelogram $ABCD$ is $48\text{ cm}$, and the side $AB$ is $6\text{ cm}$ longer than the side $BC$.
+a) Calculate the lengths of the sides of the parallelogram.
+b) Knowing that angle $BAD$ is $40{^\circ}$ smaller than angle $ABC$, find the measures of the angles of the parallelogram.
+-
+In the triangle $ABC$, the points $M$, $N$ and $P$ are the midpoints of the sides $AB$, $AC$ and $BC$ respectively. The lengths of the sides $AB$, $BC$ and $AC$ are directly proportional to the numbers $3$, $4$ and $5$ respectively, and the perimeter of the triangle $MNP$ is $18\text{ cm}$.
+a) Calculate the perimeter of the triangle $ABC$.
+b) Calculate the lengths of the sides of the triangle $ABC$ and the lengths of the segments $MN$, $NP$ and $MP$.
+Advanced level
+-
+The measures of the angles $A$, $B$, $C$ and $D$ of the convex quadrilateral $ABCD$ are inversely proportional to the numbers $4$, $4$, $6$ and $3$ respectively.
+a) Find the measures of the angles of the quadrilateral $ABCD$.
+b) Say which two sides of the quadrilateral are parallel and justify.
+c) Is $ABCD$ a parallelogram? Justify your answer.
+-
+In the parallelogram $ABCD$, $AB = 12\text{ cm}$ and $AD = 7\text{ cm}$. On the side $CD$ consider the point $E$ such that $DE = 7\text{ cm}$.
+a) Show that $\sphericalangle DAE \equiv \sphericalangle DEA$.
+b) Show that the ray $AE$ is the bisector of angle $BAD$.
+c) Calculate the length of the segment $EC$ and, knowing that $\sphericalangle ADC = 110{^\circ}$, find the measure of angle $EAB$.
+-
+In the triangle $ABC$, the points $M$ and $N$ are the midpoints of the sides $AB$ and $AC$ respectively. On the ray $MN$ consider the point $D$ such that $N$ is the midpoint of the segment $MD$.
+a) Show that the quadrilateral $MBCD$ is a parallelogram.
+b) Show that the quadrilateral $AMCD$ is a parallelogram.
+c) Knowing that $AB = 10\text{ cm}$ and $BC = 14\text{ cm}$, calculate the perimeter of the parallelogram $MBCD$.
+
+---
+
 ## Clasa a VIII-a / Grade 8
 
 ### Fișă recapitulativă: clasele a V-a – a VII-a, pregătire pentru testul inițial
