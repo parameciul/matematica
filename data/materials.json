@@ -79,6 +79,14 @@
         "ro": "Patrulatere",
         "en": "Quadrilaterals"
       }
+    },
+    {
+      "id": "evaluare-nationala",
+      "grade": 8,
+      "title": {
+        "ro": "Pregătire pentru Evaluarea Națională",
+        "en": "National Evaluation practice"
+      }
     }
   ],
   "grades": {
@@ -2260,6 +2268,172 @@
       "results": {
         "version": 1,
         "checks": 23
+      }
+    },
+    {
+      "slug": "fisa-lucru-evaluare-nationala-subiectul-1",
+      "uid": "1029",
+      "topic": "evaluare-nationala",
+      "kind": "fisa-lucru",
+      "title": {
+        "ro": "Fișă de lucru: Evaluarea Națională, Subiectul I",
+        "en": "Worksheet: National Evaluation, Subject I"
+      },
+      "published": "2026-10-24",
+      "description": {
+        "ro": "Fișă de lucru pentru clasa a VIII-a: 30 de itemi cu variante de răspuns, ca la Subiectul I al Evaluării Naționale la matematică.",
+        "en": "Grade 8 worksheet: 30 multiple-choice items modeled on Subject I of the National Evaluation in mathematics."
+      },
+      "pdf": "materiale/pdf/fisa-lucru-evaluare-nationala-subiectul-1-1029.pdf",
+      "youtube": null,
+      "import": {
+        "date": "2026-10-24",
+        "workflow": 5,
+        "pdf": "source"
+      },
+      "summary": {
+        "ro": "Subiectul I al Evaluării Naționale are șase itemi de algebră cu variante de răspuns: calcule, proporții și procente, mulțimi, numere reale, „cine a calculat corect” și „adevărat sau fals”. Fișa are câte cinci itemi din fiecare tip. Alegi litera răspunsului corect și îți verifici răspunsul direct pe pagină.",
+        "en": "Subject I of the National Evaluation has six algebra items with answer choices: computations, ratios and percentages, sets, real numbers, \"who calculated correctly\" and \"true or false\". The worksheet has five items of each type. You pick the letter of the correct answer and check it right on the page."
+      },
+      "faq": [
+        {
+          "q": {
+            "ro": "Ce conține Subiectul I la Evaluarea Națională la matematică?",
+            "en": "What does Subject I of the National Evaluation in math contain?"
+          },
+          "a": {
+            "ro": "Șase itemi de algebră cu alegere multiplă, de câte 5 puncte: ordinea operațiilor, rapoarte și procente, mulțimi și intervale, compararea numerelor reale, un item în care alegi elevul care a calculat corect și unul de tip adevărat sau fals. Se cere doar litera răspunsului corect.",
+            "en": "Six multiple-choice algebra items worth 5 points each: order of operations, ratios and percentages, sets and intervals, comparing real numbers, one item where you pick the student who calculated correctly, and one true-or-false item. Only the letter of the correct answer is required."
+          }
+        },
+        {
+          "q": {
+            "ro": "Cum lucrez eficient itemii cu variante de răspuns?",
+            "en": "How do I work efficiently on multiple-choice items?"
+          },
+          "a": {
+            "ro": "Rezolvă întâi pe ciornă, fără să te uiți la variante, apoi caută rezultatul printre ele. Dacă nu îl găsești, verifică ordinea operațiilor și semnele. Variantele greșite pornesc de la greșelile frecvente, așa că o variantă care pare cunoscută nu este neapărat cea corectă.",
+            "en": "Solve it on scrap paper first, without looking at the choices, then find your result among them. If it is not there, check the order of operations and the signs. The wrong choices come from common mistakes, so a choice that looks familiar is not necessarily the right one."
+          }
+        }
+      ],
+      "results": {
+        "version": 1,
+        "checks": 30
+      },
+      "seoTitle": {
+        "ro": "Evaluarea Națională: 30 de itemi, Subiectul I",
+        "en": "National Evaluation: 30 Subject I items"
+      },
+      "keywords": {
+        "ro": [
+          "evaluarea națională",
+          "subiectul I",
+          "itemi cu variante de răspuns",
+          "ordinea operațiilor",
+          "procente",
+          "mulțimi",
+          "intervale",
+          "numere reale",
+          "clasa a 8-a",
+          "clasa a VIII-a"
+        ],
+        "en": [
+          "national evaluation",
+          "subject I",
+          "multiple-choice items",
+          "order of operations",
+          "percentages",
+          "sets",
+          "intervals",
+          "real numbers",
+          "grade 8"
+        ]
+      }
+    },
+    {
+      "slug": "fisa-lucru-evaluare-nationala-subiectul-2",
+      "uid": "1030",
+      "topic": "evaluare-nationala",
+      "kind": "fisa-lucru",
+      "title": {
+        "ro": "Fișă de lucru: Evaluarea Națională, Subiectul al II-lea",
+        "en": "Worksheet: National Evaluation, Subject II"
+      },
+      "published": "2026-10-24",
+      "description": {
+        "ro": "Fișă de lucru pentru clasa a VIII-a: 30 de itemi de geometrie, cu figuri și variante de răspuns, ca la Subiectul al II-lea al Evaluării Naționale.",
+        "en": "Grade 8 worksheet: 30 geometry items with figures and answer choices, modeled on Subject II of the National Evaluation."
+      },
+      "pdf": "materiale/pdf/fisa-lucru-evaluare-nationala-subiectul-2-1030.pdf",
+      "youtube": null,
+      "import": {
+        "date": "2026-10-24",
+        "workflow": 5,
+        "pdf": "source"
+      },
+      "summary": {
+        "ro": "Subiectul al II-lea al Evaluării Naționale verifică geometria plană și în spațiu prin șase itemi cu figuri: segmente, unghiuri, triunghiuri și patrulatere, cercul, arii și corpuri geometrice. Fișa are câte cinci itemi din fiecare tip, fiecare cu desenul lui. Alegi litera răspunsului corect și îți verifici răspunsul pe pagină.",
+        "en": "Subject II of the National Evaluation tests plane and solid geometry with six items that come with figures: segments, angles, triangles and quadrilaterals, the circle, areas and solids. The worksheet has five items of each type, each with its own drawing. You pick the letter of the correct answer and check it on the page."
+      },
+      "faq": [
+        {
+          "q": {
+            "ro": "Ce se cere la Subiectul al II-lea la Evaluarea Națională?",
+            "en": "What does Subject II of the National Evaluation ask for?"
+          },
+          "a": {
+            "ro": "Șase itemi de geometrie cu alegere multiplă, de câte 5 puncte, de obicei cu o figură alăturată: puncte coliniare și segmente, unghiuri, triunghiuri și patrulatere, cercul, arii și un corp geometric. Datele din enunț și din figură se folosesc împreună.",
+            "en": "Six multiple-choice geometry items worth 5 points each, usually with a figure next to them: collinear points and segments, angles, triangles and quadrilaterals, the circle, areas and a solid. You use the data in the statement and in the figure together."
+          }
+        },
+        {
+          "q": {
+            "ro": "Cum folosesc figura la un item de geometrie?",
+            "en": "How do I use the figure in a geometry item?"
+          },
+          "a": {
+            "ro": "Trece pe figură toate datele din enunț: lungimi, unghiuri, mijloace, unghiuri drepte. Apoi caută o configurație pe care o recunoști, de exemplu un triunghi dreptunghic, o linie mijlocie sau un unghi înscris. Nu măsura pe desen: figura nu este la scară, așa că rezultatul se calculează, nu se citește.",
+            "en": "Mark every piece of data from the statement on the figure: lengths, angles, midpoints, right angles. Then look for a configuration you recognise, such as a right triangle, a midline or an inscribed angle. Do not measure on the drawing: the figure is not to scale, so the result is calculated, not read off."
+          }
+        }
+      ],
+      "results": {
+        "version": 1,
+        "checks": 30
+      },
+      "seoTitle": {
+        "ro": "Evaluarea Națională: 30 de itemi, Subiectul II",
+        "en": "National Evaluation: 30 Subject II items"
+      },
+      "keywords": {
+        "ro": [
+          "evaluarea națională",
+          "subiectul al II-lea",
+          "geometrie",
+          "unghiuri",
+          "triunghiuri",
+          "patrulatere",
+          "cercul",
+          "arii",
+          "cub",
+          "paralelipiped dreptunghic",
+          "clasa a 8-a",
+          "clasa a VIII-a"
+        ],
+        "en": [
+          "national evaluation",
+          "subject II",
+          "geometry",
+          "angles",
+          "triangles",
+          "quadrilaterals",
+          "circle",
+          "areas",
+          "cube",
+          "cuboid",
+          "grade 8"
+        ]
       }
     }
   ]

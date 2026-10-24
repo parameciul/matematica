@@ -35,6 +35,10 @@
 - Clasa a VIII-a: https://lauramiron.pages.dev/clasa-8
 - Grade 8: https://lauramiron.pages.dev/en/clasa-8
 
+### Pregătire pentru Evaluarea Națională / National Evaluation practice
+- [Fișă de lucru: Evaluarea Națională, Subiectul I](https://lauramiron.pages.dev/materiale/fisa-lucru-evaluare-nationala-subiectul-1-1029) ([EN](https://lauramiron.pages.dev/en/materiale/fisa-lucru-evaluare-nationala-subiectul-1-1029)): Fișă de lucru pentru clasa a VIII-a: 30 de itemi cu variante de răspuns, ca la Subiectul I al Evaluării Naționale la matematică. (fisa-lucru, clasa a 8-a / grade 8, updated 2026-10-24)
+- [Fișă de lucru: Evaluarea Națională, Subiectul al II-lea](https://lauramiron.pages.dev/materiale/fisa-lucru-evaluare-nationala-subiectul-2-1030) ([EN](https://lauramiron.pages.dev/en/materiale/fisa-lucru-evaluare-nationala-subiectul-2-1030)): Fișă de lucru pentru clasa a VIII-a: 30 de itemi de geometrie, cu figuri și variante de răspuns, ca la Subiectul al II-lea al Evaluării Naționale. (fisa-lucru, clasa a 8-a / grade 8, updated 2026-10-24)
+
 ### Recapitulare inițială: materia claselor a V-a – a VII-a / Start-of-year review: grades 5-7 math
 - [Fișă recapitulativă: clasele a V-a – a VII-a, pregătire pentru testul inițial](https://lauramiron.pages.dev/materiale/fisa-recapitulativa-clasele-v-vii-test-initial-1008) ([EN](https://lauramiron.pages.dev/en/materiale/fisa-recapitulativa-clasele-v-vii-test-initial-1008)): Fișă recapitulativă pentru clasa a VIII-a: materia claselor a V-a – a VII-a, pregătire pentru testul inițial, algebră și geometrie. (fisa-recapitulativa, clasa a 8-a / grade 8, updated 2026-09-17)
 

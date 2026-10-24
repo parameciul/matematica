@@ -44,6 +44,10 @@ https://:version.:project.pages.dev/*
 /tm25mlg/*
   X-Robots-Tag: noindex
   Cache-Control: no-store
+/materiale/pdf/fisa-lucru-evaluare-nationala-subiectul-1-1029.pdf
+  Link: <https://lauramiron.pages.dev/materiale/fisa-lucru-evaluare-nationala-subiectul-1-1029>; rel="canonical"
+/materiale/pdf/fisa-lucru-evaluare-nationala-subiectul-2-1030.pdf
+  Link: <https://lauramiron.pages.dev/materiale/fisa-lucru-evaluare-nationala-subiectul-2-1030>; rel="canonical"
 /materiale/pdf/fisa-lucru-formule-echivalente-negarea-enunturilor-1026.pdf
   Link: <https://lauramiron.pages.dev/materiale/fisa-lucru-formule-echivalente-negarea-enunturilor-1026>; rel="canonical"
 /materiale/pdf/fisa-lucru-modulul-unui-numar-real-1012.pdf

@@ -1,0 +1,216 @@
+{
+  "uid": "1029",
+  "version": 1,
+  "items": {
+    "1": {
+      "kind": "choice",
+      "accept": [
+        "c"
+      ],
+      "show": "c) $39$. $27:9 \\cdot 2 = 3 \\cdot 2 = 6$, apoi $45 - 6 = 39$."
+    },
+    "2": {
+      "kind": "choice",
+      "accept": [
+        "a"
+      ],
+      "show": "a) $\\frac{19}{12}$. Numitorul comun este 12: $\\frac{9}{12} + \\frac{10}{12} = \\frac{19}{12}$."
+    },
+    "3": {
+      "kind": "choice",
+      "accept": [
+        "b"
+      ],
+      "show": "b) $10$. $3^{4}:3^{2} = 3^{2} = 9$ și $5^{0} = 1$, deci $9 + 1 = 10$."
+    },
+    "4": {
+      "kind": "choice",
+      "accept": [
+        "d"
+      ],
+      "show": "d) $0$. $\\sqrt{36} - \\sqrt{36} = 6 - 6 = 0$."
+    },
+    "5": {
+      "kind": "choice",
+      "accept": [
+        "c"
+      ],
+      "show": "c) $10$. $2,4:0,6 = 4$ și $1,5 \\cdot 4 = 6$, deci $4 + 6 = 10$."
+    },
+    "6": {
+      "kind": "choice",
+      "accept": [
+        "b"
+      ],
+      "show": "b) $22,50$ lei. Un kilogram costă $13,50:3 = 4,50$ lei, iar 5 kg costă $5 \\cdot 4,50 = 22,50$ lei."
+    },
+    "7": {
+      "kind": "choice",
+      "accept": [
+        "c"
+      ],
+      "show": "c) $65$ de lei. $30\\%$ din 50 este 15, deci noul preț este $50 + 15 = 65$ de lei."
+    },
+    "8": {
+      "kind": "choice",
+      "accept": [
+        "a"
+      ],
+      "show": "a) $15$. $x = \\frac{12 \\cdot 5}{4} = 15$."
+    },
+    "9": {
+      "kind": "choice",
+      "accept": [
+        "a"
+      ],
+      "show": "a) $3$ km. $6 \\cdot 50000 = 300000$ cm $= 3000$ m $= 3$ km."
+    },
+    "10": {
+      "kind": "choice",
+      "accept": [
+        "d"
+      ],
+      "show": "d) $4$ ore. Distanța este $3 \\cdot 80 = 240$ km; $240:60 = 4$ ore (mărimi invers proporționale)."
+    },
+    "11": {
+      "kind": "choice",
+      "accept": [
+        "c"
+      ],
+      "show": "c) $(3,1;\\ 3,2)$. $3,1^{2} = 9,61 &lt; 10 &lt; 10,24 = 3,2^{2}$, deci $3,1 &lt; \\sqrt{10} &lt; 3,2$."
+    },
+    "12": {
+      "kind": "choice",
+      "accept": [
+        "a"
+      ],
+      "show": "a) $\\{ 2;\\ 11\\}$. Păstrăm elementele lui $A$ care nu sunt în $B$: $2$ și $11$."
+    },
+    "13": {
+      "kind": "choice",
+      "accept": [
+        "b"
+      ],
+      "show": "b) $7$. Multiplii sunt $0;\\ 6;\\ 12;\\ 18;\\ 24;\\ 30;\\ 36$, adică 7 numere (nu uităm de 0)."
+    },
+    "14": {
+      "kind": "choice",
+      "accept": [
+        "c"
+      ],
+      "show": "c) $\\{ - 2;\\  - 1;\\ 0;\\ 1;\\ 2\\}$. $|x| &lt; 3$ înseamnă $- 3 &lt; x &lt; 3$; numerele întregi sunt $- 2;\\  - 1;\\ 0;\\ 1;\\ 2$."
+    },
+    "15": {
+      "kind": "choice",
+      "accept": [
+        "d"
+      ],
+      "show": "d) $\\{ 0;\\ 1;\\ 2;\\ 3\\}$. $2x &lt; 8$, deci $x &lt; 4$; numerele naturale sunt $0;\\ 1;\\ 2;\\ 3$."
+    },
+    "16": {
+      "kind": "choice",
+      "accept": [
+        "b"
+      ],
+      "show": "b) $c &lt; a = b$. $0\\text{,}(3) = \\frac{1}{3} = 0,333...$, iar $0,33 &lt; 0,333...$, deci $c &lt; a = b$."
+    },
+    "17": {
+      "kind": "choice",
+      "accept": [
+        "c"
+      ],
+      "show": "c) $c &lt; a &lt; b$. $a = \\sqrt{18}$, $b = \\sqrt{20}$, $c = \\sqrt{16}$, deci $c &lt; a &lt; b$."
+    },
+    "18": {
+      "kind": "choice",
+      "accept": [
+        "d"
+      ],
+      "show": "d) $4$. $2 &lt; \\sqrt{5} &lt; 3$ și $6 &lt; \\sqrt{40} &lt; 7$; numerele sunt $3;\\ 4;\\ 5;\\ 6$."
+    },
+    "19": {
+      "kind": "choice",
+      "accept": [
+        "a"
+      ],
+      "show": "a) $- | - 6|$. $- | - 6| = - 6$, iar $- 6 &lt; - 5 &lt; 0 &lt; 3$."
+    },
+    "20": {
+      "kind": "choice",
+      "accept": [
+        "d"
+      ],
+      "show": "d) $\\sqrt{3} - 1$. $\\sqrt{3} &gt; 1$, deci $1 - \\sqrt{3} &lt; 0$ și $\\left| 1 - \\sqrt{3} \\right| = \\sqrt{3} - 1$."
+    },
+    "21": {
+      "kind": "choice",
+      "accept": [
+        "c"
+      ],
+      "show": "c) Carla. $\\frac{30}{100} \\cdot 250 = 75$."
+    },
+    "22": {
+      "kind": "choice",
+      "accept": [
+        "a"
+      ],
+      "show": "a) Irina. $(14 + 19 + 27):3 = 60:3 = 20$."
+    },
+    "23": {
+      "kind": "choice",
+      "accept": [
+        "b"
+      ],
+      "show": "b) Ioana. $24 = 2^{3} \\cdot 3$, $40 = 2^{3} \\cdot 5$, deci c.m.m.d.c. este $2^{3} = 8$ (120 este c.m.m.m.c.)."
+    },
+    "24": {
+      "kind": "choice",
+      "accept": [
+        "d"
+      ],
+      "show": "d) Diana. $( - 2)^{3} = - 8$ și $( - 3)^{2} = 9$, deci $- 8 + 9 = 1$."
+    },
+    "25": {
+      "kind": "choice",
+      "accept": [
+        "b"
+      ],
+      "show": "b) Gabriela. $(\\sqrt{5} - 1)^{2} = 5 - 2\\sqrt{5} + 1 = 6 - 2\\sqrt{5}$."
+    },
+    "26": {
+      "kind": "choice",
+      "accept": [
+        "a"
+      ],
+      "show": "a) Adevărată. $2025 = 45^{2}$, deci afirmația este adevărată."
+    },
+    "27": {
+      "kind": "choice",
+      "accept": [
+        "a"
+      ],
+      "show": "a) Adevărată. $\\frac{2}{5} + \\frac{1}{4} = \\frac{13}{20}$, iar $\\frac{13}{20} &gt; \\frac{10}{20} = \\frac{1}{2}$. Adevărată."
+    },
+    "28": {
+      "kind": "choice",
+      "accept": [
+        "b"
+      ],
+      "show": "b) Falsă. $\\sqrt{9} + \\sqrt{16} = 3 + 4 = 7$, iar $\\sqrt{25} = 5$. Falsă."
+    },
+    "29": {
+      "kind": "choice",
+      "accept": [
+        "b"
+      ],
+      "show": "b) Falsă. $\\sqrt{2} + \\sqrt{8} = \\sqrt{2} + 2\\sqrt{2} = 3\\sqrt{2}$, care nu este număr natural. Falsă."
+    },
+    "30": {
+      "kind": "choice",
+      "accept": [
+        "b"
+      ],
+      "show": "b) Falsă. Dacă prețul era 100 de lei: $100 \\rightarrow 110 \\rightarrow 99$ de lei. Falsă."
+    }
+  }
+}

@@ -812,6 +812,876 @@ c) Knowing that $AB = 10\text{ cm}$ and $BC = 14\text{ cm}$, calculate the perim
 
 ## Clasa a VIII-a / Grade 8
 
+### Fișă de lucru: Evaluarea Națională, Subiectul I
+- Source (RO): https://lauramiron.pages.dev/materiale/fisa-lucru-evaluare-nationala-subiectul-1-1029
+- Source (EN): https://lauramiron.pages.dev/en/materiale/fisa-lucru-evaluare-nationala-subiectul-1-1029
+- Author: Laura Miron. License: CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/).
+- Published: 2026-10-24. Updated: 2026-10-24.
+- Fișă de lucru pentru clasa a VIII-a: 30 de itemi cu variante de răspuns, ca la Subiectul I al Evaluării Naționale la matematică.
+- Rezumat: Subiectul I al Evaluării Naționale are șase itemi de algebră cu variante de răspuns: calcule, proporții și procente, mulțimi, numere reale, „cine a calculat corect” și „adevărat sau fals”. Fișa are câte cinci itemi din fiecare tip. Alegi litera răspunsului corect și îți verifici răspunsul direct pe pagină.
+- Întrebări frecvente:
+  - Q: Ce conține Subiectul I la Evaluarea Națională la matematică?
+  - A: Șase itemi de algebră cu alegere multiplă, de câte 5 puncte: ordinea operațiilor, rapoarte și procente, mulțimi și intervale, compararea numerelor reale, un item în care alegi elevul care a calculat corect și unul de tip adevărat sau fals. Se cere doar litera răspunsului corect.
+  - Q: Cum lucrez eficient itemii cu variante de răspuns?
+  - A: Rezolvă întâi pe ciornă, fără să te uiți la variante, apoi caută rezultatul printre ele. Dacă nu îl găsești, verifică ordinea operațiilor și semnele. Variantele greșite pornesc de la greșelile frecvente, așa că o variantă care pare cunoscută nu este neapărat cea corectă.
+
+Încercuiește litera corespunzătoare răspunsului corect. Fiecare item are un singur răspuns corect.
+Calcule cu numere
+-
+Rezultatul calculului $45 - 27:9 \cdot 2$ este egal cu:
+- a) $4$
+- b) $12$
+- c) $39$
+- d) $42$
+-
+Rezultatul calculului $\frac{3}{4} + \frac{5}{6}$ este egal cu:
+- a) $\frac{19}{12}$
+- b) $\frac{8}{10}$
+- c) $\frac{4}{5}$
+- d) $\frac{15}{24}$
+-
+Rezultatul calculului $3^{4}:3^{2} + 5^{0}$ este egal cu:
+- a) $9$
+- b) $10$
+- c) $15$
+- d) $4$
+-
+Rezultatul calculului $\sqrt{2} \cdot \sqrt{18} - \sqrt{3} \cdot \sqrt{12}$ este egal cu:
+- a) $6$
+- b) $12$
+- c) $\sqrt{6}$
+- d) $0$
+-
+Rezultatul calculului $2,4:0,6 + 1,5 \cdot 4$ este egal cu:
+- a) $7$
+- b) $22$
+- c) $10$
+- d) $4,6$
+Rapoarte, proporții, procente
+-
+Trei kilograme de mere costă $13,50$ lei. Cinci kilograme de mere de același fel costă:
+- a) $18$ lei
+- b) $22,50$ lei
+- c) $27$ lei
+- d) $15$ lei
+-
+Un abonament costă $50$ de lei. După o scumpire cu $30\%$, abonamentul costă:
+- a) $80$ de lei
+- b) $15$ lei
+- c) $65$ de lei
+- d) $53$ de lei
+-
+Numărul $x$ care verifică proporția $\frac{x}{12} = \frac{5}{4}$ este:
+- a) $15$
+- b) $9,6$
+- c) $20$
+- d) $48$
+-
+Pe o hartă cu scara $1:50000$, distanța dintre două sate este de $6$ cm. Distanța reală dintre sate este:
+- a) $3$ km
+- b) $30$ km
+- c) $0,3$ km
+- d) $300$ km
+-
+Un autoturism parcurge o distanță în $3$ ore, cu viteza de $80$ km/h. Cu viteza de $60$ km/h, autoturismul parcurge aceeași distanță în:
+- a) $2,25$ ore
+- b) $3,5$ ore
+- c) $5$ ore
+- d) $4$ ore
+Mulțimi și intervale
+-
+Numărul $\sqrt{10}$ aparține intervalului:
+- a) $(2;\ 3)$
+- b) $(3;\ 3,1)$
+- c) $(3,1;\ 3,2)$
+- d) $\lbrack 3,2;\ 4)$
+-
+Dacă $A = \{ 2;\ 5;\ 8;\ 11\}$ și $B = \{ 5;\ 6;\ 7;\ 8\}$, atunci mulțimea $A \smallsetminus B$ este:
+- a) $\{ 2;\ 11\}$
+- b) $\{ 5;\ 8\}$
+- c) $\{ 6;\ 7\}$
+- d) $\{ 2;\ 5;\ 6;\ 7;\ 8;\ 11\}$
+-
+Numărul multiplilor naturali ai lui $6$ mai mici decât $40$ este:
+- a) $6$
+- b) $7$
+- c) $5$
+- d) $8$
+-
+Mulțimea $A = \{ x \in {\mathbb{Z}}\ |\ |x| < 3\}$ este egală cu:
+- a) $\{ 0;\ 1;\ 2\}$
+- b) $\{ - 2;\ 2\}$
+- c) $\{ - 2;\ - 1;\ 0;\ 1;\ 2\}$
+- d) $\{ - 3;\ - 2;\ - 1;\ 0;\ 1;\ 2;\ 3\}$
+-
+Mulțimea soluțiilor naturale ale inecuației $2x - 3 < 5$ este:
+- a) $\{ 1;\ 2;\ 3\}$
+- b) $\{ 0;\ 1;\ 2;\ 3;\ 4\}$
+- c) $\{ 1;\ 2;\ 3;\ 4\}$
+- d) $\{ 0;\ 1;\ 2;\ 3\}$
+Numere reale: comparare și ordonare
+-
+Se consideră numerele $a = 0\text{,}(3)$, $b = \frac{1}{3}$ și $c = 0,33$. Este adevărată relația:
+- a) $a < b < c$
+- b) $c < a = b$
+- c) $a = b < c$
+- d) $c < b < a$
+-
+Ordinea crescătoare a numerelor $a = 3\sqrt{2}$, $b = 2\sqrt{5}$ și $c = 4$ este:
+- a) $a < b < c$
+- b) $c < b < a$
+- c) $c < a < b$
+- d) $b < a < c$
+-
+Numărul numerelor naturale din intervalul $\lbrack\sqrt{5};\ \sqrt{40}\rbrack$ este:
+- a) $3$
+- b) $5$
+- c) $6$
+- d) $4$
+-
+Cel mai mic dintre numerele $- 5$; $| - 3|$; $- | - 6|$; $0$ este:
+- a) $- | - 6|$
+- b) $- 5$
+- c) $0$
+- d) $| - 3|$
+-
+Modulul numărului $1 - \sqrt{3}$ este egal cu:
+- a) $1 - \sqrt{3}$
+- b) $1 + \sqrt{3}$
+- c) $- 1 - \sqrt{3}$
+- d) $\sqrt{3} - 1$
+Cine a calculat corect?
+-
+Patru elevi au calculat $30\%$ din $250$. Rezultatele lor sunt trecute în tabelul de mai jos.
+Ana
+Bogdan
+Carla
+Dan
+$25$
+$7,5$
+$75$
+$220$
+Elevul care a calculat corect este:
+- a) Ana
+- b) Bogdan
+- c) Carla
+- d) Dan
+-
+Patru elevi au calculat media aritmetică a numerelor $14$; $19$ și $27$. Rezultatele lor sunt trecute în tabelul de mai jos.
+Irina
+Matei
+Sara
+Tudor
+$20$
+$30$
+$60$
+$19$
+Elevul care a calculat corect este:
+- a) Irina
+- b) Matei
+- c) Sara
+- d) Tudor
+-
+Patru elevi au calculat cel mai mare divizor comun al numerelor $24$ și $40$. Rezultatele lor sunt trecute în tabelul de mai jos.
+Radu
+Ioana
+Mihai
+Delia
+$120$
+$8$
+$4$
+$2$
+Elevul care a calculat corect este:
+- a) Radu
+- b) Ioana
+- c) Mihai
+- d) Delia
+-
+Patru elevi au calculat $( - 2)^{3} + ( - 3)^{2}$. Rezultatele lor sunt trecute în tabelul de mai jos.
+Alex
+Bianca
+Ciprian
+Diana
+$- 17$
+$17$
+$- 1$
+$1$
+Elevul care a calculat corect este:
+- a) Alex
+- b) Bianca
+- c) Ciprian
+- d) Diana
+-
+Patru elevi au calculat $(\sqrt{5} - 1)^{2}$. Rezultatele lor sunt trecute în tabelul de mai jos.
+Florin
+Gabriela
+Horia
+Ilinca
+$4$
+$6 - 2\sqrt{5}$
+$4 - 2\sqrt{5}$
+$6$
+Elevul care a calculat corect este:
+- a) Florin
+- b) Gabriela
+- c) Horia
+- d) Ilinca
+Adevărat sau fals?
+-
+Afirmația: „Numărul $2025$ este pătrat perfect.” este:
+- a) Adevărată
+- b) Falsă
+-
+Din suma de bani pe care o avea, Maria a cheltuit $\frac{2}{5}$ pe o carte și $\frac{1}{4}$ pe un caiet. Afirmația: „Maria a cheltuit mai mult de jumătate din sumă.” este:
+- a) Adevărată
+- b) Falsă
+-
+Afirmația: „$\sqrt{9} + \sqrt{16} = \sqrt{25}$” este:
+- a) Adevărată
+- b) Falsă
+-
+Afirmația: „Numărul $\sqrt{2} + \sqrt{8}$ este număr natural.” este:
+- a) Adevărată
+- b) Falsă
+-
+Prețul unui telefon a crescut cu $10\%$, apoi noul preț a scăzut cu $10\%$. Afirmația: „Acum telefonul costă la fel ca la început.” este:
+- a) Adevărată
+- b) Falsă
+
+--- EN ---
+
+Subject I of the National Evaluation has six algebra items with answer choices: computations, ratios and percentages, sets, real numbers, "who calculated correctly" and "true or false". The worksheet has five items of each type. You pick the letter of the correct answer and check it right on the page.
+
+Q: What does Subject I of the National Evaluation in math contain?
+A: Six multiple-choice algebra items worth 5 points each: order of operations, ratios and percentages, sets and intervals, comparing real numbers, one item where you pick the student who calculated correctly, and one true-or-false item. Only the letter of the correct answer is required.
+Q: How do I work efficiently on multiple-choice items?
+A: Solve it on scrap paper first, without looking at the choices, then find your result among them. If it is not there, check the order of operations and the signs. The wrong choices come from common mistakes, so a choice that looks familiar is not necessarily the right one.
+
+Circle the letter of the correct answer. Each item has exactly one correct answer.
+Computations with numbers
+-
+The result of the calculation $45 - 27:9 \cdot 2$ is:
+- a) $4$
+- b) $12$
+- c) $39$
+- d) $42$
+-
+The result of the calculation $\frac{3}{4} + \frac{5}{6}$ is:
+- a) $\frac{19}{12}$
+- b) $\frac{8}{10}$
+- c) $\frac{4}{5}$
+- d) $\frac{15}{24}$
+-
+The result of the calculation $3^{4}:3^{2} + 5^{0}$ is:
+- a) $9$
+- b) $10$
+- c) $15$
+- d) $4$
+-
+The result of the calculation $\sqrt{2} \cdot \sqrt{18} - \sqrt{3} \cdot \sqrt{12}$ is:
+- a) $6$
+- b) $12$
+- c) $\sqrt{6}$
+- d) $0$
+-
+The result of the calculation $2,4:0,6 + 1,5 \cdot 4$ is:
+- a) $7$
+- b) $22$
+- c) $10$
+- d) $4,6$
+Ratios, proportions, percentages
+-
+Three kilograms of apples cost $13,50$ lei. Five kilograms of the same apples cost:
+- a) $18$ lei
+- b) $22,50$ lei
+- c) $27$ lei
+- d) $15$ lei
+-
+A subscription costs $50$ lei. After a price increase of $30\%$, the subscription costs:
+- a) $80$ lei
+- b) $15$ lei
+- c) $65$ lei
+- d) $53$ lei
+-
+The number $x$ that satisfies the proportion $\frac{x}{12} = \frac{5}{4}$ is:
+- a) $15$
+- b) $9,6$
+- c) $20$
+- d) $48$
+-
+On a map with the scale $1:50000$, the distance between two villages is $6$ cm. The real distance between the villages is:
+- a) $3$ km
+- b) $30$ km
+- c) $0,3$ km
+- d) $300$ km
+-
+A car covers a distance in $3$ hours at a speed of $80$ km/h. At a speed of $60$ km/h, the car covers the same distance in:
+- a) $2,25$ hours
+- b) $3,5$ hours
+- c) $5$ hours
+- d) $4$ hours
+Sets and intervals
+-
+The number $\sqrt{10}$ belongs to the interval:
+- a) $(2;\ 3)$
+- b) $(3;\ 3,1)$
+- c) $(3,1;\ 3,2)$
+- d) $\lbrack 3,2;\ 4)$
+-
+If $A = \{ 2;\ 5;\ 8;\ 11\}$ and $B = \{ 5;\ 6;\ 7;\ 8\}$, then the set $A \smallsetminus B$ is:
+- a) $\{ 2;\ 11\}$
+- b) $\{ 5;\ 8\}$
+- c) $\{ 6;\ 7\}$
+- d) $\{ 2;\ 5;\ 6;\ 7;\ 8;\ 11\}$
+-
+The number of natural multiples of $6$ less than $40$ is:
+- a) $6$
+- b) $7$
+- c) $5$
+- d) $8$
+-
+The set $A = \{ x \in {\mathbb{Z}}\ |\ |x| < 3\}$ is equal to:
+- a) $\{ 0;\ 1;\ 2\}$
+- b) $\{ - 2;\ 2\}$
+- c) $\{ - 2;\ - 1;\ 0;\ 1;\ 2\}$
+- d) $\{ - 3;\ - 2;\ - 1;\ 0;\ 1;\ 2;\ 3\}$
+-
+The set of natural solutions of the inequality $2x - 3 < 5$ is:
+- a) $\{ 1;\ 2;\ 3\}$
+- b) $\{ 0;\ 1;\ 2;\ 3;\ 4\}$
+- c) $\{ 1;\ 2;\ 3;\ 4\}$
+- d) $\{ 0;\ 1;\ 2;\ 3\}$
+Real numbers: comparing and ordering
+-
+Consider the numbers $a = 0\text{,}(3)$, $b = \frac{1}{3}$ and $c = 0,33$. The true relation is:
+- a) $a < b < c$
+- b) $c < a = b$
+- c) $a = b < c$
+- d) $c < b < a$
+-
+The increasing order of the numbers $a = 3\sqrt{2}$, $b = 2\sqrt{5}$ and $c = 4$ is:
+- a) $a < b < c$
+- b) $c < b < a$
+- c) $c < a < b$
+- d) $b < a < c$
+-
+The number of natural numbers in the interval $\lbrack\sqrt{5};\ \sqrt{40}\rbrack$ is:
+- a) $3$
+- b) $5$
+- c) $6$
+- d) $4$
+-
+The smallest of the numbers $- 5$; $| - 3|$; $- | - 6|$; $0$ is:
+- a) $- | - 6|$
+- b) $- 5$
+- c) $0$
+- d) $| - 3|$
+-
+The absolute value of the number $1 - \sqrt{3}$ is:
+- a) $1 - \sqrt{3}$
+- b) $1 + \sqrt{3}$
+- c) $- 1 - \sqrt{3}$
+- d) $\sqrt{3} - 1$
+Who calculated correctly?
+-
+Four students calculated $30\%$ of $250$. Their results are in the table below.
+Ana
+Bogdan
+Carla
+Dan
+$25$
+$7,5$
+$75$
+$220$
+The student who calculated correctly is:
+- a) Ana
+- b) Bogdan
+- c) Carla
+- d) Dan
+-
+Four students calculated the arithmetic mean of the numbers $14$; $19$ and $27$. Their results are in the table below.
+Irina
+Matei
+Sara
+Tudor
+$20$
+$30$
+$60$
+$19$
+The student who calculated correctly is:
+- a) Irina
+- b) Matei
+- c) Sara
+- d) Tudor
+-
+Four students calculated the greatest common divisor of the numbers $24$ and $40$. Their results are in the table below.
+Radu
+Ioana
+Mihai
+Delia
+$120$
+$8$
+$4$
+$2$
+The student who calculated correctly is:
+- a) Radu
+- b) Ioana
+- c) Mihai
+- d) Delia
+-
+Four students calculated $( - 2)^{3} + ( - 3)^{2}$. Their results are in the table below.
+Alex
+Bianca
+Ciprian
+Diana
+$- 17$
+$17$
+$- 1$
+$1$
+The student who calculated correctly is:
+- a) Alex
+- b) Bianca
+- c) Ciprian
+- d) Diana
+-
+Four students calculated $(\sqrt{5} - 1)^{2}$. Their results are in the table below.
+Florin
+Gabriela
+Horia
+Ilinca
+$4$
+$6 - 2\sqrt{5}$
+$4 - 2\sqrt{5}$
+$6$
+The student who calculated correctly is:
+- a) Florin
+- b) Gabriela
+- c) Horia
+- d) Ilinca
+True or false?
+-
+The statement “The number $2025$ is a perfect square.” is:
+- a) True
+- b) False
+-
+From the money she had, Maria spent $\frac{2}{5}$ on a book and $\frac{1}{4}$ on a notebook. The statement “Maria spent more than half of the money.” is:
+- a) True
+- b) False
+-
+The statement “$\sqrt{9} + \sqrt{16} = \sqrt{25}$” is:
+- a) True
+- b) False
+-
+The statement “The number $\sqrt{2} + \sqrt{8}$ is a natural number.” is:
+- a) True
+- b) False
+-
+The price of a phone went up by $10\%$, then the new price went down by $10\%$. The statement “The phone now costs the same as at the start.” is:
+- a) True
+- b) False
+
+---
+
+### Fișă de lucru: Evaluarea Națională, Subiectul al II-lea
+- Source (RO): https://lauramiron.pages.dev/materiale/fisa-lucru-evaluare-nationala-subiectul-2-1030
+- Source (EN): https://lauramiron.pages.dev/en/materiale/fisa-lucru-evaluare-nationala-subiectul-2-1030
+- Author: Laura Miron. License: CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/).
+- Published: 2026-10-24. Updated: 2026-10-24.
+- Fișă de lucru pentru clasa a VIII-a: 30 de itemi de geometrie, cu figuri și variante de răspuns, ca la Subiectul al II-lea al Evaluării Naționale.
+- Rezumat: Subiectul al II-lea al Evaluării Naționale verifică geometria plană și în spațiu prin șase itemi cu figuri: segmente, unghiuri, triunghiuri și patrulatere, cercul, arii și corpuri geometrice. Fișa are câte cinci itemi din fiecare tip, fiecare cu desenul lui. Alegi litera răspunsului corect și îți verifici răspunsul pe pagină.
+- Întrebări frecvente:
+  - Q: Ce se cere la Subiectul al II-lea la Evaluarea Națională?
+  - A: Șase itemi de geometrie cu alegere multiplă, de câte 5 puncte, de obicei cu o figură alăturată: puncte coliniare și segmente, unghiuri, triunghiuri și patrulatere, cercul, arii și un corp geometric. Datele din enunț și din figură se folosesc împreună.
+  - Q: Cum folosesc figura la un item de geometrie?
+  - A: Trece pe figură toate datele din enunț: lungimi, unghiuri, mijloace, unghiuri drepte. Apoi caută o configurație pe care o recunoști, de exemplu un triunghi dreptunghic, o linie mijlocie sau un unghi înscris. Nu măsura pe desen: figura nu este la scară, așa că rezultatul se calculează, nu se citește.
+
+Încercuiește litera corespunzătoare răspunsului corect. Fiecare item are un singur răspuns corect.
+Puncte coliniare și segmente
+-
+În figura alăturată, punctele $A$, $B$ și $C$ sunt coliniare, în această ordine, $AB = 9$ cm și $BC = 5$ cm. Punctul $M$ este mijlocul segmentului $AC$. Lungimea segmentului $BM$ este:
+- a) $7$ cm
+- b) $2$ cm
+- c) $4$ cm
+- d) $4,5$ cm
+-
+În figura alăturată, punctele $A$, $B$, $C$ și $D$ sunt coliniare, în această ordine, cu $AB = BC = CD$ și $AD = 15$ cm. Lungimea segmentului $AC$ este:
+- a) $5$ cm
+- b) $7,5$ cm
+- c) $10$ cm
+- d) $12$ cm
+-
+În figura alăturată, $AB = 16$ cm, punctul $M$ este mijlocul segmentului $AB$, iar punctul $N$ este mijlocul segmentului $MB$. Lungimea segmentului $AN$ este:
+- a) $12$ cm
+- b) $8$ cm
+- c) $4$ cm
+- d) $10$ cm
+-
+În figura alăturată, punctele $A$, $B$ și $C$ sunt coliniare, în această ordine, $AB = 3 \cdot BC$ și $AC = 20$ cm. Lungimea segmentului $BC$ este:
+- a) $15$ cm
+- b) $4$ cm
+- c) $10$ cm
+- d) $5$ cm
+-
+În figura alăturată, $O$ este mijlocul segmentului $AB$, $AB = 9$ cm, iar punctul $P$ se află pe semidreapta $OB$, după $B$, astfel încât $OP = 7$ cm. Lungimea segmentului $BP$ este:
+- a) $11,5$ cm
+- b) $2,5$ cm
+- c) $4,5$ cm
+- d) $3$ cm
+Unghiuri
+-
+În figura alăturată, dreptele $a$ și $b$ sunt paralele, iar dreapta $c$ este o secantă. Valoarea lui $x$ este:
+- a) $58{^\circ}$
+- b) $122{^\circ}$
+- c) $32{^\circ}$
+- d) $132{^\circ}$
+-
+În figura alăturată, punctele $A$, $O$ și $C$ sunt coliniare, iar $\sphericalangle AOB = \sphericalangle BOC + 40{^\circ}$. Unghiul $BOC$ are măsura:
+- a) $70{^\circ}$
+- b) $110{^\circ}$
+- c) $40{^\circ}$
+- d) $20{^\circ}$
+-
+În figura alăturată, semidreapta $OM$ este bisectoarea unghiului $AOB$ și $\sphericalangle AOM = 38{^\circ}$. Unghiul $AOB$ are măsura:
+- a) $19{^\circ}$
+- b) $52{^\circ}$
+- c) $76{^\circ}$
+- d) $142{^\circ}$
+-
+În figura alăturată, unghiurile $AOB$, $BOC$ și $COA$ sunt în jurul punctului $O$, $\sphericalangle AOB = 130{^\circ}$ și $\sphericalangle BOC = 110{^\circ}$. Unghiul $COA$ are măsura:
+- a) $100{^\circ}$
+- b) $60{^\circ}$
+- c) $140{^\circ}$
+- d) $120{^\circ}$
+-
+Un unghi are măsura egală cu $\frac{2}{3}$ din măsura complementului său. Măsura unghiului este:
+- a) $54{^\circ}$
+- b) $45{^\circ}$
+- c) $36{^\circ}$
+- d) $60{^\circ}$
+Triunghiuri și patrulatere
+-
+Rama unui tablou are forma unui dreptunghi cu dimensiunile din figura alăturată. Lungimea ramei este:
+- a) $1,3$ m
+- b) $2,6$ m
+- c) $1,6$ m
+- d) $4$ m
+-
+În figura alăturată, triunghiul $ABC$ este isoscel, cu $AB = AC$, și $\sphericalangle B = 65{^\circ}$. Unghiul $A$ are măsura:
+- a) $65{^\circ}$
+- b) $115{^\circ}$
+- c) $50{^\circ}$
+- d) $25{^\circ}$
+-
+În figura alăturată, $ABCD$ este un paralelogram cu $AB = 2 \cdot BC$ și perimetrul de $42$ cm. Lungimea laturii $AB$ este:
+- a) $7$ cm
+- b) $14$ cm
+- c) $21$ cm
+- d) $10,5$ cm
+-
+În figura alăturată, triunghiul $ABC$ este dreptunghic în $A$, $AB = 5$ cm și $AC = 12$ cm. Lungimea ipotenuzei $BC$ este:
+- a) $17$ cm
+- b) $7$ cm
+- c) $15$ cm
+- d) $13$ cm
+-
+În figura alăturată, $M$ este mijlocul laturii $AB$, $N$ este mijlocul laturii $AC$, iar $BC = 18$ cm. Lungimea segmentului $MN$ este:
+- a) $9$ cm
+- b) $6$ cm
+- c) $18$ cm
+- d) $36$ cm
+Cercul
+-
+În figura alăturată, $AB$ este diametru în cercul de centru $O$ și $AB = 10$ cm. Aria discului este:
+- a) $100\pi$ cm²
+- b) $10\pi$ cm²
+- c) $25\pi$ cm²
+- d) $5\pi$ cm²
+-
+În figura alăturată, $AB$ este diametru în cercul de centru $O$, punctul $C$ se află pe cerc și $\sphericalangle BAC = 35{^\circ}$. Unghiul $ABC$ are măsura:
+- a) $55{^\circ}$
+- b) $35{^\circ}$
+- c) $90{^\circ}$
+- d) $45{^\circ}$
+-
+În figura alăturată este reprezentat un cerc de centru $O$ și rază $OA = 6$ cm. Lungimea cercului este:
+- a) $6\pi$ cm
+- b) $36\pi$ cm
+- c) $24\pi$ cm
+- d) $12\pi$ cm
+-
+În figura alăturată, punctele $A$, $B$ și $C$ se află pe cercul de centru $O$, iar $\sphericalangle ACB = 40{^\circ}$. Unghiul $AOB$ are măsura:
+- a) $40{^\circ}$
+- b) $80{^\circ}$
+- c) $20{^\circ}$
+- d) $140{^\circ}$
+-
+În figura alăturată, cercul de centru $O$ are raza de $5$ cm, dreapta $PT$ este tangentă cercului în punctul $T$ și $OP = 13$ cm. Lungimea segmentului $PT$ este:
+- a) $8$ cm
+- b) $\sqrt{194}$ cm
+- c) $12$ cm
+- d) $18$ cm
+Arii
+-
+În figura alăturată, dreptunghiul $ABCD$ are aria de $54$ cm² și $BC = 6$ cm. Perimetrul dreptunghiului este:
+- a) $30$ cm
+- b) $15$ cm
+- c) $60$ cm
+- d) $108$ cm
+-
+În figura alăturată, $AD\bot BC$, $D \in BC$, $BC = 12$ cm și $AD = 7$ cm. Aria triunghiului $ABC$ este:
+- a) $84$ cm²
+- b) $42$ cm²
+- c) $19$ cm²
+- d) $38$ cm²
+-
+În figura alăturată, $ABCD$ este un trapez cu bazele $AB = 13$ cm și $CD = 7$ cm, iar înălțimea trapezului este de $5$ cm. Aria trapezului este:
+- a) $100$ cm²
+- b) $45$ cm²
+- c) $50$ cm²
+- d) $65$ cm²
+-
+În figura alăturată, $ABCD$ este un romb cu diagonalele $AC = 14$ cm și $BD = 9$ cm. Aria rombului este:
+- a) $126$ cm²
+- b) $23$ cm²
+- c) $31,5$ cm²
+- d) $63$ cm²
+-
+În figura alăturată, triunghiul $ABC$ este echilateral, cu latura de $6$ cm. Aria triunghiului este:
+- a) $18\sqrt{3}$ cm²
+- b) $9\sqrt{3}$ cm²
+- c) $36$ cm²
+- d) $6\sqrt{3}$ cm²
+Cubul și paralelipipedul dreptunghic
+-
+În figura alăturată este reprezentat cubul $ABCDA'B'C'D'$. Suma lungimilor tuturor muchiilor cubului este de $60$ cm. Volumul cubului este:
+- a) $25$ cm³
+- b) $150$ cm³
+- c) $125$ cm³
+- d) $75$ cm³
+-
+În figura alăturată este reprezentat paralelipipedul dreptunghic $ABCDA'B'C'D'$, cu $AB = 5$ cm, $BC = 3$ cm și $AA' = 2$ cm. Aria totală a paralelipipedului este:
+- a) $62$ cm²
+- b) $30$ cm²
+- c) $31$ cm²
+- d) $50$ cm²
+-
+În figura alăturată este reprezentat cubul $ABCDA'B'C'D'$. Numărul muchiilor cubului care sunt paralele cu muchia $AB$ (fără $AB$) este:
+- a) $2$
+- b) $3$
+- c) $4$
+- d) $1$
+-
+În figura alăturată este reprezentat cubul $ABCDA'B'C'D'$, cu muchia de $5$ cm. Lungimea diagonalei $AC$ a feței $ABCD$ este:
+- a) $5\sqrt{3}$ cm
+- b) $10$ cm
+- c) $25$ cm
+- d) $5\sqrt{2}$ cm
+-
+O cutie are forma unui paralelipiped dreptunghic, cu dimensiunile din figura alăturată. Numărul maxim de cuburi cu muchia de $2$ cm care încap în cutie este:
+- a) $30$
+- b) $240$
+- c) $60$
+- d) $15$
+
+--- EN ---
+
+Subject II of the National Evaluation tests plane and solid geometry with six items that come with figures: segments, angles, triangles and quadrilaterals, the circle, areas and solids. The worksheet has five items of each type, each with its own drawing. You pick the letter of the correct answer and check it on the page.
+
+Q: What does Subject II of the National Evaluation ask for?
+A: Six multiple-choice geometry items worth 5 points each, usually with a figure next to them: collinear points and segments, angles, triangles and quadrilaterals, the circle, areas and a solid. You use the data in the statement and in the figure together.
+Q: How do I use the figure in a geometry item?
+A: Mark every piece of data from the statement on the figure: lengths, angles, midpoints, right angles. Then look for a configuration you recognise, such as a right triangle, a midline or an inscribed angle. Do not measure on the drawing: the figure is not to scale, so the result is calculated, not read off.
+
+Circle the letter of the correct answer. Each item has exactly one correct answer.
+Collinear points and segments
+-
+In the figure, the points $A$, $B$ and $C$ are collinear, in this order, $AB = 9$ cm and $BC = 5$ cm. The point $M$ is the midpoint of the segment $AC$. The length of the segment $BM$ is:
+- a) $7$ cm
+- b) $2$ cm
+- c) $4$ cm
+- d) $4,5$ cm
+-
+In the figure, the points $A$, $B$, $C$ and $D$ are collinear, in this order, with $AB = BC = CD$ and $AD = 15$ cm. The length of the segment $AC$ is:
+- a) $5$ cm
+- b) $7,5$ cm
+- c) $10$ cm
+- d) $12$ cm
+-
+In the figure, $AB = 16$ cm, the point $M$ is the midpoint of the segment $AB$, and the point $N$ is the midpoint of the segment $MB$. The length of the segment $AN$ is:
+- a) $12$ cm
+- b) $8$ cm
+- c) $4$ cm
+- d) $10$ cm
+-
+In the figure, the points $A$, $B$ and $C$ are collinear, in this order, $AB = 3 \cdot BC$ and $AC = 20$ cm. The length of the segment $BC$ is:
+- a) $15$ cm
+- b) $4$ cm
+- c) $10$ cm
+- d) $5$ cm
+-
+In the figure, $O$ is the midpoint of the segment $AB$, $AB = 9$ cm, and the point $P$ lies on the ray $OB$, beyond $B$, so that $OP = 7$ cm. The length of the segment $BP$ is:
+- a) $11,5$ cm
+- b) $2,5$ cm
+- c) $4,5$ cm
+- d) $3$ cm
+Angles
+-
+In the figure, the lines $a$ and $b$ are parallel, and the line $c$ is a transversal. The value of $x$ is:
+- a) $58{^\circ}$
+- b) $122{^\circ}$
+- c) $32{^\circ}$
+- d) $132{^\circ}$
+-
+In the figure, the points $A$, $O$ and $C$ are collinear, and $\sphericalangle AOB = \sphericalangle BOC + 40{^\circ}$. The angle $BOC$ measures:
+- a) $70{^\circ}$
+- b) $110{^\circ}$
+- c) $40{^\circ}$
+- d) $20{^\circ}$
+-
+In the figure, the ray $OM$ is the bisector of the angle $AOB$ and $\sphericalangle AOM = 38{^\circ}$. The angle $AOB$ measures:
+- a) $19{^\circ}$
+- b) $52{^\circ}$
+- c) $76{^\circ}$
+- d) $142{^\circ}$
+-
+In the figure, the angles $AOB$, $BOC$ and $COA$ are around the point $O$, $\sphericalangle AOB = 130{^\circ}$ and $\sphericalangle BOC = 110{^\circ}$. The angle $COA$ measures:
+- a) $100{^\circ}$
+- b) $60{^\circ}$
+- c) $140{^\circ}$
+- d) $120{^\circ}$
+-
+An angle measures $\frac{2}{3}$ of its complement. The measure of the angle is:
+- a) $54{^\circ}$
+- b) $45{^\circ}$
+- c) $36{^\circ}$
+- d) $60{^\circ}$
+Triangles and quadrilaterals
+-
+A picture frame has the shape of a rectangle with the dimensions shown in the figure. The length of the frame is:
+- a) $1,3$ m
+- b) $2,6$ m
+- c) $1,6$ m
+- d) $4$ m
+-
+In the figure, the triangle $ABC$ is isosceles, with $AB = AC$, and $\sphericalangle B = 65{^\circ}$. The angle $A$ measures:
+- a) $65{^\circ}$
+- b) $115{^\circ}$
+- c) $50{^\circ}$
+- d) $25{^\circ}$
+-
+In the figure, $ABCD$ is a parallelogram with $AB = 2 \cdot BC$ and a perimeter of $42$ cm. The length of the side $AB$ is:
+- a) $7$ cm
+- b) $14$ cm
+- c) $21$ cm
+- d) $10,5$ cm
+-
+In the figure, the triangle $ABC$ is a right triangle with the right angle at $A$, $AB = 5$ cm and $AC = 12$ cm. The length of the hypotenuse $BC$ is:
+- a) $17$ cm
+- b) $7$ cm
+- c) $15$ cm
+- d) $13$ cm
+-
+In the figure, $M$ is the midpoint of the side $AB$, $N$ is the midpoint of the side $AC$, and $BC = 18$ cm. The length of the segment $MN$ is:
+- a) $9$ cm
+- b) $6$ cm
+- c) $18$ cm
+- d) $36$ cm
+The circle
+-
+In the figure, $AB$ is a diameter of the circle with centre $O$ and $AB = 10$ cm. The area of the disc is:
+- a) $100\pi$ cm²
+- b) $10\pi$ cm²
+- c) $25\pi$ cm²
+- d) $5\pi$ cm²
+-
+In the figure, $AB$ is a diameter of the circle with centre $O$, the point $C$ lies on the circle and $\sphericalangle BAC = 35{^\circ}$. The angle $ABC$ measures:
+- a) $55{^\circ}$
+- b) $35{^\circ}$
+- c) $90{^\circ}$
+- d) $45{^\circ}$
+-
+The figure shows a circle with centre $O$ and radius $OA = 6$ cm. The circumference of the circle is:
+- a) $6\pi$ cm
+- b) $36\pi$ cm
+- c) $24\pi$ cm
+- d) $12\pi$ cm
+-
+In the figure, the points $A$, $B$ and $C$ lie on the circle with centre $O$, and $\sphericalangle ACB = 40{^\circ}$. The angle $AOB$ measures:
+- a) $40{^\circ}$
+- b) $80{^\circ}$
+- c) $20{^\circ}$
+- d) $140{^\circ}$
+-
+In the figure, the circle with centre $O$ has a radius of $5$ cm, the line $PT$ is tangent to the circle at the point $T$ and $OP = 13$ cm. The length of the segment $PT$ is:
+- a) $8$ cm
+- b) $\sqrt{194}$ cm
+- c) $12$ cm
+- d) $18$ cm
+Areas
+-
+In the figure, the rectangle $ABCD$ has an area of $54$ cm² and $BC = 6$ cm. The perimeter of the rectangle is:
+- a) $30$ cm
+- b) $15$ cm
+- c) $60$ cm
+- d) $108$ cm
+-
+In the figure, $AD\bot BC$, $D \in BC$, $BC = 12$ cm and $AD = 7$ cm. The area of the triangle $ABC$ is:
+- a) $84$ cm²
+- b) $42$ cm²
+- c) $19$ cm²
+- d) $38$ cm²
+-
+In the figure, $ABCD$ is a trapezoid with the bases $AB = 13$ cm and $CD = 7$ cm, and the height of the trapezoid is $5$ cm. The area of the trapezoid is:
+- a) $100$ cm²
+- b) $45$ cm²
+- c) $50$ cm²
+- d) $65$ cm²
+-
+In the figure, $ABCD$ is a rhombus with the diagonals $AC = 14$ cm and $BD = 9$ cm. The area of the rhombus is:
+- a) $126$ cm²
+- b) $23$ cm²
+- c) $31,5$ cm²
+- d) $63$ cm²
+-
+In the figure, the triangle $ABC$ is equilateral, with a side of $6$ cm. The area of the triangle is:
+- a) $18\sqrt{3}$ cm²
+- b) $9\sqrt{3}$ cm²
+- c) $36$ cm²
+- d) $6\sqrt{3}$ cm²
+The cube and the rectangular cuboid
+-
+The figure shows the cube $ABCDA'B'C'D'$. The sum of the lengths of all the edges of the cube is $60$ cm. The volume of the cube is:
+- a) $25$ cm³
+- b) $150$ cm³
+- c) $125$ cm³
+- d) $75$ cm³
+-
+The figure shows the rectangular cuboid $ABCDA'B'C'D'$, with $AB = 5$ cm, $BC = 3$ cm and $AA' = 2$ cm. The total surface area of the cuboid is:
+- a) $62$ cm²
+- b) $30$ cm²
+- c) $31$ cm²
+- d) $50$ cm²
+-
+The figure shows the cube $ABCDA'B'C'D'$. The number of edges of the cube that are parallel to the edge $AB$ (not counting $AB$) is:
+- a) $2$
+- b) $3$
+- c) $4$
+- d) $1$
+-
+The figure shows the cube $ABCDA'B'C'D'$, with an edge of $5$ cm. The length of the diagonal $AC$ of the face $ABCD$ is:
+- a) $5\sqrt{3}$ cm
+- b) $10$ cm
+- c) $25$ cm
+- d) $5\sqrt{2}$ cm
+-
+A box has the shape of a rectangular cuboid, with the dimensions shown in the figure. The greatest number of cubes with an edge of $2$ cm that fit in the box is:
+- a) $30$
+- b) $240$
+- c) $60$
+- d) $15$
+
+---
+
 ### Fișă recapitulativă: clasele a V-a – a VII-a, pregătire pentru testul inițial
 - Source (RO): https://lauramiron.pages.dev/materiale/fisa-recapitulativa-clasele-v-vii-test-initial-1008
 - Source (EN): https://lauramiron.pages.dev/en/materiale/fisa-recapitulativa-clasele-v-vii-test-initial-1008
