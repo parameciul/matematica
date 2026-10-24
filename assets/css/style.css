@@ -1496,6 +1496,13 @@ ol.clips .clip-dur {
   list-style: none;
 }
 
+/* Options too long for a quarter of the row (a set with many elements): two
+   columns on a desktop, one on a phone, so a formula never wraps away from its
+   letter or runs past its column. Put the class on the <ul> by hand. */
+.choices.choices-wide {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+}
+
 .material-body .choices li {
   margin: 0;
   min-width: 0;
