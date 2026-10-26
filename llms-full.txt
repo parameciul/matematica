@@ -2312,7 +2312,7 @@ b) Calculate the length of segment $AC$ and the distance from point $O$ to the l
   - A: Prima etapă arată că afirmația este adevărată pentru primul număr, iar a doua arată că, dacă este adevărată pentru un număr, este adevărată și pentru următorul. Fără prima etapă, a doua poate funcționa chiar pentru o formulă falsă. Fără a doua, verificările pentru câteva valori sunt doar exemple, iar exemplele nu demonstrează nimic pentru orice n.
 
 Întrebarea fișei: Cum calculezi repede o sumă cu foarte mulți termeni și cum ești sigur că formula găsită este adevărată pentru orice $n$?
-Pornim din ce știi
+Pornim de la ce știi
 Trei verificări rapide. Dacă una dintre ele îți ridică probleme, notează-o: la ea revii prima.
 -
 Calculează $1+2+3+\ldots+100$. Indicație: adună primul termen cu ultimul, al doilea cu penultimul, …
