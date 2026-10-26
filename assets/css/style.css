@@ -1501,6 +1501,13 @@ ol.clips .clip-dur {
   background: var(--paper);
 }
 
+/* A formula in a cell stays on one line: a narrow cell would otherwise break it
+   after "=" or "+", or leave the ";" after it at the start of the next line.
+   The table already scrolls sideways when it gets too wide. */
+.material-body td .katex {
+  white-space: nowrap;
+}
+
 /* Grid, not flex: options then line up in columns instead of reflowing into a
    ragged block. auto-fit picks as many columns as fit, so a phone gets two and
    a desktop four, and a long option drops to one column on its own. */

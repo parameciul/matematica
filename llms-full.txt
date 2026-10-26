@@ -5614,22 +5614,35 @@ Forma relației
 Ce fac
 1 · Liniară de ordinul 1
 $x_{n+1}=a x_n+b$
-punctul fix $\ell=a\ell+b$; apoi $x_n=\ell+(x_1-\ell)a^{n-1}$
+punctul fix: $\ell=a\ell+b$
+apoi $x_n=\ell+(x_1-\ell)a^{n-1}$
 2 · Liniară de ordinul 2
 $x_{n+2}=a x_{n+1}+b x_n$
-ecuația caracteristică $r^2=ar+b$; forma după $\Delta$; la $\Delta=0$ factorul $n$ nu lipsește!
+ecuația caracteristică $r^2=ar+b$
+forma lui $x_n$ după $\Delta$
+la $\Delta=0$ apare factorul $n$
 3 · Aditivă, multiplicativă, mixtă
-$x_{n+1}=x_n+f(n)$; $x_{n+1}=g(n)x_n$; $x_{n+1}=ax_n+(\text{ceva cu }a^n)$
-adun relațiile; înmulțesc relațiile; împart la $a^{n+1}$
+$x_{n+1}=x_n+f(n)$
+$x_{n+1}=g(n)x_n$
+$x_{n+1}=ax_n+(\text{ceva cu }a^n)$
+adun relațiile
+înmulțesc relațiile
+împart la $a^{n+1}$
 4 · Cu radicali
 $\sqrt{\ldots}$ în relație
-ridic la pătrat, caut $\left(\sqrt{x_n}\pm 1\right)^2$ sau logaritmez; verific semnul
+ridic la pătrat, caut $\left(\sqrt{x_n}\pm 1\right)^2$ sau logaritmez
+verific semnul
 5 · Polinomială
-$x_{n+1}=P(x_n)$ sau $x_{n+1}=ax_n+P(n)$
-$x_{n+1}+c=(x_n+c)^k$; $2x^2-1$ → cosinus; polinomul $p_n$
+$x_{n+1}=P(x_n)$
+$x_{n+1}=ax_n+P(n)$
+$x_{n+1}+c=(x_n+c)^k$
+$2x_n^2-1$ → cosinus
+polinomul $p_n$
 6 · Omografică
 $x_{n+1}=\frac{ax_n+b}{cx_n+d}$
-punctele fixe; $y_n=\frac{x_n-\alpha}{x_n-\beta}$ sau $z_n=\frac{1}{x_n-\alpha}$; fără puncte fixe → perioada
+punctele fixe
+$y_n=\frac{x_n-\alpha}{x_n-\beta}$ sau $z_n=\frac{1}{x_n-\alpha}$
+fără puncte fixe → perioada
 De reținut · Ideea comună
 La tipurile 1, 5 și 6 caut ce rămâne neschimbat: punctul fix $\ell$, polinomul $p_n$ sau punctele fixe. Scăzându-le din relație, obțin o progresie.
 ★ Cel mai important
@@ -6104,22 +6117,35 @@ Form of the relation
 What you do
 1 · Linear of order 1
 $x_{n+1}=a x_n+b$
-the fixed point $\ell=a\ell+b$; then $x_n=\ell+(x_1-\ell)a^{n-1}$
+the fixed point: $\ell=a\ell+b$
+then $x_n=\ell+(x_1-\ell)a^{n-1}$
 2 · Linear of order 2
 $x_{n+2}=a x_{n+1}+b x_n$
-the characteristic equation $r^2=ar+b$; the form by $\Delta$; for $\Delta=0$ do not forget the factor $n$!
+the characteristic equation $r^2=ar+b$
+the form of $x_n$ by $\Delta$
+for $\Delta=0$ the factor $n$ appears
 3 · Additive, multiplicative, mixed
-$x_{n+1}=x_n+f(n)$; $x_{n+1}=g(n)x_n$; $x_{n+1}=ax_n+(\text{something with }a^n)$
-add the relations; multiply the relations; divide by $a^{n+1}$
+$x_{n+1}=x_n+f(n)$
+$x_{n+1}=g(n)x_n$
+$x_{n+1}=ax_n+(\text{something with }a^n)$
+add the relations
+multiply the relations
+divide by $a^{n+1}$
 4 · With radicals
 $\sqrt{\ldots}$ in the relation
-square it, look for $\left(\sqrt{x_n}\pm 1\right)^2$ or take logarithms; check the sign
+square it, look for $\left(\sqrt{x_n}\pm 1\right)^2$ or take logarithms
+check the sign
 5 · Polynomial
-$x_{n+1}=P(x_n)$ or $x_{n+1}=ax_n+P(n)$
-$x_{n+1}+c=(x_n+c)^k$; $2x^2-1$ → cosine; the polynomial $p_n$
+$x_{n+1}=P(x_n)$
+$x_{n+1}=ax_n+P(n)$
+$x_{n+1}+c=(x_n+c)^k$
+$2x_n^2-1$ → cosine
+the polynomial $p_n$
 6 · Homographic
 $x_{n+1}=\frac{ax_n+b}{cx_n+d}$
-the fixed points; $y_n=\frac{x_n-\alpha}{x_n-\beta}$ or $z_n=\frac{1}{x_n-\alpha}$; no fixed points → the period
+the fixed points
+$y_n=\frac{x_n-\alpha}{x_n-\beta}$ or $z_n=\frac{1}{x_n-\alpha}$
+no fixed points → the period
 Remember · The common idea
 For types 1, 5 and 6 you look for what stays unchanged: the fixed point $\ell$, the polynomial $p_n$ or the fixed points. Subtracting them from the relation gives a progression.
 ★ Most important
