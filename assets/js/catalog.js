@@ -39,6 +39,16 @@
     return GROUP_ORDER.find((g) => GROUPS[g].includes(kind)) || null;
   }
 
+  // A material has one main kind and, optionally, a second one (`alsoKind`):
+  // a worksheet that opens with theory carries both labels.
+  function kindsOf(material) {
+    return material.alsoKind && material.alsoKind !== material.kind ? [material.kind, material.alsoKind] : [material.kind];
+  }
+
+  function inGroup(material, group) {
+    return kindsOf(material).some((k) => groupOf(k) === group);
+  }
+
   // Days since 1970-01-01 for a YYYY-MM-DD text, or NaN when it is not a real calendar date.
   function dayNumber(iso) {
     const m = DATE_RE.exec(String(iso));
@@ -118,13 +128,13 @@
   function filterEntries(entries, group) {
     if (!GROUPS[group]) return entries;
     return entries
-      .map((e) => entry(e.topic, e.materials.filter((m) => groupOf(m.kind) === group)))
+      .map((e) => entry(e.topic, e.materials.filter((m) => inGroup(m, group))))
       .filter((e) => e.materials.length > 0);
   }
 
   function groupsPresent(entries) {
     const found = new Set();
-    entries.forEach((e) => e.materials.forEach((m) => found.add(groupOf(m.kind))));
+    entries.forEach((e) => e.materials.forEach((m) => kindsOf(m).forEach((k) => found.add(groupOf(k)))));
     return GROUP_ORDER.filter((g) => found.has(g));
   }
 
@@ -197,7 +207,7 @@
       const topic = topics.get(material.topic);
       if (!topic) return;
       if (opts.grade && topic.grade !== opts.grade) return;
-      if (GROUPS[opts.group] && groupOf(material.kind) !== opts.group) return;
+      if (GROUPS[opts.group] && !inGroup(material, opts.group)) return;
       hits.push({ material, topic });
     });
     return newestFirst(hits, (h) => h.material.published);
@@ -214,7 +224,7 @@
         const title = normalize(`${material.title.ro || ''} | ${material.title.en || ''}`);
         const text = normalize([
           material.title.ro, material.title.en, topic.title.ro, topic.title.en,
-          ...(labels[material.kind] || []), ...gradeWords(topic.grade), ...keywords,
+          ...kindsOf(material).flatMap((k) => labels[k] || []), ...gradeWords(topic.grade), ...keywords,
         ].filter(Boolean).join(' | '));
         if (!terms.every((w) => text.includes(w))) return null;
         return { material, topic, inTitle: terms.every((w) => title.includes(w)) };
@@ -276,7 +286,7 @@
   const api = {
     ROMAN, KINDS, GROUPS, GROUP_ORDER, SORTS, NEW_DAYS, UID_RE,
     isUid, nameOf, parseName,
-    groupOf, isValidDate, todayIso, isNew, schoolYearOf, schoolYearLabel,
+    groupOf, kindsOf, inGroup, isValidDate, todayIso, isNew, schoolYearOf, schoolYearLabel,
     visibleMaterials, topicMaterials, gradeTopics, filterEntries, groupsPresent, bySchoolYear,
     latestMaterials, gradeSummary, findMaterial, relatedMaterials,
     normalize, browse, search, sortResults, formatDate, hasArticleContent, pickArticle,

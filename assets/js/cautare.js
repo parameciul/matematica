@@ -110,14 +110,14 @@
     const found = query
       ? Catalog.search(data, query, { labels: Site.searchLabels(), grade: grade || undefined, lang: getLang() })
       : Catalog.browse(data, { grade: grade || undefined, lang: getLang() });
-    const groups = Catalog.GROUP_ORDER.filter((g) => found.some((r) => Catalog.groupOf(r.material.kind) === g));
+    const groups = Catalog.GROUP_ORDER.filter((g) => found.some((r) => Catalog.inGroup(r.material, g)));
     const active = groups.includes(group) ? group : '';
     container.appendChild(searchForm(active));
     if (groups.length > 1) container.appendChild(Site.filterBar(groups, active, pickGroup));
     // The note says "all materials": it belongs only above an unfiltered list.
     if (!query && !grade) container.appendChild(el('p', 'message search-browse', t('search.browse')));
 
-    const picked = active ? found.filter((r) => Catalog.groupOf(r.material.kind) === active) : found;
+    const picked = active ? found.filter((r) => Catalog.inGroup(r.material, active)) : found;
     const results = Catalog.sortResults(picked, sort, getLang());
     container.appendChild(sortBar(results.length));
     if (!results.length) {

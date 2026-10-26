@@ -234,6 +234,11 @@ for (const [i, m] of materials.entries()) {
   materialNames.add(name);
   if (!topicIds.has(m.topic)) fail(`${where}: topic "${m.topic}" does not exist`);
   if (!Catalog.KINDS.includes(m.kind)) fail(`${where}: kind must be one of ${Catalog.KINDS.join(', ')}`);
+  if (m.alsoKind !== undefined) {
+    if (!Catalog.KINDS.includes(m.alsoKind)) fail(`${where}: alsoKind must be one of ${Catalog.KINDS.join(', ')}`);
+    else if (m.alsoKind === m.kind) fail(`${where}: alsoKind must differ from kind`);
+    else if (m.kind === 'quiz' || m.alsoKind === 'quiz') fail(`${where}: a quiz has no second kind`);
+  }
   if (!m.title || !isText(m.title.ro)) fail(`${where}: title.ro is required`);
   if (!m.title || !isText(m.title.en)) fail(`${where}: title.en is required`);
   if (!Catalog.isValidDate(m.published)) fail(`${where}: published must be a real date YYYY-MM-DD`);

@@ -2494,6 +2494,7 @@
       "uid": "1031",
       "topic": "elemente-logica-matematica",
       "kind": "fisa-lucru",
+      "alsoKind": "teorie",
       "title": {
         "ro": "Fișă de lucru: sume și inducție matematică",
         "en": "Worksheet: sums and mathematical induction"

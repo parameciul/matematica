@@ -110,7 +110,7 @@
       const gradeBadge = getLang() === 'ro' ? Catalog.ROMAN[topic.grade] : String(topic.grade);
       badges.appendChild(el('span', `m-grade m-grade-${Catalog.groupOf(material.kind)}`, gradeBadge));
     }
-    badges.appendChild(el('span', `badge badge-${Catalog.groupOf(material.kind)}`, kindLabel(material.kind)));
+    Catalog.kindsOf(material).forEach((k) => badges.appendChild(el('span', `badge badge-${Catalog.groupOf(k)}`, kindLabel(k))));
     const time = el('time', 'm-date', formatDate(material.published));
     time.dateTime = material.published;
     badges.appendChild(time);

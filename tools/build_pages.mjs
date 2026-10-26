@@ -469,7 +469,7 @@ function materialRow({ material, topic, lang, dict, matBase, root, showGrade, sh
   const title = material.title[lang] || material.title.ro;
   const gradeBadge = lang === 'ro' ? Catalog.ROMAN[topic.grade] : topic.grade;
   const badges = `${showGrade ? `<span class="m-grade m-grade-${group}">${gradeBadge}</span>` : ''}` +
-    `<span class="badge badge-${group}">${esc(dict[`kind.${material.kind}`] || material.kind)}</span>` +
+    Catalog.kindsOf(material).map((k) => `<span class="badge badge-${Catalog.groupOf(k)}">${esc(dict[`kind.${k}`] || k)}</span>`).join('') +
     `<time class="m-date" datetime="${material.published}">${esc(Catalog.formatDate(material.published, lang))}</time>`;
   const where = [];
   if (showGrade && topic) where.push(gradeNameOf(topic.grade, lang));
@@ -753,7 +753,7 @@ function renderMaterialPage({ data, material, topic, lang, dict, assetBase, page
     ? ` · ${esc(updParts[0] || '')}<time datetime="${material.updated}">${esc(Catalog.formatDate(material.updated, lang, 'long'))}</time>${esc(updParts[1] || '')}`
     : '';
   const headBlock = `<div id="material-head">${crumbs}\n` +
-    `      <span class="badge badge-${Catalog.groupOf(material.kind)}">${esc(dict[`kind.${material.kind}`] || material.kind)}</span>\n` +
+    Catalog.kindsOf(material).map((k) => `      <span class="badge badge-${Catalog.groupOf(k)}">${esc(dict[`kind.${k}`] || k)}</span>\n`).join('') +
     `      <h1>${esc(materialTitle)}</h1>\n` +
     `      <p class="material-meta">${esc(pubParts[0])}<time datetime="${material.published}">${esc(Catalog.formatDate(material.published, lang, 'long'))}</time>${esc(pubParts[1] || '')}` +
     ` · ${esc(byParts[0] || '')}<a href="${aboutHref}" rel="author">Laura Miron</a>${esc(byParts[1] || '')}${updatedMeta}</p>\n` +

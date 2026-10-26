@@ -30,6 +30,16 @@ function sampleData() {
 const LABELS = { teorie: ['Teorie', 'Theory', 'Lecții și teorie', 'Lessons and theory'] };
 const ids = (list) => list.map((x) => (x.material || x).slug);
 
+test('a material with alsoKind has both kinds and sits in both groups', () => {
+  const both = { kind: 'fisa-lucru', alsoKind: 'teorie' };
+  assert.deepEqual(C.kindsOf(both), ['fisa-lucru', 'teorie']);
+  assert.equal(C.inGroup(both, 'fise'), true);
+  assert.equal(C.inGroup(both, 'lectii'), true);
+  assert.equal(C.inGroup(both, 'teste'), false);
+  assert.deepEqual(C.kindsOf({ kind: 'test' }), ['test']);
+  assert.deepEqual(C.kindsOf({ kind: 'test', alsoKind: 'test' }), ['test']);
+});
+
 test('groupOf maps every kind to its filter group', () => {
   assert.equal(C.groupOf('lectie'), 'lectii');
   assert.equal(C.groupOf('teorie'), 'lectii');

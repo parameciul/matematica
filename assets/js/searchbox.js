@@ -177,7 +177,7 @@
     const box = Site.el('span', 'm-badges');
     const gradeBadge = getLang() === 'ro' ? Catalog.ROMAN[topic.grade] : String(topic.grade);
     box.appendChild(Site.el('span', `m-grade m-grade-${group}`, gradeBadge));
-    box.appendChild(Site.el('span', `badge badge-${group}`, Site.kindLabel(material.kind)));
+    Catalog.kindsOf(material).forEach((k) => box.appendChild(Site.el('span', `badge badge-${Catalog.groupOf(k)}`, Site.kindLabel(k))));
     const time = Site.el('time', 'm-date', Site.formatDate(material.published));
     time.dateTime = material.published;
     box.appendChild(time);

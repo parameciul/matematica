@@ -23,6 +23,7 @@ All content. The truth: tools, the validator and the admin read and write this f
 - `supersedes` (optional): uid of the copy this one replaced.
 - `keywords` (optional, `ro` + `en` lists): when present, `ro` must include `clasa a <N>-a` and `en` must include `grade <N>`.
 - `results: { version, checks }`: present exactly when `data/results/<name>.json` and `tm25mlg/raspunsuri/<name>.html` both exist. A quiz never has results.
+- `alsoKind` (optional): a second kind, shown as a second badge and found under both group filters (a worksheet that opens with theory: `kind: fisa-lucru`, `alsoKind: teorie`). Never the same as `kind`, never `quiz`.
 - Kinds: `lectie`, `teorie`, `fisa-lucru`, `fisa-recapitulativa`, `test`, `joc`, `quiz`.
 
 ### Visibility
