@@ -88,6 +88,8 @@ const CLASS_MARKS = [
   [/\b\d{1,2}\.\d{1,2}\.20\d{2}\b/, 'a calendar date like "16.09.2026"'],
 ];
 const ANSWER_HEADINGS = ['raspunsuri si indicatii', 'barem de evaluare', 'indicatii de rezolvare'];
+// Teacher-only tools: a progress grid is for the teacher's feedback and only confuses a student.
+const TEACHER_ONLY = ['grila de progres', 'progress grid'];
 
 function walk(dir, out = []) {
   for (const name of readdirSync(join(ROOT, dir))) {
@@ -118,6 +120,9 @@ function checkNoAnswers(where, text) {
   const plain = Catalog.normalize(String(text).replace(/<[^>]+>/g, ' ')).replace(/\s+/g, ' ');
   for (const phrase of ANSWER_HEADINGS) {
     if (plain.includes(phrase)) fail(`${where}: contains "${phrase}". Published materials must not include answers.`);
+  }
+  for (const phrase of TEACHER_ONLY) {
+    if (plain.includes(phrase)) fail(`${where}: contains "${phrase}". A progress grid is for teachers; drop it from the material.`);
   }
 }
 

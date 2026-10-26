@@ -41,7 +41,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,700;0,800;1,400&family=Caveat:wght@600&display=swap">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.18.1/dist/katex.min.css" integrity="sha384-1vdNCNel6Tx/NQa8IR1mGOGKsbGreCkOPfbtPPnUURJ5Tu2PRVfQ/7KLZC+Pi1p1" crossorigin="anonymous">
-  <link rel="stylesheet" href="../../assets/css/style.css?v=dbe03a3759">
+  <link rel="stylesheet" href="../../assets/css/style.css?v=2bafa2dd78">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.18.1/dist/katex.min.js" integrity="sha384-ycJ6GAwiS15LoUPipwJOrWTvkUHl/YqELValBwI5I4awP1EeEQJYarj+w85ntcz7" crossorigin="anonymous"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.18.1/dist/contrib/auto-render.min.js" integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous"></script>
   <script defer src="../../assets/js/i18n.js?v=9da1cb4da9"></script>
@@ -68,7 +68,7 @@
       <p class="material-meta">Published <time datetime="2026-10-26">26 October 2026</time> · by <a href="../despre.html" rel="author">Laura Miron</a></p>
       <p class="material-actions"><a class="button" href="../../materiale/pdf/fisa-lucru-sume-inductie-matematica-1031.pdf" target="_blank" rel="noopener">Open PDF</a> <span class="note">The PDF is in Romanian.</span></p></div>
       
-      <section class="rezumat" aria-labelledby="rezumat-heading"><h2 id="rezumat-heading" data-i18n="summary.title">Summary</h2><p>The worksheet starts with a short theory part: writing a sum with the Σ symbol, finding the general term, the properties of sums and the four standard sums. Then comes the method of mathematical induction, with an example where a sum is first computed and then proved, and problems on three levels.</p></section><nav class="cuprins" aria-labelledby="cuprins-heading"><h2 id="cuprins-heading" data-i18n="toc.title">Contents</h2><ol><li><a href="#s1">Start from what you know</a></li><li><a href="#s2">Short theory</a><ol><li><a href="#s2-1">1. The Σ (sigma) symbol</a></li><li><a href="#s2-2">2. Writing a sum with Σ: finding the general term</a></li><li><a href="#s2-3">3. Properties of sums</a></li><li><a href="#s2-4">4. Standard sums</a></li><li><a href="#s2-5">5. The method of mathematical induction</a></li><li><a href="#s2-6">The logical thread: from a sum to a proved formula</a></li></ol></li><li><a href="#s3">Problems on three levels</a><ol><li><a href="#s3-1">Basic level</a></li><li><a href="#s3-2">Consolidated level</a></li><li><a href="#s3-3">Advanced level</a></li><li><a href="#s3-4">Progress grid: mark the level you are at after you get feedback</a></li></ol></li></ol></nav>
+      <section class="rezumat" aria-labelledby="rezumat-heading"><h2 id="rezumat-heading" data-i18n="summary.title">Summary</h2><p>The worksheet starts with a short theory part: writing a sum with the Σ symbol, finding the general term, the properties of sums and the four standard sums. Then comes the method of mathematical induction, with an example where a sum is first computed and then proved, and problems on three levels.</p></section><nav class="cuprins" aria-labelledby="cuprins-heading"><h2 id="cuprins-heading" data-i18n="toc.title">Contents</h2><ol><li><a href="#s1">Start from what you know</a></li><li><a href="#s2">Short theory</a><ol><li><a href="#s2-1">1. The Σ (sigma) symbol</a></li><li><a href="#s2-2">2. Writing a sum with Σ: finding the general term</a></li><li><a href="#s2-3">3. Properties of sums</a></li><li><a href="#s2-4">4. Standard sums</a></li><li><a href="#s2-5">5. The method of mathematical induction</a></li><li><a href="#s2-6">The logical thread: from a sum to a proved formula</a></li></ol></li><li><a href="#s3">Problems on three levels</a><ol><li><a href="#s3-1">Basic level</a></li><li><a href="#s3-2">Consolidated level</a></li><li><a href="#s3-3">Advanced level</a></li></ol></li></ol></nav>
       
       <div class="check-bar"><p class="note" id="check-note">Press “Check” next to an exercise. Your answers stay on this device.</p><button class="chip" type="button" id="check-reset" hidden>Delete my answers</button></div>
       <article class="material-body" data-lang="en" lang="en">
@@ -217,7 +217,17 @@
           <p><em>The other way round: checks for $n=1, 2, 3, \ldots$ do not replace step II. Examples do not prove.</em></p>
         </div>
         <h3 id="s2-6">The logical thread: from a sum to a proved formula</h3>
-        <p>I write the sum with Σ → I expand the general term → I apply (P1), (P2) and (S1)–(S4) → I check for n = 1 and n = 2 → I prove it by induction</p>
+        <div class="firul-logic">
+          <p class="firul-logic-label">★ Most important</p>
+          <p class="firul-logic-lead">This is the core of solving these problems. Follow these steps, in this order, every time you work with sums.</p>
+          <ol class="firul-logic-steps">
+            <li>I write the sum with Σ</li>
+            <li>I expand the general term</li>
+            <li>I apply (P1), (P2) and (S1)–(S4)</li>
+            <li>I check for n = 1 and n = 2</li>
+            <li>I prove it by induction</li>
+          </ol>
+        </div>
         <h2 id="s3">Problems on three levels</h2>
         <p><em>For each problem, write the steps, not just the result: which property or which standard sum you use. Proofs by induction are written in full, with both steps.</em></p>
         <h3 id="s3-1">Basic level</h3>
@@ -321,37 +331,6 @@
             <p>What can you say about the sum $1+\frac{1}{2^2}+\ldots+\frac{1}{100^2}$?</p>
           </li>
         </ol>
-        <h3 id="s3-4">Progress grid: mark the level you are at after you get feedback</h3>
-        <table>
-          <thead>
-            <tr>
-              <th>Skill</th>
-              <th>Basic</th>
-              <th>Consolidated</th>
-              <th>Advanced</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>C1 · I write a sum with Σ</td>
-              <td>I write out a sum given with Σ and count its terms.</td>
-              <td>I find the general term and the limits of the sum on my own.</td>
-              <td>I write with Σ sums with fractions, with alternating signs or with limits that depend on n.</td>
-            </tr>
-            <tr>
-              <td>C2 · I compute sums</td>
-              <td>I apply the standard sums directly.</td>
-              <td>I expand the general term and use (P1), (P2), (P3).</td>
-              <td>I use telescoping sums and find new formulas.</td>
-            </tr>
-            <tr>
-              <td>C3 · I prove by induction</td>
-              <td>I check $P(1)$ and write $P(k)$ and $P(k+1)$ correctly.</td>
-              <td>I carry out the step $P(k)\Rightarrow P(k+1)$ in full for a sum.</td>
-              <td>I prove inequalities and find the mistakes in a “proof”.</td>
-            </tr>
-          </tbody>
-        </table>
       </article>
       <section class="faq" aria-labelledby="faq-heading"><h2 id="faq-heading" data-i18n="faq.title">Frequently asked questions</h2><details><summary>What does writing a sum with the Σ symbol mean?</summary><p>The Σ symbol is shorthand for a sum of many terms that follow the same rule. Below Σ you write the index and the value it starts from, above it the value where it stops, and after Σ the general term, the rule that produces each term. For example, the sum 1 + 3 + 5 + … + (2n − 1) has the general term 2k − 1, with k from 1 to n.</p></details><details><summary>Which properties of sums do I use in calculations?</summary><p>A factor that does not depend on the index comes out in front of the sum, and the sum of a sum or a difference splits into two sums. Together these rules are the linearity of the sum. A product, however, does not split: the sum of products is not the product of the sums. Then you apply the standard sums: of constants, of natural numbers, of squares and of cubes.</p></details><details><summary>Why are both steps of mathematical induction required?</summary><p>The first step shows that the statement is true for the first number, and the second shows that if it is true for one number, it is also true for the next. Without the first step, the second can work even for a false formula. Without the second, checks for a few values are only examples, and examples prove nothing for every n.</p></details></section>
       <aside class="related" id="material-related"><h2>From the same topic</h2>

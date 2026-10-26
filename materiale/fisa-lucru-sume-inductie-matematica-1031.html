@@ -41,7 +41,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,700;0,800;1,400&family=Caveat:wght@600&display=swap">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.18.1/dist/katex.min.css" integrity="sha384-1vdNCNel6Tx/NQa8IR1mGOGKsbGreCkOPfbtPPnUURJ5Tu2PRVfQ/7KLZC+Pi1p1" crossorigin="anonymous">
-  <link rel="stylesheet" href="../assets/css/style.css?v=dbe03a3759">
+  <link rel="stylesheet" href="../assets/css/style.css?v=2bafa2dd78">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.18.1/dist/katex.min.js" integrity="sha384-ycJ6GAwiS15LoUPipwJOrWTvkUHl/YqELValBwI5I4awP1EeEQJYarj+w85ntcz7" crossorigin="anonymous"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.18.1/dist/contrib/auto-render.min.js" integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous"></script>
   <script defer src="../assets/js/i18n.js?v=9da1cb4da9"></script>
@@ -68,7 +68,7 @@
       <p class="material-meta">Publicat <time datetime="2026-10-26">26 octombrie 2026</time> · de <a href="../despre.html" rel="author">Laura Miron</a></p>
       <p class="material-actions"><a class="button" href="../materiale/pdf/fisa-lucru-sume-inductie-matematica-1031.pdf" target="_blank" rel="noopener">Deschide PDF</a></p></div>
       
-      <section class="rezumat" aria-labelledby="rezumat-heading"><h2 id="rezumat-heading" data-i18n="summary.title">Rezumat</h2><p>Fișa începe cu o teorie pe scurt: scrierea unei sume cu simbolul Σ, găsirea termenului general, proprietățile sumelor și cele patru sume remarcabile. Urmează metoda inducției matematice, cu un exemplu în care o sumă este întâi calculată și apoi demonstrată, și probleme pe trei niveluri.</p></section><nav class="cuprins" aria-labelledby="cuprins-heading"><h2 id="cuprins-heading" data-i18n="toc.title">Cuprins</h2><ol><li><a href="#s1">Pornim de la ce știi</a></li><li><a href="#s2">Teorie pe scurt</a><ol><li><a href="#s2-1">1. Simbolul Σ (sigma)</a></li><li><a href="#s2-2">2. Cum scriem o sumă cu Σ: găsim termenul general</a></li><li><a href="#s2-3">3. Proprietățile sumelor</a></li><li><a href="#s2-4">4. Sume remarcabile</a></li><li><a href="#s2-5">5. Metoda inducției matematice</a></li><li><a href="#s2-6">Firul logic: de la sumă la formulă demonstrată</a></li></ol></li><li><a href="#s3">Probleme pe niveluri</a><ol><li><a href="#s3-1">Nivel de bază</a></li><li><a href="#s3-2">Nivel consolidat</a></li><li><a href="#s3-3">Nivel avansat</a></li><li><a href="#s3-4">Grila de progres: marchează nivelul la care te afli după ce primești feedback</a></li></ol></li></ol></nav>
+      <section class="rezumat" aria-labelledby="rezumat-heading"><h2 id="rezumat-heading" data-i18n="summary.title">Rezumat</h2><p>Fișa începe cu o teorie pe scurt: scrierea unei sume cu simbolul Σ, găsirea termenului general, proprietățile sumelor și cele patru sume remarcabile. Urmează metoda inducției matematice, cu un exemplu în care o sumă este întâi calculată și apoi demonstrată, și probleme pe trei niveluri.</p></section><nav class="cuprins" aria-labelledby="cuprins-heading"><h2 id="cuprins-heading" data-i18n="toc.title">Cuprins</h2><ol><li><a href="#s1">Pornim de la ce știi</a></li><li><a href="#s2">Teorie pe scurt</a><ol><li><a href="#s2-1">1. Simbolul Σ (sigma)</a></li><li><a href="#s2-2">2. Cum scriem o sumă cu Σ: găsim termenul general</a></li><li><a href="#s2-3">3. Proprietățile sumelor</a></li><li><a href="#s2-4">4. Sume remarcabile</a></li><li><a href="#s2-5">5. Metoda inducției matematice</a></li><li><a href="#s2-6">Firul logic: de la sumă la formulă demonstrată</a></li></ol></li><li><a href="#s3">Probleme pe niveluri</a><ol><li><a href="#s3-1">Nivel de bază</a></li><li><a href="#s3-2">Nivel consolidat</a></li><li><a href="#s3-3">Nivel avansat</a></li></ol></li></ol></nav>
       
       <div class="check-bar"><p class="note" id="check-note">Apasă «Verifică» lângă un exercițiu. Răspunsurile rămân pe acest dispozitiv.</p><button class="chip" type="button" id="check-reset" hidden>Șterge răspunsurile mele</button></div>
       <article class="material-body" data-lang="ro" lang="ro">
@@ -217,7 +217,17 @@
           <p><em>Invers: verificările pentru $n=1, 2, 3, \ldots$ nu înlocuiesc etapa a II-a. Exemplele nu demonstrează.</em></p>
         </div>
         <h3 id="s2-6">Firul logic: de la sumă la formulă demonstrată</h3>
-        <p>Scriu suma cu Σ → Desfac termenul general → Aplic (P1), (P2) și (S1)–(S4) → Verific pentru n = 1 și n = 2 → Demonstrez prin inducție</p>
+        <div class="firul-logic">
+          <p class="firul-logic-label">★ Cel mai important</p>
+          <p class="firul-logic-lead">Acesta este miezul rezolvării. Urmează pașii în această ordine, la fiecare problemă cu sume.</p>
+          <ol class="firul-logic-steps">
+            <li>Scriu suma cu Σ</li>
+            <li>Desfac termenul general</li>
+            <li>Aplic (P1), (P2) și (S1)–(S4)</li>
+            <li>Verific pentru n = 1 și n = 2</li>
+            <li>Demonstrez prin inducție</li>
+          </ol>
+        </div>
         <h2 id="s3">Probleme pe niveluri</h2>
         <p><em>La fiecare problemă scrie pașii, nu doar rezultatul: ce proprietate sau ce sumă remarcabilă folosești. Demonstrațiile prin inducție se redactează complet, cu ambele etape.</em></p>
         <h3 id="s3-1">Nivel de bază</h3>
@@ -321,37 +331,6 @@
             <p>Ce poți spune despre suma $1+\frac{1}{2^2}+\ldots+\frac{1}{100^2}$?</p>
           </li>
         </ol>
-        <h3 id="s3-4">Grila de progres: marchează nivelul la care te afli după ce primești feedback</h3>
-        <table>
-          <thead>
-            <tr>
-              <th>Competență</th>
-              <th>Bază</th>
-              <th>Consolidat</th>
-              <th>Avansat</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>C1 · Scriu o sumă cu Σ</td>
-              <td>Scriu desfășurat o sumă dată cu Σ și număr termenii.</td>
-              <td>Găsesc singur termenul general și limitele sumei.</td>
-              <td>Scriu cu Σ sume cu fracții, cu semne alternante sau cu limite care depind de n.</td>
-            </tr>
-            <tr>
-              <td>C2 · Calculez sume</td>
-              <td>Aplic direct sumele remarcabile.</td>
-              <td>Desfac termenul general și folosesc (P1), (P2), (P3).</td>
-              <td>Folosesc sume telescopice și găsesc formule noi.</td>
-            </tr>
-            <tr>
-              <td>C3 · Demonstrez prin inducție</td>
-              <td>Verific $P(1)$ și scriu corect $P(k)$ și $P(k+1)$.</td>
-              <td>Fac complet trecerea $P(k)\Rightarrow P(k+1)$ pentru o sumă.</td>
-              <td>Demonstrez inegalități și găsesc greșelile dintr-o „demonstrație”.</td>
-            </tr>
-          </tbody>
-        </table>
       </article>
       <section class="faq" aria-labelledby="faq-heading"><h2 id="faq-heading" data-i18n="faq.title">Întrebări frecvente</h2><details><summary>Ce înseamnă scrierea unei sume cu simbolul Σ?</summary><p>Simbolul Σ prescurtează o sumă cu mulți termeni care urmează aceeași regulă. Sub Σ scrii indicele și valoarea de la care pornește, deasupra valoarea la care se oprește, iar după Σ termenul general, adică regula după care se obține fiecare termen. De exemplu, suma 1 + 3 + 5 + … + (2n − 1) are termenul general 2k − 1, cu k de la 1 la n.</p></details><details><summary>Ce proprietăți ale sumelor folosesc la calcul?</summary><p>Un factor care nu depinde de indice iese în fața sumei, iar suma unei sume sau a unei diferențe se desparte în două sume. Împreună, aceste reguli formează liniaritatea sumei. Produsul însă nu se desparte: suma unor produse nu este produsul sumelor. Apoi aplici sumele remarcabile: a constantelor, a numerelor naturale, a pătratelor și a cuburilor.</p></details><details><summary>De ce sunt obligatorii ambele etape ale inducției matematice?</summary><p>Prima etapă arată că afirmația este adevărată pentru primul număr, iar a doua arată că, dacă este adevărată pentru un număr, este adevărată și pentru următorul. Fără prima etapă, a doua poate funcționa chiar pentru o formulă falsă. Fără a doua, verificările pentru câteva valori sunt doar exemple, iar exemplele nu demonstrează nimic pentru orice n.</p></details></section>
       <aside class="related" id="material-related"><h2>Din aceeași temă</h2>

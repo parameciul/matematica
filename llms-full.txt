@@ -2417,7 +2417,13 @@ Atenție · Ambele etape sunt obligatorii
 Fie $P(n)$: $1+2+\ldots+n=\frac{n^2+n+2}{2}$. Etapa a II-a funcționează: dacă $P(k)$ ar fi adevărată, atunci $\frac{k^2+k+2}{2}+(k+1)=\frac{(k+1)^2+(k+1)+2}{2}$. Dar $P(1)$ este falsă ($1\ne 2$), iar formula este falsă pentru orice $n$. Fără etapa I, „demonstrația” nu demonstrează nimic.
 Invers: verificările pentru $n=1, 2, 3, \ldots$ nu înlocuiesc etapa a II-a. Exemplele nu demonstrează.
 Firul logic: de la sumă la formulă demonstrată
-Scriu suma cu Σ → Desfac termenul general → Aplic (P1), (P2) și (S1)–(S4) → Verific pentru n = 1 și n = 2 → Demonstrez prin inducție
+★ Cel mai important
+Acesta este miezul rezolvării. Urmează pașii în această ordine, la fiecare problemă cu sume.
+- Scriu suma cu Σ
+- Desfac termenul general
+- Aplic (P1), (P2) și (S1)–(S4)
+- Verific pentru n = 1 și n = 2
+- Demonstrez prin inducție
 Probleme pe niveluri
 La fiecare problemă scrie pașii, nu doar rezultatul: ce proprietate sau ce sumă remarcabilă folosești. Demonstrațiile prin inducție se redactează complet, cu ambele etape.
 Nivel de bază
@@ -2499,23 +2505,6 @@ c) Care este formula corectă? Demonstreaz-o.
 Provocare. Demonstrează prin inducție că, pentru orice $n\in \N^*$:
 $$1+\frac{1}{2^2}+\frac{1}{3^2}+\ldots+\frac{1}{n^2}\le 2-\frac{1}{n}$$
 Ce poți spune despre suma $1+\frac{1}{2^2}+\ldots+\frac{1}{100^2}$?
-Grila de progres: marchează nivelul la care te afli după ce primești feedback
-Competență
-Bază
-Consolidat
-Avansat
-C1 · Scriu o sumă cu Σ
-Scriu desfășurat o sumă dată cu Σ și număr termenii.
-Găsesc singur termenul general și limitele sumei.
-Scriu cu Σ sume cu fracții, cu semne alternante sau cu limite care depind de n.
-C2 · Calculez sume
-Aplic direct sumele remarcabile.
-Desfac termenul general și folosesc (P1), (P2), (P3).
-Folosesc sume telescopice și găsesc formule noi.
-C3 · Demonstrez prin inducție
-Verific $P(1)$ și scriu corect $P(k)$ și $P(k+1)$.
-Fac complet trecerea $P(k)\Rightarrow P(k+1)$ pentru o sumă.
-Demonstrez inegalități și găsesc greșelile dintr-o „demonstrație”.
 
 --- EN ---
 
@@ -2634,7 +2623,13 @@ Watch out · Both steps are required
 Let $P(n)$: $1+2+\ldots+n=\frac{n^2+n+2}{2}$. Step II works: if $P(k)$ were true, then $\frac{k^2+k+2}{2}+(k+1)=\frac{(k+1)^2+(k+1)+2}{2}$. But $P(1)$ is false ($1\ne 2$), and the formula is false for every $n$. Without step I, the “proof” proves nothing.
 The other way round: checks for $n=1, 2, 3, \ldots$ do not replace step II. Examples do not prove.
 The logical thread: from a sum to a proved formula
-I write the sum with Σ → I expand the general term → I apply (P1), (P2) and (S1)–(S4) → I check for n = 1 and n = 2 → I prove it by induction
+★ Most important
+This is the core of solving these problems. Follow these steps, in this order, every time you work with sums.
+- I write the sum with Σ
+- I expand the general term
+- I apply (P1), (P2) and (S1)–(S4)
+- I check for n = 1 and n = 2
+- I prove it by induction
 Problems on three levels
 For each problem, write the steps, not just the result: which property or which standard sum you use. Proofs by induction are written in full, with both steps.
 Basic level
@@ -2716,23 +2711,6 @@ c) What is the correct formula? Prove it.
 Challenge. Prove by induction that, for every $n\in \N^*$:
 $$1+\frac{1}{2^2}+\frac{1}{3^2}+\ldots+\frac{1}{n^2}\le 2-\frac{1}{n}$$
 What can you say about the sum $1+\frac{1}{2^2}+\ldots+\frac{1}{100^2}$?
-Progress grid: mark the level you are at after you get feedback
-Skill
-Basic
-Consolidated
-Advanced
-C1 · I write a sum with Σ
-I write out a sum given with Σ and count its terms.
-I find the general term and the limits of the sum on my own.
-I write with Σ sums with fractions, with alternating signs or with limits that depend on n.
-C2 · I compute sums
-I apply the standard sums directly.
-I expand the general term and use (P1), (P2), (P3).
-I use telescoping sums and find new formulas.
-C3 · I prove by induction
-I check $P(1)$ and write $P(k)$ and $P(k+1)$ correctly.
-I carry out the step $P(k)\Rightarrow P(k+1)$ in full for a sum.
-I prove inequalities and find the mistakes in a “proof”.
 
 ---
 
