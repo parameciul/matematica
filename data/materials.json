@@ -87,6 +87,14 @@
         "ro": "Pregătire pentru Evaluarea Națională",
         "en": "National Evaluation practice"
       }
+    },
+    {
+      "id": "siruri-numere-reale",
+      "grade": 11,
+      "title": {
+        "ro": "Șiruri de numere reale",
+        "en": "Sequences of real numbers"
+      }
     }
   ],
   "grades": {
@@ -2603,6 +2611,98 @@
       "results": {
         "version": 1,
         "checks": 25
+      }
+    },
+    {
+      "slug": "fisa-lucru-siruri-recurente",
+      "uid": "1033",
+      "topic": "siruri-numere-reale",
+      "kind": "fisa-lucru",
+      "alsoKind": "teorie",
+      "title": {
+        "ro": "Fișă de lucru: șiruri date prin recurențe",
+        "en": "Worksheet: sequences given by recurrences"
+      },
+      "seoTitle": {
+        "ro": "Șiruri recurente: termen general și monotonie",
+        "en": "Recurrence sequences: general term, monotonicity"
+      },
+      "published": "2026-10-26",
+      "description": {
+        "ro": "Fișă de lucru pentru clasa a XI-a: șiruri date prin recurențe, aflarea termenului general, recurența omografică, monotonie și mărginire.",
+        "en": "Grade 11 worksheet: sequences given by recurrences, finding the general term, the homographic recurrence, monotonicity and boundedness."
+      },
+      "pdf": "materiale/pdf/fisa-lucru-siruri-recurente-1033.pdf",
+      "youtube": null,
+      "import": {
+        "date": "2026-10-26",
+        "workflow": 5,
+        "pdf": "generated"
+      },
+      "summary": {
+        "ro": "Fișa adună metodele pentru șase tipuri de recurențe: liniară de ordinul 1 și 2, aditivă și multiplicativă, cu radicali, polinomială și omografică. Fiecare tip are metoda pas cu pas și exemple rezolvate. Urmează monotonia și mărginirea, o schemă recapitulativă și probleme pe trei niveluri.",
+        "en": "The worksheet gathers the methods for six types of recurrences: linear of order 1 and 2, additive and multiplicative, with radicals, polynomial and homographic. Each type has its method step by step and worked examples. Then come monotonicity and boundedness, a summary table and problems on three levels."
+      },
+      "faq": [
+        {
+          "q": {
+            "ro": "Cum aflu termenul general al unui șir dat printr-o recurență liniară de ordinul al doilea?",
+            "en": "How do I find the general term of a sequence given by a linear recurrence of order 2?"
+          },
+          "a": {
+            "ro": "Scrii ecuația caracteristică: înlocuiești xₙ₊₂ cu r², xₙ₊₁ cu r și xₙ cu 1. După semnul lui Δ alegi forma termenului general: A·r₁ⁿ + B·r₂ⁿ pentru două rădăcini reale diferite, (A + B·n)·rⁿ pentru o rădăcină dublă și ρⁿ(A cos nt + B sin nt) pentru rădăcini complexe. Constantele A și B le afli din primii doi termeni.",
+            "en": "Write the characteristic equation: replace xₙ₊₂ with r², xₙ₊₁ with r and xₙ with 1. The sign of Δ gives the form of the general term: A·r₁ⁿ + B·r₂ⁿ for two different real roots, (A + B·n)·rⁿ for a double root and ρⁿ(A cos nt + B sin nt) for complex roots. You find the constants A and B from the first two terms."
+          }
+        },
+        {
+          "q": {
+            "ro": "Ce este recurența omografică și cum se rezolvă?",
+            "en": "What is the homographic recurrence and how do you solve it?"
+          },
+          "a": {
+            "ro": "Este o relație de forma xₙ₊₁ = (a·xₙ + b)/(c·xₙ + d). Rezolvi ecuația punctelor fixe x = (ax + b)/(cx + d). Pentru două puncte fixe α și β, șirul (xₙ − α)/(xₙ − β) este o progresie geometrică. Pentru un singur punct fix α, șirul 1/(xₙ − α) este o progresie aritmetică. Fără puncte fixe, de obicei termenii se repetă.",
+            "en": "It is a relation of the form xₙ₊₁ = (a·xₙ + b)/(c·xₙ + d). Solve the fixed-point equation x = (ax + b)/(cx + d). For two fixed points α and β, the sequence (xₙ − α)/(xₙ − β) is a geometric progression. For a single fixed point α, the sequence 1/(xₙ − α) is an arithmetic progression. With no fixed points, the terms usually repeat."
+          }
+        },
+        {
+          "q": {
+            "ro": "Cum arăt că un șir dat printr-o recurență este monoton și mărginit?",
+            "en": "How do I show that a sequence given by a recurrence is monotonic and bounded?"
+          },
+          "a": {
+            "ro": "Dacă știi termenul general, studiezi semnul diferenței xₙ₊₁ − xₙ direct din formulă. Altfel demonstrezi prin inducție o margine, de exemplu că toți termenii rămân de aceeași parte a unui punct fix, apoi afli semnul lui xₙ₊₁ − xₙ din relație. Un șir crescător este mărginit inferior de primul termen, iar unul descrescător, superior.",
+            "en": "If you know the general term, study the sign of the difference xₙ₊₁ − xₙ directly from the formula. Otherwise prove a bound by induction, for example that all the terms stay on the same side of a fixed point, then find the sign of xₙ₊₁ − xₙ from the relation. An increasing sequence is bounded below by its first term, and a decreasing one above."
+          }
+        }
+      ],
+      "keywords": {
+        "ro": [
+          "șiruri date prin recurențe",
+          "termenul general",
+          "recurența liniară",
+          "ecuația caracteristică",
+          "recurența omografică",
+          "puncte fixe",
+          "monotonia unui șir",
+          "șiruri mărginite",
+          "clasa a 11-a",
+          "clasa a XI-a"
+        ],
+        "en": [
+          "sequences defined by recurrences",
+          "general term",
+          "linear recurrence",
+          "characteristic equation",
+          "homographic recurrence",
+          "fixed points",
+          "monotonic sequences",
+          "bounded sequences",
+          "grade 11"
+        ]
+      },
+      "results": {
+        "version": 1,
+        "checks": 51
       }
     }
   ]

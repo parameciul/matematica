@@ -1,0 +1,839 @@
+{
+  "uid": "1033",
+  "version": 1,
+  "items": {
+    "1": {
+      "check": false,
+      "why": "open",
+      "show": "a) aditivă: $x_n=x_1+1^2+\\ldots+(n-1)^2$; b) tipul 1: $\\ell=1$; c) tipul 2: $r^2-4r+3=0$, $\\Delta=4>0$; d) cu radicali: $y_n=x_n^2$; e) polinomială: $x_{n+1}+2=(x_n+2)^2$; f) tipul 2: $\\Delta=-16<0$; g) termen polinomial: $p_n=\\alpha n+\\beta$; h) mixtă: împart la $5^{n+1}$; i) omografică: $\\alpha=1$, $\\beta=-1$, $y_n=\\frac{x_n-1}{x_n+1}$"
+    },
+    "4": {
+      "kind": "number",
+      "show": "Șirul este constant dacă $x_2=x_1$: $2a+6=2$, deci $a=-2$",
+      "accept": [
+        "-2"
+      ]
+    },
+    "5": {
+      "check": false,
+      "why": "open",
+      "show": "a) $r^2-7r+12=0$, $\\Delta=1$, $r_1=3$, $r_2=4$; $x_n=A\\cdot 3^n+B\\cdot 4^n$. b) $r^2-10r+25=0$, $\\Delta=0$, $r=5$; $x_n=(A+B\\cdot n)\\cdot 5^n$. c) $r^2+9=0$, $\\Delta=-36$, $r=\\pm 3i$, $\\rho=3$, $t=\\frac{\\pi}{2}$; $x_n=3^n\\left(A\\cos\\frac{n\\pi}{2}+B\\sin\\frac{n\\pi}{2}\\right)$"
+    },
+    "12": {
+      "check": false,
+      "why": "open",
+      "show": "a) $x^2-x-6=0$: $\\alpha=3$, $\\beta=-2$; $y_n=\\frac{x_n-3}{x_n+2}$ (progresie geometrică). b) $x^2-2x+1=0$: $\\alpha=1$; $z_n=\\frac{1}{x_n-1}$ (progresie aritmetică). c) $x^2-1=0$: $\\alpha=1$, $\\beta=-1$; $y_n=\\frac{x_n-1}{x_n+1}$ (progresie geometrică)"
+    },
+    "17": {
+      "kind": "text",
+      "show": "$r=-1$ (dublă); $x_n=(n-2)\\cdot (-1)^n$",
+      "accept": [
+        "(n-2)*(-1)^n",
+        "(n-2)·(-1)^n",
+        "(n-2)(-1)^n",
+        "(-1)^n*(n-2)",
+        "(-1)^n·(n-2)",
+        "(-1)^n(n-2)"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, scrisă de exemplu 3·2^(n-1)+1",
+        "en": "an expression in $n$, written for example as 3·2^(n-1)+1"
+      }
+    },
+    "20": {
+      "check": false,
+      "why": "open",
+      "show": "$r_{1,2}=1\\pm i\\sqrt{3}=2\\left(\\cos\\frac{\\pi}{3}\\pm i\\sin\\frac{\\pi}{3}\\right)$; $A=1$, $B=0$; $x_n=2^n\\cos\\frac{n\\pi}{3}$"
+    },
+    "24": {
+      "kind": "text",
+      "show": "Suma se telescopează: $x_n=1+(2!-1!)+\\ldots+(n!-(n-1)!)=n!$",
+      "accept": [
+        "n!"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, scrisă de exemplu 3·2^(n-1)+1",
+        "en": "an expression in $n$, written for example as 3·2^(n-1)+1"
+      }
+    },
+    "33": {
+      "kind": "text",
+      "show": "$\\frac{1}{\\sqrt{k+1}+\\sqrt{k}}=\\sqrt{k+1}-\\sqrt{k}$, deci $x_n=\\sqrt{n}$",
+      "accept": [
+        "√n",
+        "√(n)",
+        "sqrt(n)"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, scrisă de exemplu √(2n+1)",
+        "en": "an expression in $n$, written for example as √(2n+1)"
+      }
+    },
+    "35": {
+      "kind": "text",
+      "show": "$x_{n+1}+1=(x_n+1)^3$; $x_n=2^{3^{n-1}}-1$",
+      "accept": [
+        "2^(3^(n-1))-1"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, scrisă de exemplu 3·2^(n-1)+1",
+        "en": "an expression in $n$, written for example as 3·2^(n-1)+1"
+      }
+    },
+    "36": {
+      "check": false,
+      "why": "open",
+      "show": "$x_n=\\cos\\frac{2^{n-1}\\pi}{6}$. Pentru $n\\ge 3$, $x_n=-\\frac{1}{2}$, pentru că $-\\frac{1}{2}$ este punct fix: $2\\cdot \\frac{1}{4}-1=-\\frac{1}{2}$"
+    },
+    "38": {
+      "kind": "text",
+      "show": "$p_n=-n^2-2n-3$; $y_0=3$; $x_n=3\\cdot 2^n-n^2-2n-3$",
+      "accept": [
+        "3*2^n-n^2-2n-3",
+        "3·2^n-n^2-2n-3"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, scrisă de exemplu 3·2^(n-1)+1",
+        "en": "an expression in $n$, written for example as 3·2^(n-1)+1"
+      }
+    },
+    "40": {
+      "check": false,
+      "why": "proof",
+      "show": "a) $r_{1,2}=1\\pm\\sqrt{2}$, $A=B=1$. b) $x_0$, $x_1$ sunt întregi, iar relația folosește doar adunări și înmulțiri cu 2: prin inducție, toți termenii sunt întregi"
+    },
+    "45": {
+      "check": false,
+      "why": "proof",
+      "show": "Dacă $x_n=t^k+t^{-k}$, atunci $x_n^2-2=t^{2k}+t^{-2k}$, deci exponentul se dublează. Din $t+\\frac{1}{t}=3$: $t=\\frac{3+\\sqrt{5}}{2}$"
+    },
+    "2a": {
+      "kind": "text",
+      "show": "$x_n=5n-3$",
+      "accept": [
+        "5n-3"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, scrisă de exemplu 3·2^(n-1)+1",
+        "en": "an expression in $n$, written for example as 3·2^(n-1)+1"
+      }
+    },
+    "2b": {
+      "kind": "text",
+      "show": "$x_n=3\\cdot (-2)^{n-1}$",
+      "accept": [
+        "3*(-2)^(n-1)",
+        "3·(-2)^(n-1)",
+        "3(-2)^(n-1)",
+        "(-2)^(n-1)*3",
+        "(-2)^(n-1)·3",
+        "(-2)^(n-1)3"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, scrisă de exemplu 3·2^(n-1)+1",
+        "en": "an expression in $n$, written for example as 3·2^(n-1)+1"
+      }
+    },
+    "2c": {
+      "kind": "text",
+      "show": "$\\ell=3$, $x_n=3+2^{n-1}$",
+      "accept": [
+        "3+2^(n-1)",
+        "2^(n-1)+3"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, scrisă de exemplu 3·2^(n-1)+1",
+        "en": "an expression in $n$, written for example as 3·2^(n-1)+1"
+      }
+    },
+    "2d": {
+      "kind": "text",
+      "show": "$\\ell=1$, $x_n=1+4^{n-1}$",
+      "accept": [
+        "1+4^(n-1)",
+        "4^(n-1)+1"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, scrisă de exemplu 3·2^(n-1)+1",
+        "en": "an expression in $n$, written for example as 3·2^(n-1)+1"
+      }
+    },
+    "3a": {
+      "kind": "text",
+      "show": "$\\ell=3$; $x_n=3-3\\cdot \\left(\\frac{1}{3}\\right)^{n-1}=3-\\frac{1}{3^{n-2}}$",
+      "accept": [
+        "3-1/3^(n-2)",
+        "3-3^(2-n)",
+        "3-9/3^n",
+        "3-3/3^(n-1)"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, scrisă de exemplu 3·2^(n-1)+1",
+        "en": "an expression in $n$, written for example as 3·2^(n-1)+1"
+      }
+    },
+    "3b": {
+      "check": false,
+      "why": "proof",
+      "show": "$x_{n+1}-x_n=\\frac{6}{3^n}>0$, deci șirul este strict crescător; atunci $x_n\\ge x_1=0$, iar $x_n=3-\\frac{1}{3^{n-2}}<3$"
+    },
+    "6a": {
+      "kind": "text",
+      "show": "$r_1=1$, $r_2=2$; $x_n=2^n-1$",
+      "accept": [
+        "2^n-1"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, scrisă de exemplu 3·2^(n-1)+1",
+        "en": "an expression in $n$, written for example as 3·2^(n-1)+1"
+      }
+    },
+    "6b": {
+      "kind": "text",
+      "show": "$r_1=3$, $r_2=-2$; $x_n=3^n+(-2)^n$",
+      "accept": [
+        "3^n+(-2)^n",
+        "(-2)^n+3^n"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, scrisă de exemplu 3·2^(n-1)+1",
+        "en": "an expression in $n$, written for example as 3·2^(n-1)+1"
+      }
+    },
+    "6c": {
+      "kind": "text",
+      "show": "$r_1=4$, $r_2=-1$; $x_n=4^n-(-1)^n$",
+      "accept": [
+        "4^n-(-1)^n"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, scrisă de exemplu 3·2^(n-1)+1",
+        "en": "an expression in $n$, written for example as 3·2^(n-1)+1"
+      }
+    },
+    "6d": {
+      "kind": "text",
+      "show": "$r_1=1$, $r_2=3$; $x_n=2\\cdot 3^n-1$",
+      "accept": [
+        "2*3^n-1",
+        "2·3^n-1"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, scrisă de exemplu 3·2^(n-1)+1",
+        "en": "an expression in $n$, written for example as 3·2^(n-1)+1"
+      }
+    },
+    "7a": {
+      "kind": "text",
+      "show": "$r_1=1$, $r_2=4$; $A=2$, $B=1$: $x_n=2+4^n$",
+      "accept": [
+        "2+4^n",
+        "4^n+2"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, scrisă de exemplu 3·2^(n-1)+1",
+        "en": "an expression in $n$, written for example as 3·2^(n-1)+1"
+      }
+    },
+    "7b": {
+      "check": false,
+      "why": "proof",
+      "show": "$x_{n+1}-x_n=3\\cdot 4^n>0$: strict crescător. Este mărginit inferior ($x_n\\ge 3$), dar nu este mărginit superior ($4^n$ depășește orice număr), deci nu este mărginit"
+    },
+    "8a": {
+      "kind": "text",
+      "show": "$r=3$ (dublă); $x_n=(n+2)\\cdot 3^n$",
+      "accept": [
+        "(n+2)*3^n",
+        "(n+2)·3^n",
+        "(n+2)3^n",
+        "3^n*(n+2)",
+        "3^n·(n+2)",
+        "3^n(n+2)"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, scrisă de exemplu 3·2^(n-1)+1",
+        "en": "an expression in $n$, written for example as 3·2^(n-1)+1"
+      }
+    },
+    "8b": {
+      "kind": "text",
+      "show": "$r=5$ (dublă); $x_n=(2n+1)\\cdot 5^n$",
+      "accept": [
+        "(2n+1)*5^n",
+        "(2n+1)·5^n",
+        "(2n+1)5^n",
+        "5^n*(2n+1)",
+        "5^n·(2n+1)",
+        "5^n(2n+1)"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, scrisă de exemplu 3·2^(n-1)+1",
+        "en": "an expression in $n$, written for example as 3·2^(n-1)+1"
+      }
+    },
+    "9a": {
+      "kind": "text",
+      "show": "$x_n=2+4(1+2+\\ldots+(n-1))=2n^2-2n+2$",
+      "accept": [
+        "2n^2-2n+2",
+        "2(n^2-n+1)"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, scrisă de exemplu 3·2^(n-1)+1",
+        "en": "an expression in $n$, written for example as 3·2^(n-1)+1"
+      }
+    },
+    "9b": {
+      "kind": "text",
+      "show": "$x_n=2+2^2+\\ldots+2^{n-1}=2^n-2$",
+      "accept": [
+        "2^n-2"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, scrisă de exemplu 3·2^(n-1)+1",
+        "en": "an expression in $n$, written for example as 3·2^(n-1)+1"
+      }
+    },
+    "10a": {
+      "kind": "text",
+      "show": "$x_n=n!$; strict crescător ($\\frac{x_{n+1}}{x_n}=n+1>1$), mărginit inferior de 1, nemărginit superior",
+      "accept": [
+        "n!"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, scrisă de exemplu 3·2^(n-1)+1",
+        "en": "an expression in $n$, written for example as 3·2^(n-1)+1"
+      }
+    },
+    "10b": {
+      "kind": "text",
+      "show": "$x_n=\\frac{1}{n}$; strict descrescător, $0<x_n\\le 1$, deci mărginit",
+      "accept": [
+        "1/n"
+      ],
+      "hint": {
+        "ro": "o fracție în $n$, scrisă de exemplu (n+2)/(n+3)",
+        "en": "a fraction in $n$, written for example as (n+2)/(n+3)"
+      }
+    },
+    "11a": {
+      "kind": "text",
+      "show": "$x_n^2=5n-1$, deci $x_n=\\sqrt{5n-1}$",
+      "accept": [
+        "√(5n-1)",
+        "sqrt(5n-1)"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, scrisă de exemplu √(2n+1)",
+        "en": "an expression in $n$, written for example as √(2n+1)"
+      }
+    },
+    "11b": {
+      "check": false,
+      "why": "proof",
+      "show": "$x_{n+1}-x_n=\\sqrt{5n+4}-\\sqrt{5n-1}>0$ (sau $x_{n+1}^2=x_n^2+5>x_n^2$, cu termeni pozitivi)"
+    },
+    "13a": {
+      "check": false,
+      "why": "proof",
+      "show": "$x^2-4x+4=0$, deci $\\alpha=2$"
+    },
+    "13b": {
+      "check": false,
+      "why": "proof",
+      "show": "$\\frac{1}{x_{n+1}-2}=\\frac{x_n+1}{3(x_n-2)}=\\frac{1}{x_n-2}+\\frac{1}{3}$"
+    },
+    "13c": {
+      "kind": "text",
+      "show": "$z_1=1$, $z_n=\\frac{n+2}{3}$, $x_n=2+\\frac{3}{n+2}=\\frac{2n+7}{n+2}$",
+      "accept": [
+        "(2n+7)/(n+2)",
+        "2+3/(n+2)"
+      ],
+      "hint": {
+        "ro": "o fracție în $n$, scrisă de exemplu (n+2)/(n+3)",
+        "en": "a fraction in $n$, written for example as (n+2)/(n+3)"
+      }
+    },
+    "13d": {
+      "check": false,
+      "why": "proof",
+      "show": "$x_n=2+\\frac{3}{n+2}$: strict descrescător, $2<x_n\\le x_1=3$, deci mărginit"
+    },
+    "14a": {
+      "check": false,
+      "why": "proof",
+      "show": "$x^2-3x+3=0$, $\\Delta=-3<0$"
+    },
+    "14b": {
+      "kind": "list",
+      "show": "$x_2=\\frac{3}{2}$, $x_3=3$, $x_4=0=x_1$: termenii se repetă din 3 în 3",
+      "accept": [
+        "3/2; 3; 0"
+      ],
+      "hint": {
+        "ro": "valorile în ordine, separate prin ;",
+        "en": "the values in order, separated by ;"
+      }
+    },
+    "14c": {
+      "kind": "number",
+      "show": "$2027=3\\cdot 675+2$, deci $x_{2027}=x_2=\\frac{3}{2}$",
+      "accept": [
+        "3/2"
+      ]
+    },
+    "15a": {
+      "kind": "number",
+      "show": "$x_1=\\ell=3$",
+      "accept": [
+        "3"
+      ]
+    },
+    "15b": {
+      "kind": "text",
+      "show": "$x_n=3+2\\cdot 4^{n-1}$",
+      "accept": [
+        "3+2*4^(n-1)",
+        "3+2·4^(n-1)",
+        "2*4^(n-1)+3",
+        "2·4^(n-1)+3"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, scrisă de exemplu 3·2^(n-1)+1",
+        "en": "an expression in $n$, written for example as 3·2^(n-1)+1"
+      }
+    },
+    "16a": {
+      "check": false,
+      "why": "open",
+      "show": "$\\ell=\\frac{5}{2}$; $x_n=\\frac{5}{2}-\\frac{3}{2}\\cdot (-1)^n$. Termenii sunt $1; 4; 1; 4; \\ldots$, pentru că $a=-1$"
+    },
+    "16b": {
+      "check": false,
+      "why": "proof",
+      "show": "Nu este monoton ($x_0<x_1>x_2$); este mărginit: $1\\le x_n\\le 4$"
+    },
+    "18a": {
+      "kind": "text",
+      "show": "$r=-3$ (dublă); $A=1$, $B=-1$: $x_n=(1-n)\\cdot (-3)^n$",
+      "accept": [
+        "(1-n)*(-3)^n",
+        "(1-n)·(-3)^n",
+        "(1-n)(-3)^n",
+        "(-3)^n*(1-n)",
+        "(-3)^n·(1-n)",
+        "(-3)^n(1-n)"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, scrisă de exemplu 3·2^(n-1)+1",
+        "en": "an expression in $n$, written for example as 3·2^(n-1)+1"
+      }
+    },
+    "18b": {
+      "check": false,
+      "why": "proof",
+      "show": "$x_0=1$, $x_1=0$, $x_2=-9$, $x_3=54$: $x_1>x_2$, dar $x_2<x_3$"
+    },
+    "19a": {
+      "check": false,
+      "why": "proof",
+      "show": "$r^2+2r+2=0$, $\\Delta=-4$, $r=-1\\pm i$; $\\rho=\\sqrt{2}$, $\\cos t=-\\frac{\\sqrt{2}}{2}$, $t=\\frac{3\\pi}{4}$"
+    },
+    "19b": {
+      "check": false,
+      "why": "open",
+      "show": "$A=1$, $B=0$: $x_n=\\left(\\sqrt{2}\\right)^n\\cos\\frac{3n\\pi}{4}$. Verificare: $x_2=0$"
+    },
+    "21a": {
+      "kind": "list",
+      "show": "$x_2=-3$, $x_3=1$, $x_4=2$, $x_5=-3$: termenii se repetă din 3 în 3",
+      "accept": [
+        "-3; 1; 2; -3"
+      ],
+      "hint": {
+        "ro": "valorile în ordine, separate prin ;",
+        "en": "the values in order, separated by ;"
+      }
+    },
+    "21b": {
+      "check": false,
+      "why": "proof",
+      "show": "$x_{n+3}=-x_{n+2}-x_{n+1}=(x_{n+1}+x_n)-x_{n+1}=x_n$"
+    },
+    "21c": {
+      "kind": "list",
+      "show": "$2026=3\\cdot 675+1$, deci $x_{2026}=x_1=2$. Suma a trei termeni consecutivi este $1+2-3=0$, deci suma celor 30 de termeni este 0",
+      "accept": [
+        "2; 0"
+      ],
+      "hint": {
+        "ro": "valorile în ordine, separate prin ;",
+        "en": "the values in order, separated by ;"
+      }
+    },
+    "21d": {
+      "check": false,
+      "why": "proof",
+      "show": "Termenii iau doar valorile $1$, $2$, $-3$, deci $-3\\le x_n\\le 2$; $x_0<x_1>x_2$, deci nu este monoton"
+    },
+    "22a": {
+      "kind": "list",
+      "show": "$-1; -2; -1; 1; 2; 1$ (se repetă din 6 în 6)",
+      "accept": [
+        "-1; -2; -1; 1; 2; 1"
+      ],
+      "hint": {
+        "ro": "valorile în ordine, separate prin ;",
+        "en": "the values in order, separated by ;"
+      }
+    },
+    "22b": {
+      "check": false,
+      "why": "open",
+      "show": "$x_n=2\\cos\\frac{n\\pi}{3}$"
+    },
+    "22c": {
+      "kind": "number",
+      "show": "$2026=6\\cdot 337+4$, deci $x_{2026}=x_4=-1$",
+      "accept": [
+        "-1"
+      ]
+    },
+    "23a": {
+      "kind": "text",
+      "show": "$x_n=1+\\left(1-\\frac{1}{n}\\right)=2-\\frac{1}{n}$",
+      "accept": [
+        "2-1/n",
+        "(2n-1)/n"
+      ],
+      "hint": {
+        "ro": "o fracție în $n$, scrisă de exemplu (n+2)/(n+3)",
+        "en": "a fraction in $n$, written for example as (n+2)/(n+3)"
+      }
+    },
+    "23b": {
+      "kind": "text",
+      "show": "$x_n=n^3$",
+      "accept": [
+        "n^3"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, scrisă de exemplu 3·2^(n-1)+1",
+        "en": "an expression in $n$, written for example as 3·2^(n-1)+1"
+      }
+    },
+    "23c": {
+      "check": false,
+      "why": "proof",
+      "show": "$x_{n+1}-x_n=\\frac{1}{n(n+1)}>0$; $1\\le x_n<2$"
+    },
+    "25a": {
+      "kind": "text",
+      "show": "$x_n=(3n-2)\\cdot 3^{n-1}$",
+      "accept": [
+        "(3n-2)*3^(n-1)",
+        "(3n-2)·3^(n-1)",
+        "(3n-2)3^(n-1)",
+        "3^(n-1)*(3n-2)",
+        "3^(n-1)·(3n-2)",
+        "3^(n-1)(3n-2)"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, scrisă de exemplu 3·2^(n-1)+1",
+        "en": "an expression in $n$, written for example as 3·2^(n-1)+1"
+      }
+    },
+    "25b": {
+      "kind": "text",
+      "show": "$x_n=n\\cdot n!$",
+      "accept": [
+        "n*n!",
+        "n·n!"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, scrisă de exemplu 3·2^(n-1)+1",
+        "en": "an expression in $n$, written for example as 3·2^(n-1)+1"
+      }
+    },
+    "26a": {
+      "kind": "text",
+      "show": "$y_n=x_n^2$, $y_{n+1}=2y_n+1$; $x_n=\\sqrt{2^n-1}$",
+      "accept": [
+        "√(2^n-1)",
+        "sqrt(2^n-1)"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, scrisă de exemplu √(2n+1)",
+        "en": "an expression in $n$, written for example as √(2n+1)"
+      }
+    },
+    "26b": {
+      "kind": "text",
+      "show": "$\\sqrt{x_n}=2n-1$; $x_n=(2n-1)^2$",
+      "accept": [
+        "(2n-1)^2"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, scrisă de exemplu 3·2^(n-1)+1",
+        "en": "an expression in $n$, written for example as 3·2^(n-1)+1"
+      }
+    },
+    "26c": {
+      "check": false,
+      "why": "open",
+      "show": "$y_n=\\log_3{x_n}$, $y_{n+1}=1+\\frac{1}{2}y_n$, $y_1=1$; $x_n=3^{2-\\frac{1}{2^{n-1}}}$"
+    },
+    "26d": {
+      "check": false,
+      "why": "open",
+      "show": "Truc 3: $y_n=\\log_2{x_n}$, $y_{n+1}=\\frac{1}{2}y_n$, $y_1=1$; $x_n=2^{\\frac{1}{2^{n-1}}}$"
+    },
+    "26e": {
+      "check": false,
+      "why": "proof",
+      "show": "$y_n=2-\\frac{1}{2^{n-1}}$ este strict crescător și $1\\le y_n<2$, deci $3\\le x_n<9$"
+    },
+    "27a": {
+      "kind": "text",
+      "show": "$x_{n+1}-1=(x_n-1)^2$; $x_n=2^{2^{n-1}}+1$ (numerele lui Fermat)",
+      "accept": [
+        "2^(2^(n-1))+1"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, scrisă de exemplu 3·2^(n-1)+1",
+        "en": "an expression in $n$, written for example as 3·2^(n-1)+1"
+      }
+    },
+    "27b": {
+      "kind": "text",
+      "show": "$p_n=n+\\frac{1}{2}$; $x_n=\\frac{2n+1-3^{n-1}}{2}$",
+      "accept": [
+        "(2n+1-3^(n-1))/2"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, scrisă de exemplu 3·2^(n-1)+1",
+        "en": "an expression in $n$, written for example as 3·2^(n-1)+1"
+      }
+    },
+    "28a": {
+      "check": false,
+      "why": "proof",
+      "show": "$x_{n+1}-1=\\frac{2(x_n-1)}{x_n+4}$ și $x_{n+1}+2=\\frac{5(x_n+2)}{x_n+4}$, deci $y_{n+1}=\\frac{2}{5}y_n$"
+    },
+    "28b": {
+      "check": false,
+      "why": "open",
+      "show": "$y_1=\\frac{1}{4}$, $y_n=\\frac{1}{4}\\cdot \\left(\\frac{2}{5}\\right)^{n-1}$, $x_n=\\frac{1+2y_n}{1-y_n}=\\frac{4\\cdot 5^{n-1}+2^n}{4\\cdot 5^{n-1}-2^{n-1}}$"
+    },
+    "28c": {
+      "check": false,
+      "why": "proof",
+      "show": "Prin inducție: $x_{n+1}-1=\\frac{2(x_n-1)}{x_n+4}>0$; din d), $x_n\\le x_1=2$"
+    },
+    "28d": {
+      "check": false,
+      "why": "proof",
+      "show": "$x_{n+1}-x_n=-\\frac{(x_n-1)(x_n+2)}{x_n+4}<0$, pentru că $x_n>1$"
+    },
+    "29a": {
+      "kind": "list",
+      "show": "$x_2=3$, $x_3=\\frac{9}{5}$",
+      "accept": [
+        "3; 9/5"
+      ],
+      "hint": {
+        "ro": "valorile în ordine, separate prin ;",
+        "en": "the values in order, separated by ;"
+      }
+    },
+    "29b": {
+      "check": false,
+      "why": "open",
+      "show": "$y_{n+1}=-\\frac{1}{4}y_n$, $y_1=-\\frac{2}{3}$; $x_n=\\frac{2+3y_n}{1-y_n}=\\frac{6\\left(1-\\left(-\\frac{1}{4}\\right)^{n-1}\\right)}{3+2\\left(-\\frac{1}{4}\\right)^{n-1}}$"
+    },
+    "29c": {
+      "check": false,
+      "why": "proof",
+      "show": "$x_1=0<x_2=3$, dar $x_2>x_3=\\frac{9}{5}$"
+    },
+    "29d": {
+      "check": false,
+      "why": "proof",
+      "show": "Prin inducție $x_n\\ge 0$; atunci $x_{n+1}=1+\\frac{4}{x_n+2}\\le 1+2=3$"
+    },
+    "30a": {
+      "check": false,
+      "why": "proof",
+      "show": "Prin inducție: $x_{n+1}-2=\\frac{x_n-2}{x_n+3}<0$ și $x_{n+1}-1=\\frac{2x_n+1}{x_n+3}>0$, dacă $1\\le x_n<2$"
+    },
+    "30b": {
+      "check": false,
+      "why": "proof",
+      "show": "$x_{n+1}-x_n=\\frac{4-x_n^2}{x_n+3}>0$, pentru că $1\\le x_n<2$"
+    },
+    "31a": {
+      "check": false,
+      "why": "proof",
+      "show": "$x^2-2x+1=0$, deci $\\alpha=1$"
+    },
+    "31b": {
+      "kind": "text",
+      "show": "$z_n=\\frac{1}{x_n-1}$, $z_{n+1}=z_n+\\frac{1}{2}$, $z_1=1$, $z_n=\\frac{n+1}{2}$; $x_n=\\frac{n+3}{n+1}$",
+      "accept": [
+        "(n+3)/(n+1)",
+        "1+2/(n+1)"
+      ],
+      "hint": {
+        "ro": "o fracție în $n$, scrisă de exemplu (n+2)/(n+3)",
+        "en": "a fraction in $n$, written for example as (n+2)/(n+3)"
+      }
+    },
+    "31c": {
+      "check": false,
+      "why": "proof",
+      "show": "$x_n=1+\\frac{2}{n+1}$: strict descrescător, $1<x_n\\le x_1=2$"
+    },
+    "32a": {
+      "check": false,
+      "why": "proof",
+      "show": "$x(1-x)=1+x\\Rightarrow x^2=-1$: nu are soluții reale"
+    },
+    "32b": {
+      "kind": "list",
+      "show": "$x_2=-3$, $x_3=-\\frac{1}{2}$, $x_4=\\frac{1}{3}$, $x_5=2=x_1$: termenii se repetă din 4 în 4",
+      "accept": [
+        "-3; -1/2; 1/3; 2"
+      ],
+      "hint": {
+        "ro": "valorile în ordine, separate prin ;",
+        "en": "the values in order, separated by ;"
+      }
+    },
+    "32c": {
+      "kind": "number",
+      "show": "$2026=4\\cdot 506+2$, deci $x_{2026}=x_2=-3$",
+      "accept": [
+        "-3"
+      ]
+    },
+    "34a": {
+      "check": false,
+      "why": "open",
+      "show": "$x_n=3\\cdot 3^{1+2+\\ldots+(n-1)}=3^{\\frac{n^2-n+2}{2}}$"
+    },
+    "34b": {
+      "kind": "text",
+      "show": "$x_n=\\frac{n+1}{2n}$",
+      "accept": [
+        "(n+1)/(2n)"
+      ],
+      "hint": {
+        "ro": "o fracție în $n$, scrisă de exemplu (n+2)/(n+3)",
+        "en": "a fraction in $n$, written for example as (n+2)/(n+3)"
+      }
+    },
+    "34c": {
+      "check": false,
+      "why": "proof",
+      "show": "$x_n=\\frac{1}{2}+\\frac{1}{2n}$: strict descrescător, $\\frac{1}{2}<x_n\\le 1$"
+    },
+    "37a": {
+      "check": false,
+      "why": "open",
+      "show": "$x_1=\\cos\\frac{\\pi}{3}$; unghiul se înjumătățește, deci $x_n=\\cos\\frac{\\pi}{3\\cdot 2^{n-1}}$"
+    },
+    "37b": {
+      "check": false,
+      "why": "proof",
+      "show": "Unghiurile $\\frac{\\pi}{3\\cdot 2^{n-1}}$ scad în $\\left(0;\\frac{\\pi}{2}\\right)$, iar cosinusul este descrescător acolo; deci $\\frac{1}{2}=x_1\\le x_n<1$"
+    },
+    "39a": {
+      "check": false,
+      "why": "proof",
+      "show": "$r^2-r-1=0$, $r_{1,2}=\\frac{1\\pm\\sqrt{5}}{2}$; $A+B=0$ și $A(r_1-r_2)=1$, cu $r_1-r_2=\\sqrt{5}$"
+    },
+    "39b": {
+      "check": false,
+      "why": "proof",
+      "show": "$F_{n+2}-F_{n+1}=F_n\\ge 0$; prin inducție $F_n\\ge n-1$, deci șirul nu este mărginit"
+    },
+    "41a": {
+      "kind": "number",
+      "show": "$\\Delta=m^2-144=0$ și $m>0$, deci $m=12$; rădăcina dublă este $r=6$",
+      "accept": [
+        "12"
+      ]
+    },
+    "41b": {
+      "kind": "text",
+      "show": "$A=1$, $B=1$: $x_n=(n+1)\\cdot 6^n$",
+      "accept": [
+        "(n+1)*6^n",
+        "(n+1)·6^n",
+        "(n+1)6^n",
+        "6^n*(n+1)",
+        "6^n·(n+1)",
+        "6^n(n+1)"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, scrisă de exemplu 3·2^(n-1)+1",
+        "en": "an expression in $n$, written for example as 3·2^(n-1)+1"
+      }
+    },
+    "42a": {
+      "kind": "list",
+      "show": "$x_2=\\frac{5}{3}$, $x_3=\\frac{19}{11}$",
+      "accept": [
+        "5/3; 19/11"
+      ],
+      "hint": {
+        "ro": "valorile în ordine, separate prin ;",
+        "en": "the values in order, separated by ;"
+      }
+    },
+    "42b": {
+      "check": false,
+      "why": "proof",
+      "show": "$x_{n+1}-\\sqrt{3}=\\frac{(2-\\sqrt{3})(x_n-\\sqrt{3})}{x_n+2}$ păstrează semnul; $x_{n+1}-x_n=\\frac{3-x_n^2}{x_n+2}>0$"
+    },
+    "42c": {
+      "check": false,
+      "why": "open",
+      "show": "$y_{n+1}=(2-\\sqrt{3})^2\\cdot y_n$, $y_1=-(2-\\sqrt{3})$; $x_n=\\sqrt{3}\\cdot \\frac{1-(2-\\sqrt{3})^{2n-1}}{1+(2-\\sqrt{3})^{2n-1}}$"
+    },
+    "43a": {
+      "kind": "list",
+      "show": "$x_2=-2-\\sqrt{3}$, $x_3=\\sqrt{3}-2$, $x_4=1=x_1$: perioada 3; $2026=3\\cdot 675+1$, deci $x_{2026}=1$",
+      "accept": [
+        "-2-√3; √3-2; 1; 1"
+      ],
+      "hint": {
+        "ro": "valorile în ordine, separate prin ;",
+        "en": "the values in order, separated by ;"
+      }
+    },
+    "43b": {
+      "check": false,
+      "why": "open",
+      "show": "$x_{n+1}=\\operatorname{tg}\\left(\\theta_n+\\frac{\\pi}{3}\\right)$: unghiul crește cu $\\frac{\\pi}{3}$ la fiecare pas, deci $x_n=\\operatorname{tg}\\left(\\frac{\\pi}{4}+(n-1)\\frac{\\pi}{3}\\right)$"
+    },
+    "44a": {
+      "check": false,
+      "why": "open",
+      "show": "„Deci $x_n=2^n-1$” generalizează din două exemple. Contraexemplu: $x_4=13$, dar $2^4-1=15$"
+    },
+    "44b": {
+      "kind": "text",
+      "show": "$x_n=1+2(1+2+\\ldots+(n-1))=n^2-n+1$",
+      "accept": [
+        "n^2-n+1"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, scrisă de exemplu 3·2^(n-1)+1",
+        "en": "an expression in $n$, written for example as 3·2^(n-1)+1"
+      }
+    }
+  }
+}

@@ -71,6 +71,9 @@
 - Clasa a XI-a: https://lauramiron.pages.dev/clasa-11
 - Grade 11: https://lauramiron.pages.dev/en/clasa-11
 
+### Șiruri de numere reale / Sequences of real numbers
+- [Fișă de lucru: șiruri date prin recurențe](https://lauramiron.pages.dev/materiale/fisa-lucru-siruri-recurente-1033) ([EN](https://lauramiron.pages.dev/en/materiale/fisa-lucru-siruri-recurente-1033)): Fișă de lucru pentru clasa a XI-a: șiruri date prin recurențe, aflarea termenului general, recurența omografică, monotonie și mărginire. (fisa-lucru, clasa a 11-a / grade 11, updated 2026-10-26)
+
 ### Mulțimi de puncte pe dreapta reală / Sets of points on the real line
 - [Fișă de lucru: vecinătăți și puncte de acumulare](https://lauramiron.pages.dev/materiale/fisa-lucru-vecinatati-puncte-acumulare-1022) ([EN](https://lauramiron.pages.dev/en/materiale/fisa-lucru-vecinatati-puncte-acumulare-1022)): Fișă de lucru pentru clasa a XI-a: vecinătăți pe dreapta reală și în puncte infinite, puncte de acumulare și puncte izolate. (fisa-lucru, clasa a 11-a / grade 11, updated 2026-10-06)
 - [Teorie: vecinătăți, puncte de acumulare și puncte izolate](https://lauramiron.pages.dev/materiale/teorie-vecinatati-puncte-acumulare-1023) ([EN](https://lauramiron.pages.dev/en/materiale/teorie-vecinatati-puncte-acumulare-1023)): Teorie sintetizată pentru clasa a XI-a: definiții, proprietăți ale vecinătăților, puncte de acumulare și puncte izolate, cu exemple rezolvate. (teorie, clasa a 11-a / grade 11, updated 2026-10-06)

@@ -5356,6 +5356,988 @@ Show that the perimeter of triangle $CMN$ is constant and independent of the pos
 
 ## Clasa a XI-a / Grade 11
 
+### Fișă de lucru: șiruri date prin recurențe
+- Source (RO): https://lauramiron.pages.dev/materiale/fisa-lucru-siruri-recurente-1033
+- Source (EN): https://lauramiron.pages.dev/en/materiale/fisa-lucru-siruri-recurente-1033
+- Author: Laura Miron. License: CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/).
+- Published: 2026-10-26. Updated: 2026-10-26.
+- Fișă de lucru pentru clasa a XI-a: șiruri date prin recurențe, aflarea termenului general, recurența omografică, monotonie și mărginire.
+- Rezumat: Fișa adună metodele pentru șase tipuri de recurențe: liniară de ordinul 1 și 2, aditivă și multiplicativă, cu radicali, polinomială și omografică. Fiecare tip are metoda pas cu pas și exemple rezolvate. Urmează monotonia și mărginirea, o schemă recapitulativă și probleme pe trei niveluri.
+- Întrebări frecvente:
+  - Q: Cum aflu termenul general al unui șir dat printr-o recurență liniară de ordinul al doilea?
+  - A: Scrii ecuația caracteristică: înlocuiești xₙ₊₂ cu r², xₙ₊₁ cu r și xₙ cu 1. După semnul lui Δ alegi forma termenului general: A·r₁ⁿ + B·r₂ⁿ pentru două rădăcini reale diferite, (A + B·n)·rⁿ pentru o rădăcină dublă și ρⁿ(A cos nt + B sin nt) pentru rădăcini complexe. Constantele A și B le afli din primii doi termeni.
+  - Q: Ce este recurența omografică și cum se rezolvă?
+  - A: Este o relație de forma xₙ₊₁ = (a·xₙ + b)/(c·xₙ + d). Rezolvi ecuația punctelor fixe x = (ax + b)/(cx + d). Pentru două puncte fixe α și β, șirul (xₙ − α)/(xₙ − β) este o progresie geometrică. Pentru un singur punct fix α, șirul 1/(xₙ − α) este o progresie aritmetică. Fără puncte fixe, de obicei termenii se repetă.
+  - Q: Cum arăt că un șir dat printr-o recurență este monoton și mărginit?
+  - A: Dacă știi termenul general, studiezi semnul diferenței xₙ₊₁ − xₙ direct din formulă. Altfel demonstrezi prin inducție o margine, de exemplu că toți termenii rămân de aceeași parte a unui punct fix, apoi afli semnul lui xₙ₊₁ − xₙ din relație. Un șir crescător este mărginit inferior de primul termen, iar unul descrescător, superior.
+
+Întrebarea fișei: Cum afli direct al 100-lea termen al unui șir dat printr-o recurență, fără să-i calculezi pe toți cei dinaintea lui, și cum îi studiezi monotonia și mărginirea?
+Pornim de la ce știi
+Trei verificări rapide. Dacă una dintre ele îți ridică probleme, notează-o: la ea revii prima.
+-
+Completează: dacă $(a_n)$ este progresie aritmetică cu $a_1=4$ și rația $r=3$, atunci $a_n=\ldots$; dacă $(b_n)$ este progresie geometrică cu $b_1=2$ și rația $q=5$, atunci $b_n=\ldots$
+-
+Calculează $1+2+\ldots+20$ și $1+2+2^2+\ldots+2^9$. Ce formule ai folosit?
+-
+Rezolvă în $\mathbb{C}$ ecuația $r^2-2r+4=0$ și scrie soluțiile în formă trigonometrică.
+Teorie pe scurt
+Pentru fiecare tip de recurență: cum îl recunoști, metoda pas cu pas (în chenarul gros) și exemple rezolvate. La final găsești schema recapitulativă și firul logic.
+1. Recurența liniară de ordinul 1
+Definiție
+O relație de forma $x_{n+1}=a\cdot x_n+b$, cu $a, b$ numere reale, se numește recurență liniară de ordinul 1. Dacă $a=1$, șirul este o progresie aritmetică. Dacă $b=0$, șirul este o progresie geometrică.
+★ Metodă
+Metoda numărului fix ($a\ne 1$)
+- Caut numărul fix: pun $\ell$ în locul lui $x_{n+1}$ și al lui $x_n$. Din $\ell=a\ell+b$ obțin $\ell=\frac{b}{1-a}$.
+- Scad cele două relații: $x_{n+1}-\ell=a(x_n-\ell)$. Șirul $y_n=x_n-\ell$ este o progresie geometrică cu rația $a$.
+- Scriu $y_n=y_1\cdot a^{n-1}$.
+- Mă întorc la $x_n=y_n+\ell$ și verific pe $x_2$.
+De reținut
+$$x_n=\ell+(x_1-\ell)\cdot a^{n-1}$$
+Dacă șirul începe cu $x_0$, exponentul devine $n$: $x_n=\ell+(x_0-\ell)\cdot a^n$.
+Exemplul 1 · Pas cu pas
+Determină termenul general al șirului $x_1=5$, $x_{n+1}=3x_n-4$, $n\ge 1$.
+Pasul 1. $\ell=3\ell-4\Rightarrow \ell=2$.
+Pasul 2. $y_n=x_n-2$ verifică $y_{n+1}=3y_n$, iar $y_1=5-2=3$.
+Pasul 3. $y_n=3\cdot 3^{n-1}=3^n$.
+Pasul 4. $x_n=3^n+2$. Verificare: din relație $x_2=11$; din formulă $9+2=11$ ✓.
+Exemplul 2 · Cu fracții
+Determină termenul general al șirului $x_1=1$, $x_{n+1}=\frac{1}{2}x_n+3$, $n\ge 1$.
+Pasul 1. $\ell=\frac{1}{2}\ell+3\Rightarrow \ell=6$.
+Pașii 2–3. $y_n=x_n-6$, $y_{n+1}=\frac{1}{2}y_n$, $y_1=-5$, deci $y_n=-\frac{5}{2^{n-1}}$.
+Pasul 4. $x_n=6-\frac{5}{2^{n-1}}$. Verificare: $x_2=\frac{1}{2}+3=\frac{7}{2}$ și $6-\frac{5}{2}=\frac{7}{2}$ ✓.
+2. Recurența liniară omogenă de ordinul 2
+Definiție
+O relație de forma $x_{n+2}=a\cdot x_{n+1}+b\cdot x_n$ se numește recurență liniară omogenă de ordinul al doilea. Fiecare termen se obține din cei doi termeni dinaintea lui.
+★ Metodă
+Metoda ecuației caracteristice
+- Scriu ecuația caracteristică: înlocuiesc $x_{n+2}$ cu $r^2$, $x_{n+1}$ cu $r$ și $x_n$ cu 1. Obțin $r^2=ar+b$.
+- Calculez $\Delta$ și rădăcinile. Scriu forma lui $x_n$ după tabelul de mai jos.
+- Aflu $A$ și $B$ din primii doi termeni: înlocuiesc $n$ cu indicii lor și rezolv sistemul.
+- Verific formula pe al treilea termen, calculat din relație.
+Δ
+Rădăcinile
+Forma termenului general
+$\Delta>0$
+două rădăcini reale $r_1\ne r_2$
+$x_n=A\cdot r_1^n+B\cdot r_2^n$
+$\Delta=0$
+o rădăcină dublă $r$
+$x_n=(A+B\cdot n)\cdot r^n$
+$\Delta<0$
+$r_{1,2}=\rho(\cos{t}\pm i\sin{t})$
+$x_n=\rho^n\cdot (A\cos{nt}+B\sin{nt})$
+Exemplul 3 · Δ > 0
+Determină termenul general al șirului $x_0=2$, $x_1=7$, $x_{n+2}=5x_{n+1}-6x_n$, $n\in \mathbb{N}$.
+Pașii 1–2. $r^2-5r+6=0$, $\Delta=1>0$, $r_1=2$, $r_2=3$. Deci $x_n=A\cdot 2^n+B\cdot 3^n$.
+Pasul 3. $n=0$: $A+B=2$; $n=1$: $2A+3B=7$. Obțin $B=3$, $A=-1$, deci $x_n=3^{n+1}-2^n$.
+Pasul 4. Din relație: $x_2=5\cdot 7-6\cdot 2=23$. Din formulă: $27-4=23$ ✓.
+Exemplul 4 · Δ = 0
+Determină termenul general al șirului $x_0=2$, $x_1=4$, $x_{n+2}=8x_{n+1}-16x_n$, $n\in \mathbb{N}$.
+Pașii 1–2. $r^2-8r+16=0$, $\Delta=0$, $r=4$ (rădăcină dublă). Deci $x_n=(A+B\cdot n)\cdot 4^n$.
+Pasul 3. $n=0$: $A=2$; $n=1$: $(A+B)\cdot 4=4$, deci $A+B=1$ și $B=-1$. Obțin $x_n=(2-n)\cdot 4^n$.
+Pasul 4. Din relație: $x_2=8\cdot 4-16\cdot 2=0$. Din formulă: $0\cdot 16=0$ ✓.
+Exemplul 5 · Δ < 0
+Determină termenul general al șirului $x_0=1$, $x_1=2$, $x_{n+2}=-4x_n$, $n\in \mathbb{N}$.
+Pașii 1–2. $r^2+4=0$, $\Delta=-16<0$, $r=\pm 2i=2\left(\cos\frac{\pi}{2}\pm i\sin\frac{\pi}{2}\right)$, deci $\rho=2$, $t=\frac{\pi}{2}$ și $x_n=2^n\cdot \left(A\cos\frac{n\pi}{2}+B\sin\frac{n\pi}{2}\right)$.
+Pasul 3. $n=0$: $A=1$; $n=1$: $2\cdot (A\cdot 0+B\cdot 1)=2$, deci $B=1$.
+$$x_n=2^n\cdot \left(\cos\frac{n\pi}{2}+\sin\frac{n\pi}{2}\right)$$
+Pasul 4. Din relație: $x_2=-4\cdot 1=-4$. Din formulă: $4\cdot (-1+0)=-4$ ✓.
+Atenție · Cazul Δ = 0
+La $\Delta=0$ nu scrii $A\cdot 4^n+B\cdot 4^n$. Aceasta este de fapt $(A+B)\cdot 4^n$, adică o singură constantă, iar sistemul pentru $A$ și $B$ nu are, în general, soluție. De aceea apare factorul $n$.
+De reținut · Un truc pentru Δ < 0
+Din relațiile lui Viète: $\rho=\sqrt{-b}$ și $\cos{t}=\frac{a}{2\rho}$, cu $t\in (0;\pi)$. Dacă $\rho=1$, șirul se repetă (este periodic).
+3. Recurențe aditive, multiplicative și mixte
+Definiții
+- Recurență aditivă: $x_{n+1}=x_n+f(n)$, unde $f(n)$ depinde doar de $n$.
+- Recurență multiplicativă: $x_{n+1}=g(n)\cdot x_n$.
+- Recurență mixtă: $x_{n+1}=a\cdot x_n+(\text{ceva cu }a^n)$.
+★ Metodă
+Metoda telescopării
+- Scriu relația pentru $1; 2; \ldots; n-1$, una sub alta.
+- Aditivă: adun egalitățile. Multiplicativă: le înmulțesc. Mixtă: întâi împart la $a^{n+1}$; șirul $y_n=\frac{x_n}{a^n}$ verifică o recurență aditivă.
+- Termenii din mijloc se reduc. Calculez suma (sau produsul) care rămâne.
+- Verific formula pe $x_2$.
+De reținut
+$$x_n=x_1+f(1)+f(2)+\ldots+f(n-1)$$
+$$x_n=x_1\cdot g(1)\cdot g(2)\cdot \ldots\cdot g(n-1)$$
+Sume utile:
+$$1+2+\ldots+m=\frac{m(m+1)}{2},\quad 1+3+\ldots+(2m-1)=m^2,\quad 1+q+\ldots+q^{m-1}=\frac{q^m-1}{q-1}$$
+Exemplul 6 · Recurență aditivă
+Determină termenul general al șirului $x_1=3$, $x_{n+1}=x_n+2n+1$, $n\ge 1$.
+Pasul 1. $x_2=x_1+3$, $x_3=x_2+5$, …, $x_n=x_{n-1}+(2n-1)$.
+Pasul 2. Adun: $x_n=3+(3+5+\ldots+(2n-1))=3+(n^2-1)$, deci $x_n=n^2+2$.
+Verificare: $x_2=3+3=6$ și $2^2+2=6$ ✓.
+Exemplul 7 · Recurență multiplicativă
+Determină termenul general al șirului $x_1=2$, $x_{n+1}=\frac{n+2}{n}\cdot x_n$, $n\ge 1$.
+Pasul 1. Înmulțesc relațiile pentru $1; 2; \ldots; n-1$:
+$$x_n=2\cdot \frac{3}{1}\cdot \frac{4}{2}\cdot \frac{5}{3}\cdot \ldots\cdot \frac{n}{n-2}\cdot \frac{n+1}{n-1}$$
+Pasul 2. Se simplifică „în diagonală”: rămân sus $n$ și $n+1$, jos 1 și 2. Deci $x_n=2\cdot \frac{n(n+1)}{2}=n(n+1)$.
+Verificare: $x_2=3\cdot 2=6$ și $2\cdot 3=6$ ✓.
+Exemplul 8 · Recurență mixtă
+Determină termenul general al șirului $x_1=1$, $x_{n+1}=2x_n+2^n$, $n\ge 1$.
+Pasul 1. Împart la $2^{n+1}$: $\frac{x_{n+1}}{2^{n+1}}=\frac{x_n}{2^n}+\frac{1}{2}$.
+Pasul 2. $y_n=\frac{x_n}{2^n}$ este o progresie aritmetică cu rația $\frac{1}{2}$ și $y_1=\frac{1}{2}$, deci $y_n=\frac{n}{2}$.
+Pasul 3. $x_n=2^n\cdot \frac{n}{2}=n\cdot 2^{n-1}$. Verificare: $x_2=2+2=4$ și $2\cdot 2=4$ ✓.
+Atenție · Câți termeni are suma?
+Scrii relația pentru $1; 2; \ldots; n-1$, deci suma (sau produsul) are $n-1$ termeni, nu $n$. De aceea în formulele de mai sus apare $m=n-1$.
+4. Recurențe cu radicali
+Trei trucuri
+Truc 1 · Ridic la pătrat. Dacă apare $\sqrt{\ldots x_n^2\ldots}$, notez $y_n=x_n^2$.
+Truc 2 · Pătratul perfect ascuns. $x_n\pm 2\sqrt{x_n}+1=\left(\sqrt{x_n}\pm 1\right)^2$; notez $y_n=\sqrt{x_n}$.
+Truc 3 · Logaritmez. Dacă relația are doar produse, puteri și radicali (de exemplu $x_{n+1}=c\cdot \sqrt{x_n}$), notez $y_n=\log_c{x_n}$. Puterile devin produse, iar produsele devin sume.
+★ Metodă
+Metoda substituției
+- Recunosc trucul potrivit: ridic la pătrat, caut pătratul perfect ascuns sau logaritmez.
+- Fac substituția: $y_n=x_n^2$, $y_n=\sqrt{x_n}$ sau $y_n=\log_c{x_n}$.
+- Rezolv recurența pentru $y_n$: de obicei este o progresie sau o recurență de tipul 1.
+- Mă întorc la $x_n$, după ce verific semnul termenilor.
+Exemplul 9 · Pătratul perfect ascuns
+Determină termenul general al șirului $x_1=4$, $x_{n+1}=x_n+2\sqrt{x_n}+1$, $n\ge 1$.
+Pasul 1. Recunosc $a^2+2a+1=(a+1)^2$ cu $a=\sqrt{x_n}$: $x_{n+1}=\left(\sqrt{x_n}+1\right)^2$.
+Pasul 2. Termenii sunt pozitivi, deci $\sqrt{x_{n+1}}=\sqrt{x_n}+1$. Șirul $y_n=\sqrt{x_n}$ este o progresie aritmetică, cu $y_1=2$.
+Pasul 3. $y_n=n+1$, deci $x_n=(n+1)^2$. Verificare: $x_2=4+4+1=9$ și $3^2=9$ ✓.
+Exemplul 10 · Logaritmez
+Determină termenul general al șirului $x_1=16$, $x_{n+1}=2\sqrt{x_n}$, $n\ge 1$.
+Pasul 1. Logaritmez în baza 2: $\log_2{x_{n+1}}=1+\frac{1}{2}\log_2{x_n}$.
+Pasul 2. $y_n=\log_2{x_n}$ verifică $y_{n+1}=\frac{1}{2}y_n+1$, cu $y_1=4$: o recurență de tipul 1!
+Pasul 3. $\ell=2$, deci $y_n=2+2\cdot \left(\frac{1}{2}\right)^{n-1}=2+\frac{1}{2^{n-2}}$ și $x_n=2^{2+\frac{1}{2^{n-2}}}$.
+Verificare: $x_2=2\cdot 4=8$ și $2^{2+1}=8$ ✓.
+Atenție · Semnul
+Din $x_{n+1}^2=\ldots$ deduci $x_{n+1}=\sqrt{\ldots}$ numai dacă știi că termenii sunt pozitivi. Verifică întâi semnul!
+5. Recurențe polinomiale
+Două situații
+A. $x_{n+1}$ este un polinom în $x_n$. Caut o constantă $c$ cu $x_{n+1}+c=(x_n+c)^k$. La gradul 2, coeficientul lui $x_n$ trebuie să fie $2c$.
+B. $x_{n+1}=a\cdot x_n+P(n)$, cu $P$ un polinom în $n$ și $a\ne 1$. Aceeași idee ca numărul fix: caut un polinom $p_n$, de același grad cu $P$, care verifică relația.
+★ Metodă
+Metoda substituției
+- Caut ce „copiază” relația: constanta $c$ (situația A) sau polinomul $p_n$ (situația B).
+- Notez $y_n=x_n+c$ (A), respectiv $y_n=x_n-p_n$ (B).
+- A: $y_{n+1}=y_n^k$, deci $y_n=y_1^{k^{n-1}}$. B: $y_{n+1}=a\cdot y_n$, deci $y_n=y_1\cdot a^{n-1}$.
+- Mă întorc la $x_n$ și verific pe primii termeni.
+De reținut · Cum o recunoști
+„$x_{n+1}=x_n^2+2x_n$” → „$x_{n+1}+1$ este pătratul lui $x_n+1$” → $y_{n+1}=y_n^2$.
+Dacă vezi $2x_n^2-1$, gândește-te la $\cos{2t}=2\cos^2{t}-1$: „unghiul se dublează”. Dacă vezi $4x_n^3-3x_n$, gândește-te la $\cos{3t}=4\cos^3{t}-3\cos{t}$.
+Exemplul 11 · Substituția cu cosinus
+Determină termenul general al șirului $x_1=\frac{1}{2}$, $x_{n+1}=2x_n^2-1$, $n\ge 1$.
+Pasul 1. Scriu $x_1=\cos\frac{\pi}{3}$. Atunci $x_2=2\cos^2\frac{\pi}{3}-1=\cos\frac{2\pi}{3}$.
+Pasul 2. La fiecare pas unghiul se dublează. Prin inducție: $x_n=\cos\frac{2^{n-1}\pi}{3}$.
+Verificare: $x_2=2\cdot \frac{1}{4}-1=-\frac{1}{2}=\cos\frac{2\pi}{3}$ ✓.
+Exemplul 12 · Termen polinomial în n
+Determină termenul general al șirului $x_1=1$, $x_{n+1}=2x_n+n$, $n\ge 1$.
+Pasul 1. Caut $p_n=\alpha n+\beta$ cu $\alpha (n+1)+\beta=2(\alpha n+\beta)+n$.
+Pasul 2. Identific: la $n$, $\alpha=2\alpha+1\Rightarrow \alpha=-1$; termenii liberi: $\alpha+\beta=2\beta\Rightarrow \beta=-1$.
+Pasul 3. $y_n=x_n+n+1$ verifică $y_{n+1}=2y_n$, $y_1=3$, deci $y_n=3\cdot 2^{n-1}$.
+Pasul 4. $x_n=3\cdot 2^{n-1}-n-1$. Verificare: $x_2=3$ și $6-3=3$ ✓; $x_3=8$ și $12-4=8$ ✓.
+6. Recurența omografică
+Definiție
+Un șir dat printr-o relație de forma
+$$x_{n+1}=\frac{a\cdot x_n+b}{c\cdot x_n+d}$$
+se numește șir dat printr-o recurență omografică. Soluțiile ecuației $x=\frac{ax+b}{cx+d}$ se numesc punctele fixe ale recurenței.
+★ Metodă
+Metoda punctelor fixe
+- Rezolv ecuația punctelor fixe $x=\frac{ax+b}{cx+d}$. Obțin o ecuație de gradul al doilea.
+- Aleg substituția după numărul de soluții (tabelul de mai jos).
+- Scriu $y_n$ (sau $z_n$) cu formula progresiei.
+- Mă întorc la $x_n$ și verific pe $x_2$.
+Punctele fixe
+Substituția
+Ce obțin
+două: $\alpha\ne \beta$
+$y_n=\frac{x_n-\alpha}{x_n-\beta}$
+$(y_n)$ este o progresie geometrică
+una: $\alpha$
+$z_n=\frac{1}{x_n-\alpha}$
+$(z_n)$ este o progresie aritmetică
+niciuna ($\Delta<0$)
+–
+caut perioada: de obicei termenii se repetă
+De reținut · Cum găsesc rația
+Scad punctul fix din relație. Pentru orice punct fix $\alpha$:
+$$x_{n+1}-\alpha=\frac{(a-c\alpha)(x_n-\alpha)}{c\cdot x_n+d}$$
+Pentru două puncte fixe împart cele două egalități: numitorul $c\cdot x_n+d$ se simplifică.
+De reținut · Dacă nu există puncte fixe
+De obicei șirul se repetă. Calculez termenii până când reapare $x_1$. Dacă termenii se repetă din $p$ în $p$, împart indicele la $p$ și mă uit la rest.
+Exemplul 13 · Două puncte fixe
+Determină termenul general al șirului $x_1=3$, $x_{n+1}=\frac{4x_n-2}{x_n+1}$, $n\ge 1$.
+Pasul 1. $x=\frac{4x-2}{x+1}\Rightarrow x^2-3x+2=0\Rightarrow \alpha=1$, $\beta=2$.
+Pasul 2. Scad punctele fixe din relație:
+$$x_{n+1}-1=\frac{3(x_n-1)}{x_n+1},\quad x_{n+1}-2=\frac{2(x_n-2)}{x_n+1}$$
+Împart: $y_{n+1}=\frac{3}{2}\cdot y_n$, unde $y_n=\frac{x_n-1}{x_n-2}$.
+Pasul 3. $y_1=\frac{3-1}{3-2}=2$, deci $y_n=2\cdot \left(\frac{3}{2}\right)^{n-1}$.
+Pasul 4. Din $y_n(x_n-2)=x_n-1$ obțin $x_n=\frac{2y_n-1}{y_n-1}=\frac{8\cdot 3^{n-1}-2^n}{4\cdot 3^{n-1}-2^n}$. Verificare: $x_2=\frac{10}{4}=\frac{5}{2}$ și $\frac{24-4}{12-4}=\frac{5}{2}$ ✓.
+Exemplul 14 · Un singur punct fix
+Determină termenul general al șirului $x_1=0$, $x_{n+1}=\frac{1}{2-x_n}$, $n\ge 1$.
+Pasul 1. $x(2-x)=1\Rightarrow x^2-2x+1=0\Rightarrow \alpha=1$ (o singură soluție).
+Pasul 2. $x_{n+1}-1=\frac{x_n-1}{2-x_n}$. Inversez:
+$$\frac{1}{x_{n+1}-1}=\frac{2-x_n}{x_n-1}=\frac{1}{x_n-1}-1$$
+Deci $z_{n+1}=z_n-1$, unde $z_n=\frac{1}{x_n-1}$.
+Pasul 3. $z_1=-1$, deci $z_n=-n$.
+Pasul 4. $x_n=1+\frac{1}{z_n}=1-\frac{1}{n}$. Verificare: $x_2=\frac{1}{2}$ și $1-\frac{1}{2}=\frac{1}{2}$ ✓.
+Exemplul 15 · Fără puncte fixe (șir periodic)
+Fie $x_1=1$, $x_{n+1}=-\frac{1}{x_n+1}$, $n\ge 1$. Calculăm $x_{2026}$.
+Pasul 1. $x=-\frac{1}{x+1}\Rightarrow x^2+x+1=0$, $\Delta=-3<0$: nu există puncte fixe.
+Pasul 2. Calculez termenii: $x_2=-\frac{1}{2}$, $x_3=-2$, $x_4=-\frac{1}{-2+1}=1=x_1$. Termenii se repetă din 3 în 3: $1; -\frac{1}{2}; -2; 1; -\frac{1}{2}; -2; \ldots$
+Pasul 3. $2026=3\cdot 675+1$. Restul este 1, deci $x_{2026}=x_1=1$.
+7. Monotonia și mărginirea unui șir dat prin recurență
+Reamintim
+Șirul $(x_n)$ este crescător dacă $x_n\le x_{n+1}$ și strict crescător dacă $x_n<x_{n+1}$, pentru orice $n$. Analog pentru descrescător și strict descrescător.
+Șirul $(x_n)$ este mărginit dacă există numerele $m$ și $M$ astfel încât $m\le x_n\le M$, pentru orice $n$.
+★ Metodă
+Metoda · Monotonie și mărginire
+- Calculez primii termeni și fac o presupunere: crește? scade? între ce valori rămâne?
+- Dacă știu termenul general, studiez direct semnul diferenței $x_{n+1}-x_n$ și găsesc marginile din formulă.
+- Dacă nu știu termenul general, demonstrez prin inducție o margine. Pentru o recurență cu punct fix $\alpha$, semnul lui $x_{n+1}-\alpha$ arată de ce parte a lui $\alpha$ rămâne șirul.
+- Studiez semnul lui $x_{n+1}-x_n$ cu ajutorul relației și al marginii găsite.
+- Scriu concluzia: șirul este (strict) crescător sau descrescător și $m\le x_n\le M$.
+De reținut
+- Un șir crescător este mărginit inferior de primul termen. Un șir descrescător este mărginit superior de primul termen. Rămâne de găsit o singură margine.
+- Pentru un șir cu termeni pozitivi pot compara și raportul $\frac{x_{n+1}}{x_n}$ cu 1.
+- Dacă $x_{n+1}-\alpha=k\cdot (x_n-\alpha)$ cu $k>0$, toți termenii sunt de aceeași parte a lui $\alpha$ ca $x_1$ (prin inducție).
+Exemplul 16 · Din termenul general
+Studiem monotonia și mărginirea șirului din Exemplul 14, $x_n=1-\frac{1}{n}$, $n\ge 1$.
+Monotonie: $x_{n+1}-x_n=\frac{1}{n}-\frac{1}{n+1}=\frac{1}{n(n+1)}>0$, deci șirul este strict crescător.
+Mărginire: șirul este crescător, deci $x_n\ge x_1=0$. Apoi $x_n=1-\frac{1}{n}<1$. Deci $0\le x_n<1$: șirul este mărginit.
+Exemplul 17 · Direct din relația de recurență
+Fie $x_1=6$, $x_{n+1}=\frac{5x_n+4}{x_n+2}$, $n\ge 1$. Arătăm că șirul este monoton și mărginit.
+Punctele fixe: $x^2+2x=5x+4\Rightarrow x^2-3x-4=0$, deci $\alpha=4$ și $\beta=-1$.
+Mărginire: $x_{n+1}-4=\frac{x_n-4}{x_n+2}$. Dacă $x_n>4$, atunci $x_{n+1}>4$. Cum $x_1=6>4$, prin inducție $x_n>4$ pentru orice $n$.
+Monotonie: $x_{n+1}-x_n=\frac{5x_n+4-x_n^2-2x_n}{x_n+2}=-\frac{(x_n-4)(x_n+1)}{x_n+2}<0$, deci șirul este strict descrescător.
+Concluzie: șirul este descrescător, deci $x_n\le x_1=6$. Așadar $4<x_n\le 6$: șirul este mărginit.
+Atenție · Șiruri care nu sunt monotone sau nu sunt mărginite
+Ca să arăți că un șir nu este monoton, ajung trei termeni, de exemplu $x_0<x_1$ și $x_1>x_2$. Ca să arăți că nu este mărginit, arată că termenii depășesc orice număr.
+Exemplu: șirul din Exemplul 5, $x_n=2^n\cdot \left(\cos\frac{n\pi}{2}+\sin\frac{n\pi}{2}\right)$. Avem $x_0=1<x_1=2$ și $x_1>x_2=-4$, deci șirul nu este monoton. Pentru $n=4k$: $x_{4k}=16^k$, iar $16^k$ depășește orice număr, deci șirul nu este mărginit.
+Schemă recapitulativă: cum recunosc tipul recurenței
+Tipul
+Forma relației
+Ce fac
+1 · Liniară de ordinul 1
+$x_{n+1}=a x_n+b$
+numărul fix $\ell=a\ell+b$; apoi $x_n=\ell+(x_1-\ell)a^{n-1}$
+2 · Liniară de ordinul 2
+$x_{n+2}=a x_{n+1}+b x_n$
+ecuația caracteristică $r^2=ar+b$; forma după $\Delta$; la $\Delta=0$ factorul $n$ nu lipsește!
+3 · Aditivă, multiplicativă, mixtă
+$x_{n+1}=x_n+f(n)$; $x_{n+1}=g(n)x_n$; $x_{n+1}=ax_n+(\text{ceva cu }a^n)$
+adun relațiile; înmulțesc relațiile; împart la $a^{n+1}$
+4 · Cu radicali
+$\sqrt{\ldots}$ în relație
+ridic la pătrat, caut $\left(\sqrt{x_n}\pm 1\right)^2$ sau logaritmez; verific semnul
+5 · Polinomială
+$x_{n+1}=P(x_n)$ sau $x_{n+1}=ax_n+P(n)$
+$x_{n+1}+c=(x_n+c)^k$; $2x^2-1$ → cosinus; polinomul $p_n$
+6 · Omografică
+$x_{n+1}=\frac{ax_n+b}{cx_n+d}$
+punctele fixe; $y_n=\frac{x_n-\alpha}{x_n-\beta}$ sau $z_n=\frac{1}{x_n-\alpha}$; fără puncte fixe → perioada
+De reținut · Ideea comună
+La tipurile 1, 5 și 6 caut ce rămâne neschimbat: numărul fix $\ell$, polinomul $p_n$ sau punctele fixe. Scăzându-le din relație, obțin o progresie.
+★ Cel mai important
+Firul logic: ce faci când întâlnești o recurență. Urmează pașii în această ordine, la fiecare problemă
+- Calculez primii 3–4 termeni.
+- Recunosc forma relației (tipul 1–6).
+- Aleg metoda: numărul fix, Δ, telescoparea, o substituție sau punctele fixe.
+- Aflu constantele din primii termeni.
+- Verific formula pe încă un termen.
+- Studiez monotonia și mărginirea: din formulă sau direct din relație.
+Probleme pe niveluri
+La fiecare problemă scrie, pe lângă răspuns, ce tip de recurență ai recunoscut și după ce. Verifică orice formulă pe primii termeni.
+Nivel de bază
+-
+Clasifică fiecare recurență (tipul 1–6 sau progresie) și scrie primul pas al metodei:
+a) $x_{n+1}=x_n+n^2$;
+b) $x_{n+1}=7x_n-6$;
+c) $x_{n+2}=4x_{n+1}-3x_n$;
+d) $x_{n+1}=\sqrt{x_n^2+7}$;
+e) $x_{n+1}=x_n^2+4x_n+2$;
+f) $x_{n+2}=2x_{n+1}-5x_n$;
+g) $x_{n+1}=5x_n+2n-1$;
+h) $x_{n+1}=5x_n+5^n$;
+i) $x_{n+1}=\frac{2x_n+1}{x_n+2}$.
+-
+Determină termenul general ($n\ge 1$):
+a) $x_1=2$, $x_{n+1}=x_n+5$;
+b) $x_1=3$, $x_{n+1}=-2x_n$;
+c) $x_1=4$, $x_{n+1}=2x_n-3$;
+d) $x_1=2$, $x_{n+1}=4x_n-3$.
+-
+Fie $x_1=0$ și $x_{n+1}=\frac{1}{3}x_n+2$, $n\ge 1$.
+a) Determină termenul general.
+b) Arată că șirul este strict crescător și că $0\le x_n<3$, pentru orice $n\ge 1$.
+-
+Determină $a\in \mathbb{R}$ astfel încât șirul $x_1=2$, $x_{n+1}=a\cdot x_n+6$ să fie constant.
+-
+Scrie ecuația caracteristică, calculează $\Delta$ și scrie forma lui $x_n$ (fără să afli $A$ și $B$):
+a) $x_{n+2}=7x_{n+1}-12x_n$;
+b) $x_{n+2}=10x_{n+1}-25x_n$;
+c) $x_{n+2}=-9x_n$.
+-
+Determină termenul general ($n\in \mathbb{N}$):
+a) $x_0=0$, $x_1=1$, $x_{n+2}=3x_{n+1}-2x_n$;
+b) $x_0=2$, $x_1=1$, $x_{n+2}=x_{n+1}+6x_n$;
+c) $x_0=0$, $x_1=5$, $x_{n+2}=3x_{n+1}+4x_n$;
+d) $x_0=1$, $x_1=5$, $x_{n+2}=4x_{n+1}-3x_n$.
+-
+Fie $x_0=3$, $x_1=6$ și $x_{n+2}=5x_{n+1}-4x_n$, $n\in \mathbb{N}$.
+a) Determină $x_n$.
+b) Arată că șirul este strict crescător. Este șirul mărginit?
+-
+Determină termenul general ($n\in \mathbb{N}$):
+a) $x_0=2$, $x_1=9$, $x_{n+2}=6x_{n+1}-9x_n$;
+b) $x_0=1$, $x_1=15$, $x_{n+2}=10x_{n+1}-25x_n$.
+-
+Determină termenul general ($n\ge 1$):
+a) $x_1=2$, $x_{n+1}=x_n+4n$;
+b) $x_1=0$, $x_{n+1}=x_n+2^n$.
+-
+Determină termenul general ($n\ge 1$), apoi studiază monotonia și mărginirea șirului:
+a) $x_1=1$, $x_{n+1}=(n+1)\cdot x_n$;
+b) $x_1=1$, $x_{n+1}=\frac{n}{n+1}\cdot x_n$.
+-
+Fie șirul cu termeni pozitivi $x_1=2$, $x_{n+1}=\sqrt{x_n^2+5}$, $n\ge 1$.
+a) Determină termenul general.
+b) Arată că șirul este strict crescător.
+-
+Determină punctele fixe. Spune ce substituție folosești:
+a) $x_{n+1}=\frac{x_n+6}{x_n}$;
+b) $x_{n+1}=\frac{4x_n-1}{x_n+2}$;
+c) $x_{n+1}=\frac{2x_n+1}{x_n+2}$.
+-
+Fie $x_1=3$ și $x_{n+1}=\frac{5x_n-4}{x_n+1}$, $n\ge 1$.
+a) Arată că ecuația punctelor fixe are o singură soluție.
+b) Arată că $z_n=\frac{1}{x_n-2}$ este o progresie aritmetică.
+c) Determină $x_n$.
+d) Studiază monotonia și mărginirea șirului.
+-
+Fie $x_1=0$ și $x_{n+1}=\frac{x_n-3}{x_n-2}$, $n\ge 1$.
+a) Arată că nu există puncte fixe.
+b) Calculează $x_2$, $x_3$, $x_4$. Ce observi?
+c) Calculează $x_{2027}$.
+Nivel consolidat
+-
+Se dă relația $x_{n+1}=4x_n-9$, $n\ge 1$.
+a) Determină $x_1$ astfel încât șirul să fie constant.
+b) Pentru $x_1=5$, determină termenul general.
+-
+Fie $x_0=1$ și $x_{n+1}=5-x_n$, $n\in \mathbb{N}$.
+a) Determină termenul general și explică de ce termenii se repetă.
+b) Este șirul monoton? Este mărginit?
+-
+Determină termenul general al șirului $x_1=1$, $x_2=0$, $x_{n+2}=-2x_{n+1}-x_n$, $n\ge 1$.
+-
+Fie $x_0=1$, $x_1=0$ și $x_{n+2}=-6x_{n+1}-9x_n$, $n\in \mathbb{N}$.
+a) Determină $x_n$. Indicație: rădăcina dublă este negativă.
+b) Arată că șirul nu este monoton.
+-
+Fie $x_0=1$, $x_1=-1$ și $x_{n+2}=-2x_{n+1}-2x_n$, $n\in \mathbb{N}$.
+a) Arată că $r_{1,2}=-1\pm i=\sqrt{2}\left(\cos\frac{3\pi}{4}\pm i\sin\frac{3\pi}{4}\right)$.
+b) Determină $x_n$.
+-
+Determină termenul general al șirului $x_0=1$, $x_1=1$, $x_{n+2}=2x_{n+1}-4x_n$, $n\in \mathbb{N}$.
+-
+Fie $x_0=1$, $x_1=2$ și $x_{n+2}=-x_{n+1}-x_n$, $n\in \mathbb{N}$.
+a) Calculează $x_2$, $x_3$, $x_4$, $x_5$. Ce observi?
+b) Arată că $x_{n+3}=x_n$ pentru orice $n$.
+c) Calculează $x_{2026}$ și suma $x_0+x_1+\ldots+x_{29}$.
+d) Arată că șirul este mărginit, dar nu este monoton.
+-
+Fie $x_0=2$, $x_1=1$ și $x_{n+2}=x_{n+1}-x_n$, $n\in \mathbb{N}$.
+a) Calculează $x_2; x_3; \ldots; x_7$. Ce observi?
+b) Determină termenul general.
+c) Calculează $x_{2026}$.
+-
+Determină termenul general ($n\ge 1$):
+a) $x_1=1$, $x_{n+1}=x_n+\frac{1}{n(n+1)}$;
+b) $x_1=1$, $x_{n+1}=x_n+3n^2+3n+1$. Indicație: calculează $(k+1)^3-k^3$.
+c) Arată că șirul de la a) este strict crescător și mărginit.
+-
+Determină termenul general al șirului $x_1=1$, $x_{n+1}=x_n+n\cdot n!$, $n\ge 1$. Indicație: $(k+1)!-k!=k\cdot k!$.
+-
+Determină termenul general ($n\ge 1$):
+a) $x_1=1$, $x_{n+1}=3x_n+3^{n+1}$;
+b) $x_1=1$, $x_{n+1}=(n+1)\cdot x_n+(n+1)!$.
+-
+Determină termenul general ($n\ge 1$, termeni pozitivi):
+a) $x_1=1$, $x_{n+1}=\sqrt{2x_n^2+1}$;
+b) $x_1=1$, $x_{n+1}=x_n+4\sqrt{x_n}+4$;
+c) $x_1=3$, $x_{n+1}=3\sqrt{x_n}$;
+d) $x_1=2$, $x_{n+1}=\sqrt{x_n}$.
+e) Arată că șirul de la c) este strict crescător și că $3\le x_n<9$.
+-
+Determină termenul general ($n\ge 1$):
+a) $x_1=3$, $x_{n+1}=x_n^2-2x_n+2$;
+b) $x_1=1$, $x_{n+1}=3x_n-2n$.
+-
+Fie $x_1=2$ și $x_{n+1}=\frac{3x_n+2}{x_n+4}$, $n\ge 1$.
+a) Arată că $y_n=\frac{x_n-1}{x_n+2}$ este o progresie geometrică.
+b) Determină $x_n$.
+c) Arată că $1<x_n\le 2$, pentru orice $n\ge 1$.
+d) Arată că șirul este strict descrescător.
+-
+Fie $x_1=0$ și $x_{n+1}=\frac{x_n+6}{x_n+2}$, $n\ge 1$.
+a) Calculează $x_2$ și $x_3$.
+b) Arată că $y_n=\frac{x_n-2}{x_n+3}$ este o progresie geometrică și determină $x_n$.
+c) Arată că șirul nu este monoton.
+d) Arată că $0\le x_n\le 3$, pentru orice $n\ge 1$.
+-
+Fie $x_1=1$ și $x_{n+1}=\frac{3x_n+4}{x_n+3}$, $n\ge 1$.
+a) Arată că $1\le x_n<2$, pentru orice $n\ge 1$. Indicație: calculează $x_{n+1}-2$.
+b) Arată că șirul este strict crescător. Indicație: calculează $x_{n+1}-x_n$.
+-
+Fie $x_1=2$ și $x_{n+1}=\frac{3x_n-1}{x_n+1}$, $n\ge 1$.
+a) Arată că ecuația punctelor fixe are o singură soluție.
+b) Determină $x_n$.
+c) Arată, folosind formula de la b), că șirul este strict descrescător și că $1<x_n\le 2$.
+-
+Fie $x_1=2$ și $x_{n+1}=\frac{1+x_n}{1-x_n}$, $n\ge 1$.
+a) Arată că nu există puncte fixe.
+b) Calculează $x_2$, $x_3$, $x_4$, $x_5$. Din câți în câți termeni se repetă șirul?
+c) Calculează $x_{2026}$.
+Nivel avansat
+-
+Determină termenul general al șirului $x_1=1$, $x_{n+1}=x_n+\frac{1}{\sqrt{n+1}+\sqrt{n}}$, $n\ge 1$.
+-
+Determină termenul general ($n\ge 1$):
+a) $x_1=3$, $x_{n+1}=3^n\cdot x_n$;
+b) $x_1=1$, $x_{n+1}=\left(1-\frac{1}{(n+1)^2}\right)\cdot x_n$.
+c) Arată că șirul de la b) este strict descrescător și mărginit.
+-
+Determină termenul general al șirului $x_1=1$, $x_{n+1}=x_n^3+3x_n^2+3x_n$, $n\ge 1$.
+-
+Se dă șirul $x_1=\frac{\sqrt{3}}{2}$, $x_{n+1}=2x_n^2-1$, $n\ge 1$. Determină termenul general și explică de ce, de la un rang încolo, șirul este constant.
+-
+Fie $x_1=\frac{1}{2}$ și $x_{n+1}=\sqrt{\frac{1+x_n}{2}}$, $n\ge 1$.
+a) Determină termenul general. Indicație: $1+\cos{2t}=2\cos^2{t}$.
+b) Arată că șirul este strict crescător și că $\frac{1}{2}\le x_n<1$.
+-
+Determină termenul general al șirului $x_0=0$, $x_{n+1}=2x_n+n^2$, $n\in \mathbb{N}$.
+-
+Șirul lui Fibonacci: $F_0=0$, $F_1=1$, $F_{n+2}=F_{n+1}+F_n$, $n\in \mathbb{N}$.
+a) Arată că $F_n=\frac{1}{\sqrt{5}}\left[\left(\frac{1+\sqrt{5}}{2}\right)^n-\left(\frac{1-\sqrt{5}}{2}\right)^n\right]$.
+b) Arată că șirul este crescător și că $F_n\ge n-1$, pentru orice $n\ge 1$. Este șirul mărginit?
+-
+Fie $x_0=2$, $x_1=2$ și $x_{n+2}=2x_{n+1}+x_n$, $n\in \mathbb{N}$.
+a) Arată că $x_n=\left(1+\sqrt{2}\right)^n+\left(1-\sqrt{2}\right)^n$.
+b) Explică de ce toți termenii șirului sunt numere întregi.
+-
+Fie relația $x_{n+2}=m\cdot x_{n+1}-36x_n$, $n\in \mathbb{N}$, cu $m>0$.
+a) Determină $m$ pentru care ecuația caracteristică are o rădăcină dublă.
+b) Pentru această valoare și $x_0=1$, $x_1=12$, determină $x_n$.
+-
+Fie $x_1=1$ și $x_{n+1}=\frac{2x_n+3}{x_n+2}$, $n\ge 1$.
+a) Calculează $x_2$ și $x_3$.
+b) Arată că $1\le x_n<\sqrt{3}$, pentru orice $n\ge 1$, și că șirul este strict crescător.
+c) Determină $x_n$. Indicație: folosește $y_n=\frac{x_n-\sqrt{3}}{x_n+\sqrt{3}}$.
+-
+Fie $x_1=1$ și $x_{n+1}=\frac{x_n+\sqrt{3}}{1-\sqrt{3}\cdot x_n}$, $n\ge 1$.
+a) Calculează $x_2$, $x_3$, $x_4$ și $x_{2026}$.
+b) Scrie $x_1=\operatorname{tg}\frac{\pi}{4}$ și $\sqrt{3}=\operatorname{tg}\frac{\pi}{3}$. Ce legătură vezi cu formula pentru $\operatorname{tg}(a+b)$?
+-
+Găsește greșeala. Un elev scrie: „$x_1=1$, $x_{n+1}=x_n+2n$. Am calculat $x_2=3$ și $x_3=7$. Deci $x_n=2^n-1$.”
+a) Indică primul pas greșit și dă un contraexemplu.
+b) Scrie formula corectă.
+-
+Provocare. Pentru $x_1=3$, $x_{n+1}=x_n^2-2$, $n\ge 1$, arată că $x_n=t^{2^{n-1}}+t^{-2^{n-1}}$, unde $t+\frac{1}{t}=3$.
+Recurențe din viața reală
+Situațiile de mai jos sunt inventate, dar seamănă cu cele pe care le întâlnești în jurul tău. Traduci o poveste într-o relație de recurență și o folosești ca să prezici ce urmează.
+A. Economii. Pui 1000 de lei într-un cont cu dobândă de 5% pe an și, la sfârșitul fiecărui an, mai adaugi 200 de lei. Notează cu $s_n$ suma după $n$ ani ($s_0=1000$).
+B. Medicament. Un pacient ia în fiecare dimineață 100 mg dintr-un medicament. În 24 de ore, organismul elimină jumătate din cantitatea existentă. Notează cu $m_n$ cantitatea imediat după a $n$-a doză.
+C. Pești în lac. Într-un lac sunt 1000 de pești. În fiecare an populația crește cu 20%, apoi se pescuiesc 300 de pești. Notează cu $p_n$ numărul de pești după $n$ ani ($p_0=1000$).
+D. Turnurile din Hanoi. Pentru a muta un turn de $n+1$ discuri, muți turnul de deasupra ($n$ discuri), apoi discul mare, apoi din nou turnul de $n$ discuri. Notează cu $h_n$ numărul de mutări pentru $n$ discuri ($h_1=1$).
+Pentru fiecare situație
+1. Scrie relația de recurență și primul termen.
+2. Recunoaște tipul și determină termenul general.
+3. Verifică formula pe primii doi termeni, calculați direct din poveste.
+4. Studiază monotonia și mărginirea șirului. (B: arată că $m_n<200$ pentru orice $n$. C: în al câtelea an se termină peștii?)
+
+--- EN ---
+
+The worksheet gathers the methods for six types of recurrences: linear of order 1 and 2, additive and multiplicative, with radicals, polynomial and homographic. Each type has its method step by step and worked examples. Then come monotonicity and boundedness, a summary table and problems on three levels.
+
+Q: How do I find the general term of a sequence given by a linear recurrence of order 2?
+A: Write the characteristic equation: replace xₙ₊₂ with r², xₙ₊₁ with r and xₙ with 1. The sign of Δ gives the form of the general term: A·r₁ⁿ + B·r₂ⁿ for two different real roots, (A + B·n)·rⁿ for a double root and ρⁿ(A cos nt + B sin nt) for complex roots. You find the constants A and B from the first two terms.
+Q: What is the homographic recurrence and how do you solve it?
+A: It is a relation of the form xₙ₊₁ = (a·xₙ + b)/(c·xₙ + d). Solve the fixed-point equation x = (ax + b)/(cx + d). For two fixed points α and β, the sequence (xₙ − α)/(xₙ − β) is a geometric progression. For a single fixed point α, the sequence 1/(xₙ − α) is an arithmetic progression. With no fixed points, the terms usually repeat.
+Q: How do I show that a sequence given by a recurrence is monotonic and bounded?
+A: If you know the general term, study the sign of the difference xₙ₊₁ − xₙ directly from the formula. Otherwise prove a bound by induction, for example that all the terms stay on the same side of a fixed point, then find the sign of xₙ₊₁ − xₙ from the relation. An increasing sequence is bounded below by its first term, and a decreasing one above.
+
+The question of this worksheet: How do you find the 100th term of a sequence given by a recurrence directly, without computing all the terms before it, and how do you study whether it is monotonic and bounded?
+Start from what you know
+Three quick checks. If one of them gives you trouble, write it down: go back to it first.
+-
+Fill in: if $(a_n)$ is an arithmetic progression with $a_1=4$ and common difference $r=3$, then $a_n=\ldots$; if $(b_n)$ is a geometric progression with $b_1=2$ and common ratio $q=5$, then $b_n=\ldots$
+-
+Compute $1+2+\ldots+20$ and $1+2+2^2+\ldots+2^9$. Which formulas did you use?
+-
+Solve the equation $r^2-2r+4=0$ in $\mathbb{C}$ and write the solutions in trigonometric form.
+Short theory
+For each type of recurrence: how to recognise it, the method step by step (in the thick frame) and worked examples. At the end you find the summary table and the logical thread.
+1. The linear recurrence of order 1
+Definition
+A relation of the form $x_{n+1}=a\cdot x_n+b$, with real numbers $a, b$, is called a linear recurrence of order 1. If $a=1$, the sequence is an arithmetic progression. If $b=0$, the sequence is a geometric progression.
+★ Method
+The fixed-number method ($a\ne 1$)
+- Find the fixed number: put $\ell$ in place of $x_{n+1}$ and of $x_n$. From $\ell=a\ell+b$ you get $\ell=\frac{b}{1-a}$.
+- Subtract the two relations: $x_{n+1}-\ell=a(x_n-\ell)$. The sequence $y_n=x_n-\ell$ is a geometric progression with ratio $a$.
+- Write $y_n=y_1\cdot a^{n-1}$.
+- Go back to $x_n=y_n+\ell$ and check it on $x_2$.
+Remember
+$$x_n=\ell+(x_1-\ell)\cdot a^{n-1}$$
+If the sequence starts with $x_0$, the exponent becomes $n$: $x_n=\ell+(x_0-\ell)\cdot a^n$.
+Example 1 · Step by step
+Find the general term of the sequence $x_1=5$, $x_{n+1}=3x_n-4$, $n\ge 1$.
+Step 1. $\ell=3\ell-4\Rightarrow \ell=2$.
+Step 2. $y_n=x_n-2$ satisfies $y_{n+1}=3y_n$, and $y_1=5-2=3$.
+Step 3. $y_n=3\cdot 3^{n-1}=3^n$.
+Step 4. $x_n=3^n+2$. Check: from the relation $x_2=11$; from the formula $9+2=11$ ✓.
+Example 2 · With fractions
+Find the general term of the sequence $x_1=1$, $x_{n+1}=\frac{1}{2}x_n+3$, $n\ge 1$.
+Step 1. $\ell=\frac{1}{2}\ell+3\Rightarrow \ell=6$.
+Steps 2–3. $y_n=x_n-6$, $y_{n+1}=\frac{1}{2}y_n$, $y_1=-5$, so $y_n=-\frac{5}{2^{n-1}}$.
+Step 4. $x_n=6-\frac{5}{2^{n-1}}$. Check: $x_2=\frac{1}{2}+3=\frac{7}{2}$ and $6-\frac{5}{2}=\frac{7}{2}$ ✓.
+2. The homogeneous linear recurrence of order 2
+Definition
+A relation of the form $x_{n+2}=a\cdot x_{n+1}+b\cdot x_n$ is called a homogeneous linear recurrence of order 2. Each term comes from the two terms before it.
+★ Method
+The characteristic equation method
+- Write the characteristic equation: replace $x_{n+2}$ with $r^2$, $x_{n+1}$ with $r$ and $x_n$ with 1. You get $r^2=ar+b$.
+- Compute $\Delta$ and the roots. Write the form of $x_n$ from the table below.
+- Find $A$ and $B$ from the first two terms: replace $n$ with their indices and solve the system.
+- Check the formula on the third term, computed from the relation.
+Δ
+The roots
+Form of the general term
+$\Delta>0$
+two real roots $r_1\ne r_2$
+$x_n=A\cdot r_1^n+B\cdot r_2^n$
+$\Delta=0$
+one double root $r$
+$x_n=(A+B\cdot n)\cdot r^n$
+$\Delta<0$
+$r_{1,2}=\rho(\cos{t}\pm i\sin{t})$
+$x_n=\rho^n\cdot (A\cos{nt}+B\sin{nt})$
+Example 3 · Δ > 0
+Find the general term of the sequence $x_0=2$, $x_1=7$, $x_{n+2}=5x_{n+1}-6x_n$, $n\in \mathbb{N}$.
+Steps 1–2. $r^2-5r+6=0$, $\Delta=1>0$, $r_1=2$, $r_2=3$. So $x_n=A\cdot 2^n+B\cdot 3^n$.
+Step 3. $n=0$: $A+B=2$; $n=1$: $2A+3B=7$. You get $B=3$, $A=-1$, so $x_n=3^{n+1}-2^n$.
+Step 4. From the relation: $x_2=5\cdot 7-6\cdot 2=23$. From the formula: $27-4=23$ ✓.
+Example 4 · Δ = 0
+Find the general term of the sequence $x_0=2$, $x_1=4$, $x_{n+2}=8x_{n+1}-16x_n$, $n\in \mathbb{N}$.
+Steps 1–2. $r^2-8r+16=0$, $\Delta=0$, $r=4$ (double root). So $x_n=(A+B\cdot n)\cdot 4^n$.
+Step 3. $n=0$: $A=2$; $n=1$: $(A+B)\cdot 4=4$, so $A+B=1$ and $B=-1$. You get $x_n=(2-n)\cdot 4^n$.
+Step 4. From the relation: $x_2=8\cdot 4-16\cdot 2=0$. From the formula: $0\cdot 16=0$ ✓.
+Example 5 · Δ < 0
+Find the general term of the sequence $x_0=1$, $x_1=2$, $x_{n+2}=-4x_n$, $n\in \mathbb{N}$.
+Steps 1–2. $r^2+4=0$, $\Delta=-16<0$, $r=\pm 2i=2\left(\cos\frac{\pi}{2}\pm i\sin\frac{\pi}{2}\right)$, so $\rho=2$, $t=\frac{\pi}{2}$ and $x_n=2^n\cdot \left(A\cos\frac{n\pi}{2}+B\sin\frac{n\pi}{2}\right)$.
+Step 3. $n=0$: $A=1$; $n=1$: $2\cdot (A\cdot 0+B\cdot 1)=2$, so $B=1$.
+$$x_n=2^n\cdot \left(\cos\frac{n\pi}{2}+\sin\frac{n\pi}{2}\right)$$
+Step 4. From the relation: $x_2=-4\cdot 1=-4$. From the formula: $4\cdot (-1+0)=-4$ ✓.
+Watch out · The case Δ = 0
+For $\Delta=0$ do not write $A\cdot 4^n+B\cdot 4^n$. This is really $(A+B)\cdot 4^n$, a single constant, and the system for $A$ and $B$ has, in general, no solution. That is why the factor $n$ appears.
+Remember · A trick for Δ < 0
+From Vieta’s formulas: $\rho=\sqrt{-b}$ and $\cos{t}=\frac{a}{2\rho}$, with $t\in (0;\pi)$. If $\rho=1$, the sequence repeats itself (it is periodic).
+3. Additive, multiplicative and mixed recurrences
+Definitions
+- Additive recurrence: $x_{n+1}=x_n+f(n)$, where $f(n)$ depends only on $n$.
+- Multiplicative recurrence: $x_{n+1}=g(n)\cdot x_n$.
+- Mixed recurrence: $x_{n+1}=a\cdot x_n+(\text{something with }a^n)$.
+★ Method
+The telescoping method
+- Write the relation for $1; 2; \ldots; n-1$, one below the other.
+- Additive: add the equalities. Multiplicative: multiply them. Mixed: first divide by $a^{n+1}$; the sequence $y_n=\frac{x_n}{a^n}$ satisfies an additive recurrence.
+- The terms in the middle cancel. Compute the sum (or the product) that is left.
+- Check the formula on $x_2$.
+Remember
+$$x_n=x_1+f(1)+f(2)+\ldots+f(n-1)$$
+$$x_n=x_1\cdot g(1)\cdot g(2)\cdot \ldots\cdot g(n-1)$$
+Useful sums:
+$$1+2+\ldots+m=\frac{m(m+1)}{2},\quad 1+3+\ldots+(2m-1)=m^2,\quad 1+q+\ldots+q^{m-1}=\frac{q^m-1}{q-1}$$
+Example 6 · Additive recurrence
+Find the general term of the sequence $x_1=3$, $x_{n+1}=x_n+2n+1$, $n\ge 1$.
+Step 1. $x_2=x_1+3$, $x_3=x_2+5$, …, $x_n=x_{n-1}+(2n-1)$.
+Step 2. Add: $x_n=3+(3+5+\ldots+(2n-1))=3+(n^2-1)$, so $x_n=n^2+2$.
+Check: $x_2=3+3=6$ and $2^2+2=6$ ✓.
+Example 7 · Multiplicative recurrence
+Find the general term of the sequence $x_1=2$, $x_{n+1}=\frac{n+2}{n}\cdot x_n$, $n\ge 1$.
+Step 1. Multiply the relations for $1; 2; \ldots; n-1$:
+$$x_n=2\cdot \frac{3}{1}\cdot \frac{4}{2}\cdot \frac{5}{3}\cdot \ldots\cdot \frac{n}{n-2}\cdot \frac{n+1}{n-1}$$
+Step 2. The factors cancel “diagonally”: $n$ and $n+1$ stay on top, 1 and 2 at the bottom. So $x_n=2\cdot \frac{n(n+1)}{2}=n(n+1)$.
+Check: $x_2=3\cdot 2=6$ and $2\cdot 3=6$ ✓.
+Example 8 · Mixed recurrence
+Find the general term of the sequence $x_1=1$, $x_{n+1}=2x_n+2^n$, $n\ge 1$.
+Step 1. Divide by $2^{n+1}$: $\frac{x_{n+1}}{2^{n+1}}=\frac{x_n}{2^n}+\frac{1}{2}$.
+Step 2. $y_n=\frac{x_n}{2^n}$ is an arithmetic progression with common difference $\frac{1}{2}$ and $y_1=\frac{1}{2}$, so $y_n=\frac{n}{2}$.
+Step 3. $x_n=2^n\cdot \frac{n}{2}=n\cdot 2^{n-1}$. Check: $x_2=2+2=4$ and $2\cdot 2=4$ ✓.
+Watch out · How many terms does the sum have?
+You write the relation for $1; 2; \ldots; n-1$, so the sum (or the product) has $n-1$ terms, not $n$. That is why $m=n-1$ appears in the formulas above.
+4. Recurrences with radicals
+Three tricks
+Trick 1 · Square it. If $\sqrt{\ldots x_n^2\ldots}$ appears, let $y_n=x_n^2$.
+Trick 2 · The hidden perfect square. $x_n\pm 2\sqrt{x_n}+1=\left(\sqrt{x_n}\pm 1\right)^2$; let $y_n=\sqrt{x_n}$.
+Trick 3 · Take logarithms. If the relation has only products, powers and radicals (for example $x_{n+1}=c\cdot \sqrt{x_n}$), let $y_n=\log_c{x_n}$. Powers become products, and products become sums.
+★ Method
+The substitution method
+- Recognise the right trick: square it, look for the hidden perfect square or take logarithms.
+- Substitute: $y_n=x_n^2$, $y_n=\sqrt{x_n}$ or $y_n=\log_c{x_n}$.
+- Solve the recurrence for $y_n$: usually it is a progression or a recurrence of type 1.
+- Go back to $x_n$, after you check the sign of the terms.
+Example 9 · The hidden perfect square
+Find the general term of the sequence $x_1=4$, $x_{n+1}=x_n+2\sqrt{x_n}+1$, $n\ge 1$.
+Step 1. Recognise $a^2+2a+1=(a+1)^2$ with $a=\sqrt{x_n}$: $x_{n+1}=\left(\sqrt{x_n}+1\right)^2$.
+Step 2. The terms are positive, so $\sqrt{x_{n+1}}=\sqrt{x_n}+1$. The sequence $y_n=\sqrt{x_n}$ is an arithmetic progression, with $y_1=2$.
+Step 3. $y_n=n+1$, so $x_n=(n+1)^2$. Check: $x_2=4+4+1=9$ and $3^2=9$ ✓.
+Example 10 · Taking logarithms
+Find the general term of the sequence $x_1=16$, $x_{n+1}=2\sqrt{x_n}$, $n\ge 1$.
+Step 1. Take logarithms in base 2: $\log_2{x_{n+1}}=1+\frac{1}{2}\log_2{x_n}$.
+Step 2. $y_n=\log_2{x_n}$ satisfies $y_{n+1}=\frac{1}{2}y_n+1$, with $y_1=4$: a recurrence of type 1!
+Step 3. $\ell=2$, so $y_n=2+2\cdot \left(\frac{1}{2}\right)^{n-1}=2+\frac{1}{2^{n-2}}$ and $x_n=2^{2+\frac{1}{2^{n-2}}}$.
+Check: $x_2=2\cdot 4=8$ and $2^{2+1}=8$ ✓.
+Watch out · The sign
+From $x_{n+1}^2=\ldots$ you get $x_{n+1}=\sqrt{\ldots}$ only if you know that the terms are positive. Check the sign first!
+5. Polynomial recurrences
+Two situations
+A. $x_{n+1}$ is a polynomial in $x_n$. Look for a constant $c$ with $x_{n+1}+c=(x_n+c)^k$. For degree 2, the coefficient of $x_n$ must be $2c$.
+B. $x_{n+1}=a\cdot x_n+P(n)$, with $P$ a polynomial in $n$ and $a\ne 1$. The same idea as the fixed number: look for a polynomial $p_n$, of the same degree as $P$, that satisfies the relation.
+★ Method
+The substitution method
+- Look for what “copies” the relation: the constant $c$ (situation A) or the polynomial $p_n$ (situation B).
+- Let $y_n=x_n+c$ (A), or $y_n=x_n-p_n$ (B).
+- A: $y_{n+1}=y_n^k$, so $y_n=y_1^{k^{n-1}}$. B: $y_{n+1}=a\cdot y_n$, so $y_n=y_1\cdot a^{n-1}$.
+- Go back to $x_n$ and check it on the first terms.
+Remember · How to recognise it
+“$x_{n+1}=x_n^2+2x_n$” → “$x_{n+1}+1$ is the square of $x_n+1$” → $y_{n+1}=y_n^2$.
+If you see $2x_n^2-1$, think of $\cos{2t}=2\cos^2{t}-1$: “the angle doubles”. If you see $4x_n^3-3x_n$, think of $\cos{3t}=4\cos^3{t}-3\cos{t}$.
+Example 11 · The cosine substitution
+Find the general term of the sequence $x_1=\frac{1}{2}$, $x_{n+1}=2x_n^2-1$, $n\ge 1$.
+Step 1. Write $x_1=\cos\frac{\pi}{3}$. Then $x_2=2\cos^2\frac{\pi}{3}-1=\cos\frac{2\pi}{3}$.
+Step 2. At each step the angle doubles. By induction: $x_n=\cos\frac{2^{n-1}\pi}{3}$.
+Check: $x_2=2\cdot \frac{1}{4}-1=-\frac{1}{2}=\cos\frac{2\pi}{3}$ ✓.
+Example 12 · A polynomial term in n
+Find the general term of the sequence $x_1=1$, $x_{n+1}=2x_n+n$, $n\ge 1$.
+Step 1. Look for $p_n=\alpha n+\beta$ with $\alpha (n+1)+\beta=2(\alpha n+\beta)+n$.
+Step 2. Compare coefficients: for $n$, $\alpha=2\alpha+1\Rightarrow \alpha=-1$; constant terms: $\alpha+\beta=2\beta\Rightarrow \beta=-1$.
+Step 3. $y_n=x_n+n+1$ satisfies $y_{n+1}=2y_n$, $y_1=3$, so $y_n=3\cdot 2^{n-1}$.
+Step 4. $x_n=3\cdot 2^{n-1}-n-1$. Check: $x_2=3$ and $6-3=3$ ✓; $x_3=8$ and $12-4=8$ ✓.
+6. The homographic recurrence
+Definition
+A sequence given by a relation of the form
+$$x_{n+1}=\frac{a\cdot x_n+b}{c\cdot x_n+d}$$
+is called a sequence given by a homographic recurrence. The solutions of the equation $x=\frac{ax+b}{cx+d}$ are called the fixed points of the recurrence.
+★ Method
+The fixed-point method
+- Solve the fixed-point equation $x=\frac{ax+b}{cx+d}$. You get a quadratic equation.
+- Choose the substitution by the number of solutions (table below).
+- Write $y_n$ (or $z_n$) with the formula of the progression.
+- Go back to $x_n$ and check it on $x_2$.
+Fixed points
+Substitution
+What you get
+two: $\alpha\ne \beta$
+$y_n=\frac{x_n-\alpha}{x_n-\beta}$
+$(y_n)$ is a geometric progression
+one: $\alpha$
+$z_n=\frac{1}{x_n-\alpha}$
+$(z_n)$ is an arithmetic progression
+none ($\Delta<0$)
+–
+look for the period: usually the terms repeat
+Remember · How to find the ratio
+Subtract the fixed point from the relation. For any fixed point $\alpha$:
+$$x_{n+1}-\alpha=\frac{(a-c\alpha)(x_n-\alpha)}{c\cdot x_n+d}$$
+For two fixed points, divide the two equalities: the denominator $c\cdot x_n+d$ cancels.
+Remember · If there are no fixed points
+Usually the sequence repeats itself. Compute terms until $x_1$ comes back. If the terms repeat every $p$ terms, divide the index by $p$ and look at the remainder.
+Example 13 · Two fixed points
+Find the general term of the sequence $x_1=3$, $x_{n+1}=\frac{4x_n-2}{x_n+1}$, $n\ge 1$.
+Step 1. $x=\frac{4x-2}{x+1}\Rightarrow x^2-3x+2=0\Rightarrow \alpha=1$, $\beta=2$.
+Step 2. Subtract the fixed points from the relation:
+$$x_{n+1}-1=\frac{3(x_n-1)}{x_n+1},\quad x_{n+1}-2=\frac{2(x_n-2)}{x_n+1}$$
+Divide: $y_{n+1}=\frac{3}{2}\cdot y_n$, where $y_n=\frac{x_n-1}{x_n-2}$.
+Step 3. $y_1=\frac{3-1}{3-2}=2$, so $y_n=2\cdot \left(\frac{3}{2}\right)^{n-1}$.
+Step 4. From $y_n(x_n-2)=x_n-1$ you get $x_n=\frac{2y_n-1}{y_n-1}=\frac{8\cdot 3^{n-1}-2^n}{4\cdot 3^{n-1}-2^n}$. Check: $x_2=\frac{10}{4}=\frac{5}{2}$ and $\frac{24-4}{12-4}=\frac{5}{2}$ ✓.
+Example 14 · A single fixed point
+Find the general term of the sequence $x_1=0$, $x_{n+1}=\frac{1}{2-x_n}$, $n\ge 1$.
+Step 1. $x(2-x)=1\Rightarrow x^2-2x+1=0\Rightarrow \alpha=1$ (a single solution).
+Step 2. $x_{n+1}-1=\frac{x_n-1}{2-x_n}$. Take the reciprocal:
+$$\frac{1}{x_{n+1}-1}=\frac{2-x_n}{x_n-1}=\frac{1}{x_n-1}-1$$
+So $z_{n+1}=z_n-1$, where $z_n=\frac{1}{x_n-1}$.
+Step 3. $z_1=-1$, so $z_n=-n$.
+Step 4. $x_n=1+\frac{1}{z_n}=1-\frac{1}{n}$. Check: $x_2=\frac{1}{2}$ and $1-\frac{1}{2}=\frac{1}{2}$ ✓.
+Example 15 · No fixed points (a periodic sequence)
+Let $x_1=1$, $x_{n+1}=-\frac{1}{x_n+1}$, $n\ge 1$. We compute $x_{2026}$.
+Step 1. $x=-\frac{1}{x+1}\Rightarrow x^2+x+1=0$, $\Delta=-3<0$: there are no fixed points.
+Step 2. Compute the terms: $x_2=-\frac{1}{2}$, $x_3=-2$, $x_4=-\frac{1}{-2+1}=1=x_1$. The terms repeat every 3 terms: $1; -\frac{1}{2}; -2; 1; -\frac{1}{2}; -2; \ldots$
+Step 3. $2026=3\cdot 675+1$. The remainder is 1, so $x_{2026}=x_1=1$.
+7. Monotonicity and boundedness of a sequence given by a recurrence
+Recall
+The sequence $(x_n)$ is increasing if $x_n\le x_{n+1}$ and strictly increasing if $x_n<x_{n+1}$, for every $n$. The same goes for decreasing and strictly decreasing.
+The sequence $(x_n)$ is bounded if there are numbers $m$ and $M$ such that $m\le x_n\le M$, for every $n$.
+★ Method
+Method · Monotonicity and boundedness
+- Compute the first terms and make a guess: does it grow? does it drop? between which values does it stay?
+- If you know the general term, study the sign of the difference $x_{n+1}-x_n$ directly and find the bounds from the formula.
+- If you do not know the general term, prove a bound by induction. For a recurrence with a fixed point $\alpha$, the sign of $x_{n+1}-\alpha$ shows on which side of $\alpha$ the sequence stays.
+- Study the sign of $x_{n+1}-x_n$ using the relation and the bound you found.
+- Write the conclusion: the sequence is (strictly) increasing or decreasing and $m\le x_n\le M$.
+Remember
+- An increasing sequence is bounded below by its first term. A decreasing sequence is bounded above by its first term. Only one bound is left to find.
+- For a sequence with positive terms you can also compare the ratio $\frac{x_{n+1}}{x_n}$ with 1.
+- If $x_{n+1}-\alpha=k\cdot (x_n-\alpha)$ with $k>0$, all the terms are on the same side of $\alpha$ as $x_1$ (by induction).
+Example 16 · From the general term
+We study the monotonicity and boundedness of the sequence from Example 14, $x_n=1-\frac{1}{n}$, $n\ge 1$.
+Monotonicity: $x_{n+1}-x_n=\frac{1}{n}-\frac{1}{n+1}=\frac{1}{n(n+1)}>0$, so the sequence is strictly increasing.
+Boundedness: the sequence is increasing, so $x_n\ge x_1=0$. Also $x_n=1-\frac{1}{n}<1$. So $0\le x_n<1$: the sequence is bounded.
+Example 17 · Directly from the recurrence
+Let $x_1=6$, $x_{n+1}=\frac{5x_n+4}{x_n+2}$, $n\ge 1$. We show that the sequence is monotonic and bounded.
+Fixed points: $x^2+2x=5x+4\Rightarrow x^2-3x-4=0$, so $\alpha=4$ and $\beta=-1$.
+Boundedness: $x_{n+1}-4=\frac{x_n-4}{x_n+2}$. If $x_n>4$, then $x_{n+1}>4$. Since $x_1=6>4$, by induction $x_n>4$ for every $n$.
+Monotonicity: $x_{n+1}-x_n=\frac{5x_n+4-x_n^2-2x_n}{x_n+2}=-\frac{(x_n-4)(x_n+1)}{x_n+2}<0$, so the sequence is strictly decreasing.
+Conclusion: the sequence is decreasing, so $x_n\le x_1=6$. Therefore $4<x_n\le 6$: the sequence is bounded.
+Watch out · Sequences that are not monotonic or not bounded
+To show that a sequence is not monotonic, three terms are enough, for example $x_0<x_1$ and $x_1>x_2$. To show that it is not bounded, show that its terms exceed any number.
+Example: the sequence from Example 5, $x_n=2^n\cdot \left(\cos\frac{n\pi}{2}+\sin\frac{n\pi}{2}\right)$. We have $x_0=1<x_1=2$ and $x_1>x_2=-4$, so the sequence is not monotonic. For $n=4k$: $x_{4k}=16^k$, and $16^k$ exceeds any number, so the sequence is not bounded.
+Summary table: how to recognise the type of recurrence
+Type
+Form of the relation
+What you do
+1 · Linear of order 1
+$x_{n+1}=a x_n+b$
+the fixed number $\ell=a\ell+b$; then $x_n=\ell+(x_1-\ell)a^{n-1}$
+2 · Linear of order 2
+$x_{n+2}=a x_{n+1}+b x_n$
+the characteristic equation $r^2=ar+b$; the form by $\Delta$; for $\Delta=0$ do not forget the factor $n$!
+3 · Additive, multiplicative, mixed
+$x_{n+1}=x_n+f(n)$; $x_{n+1}=g(n)x_n$; $x_{n+1}=ax_n+(\text{something with }a^n)$
+add the relations; multiply the relations; divide by $a^{n+1}$
+4 · With radicals
+$\sqrt{\ldots}$ in the relation
+square it, look for $\left(\sqrt{x_n}\pm 1\right)^2$ or take logarithms; check the sign
+5 · Polynomial
+$x_{n+1}=P(x_n)$ or $x_{n+1}=ax_n+P(n)$
+$x_{n+1}+c=(x_n+c)^k$; $2x^2-1$ → cosine; the polynomial $p_n$
+6 · Homographic
+$x_{n+1}=\frac{ax_n+b}{cx_n+d}$
+the fixed points; $y_n=\frac{x_n-\alpha}{x_n-\beta}$ or $z_n=\frac{1}{x_n-\alpha}$; no fixed points → the period
+Remember · The common idea
+For types 1, 5 and 6 you look for what stays unchanged: the fixed number $\ell$, the polynomial $p_n$ or the fixed points. Subtracting them from the relation gives a progression.
+★ Most important
+The logical thread: what to do when you meet a recurrence. Follow the steps in this order, in every problem
+- Compute the first 3–4 terms.
+- Recognise the form of the relation (type 1–6).
+- Choose the method: the fixed number, Δ, telescoping, a substitution or the fixed points.
+- Find the constants from the first terms.
+- Check the formula on one more term.
+- Study monotonicity and boundedness: from the formula or directly from the relation.
+Problems on three levels
+In each problem write, besides the answer, which type of recurrence you recognised and how. Check every formula on the first terms.
+Basic level
+-
+Classify each recurrence (type 1–6 or a progression) and write the first step of the method:
+a) $x_{n+1}=x_n+n^2$;
+b) $x_{n+1}=7x_n-6$;
+c) $x_{n+2}=4x_{n+1}-3x_n$;
+d) $x_{n+1}=\sqrt{x_n^2+7}$;
+e) $x_{n+1}=x_n^2+4x_n+2$;
+f) $x_{n+2}=2x_{n+1}-5x_n$;
+g) $x_{n+1}=5x_n+2n-1$;
+h) $x_{n+1}=5x_n+5^n$;
+i) $x_{n+1}=\frac{2x_n+1}{x_n+2}$.
+-
+Find the general term ($n\ge 1$):
+a) $x_1=2$, $x_{n+1}=x_n+5$;
+b) $x_1=3$, $x_{n+1}=-2x_n$;
+c) $x_1=4$, $x_{n+1}=2x_n-3$;
+d) $x_1=2$, $x_{n+1}=4x_n-3$.
+-
+Let $x_1=0$ and $x_{n+1}=\frac{1}{3}x_n+2$, $n\ge 1$.
+a) Find the general term.
+b) Show that the sequence is strictly increasing and that $0\le x_n<3$, for every $n\ge 1$.
+-
+Find $a\in \mathbb{R}$ such that the sequence $x_1=2$, $x_{n+1}=a\cdot x_n+6$ is constant.
+-
+Write the characteristic equation, compute $\Delta$ and write the form of $x_n$ (without finding $A$ and $B$):
+a) $x_{n+2}=7x_{n+1}-12x_n$;
+b) $x_{n+2}=10x_{n+1}-25x_n$;
+c) $x_{n+2}=-9x_n$.
+-
+Find the general term ($n\in \mathbb{N}$):
+a) $x_0=0$, $x_1=1$, $x_{n+2}=3x_{n+1}-2x_n$;
+b) $x_0=2$, $x_1=1$, $x_{n+2}=x_{n+1}+6x_n$;
+c) $x_0=0$, $x_1=5$, $x_{n+2}=3x_{n+1}+4x_n$;
+d) $x_0=1$, $x_1=5$, $x_{n+2}=4x_{n+1}-3x_n$.
+-
+Let $x_0=3$, $x_1=6$ and $x_{n+2}=5x_{n+1}-4x_n$, $n\in \mathbb{N}$.
+a) Find $x_n$.
+b) Show that the sequence is strictly increasing. Is the sequence bounded?
+-
+Find the general term ($n\in \mathbb{N}$):
+a) $x_0=2$, $x_1=9$, $x_{n+2}=6x_{n+1}-9x_n$;
+b) $x_0=1$, $x_1=15$, $x_{n+2}=10x_{n+1}-25x_n$.
+-
+Find the general term ($n\ge 1$):
+a) $x_1=2$, $x_{n+1}=x_n+4n$;
+b) $x_1=0$, $x_{n+1}=x_n+2^n$.
+-
+Find the general term ($n\ge 1$), then study the monotonicity and boundedness of the sequence:
+a) $x_1=1$, $x_{n+1}=(n+1)\cdot x_n$;
+b) $x_1=1$, $x_{n+1}=\frac{n}{n+1}\cdot x_n$.
+-
+Let the sequence with positive terms $x_1=2$, $x_{n+1}=\sqrt{x_n^2+5}$, $n\ge 1$.
+a) Find the general term.
+b) Show that the sequence is strictly increasing.
+-
+Find the fixed points. Say which substitution you use:
+a) $x_{n+1}=\frac{x_n+6}{x_n}$;
+b) $x_{n+1}=\frac{4x_n-1}{x_n+2}$;
+c) $x_{n+1}=\frac{2x_n+1}{x_n+2}$.
+-
+Let $x_1=3$ and $x_{n+1}=\frac{5x_n-4}{x_n+1}$, $n\ge 1$.
+a) Show that the fixed-point equation has a single solution.
+b) Show that $z_n=\frac{1}{x_n-2}$ is an arithmetic progression.
+c) Find $x_n$.
+d) Study the monotonicity and boundedness of the sequence.
+-
+Let $x_1=0$ and $x_{n+1}=\frac{x_n-3}{x_n-2}$, $n\ge 1$.
+a) Show that there are no fixed points.
+b) Compute $x_2$, $x_3$, $x_4$. What do you notice?
+c) Compute $x_{2027}$.
+Consolidated level
+-
+The relation $x_{n+1}=4x_n-9$, $n\ge 1$, is given.
+a) Find $x_1$ such that the sequence is constant.
+b) For $x_1=5$, find the general term.
+-
+Let $x_0=1$ and $x_{n+1}=5-x_n$, $n\in \mathbb{N}$.
+a) Find the general term and explain why the terms repeat.
+b) Is the sequence monotonic? Is it bounded?
+-
+Find the general term of the sequence $x_1=1$, $x_2=0$, $x_{n+2}=-2x_{n+1}-x_n$, $n\ge 1$.
+-
+Let $x_0=1$, $x_1=0$ and $x_{n+2}=-6x_{n+1}-9x_n$, $n\in \mathbb{N}$.
+a) Find $x_n$. Hint: the double root is negative.
+b) Show that the sequence is not monotonic.
+-
+Let $x_0=1$, $x_1=-1$ and $x_{n+2}=-2x_{n+1}-2x_n$, $n\in \mathbb{N}$.
+a) Show that $r_{1,2}=-1\pm i=\sqrt{2}\left(\cos\frac{3\pi}{4}\pm i\sin\frac{3\pi}{4}\right)$.
+b) Find $x_n$.
+-
+Find the general term of the sequence $x_0=1$, $x_1=1$, $x_{n+2}=2x_{n+1}-4x_n$, $n\in \mathbb{N}$.
+-
+Let $x_0=1$, $x_1=2$ and $x_{n+2}=-x_{n+1}-x_n$, $n\in \mathbb{N}$.
+a) Compute $x_2$, $x_3$, $x_4$, $x_5$. What do you notice?
+b) Show that $x_{n+3}=x_n$ for every $n$.
+c) Compute $x_{2026}$ and the sum $x_0+x_1+\ldots+x_{29}$.
+d) Show that the sequence is bounded, but not monotonic.
+-
+Let $x_0=2$, $x_1=1$ and $x_{n+2}=x_{n+1}-x_n$, $n\in \mathbb{N}$.
+a) Compute $x_2; x_3; \ldots; x_7$. What do you notice?
+b) Find the general term.
+c) Compute $x_{2026}$.
+-
+Find the general term ($n\ge 1$):
+a) $x_1=1$, $x_{n+1}=x_n+\frac{1}{n(n+1)}$;
+b) $x_1=1$, $x_{n+1}=x_n+3n^2+3n+1$. Hint: compute $(k+1)^3-k^3$.
+c) Show that the sequence from a) is strictly increasing and bounded.
+-
+Find the general term of the sequence $x_1=1$, $x_{n+1}=x_n+n\cdot n!$, $n\ge 1$. Hint: $(k+1)!-k!=k\cdot k!$.
+-
+Find the general term ($n\ge 1$):
+a) $x_1=1$, $x_{n+1}=3x_n+3^{n+1}$;
+b) $x_1=1$, $x_{n+1}=(n+1)\cdot x_n+(n+1)!$.
+-
+Find the general term ($n\ge 1$, positive terms):
+a) $x_1=1$, $x_{n+1}=\sqrt{2x_n^2+1}$;
+b) $x_1=1$, $x_{n+1}=x_n+4\sqrt{x_n}+4$;
+c) $x_1=3$, $x_{n+1}=3\sqrt{x_n}$;
+d) $x_1=2$, $x_{n+1}=\sqrt{x_n}$.
+e) Show that the sequence from c) is strictly increasing and that $3\le x_n<9$.
+-
+Find the general term ($n\ge 1$):
+a) $x_1=3$, $x_{n+1}=x_n^2-2x_n+2$;
+b) $x_1=1$, $x_{n+1}=3x_n-2n$.
+-
+Let $x_1=2$ and $x_{n+1}=\frac{3x_n+2}{x_n+4}$, $n\ge 1$.
+a) Show that $y_n=\frac{x_n-1}{x_n+2}$ is a geometric progression.
+b) Find $x_n$.
+c) Show that $1<x_n\le 2$, for every $n\ge 1$.
+d) Show that the sequence is strictly decreasing.
+-
+Let $x_1=0$ and $x_{n+1}=\frac{x_n+6}{x_n+2}$, $n\ge 1$.
+a) Compute $x_2$ and $x_3$.
+b) Show that $y_n=\frac{x_n-2}{x_n+3}$ is a geometric progression and find $x_n$.
+c) Show that the sequence is not monotonic.
+d) Show that $0\le x_n\le 3$, for every $n\ge 1$.
+-
+Let $x_1=1$ and $x_{n+1}=\frac{3x_n+4}{x_n+3}$, $n\ge 1$.
+a) Show that $1\le x_n<2$, for every $n\ge 1$. Hint: compute $x_{n+1}-2$.
+b) Show that the sequence is strictly increasing. Hint: compute $x_{n+1}-x_n$.
+-
+Let $x_1=2$ and $x_{n+1}=\frac{3x_n-1}{x_n+1}$, $n\ge 1$.
+a) Show that the fixed-point equation has a single solution.
+b) Find $x_n$.
+c) Show, using the formula from b), that the sequence is strictly decreasing and that $1<x_n\le 2$.
+-
+Let $x_1=2$ and $x_{n+1}=\frac{1+x_n}{1-x_n}$, $n\ge 1$.
+a) Show that there are no fixed points.
+b) Compute $x_2$, $x_3$, $x_4$, $x_5$. How often does the sequence repeat?
+c) Compute $x_{2026}$.
+Advanced level
+-
+Find the general term of the sequence $x_1=1$, $x_{n+1}=x_n+\frac{1}{\sqrt{n+1}+\sqrt{n}}$, $n\ge 1$.
+-
+Find the general term ($n\ge 1$):
+a) $x_1=3$, $x_{n+1}=3^n\cdot x_n$;
+b) $x_1=1$, $x_{n+1}=\left(1-\frac{1}{(n+1)^2}\right)\cdot x_n$.
+c) Show that the sequence from b) is strictly decreasing and bounded.
+-
+Find the general term of the sequence $x_1=1$, $x_{n+1}=x_n^3+3x_n^2+3x_n$, $n\ge 1$.
+-
+The sequence $x_1=\frac{\sqrt{3}}{2}$, $x_{n+1}=2x_n^2-1$, $n\ge 1$, is given. Find the general term and explain why the sequence is constant from some term on.
+-
+Let $x_1=\frac{1}{2}$ and $x_{n+1}=\sqrt{\frac{1+x_n}{2}}$, $n\ge 1$.
+a) Find the general term. Hint: $1+\cos{2t}=2\cos^2{t}$.
+b) Show that the sequence is strictly increasing and that $\frac{1}{2}\le x_n<1$.
+-
+Find the general term of the sequence $x_0=0$, $x_{n+1}=2x_n+n^2$, $n\in \mathbb{N}$.
+-
+The Fibonacci sequence: $F_0=0$, $F_1=1$, $F_{n+2}=F_{n+1}+F_n$, $n\in \mathbb{N}$.
+a) Show that $F_n=\frac{1}{\sqrt{5}}\left[\left(\frac{1+\sqrt{5}}{2}\right)^n-\left(\frac{1-\sqrt{5}}{2}\right)^n\right]$.
+b) Show that the sequence is increasing and that $F_n\ge n-1$, for every $n\ge 1$. Is the sequence bounded?
+-
+Let $x_0=2$, $x_1=2$ and $x_{n+2}=2x_{n+1}+x_n$, $n\in \mathbb{N}$.
+a) Show that $x_n=\left(1+\sqrt{2}\right)^n+\left(1-\sqrt{2}\right)^n$.
+b) Explain why all the terms of the sequence are integers.
+-
+Consider the relation $x_{n+2}=m\cdot x_{n+1}-36x_n$, $n\in \mathbb{N}$, with $m>0$.
+a) Find $m$ for which the characteristic equation has a double root.
+b) For this value and $x_0=1$, $x_1=12$, find $x_n$.
+-
+Let $x_1=1$ and $x_{n+1}=\frac{2x_n+3}{x_n+2}$, $n\ge 1$.
+a) Compute $x_2$ and $x_3$.
+b) Show that $1\le x_n<\sqrt{3}$, for every $n\ge 1$, and that the sequence is strictly increasing.
+c) Find $x_n$. Hint: use $y_n=\frac{x_n-\sqrt{3}}{x_n+\sqrt{3}}$.
+-
+Let $x_1=1$ and $x_{n+1}=\frac{x_n+\sqrt{3}}{1-\sqrt{3}\cdot x_n}$, $n\ge 1$.
+a) Compute $x_2$, $x_3$, $x_4$ and $x_{2026}$.
+b) Write $x_1=\operatorname{tg}\frac{\pi}{4}$ and $\sqrt{3}=\operatorname{tg}\frac{\pi}{3}$. What link do you see with the formula for $\operatorname{tg}(a+b)$?
+-
+Find the mistake. A student writes: “$x_1=1$, $x_{n+1}=x_n+2n$. I computed $x_2=3$ and $x_3=7$. So $x_n=2^n-1$.”
+a) Point out the first wrong step and give a counterexample.
+b) Write the correct formula.
+-
+Challenge. For $x_1=3$, $x_{n+1}=x_n^2-2$, $n\ge 1$, show that $x_n=t^{2^{n-1}}+t^{-2^{n-1}}$, where $t+\frac{1}{t}=3$.
+Recurrences in real life
+The situations below are made up, but they resemble the ones you meet around you. You translate a story into a recurrence relation and use it to predict what comes next.
+A. Savings. You put 1000 lei into an account with 5% interest per year and, at the end of each year, you add 200 lei more. Let $s_n$ be the amount after $n$ years ($s_0=1000$).
+B. Medicine. A patient takes 100 mg of a medicine every morning. In 24 hours, the body removes half of the amount present. Let $m_n$ be the amount right after the $n$-th dose.
+C. Fish in a lake. There are 1000 fish in a lake. Every year the population grows by 20%, then 300 fish are caught. Let $p_n$ be the number of fish after $n$ years ($p_0=1000$).
+D. The Towers of Hanoi. To move a tower of $n+1$ discs, you move the tower on top ($n$ discs), then the big disc, then the tower of $n$ discs again. Let $h_n$ be the number of moves for $n$ discs ($h_1=1$).
+For each situation
+1. Write the recurrence relation and the first term.
+2. Recognise the type and find the general term.
+3. Check the formula on the first two terms, computed directly from the story.
+4. Study the monotonicity and boundedness of the sequence. (B: show that $m_n<200$ for every $n$. C: in which year do the fish run out?)
+
+---
+
 ### Fișă de lucru: vecinătăți și puncte de acumulare
 - Source (RO): https://lauramiron.pages.dev/materiale/fisa-lucru-vecinatati-puncte-acumulare-1022
 - Source (EN): https://lauramiron.pages.dev/en/materiale/fisa-lucru-vecinatati-puncte-acumulare-1022

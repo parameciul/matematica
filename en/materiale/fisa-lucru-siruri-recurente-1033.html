@@ -1,0 +1,772 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Recurrence sequences: general term, monotonicity – Grade 11</title>
+  <meta name="description" content="Grade 11 worksheet: sequences given by recurrences, finding the general term, the homographic recurrence, monotonicity and boundedness.">
+  <meta name="robots" content="max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="google-site-verification" content="lwpe3phdRnlGTaxwvpfcxbuygEudOHDa7i_hl_1wQQc">
+  <meta name="msvalidate.01" content="79E7F21C210EE6E1F04FDB1E5956620C">
+  <link rel="canonical" href="https://lauramiron.pages.dev/en/materiale/fisa-lucru-siruri-recurente-1033">
+  <link rel="alternate" hreflang="ro" href="https://lauramiron.pages.dev/materiale/fisa-lucru-siruri-recurente-1033">
+  <link rel="alternate" hreflang="en" href="https://lauramiron.pages.dev/en/materiale/fisa-lucru-siruri-recurente-1033">
+  <link rel="alternate" hreflang="x-default" href="https://lauramiron.pages.dev/materiale/fisa-lucru-siruri-recurente-1033">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Recurrence sequences: general term, monotonicity – Grade 11">
+  <meta property="og:description" content="Grade 11 worksheet: sequences given by recurrences, finding the general term, the homographic recurrence, monotonicity and boundedness.">
+  <meta property="og:url" content="https://lauramiron.pages.dev/en/materiale/fisa-lucru-siruri-recurente-1033">
+  <meta property="og:image" content="https://lauramiron.pages.dev/assets/img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Math materials for grades 5–12 – Laura Miron">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="ro_RO">
+  <meta property="og:site_name" content="Laura Miron">
+  <meta property="article:published_time" content="2026-10-26">
+  <meta property="article:modified_time" content="2026-10-26">
+  <meta property="og:updated_time" content="2026-10-26">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Recurrence sequences: general term, monotonicity – Grade 11">
+  <meta name="twitter:description" content="Grade 11 worksheet: sequences given by recurrences, finding the general term, the homographic recurrence, monotonicity and boundedness.">
+  <meta name="twitter:image" content="https://lauramiron.pages.dev/assets/img/og-image.png">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fbfcfe">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1d2925">
+  <link rel="manifest" href="../../site.webmanifest">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../../favicon.ico" sizes="48x48">
+  <link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+  <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('matematica.theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,700;0,800;1,400&family=Caveat:wght@600&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.18.1/dist/katex.min.css" integrity="sha384-1vdNCNel6Tx/NQa8IR1mGOGKsbGreCkOPfbtPPnUURJ5Tu2PRVfQ/7KLZC+Pi1p1" crossorigin="anonymous">
+  <link rel="stylesheet" href="../../assets/css/style.css?v=870118a2f8">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.18.1/dist/katex.min.js" integrity="sha384-ycJ6GAwiS15LoUPipwJOrWTvkUHl/YqELValBwI5I4awP1EeEQJYarj+w85ntcz7" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.18.1/dist/contrib/auto-render.min.js" integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous"></script>
+  <script defer src="../../assets/js/i18n.js?v=9da1cb4da9"></script>
+  <script defer src="../../assets/js/catalog.js?v=7b3e472fde"></script>
+  <script defer src="../../assets/js/shell.js?v=e6613b8c5b"></script>
+  <script defer src="../../assets/js/site.js?v=86760ebbd4"></script>
+  <script defer src="../../assets/js/searchbox.js?v=b3f954fcd7"></script>
+  <script defer src="../../assets/js/material.js?v=eb2d425eaf"></script>
+  <script defer src="../../assets/js/answers.js?v=25caed376f"></script>
+  <script defer src="../../assets/js/check.js?v=beca89b12d"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","name":"Worksheet: sequences given by recurrences","description":"Grade 11 worksheet: sequences given by recurrences, finding the general term, the homographic recurrence, monotonicity and boundedness.","url":"https://lauramiron.pages.dev/en/materiale/fisa-lucru-siruri-recurente-1033","mainEntityOfPage":"https://lauramiron.pages.dev/en/materiale/fisa-lucru-siruri-recurente-1033","inLanguage":"en","datePublished":"2026-10-26","dateModified":"2026-10-26","learningResourceType":"Worksheet","educationalLevel":"Grade 11","teaches":"Sequences of real numbers","educationalAlignment":{"@type":"AlignmentObject","alignmentType":"educationalSubject","educationalFramework":"Romanian curriculum","targetName":"Grade 11 – Sequences of real numbers","targetUrl":"https://lauramiron.pages.dev/en/clasa-11#siruri-numere-reale"},"isAccessibleForFree":true,"license":"https://creativecommons.org/licenses/by-nc-sa/4.0/","author":{"@type":"Person","name":"Laura Miron","url":"https://lauramiron.pages.dev/en/despre","jobTitle":"Math teacher","worksFor":{"@type":"EducationalOrganization","name":"Liceul William Shakespeare","url":"https://lauramiron.pages.dev/","logo":{"@type":"ImageObject","url":"https://lauramiron.pages.dev/assets/img/og-image.png","width":1200,"height":630},"address":{"@type":"PostalAddress","addressLocality":"Timișoara","addressCountry":"RO"}},"knowsAbout":["Mathematics","Matematică","Algebră","Geometrie","Analiză matematică","Algebra","Geometry","Mathematical analysis"],"sameAs":["https://www.youtube.com/@MatematicaLauraMiron"]},"publisher":{"@type":"Person","name":"Laura Miron","url":"https://lauramiron.pages.dev/en/despre","jobTitle":"Math teacher","worksFor":{"@type":"EducationalOrganization","name":"Liceul William Shakespeare","url":"https://lauramiron.pages.dev/","logo":{"@type":"ImageObject","url":"https://lauramiron.pages.dev/assets/img/og-image.png","width":1200,"height":630},"address":{"@type":"PostalAddress","addressLocality":"Timișoara","addressCountry":"RO"}},"knowsAbout":["Mathematics","Matematică","Algebră","Geometrie","Analiză matematică","Algebra","Geometry","Mathematical analysis"],"sameAs":["https://www.youtube.com/@MatematicaLauraMiron"]},"audience":{"@type":"EducationalAudience","educationalRole":"student"},"educationalUse":"practice","keywords":"sequences defined by recurrences, general term, linear recurrence, characteristic equation, homographic recurrence, fixed points, monotonic sequences, bounded sequences, grade 11","abstract":"The worksheet gathers the methods for six types of recurrences: linear of order 1 and 2, additive and multiplicative, with radicals, polynomial and homographic. Each type has its method step by step and worked examples. Then come monotonicity and boundedness, a summary table and problems on three levels.","speakable":{"@type":"SpeakableSpecification","cssSelector":[".rezumat",".faq"]},"encoding":{"@type":"MediaObject","contentUrl":"https://lauramiron.pages.dev/materiale/pdf/fisa-lucru-siruri-recurente-1033.pdf","encodingFormat":"application/pdf","inLanguage":"ro"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://lauramiron.pages.dev/"},{"@type":"ListItem","position":2,"name":"Grade 11","item":"https://lauramiron.pages.dev/clasa-11"},{"@type":"ListItem","position":3,"name":"Worksheet: sequences given by recurrences","item":"https://lauramiron.pages.dev/en/materiale/fisa-lucru-siruri-recurente-1033"}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I find the general term of a sequence given by a linear recurrence of order 2?","acceptedAnswer":{"@type":"Answer","text":"Write the characteristic equation: replace xₙ₊₂ with r², xₙ₊₁ with r and xₙ with 1. The sign of Δ gives the form of the general term: A·r₁ⁿ + B·r₂ⁿ for two different real roots, (A + B·n)·rⁿ for a double root and ρⁿ(A cos nt + B sin nt) for complex roots. You find the constants A and B from the first two terms."}},{"@type":"Question","name":"What is the homographic recurrence and how do you solve it?","acceptedAnswer":{"@type":"Answer","text":"It is a relation of the form xₙ₊₁ = (a·xₙ + b)/(c·xₙ + d). Solve the fixed-point equation x = (ax + b)/(cx + d). For two fixed points α and β, the sequence (xₙ − α)/(xₙ − β) is a geometric progression. For a single fixed point α, the sequence 1/(xₙ − α) is an arithmetic progression. With no fixed points, the terms usually repeat."}},{"@type":"Question","name":"How do I show that a sequence given by a recurrence is monotonic and bounded?","acceptedAnswer":{"@type":"Answer","text":"If you know the general term, study the sign of the difference xₙ₊₁ − xₙ directly from the formula. Otherwise prove a bound by induction, for example that all the terms stay on the same side of a fixed point, then find the sign of xₙ₊₁ − xₙ from the relation. An increasing sequence is bounded below by its first term, and a decreasing one above."}}]}</script>
+</head>
+<body data-root="../../" data-page-root="../">
+  <header id="site-header" class="site-header"><div class="wrap header-bar"><a class="brand" href="../index.html"><svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M10 48h44" fill="none" stroke="var(--brand-marker)" stroke-width="12" stroke-linecap="round"/><g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"><path d="M25 13c-3 11-6 21-9 31 7 0 13-2 18-6"/><path d="M33 45l4-23 6 13 8-15 2 25"/></g></svg><span class="brand-text"><span class="brand-name" data-i18n="site.title">Math with Laura Miron</span><span class="brand-school" data-i18n="site.school">Liceul William Shakespeare, Timișoara</span></span></a><nav class="grade-nav" id="grade-nav" data-nav aria-label="Choose a grade"><span class="grade-nav-label" aria-hidden="true" data-i18n="nav.gradesLabel">Choose a grade</span><a href="../clasa-5.html" data-grade-link="5" aria-label="Grade 5">5</a><a href="../clasa-6.html" data-grade-link="6" aria-label="Grade 6">6</a><a href="../clasa-7.html" data-grade-link="7" aria-label="Grade 7">7</a><a href="../clasa-8.html" data-grade-link="8" aria-label="Grade 8">8</a><a href="../clasa-9.html" data-grade-link="9" class="gap" aria-label="Grade 9">9</a><a href="../clasa-10.html" data-grade-link="10" aria-label="Grade 10">10</a><a href="../clasa-11.html" data-grade-link="11" aria-label="Grade 11">11</a><a href="../clasa-12.html" data-grade-link="12" aria-label="Grade 12">12</a></nav><form class="search" id="site-search" role="search" action="../cautare.html"><label class="sr-only" for="site-search-input" data-i18n="search.label">Search materials</label><svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="m20 20-3.8-3.8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><input id="site-search-input" name="q" type="search" autocomplete="off" spellcheck="false" enterkeyhint="search" placeholder="Search: absolute value, worksheet…"><input type="hidden" id="site-search-grade" name="c" value=""></form><div class="header-tools"><button type="button" class="icon-btn" data-toggle="search" aria-controls="site-search" aria-expanded="false"><svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="m20 20-3.8-3.8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><span class="sr-only" data-i18n="search.open">Search</span></button><button type="button" class="icon-btn" data-toggle="grades" aria-controls="grade-nav" aria-expanded="false"><span data-i18n="nav.grades">Grades</span></button><button type="button" class="theme-btn" data-theme-toggle aria-pressed="false"><svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 14.5 A8.5 8.5 0 0 1 9.5 4 a8.5 8.5 0 1 0 10.5 10.5 Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2"/><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2.5 v2.2 M12 19.3 v2.2 M2.5 12 h2.2 M19.3 12 h2.2"/><path d="M5.3 5.3 l1.6 1.6 M17.1 17.1 l1.6 1.6 M18.7 5.3 l-1.6 1.6 M6.9 17.1 l-1.6 1.6"/></g></svg><span class="sr-only" data-i18n="theme.dark">Dark theme</span></button><div class="lang" role="group" aria-label="Site language" data-lang-group><a hreflang="ro" href="../../materiale/fisa-lucru-siruri-recurente-1033.html" lang="ro" aria-label="Română">RO</a><a hreflang="en" lang="en" aria-current="page" aria-label="English" href="fisa-lucru-siruri-recurente-1033.html">EN</a></div></div></div></header>
+
+  <main id="content" class="wrap">
+    <div class="page" id="material" data-id="1033" data-name="fisa-lucru-siruri-recurente-1033" data-results="1">
+      <div id="material-head"><nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../clasa-11.html">Grade 11</a></li><li><a href="../clasa-11.html#siruri-numere-reale">Sequences of real numbers</a></li></ol></nav>
+      <span class="material-kinds"><span class="badge badge-fise">Worksheet</span><span class="badge badge-lectii">Theory</span></span>
+      <h1>Worksheet: sequences given by recurrences</h1>
+      <p class="material-meta">Published <time datetime="2026-10-26">26 October 2026</time> · by <a href="../despre.html" rel="author">Laura Miron</a></p>
+      <p class="material-actions"><a class="button" href="../../materiale/pdf/fisa-lucru-siruri-recurente-1033.pdf" target="_blank" rel="noopener">Open PDF</a> <span class="note">The PDF is in Romanian.</span></p></div>
+      
+      <section class="rezumat" aria-labelledby="rezumat-heading"><h2 id="rezumat-heading" data-i18n="summary.title">Summary</h2><p>The worksheet gathers the methods for six types of recurrences: linear of order 1 and 2, additive and multiplicative, with radicals, polynomial and homographic. Each type has its method step by step and worked examples. Then come monotonicity and boundedness, a summary table and problems on three levels.</p></section><nav class="cuprins" aria-labelledby="cuprins-heading"><h2 id="cuprins-heading" data-i18n="toc.title">Contents</h2><ol><li><a href="#s1">Start from what you know</a></li><li><a href="#s2">Short theory</a><ol><li><a href="#s2-1">1. The linear recurrence of order 1</a></li><li><a href="#s2-2">2. The homogeneous linear recurrence of order 2</a></li><li><a href="#s2-3">3. Additive, multiplicative and mixed recurrences</a></li><li><a href="#s2-4">4. Recurrences with radicals</a></li><li><a href="#s2-5">5. Polynomial recurrences</a></li><li><a href="#s2-6">6. The homographic recurrence</a></li><li><a href="#s2-7">7. Monotonicity and boundedness of a sequence given by a recurrence</a></li><li><a href="#s2-8">Summary table: how to recognise the type of recurrence</a></li></ol></li><li><a href="#s3">Problems on three levels</a><ol><li><a href="#s3-1">Basic level</a></li><li><a href="#s3-2">Consolidated level</a></li><li><a href="#s3-3">Advanced level</a></li></ol></li><li><a href="#s4">Recurrences in real life</a></li></ol></nav>
+      
+      <div class="check-bar"><p class="note" id="check-note">Press “Check” next to an exercise. Your answers stay on this device.</p><button class="chip" type="button" id="check-reset" hidden>Delete my answers</button></div>
+      <article class="material-body" data-lang="en" lang="en">
+        <p><strong>The question of this worksheet:</strong> How do you find the 100th term of a sequence given by a recurrence directly, without computing all the terms before it, and how do you study whether it is monotonic and bounded?</p>
+        <h2 id="s1">Start from what you know</h2>
+        <p><em>Three quick checks. If one of them gives you trouble, write it down: go back to it first.</em></p>
+        <ol class="exercises">
+          <li>
+            <p>Fill in: if $(a_n)$ is an arithmetic progression with $a_1=4$ and common difference $r=3$, then $a_n=\ldots$; if $(b_n)$ is a geometric progression with $b_1=2$ and common ratio $q=5$, then $b_n=\ldots$</p>
+          </li>
+          <li>
+            <p>Compute $1+2+\ldots+20$ and $1+2+2^2+\ldots+2^9$. Which formulas did you use?</p>
+          </li>
+          <li>
+            <p>Solve the equation $r^2-2r+4=0$ in $\mathbb{C}$ and write the solutions in trigonometric form.</p>
+          </li>
+        </ol>
+        <h2 id="s2">Short theory</h2>
+        <p><em>For each type of recurrence: how to recognise it, the method step by step (in the thick frame) and worked examples. At the end you find the summary table and the logical thread.</em></p>
+        <h3 id="s2-1">1. The linear recurrence of order 1</h3>
+        <div class="retine">
+          <p class="retine-title">Definition</p>
+          <p>A relation of the form $x_{n+1}=a\cdot x_n+b$, with real numbers $a, b$, is called a <strong>linear recurrence of order 1</strong>. If $a=1$, the sequence is an arithmetic progression. If $b=0$, the sequence is a geometric progression.</p>
+        </div>
+        <div class="firul-logic">
+          <p class="firul-logic-label">★ Method</p>
+          <p class="firul-logic-lead">The fixed-number method ($a\ne 1$)</p>
+          <ol class="firul-logic-steps">
+            <li><span>Find the fixed number: put $\ell$ in place of $x_{n+1}$ and of $x_n$. From $\ell=a\ell+b$ you get $\ell=\frac{b}{1-a}$.</span></li>
+            <li><span>Subtract the two relations: $x_{n+1}-\ell=a(x_n-\ell)$. The sequence $y_n=x_n-\ell$ is a geometric progression with ratio $a$.</span></li>
+            <li><span>Write $y_n=y_1\cdot a^{n-1}$.</span></li>
+            <li><span>Go back to $x_n=y_n+\ell$ and check it on $x_2$.</span></li>
+          </ol>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Remember</p>
+          <p>$$x_n=\ell+(x_1-\ell)\cdot a^{n-1}$$</p>
+          <p>If the sequence starts with $x_0$, the exponent becomes $n$: $x_n=\ell+(x_0-\ell)\cdot a^n$.</p>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Example 1 · Step by step</p>
+          <p>Find the general term of the sequence $x_1=5$, $x_{n+1}=3x_n-4$, $n\ge 1$.</p>
+          <p><strong>Step 1.</strong> $\ell=3\ell-4\Rightarrow \ell=2$.</p>
+          <p><strong>Step 2.</strong> $y_n=x_n-2$ satisfies $y_{n+1}=3y_n$, and $y_1=5-2=3$.</p>
+          <p><strong>Step 3.</strong> $y_n=3\cdot 3^{n-1}=3^n$.</p>
+          <p><strong>Step 4.</strong> $x_n=3^n+2$. Check: from the relation $x_2=11$; from the formula $9+2=11$ ✓.</p>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Example 2 · With fractions</p>
+          <p>Find the general term of the sequence $x_1=1$, $x_{n+1}=\frac{1}{2}x_n+3$, $n\ge 1$.</p>
+          <p><strong>Step 1.</strong> $\ell=\frac{1}{2}\ell+3\Rightarrow \ell=6$.</p>
+          <p><strong>Steps 2–3.</strong> $y_n=x_n-6$, $y_{n+1}=\frac{1}{2}y_n$, $y_1=-5$, so $y_n=-\frac{5}{2^{n-1}}$.</p>
+          <p><strong>Step 4.</strong> $x_n=6-\frac{5}{2^{n-1}}$. Check: $x_2=\frac{1}{2}+3=\frac{7}{2}$ and $6-\frac{5}{2}=\frac{7}{2}$ ✓.</p>
+        </div>
+        <h3 id="s2-2">2. The homogeneous linear recurrence of order 2</h3>
+        <div class="retine">
+          <p class="retine-title">Definition</p>
+          <p>A relation of the form $x_{n+2}=a\cdot x_{n+1}+b\cdot x_n$ is called a <strong>homogeneous linear recurrence of order 2</strong>. Each term comes from the <em>two</em> terms before it.</p>
+        </div>
+        <div class="firul-logic">
+          <p class="firul-logic-label">★ Method</p>
+          <p class="firul-logic-lead">The characteristic equation method</p>
+          <ol class="firul-logic-steps">
+            <li><span>Write the characteristic equation: replace $x_{n+2}$ with $r^2$, $x_{n+1}$ with $r$ and $x_n$ with 1. You get $r^2=ar+b$.</span></li>
+            <li><span>Compute $\Delta$ and the roots. Write the form of $x_n$ from the table below.</span></li>
+            <li><span>Find $A$ and $B$ from the first two terms: replace $n$ with their indices and solve the system.</span></li>
+            <li><span>Check the formula on the third term, computed from the relation.</span></li>
+          </ol>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Δ</th>
+              <th>The roots</th>
+              <th>Form of the general term</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>$\Delta&gt;0$</td>
+              <td>two real roots $r_1\ne r_2$</td>
+              <td>$x_n=A\cdot r_1^n+B\cdot r_2^n$</td>
+            </tr>
+            <tr>
+              <td>$\Delta=0$</td>
+              <td>one double root $r$</td>
+              <td>$x_n=(A+B\cdot n)\cdot r^n$</td>
+            </tr>
+            <tr>
+              <td>$\Delta&lt;0$</td>
+              <td>$r_{1,2}=\rho(\cos{t}\pm i\sin{t})$</td>
+              <td>$x_n=\rho^n\cdot (A\cos{nt}+B\sin{nt})$</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="retine">
+          <p class="retine-title">Example 3 · Δ &gt; 0</p>
+          <p>Find the general term of the sequence $x_0=2$, $x_1=7$, $x_{n+2}=5x_{n+1}-6x_n$, $n\in \mathbb{N}$.</p>
+          <p><strong>Steps 1–2.</strong> $r^2-5r+6=0$, $\Delta=1&gt;0$, $r_1=2$, $r_2=3$. So $x_n=A\cdot 2^n+B\cdot 3^n$.</p>
+          <p><strong>Step 3.</strong> $n=0$: $A+B=2$; $n=1$: $2A+3B=7$. You get $B=3$, $A=-1$, so $x_n=3^{n+1}-2^n$.</p>
+          <p><strong>Step 4.</strong> From the relation: $x_2=5\cdot 7-6\cdot 2=23$. From the formula: $27-4=23$ ✓.</p>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Example 4 · Δ = 0</p>
+          <p>Find the general term of the sequence $x_0=2$, $x_1=4$, $x_{n+2}=8x_{n+1}-16x_n$, $n\in \mathbb{N}$.</p>
+          <p><strong>Steps 1–2.</strong> $r^2-8r+16=0$, $\Delta=0$, $r=4$ (double root). So $x_n=(A+B\cdot n)\cdot 4^n$.</p>
+          <p><strong>Step 3.</strong> $n=0$: $A=2$; $n=1$: $(A+B)\cdot 4=4$, so $A+B=1$ and $B=-1$. You get $x_n=(2-n)\cdot 4^n$.</p>
+          <p><strong>Step 4.</strong> From the relation: $x_2=8\cdot 4-16\cdot 2=0$. From the formula: $0\cdot 16=0$ ✓.</p>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Example 5 · Δ &lt; 0</p>
+          <p>Find the general term of the sequence $x_0=1$, $x_1=2$, $x_{n+2}=-4x_n$, $n\in \mathbb{N}$.</p>
+          <p><strong>Steps 1–2.</strong> $r^2+4=0$, $\Delta=-16&lt;0$, $r=\pm 2i=2\left(\cos\frac{\pi}{2}\pm i\sin\frac{\pi}{2}\right)$, so $\rho=2$, $t=\frac{\pi}{2}$ and $x_n=2^n\cdot \left(A\cos\frac{n\pi}{2}+B\sin\frac{n\pi}{2}\right)$.</p>
+          <p><strong>Step 3.</strong> $n=0$: $A=1$; $n=1$: $2\cdot (A\cdot 0+B\cdot 1)=2$, so $B=1$.</p>
+          <p>$$x_n=2^n\cdot \left(\cos\frac{n\pi}{2}+\sin\frac{n\pi}{2}\right)$$</p>
+          <p><strong>Step 4.</strong> From the relation: $x_2=-4\cdot 1=-4$. From the formula: $4\cdot (-1+0)=-4$ ✓.</p>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Watch out · The case Δ = 0</p>
+          <p>For $\Delta=0$ do not write $A\cdot 4^n+B\cdot 4^n$. This is really $(A+B)\cdot 4^n$, a single constant, and the system for $A$ and $B$ has, in general, no solution. That is why the factor $n$ appears.</p>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Remember · A trick for Δ &lt; 0</p>
+          <p>From Vieta’s formulas: $\rho=\sqrt{-b}$ and $\cos{t}=\frac{a}{2\rho}$, with $t\in (0;\pi)$. If $\rho=1$, the sequence repeats itself (it is periodic).</p>
+        </div>
+        <h3 id="s2-3">3. Additive, multiplicative and mixed recurrences</h3>
+        <div class="retine">
+          <p class="retine-title">Definitions</p>
+          <ul>
+            <li><strong>Additive recurrence:</strong> $x_{n+1}=x_n+f(n)$, where $f(n)$ depends only on $n$.</li>
+            <li><strong>Multiplicative recurrence:</strong> $x_{n+1}=g(n)\cdot x_n$.</li>
+            <li><strong>Mixed recurrence:</strong> $x_{n+1}=a\cdot x_n+(\text{something with }a^n)$.</li>
+          </ul>
+        </div>
+        <div class="firul-logic">
+          <p class="firul-logic-label">★ Method</p>
+          <p class="firul-logic-lead">The telescoping method</p>
+          <ol class="firul-logic-steps">
+            <li><span>Write the relation for $1; 2; \ldots; n-1$, one below the other.</span></li>
+            <li><span>Additive: add the equalities. Multiplicative: multiply them. Mixed: first divide by $a^{n+1}$; the sequence $y_n=\frac{x_n}{a^n}$ satisfies an additive recurrence.</span></li>
+            <li><span>The terms in the middle cancel. Compute the sum (or the product) that is left.</span></li>
+            <li><span>Check the formula on $x_2$.</span></li>
+          </ol>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Remember</p>
+          <p>$$x_n=x_1+f(1)+f(2)+\ldots+f(n-1)$$</p>
+          <p>$$x_n=x_1\cdot g(1)\cdot g(2)\cdot \ldots\cdot g(n-1)$$</p>
+          <p>Useful sums:</p>
+          <p>$$1+2+\ldots+m=\frac{m(m+1)}{2},\quad 1+3+\ldots+(2m-1)=m^2,\quad 1+q+\ldots+q^{m-1}=\frac{q^m-1}{q-1}$$</p>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Example 6 · Additive recurrence</p>
+          <p>Find the general term of the sequence $x_1=3$, $x_{n+1}=x_n+2n+1$, $n\ge 1$.</p>
+          <p><strong>Step 1.</strong> $x_2=x_1+3$, $x_3=x_2+5$, …, $x_n=x_{n-1}+(2n-1)$.</p>
+          <p><strong>Step 2.</strong> Add: $x_n=3+(3+5+\ldots+(2n-1))=3+(n^2-1)$, so $x_n=n^2+2$.</p>
+          <p><strong>Check:</strong> $x_2=3+3=6$ and $2^2+2=6$ ✓.</p>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Example 7 · Multiplicative recurrence</p>
+          <p>Find the general term of the sequence $x_1=2$, $x_{n+1}=\frac{n+2}{n}\cdot x_n$, $n\ge 1$.</p>
+          <p><strong>Step 1.</strong> Multiply the relations for $1; 2; \ldots; n-1$:</p>
+          <p>$$x_n=2\cdot \frac{3}{1}\cdot \frac{4}{2}\cdot \frac{5}{3}\cdot \ldots\cdot \frac{n}{n-2}\cdot \frac{n+1}{n-1}$$</p>
+          <p><strong>Step 2.</strong> The factors cancel “diagonally”: $n$ and $n+1$ stay on top, 1 and 2 at the bottom. So $x_n=2\cdot \frac{n(n+1)}{2}=n(n+1)$.</p>
+          <p><strong>Check:</strong> $x_2=3\cdot 2=6$ and $2\cdot 3=6$ ✓.</p>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Example 8 · Mixed recurrence</p>
+          <p>Find the general term of the sequence $x_1=1$, $x_{n+1}=2x_n+2^n$, $n\ge 1$.</p>
+          <p><strong>Step 1.</strong> Divide by $2^{n+1}$: $\frac{x_{n+1}}{2^{n+1}}=\frac{x_n}{2^n}+\frac{1}{2}$.</p>
+          <p><strong>Step 2.</strong> $y_n=\frac{x_n}{2^n}$ is an arithmetic progression with common difference $\frac{1}{2}$ and $y_1=\frac{1}{2}$, so $y_n=\frac{n}{2}$.</p>
+          <p><strong>Step 3.</strong> $x_n=2^n\cdot \frac{n}{2}=n\cdot 2^{n-1}$. Check: $x_2=2+2=4$ and $2\cdot 2=4$ ✓.</p>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Watch out · How many terms does the sum have?</p>
+          <p>You write the relation for $1; 2; \ldots; n-1$, so the sum (or the product) has $n-1$ terms, not $n$. That is why $m=n-1$ appears in the formulas above.</p>
+        </div>
+        <h3 id="s2-4">4. Recurrences with radicals</h3>
+        <div class="retine">
+          <p class="retine-title">Three tricks</p>
+          <p><strong>Trick 1 · Square it.</strong> If $\sqrt{\ldots x_n^2\ldots}$ appears, let $y_n=x_n^2$.</p>
+          <p><strong>Trick 2 · The hidden perfect square.</strong> $x_n\pm 2\sqrt{x_n}+1=\left(\sqrt{x_n}\pm 1\right)^2$; let $y_n=\sqrt{x_n}$.</p>
+          <p><strong>Trick 3 · Take logarithms.</strong> If the relation has only products, powers and radicals (for example $x_{n+1}=c\cdot \sqrt{x_n}$), let $y_n=\log_c{x_n}$. Powers become products, and products become sums.</p>
+        </div>
+        <div class="firul-logic">
+          <p class="firul-logic-label">★ Method</p>
+          <p class="firul-logic-lead">The substitution method</p>
+          <ol class="firul-logic-steps">
+            <li><span>Recognise the right trick: square it, look for the hidden perfect square or take logarithms.</span></li>
+            <li><span>Substitute: $y_n=x_n^2$, $y_n=\sqrt{x_n}$ or $y_n=\log_c{x_n}$.</span></li>
+            <li><span>Solve the recurrence for $y_n$: usually it is a progression or a recurrence of type 1.</span></li>
+            <li><span>Go back to $x_n$, after you check the sign of the terms.</span></li>
+          </ol>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Example 9 · The hidden perfect square</p>
+          <p>Find the general term of the sequence $x_1=4$, $x_{n+1}=x_n+2\sqrt{x_n}+1$, $n\ge 1$.</p>
+          <p><strong>Step 1.</strong> Recognise $a^2+2a+1=(a+1)^2$ with $a=\sqrt{x_n}$: $x_{n+1}=\left(\sqrt{x_n}+1\right)^2$.</p>
+          <p><strong>Step 2.</strong> The terms are positive, so $\sqrt{x_{n+1}}=\sqrt{x_n}+1$. The sequence $y_n=\sqrt{x_n}$ is an arithmetic progression, with $y_1=2$.</p>
+          <p><strong>Step 3.</strong> $y_n=n+1$, so $x_n=(n+1)^2$. Check: $x_2=4+4+1=9$ and $3^2=9$ ✓.</p>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Example 10 · Taking logarithms</p>
+          <p>Find the general term of the sequence $x_1=16$, $x_{n+1}=2\sqrt{x_n}$, $n\ge 1$.</p>
+          <p><strong>Step 1.</strong> Take logarithms in base 2: $\log_2{x_{n+1}}=1+\frac{1}{2}\log_2{x_n}$.</p>
+          <p><strong>Step 2.</strong> $y_n=\log_2{x_n}$ satisfies $y_{n+1}=\frac{1}{2}y_n+1$, with $y_1=4$: a recurrence of type 1!</p>
+          <p><strong>Step 3.</strong> $\ell=2$, so $y_n=2+2\cdot \left(\frac{1}{2}\right)^{n-1}=2+\frac{1}{2^{n-2}}$ and $x_n=2^{2+\frac{1}{2^{n-2}}}$.</p>
+          <p><strong>Check:</strong> $x_2=2\cdot 4=8$ and $2^{2+1}=8$ ✓.</p>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Watch out · The sign</p>
+          <p>From $x_{n+1}^2=\ldots$ you get $x_{n+1}=\sqrt{\ldots}$ only if you know that the terms are positive. Check the sign first!</p>
+        </div>
+        <h3 id="s2-5">5. Polynomial recurrences</h3>
+        <div class="retine">
+          <p class="retine-title">Two situations</p>
+          <p><strong>A.</strong> $x_{n+1}$ is a polynomial in $x_n$. Look for a constant $c$ with $x_{n+1}+c=(x_n+c)^k$. For degree 2, the coefficient of $x_n$ must be $2c$.</p>
+          <p><strong>B.</strong> $x_{n+1}=a\cdot x_n+P(n)$, with $P$ a polynomial in $n$ and $a\ne 1$. The same idea as the fixed number: look for a polynomial $p_n$, of the same degree as $P$, that satisfies the relation.</p>
+        </div>
+        <div class="firul-logic">
+          <p class="firul-logic-label">★ Method</p>
+          <p class="firul-logic-lead">The substitution method</p>
+          <ol class="firul-logic-steps">
+            <li><span>Look for what “copies” the relation: the constant $c$ (situation A) or the polynomial $p_n$ (situation B).</span></li>
+            <li><span>Let $y_n=x_n+c$ (A), or $y_n=x_n-p_n$ (B).</span></li>
+            <li><span>A: $y_{n+1}=y_n^k$, so $y_n=y_1^{k^{n-1}}$. B: $y_{n+1}=a\cdot y_n$, so $y_n=y_1\cdot a^{n-1}$.</span></li>
+            <li><span>Go back to $x_n$ and check it on the first terms.</span></li>
+          </ol>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Remember · How to recognise it</p>
+          <p>“$x_{n+1}=x_n^2+2x_n$” → “$x_{n+1}+1$ is the square of $x_n+1$” → $y_{n+1}=y_n^2$.</p>
+          <p>If you see $2x_n^2-1$, think of $\cos{2t}=2\cos^2{t}-1$: “the angle doubles”. If you see $4x_n^3-3x_n$, think of $\cos{3t}=4\cos^3{t}-3\cos{t}$.</p>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Example 11 · The cosine substitution</p>
+          <p>Find the general term of the sequence $x_1=\frac{1}{2}$, $x_{n+1}=2x_n^2-1$, $n\ge 1$.</p>
+          <p><strong>Step 1.</strong> Write $x_1=\cos\frac{\pi}{3}$. Then $x_2=2\cos^2\frac{\pi}{3}-1=\cos\frac{2\pi}{3}$.</p>
+          <p><strong>Step 2.</strong> At each step the angle doubles. By induction: $x_n=\cos\frac{2^{n-1}\pi}{3}$.</p>
+          <p><strong>Check:</strong> $x_2=2\cdot \frac{1}{4}-1=-\frac{1}{2}=\cos\frac{2\pi}{3}$ ✓.</p>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Example 12 · A polynomial term in n</p>
+          <p>Find the general term of the sequence $x_1=1$, $x_{n+1}=2x_n+n$, $n\ge 1$.</p>
+          <p><strong>Step 1.</strong> Look for $p_n=\alpha n+\beta$ with $\alpha (n+1)+\beta=2(\alpha n+\beta)+n$.</p>
+          <p><strong>Step 2.</strong> Compare coefficients: for $n$, $\alpha=2\alpha+1\Rightarrow \alpha=-1$; constant terms: $\alpha+\beta=2\beta\Rightarrow \beta=-1$.</p>
+          <p><strong>Step 3.</strong> $y_n=x_n+n+1$ satisfies $y_{n+1}=2y_n$, $y_1=3$, so $y_n=3\cdot 2^{n-1}$.</p>
+          <p><strong>Step 4.</strong> $x_n=3\cdot 2^{n-1}-n-1$. Check: $x_2=3$ and $6-3=3$ ✓; $x_3=8$ and $12-4=8$ ✓.</p>
+        </div>
+        <h3 id="s2-6">6. The homographic recurrence</h3>
+        <div class="retine">
+          <p class="retine-title">Definition</p>
+          <p>A sequence given by a relation of the form</p>
+          <p>$$x_{n+1}=\frac{a\cdot x_n+b}{c\cdot x_n+d}$$</p>
+          <p>is called a sequence given by a <strong>homographic recurrence</strong>. The solutions of the equation $x=\frac{ax+b}{cx+d}$ are called the <strong>fixed points</strong> of the recurrence.</p>
+        </div>
+        <div class="firul-logic">
+          <p class="firul-logic-label">★ Method</p>
+          <p class="firul-logic-lead">The fixed-point method</p>
+          <ol class="firul-logic-steps">
+            <li><span>Solve the fixed-point equation $x=\frac{ax+b}{cx+d}$. You get a quadratic equation.</span></li>
+            <li><span>Choose the substitution by the number of solutions (table below).</span></li>
+            <li><span>Write $y_n$ (or $z_n$) with the formula of the progression.</span></li>
+            <li><span>Go back to $x_n$ and check it on $x_2$.</span></li>
+          </ol>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Fixed points</th>
+              <th>Substitution</th>
+              <th>What you get</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>two: $\alpha\ne \beta$</td>
+              <td>$y_n=\frac{x_n-\alpha}{x_n-\beta}$</td>
+              <td>$(y_n)$ is a <strong>geometric progression</strong></td>
+            </tr>
+            <tr>
+              <td>one: $\alpha$</td>
+              <td>$z_n=\frac{1}{x_n-\alpha}$</td>
+              <td>$(z_n)$ is an <strong>arithmetic progression</strong></td>
+            </tr>
+            <tr>
+              <td>none ($\Delta&lt;0$)</td>
+              <td>–</td>
+              <td>look for the period: usually <strong>the terms repeat</strong></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="retine">
+          <p class="retine-title">Remember · How to find the ratio</p>
+          <p>Subtract the fixed point from the relation. For any fixed point $\alpha$:</p>
+          <p>$$x_{n+1}-\alpha=\frac{(a-c\alpha)(x_n-\alpha)}{c\cdot x_n+d}$$</p>
+          <p>For two fixed points, divide the two equalities: the denominator $c\cdot x_n+d$ cancels.</p>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Remember · If there are no fixed points</p>
+          <p>Usually the sequence <strong>repeats itself</strong>. Compute terms until $x_1$ comes back. If the terms repeat every $p$ terms, divide the index by $p$ and look at the <strong>remainder</strong>.</p>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Example 13 · Two fixed points</p>
+          <p>Find the general term of the sequence $x_1=3$, $x_{n+1}=\frac{4x_n-2}{x_n+1}$, $n\ge 1$.</p>
+          <p><strong>Step 1.</strong> $x=\frac{4x-2}{x+1}\Rightarrow x^2-3x+2=0\Rightarrow \alpha=1$, $\beta=2$.</p>
+          <p><strong>Step 2.</strong> Subtract the fixed points from the relation:</p>
+          <p>$$x_{n+1}-1=\frac{3(x_n-1)}{x_n+1},\quad x_{n+1}-2=\frac{2(x_n-2)}{x_n+1}$$</p>
+          <p>Divide: $y_{n+1}=\frac{3}{2}\cdot y_n$, where $y_n=\frac{x_n-1}{x_n-2}$.</p>
+          <p><strong>Step 3.</strong> $y_1=\frac{3-1}{3-2}=2$, so $y_n=2\cdot \left(\frac{3}{2}\right)^{n-1}$.</p>
+          <p><strong>Step 4.</strong> From $y_n(x_n-2)=x_n-1$ you get $x_n=\frac{2y_n-1}{y_n-1}=\frac{8\cdot 3^{n-1}-2^n}{4\cdot 3^{n-1}-2^n}$. Check: $x_2=\frac{10}{4}=\frac{5}{2}$ and $\frac{24-4}{12-4}=\frac{5}{2}$ ✓.</p>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Example 14 · A single fixed point</p>
+          <p>Find the general term of the sequence $x_1=0$, $x_{n+1}=\frac{1}{2-x_n}$, $n\ge 1$.</p>
+          <p><strong>Step 1.</strong> $x(2-x)=1\Rightarrow x^2-2x+1=0\Rightarrow \alpha=1$ (a single solution).</p>
+          <p><strong>Step 2.</strong> $x_{n+1}-1=\frac{x_n-1}{2-x_n}$. Take the reciprocal:</p>
+          <p>$$\frac{1}{x_{n+1}-1}=\frac{2-x_n}{x_n-1}=\frac{1}{x_n-1}-1$$</p>
+          <p>So $z_{n+1}=z_n-1$, where $z_n=\frac{1}{x_n-1}$.</p>
+          <p><strong>Step 3.</strong> $z_1=-1$, so $z_n=-n$.</p>
+          <p><strong>Step 4.</strong> $x_n=1+\frac{1}{z_n}=1-\frac{1}{n}$. Check: $x_2=\frac{1}{2}$ and $1-\frac{1}{2}=\frac{1}{2}$ ✓.</p>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Example 15 · No fixed points (a periodic sequence)</p>
+          <p>Let $x_1=1$, $x_{n+1}=-\frac{1}{x_n+1}$, $n\ge 1$. We compute $x_{2026}$.</p>
+          <p><strong>Step 1.</strong> $x=-\frac{1}{x+1}\Rightarrow x^2+x+1=0$, $\Delta=-3&lt;0$: there are no fixed points.</p>
+          <p><strong>Step 2.</strong> Compute the terms: $x_2=-\frac{1}{2}$, $x_3=-2$, $x_4=-\frac{1}{-2+1}=1=x_1$. The terms repeat every 3 terms: $1; -\frac{1}{2}; -2; 1; -\frac{1}{2}; -2; \ldots$</p>
+          <p><strong>Step 3.</strong> $2026=3\cdot 675+1$. The remainder is 1, so $x_{2026}=x_1=1$.</p>
+        </div>
+        <h3 id="s2-7">7. Monotonicity and boundedness of a sequence given by a recurrence</h3>
+        <div class="retine">
+          <p class="retine-title">Recall</p>
+          <p>The sequence $(x_n)$ is <strong>increasing</strong> if $x_n\le x_{n+1}$ and <strong>strictly increasing</strong> if $x_n&lt;x_{n+1}$, for every $n$. The same goes for <strong>decreasing</strong> and <strong>strictly decreasing</strong>.</p>
+          <p>The sequence $(x_n)$ is <strong>bounded</strong> if there are numbers $m$ and $M$ such that $m\le x_n\le M$, for every $n$.</p>
+        </div>
+        <div class="firul-logic">
+          <p class="firul-logic-label">★ Method</p>
+          <p class="firul-logic-lead">Method · Monotonicity and boundedness</p>
+          <ol class="firul-logic-steps">
+            <li><span>Compute the first terms and make a guess: does it grow? does it drop? between which values does it stay?</span></li>
+            <li><span>If you know the general term, study the sign of the difference $x_{n+1}-x_n$ directly and find the bounds from the formula.</span></li>
+            <li><span>If you do not know the general term, prove a bound by induction. For a recurrence with a fixed point $\alpha$, the sign of $x_{n+1}-\alpha$ shows on which side of $\alpha$ the sequence stays.</span></li>
+            <li><span>Study the sign of $x_{n+1}-x_n$ using the relation and the bound you found.</span></li>
+            <li><span>Write the conclusion: the sequence is (strictly) increasing or decreasing and $m\le x_n\le M$.</span></li>
+          </ol>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Remember</p>
+          <ul>
+            <li>An <strong>increasing</strong> sequence is bounded below by its first term. A <strong>decreasing</strong> sequence is bounded above by its first term. Only one bound is left to find.</li>
+            <li>For a sequence with positive terms you can also compare the ratio $\frac{x_{n+1}}{x_n}$ with 1.</li>
+            <li>If $x_{n+1}-\alpha=k\cdot (x_n-\alpha)$ with $k&gt;0$, all the terms are on the same side of $\alpha$ as $x_1$ (by induction).</li>
+          </ul>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Example 16 · From the general term</p>
+          <p>We study the monotonicity and boundedness of the sequence from Example 14, $x_n=1-\frac{1}{n}$, $n\ge 1$.</p>
+          <p><strong>Monotonicity:</strong> $x_{n+1}-x_n=\frac{1}{n}-\frac{1}{n+1}=\frac{1}{n(n+1)}&gt;0$, so the sequence is strictly increasing.</p>
+          <p><strong>Boundedness:</strong> the sequence is increasing, so $x_n\ge x_1=0$. Also $x_n=1-\frac{1}{n}&lt;1$. So $0\le x_n&lt;1$: the sequence is bounded.</p>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Example 17 · Directly from the recurrence</p>
+          <p>Let $x_1=6$, $x_{n+1}=\frac{5x_n+4}{x_n+2}$, $n\ge 1$. We show that the sequence is monotonic and bounded.</p>
+          <p><strong>Fixed points:</strong> $x^2+2x=5x+4\Rightarrow x^2-3x-4=0$, so $\alpha=4$ and $\beta=-1$.</p>
+          <p><strong>Boundedness:</strong> $x_{n+1}-4=\frac{x_n-4}{x_n+2}$. If $x_n&gt;4$, then $x_{n+1}&gt;4$. Since $x_1=6&gt;4$, by induction $x_n&gt;4$ for every $n$.</p>
+          <p><strong>Monotonicity:</strong> $x_{n+1}-x_n=\frac{5x_n+4-x_n^2-2x_n}{x_n+2}=-\frac{(x_n-4)(x_n+1)}{x_n+2}&lt;0$, so the sequence is strictly decreasing.</p>
+          <p><strong>Conclusion:</strong> the sequence is decreasing, so $x_n\le x_1=6$. Therefore $4&lt;x_n\le 6$: the sequence is bounded.</p>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Watch out · Sequences that are not monotonic or not bounded</p>
+          <p>To show that a sequence is <strong>not monotonic</strong>, three terms are enough, for example $x_0&lt;x_1$ and $x_1&gt;x_2$. To show that it is <strong>not bounded</strong>, show that its terms exceed any number.</p>
+          <p>Example: the sequence from Example 5, $x_n=2^n\cdot \left(\cos\frac{n\pi}{2}+\sin\frac{n\pi}{2}\right)$. We have $x_0=1&lt;x_1=2$ and $x_1&gt;x_2=-4$, so the sequence is not monotonic. For $n=4k$: $x_{4k}=16^k$, and $16^k$ exceeds any number, so the sequence is not bounded.</p>
+        </div>
+        <h3 id="s2-8">Summary table: how to recognise the type of recurrence</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Type</th>
+              <th>Form of the relation</th>
+              <th>What you do</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1 · Linear of order 1</td>
+              <td>$x_{n+1}=a x_n+b$</td>
+              <td>the fixed number $\ell=a\ell+b$; then $x_n=\ell+(x_1-\ell)a^{n-1}$</td>
+            </tr>
+            <tr>
+              <td>2 · Linear of order 2</td>
+              <td>$x_{n+2}=a x_{n+1}+b x_n$</td>
+              <td>the characteristic equation $r^2=ar+b$; the form by $\Delta$; for $\Delta=0$ do not forget the factor $n$!</td>
+            </tr>
+            <tr>
+              <td>3 · Additive, multiplicative, mixed</td>
+              <td>$x_{n+1}=x_n+f(n)$; $x_{n+1}=g(n)x_n$; $x_{n+1}=ax_n+(\text{something with }a^n)$</td>
+              <td>add the relations; multiply the relations; divide by $a^{n+1}$</td>
+            </tr>
+            <tr>
+              <td>4 · With radicals</td>
+              <td>$\sqrt{\ldots}$ in the relation</td>
+              <td>square it, look for $\left(\sqrt{x_n}\pm 1\right)^2$ or take logarithms; check the sign</td>
+            </tr>
+            <tr>
+              <td>5 · Polynomial</td>
+              <td>$x_{n+1}=P(x_n)$ or $x_{n+1}=ax_n+P(n)$</td>
+              <td>$x_{n+1}+c=(x_n+c)^k$; $2x^2-1$ → cosine; the polynomial $p_n$</td>
+            </tr>
+            <tr>
+              <td>6 · Homographic</td>
+              <td>$x_{n+1}=\frac{ax_n+b}{cx_n+d}$</td>
+              <td>the fixed points; $y_n=\frac{x_n-\alpha}{x_n-\beta}$ or $z_n=\frac{1}{x_n-\alpha}$; no fixed points → the period</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="retine">
+          <p class="retine-title">Remember · The common idea</p>
+          <p>For types 1, 5 and 6 you look for what stays unchanged: the <strong>fixed number</strong> $\ell$, the polynomial $p_n$ or the <strong>fixed points</strong>. Subtracting them from the relation gives a progression.</p>
+        </div>
+        <div class="firul-logic">
+          <p class="firul-logic-label">★ Most important</p>
+          <p class="firul-logic-lead">The logical thread: what to do when you meet a recurrence. Follow the steps in this order, in every problem</p>
+          <ol class="firul-logic-steps">
+            <li><span>Compute the first 3–4 terms.</span></li>
+            <li><span>Recognise the form of the relation (type 1–6).</span></li>
+            <li><span>Choose the method: the fixed number, Δ, telescoping, a substitution or the fixed points.</span></li>
+            <li><span>Find the constants from the first terms.</span></li>
+            <li><span>Check the formula on one more term.</span></li>
+            <li><span>Study monotonicity and boundedness: from the formula or directly from the relation.</span></li>
+          </ol>
+        </div>
+        <h2 id="s3">Problems on three levels</h2>
+        <p><em>In each problem write, besides the answer, which type of recurrence you recognised and how. Check every formula on the first terms.</em></p>
+        <h3 id="s3-1">Basic level</h3>
+        <ol class="exercises">
+          <li>
+            <p>Classify each recurrence (type 1–6 or a progression) and write the first step of the method:</p>
+            <p>a) $x_{n+1}=x_n+n^2$;</p>
+            <p>b) $x_{n+1}=7x_n-6$;</p>
+            <p>c) $x_{n+2}=4x_{n+1}-3x_n$;</p>
+            <p>d) $x_{n+1}=\sqrt{x_n^2+7}$;</p>
+            <p>e) $x_{n+1}=x_n^2+4x_n+2$;</p>
+            <p>f) $x_{n+2}=2x_{n+1}-5x_n$;</p>
+            <p>g) $x_{n+1}=5x_n+2n-1$;</p>
+            <p>h) $x_{n+1}=5x_n+5^n$;</p>
+            <p>i) $x_{n+1}=\frac{2x_n+1}{x_n+2}$.</p>
+          </li>
+          <li>
+            <p>Find the general term ($n\ge 1$):</p>
+            <p data-ex="2a">a) $x_1=2$, $x_{n+1}=x_n+5$;</p>
+            <p data-ex="2b">b) $x_1=3$, $x_{n+1}=-2x_n$;</p>
+            <p data-ex="2c">c) $x_1=4$, $x_{n+1}=2x_n-3$;</p>
+            <p data-ex="2d">d) $x_1=2$, $x_{n+1}=4x_n-3$.</p>
+          </li>
+          <li>
+            <p>Let $x_1=0$ and $x_{n+1}=\frac{1}{3}x_n+2$, $n\ge 1$.</p>
+            <p data-ex="3a">a) Find the general term.</p>
+            <p>b) Show that the sequence is strictly increasing and that $0\le x_n&lt;3$, for every $n\ge 1$.</p>
+          </li>
+          <li>
+            <p data-ex="4">Find $a\in \mathbb{R}$ such that the sequence $x_1=2$, $x_{n+1}=a\cdot x_n+6$ is constant.</p>
+          </li>
+          <li>
+            <p>Write the characteristic equation, compute $\Delta$ and write the form of $x_n$ (without finding $A$ and $B$):</p>
+            <p>a) $x_{n+2}=7x_{n+1}-12x_n$;</p>
+            <p>b) $x_{n+2}=10x_{n+1}-25x_n$;</p>
+            <p>c) $x_{n+2}=-9x_n$.</p>
+          </li>
+          <li>
+            <p>Find the general term ($n\in \mathbb{N}$):</p>
+            <p data-ex="6a">a) $x_0=0$, $x_1=1$, $x_{n+2}=3x_{n+1}-2x_n$;</p>
+            <p data-ex="6b">b) $x_0=2$, $x_1=1$, $x_{n+2}=x_{n+1}+6x_n$;</p>
+            <p data-ex="6c">c) $x_0=0$, $x_1=5$, $x_{n+2}=3x_{n+1}+4x_n$;</p>
+            <p data-ex="6d">d) $x_0=1$, $x_1=5$, $x_{n+2}=4x_{n+1}-3x_n$.</p>
+          </li>
+          <li>
+            <p>Let $x_0=3$, $x_1=6$ and $x_{n+2}=5x_{n+1}-4x_n$, $n\in \mathbb{N}$.</p>
+            <p data-ex="7a">a) Find $x_n$.</p>
+            <p>b) Show that the sequence is strictly increasing. Is the sequence bounded?</p>
+          </li>
+          <li>
+            <p>Find the general term ($n\in \mathbb{N}$):</p>
+            <p data-ex="8a">a) $x_0=2$, $x_1=9$, $x_{n+2}=6x_{n+1}-9x_n$;</p>
+            <p data-ex="8b">b) $x_0=1$, $x_1=15$, $x_{n+2}=10x_{n+1}-25x_n$.</p>
+          </li>
+          <li>
+            <p>Find the general term ($n\ge 1$):</p>
+            <p data-ex="9a">a) $x_1=2$, $x_{n+1}=x_n+4n$;</p>
+            <p data-ex="9b">b) $x_1=0$, $x_{n+1}=x_n+2^n$.</p>
+          </li>
+          <li>
+            <p>Find the general term ($n\ge 1$), then study the monotonicity and boundedness of the sequence:</p>
+            <p data-ex="10a">a) $x_1=1$, $x_{n+1}=(n+1)\cdot x_n$;</p>
+            <p data-ex="10b">b) $x_1=1$, $x_{n+1}=\frac{n}{n+1}\cdot x_n$.</p>
+          </li>
+          <li>
+            <p>Let the sequence with positive terms $x_1=2$, $x_{n+1}=\sqrt{x_n^2+5}$, $n\ge 1$.</p>
+            <p data-ex="11a">a) Find the general term.</p>
+            <p>b) Show that the sequence is strictly increasing.</p>
+          </li>
+          <li>
+            <p>Find the fixed points. Say which substitution you use:</p>
+            <p>a) $x_{n+1}=\frac{x_n+6}{x_n}$;</p>
+            <p>b) $x_{n+1}=\frac{4x_n-1}{x_n+2}$;</p>
+            <p>c) $x_{n+1}=\frac{2x_n+1}{x_n+2}$.</p>
+          </li>
+          <li>
+            <p>Let $x_1=3$ and $x_{n+1}=\frac{5x_n-4}{x_n+1}$, $n\ge 1$.</p>
+            <p>a) Show that the fixed-point equation has a single solution.</p>
+            <p>b) Show that $z_n=\frac{1}{x_n-2}$ is an arithmetic progression.</p>
+            <p data-ex="13c">c) Find $x_n$.</p>
+            <p>d) Study the monotonicity and boundedness of the sequence.</p>
+          </li>
+          <li>
+            <p>Let $x_1=0$ and $x_{n+1}=\frac{x_n-3}{x_n-2}$, $n\ge 1$.</p>
+            <p>a) Show that there are no fixed points.</p>
+            <p data-ex="14b">b) Compute $x_2$, $x_3$, $x_4$. What do you notice?</p>
+            <p data-ex="14c">c) Compute $x_{2027}$.</p>
+          </li>
+        </ol>
+        <h3 id="s3-2">Consolidated level</h3>
+        <ol class="exercises" start="15">
+          <li>
+            <p>The relation $x_{n+1}=4x_n-9$, $n\ge 1$, is given.</p>
+            <p data-ex="15a">a) Find $x_1$ such that the sequence is constant.</p>
+            <p data-ex="15b">b) For $x_1=5$, find the general term.</p>
+          </li>
+          <li>
+            <p>Let $x_0=1$ and $x_{n+1}=5-x_n$, $n\in \mathbb{N}$.</p>
+            <p>a) Find the general term and explain why the terms repeat.</p>
+            <p>b) Is the sequence monotonic? Is it bounded?</p>
+          </li>
+          <li>
+            <p data-ex="17">Find the general term of the sequence $x_1=1$, $x_2=0$, $x_{n+2}=-2x_{n+1}-x_n$, $n\ge 1$.</p>
+          </li>
+          <li>
+            <p>Let $x_0=1$, $x_1=0$ and $x_{n+2}=-6x_{n+1}-9x_n$, $n\in \mathbb{N}$.</p>
+            <p data-ex="18a">a) Find $x_n$. <em>Hint:</em> the double root is negative.</p>
+            <p>b) Show that the sequence is not monotonic.</p>
+          </li>
+          <li>
+            <p>Let $x_0=1$, $x_1=-1$ and $x_{n+2}=-2x_{n+1}-2x_n$, $n\in \mathbb{N}$.</p>
+            <p>a) Show that $r_{1,2}=-1\pm i=\sqrt{2}\left(\cos\frac{3\pi}{4}\pm i\sin\frac{3\pi}{4}\right)$.</p>
+            <p>b) Find $x_n$.</p>
+          </li>
+          <li>
+            <p>Find the general term of the sequence $x_0=1$, $x_1=1$, $x_{n+2}=2x_{n+1}-4x_n$, $n\in \mathbb{N}$.</p>
+          </li>
+          <li>
+            <p>Let $x_0=1$, $x_1=2$ and $x_{n+2}=-x_{n+1}-x_n$, $n\in \mathbb{N}$.</p>
+            <p data-ex="21a">a) Compute $x_2$, $x_3$, $x_4$, $x_5$. What do you notice?</p>
+            <p>b) Show that $x_{n+3}=x_n$ for every $n$.</p>
+            <p data-ex="21c">c) Compute $x_{2026}$ and the sum $x_0+x_1+\ldots+x_{29}$.</p>
+            <p>d) Show that the sequence is bounded, but not monotonic.</p>
+          </li>
+          <li>
+            <p>Let $x_0=2$, $x_1=1$ and $x_{n+2}=x_{n+1}-x_n$, $n\in \mathbb{N}$.</p>
+            <p data-ex="22a">a) Compute $x_2; x_3; \ldots; x_7$. What do you notice?</p>
+            <p>b) Find the general term.</p>
+            <p data-ex="22c">c) Compute $x_{2026}$.</p>
+          </li>
+          <li>
+            <p>Find the general term ($n\ge 1$):</p>
+            <p data-ex="23a">a) $x_1=1$, $x_{n+1}=x_n+\frac{1}{n(n+1)}$;</p>
+            <p data-ex="23b">b) $x_1=1$, $x_{n+1}=x_n+3n^2+3n+1$. <em>Hint:</em> compute $(k+1)^3-k^3$.</p>
+            <p>c) Show that the sequence from a) is strictly increasing and bounded.</p>
+          </li>
+          <li>
+            <p data-ex="24">Find the general term of the sequence $x_1=1$, $x_{n+1}=x_n+n\cdot n!$, $n\ge 1$. <em>Hint:</em> $(k+1)!-k!=k\cdot k!$.</p>
+          </li>
+          <li>
+            <p>Find the general term ($n\ge 1$):</p>
+            <p data-ex="25a">a) $x_1=1$, $x_{n+1}=3x_n+3^{n+1}$;</p>
+            <p data-ex="25b">b) $x_1=1$, $x_{n+1}=(n+1)\cdot x_n+(n+1)!$.</p>
+          </li>
+          <li>
+            <p>Find the general term ($n\ge 1$, positive terms):</p>
+            <p data-ex="26a">a) $x_1=1$, $x_{n+1}=\sqrt{2x_n^2+1}$;</p>
+            <p data-ex="26b">b) $x_1=1$, $x_{n+1}=x_n+4\sqrt{x_n}+4$;</p>
+            <p>c) $x_1=3$, $x_{n+1}=3\sqrt{x_n}$;</p>
+            <p>d) $x_1=2$, $x_{n+1}=\sqrt{x_n}$.</p>
+            <p>e) Show that the sequence from c) is strictly increasing and that $3\le x_n&lt;9$.</p>
+          </li>
+          <li>
+            <p>Find the general term ($n\ge 1$):</p>
+            <p data-ex="27a">a) $x_1=3$, $x_{n+1}=x_n^2-2x_n+2$;</p>
+            <p data-ex="27b">b) $x_1=1$, $x_{n+1}=3x_n-2n$.</p>
+          </li>
+          <li>
+            <p>Let $x_1=2$ and $x_{n+1}=\frac{3x_n+2}{x_n+4}$, $n\ge 1$.</p>
+            <p>a) Show that $y_n=\frac{x_n-1}{x_n+2}$ is a geometric progression.</p>
+            <p>b) Find $x_n$.</p>
+            <p>c) Show that $1&lt;x_n\le 2$, for every $n\ge 1$.</p>
+            <p>d) Show that the sequence is strictly decreasing.</p>
+          </li>
+          <li>
+            <p>Let $x_1=0$ and $x_{n+1}=\frac{x_n+6}{x_n+2}$, $n\ge 1$.</p>
+            <p data-ex="29a">a) Compute $x_2$ and $x_3$.</p>
+            <p>b) Show that $y_n=\frac{x_n-2}{x_n+3}$ is a geometric progression and find $x_n$.</p>
+            <p>c) Show that the sequence is not monotonic.</p>
+            <p>d) Show that $0\le x_n\le 3$, for every $n\ge 1$.</p>
+          </li>
+          <li>
+            <p>Let $x_1=1$ and $x_{n+1}=\frac{3x_n+4}{x_n+3}$, $n\ge 1$.</p>
+            <p>a) Show that $1\le x_n&lt;2$, for every $n\ge 1$. <em>Hint:</em> compute $x_{n+1}-2$.</p>
+            <p>b) Show that the sequence is strictly increasing. <em>Hint:</em> compute $x_{n+1}-x_n$.</p>
+          </li>
+          <li>
+            <p>Let $x_1=2$ and $x_{n+1}=\frac{3x_n-1}{x_n+1}$, $n\ge 1$.</p>
+            <p>a) Show that the fixed-point equation has a single solution.</p>
+            <p data-ex="31b">b) Find $x_n$.</p>
+            <p>c) Show, using the formula from b), that the sequence is strictly decreasing and that $1&lt;x_n\le 2$.</p>
+          </li>
+          <li>
+            <p>Let $x_1=2$ and $x_{n+1}=\frac{1+x_n}{1-x_n}$, $n\ge 1$.</p>
+            <p>a) Show that there are no fixed points.</p>
+            <p data-ex="32b">b) Compute $x_2$, $x_3$, $x_4$, $x_5$. How often does the sequence repeat?</p>
+            <p data-ex="32c">c) Compute $x_{2026}$.</p>
+          </li>
+        </ol>
+        <h3 id="s3-3">Advanced level</h3>
+        <ol class="exercises" start="33">
+          <li>
+            <p data-ex="33">Find the general term of the sequence $x_1=1$, $x_{n+1}=x_n+\frac{1}{\sqrt{n+1}+\sqrt{n}}$, $n\ge 1$.</p>
+          </li>
+          <li>
+            <p>Find the general term ($n\ge 1$):</p>
+            <p>a) $x_1=3$, $x_{n+1}=3^n\cdot x_n$;</p>
+            <p data-ex="34b">b) $x_1=1$, $x_{n+1}=\left(1-\frac{1}{(n+1)^2}\right)\cdot x_n$.</p>
+            <p>c) Show that the sequence from b) is strictly decreasing and bounded.</p>
+          </li>
+          <li>
+            <p data-ex="35">Find the general term of the sequence $x_1=1$, $x_{n+1}=x_n^3+3x_n^2+3x_n$, $n\ge 1$.</p>
+          </li>
+          <li>
+            <p>The sequence $x_1=\frac{\sqrt{3}}{2}$, $x_{n+1}=2x_n^2-1$, $n\ge 1$, is given. Find the general term and explain why the sequence is constant from some term on.</p>
+          </li>
+          <li>
+            <p>Let $x_1=\frac{1}{2}$ and $x_{n+1}=\sqrt{\frac{1+x_n}{2}}$, $n\ge 1$.</p>
+            <p>a) Find the general term. <em>Hint:</em> $1+\cos{2t}=2\cos^2{t}$.</p>
+            <p>b) Show that the sequence is strictly increasing and that $\frac{1}{2}\le x_n&lt;1$.</p>
+          </li>
+          <li>
+            <p data-ex="38">Find the general term of the sequence $x_0=0$, $x_{n+1}=2x_n+n^2$, $n\in \mathbb{N}$.</p>
+          </li>
+          <li>
+            <p><em>The Fibonacci sequence:</em> $F_0=0$, $F_1=1$, $F_{n+2}=F_{n+1}+F_n$, $n\in \mathbb{N}$.</p>
+            <p>a) Show that $F_n=\frac{1}{\sqrt{5}}\left[\left(\frac{1+\sqrt{5}}{2}\right)^n-\left(\frac{1-\sqrt{5}}{2}\right)^n\right]$.</p>
+            <p>b) Show that the sequence is increasing and that $F_n\ge n-1$, for every $n\ge 1$. Is the sequence bounded?</p>
+          </li>
+          <li>
+            <p>Let $x_0=2$, $x_1=2$ and $x_{n+2}=2x_{n+1}+x_n$, $n\in \mathbb{N}$.</p>
+            <p>a) Show that $x_n=\left(1+\sqrt{2}\right)^n+\left(1-\sqrt{2}\right)^n$.</p>
+            <p>b) Explain why all the terms of the sequence are integers.</p>
+          </li>
+          <li>
+            <p>Consider the relation $x_{n+2}=m\cdot x_{n+1}-36x_n$, $n\in \mathbb{N}$, with $m&gt;0$.</p>
+            <p data-ex="41a">a) Find $m$ for which the characteristic equation has a double root.</p>
+            <p data-ex="41b">b) For this value and $x_0=1$, $x_1=12$, find $x_n$.</p>
+          </li>
+          <li>
+            <p>Let $x_1=1$ and $x_{n+1}=\frac{2x_n+3}{x_n+2}$, $n\ge 1$.</p>
+            <p data-ex="42a">a) Compute $x_2$ and $x_3$.</p>
+            <p>b) Show that $1\le x_n&lt;\sqrt{3}$, for every $n\ge 1$, and that the sequence is strictly increasing.</p>
+            <p>c) Find $x_n$. <em>Hint:</em> use $y_n=\frac{x_n-\sqrt{3}}{x_n+\sqrt{3}}$.</p>
+          </li>
+          <li>
+            <p>Let $x_1=1$ and $x_{n+1}=\frac{x_n+\sqrt{3}}{1-\sqrt{3}\cdot x_n}$, $n\ge 1$.</p>
+            <p data-ex="43a">a) Compute $x_2$, $x_3$, $x_4$ and $x_{2026}$.</p>
+            <p>b) Write $x_1=\operatorname{tg}\frac{\pi}{4}$ and $\sqrt{3}=\operatorname{tg}\frac{\pi}{3}$. What link do you see with the formula for $\operatorname{tg}(a+b)$?</p>
+          </li>
+          <li>
+            <p><em>Find the mistake.</em> A student writes: “$x_1=1$, $x_{n+1}=x_n+2n$. I computed $x_2=3$ and $x_3=7$. So $x_n=2^n-1$.”</p>
+            <p>a) Point out the first wrong step and give a counterexample.</p>
+            <p data-ex="44b">b) Write the correct formula.</p>
+          </li>
+          <li>
+            <p><em>Challenge.</em> For $x_1=3$, $x_{n+1}=x_n^2-2$, $n\ge 1$, show that $x_n=t^{2^{n-1}}+t^{-2^{n-1}}$, where $t+\frac{1}{t}=3$.</p>
+          </li>
+        </ol>
+        <h2 id="s4">Recurrences in real life</h2>
+        <p><em>The situations below are made up, but they resemble the ones you meet around you. You translate a story into a recurrence relation and use it to predict what comes next.</em></p>
+        <p><strong>A. Savings.</strong> You put 1000 lei into an account with 5% interest per year and, at the end of each year, you add 200 lei more. Let $s_n$ be the amount after $n$ years ($s_0=1000$).</p>
+        <p><strong>B. Medicine.</strong> A patient takes 100 mg of a medicine every morning. In 24 hours, the body removes half of the amount present. Let $m_n$ be the amount right after the $n$-th dose.</p>
+        <p><strong>C. Fish in a lake.</strong> There are 1000 fish in a lake. Every year the population grows by 20%, then 300 fish are caught. Let $p_n$ be the number of fish after $n$ years ($p_0=1000$).</p>
+        <p><strong>D. The Towers of Hanoi.</strong> To move a tower of $n+1$ discs, you move the tower on top ($n$ discs), then the big disc, then the tower of $n$ discs again. Let $h_n$ be the number of moves for $n$ discs ($h_1=1$).</p>
+        <div class="retine">
+          <p class="retine-title">For each situation</p>
+          <p><strong>1.</strong> Write the recurrence relation and the first term.</p>
+          <p><strong>2.</strong> Recognise the type and find the general term.</p>
+          <p><strong>3.</strong> Check the formula on the first two terms, computed directly from the story.</p>
+          <p><strong>4.</strong> Study the monotonicity and boundedness of the sequence. (B: show that $m_n&lt;200$ for every $n$. C: in which year do the fish run out?)</p>
+        </div>
+      </article>
+      <section class="faq" aria-labelledby="faq-heading"><h2 id="faq-heading" data-i18n="faq.title">Frequently asked questions</h2><details><summary>How do I find the general term of a sequence given by a linear recurrence of order 2?</summary><p>Write the characteristic equation: replace xₙ₊₂ with r², xₙ₊₁ with r and xₙ with 1. The sign of Δ gives the form of the general term: A·r₁ⁿ + B·r₂ⁿ for two different real roots, (A + B·n)·rⁿ for a double root and ρⁿ(A cos nt + B sin nt) for complex roots. You find the constants A and B from the first two terms.</p></details><details><summary>What is the homographic recurrence and how do you solve it?</summary><p>It is a relation of the form xₙ₊₁ = (a·xₙ + b)/(c·xₙ + d). Solve the fixed-point equation x = (ax + b)/(cx + d). For two fixed points α and β, the sequence (xₙ − α)/(xₙ − β) is a geometric progression. For a single fixed point α, the sequence 1/(xₙ − α) is an arithmetic progression. With no fixed points, the terms usually repeat.</p></details><details><summary>How do I show that a sequence given by a recurrence is monotonic and bounded?</summary><p>If you know the general term, study the sign of the difference xₙ₊₁ − xₙ directly from the formula. Otherwise prove a bound by induction, for example that all the terms stay on the same side of a fixed point, then find the sign of xₙ₊₁ − xₙ from the relation. An increasing sequence is bounded below by its first term, and a decreasing one above.</p></details></section>
+      <aside class="related" id="material-related"><p><a class="more" href="../clasa-11.html">All materials for Grade 11</a></p></aside>
+    </div>
+  </main>
+
+  <footer id="site-footer" class="site-footer"><div class="wrap"><p>© <span data-year>2026</span> Laura Miron. <span data-i18n="footer.text">Free materials for students.</span> · <a href="../despre.html" data-i18n="footer.about">About</a> · <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license">CC BY-NC-SA 4.0</a></p></div></footer>
+</body>
+</html>
