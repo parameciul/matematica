@@ -41,7 +41,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,700;0,800;1,400&family=Caveat:wght@600&display=swap">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.18.1/dist/katex.min.css" integrity="sha384-1vdNCNel6Tx/NQa8IR1mGOGKsbGreCkOPfbtPPnUURJ5Tu2PRVfQ/7KLZC+Pi1p1" crossorigin="anonymous">
-  <link rel="stylesheet" href="../assets/css/style.css?v=870118a2f8">
+  <link rel="stylesheet" href="../assets/css/style.css?v=f449ad07b0">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.18.1/dist/katex.min.js" integrity="sha384-ycJ6GAwiS15LoUPipwJOrWTvkUHl/YqELValBwI5I4awP1EeEQJYarj+w85ntcz7" crossorigin="anonymous"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.18.1/dist/contrib/auto-render.min.js" integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous"></script>
   <script defer src="../assets/js/i18n.js?v=9da1cb4da9"></script>
@@ -102,7 +102,7 @@
             <li><span>Mă întorc la $x_n=y_n+\ell$ și verific pe $x_2$.</span></li>
           </ol>
         </div>
-        <div class="retine">
+        <div class="retine retine-de-retinut">
           <p class="retine-title">De reținut</p>
           <p>$$x_n=\ell+(x_1-\ell)\cdot a^{n-1}$$</p>
           <p>Dacă șirul începe cu $x_0$, exponentul devine $n$: $x_n=\ell+(x_0-\ell)\cdot a^n$.</p>
@@ -189,7 +189,7 @@
           <p class="retine-title">Atenție · Cazul Δ = 0</p>
           <p>La $\Delta=0$ nu scrii $A\cdot 4^n+B\cdot 4^n$. Aceasta este de fapt $(A+B)\cdot 4^n$, adică o singură constantă, iar sistemul pentru $A$ și $B$ nu are, în general, soluție. De aceea apare factorul $n$.</p>
         </div>
-        <div class="retine">
+        <div class="retine retine-de-retinut">
           <p class="retine-title">De reținut · Un truc pentru Δ &lt; 0</p>
           <p>Din relațiile lui Viète: $\rho=\sqrt{-b}$ și $\cos{t}=\frac{a}{2\rho}$, cu $t\in (0;\pi)$. Dacă $\rho=1$, șirul se repetă (este periodic).</p>
         </div>
@@ -212,7 +212,7 @@
             <li><span>Verific formula pe $x_2$.</span></li>
           </ol>
         </div>
-        <div class="retine">
+        <div class="retine retine-de-retinut">
           <p class="retine-title">De reținut</p>
           <p>$$x_n=x_1+f(1)+f(2)+\ldots+f(n-1)$$</p>
           <p>$$x_n=x_1\cdot g(1)\cdot g(2)\cdot \ldots\cdot g(n-1)$$</p>
@@ -299,7 +299,7 @@
             <li><span>Mă întorc la $x_n$ și verific pe primii termeni.</span></li>
           </ol>
         </div>
-        <div class="retine">
+        <div class="retine retine-de-retinut">
           <p class="retine-title">De reținut · Cum o recunoști</p>
           <p>„$x_{n+1}=x_n^2+2x_n$” → „$x_{n+1}+1$ este pătratul lui $x_n+1$” → $y_{n+1}=y_n^2$.</p>
           <p>Dacă vezi $2x_n^2-1$, gândește-te la $\cos{2t}=2\cos^2{t}-1$: „unghiul se dublează”. Dacă vezi $4x_n^3-3x_n$, gândește-te la $\cos{3t}=4\cos^3{t}-3\cos{t}$.</p>
@@ -362,13 +362,13 @@
             </tr>
           </tbody>
         </table>
-        <div class="retine">
+        <div class="retine retine-de-retinut">
           <p class="retine-title">De reținut · Cum găsesc rația</p>
           <p>Scad punctul fix din relație. Pentru orice punct fix $\alpha$:</p>
           <p>$$x_{n+1}-\alpha=\frac{(a-c\alpha)(x_n-\alpha)}{c\cdot x_n+d}$$</p>
           <p>Pentru două puncte fixe împart cele două egalități: numitorul $c\cdot x_n+d$ se simplifică.</p>
         </div>
-        <div class="retine">
+        <div class="retine retine-de-retinut">
           <p class="retine-title">De reținut · Dacă nu există puncte fixe</p>
           <p>De obicei șirul <strong>se repetă</strong>. Calculez termenii până când reapare $x_1$. Dacă termenii se repetă din $p$ în $p$, împart indicele la $p$ și mă uit la <strong>rest</strong>.</p>
         </div>
@@ -416,7 +416,7 @@
             <li><span>Scriu concluzia: șirul este (strict) crescător sau descrescător și $m\le x_n\le M$.</span></li>
           </ol>
         </div>
-        <div class="retine">
+        <div class="retine retine-de-retinut">
           <p class="retine-title">De reținut</p>
           <ul>
             <li>Un șir <strong>crescător</strong> este mărginit inferior de primul termen. Un șir <strong>descrescător</strong> este mărginit superior de primul termen. Rămâne de găsit o singură margine.</li>
@@ -485,7 +485,7 @@
             </tr>
           </tbody>
         </table>
-        <div class="retine">
+        <div class="retine retine-de-retinut">
           <p class="retine-title">De reținut · Ideea comună</p>
           <p>La tipurile 1, 5 și 6 caut ce rămâne neschimbat: <strong>punctul fix</strong> $\ell$, polinomul $p_n$ sau <strong>punctele fixe</strong>. Scăzându-le din relație, obțin o progresie.</p>
         </div>

@@ -29,6 +29,7 @@ Field limits: `docs/agents/architecture.md`, "Material fields". Title rules: `do
    - Multiple-choice answers become `<ul class="choices"><li>a) …</li><li>b) …</li>…</ul>`.
    - Sub-questions a), b) become separate `<p>` lines in the exercise.
    - Shaded boxes (Definiție, Reține, Atenție, Exemplu) become `<div class="retine"><p class="retine-title">Definiție</p> … </div>`. Each "Exemplul N" gets its own box.
+   - A "De reținut" / "Reține" box (English: "Remember") is `<div class="retine retine-de-retinut">`: green, so it stands apart from the yellow examples (uid 1033).
    - Tables stay tables. Use `<thead>` when the first row is a header. Delete empty `<p></p>` and `style="width…"`. Answer cells stay empty.
    - Keep every `$…$` and `$$…$$` exactly as converted. Never retype a formula.
    - Indent two spaces per level.

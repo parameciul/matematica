@@ -13,6 +13,9 @@
   --marker: #fff0a0;
   --marker-soft: #fffaea;
   --marker-edge: #ffd94a;
+  --remember-soft: #e8f6ef;
+  --remember-edge: #2a9d6e;
+  --remember-text: #17704f;
   --rule: #d4dce8;
   --fill: #c9d6f3;
   --brand-marker: #fff0a0;
@@ -49,6 +52,9 @@
   --marker: rgba(255, 226, 110, 0.16);
   --marker-soft: rgba(255, 226, 110, 0.1);
   --marker-edge: rgba(255, 217, 74, 0.75);
+  --remember-soft: rgba(120, 210, 160, 0.12);
+  --remember-edge: rgba(120, 210, 160, 0.75);
+  --remember-text: #a8e6c1;
   --rule: rgba(255, 255, 255, 0.14);
   --fill: rgba(169, 197, 255, 0.3);
   --brand-marker: rgba(255, 217, 74, 0.5);
@@ -76,6 +82,9 @@
     --marker: rgba(255, 226, 110, 0.16);
     --marker-soft: rgba(255, 226, 110, 0.1);
     --marker-edge: rgba(255, 217, 74, 0.75);
+    --remember-soft: rgba(120, 210, 160, 0.12);
+    --remember-edge: rgba(120, 210, 160, 0.75);
+    --remember-text: #a8e6c1;
     --rule: rgba(255, 255, 255, 0.14);
     --fill: rgba(169, 197, 255, 0.3);
     --brand-marker: rgba(255, 217, 74, 0.5);
@@ -1545,6 +1554,17 @@ ol.clips .clip-dur {
   font-weight: 600;
   line-height: 1;
   color: var(--red);
+}
+
+/* "De reținut" (Remember): what a student keeps after the worksheet. Green,
+   so it never reads as one more yellow example box next to it. */
+.retine-de-retinut {
+  border-left-color: var(--remember-edge);
+  background: var(--remember-soft);
+}
+
+.retine-de-retinut .retine-title {
+  color: var(--remember-text);
 }
 
 .material-body .retine > :last-child {
