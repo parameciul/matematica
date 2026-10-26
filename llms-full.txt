@@ -2296,6 +2296,622 @@ b) Calculate the length of segment $AC$ and the distance from point $O$ to the l
 
 ## Clasa a IX-a / Grade 9
 
+### Fișă de lucru: sume și inducție matematică
+- Source (RO): https://lauramiron.pages.dev/materiale/fisa-lucru-sume-inductie-matematica-1031
+- Source (EN): https://lauramiron.pages.dev/en/materiale/fisa-lucru-sume-inductie-matematica-1031
+- Author: Laura Miron. License: CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/).
+- Published: 2026-10-26. Updated: 2026-10-26.
+- Fișă de lucru pentru clasa a IX-a: simbolul Σ, proprietățile sumelor, sumele remarcabile și metoda inducției matematice, cu probleme pe niveluri.
+- Rezumat: Fișa începe cu o teorie pe scurt: scrierea unei sume cu simbolul Σ, găsirea termenului general, proprietățile sumelor și cele patru sume remarcabile. Urmează metoda inducției matematice, cu un exemplu în care o sumă este întâi calculată și apoi demonstrată, și probleme pe trei niveluri.
+- Întrebări frecvente:
+  - Q: Ce înseamnă scrierea unei sume cu simbolul Σ?
+  - A: Simbolul Σ prescurtează o sumă cu mulți termeni care urmează aceeași regulă. Sub Σ scrii indicele și valoarea de la care pornește, deasupra valoarea la care se oprește, iar după Σ termenul general, adică regula după care se obține fiecare termen. De exemplu, suma 1 + 3 + 5 + … + (2n − 1) are termenul general 2k − 1, cu k de la 1 la n.
+  - Q: Ce proprietăți ale sumelor folosesc la calcul?
+  - A: Un factor care nu depinde de indice iese în fața sumei, iar suma unei sume sau a unei diferențe se desparte în două sume. Împreună, aceste reguli formează liniaritatea sumei. Produsul însă nu se desparte: suma unor produse nu este produsul sumelor. Apoi aplici sumele remarcabile: a constantelor, a numerelor naturale, a pătratelor și a cuburilor.
+  - Q: De ce sunt obligatorii ambele etape ale inducției matematice?
+  - A: Prima etapă arată că afirmația este adevărată pentru primul număr, iar a doua arată că, dacă este adevărată pentru un număr, este adevărată și pentru următorul. Fără prima etapă, a doua poate funcționa chiar pentru o formulă falsă. Fără a doua, verificările pentru câteva valori sunt doar exemple, iar exemplele nu demonstrează nimic pentru orice n.
+
+Întrebarea fișei: Cum calculezi repede o sumă cu foarte mulți termeni și cum ești sigur că formula găsită este adevărată pentru orice $n$?
+Pornim din ce știi
+Trei verificări rapide. Dacă una dintre ele îți ridică probleme, notează-o: la ea revii prima.
+-
+Calculează $1+2+3+\ldots+100$. Indicație: adună primul termen cu ultimul, al doilea cu penultimul, …
+-
+Scrie următorii doi termeni:
+a) $1; 4; 9; 16; \ldots$
+b) $2; 5; 8; 11; \ldots$
+-
+Dezvoltă: $(k+1)^2$ și $(k+1)^3$.
+Teorie pe scurt
+1. Simbolul Σ (sigma)
+Definiție · Scrierea prescurtată a unei sume
+Suma $a_1+a_2+a_3+\ldots+a_n$ se scrie prescurtat:
+$$\sum_{k=1}^{n}{a_k}=a_1+a_2+\ldots+a_n$$
+și se citește „suma de la $k$ egal cu 1 la $n$ din $a_k$”.
+- $k$ este indicele de sumare: ia, pe rând, valorile $1; 2; \ldots; n$. Litera nu contează: $\sum_{k=1}^{n}{a_k}=\sum_{i=1}^{n}{a_i}$.
+- 1 este limita inferioară, iar $n$ este limita superioară a sumei.
+- $a_k$ este termenul general al sumei: regula după care se obține fiecare termen.
+- Suma $\sum_{k=m}^{n}{a_k}$ are $n-m+1$ termeni.
+Exemple · Scriem desfășurat
+$\sum_{k=1}^{4}{k^2}=1^2+2^2+3^2+4^2=1+4+9+16=30$
+$\sum_{k=3}^{6}{(2k+1)}=7+9+11+13=40$ (are $6-3+1=4$ termeni)
+$\sum_{k=1}^{5}{3}=3+3+3+3+3=15$ (termenul general nu depinde de $k$)
+2. Cum scriem o sumă cu Σ: găsim termenul general
+Metodă
+Pasul 1. Numerotezi termenii: primul are $k=1$, al doilea $k=2$, …
+Pasul 2. Observi ce se schimbă de la un termen la altul și ce rămâne la fel.
+Pasul 3. Scrii termenul general $a_k$ ca expresie în $k$.
+Pasul 4. Afli limita superioară din ultimul termen: rezolvi ecuația $a_k=$ ultimul termen.
+Pasul 5. Verifici formula pe primul și pe ultimul termen.
+Exemplul 1 · Găsim termenul general
+a) $1+3+5+\ldots+(2n-1)$: numerele impare, $a_k=2k-1$. Pentru $k=1$ obții 1, pentru $k=n$ obții $2n-1$. Deci suma este $\sum_{k=1}^{n}{(2k-1)}$.
+b) $1\cdot 2+2\cdot 3+3\cdot 4+\ldots+n(n+1)$: fiecare termen este produsul a două numere consecutive, $a_k=k(k+1)$. Suma este $\sum_{k=1}^{n}{k(k+1)}$.
+c) $2+5+8+\ldots+152$: termenii cresc mereu cu 3, deci $a_k=3k+c$. Din $a_1=2$ rezultă $c=-1$, adică $a_k=3k-1$. Din $3k-1=152$ obții $k=51$. Suma este $\sum_{k=1}^{51}{(3k-1)}$.
+Cum îl recunoști
+Termenii cresc mereu cu același număr $d$ → $a_k=d\cdot k+c$. Pătrate, cuburi → $k^2$, $k^3$. Semne alternante $+, -, +, \ldots$ → factorul $\left(-1\right)^{k+1}$.
+3. Proprietățile sumelor
+Proprietăți · De reținut
+(P1) Factorul constant iese în fața sumei. Dacă $c$ nu depinde de $k$:
+$$\sum_{k=1}^{n}{c\cdot a_k}=c\cdot \sum_{k=1}^{n}{a_k}$$
+(P2) Suma (diferența) se „sparge” în două sume.
+$$\sum_{k=1}^{n}{(a_k\pm b_k)}=\sum_{k=1}^{n}{a_k}\pm \sum_{k=1}^{n}{b_k}$$
+Liniaritatea reunește (P1) și (P2): pentru orice numere $\alpha$ și $\beta$ care nu depind de $k$,
+$$\sum_{k=1}^{n}{(\alpha \cdot a_k+\beta \cdot b_k)}=\alpha \cdot \sum_{k=1}^{n}{a_k}+\beta \cdot \sum_{k=1}^{n}{b_k}$$
+(P3) Suma se poate împărți în două bucăți. Pentru $1\le m<n$:
+$$\sum_{k=m+1}^{n}{a_k}=\sum_{k=1}^{n}{a_k}-\sum_{k=1}^{m}{a_k}$$
+Atenție · Greșeli frecvente
+- $\sum_{k=1}^{n}{c}=c+c+\ldots+c=n\cdot c$, nu $c$: constanta apare de $n$ ori.
+- Produsul nu se sparge: $\sum_{k=1}^{n}{a_k\cdot b_k}\ne \sum_{k=1}^{n}{a_k}\cdot \sum_{k=1}^{n}{b_k}$. Pentru $n=2$ și $a_k=b_k=k$: $1+4=5$, dar $3\cdot 3=9$.
+- Iese în fața sumei doar ce nu depinde de $k$: $\sum_{k=1}^{n}{k\cdot k}\ne k\cdot \sum_{k=1}^{n}{k}$.
+4. Sume remarcabile
+Cele patru formule de mai jos se folosesc în aproape orice calcul de sume. Învață-le pe de rost.
+Sume remarcabile
+(S1) Suma unei constante
+$$\sum_{k=1}^{n}{c}=n\cdot c$$
+Exemplu: $\sum_{k=1}^{10}{7}=70$
+(S2) Suma primelor n numere naturale nenule
+$$\sum_{k=1}^{n}{k}=\frac{n(n+1)}{2}$$
+Exemplu: $1+2+\ldots+100=5050$
+(S3) Suma pătratelor
+$$\sum_{k=1}^{n}{k^2}=\frac{n(n+1)(2n+1)}{6}$$
+Exemplu: $1^2+2^2+\ldots+10^2=385$
+(S4) Suma cuburilor
+$$\sum_{k=1}^{n}{k^3}=\left(\frac{n(n+1)}{2}\right)^2$$
+Exemplu: $1^3+2^3+3^3+4^3=100=10^2$
+Metodă · Calculul unei sume
+Pasul 1. Scrii suma cu Σ (afli termenul general).
+Pasul 2. Desfaci termenul general într-o sumă de puteri ale lui $k$: $k^3$, $k^2$, $k$, constante.
+Pasul 3. Spargi suma (P2) și scoți constantele în față (P1).
+Pasul 4. Aplici sumele remarcabile (S1)–(S4) și aduci rezultatul la forma cea mai simplă.
+Pasul 5. Verifici formula pentru $n=1$ și $n=2$.
+Exemplul 2 · Pas cu pas
+a) $1+3+5+\ldots+(2n-1)=\sum_{k=1}^{n}{(2k-1)}=2\cdot \sum_{k=1}^{n}{k}-\sum_{k=1}^{n}{1}=2\cdot \frac{n(n+1)}{2}-n=n^2$.
+b) $S_n=1\cdot 2+2\cdot 3+\ldots+n(n+1)$.
+Pasul 1. $S_n=\sum_{k=1}^{n}{k(k+1)}=\sum_{k=1}^{n}{(k^2+k)}$
+Pasul 2. $S_n=\sum_{k=1}^{n}{k^2}+\sum_{k=1}^{n}{k}=\frac{n(n+1)(2n+1)}{6}+\frac{n(n+1)}{2}$
+Pasul 3. Dăm factor comun $\frac{n(n+1)}{6}$: $S_n=\frac{n(n+1)}{6}\cdot (2n+1+3)=\frac{n(n+1)(n+2)}{3}$.
+Verificare: $n=1$: $1\cdot 2=2$ și $\frac{1\cdot 2\cdot 3}{3}=2$ ✓; $n=2$: $2+6=8$ și $\frac{2\cdot 3\cdot 4}{3}=8$ ✓.
+c) Cu (P3): $11^2+12^2+\ldots+20^2=\sum_{k=1}^{20}{k^2}-\sum_{k=1}^{10}{k^2}=2870-385=2485$.
+5. Metoda inducției matematice
+Explorează · Ajung câteva verificări?
+La Exemplul 2 b) am verificat formula pentru $n=1$ și $n=2$. Am putea verifica și pentru $n=3$, $n=4$, …, $n=100$.
+Ar fi aceasta o demonstrație pentru orice $n$? Cum ai putea fi sigur, fără să verifici la nesfârșit?
+Principiul inducției matematice
+Fie $P(n)$ o propoziție care depinde de numărul natural $n\ge n_0$. Dacă:
+Etapa I (verificarea). $P(n_0)$ este adevărată;
+Etapa a II-a (demonstrația). pentru orice $k\ge n_0$, din $P(k)$ adevărată rezultă $P(k+1)$ adevărată, adică $P(k)\Rightarrow P(k+1)$,
+atunci $P(n)$ este adevărată pentru orice $n\ge n_0$.
+Imaginea: un șir de piese de domino. Prima piesă cade (etapa I) și fiecare piesă o dărâmă pe următoarea (etapa a II-a). Atunci cad toate piesele.
+Cum redactăm
+„Notăm $P(n)$: …, $n\ge n_0$.
+Etapa I. $P(n_0)$: … (calculez separat cei doi membri) …, deci $P(n_0)$ este adevărată.
+Etapa a II-a. Presupunem $P(k)$ adevărată (ipoteza de inducție) și demonstrăm $P(k+1)$. Pornim de la membrul stâng al lui $P(k+1)$, folosim ipoteza de inducție și ajungem la membrul drept.
+Conform principiului inducției matematice, $P(n)$ este adevărată pentru orice $n\ge n_0$.”
+Exemplul 3 · Demonstrăm prin inducție formula de la Exemplul 2 b)
+$P(n)$: $1\cdot 2+2\cdot 3+\ldots+n(n+1)=\frac{n(n+1)(n+2)}{3}$, $n\ge 1$.
+Etapa I. $P(1)$: membrul stâng este $1\cdot 2=2$, membrul drept este $\frac{1\cdot 2\cdot 3}{3}=2$. Deci $P(1)$ este adevărată.
+Etapa a II-a. Presupunem $P(k)$: $1\cdot 2+\ldots+k(k+1)=\frac{k(k+1)(k+2)}{3}$. Demonstrăm $P(k+1)$: $1\cdot 2+\ldots+k(k+1)+(k+1)(k+2)=\frac{(k+1)(k+2)(k+3)}{3}$.
+Membrul stâng $=\frac{k(k+1)(k+2)}{3}+(k+1)(k+2)=(k+1)(k+2)\cdot \left(\frac{k}{3}+1\right)=\frac{(k+1)(k+2)(k+3)}{3}$, adică membrul drept.
+Concluzie. Conform principiului inducției matematice, $P(n)$ este adevărată pentru orice $n\ge 1$.
+Atenție · Ambele etape sunt obligatorii
+Fie $P(n)$: $1+2+\ldots+n=\frac{n^2+n+2}{2}$. Etapa a II-a funcționează: dacă $P(k)$ ar fi adevărată, atunci $\frac{k^2+k+2}{2}+(k+1)=\frac{(k+1)^2+(k+1)+2}{2}$. Dar $P(1)$ este falsă ($1\ne 2$), iar formula este falsă pentru orice $n$. Fără etapa I, „demonstrația” nu demonstrează nimic.
+Invers: verificările pentru $n=1, 2, 3, \ldots$ nu înlocuiesc etapa a II-a. Exemplele nu demonstrează.
+Firul logic: de la sumă la formulă demonstrată
+Scriu suma cu Σ → Desfac termenul general → Aplic (P1), (P2) și (S1)–(S4) → Verific pentru n = 1 și n = 2 → Demonstrez prin inducție
+Probleme pe niveluri
+La fiecare problemă scrie pașii, nu doar rezultatul: ce proprietate sau ce sumă remarcabilă folosești. Demonstrațiile prin inducție se redactează complet, cu ambele etape.
+Nivel de bază
+-
+Scrie desfășurat, apoi calculează:
+a) $\sum_{k=1}^{5}{k}$;
+b) $\sum_{k=1}^{4}{(2k+3)}$;
+c) $\sum_{k=2}^{5}{k^2}$;
+d) $\sum_{k=1}^{6}{4}$;
+e) $\sum_{k=1}^{4}{\left(-1\right)^k\cdot k}$.
+-
+Câți termeni are fiecare sumă?
+a) $\sum_{k=1}^{20}{a_k}$;
+b) $\sum_{k=5}^{30}{a_k}$;
+c) $\sum_{k=0}^{n}{a_k}$.
+-
+Scrie cu simbolul Σ, după ce afli termenul general:
+a) $2+4+6+\ldots+40$;
+b) $1+4+9+\ldots+100$;
+c) $3+7+11+\ldots+(4n-1)$;
+d) $\frac{1}{1\cdot 2}+\frac{1}{2\cdot 3}+\ldots+\frac{1}{n(n+1)}$.
+-
+Calculează, folosind sumele remarcabile:
+a) $1+2+\ldots+50$;
+b) $1^2+2^2+\ldots+12^2$;
+c) $1^3+2^3+\ldots+6^3$;
+d) $\sum_{k=1}^{15}{3}$.
+-
+Calculează, folosind proprietățile sumelor:
+a) $\sum_{k=1}^{20}{(3k+2)}$;
+b) $\sum_{k=1}^{10}{(k^2-k)}$;
+c) $\sum_{k=1}^{n}{(4k-1)}$.
+-
+Demonstrează prin inducție matematică că, pentru orice $n\in \N^*$:
+a) $1+2+\ldots+n=\frac{n(n+1)}{2}$;
+b) $1+3+5+\ldots+(2n-1)=n^2$.
+Nivel consolidat
+-
+Scrie cu Σ, apoi calculează:
+a) $1+5+9+\ldots+(4n-3)$;
+b) $1\cdot 4+2\cdot 5+\ldots+n(n+3)$;
+c) $1^2+3^2+5^2+\ldots+(2n-1)^2$.
+-
+Fie $S_n=1\cdot 3+2\cdot 4+3\cdot 5+\ldots+n(n+2)$.
+a) Calculează $S_n$, folosind proprietățile și sumele remarcabile.
+b) Demonstrează prin inducție formula obținută la a).
+-
+Calculează, folosind proprietatea (P3):
+a) $\sum_{k=21}^{40}{k}$;
+b) $\sum_{k=6}^{15}{k^2}$;
+c) $\sum_{k=n+1}^{2n}{k}$.
+-
+Demonstrează prin inducție matematică că, pentru orice $n\in \N^*$:
+a) $1^2+2^2+\ldots+n^2=\frac{n(n+1)(2n+1)}{6}$;
+b) $1^3+2^3+\ldots+n^3=\left(\frac{n(n+1)}{2}\right)^2$.
+-
+Determină numărul natural nenul $n$ pentru care:
+a) $1+2+\ldots+n=210$;
+b) $1^3+2^3+\ldots+n^3=3025$.
+Nivel avansat
+-
+Sumă telescopică.
+a) Verifică egalitatea $\frac{1}{k(k+1)}=\frac{1}{k}-\frac{1}{k+1}$.
+b) Calculează $\sum_{k=1}^{n}{\frac{1}{k(k+1)}}$. Indicație: scrie desfășurat și urmărește ce se reduce.
+c) Demonstrează prin inducție rezultatul de la b).
+-
+Fie $T_n=\sum_{k=1}^{n}{k(k+1)(k+2)}$.
+a) Calculează $T_n$ și scrie rezultatul ca produs de factori.
+b) Demonstrează prin inducție formula obținută.
+c) Compară cu $\sum_{k=1}^{n}{k}=\frac{n(n+1)}{2}$ și cu $\sum_{k=1}^{n}{k(k+1)}=\frac{n(n+1)(n+2)}{3}$. Ce regulă observi? Ce formulă propui pentru $\sum_{k=1}^{n}{k(k+1)(k+2)(k+3)}$?
+-
+Demonstrează prin inducție că $1+2\cdot 2+3\cdot 2^2+\ldots+n\cdot 2^{n-1}=(n-1)\cdot 2^n+1$, pentru orice $n\in \N^*$.
+-
+Găsește greșeala. Un elev scrie: „Fie $P(n)$: $2+4+\ldots+2n=n^2+n+1$. Presupun $P(k)$. Atunci $2+4+\ldots+2k+2(k+1)=k^2+k+1+2k+2=(k+1)^2+(k+1)+1$, deci $P(k+1)$ este adevărată. Prin urmare, formula este adevărată pentru orice $n$.”
+a) Verifică formula pentru $n=1$.
+b) Ce etapă lipsește?
+c) Care este formula corectă? Demonstreaz-o.
+-
+Provocare. Demonstrează prin inducție că, pentru orice $n\in \N^*$:
+$$1+\frac{1}{2^2}+\frac{1}{3^2}+\ldots+\frac{1}{n^2}\le 2-\frac{1}{n}$$
+Ce poți spune despre suma $1+\frac{1}{2^2}+\ldots+\frac{1}{100^2}$?
+Grila de progres: marchează nivelul la care te afli după ce primești feedback
+Competență
+Bază
+Consolidat
+Avansat
+C1 · Scriu o sumă cu Σ
+Scriu desfășurat o sumă dată cu Σ și număr termenii.
+Găsesc singur termenul general și limitele sumei.
+Scriu cu Σ sume cu fracții, cu semne alternante sau cu limite care depind de n.
+C2 · Calculez sume
+Aplic direct sumele remarcabile.
+Desfac termenul general și folosesc (P1), (P2), (P3).
+Folosesc sume telescopice și găsesc formule noi.
+C3 · Demonstrez prin inducție
+Verific $P(1)$ și scriu corect $P(k)$ și $P(k+1)$.
+Fac complet trecerea $P(k)\Rightarrow P(k+1)$ pentru o sumă.
+Demonstrez inegalități și găsesc greșelile dintr-o „demonstrație”.
+
+--- EN ---
+
+The worksheet starts with a short theory part: writing a sum with the Σ symbol, finding the general term, the properties of sums and the four standard sums. Then comes the method of mathematical induction, with an example where a sum is first computed and then proved, and problems on three levels.
+
+Q: What does writing a sum with the Σ symbol mean?
+A: The Σ symbol is shorthand for a sum of many terms that follow the same rule. Below Σ you write the index and the value it starts from, above it the value where it stops, and after Σ the general term, the rule that produces each term. For example, the sum 1 + 3 + 5 + … + (2n − 1) has the general term 2k − 1, with k from 1 to n.
+Q: Which properties of sums do I use in calculations?
+A: A factor that does not depend on the index comes out in front of the sum, and the sum of a sum or a difference splits into two sums. Together these rules are the linearity of the sum. A product, however, does not split: the sum of products is not the product of the sums. Then you apply the standard sums: of constants, of natural numbers, of squares and of cubes.
+Q: Why are both steps of mathematical induction required?
+A: The first step shows that the statement is true for the first number, and the second shows that if it is true for one number, it is also true for the next. Without the first step, the second can work even for a false formula. Without the second, checks for a few values are only examples, and examples prove nothing for every n.
+
+The question of this worksheet: How do you quickly compute a sum with very many terms, and how can you be sure that the formula you found is true for every $n$?
+Start from what you know
+Three quick checks. If one of them gives you trouble, write it down: that is the one you go back to first.
+-
+Calculate $1+2+3+\ldots+100$. Hint: add the first term to the last one, the second to the one before the last, …
+-
+Write the next two terms:
+a) $1; 4; 9; 16; \ldots$
+b) $2; 5; 8; 11; \ldots$
+-
+Expand: $(k+1)^2$ and $(k+1)^3$.
+Short theory
+1. The Σ (sigma) symbol
+Definition · Writing a sum in short form
+The sum $a_1+a_2+a_3+\ldots+a_n$ is written in short form as:
+$$\sum_{k=1}^{n}{a_k}=a_1+a_2+\ldots+a_n$$
+and is read “the sum from $k$ equals 1 to $n$ of $a_k$”.
+- $k$ is the summation index: it takes the values $1; 2; \ldots; n$ in turn. The letter does not matter: $\sum_{k=1}^{n}{a_k}=\sum_{i=1}^{n}{a_i}$.
+- 1 is the lower limit and $n$ is the upper limit of the sum.
+- $a_k$ is the general term of the sum: the rule that gives each term.
+- The sum $\sum_{k=m}^{n}{a_k}$ has $n-m+1$ terms.
+Examples · Writing the sum out
+$\sum_{k=1}^{4}{k^2}=1^2+2^2+3^2+4^2=1+4+9+16=30$
+$\sum_{k=3}^{6}{(2k+1)}=7+9+11+13=40$ (it has $6-3+1=4$ terms)
+$\sum_{k=1}^{5}{3}=3+3+3+3+3=15$ (the general term does not depend on $k$)
+2. Writing a sum with Σ: finding the general term
+Method
+Step 1. Number the terms: the first one has $k=1$, the second $k=2$, …
+Step 2. Notice what changes from one term to the next and what stays the same.
+Step 3. Write the general term $a_k$ as an expression in $k$.
+Step 4. Find the upper limit from the last term: solve the equation $a_k=$ the last term.
+Step 5. Check the formula on the first and on the last term.
+Example 1 · Finding the general term
+a) $1+3+5+\ldots+(2n-1)$: the odd numbers, $a_k=2k-1$. For $k=1$ you get 1, for $k=n$ you get $2n-1$. So the sum is $\sum_{k=1}^{n}{(2k-1)}$.
+b) $1\cdot 2+2\cdot 3+3\cdot 4+\ldots+n(n+1)$: each term is the product of two consecutive numbers, $a_k=k(k+1)$. The sum is $\sum_{k=1}^{n}{k(k+1)}$.
+c) $2+5+8+\ldots+152$: the terms always grow by 3, so $a_k=3k+c$. From $a_1=2$ you get $c=-1$, that is $a_k=3k-1$. From $3k-1=152$ you get $k=51$. The sum is $\sum_{k=1}^{51}{(3k-1)}$.
+How to recognise it
+The terms always grow by the same number $d$ → $a_k=d\cdot k+c$. Squares, cubes → $k^2$, $k^3$. Alternating signs $+, -, +, \ldots$ → the factor $\left(-1\right)^{k+1}$.
+3. Properties of sums
+Properties · Remember
+(P1) A constant factor comes out in front of the sum. If $c$ does not depend on $k$:
+$$\sum_{k=1}^{n}{c\cdot a_k}=c\cdot \sum_{k=1}^{n}{a_k}$$
+(P2) The sum of a sum (difference) “splits” into two sums.
+$$\sum_{k=1}^{n}{(a_k\pm b_k)}=\sum_{k=1}^{n}{a_k}\pm \sum_{k=1}^{n}{b_k}$$
+Linearity combines (P1) and (P2): for any numbers $\alpha$ and $\beta$ that do not depend on $k$,
+$$\sum_{k=1}^{n}{(\alpha \cdot a_k+\beta \cdot b_k)}=\alpha \cdot \sum_{k=1}^{n}{a_k}+\beta \cdot \sum_{k=1}^{n}{b_k}$$
+(P3) A sum can be split into two pieces. For $1\le m<n$:
+$$\sum_{k=m+1}^{n}{a_k}=\sum_{k=1}^{n}{a_k}-\sum_{k=1}^{m}{a_k}$$
+Watch out · Common mistakes
+- $\sum_{k=1}^{n}{c}=c+c+\ldots+c=n\cdot c$, not $c$: the constant appears $n$ times.
+- A product does not split: $\sum_{k=1}^{n}{a_k\cdot b_k}\ne \sum_{k=1}^{n}{a_k}\cdot \sum_{k=1}^{n}{b_k}$. For $n=2$ and $a_k=b_k=k$: $1+4=5$, but $3\cdot 3=9$.
+- Only what does not depend on $k$ comes out in front of the sum: $\sum_{k=1}^{n}{k\cdot k}\ne k\cdot \sum_{k=1}^{n}{k}$.
+4. Standard sums
+The four formulas below are used in almost every calculation with sums. Learn them by heart.
+Standard sums
+(S1) The sum of a constant
+$$\sum_{k=1}^{n}{c}=n\cdot c$$
+Example: $\sum_{k=1}^{10}{7}=70$
+(S2) The sum of the first n nonzero natural numbers
+$$\sum_{k=1}^{n}{k}=\frac{n(n+1)}{2}$$
+Example: $1+2+\ldots+100=5050$
+(S3) The sum of the squares
+$$\sum_{k=1}^{n}{k^2}=\frac{n(n+1)(2n+1)}{6}$$
+Example: $1^2+2^2+\ldots+10^2=385$
+(S4) The sum of the cubes
+$$\sum_{k=1}^{n}{k^3}=\left(\frac{n(n+1)}{2}\right)^2$$
+Example: $1^3+2^3+3^3+4^3=100=10^2$
+Method · Computing a sum
+Step 1. Write the sum with Σ (find the general term).
+Step 2. Expand the general term into a sum of powers of $k$: $k^3$, $k^2$, $k$, constants.
+Step 3. Split the sum (P2) and take the constants out in front (P1).
+Step 4. Apply the standard sums (S1)–(S4) and bring the result to its simplest form.
+Step 5. Check the formula for $n=1$ and $n=2$.
+Example 2 · Step by step
+a) $1+3+5+\ldots+(2n-1)=\sum_{k=1}^{n}{(2k-1)}=2\cdot \sum_{k=1}^{n}{k}-\sum_{k=1}^{n}{1}=2\cdot \frac{n(n+1)}{2}-n=n^2$.
+b) $S_n=1\cdot 2+2\cdot 3+\ldots+n(n+1)$.
+Step 1. $S_n=\sum_{k=1}^{n}{k(k+1)}=\sum_{k=1}^{n}{(k^2+k)}$
+Step 2. $S_n=\sum_{k=1}^{n}{k^2}+\sum_{k=1}^{n}{k}=\frac{n(n+1)(2n+1)}{6}+\frac{n(n+1)}{2}$
+Step 3. Take out the common factor $\frac{n(n+1)}{6}$: $S_n=\frac{n(n+1)}{6}\cdot (2n+1+3)=\frac{n(n+1)(n+2)}{3}$.
+Check: $n=1$: $1\cdot 2=2$ and $\frac{1\cdot 2\cdot 3}{3}=2$ ✓; $n=2$: $2+6=8$ and $\frac{2\cdot 3\cdot 4}{3}=8$ ✓.
+c) With (P3): $11^2+12^2+\ldots+20^2=\sum_{k=1}^{20}{k^2}-\sum_{k=1}^{10}{k^2}=2870-385=2485$.
+5. The method of mathematical induction
+Explore · Are a few checks enough?
+In Example 2 b) we checked the formula for $n=1$ and $n=2$. We could also check it for $n=3$, $n=4$, …, $n=100$.
+Would that be a proof for every $n$? How could you be sure without checking forever?
+The principle of mathematical induction
+Let $P(n)$ be a statement that depends on the natural number $n\ge n_0$. If:
+Step I (the check). $P(n_0)$ is true;
+Step II (the proof). for every $k\ge n_0$, if $P(k)$ is true then $P(k+1)$ is true, that is $P(k)\Rightarrow P(k+1)$,
+then $P(n)$ is true for every $n\ge n_0$.
+The picture: a row of dominoes. The first domino falls (step I) and each domino knocks over the next one (step II). Then all the dominoes fall.
+How to write it
+“Let $P(n)$: …, $n\ge n_0$.
+Step I. $P(n_0)$: … (I compute the two sides separately) …, so $P(n_0)$ is true.
+Step II. Assume $P(k)$ is true (the induction hypothesis) and prove $P(k+1)$. Start from the left side of $P(k+1)$, use the induction hypothesis and reach the right side.
+By the principle of mathematical induction, $P(n)$ is true for every $n\ge n_0$.”
+Example 3 · Proving the formula of Example 2 b) by induction
+$P(n)$: $1\cdot 2+2\cdot 3+\ldots+n(n+1)=\frac{n(n+1)(n+2)}{3}$, $n\ge 1$.
+Step I. $P(1)$: the left side is $1\cdot 2=2$, the right side is $\frac{1\cdot 2\cdot 3}{3}=2$. So $P(1)$ is true.
+Step II. Assume $P(k)$: $1\cdot 2+\ldots+k(k+1)=\frac{k(k+1)(k+2)}{3}$. Prove $P(k+1)$: $1\cdot 2+\ldots+k(k+1)+(k+1)(k+2)=\frac{(k+1)(k+2)(k+3)}{3}$.
+Left side $=\frac{k(k+1)(k+2)}{3}+(k+1)(k+2)=(k+1)(k+2)\cdot \left(\frac{k}{3}+1\right)=\frac{(k+1)(k+2)(k+3)}{3}$, which is the right side.
+Conclusion. By the principle of mathematical induction, $P(n)$ is true for every $n\ge 1$.
+Watch out · Both steps are required
+Let $P(n)$: $1+2+\ldots+n=\frac{n^2+n+2}{2}$. Step II works: if $P(k)$ were true, then $\frac{k^2+k+2}{2}+(k+1)=\frac{(k+1)^2+(k+1)+2}{2}$. But $P(1)$ is false ($1\ne 2$), and the formula is false for every $n$. Without step I, the “proof” proves nothing.
+The other way round: checks for $n=1, 2, 3, \ldots$ do not replace step II. Examples do not prove.
+The logical thread: from a sum to a proved formula
+I write the sum with Σ → I expand the general term → I apply (P1), (P2) and (S1)–(S4) → I check for n = 1 and n = 2 → I prove it by induction
+Problems on three levels
+For each problem, write the steps, not just the result: which property or which standard sum you use. Proofs by induction are written in full, with both steps.
+Basic level
+-
+Write out, then calculate:
+a) $\sum_{k=1}^{5}{k}$;
+b) $\sum_{k=1}^{4}{(2k+3)}$;
+c) $\sum_{k=2}^{5}{k^2}$;
+d) $\sum_{k=1}^{6}{4}$;
+e) $\sum_{k=1}^{4}{\left(-1\right)^k\cdot k}$.
+-
+How many terms does each sum have?
+a) $\sum_{k=1}^{20}{a_k}$;
+b) $\sum_{k=5}^{30}{a_k}$;
+c) $\sum_{k=0}^{n}{a_k}$.
+-
+Write with the Σ symbol, after you find the general term:
+a) $2+4+6+\ldots+40$;
+b) $1+4+9+\ldots+100$;
+c) $3+7+11+\ldots+(4n-1)$;
+d) $\frac{1}{1\cdot 2}+\frac{1}{2\cdot 3}+\ldots+\frac{1}{n(n+1)}$.
+-
+Calculate, using the standard sums:
+a) $1+2+\ldots+50$;
+b) $1^2+2^2+\ldots+12^2$;
+c) $1^3+2^3+\ldots+6^3$;
+d) $\sum_{k=1}^{15}{3}$.
+-
+Calculate, using the properties of sums:
+a) $\sum_{k=1}^{20}{(3k+2)}$;
+b) $\sum_{k=1}^{10}{(k^2-k)}$;
+c) $\sum_{k=1}^{n}{(4k-1)}$.
+-
+Prove by mathematical induction that, for every $n\in \N^*$:
+a) $1+2+\ldots+n=\frac{n(n+1)}{2}$;
+b) $1+3+5+\ldots+(2n-1)=n^2$.
+Consolidated level
+-
+Write with Σ, then calculate:
+a) $1+5+9+\ldots+(4n-3)$;
+b) $1\cdot 4+2\cdot 5+\ldots+n(n+3)$;
+c) $1^2+3^2+5^2+\ldots+(2n-1)^2$.
+-
+Let $S_n=1\cdot 3+2\cdot 4+3\cdot 5+\ldots+n(n+2)$.
+a) Calculate $S_n$, using the properties and the standard sums.
+b) Prove by induction the formula you found in a).
+-
+Calculate, using property (P3):
+a) $\sum_{k=21}^{40}{k}$;
+b) $\sum_{k=6}^{15}{k^2}$;
+c) $\sum_{k=n+1}^{2n}{k}$.
+-
+Prove by mathematical induction that, for every $n\in \N^*$:
+a) $1^2+2^2+\ldots+n^2=\frac{n(n+1)(2n+1)}{6}$;
+b) $1^3+2^3+\ldots+n^3=\left(\frac{n(n+1)}{2}\right)^2$.
+-
+Find the nonzero natural number $n$ for which:
+a) $1+2+\ldots+n=210$;
+b) $1^3+2^3+\ldots+n^3=3025$.
+Advanced level
+-
+A telescoping sum.
+a) Check the equality $\frac{1}{k(k+1)}=\frac{1}{k}-\frac{1}{k+1}$.
+b) Calculate $\sum_{k=1}^{n}{\frac{1}{k(k+1)}}$. Hint: write it out and watch what cancels.
+c) Prove the result of b) by induction.
+-
+Let $T_n=\sum_{k=1}^{n}{k(k+1)(k+2)}$.
+a) Calculate $T_n$ and write the result as a product of factors.
+b) Prove the formula you found by induction.
+c) Compare it with $\sum_{k=1}^{n}{k}=\frac{n(n+1)}{2}$ and with $\sum_{k=1}^{n}{k(k+1)}=\frac{n(n+1)(n+2)}{3}$. What rule do you notice? What formula do you suggest for $\sum_{k=1}^{n}{k(k+1)(k+2)(k+3)}$?
+-
+Prove by induction that $1+2\cdot 2+3\cdot 2^2+\ldots+n\cdot 2^{n-1}=(n-1)\cdot 2^n+1$, for every $n\in \N^*$.
+-
+Find the mistake. A student writes: “Let $P(n)$: $2+4+\ldots+2n=n^2+n+1$. I assume $P(k)$. Then $2+4+\ldots+2k+2(k+1)=k^2+k+1+2k+2=(k+1)^2+(k+1)+1$, so $P(k+1)$ is true. Therefore the formula is true for every $n$.”
+a) Check the formula for $n=1$.
+b) Which step is missing?
+c) What is the correct formula? Prove it.
+-
+Challenge. Prove by induction that, for every $n\in \N^*$:
+$$1+\frac{1}{2^2}+\frac{1}{3^2}+\ldots+\frac{1}{n^2}\le 2-\frac{1}{n}$$
+What can you say about the sum $1+\frac{1}{2^2}+\ldots+\frac{1}{100^2}$?
+Progress grid: mark the level you are at after you get feedback
+Skill
+Basic
+Consolidated
+Advanced
+C1 · I write a sum with Σ
+I write out a sum given with Σ and count its terms.
+I find the general term and the limits of the sum on my own.
+I write with Σ sums with fractions, with alternating signs or with limits that depend on n.
+C2 · I compute sums
+I apply the standard sums directly.
+I expand the general term and use (P1), (P2), (P3).
+I use telescoping sums and find new formulas.
+C3 · I prove by induction
+I check $P(1)$ and write $P(k)$ and $P(k+1)$ correctly.
+I carry out the step $P(k)\Rightarrow P(k+1)$ in full for a sum.
+I prove inequalities and find the mistakes in a “proof”.
+
+---
+
+### Probleme propuse: sume și inducție matematică
+- Source (RO): https://lauramiron.pages.dev/materiale/probleme-sume-inductie-matematica-1032
+- Source (EN): https://lauramiron.pages.dev/en/materiale/probleme-sume-inductie-matematica-1032
+- Author: Laura Miron. License: CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/).
+- Published: 2026-10-26. Updated: 2026-10-26.
+- Probleme pentru clasa a IX-a: calculul sumelor cu Σ, sume remarcabile, sume telescopice și demonstrații prin inducție matematică, pe trei niveluri.
+- Rezumat: Problemele sunt pentru cei care vor să exerseze mai mult calculul sumelor și inducția matematică. Ele cer scrierea sumelor cu Σ, calculul lor cu proprietățile și sumele remarcabile, sume telescopice și demonstrații prin inducție, ordonate pe trei niveluri: de bază, consolidat și avansat.
+- Întrebări frecvente:
+  - Q: Cum calculez o sumă al cărei termen general este un produs?
+  - A: Desfaci produsul într-o sumă de puteri ale indicelui, de exemplu k(k + 2) = k² + 2k. Apoi desparți suma în sume separate, scoți constantele în față și aplici sumele remarcabile. La final dai factor comun și verifici rezultatul pentru n = 1 și n = 2.
+  - Q: Ce este o sumă telescopică?
+  - A: Este o sumă în care fiecare termen se scrie ca diferență a doi termeni consecutivi ai unui alt șir, de exemplu 1/(k(k + 1)) = 1/k − 1/(k + 1). Când scrii suma desfășurat, termenii din mijloc se reduc doi câte doi și rămân doar primul și ultimul.
+
+Cum lucrezi: alege nivelul de la care pornești. Dacă rezolvi fără greutate problemele unui nivel, treci la următorul. Recitește întâi teoria din fișa de lucru: proprietățile (P1)–(P3) și sumele remarcabile (S1)–(S4).
+De reținut
+$\sum_{k=1}^{n}{c}=n\cdot c$ $\sum_{k=1}^{n}{k}=\frac{n(n+1)}{2}$ $\sum_{k=1}^{n}{k^2}=\frac{n(n+1)(2n+1)}{6}$ $\sum_{k=1}^{n}{k^3}=\left(\frac{n(n+1)}{2}\right)^2$
+Inducție: Etapa I $P(n_0)$ adevărată; Etapa a II-a $P(k)\Rightarrow P(k+1)$; concluzie: $P(n)$ adevărată pentru orice $n\ge n_0$.
+Nivel de bază
+-
+Scrie desfășurat, apoi calculează:
+a) $\sum_{k=1}^{6}{(3k-1)}$;
+b) $\sum_{k=0}^{4}{2^k}$;
+c) $\sum_{k=3}^{7}{(k^2-1)}$;
+d) $\sum_{k=1}^{100}{\left(-1\right)^k}$.
+-
+Scrie cu simbolul Σ, după ce afli termenul general:
+a) $5+10+15+\ldots+200$;
+b) $1+8+27+\ldots+1000$;
+c) $2+6+10+\ldots+(4n-2)$;
+d) $1\cdot 3+2\cdot 5+3\cdot 7+\ldots+n(2n+1)$;
+e) $\frac{1}{3}+\frac{1}{9}+\frac{1}{27}+\ldots+\frac{1}{3^n}$.
+-
+Calculează, folosind sumele remarcabile:
+a) $1+2+\ldots+200$;
+b) $1^2+2^2+\ldots+20^2$;
+c) $1^3+2^3+\ldots+10^3$;
+d) $2+4+6+\ldots+100$.
+-
+Calculează, folosind proprietățile sumelor:
+a) $\sum_{k=1}^{n}{(6k+1)}$;
+b) $\sum_{k=1}^{n}{(2k-3)}$;
+c) $\sum_{k=1}^{10}{(k^2+2k)}$.
+-
+Demonstrează prin inducție matematică că, pentru orice $n\in \N^*$:
+a) $2+4+6+\ldots+2n=n(n+1)$;
+b) $1+4+7+\ldots+(3n-2)=\frac{n(3n-1)}{2}$.
+Nivel consolidat
+-
+Scrie cu Σ, apoi calculează:
+a) $3+5+7+\ldots+(2n+1)$;
+b) $2^2+4^2+6^2+\ldots+(2n)^2$;
+c) $1\cdot 5+2\cdot 6+3\cdot 7+\ldots+n(n+4)$.
+-
+Fie $S_n=1\cdot 2+3\cdot 4+5\cdot 6+\ldots+(2n-1)\cdot 2n$.
+a) Scrie $S_n$ cu Σ și calculează-l.
+b) Demonstrează prin inducție formula obținută la a).
+-
+Calculează:
+a) $\sum_{k=11}^{30}{k}$;
+b) $\sum_{k=5}^{10}{k^3}$;
+c) $\sum_{k=n+1}^{2n}{k^2}$.
+-
+Determină numărul natural nenul $n$ pentru care:
+a) $1+2+\ldots+n=78$;
+b) $1+3+5+\ldots+(2n-1)=169$;
+c) $1^2+2^2+\ldots+n^2=204$.
+-
+Demonstrează prin inducție matematică că, pentru orice $n\in \N^*$:
+a) $1^2+3^2+5^2+\ldots+(2n-1)^2=\frac{n(2n-1)(2n+1)}{3}$;
+b) $1+2+2^2+\ldots+2^{n-1}=2^n-1$.
+Nivel avansat
+-
+Sumă telescopică.
+a) Verifică egalitatea $\frac{1}{(2k-1)(2k+1)}=\frac{1}{2}\cdot \left(\frac{1}{2k-1}-\frac{1}{2k+1}\right)$.
+b) Calculează $\frac{1}{1\cdot 3}+\frac{1}{3\cdot 5}+\ldots+\frac{1}{(2n-1)(2n+1)}$.
+c) Demonstrează prin inducție rezultatul de la b).
+-
+Calculează $\sum_{k=1}^{n}{k(n-k)}$, pentru $n\ge 2$. Atenție: în această sumă, $n$ nu depinde de $k$. Verifică rezultatul pentru $n=3$.
+-
+Demonstrează prin inducție că $\frac{1}{2}+\frac{2}{2^2}+\frac{3}{2^3}+\ldots+\frac{n}{2^n}=2-\frac{n+2}{2^n}$, pentru orice $n\in \N^*$.
+-
+Găsește greșeala. Un elev calculează astfel: „$\sum_{k=1}^{n}{k(k+1)}=\sum_{k=1}^{n}{k}\cdot \sum_{k=1}^{n}{(k+1)}$”.
+a) Verifică egalitatea pentru $n=2$.
+b) Ce proprietate a sumelor a aplicat greșit elevul?
+c) Calculează corect suma.
+-
+Provocare. Calculează $1^2-2^2+3^2-4^2+5^2-6^2$ și $1^2-2^2+3^2-4^2+5^2-6^2+7^2$. Ce observi? Demonstrează prin inducție că, pentru orice $n\in \N^*$:
+$$\sum_{k=1}^{n}{\left(-1\right)^{k+1}\cdot k^2}=\left(-1\right)^{n+1}\cdot \frac{n(n+1)}{2}$$
+
+--- EN ---
+
+The problems are for students who want more practice with computing sums and with mathematical induction. They ask for writing sums with Σ, computing them with the properties and the standard sums, telescoping sums and proofs by induction, ordered on three levels: basic, consolidated and advanced.
+
+Q: How do I compute a sum whose general term is a product?
+A: Expand the product into a sum of powers of the index, for example k(k + 2) = k² + 2k. Then split the sum into separate sums, take the constants out in front and apply the standard sums. Finally, factor the result and check it for n = 1 and n = 2.
+Q: What is a telescoping sum?
+A: It is a sum in which each term can be written as the difference of two consecutive terms of another sequence, for example 1/(k(k + 1)) = 1/k − 1/(k + 1). When you write the sum out, the middle terms cancel in pairs and only the first and the last remain.
+
+How to work: choose the level you start from. If you solve the problems of a level without trouble, move on to the next one. First reread the theory in the worksheet: the properties (P1)–(P3) and the standard sums (S1)–(S4).
+Remember
+$\sum_{k=1}^{n}{c}=n\cdot c$ $\sum_{k=1}^{n}{k}=\frac{n(n+1)}{2}$ $\sum_{k=1}^{n}{k^2}=\frac{n(n+1)(2n+1)}{6}$ $\sum_{k=1}^{n}{k^3}=\left(\frac{n(n+1)}{2}\right)^2$
+Induction: Step I $P(n_0)$ is true; Step II $P(k)\Rightarrow P(k+1)$; conclusion: $P(n)$ is true for every $n\ge n_0$.
+Basic level
+-
+Write out, then calculate:
+a) $\sum_{k=1}^{6}{(3k-1)}$;
+b) $\sum_{k=0}^{4}{2^k}$;
+c) $\sum_{k=3}^{7}{(k^2-1)}$;
+d) $\sum_{k=1}^{100}{\left(-1\right)^k}$.
+-
+Write with the Σ symbol, after you find the general term:
+a) $5+10+15+\ldots+200$;
+b) $1+8+27+\ldots+1000$;
+c) $2+6+10+\ldots+(4n-2)$;
+d) $1\cdot 3+2\cdot 5+3\cdot 7+\ldots+n(2n+1)$;
+e) $\frac{1}{3}+\frac{1}{9}+\frac{1}{27}+\ldots+\frac{1}{3^n}$.
+-
+Calculate, using the standard sums:
+a) $1+2+\ldots+200$;
+b) $1^2+2^2+\ldots+20^2$;
+c) $1^3+2^3+\ldots+10^3$;
+d) $2+4+6+\ldots+100$.
+-
+Calculate, using the properties of sums:
+a) $\sum_{k=1}^{n}{(6k+1)}$;
+b) $\sum_{k=1}^{n}{(2k-3)}$;
+c) $\sum_{k=1}^{10}{(k^2+2k)}$.
+-
+Prove by mathematical induction that, for every $n\in \N^*$:
+a) $2+4+6+\ldots+2n=n(n+1)$;
+b) $1+4+7+\ldots+(3n-2)=\frac{n(3n-1)}{2}$.
+Consolidated level
+-
+Write with Σ, then calculate:
+a) $3+5+7+\ldots+(2n+1)$;
+b) $2^2+4^2+6^2+\ldots+(2n)^2$;
+c) $1\cdot 5+2\cdot 6+3\cdot 7+\ldots+n(n+4)$.
+-
+Let $S_n=1\cdot 2+3\cdot 4+5\cdot 6+\ldots+(2n-1)\cdot 2n$.
+a) Write $S_n$ with Σ and calculate it.
+b) Prove by induction the formula you found in a).
+-
+Calculate:
+a) $\sum_{k=11}^{30}{k}$;
+b) $\sum_{k=5}^{10}{k^3}$;
+c) $\sum_{k=n+1}^{2n}{k^2}$.
+-
+Find the nonzero natural number $n$ for which:
+a) $1+2+\ldots+n=78$;
+b) $1+3+5+\ldots+(2n-1)=169$;
+c) $1^2+2^2+\ldots+n^2=204$.
+-
+Prove by mathematical induction that, for every $n\in \N^*$:
+a) $1^2+3^2+5^2+\ldots+(2n-1)^2=\frac{n(2n-1)(2n+1)}{3}$;
+b) $1+2+2^2+\ldots+2^{n-1}=2^n-1$.
+Advanced level
+-
+A telescoping sum.
+a) Check the equality $\frac{1}{(2k-1)(2k+1)}=\frac{1}{2}\cdot \left(\frac{1}{2k-1}-\frac{1}{2k+1}\right)$.
+b) Calculate $\frac{1}{1\cdot 3}+\frac{1}{3\cdot 5}+\ldots+\frac{1}{(2n-1)(2n+1)}$.
+c) Prove the result of b) by induction.
+-
+Calculate $\sum_{k=1}^{n}{k(n-k)}$, for $n\ge 2$. Watch out: in this sum, $n$ does not depend on $k$. Check the result for $n=3$.
+-
+Prove by induction that $\frac{1}{2}+\frac{2}{2^2}+\frac{3}{2^3}+\ldots+\frac{n}{2^n}=2-\frac{n+2}{2^n}$, for every $n\in \N^*$.
+-
+Find the mistake. A student calculates like this: “$\sum_{k=1}^{n}{k(k+1)}=\sum_{k=1}^{n}{k}\cdot \sum_{k=1}^{n}{(k+1)}$”.
+a) Check the equality for $n=2$.
+b) Which property of sums did the student apply wrongly?
+c) Calculate the sum correctly.
+-
+Challenge. Calculate $1^2-2^2+3^2-4^2+5^2-6^2$ and $1^2-2^2+3^2-4^2+5^2-6^2+7^2$. What do you notice? Prove by induction that, for every $n\in \N^*$:
+$$\sum_{k=1}^{n}{\left(-1\right)^{k+1}\cdot k^2}=\left(-1\right)^{n+1}\cdot \frac{n(n+1)}{2}$$
+
+---
+
 ### Teorie: formule echivalente și negarea enunțurilor
 - Source (RO): https://lauramiron.pages.dev/materiale/teorie-formule-echivalente-negarea-enunturilor-1025
 - Source (EN): https://lauramiron.pages.dev/en/materiale/teorie-formule-echivalente-negarea-enunturilor-1025

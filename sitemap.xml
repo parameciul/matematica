@@ -3,28 +3,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://lauramiron.pages.dev/</loc>
-    <lastmod>2026-10-24</lastmod>
+    <lastmod>2026-10-26</lastmod>
     <xhtml:link rel="alternate" hreflang="ro" href="https://lauramiron.pages.dev/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://lauramiron.pages.dev/en/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://lauramiron.pages.dev/"/>
   </url>
   <url>
     <loc>https://lauramiron.pages.dev/en/</loc>
-    <lastmod>2026-10-24</lastmod>
+    <lastmod>2026-10-26</lastmod>
     <xhtml:link rel="alternate" hreflang="ro" href="https://lauramiron.pages.dev/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://lauramiron.pages.dev/en/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://lauramiron.pages.dev/"/>
   </url>
   <url>
     <loc>https://lauramiron.pages.dev/despre</loc>
-    <lastmod>2026-10-24</lastmod>
+    <lastmod>2026-10-26</lastmod>
     <xhtml:link rel="alternate" hreflang="ro" href="https://lauramiron.pages.dev/despre"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://lauramiron.pages.dev/en/despre"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://lauramiron.pages.dev/despre"/>
   </url>
   <url>
     <loc>https://lauramiron.pages.dev/en/despre</loc>
-    <lastmod>2026-10-24</lastmod>
+    <lastmod>2026-10-26</lastmod>
     <xhtml:link rel="alternate" hreflang="ro" href="https://lauramiron.pages.dev/despre"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://lauramiron.pages.dev/en/despre"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://lauramiron.pages.dev/despre"/>
@@ -73,14 +73,14 @@
   </url>
   <url>
     <loc>https://lauramiron.pages.dev/clasa-9</loc>
-    <lastmod>2026-10-08</lastmod>
+    <lastmod>2026-10-26</lastmod>
     <xhtml:link rel="alternate" hreflang="ro" href="https://lauramiron.pages.dev/clasa-9"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://lauramiron.pages.dev/en/clasa-9"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://lauramiron.pages.dev/clasa-9"/>
   </url>
   <url>
     <loc>https://lauramiron.pages.dev/en/clasa-9</loc>
-    <lastmod>2026-10-08</lastmod>
+    <lastmod>2026-10-26</lastmod>
     <xhtml:link rel="alternate" hreflang="ro" href="https://lauramiron.pages.dev/clasa-9"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://lauramiron.pages.dev/en/clasa-9"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://lauramiron.pages.dev/clasa-9"/>
@@ -484,5 +484,33 @@
     <xhtml:link rel="alternate" hreflang="ro" href="https://lauramiron.pages.dev/materiale/fisa-lucru-evaluare-nationala-subiectul-2-1030"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://lauramiron.pages.dev/en/materiale/fisa-lucru-evaluare-nationala-subiectul-2-1030"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://lauramiron.pages.dev/materiale/fisa-lucru-evaluare-nationala-subiectul-2-1030"/>
+  </url>
+  <url>
+    <loc>https://lauramiron.pages.dev/materiale/fisa-lucru-sume-inductie-matematica-1031</loc>
+    <lastmod>2026-10-26</lastmod>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://lauramiron.pages.dev/materiale/fisa-lucru-sume-inductie-matematica-1031"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lauramiron.pages.dev/en/materiale/fisa-lucru-sume-inductie-matematica-1031"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lauramiron.pages.dev/materiale/fisa-lucru-sume-inductie-matematica-1031"/>
+  </url>
+  <url>
+    <loc>https://lauramiron.pages.dev/en/materiale/fisa-lucru-sume-inductie-matematica-1031</loc>
+    <lastmod>2026-10-26</lastmod>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://lauramiron.pages.dev/materiale/fisa-lucru-sume-inductie-matematica-1031"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lauramiron.pages.dev/en/materiale/fisa-lucru-sume-inductie-matematica-1031"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lauramiron.pages.dev/materiale/fisa-lucru-sume-inductie-matematica-1031"/>
+  </url>
+  <url>
+    <loc>https://lauramiron.pages.dev/materiale/probleme-sume-inductie-matematica-1032</loc>
+    <lastmod>2026-10-26</lastmod>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://lauramiron.pages.dev/materiale/probleme-sume-inductie-matematica-1032"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lauramiron.pages.dev/en/materiale/probleme-sume-inductie-matematica-1032"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lauramiron.pages.dev/materiale/probleme-sume-inductie-matematica-1032"/>
+  </url>
+  <url>
+    <loc>https://lauramiron.pages.dev/en/materiale/probleme-sume-inductie-matematica-1032</loc>
+    <lastmod>2026-10-26</lastmod>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://lauramiron.pages.dev/materiale/probleme-sume-inductie-matematica-1032"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lauramiron.pages.dev/en/materiale/probleme-sume-inductie-matematica-1032"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lauramiron.pages.dev/materiale/probleme-sume-inductie-matematica-1032"/>
   </url>
 </urlset>

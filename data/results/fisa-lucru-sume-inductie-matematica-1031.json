@@ -1,0 +1,308 @@
+{
+  "uid": "1031",
+  "version": 1,
+  "items": {
+    "3": {
+      "check": false,
+      "why": "open",
+      "show": "a) $\\sum_{k=1}^{20}{2k}$; b) $\\sum_{k=1}^{10}{k^2}$; c) $\\sum_{k=1}^{n}{(4k-1)}$; d) $\\sum_{k=1}^{n}{\\frac{1}{k(k+1)}}$"
+    },
+    "6": {
+      "check": false,
+      "why": "proof",
+      "show": "a) $P(k)\\Rightarrow P(k+1)$: $\\frac{k(k+1)}{2}+(k+1)=\\frac{(k+1)(k+2)}{2}$; b) $k^2+(2k+1)=(k+1)^2$"
+    },
+    "10": {
+      "check": false,
+      "why": "proof",
+      "show": "a) $\\frac{k(k+1)(2k+1)}{6}+(k+1)^2=\\frac{(k+1)(k+2)(2k+3)}{6}$; b) $\\frac{k^2(k+1)^2}{4}+(k+1)^3=\\frac{(k+1)^2(k+2)^2}{4}$"
+    },
+    "14": {
+      "check": false,
+      "why": "proof",
+      "show": "$(k-1)\\cdot 2^k+1+(k+1)\\cdot 2^k=k\\cdot 2^{k+1}+1$"
+    },
+    "16": {
+      "check": false,
+      "why": "proof",
+      "show": "Este suficient: $\\frac{1}{(k+1)^2}\\le \\frac{1}{k}-\\frac{1}{k+1}=\\frac{1}{k(k+1)}$. Pentru $n=100$ suma este cel mult $1,99<2$"
+    },
+    "1a": {
+      "kind": "number",
+      "show": "$1+2+3+4+5=15$",
+      "accept": [
+        "15"
+      ]
+    },
+    "1b": {
+      "kind": "number",
+      "show": "$5+7+9+11=32$",
+      "accept": [
+        "32"
+      ]
+    },
+    "1c": {
+      "kind": "number",
+      "show": "$4+9+16+25=54$",
+      "accept": [
+        "54"
+      ]
+    },
+    "1d": {
+      "kind": "number",
+      "show": "$4+4+4+4+4+4=24$",
+      "accept": [
+        "24"
+      ]
+    },
+    "1e": {
+      "kind": "number",
+      "show": "$-1+2-3+4=2$",
+      "accept": [
+        "2"
+      ]
+    },
+    "2a": {
+      "kind": "number",
+      "show": "20 de termeni",
+      "accept": [
+        "20"
+      ]
+    },
+    "2b": {
+      "kind": "number",
+      "show": "$30-5+1=26$ de termeni",
+      "accept": [
+        "26"
+      ]
+    },
+    "2c": {
+      "kind": "text",
+      "show": "$n+1$ termeni",
+      "accept": [
+        "n+1",
+        "1+n"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$",
+        "en": "an expression in $n$"
+      }
+    },
+    "4a": {
+      "kind": "number",
+      "show": "$\\frac{50\\cdot 51}{2}=1275$",
+      "accept": [
+        "1275"
+      ]
+    },
+    "4b": {
+      "kind": "number",
+      "show": "$\\frac{12\\cdot 13\\cdot 25}{6}=650$",
+      "accept": [
+        "650"
+      ]
+    },
+    "4c": {
+      "kind": "number",
+      "show": "$\\left(\\frac{6\\cdot 7}{2}\\right)^2=441$",
+      "accept": [
+        "441"
+      ]
+    },
+    "4d": {
+      "kind": "number",
+      "show": "$15\\cdot 3=45$",
+      "accept": [
+        "45"
+      ]
+    },
+    "5a": {
+      "kind": "number",
+      "show": "$3\\cdot 210+40=670$",
+      "accept": [
+        "670"
+      ]
+    },
+    "5b": {
+      "kind": "number",
+      "show": "$385-55=330$",
+      "accept": [
+        "330"
+      ]
+    },
+    "5c": {
+      "kind": "text",
+      "show": "$4\\cdot \\frac{n(n+1)}{2}-n=n(2n+1)$",
+      "accept": [
+        "n(2n+1)",
+        "n(1+2n)",
+        "2n^2+n"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, descompusă în factori, scrisă de exemplu n(n+3)/2",
+        "en": "an expression in $n$, factored, written for example as n(n+3)/2"
+      }
+    },
+    "7a": {
+      "kind": "text",
+      "show": "$\\sum_{k=1}^{n}{(4k-3)}=n(2n-1)$",
+      "accept": [
+        "n(2n-1)",
+        "2n^2-n"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, descompusă în factori, scrisă de exemplu n(n+3)/2",
+        "en": "an expression in $n$, factored, written for example as n(n+3)/2"
+      }
+    },
+    "7b": {
+      "kind": "text",
+      "show": "$\\sum_{k=1}^{n}{k(k+3)}=\\frac{n(n+1)(n+5)}{3}$",
+      "accept": [
+        "n(n+1)(n+5)/3",
+        "(n^3+6n^2+5n)/3"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, descompusă în factori, scrisă de exemplu n(n+3)/2",
+        "en": "an expression in $n$, factored, written for example as n(n+3)/2"
+      }
+    },
+    "7c": {
+      "kind": "text",
+      "show": "$\\sum_{k=1}^{n}{(2k-1)^2}=\\frac{n(2n-1)(2n+1)}{3}$",
+      "accept": [
+        "n(2n-1)(2n+1)/3",
+        "n(2n+1)(2n-1)/3",
+        "n(4n^2-1)/3",
+        "(4n^3-n)/3"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, descompusă în factori, scrisă de exemplu n(n+3)/2",
+        "en": "an expression in $n$, factored, written for example as n(n+3)/2"
+      }
+    },
+    "8a": {
+      "kind": "text",
+      "show": "$S_n=\\frac{n(n+1)(2n+1)}{6}+n(n+1)=\\frac{n(n+1)(2n+7)}{6}$",
+      "accept": [
+        "n(n+1)(2n+7)/6",
+        "(2n^3+9n^2+7n)/6"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, descompusă în factori, scrisă de exemplu n(n+3)/2",
+        "en": "an expression in $n$, factored, written for example as n(n+3)/2"
+      }
+    },
+    "8b": {
+      "check": false,
+      "why": "proof",
+      "show": "$S_{k+1}=\\frac{k(k+1)(2k+7)}{6}+(k+1)(k+3)=\\frac{(k+1)(k+2)(2k+9)}{6}$"
+    },
+    "9a": {
+      "kind": "number",
+      "show": "$820-210=610$",
+      "accept": [
+        "610"
+      ]
+    },
+    "9b": {
+      "kind": "number",
+      "show": "$1240-55=1185$",
+      "accept": [
+        "1185"
+      ]
+    },
+    "9c": {
+      "kind": "text",
+      "show": "$\\frac{2n(2n+1)}{2}-\\frac{n(n+1)}{2}=\\frac{n(3n+1)}{2}$",
+      "accept": [
+        "n(3n+1)/2",
+        "(3n^2+n)/2"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, descompusă în factori, scrisă de exemplu n(n+3)/2",
+        "en": "an expression in $n$, factored, written for example as n(n+3)/2"
+      }
+    },
+    "11a": {
+      "kind": "number",
+      "show": "$n(n+1)=420$, deci $n=20$",
+      "accept": [
+        "20"
+      ]
+    },
+    "11b": {
+      "kind": "number",
+      "show": "$\\frac{n(n+1)}{2}=55$, deci $n=10$",
+      "accept": [
+        "10"
+      ]
+    },
+    "12a": {
+      "check": false,
+      "why": "proof",
+      "show": "$\\frac{1}{k}-\\frac{1}{k+1}=\\frac{k+1-k}{k(k+1)}=\\frac{1}{k(k+1)}$"
+    },
+    "12b": {
+      "kind": "text",
+      "show": "$1-\\frac{1}{n+1}=\\frac{n}{n+1}$",
+      "accept": [
+        "n/(n+1)",
+        "n/(1+n)"
+      ],
+      "hint": {
+        "ro": "o fracție în $n$, scrisă de exemplu (n+2)/(n+3)",
+        "en": "a fraction in $n$, written for example as (n+2)/(n+3)"
+      }
+    },
+    "12c": {
+      "check": false,
+      "why": "proof",
+      "show": "$\\frac{k}{k+1}+\\frac{1}{(k+1)(k+2)}=\\frac{(k+1)^2}{(k+1)(k+2)}=\\frac{k+1}{k+2}$"
+    },
+    "13a": {
+      "kind": "text",
+      "show": "$T_n=\\frac{n(n+1)(n+2)(n+3)}{4}$",
+      "accept": [
+        "n(n+1)(n+2)(n+3)/4"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, descompusă în factori, scrisă de exemplu n(n+3)/2",
+        "en": "an expression in $n$, factored, written for example as n(n+3)/2"
+      }
+    },
+    "13b": {
+      "check": false,
+      "why": "proof",
+      "show": "$\\frac{k(k+1)(k+2)(k+3)}{4}+(k+1)(k+2)(k+3)=\\frac{(k+1)(k+2)(k+3)(k+4)}{4}$"
+    },
+    "13c": {
+      "check": false,
+      "why": "open",
+      "show": "Suma produselor a $p$ numere consecutive este produsul a $p+1$ numere consecutive, împărțit la $p+1$: $\\sum_{k=1}^{n}{k(k+1)(k+2)(k+3)}=\\frac{n(n+1)(n+2)(n+3)(n+4)}{5}$"
+    },
+    "15a": {
+      "check": false,
+      "why": "open",
+      "show": "Pentru $n=1$: $2\\ne 1+1+1=3$, formula este falsă"
+    },
+    "15b": {
+      "check": false,
+      "why": "open",
+      "show": "Lipsește etapa I (verificarea); formula este falsă pentru orice $n$"
+    },
+    "15c": {
+      "kind": "text",
+      "show": "$2+4+\\ldots+2n=n(n+1)$; $k(k+1)+2(k+1)=(k+1)(k+2)$",
+      "accept": [
+        "n(n+1)",
+        "n(1+n)",
+        "n^2+n"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, descompusă în factori, scrisă de exemplu n(n+3)/2",
+        "en": "an expression in $n$, factored, written for example as n(n+3)/2"
+      }
+    }
+  }
+}

@@ -1,0 +1,285 @@
+{
+  "uid": "1032",
+  "version": 1,
+  "items": {
+    "2": {
+      "check": false,
+      "why": "open",
+      "show": "a) $\\sum_{k=1}^{40}{5k}$; b) $\\sum_{k=1}^{10}{k^3}$; c) $\\sum_{k=1}^{n}{(4k-2)}$; d) $\\sum_{k=1}^{n}{k(2k+1)}$; e) $\\sum_{k=1}^{n}{\\frac{1}{3^k}}$"
+    },
+    "5": {
+      "check": false,
+      "why": "proof",
+      "show": "a) $k(k+1)+2(k+1)=(k+1)(k+2)$; b) $\\frac{k(3k-1)}{2}+3k+1=\\frac{(k+1)(3k+2)}{2}$"
+    },
+    "10": {
+      "check": false,
+      "why": "proof",
+      "show": "a) $\\frac{k(2k-1)(2k+1)}{3}+(2k+1)^2=\\frac{(k+1)(2k+1)(2k+3)}{3}$; b) $2^k-1+2^k=2^{k+1}-1$"
+    },
+    "12": {
+      "kind": "text",
+      "show": "$n\\cdot \\frac{n(n+1)}{2}-\\frac{n(n+1)(2n+1)}{6}=\\frac{(n-1)n(n+1)}{6}$; pentru $n=3$: $4$",
+      "accept": [
+        "(n-1)n(n+1)/6",
+        "n(n-1)(n+1)/6",
+        "n(n+1)(n-1)/6",
+        "(n^3-n)/6",
+        "n(n^2-1)/6"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, descompusă în factori, scrisă de exemplu n(n+3)/2",
+        "en": "an expression in $n$, factored, written for example as n(n+3)/2"
+      }
+    },
+    "13": {
+      "check": false,
+      "why": "proof",
+      "show": "$2-\\frac{k+2}{2^k}+\\frac{k+1}{2^{k+1}}=2-\\frac{k+3}{2^{k+1}}$"
+    },
+    "15": {
+      "check": false,
+      "why": "proof",
+      "show": "$-21$ și $28$. $\\left(-1\\right)^{k+1}\\cdot \\frac{k(k+1)}{2}+\\left(-1\\right)^{k+2}(k+1)^2=\\left(-1\\right)^{k+2}\\cdot \\frac{(k+1)(k+2)}{2}$"
+    },
+    "1a": {
+      "kind": "number",
+      "show": "$2+5+8+11+14+17=57$",
+      "accept": [
+        "57"
+      ]
+    },
+    "1b": {
+      "kind": "number",
+      "show": "$1+2+4+8+16=31$",
+      "accept": [
+        "31"
+      ]
+    },
+    "1c": {
+      "kind": "number",
+      "show": "$8+15+24+35+48=130$",
+      "accept": [
+        "130"
+      ]
+    },
+    "1d": {
+      "kind": "number",
+      "show": "$-1+1-1+\\ldots+1=0$",
+      "accept": [
+        "0"
+      ]
+    },
+    "3a": {
+      "kind": "number",
+      "show": "$\\frac{200\\cdot 201}{2}=20100$",
+      "accept": [
+        "20100"
+      ]
+    },
+    "3b": {
+      "kind": "number",
+      "show": "$\\frac{20\\cdot 21\\cdot 41}{6}=2870$",
+      "accept": [
+        "2870"
+      ]
+    },
+    "3c": {
+      "kind": "number",
+      "show": "$55^2=3025$",
+      "accept": [
+        "3025"
+      ]
+    },
+    "3d": {
+      "kind": "number",
+      "show": "$2\\cdot (1+2+\\ldots+50)=2550$",
+      "accept": [
+        "2550"
+      ]
+    },
+    "4a": {
+      "kind": "text",
+      "show": "$3n(n+1)+n=n(3n+4)$",
+      "accept": [
+        "n(3n+4)",
+        "n(4+3n)",
+        "3n^2+4n"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, descompusă în factori, scrisă de exemplu n(n+3)/2",
+        "en": "an expression in $n$, factored, written for example as n(n+3)/2"
+      }
+    },
+    "4b": {
+      "kind": "text",
+      "show": "$n(n+1)-3n=n(n-2)$",
+      "accept": [
+        "n(n-2)",
+        "n^2-2n"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, descompusă în factori, scrisă de exemplu n(n+3)/2",
+        "en": "an expression in $n$, factored, written for example as n(n+3)/2"
+      }
+    },
+    "4c": {
+      "kind": "number",
+      "show": "$385+2\\cdot 55=495$",
+      "accept": [
+        "495"
+      ]
+    },
+    "6a": {
+      "kind": "text",
+      "show": "$\\sum_{k=1}^{n}{(2k+1)}=n(n+2)$",
+      "accept": [
+        "n(n+2)",
+        "n(2+n)",
+        "n^2+2n"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, descompusă în factori, scrisă de exemplu n(n+3)/2",
+        "en": "an expression in $n$, factored, written for example as n(n+3)/2"
+      }
+    },
+    "6b": {
+      "kind": "text",
+      "show": "$\\sum_{k=1}^{n}{4k^2}=\\frac{2n(n+1)(2n+1)}{3}$",
+      "accept": [
+        "2n(n+1)(2n+1)/3",
+        "(4n^3+6n^2+2n)/3"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, descompusă în factori, scrisă de exemplu n(n+3)/2",
+        "en": "an expression in $n$, factored, written for example as n(n+3)/2"
+      }
+    },
+    "6c": {
+      "kind": "text",
+      "show": "$\\sum_{k=1}^{n}{k(k+4)}=\\frac{n(n+1)(2n+13)}{6}$",
+      "accept": [
+        "n(n+1)(2n+13)/6",
+        "(2n^3+15n^2+13n)/6"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, descompusă în factori, scrisă de exemplu n(n+3)/2",
+        "en": "an expression in $n$, factored, written for example as n(n+3)/2"
+      }
+    },
+    "7a": {
+      "kind": "text",
+      "show": "$S_n=\\sum_{k=1}^{n}{(4k^2-2k)}=\\frac{n(n+1)(4n-1)}{3}$",
+      "accept": [
+        "n(n+1)(4n-1)/3",
+        "(4n^3+3n^2-n)/3"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, descompusă în factori, scrisă de exemplu n(n+3)/2",
+        "en": "an expression in $n$, factored, written for example as n(n+3)/2"
+      }
+    },
+    "7b": {
+      "check": false,
+      "why": "proof",
+      "show": "$\\frac{k(k+1)(4k-1)}{3}+(2k+1)(2k+2)=\\frac{(k+1)(k+2)(4k+3)}{3}$"
+    },
+    "8a": {
+      "kind": "number",
+      "show": "$465-55=410$",
+      "accept": [
+        "410"
+      ]
+    },
+    "8b": {
+      "kind": "number",
+      "show": "$3025-100=2925$",
+      "accept": [
+        "2925"
+      ]
+    },
+    "8c": {
+      "kind": "text",
+      "show": "$\\frac{2n(2n+1)(4n+1)}{6}-\\frac{n(n+1)(2n+1)}{6}=\\frac{n(2n+1)(7n+1)}{6}$",
+      "accept": [
+        "n(2n+1)(7n+1)/6",
+        "(14n^3+9n^2+n)/6"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, descompusă în factori, scrisă de exemplu n(n+3)/2",
+        "en": "an expression in $n$, factored, written for example as n(n+3)/2"
+      }
+    },
+    "9a": {
+      "kind": "number",
+      "show": "$n(n+1)=156$, $n=12$",
+      "accept": [
+        "12"
+      ]
+    },
+    "9b": {
+      "kind": "number",
+      "show": "$n^2=169$, $n=13$",
+      "accept": [
+        "13"
+      ]
+    },
+    "9c": {
+      "kind": "number",
+      "show": "$n(n+1)(2n+1)=1224=8\\cdot 9\\cdot 17$, $n=8$",
+      "accept": [
+        "8"
+      ]
+    },
+    "11a": {
+      "check": false,
+      "why": "proof",
+      "show": "$\\frac{1}{2}\\cdot \\frac{(2k+1)-(2k-1)}{(2k-1)(2k+1)}=\\frac{1}{(2k-1)(2k+1)}$"
+    },
+    "11b": {
+      "kind": "text",
+      "show": "$\\frac{1}{2}\\cdot \\left(1-\\frac{1}{2n+1}\\right)=\\frac{n}{2n+1}$",
+      "accept": [
+        "n/(2n+1)",
+        "n/(1+2n)"
+      ],
+      "hint": {
+        "ro": "o fracție în $n$, scrisă de exemplu (n+2)/(n+3)",
+        "en": "a fraction in $n$, written for example as (n+2)/(n+3)"
+      }
+    },
+    "11c": {
+      "check": false,
+      "why": "proof",
+      "show": "$\\frac{k}{2k+1}+\\frac{1}{(2k+1)(2k+3)}=\\frac{(k+1)(2k+1)}{(2k+1)(2k+3)}=\\frac{k+1}{2k+3}$"
+    },
+    "14a": {
+      "kind": "list",
+      "show": "$1\\cdot 2+2\\cdot 3=8$, dar $(1+2)\\cdot (2+3)=15$",
+      "accept": [
+        "8; 15"
+      ],
+      "hint": {
+        "ro": "membrul stâng; membrul drept",
+        "en": "the left side; the right side"
+      }
+    },
+    "14b": {
+      "check": false,
+      "why": "open",
+      "show": "A „spart” un produs; proprietatea (P2) se aplică doar sumei și diferenței"
+    },
+    "14c": {
+      "kind": "text",
+      "show": "$\\sum_{k=1}^{n}{(k^2+k)}=\\frac{n(n+1)(n+2)}{3}$",
+      "accept": [
+        "n(n+1)(n+2)/3",
+        "(n^3+3n^2+2n)/3"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, descompusă în factori, scrisă de exemplu n(n+3)/2",
+        "en": "an expression in $n$, factored, written for example as n(n+3)/2"
+      }
+    }
+  }
+}

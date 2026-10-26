@@ -2435,6 +2435,174 @@
           "grade 8"
         ]
       }
+    },
+    {
+      "slug": "fisa-lucru-sume-inductie-matematica",
+      "uid": "1031",
+      "topic": "elemente-logica-matematica",
+      "kind": "fisa-lucru",
+      "title": {
+        "ro": "Fișă de lucru: sume și inducție matematică",
+        "en": "Worksheet: sums and mathematical induction"
+      },
+      "seoTitle": {
+        "ro": "Sume cu Σ și inducție matematică: fișă de lucru",
+        "en": "Sums with Σ and induction: worksheet"
+      },
+      "published": "2026-10-26",
+      "description": {
+        "ro": "Fișă de lucru pentru clasa a IX-a: simbolul Σ, proprietățile sumelor, sumele remarcabile și metoda inducției matematice, cu probleme pe niveluri.",
+        "en": "Grade 9 worksheet: sigma notation, properties of sums, the standard sums and proof by mathematical induction, with problems on three levels."
+      },
+      "pdf": "materiale/pdf/fisa-lucru-sume-inductie-matematica-1031.pdf",
+      "youtube": null,
+      "import": {
+        "date": "2026-10-26",
+        "workflow": 5,
+        "pdf": "generated"
+      },
+      "summary": {
+        "ro": "Fișa începe cu o teorie pe scurt: scrierea unei sume cu simbolul Σ, găsirea termenului general, proprietățile sumelor și cele patru sume remarcabile. Urmează metoda inducției matematice, cu un exemplu în care o sumă este întâi calculată și apoi demonstrată, și probleme pe trei niveluri.",
+        "en": "The worksheet starts with a short theory part: writing a sum with the Σ symbol, finding the general term, the properties of sums and the four standard sums. Then comes the method of mathematical induction, with an example where a sum is first computed and then proved, and problems on three levels."
+      },
+      "faq": [
+        {
+          "q": {
+            "ro": "Ce înseamnă scrierea unei sume cu simbolul Σ?",
+            "en": "What does writing a sum with the Σ symbol mean?"
+          },
+          "a": {
+            "ro": "Simbolul Σ prescurtează o sumă cu mulți termeni care urmează aceeași regulă. Sub Σ scrii indicele și valoarea de la care pornește, deasupra valoarea la care se oprește, iar după Σ termenul general, adică regula după care se obține fiecare termen. De exemplu, suma 1 + 3 + 5 + … + (2n − 1) are termenul general 2k − 1, cu k de la 1 la n.",
+            "en": "The Σ symbol is shorthand for a sum of many terms that follow the same rule. Below Σ you write the index and the value it starts from, above it the value where it stops, and after Σ the general term, the rule that produces each term. For example, the sum 1 + 3 + 5 + … + (2n − 1) has the general term 2k − 1, with k from 1 to n."
+          }
+        },
+        {
+          "q": {
+            "ro": "Ce proprietăți ale sumelor folosesc la calcul?",
+            "en": "Which properties of sums do I use in calculations?"
+          },
+          "a": {
+            "ro": "Un factor care nu depinde de indice iese în fața sumei, iar suma unei sume sau a unei diferențe se desparte în două sume. Împreună, aceste reguli formează liniaritatea sumei. Produsul însă nu se desparte: suma unor produse nu este produsul sumelor. Apoi aplici sumele remarcabile: a constantelor, a numerelor naturale, a pătratelor și a cuburilor.",
+            "en": "A factor that does not depend on the index comes out in front of the sum, and the sum of a sum or a difference splits into two sums. Together these rules are the linearity of the sum. A product, however, does not split: the sum of products is not the product of the sums. Then you apply the standard sums: of constants, of natural numbers, of squares and of cubes."
+          }
+        },
+        {
+          "q": {
+            "ro": "De ce sunt obligatorii ambele etape ale inducției matematice?",
+            "en": "Why are both steps of mathematical induction required?"
+          },
+          "a": {
+            "ro": "Prima etapă arată că afirmația este adevărată pentru primul număr, iar a doua arată că, dacă este adevărată pentru un număr, este adevărată și pentru următorul. Fără prima etapă, a doua poate funcționa chiar pentru o formulă falsă. Fără a doua, verificările pentru câteva valori sunt doar exemple, iar exemplele nu demonstrează nimic pentru orice n.",
+            "en": "The first step shows that the statement is true for the first number, and the second shows that if it is true for one number, it is also true for the next. Without the first step, the second can work even for a false formula. Without the second, checks for a few values are only examples, and examples prove nothing for every n."
+          }
+        }
+      ],
+      "keywords": {
+        "ro": [
+          "simbolul sigma",
+          "calculul sumelor",
+          "termenul general",
+          "proprietățile sumelor",
+          "sume remarcabile",
+          "suma pătratelor",
+          "suma cuburilor",
+          "inducția matematică",
+          "clasa a 9-a",
+          "clasa a IX-a"
+        ],
+        "en": [
+          "sigma notation",
+          "computing sums",
+          "general term",
+          "properties of sums",
+          "standard sums",
+          "sum of squares",
+          "sum of cubes",
+          "mathematical induction",
+          "grade 9"
+        ]
+      },
+      "results": {
+        "version": 1,
+        "checks": 27
+      }
+    },
+    {
+      "slug": "probleme-sume-inductie-matematica",
+      "uid": "1032",
+      "topic": "elemente-logica-matematica",
+      "kind": "fisa-lucru",
+      "title": {
+        "ro": "Probleme propuse: sume și inducție matematică",
+        "en": "Practice problems: sums and mathematical induction"
+      },
+      "seoTitle": {
+        "ro": "Sume și inducție matematică: probleme propuse",
+        "en": "Sums and induction: practice problems"
+      },
+      "published": "2026-10-26",
+      "description": {
+        "ro": "Probleme pentru clasa a IX-a: calculul sumelor cu Σ, sume remarcabile, sume telescopice și demonstrații prin inducție matematică, pe trei niveluri.",
+        "en": "Grade 9 practice problems: computing sums with sigma notation, standard sums, telescoping sums and proofs by mathematical induction, on three levels."
+      },
+      "pdf": "materiale/pdf/probleme-sume-inductie-matematica-1032.pdf",
+      "youtube": null,
+      "import": {
+        "date": "2026-10-26",
+        "workflow": 5,
+        "pdf": "generated"
+      },
+      "summary": {
+        "ro": "Problemele sunt pentru cei care vor să exerseze mai mult calculul sumelor și inducția matematică. Ele cer scrierea sumelor cu Σ, calculul lor cu proprietățile și sumele remarcabile, sume telescopice și demonstrații prin inducție, ordonate pe trei niveluri: de bază, consolidat și avansat.",
+        "en": "The problems are for students who want more practice with computing sums and with mathematical induction. They ask for writing sums with Σ, computing them with the properties and the standard sums, telescoping sums and proofs by induction, ordered on three levels: basic, consolidated and advanced."
+      },
+      "faq": [
+        {
+          "q": {
+            "ro": "Cum calculez o sumă al cărei termen general este un produs?",
+            "en": "How do I compute a sum whose general term is a product?"
+          },
+          "a": {
+            "ro": "Desfaci produsul într-o sumă de puteri ale indicelui, de exemplu k(k + 2) = k² + 2k. Apoi desparți suma în sume separate, scoți constantele în față și aplici sumele remarcabile. La final dai factor comun și verifici rezultatul pentru n = 1 și n = 2.",
+            "en": "Expand the product into a sum of powers of the index, for example k(k + 2) = k² + 2k. Then split the sum into separate sums, take the constants out in front and apply the standard sums. Finally, factor the result and check it for n = 1 and n = 2."
+          }
+        },
+        {
+          "q": {
+            "ro": "Ce este o sumă telescopică?",
+            "en": "What is a telescoping sum?"
+          },
+          "a": {
+            "ro": "Este o sumă în care fiecare termen se scrie ca diferență a doi termeni consecutivi ai unui alt șir, de exemplu 1/(k(k + 1)) = 1/k − 1/(k + 1). Când scrii suma desfășurat, termenii din mijloc se reduc doi câte doi și rămân doar primul și ultimul.",
+            "en": "It is a sum in which each term can be written as the difference of two consecutive terms of another sequence, for example 1/(k(k + 1)) = 1/k − 1/(k + 1). When you write the sum out, the middle terms cancel in pairs and only the first and the last remain."
+          }
+        }
+      ],
+      "keywords": {
+        "ro": [
+          "calculul sumelor",
+          "simbolul sigma",
+          "sume remarcabile",
+          "sume telescopice",
+          "inducția matematică",
+          "demonstrații prin inducție",
+          "clasa a 9-a",
+          "clasa a IX-a"
+        ],
+        "en": [
+          "computing sums",
+          "sigma notation",
+          "standard sums",
+          "telescoping sums",
+          "mathematical induction",
+          "proof by induction",
+          "grade 9"
+        ]
+      },
+      "results": {
+        "version": 1,
+        "checks": 25
+      }
     }
   ]
 }
