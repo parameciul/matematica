@@ -94,9 +94,9 @@
         </div>
         <div class="firul-logic">
           <p class="firul-logic-label">★ Metodă</p>
-          <p class="firul-logic-lead">Metoda numărului fix ($a\ne 1$)</p>
+          <p class="firul-logic-lead">Metoda punctului fix ($a\ne 1$)</p>
           <ol class="firul-logic-steps">
-            <li><span>Caut numărul fix: pun $\ell$ în locul lui $x_{n+1}$ și al lui $x_n$. Din $\ell=a\ell+b$ obțin $\ell=\frac{b}{1-a}$.</span></li>
+            <li><span>Caut punctul fix: pun $\ell$ în locul lui $x_{n+1}$ și al lui $x_n$. Din $\ell=a\ell+b$ obțin $\ell=\frac{b}{1-a}$.</span></li>
             <li><span>Scad cele două relații: $x_{n+1}-\ell=a(x_n-\ell)$. Șirul $y_n=x_n-\ell$ este o progresie geometrică cu rația $a$.</span></li>
             <li><span>Scriu $y_n=y_1\cdot a^{n-1}$.</span></li>
             <li><span>Mă întorc la $x_n=y_n+\ell$ și verific pe $x_2$.</span></li>
@@ -217,7 +217,9 @@
           <p>$$x_n=x_1+f(1)+f(2)+\ldots+f(n-1)$$</p>
           <p>$$x_n=x_1\cdot g(1)\cdot g(2)\cdot \ldots\cdot g(n-1)$$</p>
           <p>Sume utile:</p>
-          <p>$$1+2+\ldots+m=\frac{m(m+1)}{2},\quad 1+3+\ldots+(2m-1)=m^2,\quad 1+q+\ldots+q^{m-1}=\frac{q^m-1}{q-1}$$</p>
+          <p>$$1+2+\ldots+m=\frac{m(m+1)}{2}$$</p>
+          <p>$$1+3+\ldots+(2m-1)=m^2$$</p>
+          <p>$$1+q+\ldots+q^{m-1}=\frac{q^m-1}{q-1}\quad (q\ne 1)$$</p>
         </div>
         <div class="retine">
           <p class="retine-title">Exemplul 6 · Recurență aditivă</p>
@@ -285,7 +287,7 @@
         <div class="retine">
           <p class="retine-title">Două situații</p>
           <p><strong>A.</strong> $x_{n+1}$ este un polinom în $x_n$. Caut o constantă $c$ cu $x_{n+1}+c=(x_n+c)^k$. La gradul 2, coeficientul lui $x_n$ trebuie să fie $2c$.</p>
-          <p><strong>B.</strong> $x_{n+1}=a\cdot x_n+P(n)$, cu $P$ un polinom în $n$ și $a\ne 1$. Aceeași idee ca numărul fix: caut un polinom $p_n$, de același grad cu $P$, care verifică relația.</p>
+          <p><strong>B.</strong> $x_{n+1}=a\cdot x_n+P(n)$, cu $P$ un polinom în $n$ și $a\ne 1$. Aceeași idee ca punctul fix: caut un polinom $p_n$, de același grad cu $P$, care verifică relația.</p>
         </div>
         <div class="firul-logic">
           <p class="firul-logic-label">★ Metodă</p>
@@ -454,7 +456,7 @@
             <tr>
               <td>1 · Liniară de ordinul 1</td>
               <td>$x_{n+1}=a x_n+b$</td>
-              <td>numărul fix $\ell=a\ell+b$; apoi $x_n=\ell+(x_1-\ell)a^{n-1}$</td>
+              <td>punctul fix $\ell=a\ell+b$; apoi $x_n=\ell+(x_1-\ell)a^{n-1}$</td>
             </tr>
             <tr>
               <td>2 · Liniară de ordinul 2</td>
@@ -485,7 +487,7 @@
         </table>
         <div class="retine">
           <p class="retine-title">De reținut · Ideea comună</p>
-          <p>La tipurile 1, 5 și 6 caut ce rămâne neschimbat: <strong>numărul fix</strong> $\ell$, polinomul $p_n$ sau <strong>punctele fixe</strong>. Scăzându-le din relație, obțin o progresie.</p>
+          <p>La tipurile 1, 5 și 6 caut ce rămâne neschimbat: <strong>punctul fix</strong> $\ell$, polinomul $p_n$ sau <strong>punctele fixe</strong>. Scăzându-le din relație, obțin o progresie.</p>
         </div>
         <div class="firul-logic">
           <p class="firul-logic-label">★ Cel mai important</p>
@@ -493,7 +495,7 @@
           <ol class="firul-logic-steps">
             <li><span>Calculez primii 3–4 termeni.</span></li>
             <li><span>Recunosc forma relației (tipul 1–6).</span></li>
-            <li><span>Aleg metoda: numărul fix, Δ, telescoparea, o substituție sau punctele fixe.</span></li>
+            <li><span>Aleg metoda: punctul fix (sau punctele fixe), Δ, telescoparea, o substituție.</span></li>
             <li><span>Aflu constantele din primii termeni.</span></li>
             <li><span>Verific formula pe încă un termen.</span></li>
             <li><span>Studiez monotonia și mărginirea: din formulă sau direct din relație.</span></li>

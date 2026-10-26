@@ -5386,8 +5386,8 @@ Pentru fiecare tip de recurență: cum îl recunoști, metoda pas cu pas (în ch
 Definiție
 O relație de forma $x_{n+1}=a\cdot x_n+b$, cu $a, b$ numere reale, se numește recurență liniară de ordinul 1. Dacă $a=1$, șirul este o progresie aritmetică. Dacă $b=0$, șirul este o progresie geometrică.
 ★ Metodă
-Metoda numărului fix ($a\ne 1$)
-- Caut numărul fix: pun $\ell$ în locul lui $x_{n+1}$ și al lui $x_n$. Din $\ell=a\ell+b$ obțin $\ell=\frac{b}{1-a}$.
+Metoda punctului fix ($a\ne 1$)
+- Caut punctul fix: pun $\ell$ în locul lui $x_{n+1}$ și al lui $x_n$. Din $\ell=a\ell+b$ obțin $\ell=\frac{b}{1-a}$.
 - Scad cele două relații: $x_{n+1}-\ell=a(x_n-\ell)$. Șirul $y_n=x_n-\ell$ este o progresie geometrică cu rația $a$.
 - Scriu $y_n=y_1\cdot a^{n-1}$.
 - Mă întorc la $x_n=y_n+\ell$ și verific pe $x_2$.
@@ -5461,7 +5461,9 @@ De reținut
 $$x_n=x_1+f(1)+f(2)+\ldots+f(n-1)$$
 $$x_n=x_1\cdot g(1)\cdot g(2)\cdot \ldots\cdot g(n-1)$$
 Sume utile:
-$$1+2+\ldots+m=\frac{m(m+1)}{2},\quad 1+3+\ldots+(2m-1)=m^2,\quad 1+q+\ldots+q^{m-1}=\frac{q^m-1}{q-1}$$
+$$1+2+\ldots+m=\frac{m(m+1)}{2}$$
+$$1+3+\ldots+(2m-1)=m^2$$
+$$1+q+\ldots+q^{m-1}=\frac{q^m-1}{q-1}\quad (q\ne 1)$$
 Exemplul 6 · Recurență aditivă
 Determină termenul general al șirului $x_1=3$, $x_{n+1}=x_n+2n+1$, $n\ge 1$.
 Pasul 1. $x_2=x_1+3$, $x_3=x_2+5$, …, $x_n=x_{n-1}+(2n-1)$.
@@ -5507,7 +5509,7 @@ Din $x_{n+1}^2=\ldots$ deduci $x_{n+1}=\sqrt{\ldots}$ numai dacă știi că term
 5. Recurențe polinomiale
 Două situații
 A. $x_{n+1}$ este un polinom în $x_n$. Caut o constantă $c$ cu $x_{n+1}+c=(x_n+c)^k$. La gradul 2, coeficientul lui $x_n$ trebuie să fie $2c$.
-B. $x_{n+1}=a\cdot x_n+P(n)$, cu $P$ un polinom în $n$ și $a\ne 1$. Aceeași idee ca numărul fix: caut un polinom $p_n$, de același grad cu $P$, care verifică relația.
+B. $x_{n+1}=a\cdot x_n+P(n)$, cu $P$ un polinom în $n$ și $a\ne 1$. Aceeași idee ca punctul fix: caut un polinom $p_n$, de același grad cu $P$, care verifică relația.
 ★ Metodă
 Metoda substituției
 - Caut ce „copiază” relația: constanta $c$ (situația A) sau polinomul $p_n$ (situația B).
@@ -5612,7 +5614,7 @@ Forma relației
 Ce fac
 1 · Liniară de ordinul 1
 $x_{n+1}=a x_n+b$
-numărul fix $\ell=a\ell+b$; apoi $x_n=\ell+(x_1-\ell)a^{n-1}$
+punctul fix $\ell=a\ell+b$; apoi $x_n=\ell+(x_1-\ell)a^{n-1}$
 2 · Liniară de ordinul 2
 $x_{n+2}=a x_{n+1}+b x_n$
 ecuația caracteristică $r^2=ar+b$; forma după $\Delta$; la $\Delta=0$ factorul $n$ nu lipsește!
@@ -5629,12 +5631,12 @@ $x_{n+1}+c=(x_n+c)^k$; $2x^2-1$ → cosinus; polinomul $p_n$
 $x_{n+1}=\frac{ax_n+b}{cx_n+d}$
 punctele fixe; $y_n=\frac{x_n-\alpha}{x_n-\beta}$ sau $z_n=\frac{1}{x_n-\alpha}$; fără puncte fixe → perioada
 De reținut · Ideea comună
-La tipurile 1, 5 și 6 caut ce rămâne neschimbat: numărul fix $\ell$, polinomul $p_n$ sau punctele fixe. Scăzându-le din relație, obțin o progresie.
+La tipurile 1, 5 și 6 caut ce rămâne neschimbat: punctul fix $\ell$, polinomul $p_n$ sau punctele fixe. Scăzându-le din relație, obțin o progresie.
 ★ Cel mai important
 Firul logic: ce faci când întâlnești o recurență. Urmează pașii în această ordine, la fiecare problemă
 - Calculez primii 3–4 termeni.
 - Recunosc forma relației (tipul 1–6).
-- Aleg metoda: numărul fix, Δ, telescoparea, o substituție sau punctele fixe.
+- Aleg metoda: punctul fix (sau punctele fixe), Δ, telescoparea, o substituție.
 - Aflu constantele din primii termeni.
 - Verific formula pe încă un termen.
 - Studiez monotonia și mărginirea: din formulă sau direct din relație.
@@ -5874,8 +5876,8 @@ For each type of recurrence: how to recognise it, the method step by step (in th
 Definition
 A relation of the form $x_{n+1}=a\cdot x_n+b$, with real numbers $a, b$, is called a linear recurrence of order 1. If $a=1$, the sequence is an arithmetic progression. If $b=0$, the sequence is a geometric progression.
 ★ Method
-The fixed-number method ($a\ne 1$)
-- Find the fixed number: put $\ell$ in place of $x_{n+1}$ and of $x_n$. From $\ell=a\ell+b$ you get $\ell=\frac{b}{1-a}$.
+The fixed-point method ($a\ne 1$)
+- Find the fixed point: put $\ell$ in place of $x_{n+1}$ and of $x_n$. From $\ell=a\ell+b$ you get $\ell=\frac{b}{1-a}$.
 - Subtract the two relations: $x_{n+1}-\ell=a(x_n-\ell)$. The sequence $y_n=x_n-\ell$ is a geometric progression with ratio $a$.
 - Write $y_n=y_1\cdot a^{n-1}$.
 - Go back to $x_n=y_n+\ell$ and check it on $x_2$.
@@ -5949,7 +5951,9 @@ Remember
 $$x_n=x_1+f(1)+f(2)+\ldots+f(n-1)$$
 $$x_n=x_1\cdot g(1)\cdot g(2)\cdot \ldots\cdot g(n-1)$$
 Useful sums:
-$$1+2+\ldots+m=\frac{m(m+1)}{2},\quad 1+3+\ldots+(2m-1)=m^2,\quad 1+q+\ldots+q^{m-1}=\frac{q^m-1}{q-1}$$
+$$1+2+\ldots+m=\frac{m(m+1)}{2}$$
+$$1+3+\ldots+(2m-1)=m^2$$
+$$1+q+\ldots+q^{m-1}=\frac{q^m-1}{q-1}\quad (q\ne 1)$$
 Example 6 · Additive recurrence
 Find the general term of the sequence $x_1=3$, $x_{n+1}=x_n+2n+1$, $n\ge 1$.
 Step 1. $x_2=x_1+3$, $x_3=x_2+5$, …, $x_n=x_{n-1}+(2n-1)$.
@@ -5995,7 +5999,7 @@ From $x_{n+1}^2=\ldots$ you get $x_{n+1}=\sqrt{\ldots}$ only if you know that th
 5. Polynomial recurrences
 Two situations
 A. $x_{n+1}$ is a polynomial in $x_n$. Look for a constant $c$ with $x_{n+1}+c=(x_n+c)^k$. For degree 2, the coefficient of $x_n$ must be $2c$.
-B. $x_{n+1}=a\cdot x_n+P(n)$, with $P$ a polynomial in $n$ and $a\ne 1$. The same idea as the fixed number: look for a polynomial $p_n$, of the same degree as $P$, that satisfies the relation.
+B. $x_{n+1}=a\cdot x_n+P(n)$, with $P$ a polynomial in $n$ and $a\ne 1$. The same idea as the fixed point: look for a polynomial $p_n$, of the same degree as $P$, that satisfies the relation.
 ★ Method
 The substitution method
 - Look for what “copies” the relation: the constant $c$ (situation A) or the polynomial $p_n$ (situation B).
@@ -6022,7 +6026,7 @@ A sequence given by a relation of the form
 $$x_{n+1}=\frac{a\cdot x_n+b}{c\cdot x_n+d}$$
 is called a sequence given by a homographic recurrence. The solutions of the equation $x=\frac{ax+b}{cx+d}$ are called the fixed points of the recurrence.
 ★ Method
-The fixed-point method
+The method of fixed points
 - Solve the fixed-point equation $x=\frac{ax+b}{cx+d}$. You get a quadratic equation.
 - Choose the substitution by the number of solutions (table below).
 - Write $y_n$ (or $z_n$) with the formula of the progression.
@@ -6100,7 +6104,7 @@ Form of the relation
 What you do
 1 · Linear of order 1
 $x_{n+1}=a x_n+b$
-the fixed number $\ell=a\ell+b$; then $x_n=\ell+(x_1-\ell)a^{n-1}$
+the fixed point $\ell=a\ell+b$; then $x_n=\ell+(x_1-\ell)a^{n-1}$
 2 · Linear of order 2
 $x_{n+2}=a x_{n+1}+b x_n$
 the characteristic equation $r^2=ar+b$; the form by $\Delta$; for $\Delta=0$ do not forget the factor $n$!
@@ -6117,12 +6121,12 @@ $x_{n+1}+c=(x_n+c)^k$; $2x^2-1$ → cosine; the polynomial $p_n$
 $x_{n+1}=\frac{ax_n+b}{cx_n+d}$
 the fixed points; $y_n=\frac{x_n-\alpha}{x_n-\beta}$ or $z_n=\frac{1}{x_n-\alpha}$; no fixed points → the period
 Remember · The common idea
-For types 1, 5 and 6 you look for what stays unchanged: the fixed number $\ell$, the polynomial $p_n$ or the fixed points. Subtracting them from the relation gives a progression.
+For types 1, 5 and 6 you look for what stays unchanged: the fixed point $\ell$, the polynomial $p_n$ or the fixed points. Subtracting them from the relation gives a progression.
 ★ Most important
 The logical thread: what to do when you meet a recurrence. Follow the steps in this order, in every problem
 - Compute the first 3–4 terms.
 - Recognise the form of the relation (type 1–6).
-- Choose the method: the fixed number, Δ, telescoping, a substitution or the fixed points.
+- Choose the method: the fixed point (or the fixed points), Δ, telescoping, a substitution.
 - Find the constants from the first terms.
 - Check the formula on one more term.
 - Study monotonicity and boundedness: from the formula or directly from the relation.
