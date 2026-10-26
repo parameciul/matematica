@@ -753,7 +753,7 @@ function renderMaterialPage({ data, material, topic, lang, dict, assetBase, page
     ? ` · ${esc(updParts[0] || '')}<time datetime="${material.updated}">${esc(Catalog.formatDate(material.updated, lang, 'long'))}</time>${esc(updParts[1] || '')}`
     : '';
   const headBlock = `<div id="material-head">${crumbs}\n` +
-    Catalog.kindsOf(material).map((k) => `      <span class="badge badge-${Catalog.groupOf(k)}">${esc(dict[`kind.${k}`] || k)}</span>\n`).join('') +
+    `      <span class="material-kinds">${Catalog.kindsOf(material).map((k) => `<span class="badge badge-${Catalog.groupOf(k)}">${esc(dict[`kind.${k}`] || k)}</span>`).join('')}</span>\n` +
     `      <h1>${esc(materialTitle)}</h1>\n` +
     `      <p class="material-meta">${esc(pubParts[0])}<time datetime="${material.published}">${esc(Catalog.formatDate(material.published, lang, 'long'))}</time>${esc(pubParts[1] || '')}` +
     ` · ${esc(byParts[0] || '')}<a href="${aboutHref}" rel="author">Laura Miron</a>${esc(byParts[1] || '')}${updatedMeta}</p>\n` +

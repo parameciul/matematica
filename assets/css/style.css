@@ -734,7 +734,7 @@ html:not(.js) .theme-btn {
 
 @media (min-width: 40rem) {
   .m-link {
-    grid-template-columns: 11.5rem minmax(0, 1fr) auto;
+    grid-template-columns: 14rem minmax(0, 1fr) auto;
     align-items: baseline;
     row-gap: 0;
     column-gap: 0.75rem;
@@ -744,7 +744,7 @@ html:not(.js) .theme-btn {
      third column: it would take all the width and squeeze the title to a sliver.
      Those rows drop to two columns and put the meta under the title. */
   .m-link:has(.m-where) {
-    grid-template-columns: 11.5rem minmax(0, 1fr);
+    grid-template-columns: 14rem minmax(0, 1fr);
   }
 
   .m-link:has(.m-where) .m-meta {
@@ -815,6 +815,13 @@ html:not(.js) .theme-btn {
   font-weight: 700;
   line-height: 1.5;
   white-space: nowrap;
+}
+
+.material-kinds {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  justify-self: start;
 }
 
 .m-badges {
@@ -1335,7 +1342,7 @@ ol.clips .clip-dur {
     grid-area: 1 / 1 / 2 / 3;
   }
 
-  #material-head .badge {
+  #material-head .material-kinds {
     grid-area: 2 / 1 / 3 / 2;
   }
 
@@ -1386,7 +1393,7 @@ ol.clips .clip-dur {
     line-height: 1.15;
   }
 
-  #material-head .badge {
+  #material-head .material-kinds {
     grid-area: 3 / 1 / 4 / 2;
   }
 
@@ -2055,7 +2062,7 @@ ol.clips .clip-dur {
    room for two columns: there the badges sit above the title. */
 @media (min-width: 40rem) {
   .search-option {
-    grid-template-columns: 11.5rem minmax(0, 1fr);
+    grid-template-columns: 14rem minmax(0, 1fr);
   }
 }
 
