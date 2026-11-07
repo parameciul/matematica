@@ -104,6 +104,7 @@
       `<div class="wrap">` +
       `<p>© <span data-year>${year}</span> Laura Miron. <span data-i18n="footer.text">${escapeHtml(text('footer.text'))}</span>` +
       ` · <a href="${pageRoot}despre.html" data-i18n="footer.about">${escapeHtml(text('footer.about'))}</a>` +
+      ` · <a href="https://mqgrader.ro/" data-i18n="footer.mqgrader">${escapeHtml(text('footer.mqgrader'))}</a>` +
       ` · <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license">CC BY-NC-SA 4.0</a></p>` +
       `</div>`
     );

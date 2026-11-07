@@ -1015,6 +1015,11 @@ function renderAboutPage({ lang, dict, assetBase, pageRoot, selfFile, altFile })
         <h2 id="about-how" data-i18n="about.how.title">${esc(dict['about.how.title'])}</h2>
         <p data-i18n="about.how.text">${esc(dict['about.how.text'])}</p>
       </section>
+      <section class="about" aria-labelledby="about-teachers">
+        <h2 id="about-teachers" data-i18n="about.teachers.title">${esc(dict['about.teachers.title'])}</h2>
+        <p data-i18n="about.teachers.text">${esc(dict['about.teachers.text'])}</p>
+        <p><a href="https://mqgrader.ro/" data-i18n="about.teachers.link">${esc(dict['about.teachers.link'])}</a></p>
+      </section>
     </div>`;
   const pageUrl = canonicalFor(selfFile);
   const head = renderHead({
