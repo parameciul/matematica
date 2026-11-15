@@ -95,6 +95,14 @@
         "ro": "Șiruri de numere reale",
         "en": "Sequences of real numbers"
       }
+    },
+    {
+      "id": "siruri-progresii",
+      "grade": 9,
+      "title": {
+        "ro": "Șiruri și progresii",
+        "en": "Sequences and progressions"
+      }
     }
   ],
   "grades": {
@@ -2703,6 +2711,96 @@
       "results": {
         "version": 1,
         "checks": 51
+      }
+    },
+    {
+      "slug": "fisa-lucru-siruri-notiuni-introductive",
+      "uid": "1036",
+      "topic": "siruri-progresii",
+      "kind": "fisa-lucru",
+      "alsoKind": "teorie",
+      "title": {
+        "ro": "Fișă de lucru: șiruri, noțiuni introductive",
+        "en": "Worksheet: sequences, an introduction"
+      },
+      "seoTitle": {
+        "ro": "Șiruri: moduri de definire, recurențe, monotonie",
+        "en": "Sequences: definitions, recurrences, monotonicity"
+      },
+      "published": "2026-11-15",
+      "description": {
+        "ro": "Fișă de lucru pentru clasa a IX-a: șiruri, moduri de definire, sume parțiale, termenul general din recurențe și monotonia șirurilor.",
+        "en": "Grade 9 worksheet: sequences, ways to define them, partial sums, the general term from recurrences and the monotonicity of sequences."
+      },
+      "pdf": "materiale/pdf/fisa-lucru-siruri-notiuni-introductive-1036.pdf",
+      "youtube": null,
+      "import": {
+        "date": "2026-11-15",
+        "workflow": 5,
+        "pdf": "generated"
+      },
+      "summary": {
+        "ro": "Fișa arată ce este un șir și cum îl putem da: în cuvinte, prin enumerare, prin formulă, prin recurență sau prin grafic. Urmează șirul sumelor parțiale, aflarea termenului general pentru recurențe cu sumă sau cu produs și monotonia, studiată cu diferența, cu raportul sau prin inducție. La final sunt probleme pe trei niveluri.",
+        "en": "The worksheet shows what a sequence is and how it can be given: in words, by listing terms, by a formula, by a recurrence or by a graph. Then come the sequence of partial sums, the general term for recurrences with a sum or a product, and monotonicity, studied with the difference, the ratio or by induction. Problems on three levels close it."
+      },
+      "faq": [
+        {
+          "q": {
+            "ro": "Care este diferența dintre formula termenului general și o relație de recurență?",
+            "en": "What is the difference between a general-term formula and a recurrence relation?"
+          },
+          "a": {
+            "ro": "Formula termenului general dă direct orice termen: înlocuiești n și calculezi. O relație de recurență dă un termen din cei dinaintea lui, deci trebuie să cunoști primul termen și să calculezi pe rând. Pentru recurențe de forma xₙ = xₙ₋₁ + f(n) sau xₙ = xₙ₋₁ · f(n) putem găsi formula termenului general adunând, respectiv înmulțind relațiile.",
+            "en": "A general-term formula gives any term directly: you substitute n and compute. A recurrence relation gives a term from the ones before it, so you need the first term and you compute step by step. For recurrences of the form xₙ = xₙ₋₁ + f(n) or xₙ = xₙ₋₁ · f(n) you can find the general term by adding, or multiplying, the relations."
+          }
+        },
+        {
+          "q": {
+            "ro": "Cum aflu termenul general al unui șir când știu suma primilor n termeni?",
+            "en": "How do I find the general term of a sequence when I know the sum of its first n terms?"
+          },
+          "a": {
+            "ro": "Folosești șirul sumelor parțiale: a₁ = S₁ și aₙ = Sₙ − Sₙ₋₁ pentru n ≥ 2. Formula a doua nu se aplică pentru n = 1, așa că verifici separat dacă formula găsită dă și primul termen. Dacă nu îl dă, scrii termenul general pe două ramuri.",
+            "en": "You use the sequence of partial sums: a₁ = S₁ and aₙ = Sₙ − Sₙ₋₁ for n ≥ 2. The second formula does not work for n = 1, so you check separately whether the formula you found also gives the first term. If it does not, you write the general term in two cases."
+          }
+        },
+        {
+          "q": {
+            "ro": "Când folosesc diferența și când raportul pentru monotonia unui șir?",
+            "en": "When do I use the difference and when the ratio to study the monotonicity of a sequence?"
+          },
+          "a": {
+            "ro": "Diferența aₙ₊₁ − aₙ merge la orice șir și e potrivită pentru fracții și sume: îi studiezi semnul. Raportul aₙ₊₁ / aₙ, comparat cu 1, se folosește numai când toți termenii sunt strict pozitivi și e comod pentru puteri și produse. Când șirul e dat doar prin recurență, monotonia se arată de obicei prin inducție.",
+            "en": "The difference aₙ₊₁ − aₙ works for any sequence and suits fractions and sums: you study its sign. The ratio aₙ₊₁ / aₙ, compared with 1, is used only when all terms are strictly positive and is handy for powers and products. When the sequence is given only by a recurrence, monotonicity is usually shown by induction."
+          }
+        }
+      ],
+      "keywords": {
+        "ro": [
+          "șiruri de numere reale",
+          "moduri de definire a unui șir",
+          "termenul general",
+          "relație de recurență",
+          "șirul sumelor parțiale",
+          "monotonia șirurilor",
+          "inducția matematică",
+          "clasa a 9-a",
+          "clasa a IX-a"
+        ],
+        "en": [
+          "sequences of real numbers",
+          "ways to define a sequence",
+          "general term",
+          "recurrence relation",
+          "sequence of partial sums",
+          "monotonic sequences",
+          "mathematical induction",
+          "grade 9"
+        ]
+      },
+      "results": {
+        "version": 1,
+        "checks": 30
       }
     }
   ]

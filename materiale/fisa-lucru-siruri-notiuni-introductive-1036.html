@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Șiruri: moduri de definire, recurențe, monotonie – clasa a 9-a (IX)</title>
+  <meta name="description" content="Fișă de lucru pentru clasa a IX-a: șiruri, moduri de definire, sume parțiale, termenul general din recurențe și monotonia șirurilor.">
+  <meta name="author" content="Laura Miron">
+  <meta name="robots" content="max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="google-site-verification" content="lwpe3phdRnlGTaxwvpfcxbuygEudOHDa7i_hl_1wQQc">
+  <meta name="msvalidate.01" content="79E7F21C210EE6E1F04FDB1E5956620C">
+  <link rel="canonical" href="https://lauramiron.pages.dev/materiale/fisa-lucru-siruri-notiuni-introductive-1036">
+  <link rel="alternate" hreflang="ro" href="https://lauramiron.pages.dev/materiale/fisa-lucru-siruri-notiuni-introductive-1036">
+  <link rel="alternate" hreflang="en" href="https://lauramiron.pages.dev/en/materiale/fisa-lucru-siruri-notiuni-introductive-1036">
+  <link rel="alternate" hreflang="x-default" href="https://lauramiron.pages.dev/materiale/fisa-lucru-siruri-notiuni-introductive-1036">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Șiruri: moduri de definire, recurențe, monotonie – clasa a 9-a (IX)">
+  <meta property="og:description" content="Fișă de lucru pentru clasa a IX-a: șiruri, moduri de definire, sume parțiale, termenul general din recurențe și monotonia șirurilor.">
+  <meta property="og:url" content="https://lauramiron.pages.dev/materiale/fisa-lucru-siruri-notiuni-introductive-1036">
+  <meta property="og:image" content="https://lauramiron.pages.dev/assets/img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Materiale de matematică pentru clasele V–XII – Laura Miron">
+  <meta property="og:locale" content="ro_RO">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:site_name" content="Laura Miron">
+  <meta property="article:published_time" content="2026-11-15">
+  <meta property="article:modified_time" content="2026-11-15">
+  <meta property="og:updated_time" content="2026-11-15">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Șiruri: moduri de definire, recurențe, monotonie – clasa a 9-a (IX)">
+  <meta name="twitter:description" content="Fișă de lucru pentru clasa a IX-a: șiruri, moduri de definire, sume parțiale, termenul general din recurențe și monotonia șirurilor.">
+  <meta name="twitter:image" content="https://lauramiron.pages.dev/assets/img/og-image.png">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fbfcfe">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1d2925">
+  <link rel="manifest" href="../site.webmanifest">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../favicon.ico" sizes="48x48">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+  <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('matematica.theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,700;0,800;1,400&family=Caveat:wght@600&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.18.1/dist/katex.min.css" integrity="sha384-1vdNCNel6Tx/NQa8IR1mGOGKsbGreCkOPfbtPPnUURJ5Tu2PRVfQ/7KLZC+Pi1p1" crossorigin="anonymous">
+  <link rel="stylesheet" href="../assets/css/style.css?v=dfd0a402b6">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.18.1/dist/katex.min.js" integrity="sha384-ycJ6GAwiS15LoUPipwJOrWTvkUHl/YqELValBwI5I4awP1EeEQJYarj+w85ntcz7" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.18.1/dist/contrib/auto-render.min.js" integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous"></script>
+  <script defer src="../assets/js/i18n.js?v=feb755cd88"></script>
+  <script defer src="../assets/js/catalog.js?v=7b3e472fde"></script>
+  <script defer src="../assets/js/shell.js?v=e464802201"></script>
+  <script defer src="../assets/js/site.js?v=86760ebbd4"></script>
+  <script defer src="../assets/js/searchbox.js?v=b3f954fcd7"></script>
+  <script defer src="../assets/js/material.js?v=eb2d425eaf"></script>
+  <script defer src="../assets/js/answers.js?v=25caed376f"></script>
+  <script defer src="../assets/js/check.js?v=beca89b12d"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","name":"Fișă de lucru: șiruri, noțiuni introductive","description":"Fișă de lucru pentru clasa a IX-a: șiruri, moduri de definire, sume parțiale, termenul general din recurențe și monotonia șirurilor.","url":"https://lauramiron.pages.dev/materiale/fisa-lucru-siruri-notiuni-introductive-1036","mainEntityOfPage":"https://lauramiron.pages.dev/materiale/fisa-lucru-siruri-notiuni-introductive-1036","inLanguage":"ro","datePublished":"2026-11-15","dateModified":"2026-11-15","learningResourceType":"Fișă de lucru","educationalLevel":"Clasa a IX-a","teaches":"Șiruri și progresii","educationalAlignment":{"@type":"AlignmentObject","alignmentType":"educationalSubject","educationalFramework":"Programa școlară românească","targetName":"Clasa a IX-a – Șiruri și progresii","targetUrl":"https://lauramiron.pages.dev/clasa-9#siruri-progresii"},"isAccessibleForFree":true,"license":"https://creativecommons.org/licenses/by-nc-sa/4.0/","author":{"@type":"Person","name":"Laura Miron","url":"https://lauramiron.pages.dev/despre","jobTitle":"Profesoară de matematică","worksFor":{"@type":"EducationalOrganization","name":"Liceul William Shakespeare","url":"https://lauramiron.pages.dev/","logo":{"@type":"ImageObject","url":"https://lauramiron.pages.dev/assets/img/og-image.png","width":1200,"height":630},"address":{"@type":"PostalAddress","addressLocality":"Timișoara","addressCountry":"RO"}},"knowsAbout":["Mathematics","Matematică","Algebră","Geometrie","Analiză matematică","Algebra","Geometry","Mathematical analysis"],"sameAs":["https://www.youtube.com/@MatematicaLauraMiron"]},"publisher":{"@type":"Person","name":"Laura Miron","url":"https://lauramiron.pages.dev/despre","jobTitle":"Profesoară de matematică","worksFor":{"@type":"EducationalOrganization","name":"Liceul William Shakespeare","url":"https://lauramiron.pages.dev/","logo":{"@type":"ImageObject","url":"https://lauramiron.pages.dev/assets/img/og-image.png","width":1200,"height":630},"address":{"@type":"PostalAddress","addressLocality":"Timișoara","addressCountry":"RO"}},"knowsAbout":["Mathematics","Matematică","Algebră","Geometrie","Analiză matematică","Algebra","Geometry","Mathematical analysis"],"sameAs":["https://www.youtube.com/@MatematicaLauraMiron"]},"audience":{"@type":"EducationalAudience","educationalRole":"student"},"educationalUse":"practice","keywords":"șiruri de numere reale, moduri de definire a unui șir, termenul general, relație de recurență, șirul sumelor parțiale, monotonia șirurilor, inducția matematică, clasa a 9-a, clasa a IX-a","abstract":"Fișa arată ce este un șir și cum îl putem da: în cuvinte, prin enumerare, prin formulă, prin recurență sau prin grafic. Urmează șirul sumelor parțiale, aflarea termenului general pentru recurențe cu sumă sau cu produs și monotonia, studiată cu diferența, cu raportul sau prin inducție. La final sunt probleme pe trei niveluri.","speakable":{"@type":"SpeakableSpecification","cssSelector":[".rezumat",".faq"]},"encoding":{"@type":"MediaObject","contentUrl":"https://lauramiron.pages.dev/materiale/pdf/fisa-lucru-siruri-notiuni-introductive-1036.pdf","encodingFormat":"application/pdf","inLanguage":"ro"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Acasă","item":"https://lauramiron.pages.dev/"},{"@type":"ListItem","position":2,"name":"Clasa a IX-a","item":"https://lauramiron.pages.dev/clasa-9"},{"@type":"ListItem","position":3,"name":"Fișă de lucru: șiruri, noțiuni introductive","item":"https://lauramiron.pages.dev/materiale/fisa-lucru-siruri-notiuni-introductive-1036"}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Care este diferența dintre formula termenului general și o relație de recurență?","acceptedAnswer":{"@type":"Answer","text":"Formula termenului general dă direct orice termen: înlocuiești n și calculezi. O relație de recurență dă un termen din cei dinaintea lui, deci trebuie să cunoști primul termen și să calculezi pe rând. Pentru recurențe de forma xₙ = xₙ₋₁ + f(n) sau xₙ = xₙ₋₁ · f(n) putem găsi formula termenului general adunând, respectiv înmulțind relațiile."}},{"@type":"Question","name":"Cum aflu termenul general al unui șir când știu suma primilor n termeni?","acceptedAnswer":{"@type":"Answer","text":"Folosești șirul sumelor parțiale: a₁ = S₁ și aₙ = Sₙ − Sₙ₋₁ pentru n ≥ 2. Formula a doua nu se aplică pentru n = 1, așa că verifici separat dacă formula găsită dă și primul termen. Dacă nu îl dă, scrii termenul general pe două ramuri."}},{"@type":"Question","name":"Când folosesc diferența și când raportul pentru monotonia unui șir?","acceptedAnswer":{"@type":"Answer","text":"Diferența aₙ₊₁ − aₙ merge la orice șir și e potrivită pentru fracții și sume: îi studiezi semnul. Raportul aₙ₊₁ / aₙ, comparat cu 1, se folosește numai când toți termenii sunt strict pozitivi și e comod pentru puteri și produse. Când șirul e dat doar prin recurență, monotonia se arată de obicei prin inducție."}}]}</script>
+</head>
+<body data-root="../" data-page-root="../">
+  <header id="site-header" class="site-header"><div class="wrap header-bar"><a class="brand" href="../index.html"><svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M10 48h44" fill="none" stroke="var(--brand-marker)" stroke-width="12" stroke-linecap="round"/><g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"><path d="M25 13c-3 11-6 21-9 31 7 0 13-2 18-6"/><path d="M33 45l4-23 6 13 8-15 2 25"/></g></svg><span class="brand-text"><span class="brand-name" data-i18n="site.title">Matematică cu Laura Miron</span><span class="brand-school" data-i18n="site.school">Liceul William Shakespeare, Timișoara</span></span></a><nav class="grade-nav" id="grade-nav" data-nav aria-label="Alege clasa"><span class="grade-nav-label" aria-hidden="true" data-i18n="nav.gradesLabel">Alege clasa</span><a href="../clasa-5.html" data-grade-link="5" aria-label="Clasa a V-a">5</a><a href="../clasa-6.html" data-grade-link="6" aria-label="Clasa a VI-a">6</a><a href="../clasa-7.html" data-grade-link="7" aria-label="Clasa a VII-a">7</a><a href="../clasa-8.html" data-grade-link="8" aria-label="Clasa a VIII-a">8</a><a href="../clasa-9.html" data-grade-link="9" class="gap" aria-label="Clasa a IX-a">9</a><a href="../clasa-10.html" data-grade-link="10" aria-label="Clasa a X-a">10</a><a href="../clasa-11.html" data-grade-link="11" aria-label="Clasa a XI-a">11</a><a href="../clasa-12.html" data-grade-link="12" aria-label="Clasa a XII-a">12</a></nav><form class="search" id="site-search" role="search" action="../cautare.html"><label class="sr-only" for="site-search-input" data-i18n="search.label">Caută materiale</label><svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="m20 20-3.8-3.8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><input id="site-search-input" name="q" type="search" autocomplete="off" spellcheck="false" enterkeyhint="search" placeholder="Caută: modul, fișă, test…"><input type="hidden" id="site-search-grade" name="c" value=""></form><div class="header-tools"><button type="button" class="icon-btn" data-toggle="search" aria-controls="site-search" aria-expanded="false"><svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="m20 20-3.8-3.8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><span class="sr-only" data-i18n="search.open">Caută</span></button><button type="button" class="icon-btn" data-toggle="grades" aria-controls="grade-nav" aria-expanded="false"><span data-i18n="nav.grades">Clase</span></button><button type="button" class="theme-btn" data-theme-toggle aria-pressed="false"><svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 14.5 A8.5 8.5 0 0 1 9.5 4 a8.5 8.5 0 1 0 10.5 10.5 Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2"/><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2.5 v2.2 M12 19.3 v2.2 M2.5 12 h2.2 M19.3 12 h2.2"/><path d="M5.3 5.3 l1.6 1.6 M17.1 17.1 l1.6 1.6 M18.7 5.3 l-1.6 1.6 M6.9 17.1 l-1.6 1.6"/></g></svg><span class="sr-only" data-i18n="theme.dark">Temă închisă</span></button><div class="lang" role="group" aria-label="Limba site-ului" data-lang-group><a hreflang="ro" lang="ro" aria-current="page" aria-label="Română" href="fisa-lucru-siruri-notiuni-introductive-1036.html">RO</a><a hreflang="en" href="../en/materiale/fisa-lucru-siruri-notiuni-introductive-1036.html" lang="en" aria-label="English">EN</a></div></div></div></header>
+
+  <main id="content" class="wrap">
+    <div class="page" id="material" data-id="1036" data-name="fisa-lucru-siruri-notiuni-introductive-1036" data-results="1">
+      <div id="material-head"><nav class="crumbs" aria-label="Navigare"><ol><li><a href="../index.html">Acasă</a></li><li><a href="../clasa-9.html">Clasa a IX-a</a></li><li><a href="../clasa-9.html#siruri-progresii">Șiruri și progresii</a></li></ol></nav>
+      <span class="material-kinds"><span class="badge badge-fise">Fișă de lucru</span><span class="badge badge-lectii">Teorie</span></span>
+      <h1>Fișă de lucru: șiruri, noțiuni introductive</h1>
+      <p class="material-meta">Publicat <time datetime="2026-11-15">15 noiembrie 2026</time> · de <a href="../despre.html" rel="author">Laura Miron</a></p>
+      <p class="material-actions"><a class="button" href="../materiale/pdf/fisa-lucru-siruri-notiuni-introductive-1036.pdf" target="_blank" rel="noopener">Deschide PDF</a></p></div>
+      
+      <section class="rezumat" aria-labelledby="rezumat-heading"><h2 id="rezumat-heading" data-i18n="summary.title">Rezumat</h2><p>Fișa arată ce este un șir și cum îl putem da: în cuvinte, prin enumerare, prin formulă, prin recurență sau prin grafic. Urmează șirul sumelor parțiale, aflarea termenului general pentru recurențe cu sumă sau cu produs și monotonia, studiată cu diferența, cu raportul sau prin inducție. La final sunt probleme pe trei niveluri.</p></section><nav class="cuprins" aria-labelledby="cuprins-heading"><h2 id="cuprins-heading" data-i18n="toc.title">Cuprins</h2><ol><li><a href="#s1">1. Ce este un șir</a></li><li><a href="#s2">2. Moduri de definire a unui șir</a></li><li><a href="#s3">3. Șirul sumelor parțiale</a></li><li><a href="#s4">4. Termenul general din relații de recurență</a><ol><li><a href="#s4-1">4.1. Recurențe de forma $x_n=x_{n-1}+f(n)$</a></li><li><a href="#s4-2">4.2. Recurențe de forma $x_n=x_{n-1}\cdot f(n)$</a></li></ol></li><li><a href="#s5">5. Monotonia unui șir</a></li><li><a href="#s6">Exerciții</a><ol><li><a href="#s6-1">Nivel de bază</a></li><li><a href="#s6-2">Nivel consolidat</a></li><li><a href="#s6-3">Nivel avansat</a></li><li><a href="#s6-4">Pentru cei care vor mai mult</a></li></ol></li></ol></nav>
+      
+      <div class="check-bar"><p class="note" id="check-note">Apasă «Verifică» lângă un exercițiu. Răspunsurile rămân pe acest dispozitiv.</p><button class="chip" type="button" id="check-reset" hidden>Șterge răspunsurile mele</button></div>
+      <article class="material-body" data-lang="ro" lang="ro">
+        <p><strong>La finalul fișei vei ști să:</strong></p>
+        <ul>
+          <li>recunoști un șir și îi calculezi termenii;</li>
+          <li>treci de la un mod de definire a unui șir la altul;</li>
+          <li>lucrezi cu șirul sumelor parțiale;</li>
+          <li>afli termenul general pentru recurențe de forma $x_n=x_{n-1}+f(n)$ și $x_n=x_{n-1}\cdot f(n)$;</li>
+          <li>stabilești monotonia unui șir cu diferența, cu raportul sau prin inducție.</li>
+        </ul>
+        <h2 id="s1">1. Ce este un șir</h2>
+        <div class="retine">
+          <p class="retine-title">Definiție</p>
+          <p>Un <strong>șir de numere reale</strong> este o funcție $f:\mathbb{N}^*\to \mathbb{R}$. Notăm $a_n=f(n)$.</p>
+          <ul>
+            <li>$n$ este <strong>rangul</strong> (indicele) termenului.</li>
+            <li>$a_n$ este <strong>termenul de rang</strong> $n$, numit și <strong>termenul general</strong>.</li>
+            <li>Scriem șirul $(a_n)_{n\ge 1}$ sau, pe scurt, $a_1;\ a_2;\ a_3;\ \ldots$</li>
+          </ul>
+        </div>
+        <p>Rangul $n$ este întotdeauna un număr natural. Termenul $a_n$ poate fi orice număr real.</p>
+        <p>Uneori numerotarea începe de la $0$: scriem atunci $(a_n)_{n\ge 0}$.</p>
+        <p><strong>Atenție!</strong> Ordinea termenilor contează. Șirurile $1;\ 2;\ 3;\ 4;\ \ldots$ și $2;\ 1;\ 4;\ 3;\ \ldots$ sunt diferite.</p>
+        <h2 id="s2">2. Moduri de definire a unui șir</h2>
+        <p>Același șir poate fi dat în mai multe feluri. Iată șirul $3;\ 9;\ 19;\ 33;\ 51;\ \ldots$ scris în cinci moduri:</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Modul</th>
+              <th>Cum arată</th>
+              <th>La ce e bun</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>În cuvinte (descriptiv)</td>
+              <td>„fiecare termen este cu 1 mai mare decât dublul pătratului rangului său”</td>
+              <td>spune regula pe înțeles</td>
+            </tr>
+            <tr>
+              <td>Prin enumerarea primilor termeni</td>
+              <td>$3;\ 9;\ 19;\ 33;\ 51;\ \ldots$</td>
+              <td>arată cum „începe” șirul</td>
+            </tr>
+            <tr>
+              <td>Prin formula termenului general</td>
+              <td>$a_n=2n^2+1$, $n\ge 1$</td>
+              <td>calculăm direct orice termen: $a_{10}=201$</td>
+            </tr>
+            <tr>
+              <td>Printr-o relație de recurență</td>
+              <td>$a_1=3$, $a_n=a_{n-1}+4n-2$, $n\ge 2$</td>
+              <td>fiecare termen se obține din cel dinainte</td>
+            </tr>
+            <tr>
+              <td>Prin tabel sau grafic</td>
+              <td>punctele $(1;3)$, $(2;9)$, $(3;19)$, …</td>
+              <td>vedem cum variază șirul</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="retine retine-de-retinut">
+          <p class="retine-title">De reținut</p>
+          <ul>
+            <li>La o relație de recurență trebuie dat și <strong>primul termen</strong>. Fără el, șirul nu este bine definit.</li>
+            <li>Graficul unui șir este format din <strong>puncte izolate</strong> $(n;\ a_n)$. Nu le unim cu o linie.</li>
+            <li>Câțiva termeni nu determină singuri șirul. Din enumerare găsim <strong>o formulă posibilă</strong>, pe care o verificăm pe termenii dați.</li>
+          </ul>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Exemplul 1</p>
+          <p>Fie șirul $(a_n)_{n\ge 1}$, $a_n=\frac{n+4}{n+2}$.</p>
+          <p><strong>a)</strong> Primii patru termeni: $a_1=\frac{5}{3}$, $a_2=\frac{6}{4}=\frac{3}{2}$, $a_3=\frac{7}{5}$, $a_4=\frac{8}{6}=\frac{4}{3}$.</p>
+          <p><strong>b)</strong> Este $\frac{13}{12}$ termen al șirului? Rezolvăm $\frac{n+4}{n+2}=\frac{13}{12}$: $12n+48=13n+26$, deci $n=22$. Da, $\frac{13}{12}=a_{22}$.</p>
+          <p><strong>c)</strong> Graficul: punctele $(n;\ a_n)$ pentru $n=1;\ 2;\ \ldots;\ 8$.</p>
+          <figure>
+            <img src="../assets/img/materiale/fisa-lucru-siruri-notiuni-introductive-1036-fig1.png" width="460" alt="Graficul șirului: opt puncte izolate care coboară încet, de la 5/3 pentru n = 1 spre 1">
+          </figure>
+        </div>
+        <h2 id="s3">3. Șirul sumelor parțiale</h2>
+        <div class="retine">
+          <p class="retine-title">Definiție</p>
+          <p>Pentru un șir $(a_n)_{n\ge 1}$ notăm</p>
+          <p>$$S_n=a_1+a_2+\ldots+a_n=\sum_{k=1}^{n}{a_k}.$$</p>
+          <p>Șirul $(S_n)_{n\ge 1}$ se numește <strong>șirul sumelor parțiale</strong>.</p>
+          <ul>
+            <li>$S_1=a_1$ și $S_n=S_{n-1}+a_n$, pentru $n\ge 2$.</li>
+            <li>Invers, dacă știm $S_n$: $a_1=S_1$ și $a_n=S_n-S_{n-1}$, pentru $n\ge 2$.</li>
+          </ul>
+        </div>
+        <p><strong>Atenție!</strong> Formula $a_n=S_n-S_{n-1}$ nu se aplică pentru $n=1$. Verificăm separat dacă formula găsită dă și termenul $a_1$.</p>
+        <div class="retine">
+          <p class="retine-title">Exemplul 2</p>
+          <p>Suma primilor $n$ termeni ai unui șir este $S_n=n^2+3n$. Aflăm $a_n$.</p>
+          <ul>
+            <li>$a_1=S_1=1+3=4$.</li>
+            <li>Pentru $n\ge 2$: $a_n=S_n-S_{n-1}=n^2+3n-(n-1)^2-3(n-1)=2n+2$.</li>
+            <li>Pentru $n=1$, formula dă $2\cdot 1+2=4=a_1$. Deci $a_n=2n+2$ pentru orice $n\ge 1$.</li>
+          </ul>
+        </div>
+        <h2 id="s4">4. Termenul general din relații de recurență</h2>
+        <h3 id="s4-1">4.1. Recurențe de forma $x_n=x_{n-1}+f(n)$</h3>
+        <div class="firul-logic">
+          <p class="firul-logic-label">★ Metodă</p>
+          <p class="firul-logic-lead">Adunăm relațiile</p>
+          <ol class="firul-logic-steps">
+            <li><span>Scriem relația pentru $n=2;\ 3;\ \ldots;\ n$: $x_2=x_1+f(2)$, $x_3=x_2+f(3)$, …, $x_n=x_{n-1}+f(n)$.</span></li>
+            <li><span>Adunăm relațiile membru cu membru. Termenii $x_2;\ x_3;\ \ldots;\ x_{n-1}$ apar în ambii membri și se reduc.</span></li>
+            <li><span>Rămâne $x_n=x_1+f(2)+f(3)+\ldots+f(n)$. Calculăm suma cu sumele cunoscute.</span></li>
+            <li><span>Verificăm formula pe $x_1$ și $x_2$.</span></li>
+          </ol>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Exemplul 3</p>
+          <p>$x_1=1$ și $x_n=x_{n-1}+6n-5$, pentru $n\ge 2$.</p>
+          <p>Adunând relațiile: $x_n=1+\sum_{k=2}^{n}{(6k-5)}$. Pentru $k=1$, termenul $6k-5$ este tocmai $1=x_1$, deci</p>
+          <p>$$x_n=\sum_{k=1}^{n}{(6k-5)}=6\cdot \frac{n(n+1)}{2}-5n=3n^2-2n.$$</p>
+          <p>Verificare: $x_1=3-2=1$ și $x_2=1+7=8=12-4$. ✓</p>
+        </div>
+        <h3 id="s4-2">4.2. Recurențe de forma $x_n=x_{n-1}\cdot f(n)$</h3>
+        <div class="firul-logic">
+          <p class="firul-logic-label">★ Metodă</p>
+          <p class="firul-logic-lead">Înmulțim relațiile</p>
+          <ol class="firul-logic-steps">
+            <li><span>Scriem relația pentru $n=2;\ 3;\ \ldots;\ n$: $x_2=x_1\cdot f(2)$, $x_3=x_2\cdot f(3)$, …, $x_n=x_{n-1}\cdot f(n)$.</span></li>
+            <li><span>Înmulțim relațiile membru cu membru. Simplificăm cu $x_2;\ x_3;\ \ldots;\ x_{n-1}$ (sunt nenuli).</span></li>
+            <li><span>Rămâne $x_n=x_1\cdot f(2)\cdot f(3)\cdot \ldots\cdot f(n)$. Fracțiile se simplifică „în lanț”.</span></li>
+            <li><span>Verificăm formula pe $x_1$ și $x_2$.</span></li>
+          </ol>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Exemplul 4</p>
+          <p>$x_1=1$ și $x_n=\frac{2n}{n+1}\cdot x_{n-1}$, pentru $n\ge 2$.</p>
+          <p>$$x_n=1\cdot \frac{2\cdot 2}{3}\cdot \frac{2\cdot 3}{4}\cdot \frac{2\cdot 4}{5}\cdot \ldots\cdot \frac{2\cdot n}{n+1}.$$</p>
+          <p>Factorul $2$ apare de $n-1$ ori. Fracțiile $\frac{2}{3}\cdot \frac{3}{4}\cdot \ldots\cdot \frac{n}{n+1}$ se simplifică „în lanț” și rămâne $\frac{2}{n+1}$. Deci</p>
+          <p>$$x_n=2^{n-1}\cdot \frac{2}{n+1}=\frac{2^n}{n+1}.$$</p>
+          <p>Verificare: $x_1=\frac{2}{2}=1$ și $x_2=\frac{4}{3}\cdot 1=\frac{2^2}{3}$. ✓</p>
+        </div>
+        <h2 id="s5">5. Monotonia unui șir</h2>
+        <div class="retine">
+          <p class="retine-title">Definiție</p>
+          <p>Șirul $(a_n)_{n\ge 1}$ este:</p>
+          <ul>
+            <li><strong>strict crescător</strong>, dacă $a_n&lt;a_{n+1}$ pentru orice $n\ge 1$;</li>
+            <li><strong>crescător</strong>, dacă $a_n\le a_{n+1}$ pentru orice $n\ge 1$;</li>
+            <li><strong>strict descrescător</strong>, dacă $a_n&gt;a_{n+1}$ pentru orice $n\ge 1$;</li>
+            <li><strong>descrescător</strong>, dacă $a_n\ge a_{n+1}$ pentru orice $n\ge 1$.</li>
+          </ul>
+          <p>Un șir crescător sau descrescător se numește <strong>monoton</strong>.</p>
+        </div>
+        <p>Este monotonia funcției $f:\mathbb{N}^*\to \mathbb{R}$, $f(n)=a_n$. La șiruri este suficient să comparăm <strong>doi termeni consecutivi</strong>.</p>
+        <p>Un șir este <strong>nemonoton</strong> dacă găsim trei termeni care „urcă și apoi coboară” (sau invers). De exemplu, $a_1&lt;a_2$ și $a_2&gt;a_3$.</p>
+        <div class="retine retine-de-retinut">
+          <p class="retine-title">De reținut · Trei metode</p>
+          <p><strong>1. Diferența.</strong> Calculăm $a_{n+1}-a_n$, o aducem la o formă simplă și îi studiem semnul. Dacă $a_{n+1}-a_n&gt;0$ pentru orice $n$, șirul este strict crescător. Dacă $a_{n+1}-a_n&lt;0$ pentru orice $n$, șirul este strict descrescător.</p>
+          <p><strong>2. Raportul.</strong> Se folosește <strong>numai dacă toți termenii sunt strict pozitivi</strong>. Comparăm $\frac{a_{n+1}}{a_n}$ cu $1$. Dacă raportul este mai mare decât $1$, șirul este strict crescător. Dacă este mai mic decât $1$, șirul este strict descrescător. Metoda e potrivită când $a_n$ conține puteri sau produse.</p>
+          <p><strong>3. Inducția.</strong> Se folosește când șirul este dat prin recurență $x_{n+1}=g(x_n)$. Verificăm $x_1&lt;x_2$ (sau $x_1&gt;x_2$). Arătăm că din $x_k&lt;x_{k+1}$ rezultă $x_{k+1}&lt;x_{k+2}$.</p>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Exemplul 5</p>
+          <p><strong>a) Diferența.</strong> $a_n=\frac{4n+1}{n+2}$.</p>
+          <p>$$a_{n+1}-a_n=\frac{4n+5}{n+3}-\frac{4n+1}{n+2}=\frac{(4n+5)(n+2)-(4n+1)(n+3)}{(n+2)(n+3)}=\frac{7}{(n+2)(n+3)}&gt;0.$$</p>
+          <p>Șirul este strict crescător.</p>
+          <p><strong>b) Raportul.</strong> Șirul din Exemplul 4: $x_n=\frac{2^n}{n+1}$. Toți termenii sunt strict pozitivi.</p>
+          <p>$$\frac{x_{n+1}}{x_n}=\frac{2^{n+1}}{n+2}\cdot \frac{n+1}{2^n}=\frac{2n+2}{n+2}&gt;1,$$</p>
+          <p>pentru că $2n+2&gt;n+2$ pentru orice $n\ge 1$. Șirul este strict crescător.</p>
+          <p><strong>c) Inducția.</strong> $x_1=1$ și $x_{n+1}=\frac{x_n+6}{3}$, pentru $n\ge 1$. Arătăm că $x_n&lt;x_{n+1}$ pentru orice $n\ge 1$.</p>
+          <ul>
+            <li>Verificare: $x_2=\frac{7}{3}&gt;1=x_1$.</li>
+            <li>Pasul de inducție: presupunem $x_k&lt;x_{k+1}$. Atunci $x_k+6&lt;x_{k+1}+6$, deci $\frac{x_k+6}{3}&lt;\frac{x_{k+1}+6}{3}$, adică $x_{k+1}&lt;x_{k+2}$.</li>
+          </ul>
+          <p>Conform principiului inducției matematice, șirul este strict crescător.</p>
+        </div>
+        <h2 id="s6">Exerciții</h2>
+        <h3 id="s6-1">Nivel de bază</h3>
+        <ol class="exercises">
+          <li>
+            <p>Se consideră șirul $(a_n)_{n\ge 1}$, $a_n=\frac{2n-1}{n+2}$.</p>
+            <p data-ex="1a">a) Calculați $a_1$, $a_2$, $a_3$ și $a_4$.</p>
+            <p data-ex="1b">b) Arătați că $\frac{13}{9}$ este termen al șirului și aflați-i rangul.</p>
+            <p data-ex="1c">c) Este numărul $2$ termen al șirului? Justificați.</p>
+          </li>
+          <li>
+            <p>Scrieți primii cinci termeni ai fiecărui șir:</p>
+            <p data-ex="2a">a) șirul numerelor prime, în ordine crescătoare;</p>
+            <p data-ex="2b">b) șirul pătratelor perfecte nenule, în ordine crescătoare;</p>
+            <p data-ex="2c">c) șirul $(r_n)_{n\ge 1}$, unde $r_n$ este restul împărțirii lui $n$ la $3$.</p>
+          </li>
+          <li>
+            <p>Găsiți o formulă posibilă pentru termenul general, $n\ge 1$:</p>
+            <p data-ex="3a">a) $3;\ 5;\ 7;\ 9;\ \ldots$</p>
+            <p data-ex="3b">b) $\frac{1}{2};\ \frac{2}{3};\ \frac{3}{4};\ \frac{4}{5};\ \ldots$</p>
+            <p data-ex="3c">c) $-1;\ 1;\ -1;\ 1;\ \ldots$</p>
+            <p data-ex="3d">d) $0;\ 3;\ 8;\ 15;\ 24;\ \ldots$</p>
+            <p data-ex="3e">e) $\frac{1}{3};\ \frac{1}{9};\ \frac{1}{27};\ \frac{1}{81};\ \ldots$</p>
+          </li>
+          <li>
+            <p>Relații de recurență.</p>
+            <p data-ex="4a">a) Șirul $(x_n)_{n\ge 1}$ are $x_1=2$ și $x_{n+1}=2x_n-1$, pentru $n\ge 1$. Calculați $x_2$, $x_3$, $x_4$ și $x_5$.</p>
+            <p data-ex="4b">b) Primii termeni ai unui șir sunt $1;\ 4;\ 13;\ 40;\ 121$. Găsiți o relație de recurență de forma $x_{n+1}=a\cdot x_n+b$ care îi generează.</p>
+            <p><em>Indicație:</em> comparați fiecare termen cu triplul celui dinainte.</p>
+          </li>
+          <li>
+            <p data-ex="5">Fie șirul $a_n=(-1)^n\cdot (2n-1)$, $n\ge 1$. Scrieți primii cinci termeni, apoi calculați $S_1$, $S_2$, $S_3$, $S_4$ și $S_5$.</p>
+          </li>
+          <li>
+            <p>Studiați monotonia șirurilor folosind diferența:</p>
+            <p data-ex="6a">a) $a_n=5-\frac{2}{n}$;</p>
+            <p data-ex="6b">b) $b_n=\frac{n+4}{n+1}$.</p>
+          </li>
+        </ol>
+        <h3 id="s6-2">Nivel consolidat</h3>
+        <ol class="exercises" start="7">
+          <li>
+            <p>Aflați termenul general $a_n$ al șirului pentru care suma primilor $n$ termeni este:</p>
+            <p data-ex="7a">a) $S_n=3n^2-n$;</p>
+            <p>b) $S_n=n^2+n+1$.</p>
+            <p><em>Indicație:</em> la b) comparați formula obținută pentru $n\ge 2$ cu $a_1$.</p>
+          </li>
+          <li>
+            <p>Aflați termenul general al șirului:</p>
+            <p data-ex="8a">a) $x_1=2$, $x_n=x_{n-1}+6n-2$, pentru $n\ge 2$;</p>
+            <p data-ex="8b">b) $x_1=4$, $x_n=x_{n-1}+3n^2+1$, pentru $n\ge 2$.</p>
+            <p><em>Indicație:</em> folosiți sumele $\sum_{k=1}^{n}{k}$ și $\sum_{k=1}^{n}{k^2}$.</p>
+          </li>
+          <li>
+            <p>Aflați termenul general al șirului:</p>
+            <p data-ex="9a">a) $x_1=1$, $x_n=\frac{n+2}{n-1}\cdot x_{n-1}$, pentru $n\ge 2$;</p>
+            <p data-ex="9b">b) $x_1=4$, $x_n=\frac{n-1}{n+1}\cdot x_{n-1}$, pentru $n\ge 2$.</p>
+          </li>
+          <li>
+            <p>Studiați monotonia șirurilor folosind raportul:</p>
+            <p data-ex="10a">a) $a_n=\frac{n}{3^n}$;</p>
+            <p data-ex="10b">b) $b_n=\frac{2\cdot 5\cdot 8\cdot \ldots\cdot (3n-1)}{3\cdot 6\cdot 9\cdot \ldots\cdot (3n)}$.</p>
+          </li>
+          <li>
+            <p>Un videoclip are $10$ vizualizări în prima zi după postare. În fiecare zi următoare, numărul vizualizărilor din ziua $n$ este cu $2n$ mai mare decât în ziua precedentă.</p>
+            <p>a) Notați cu $x_n$ numărul vizualizărilor din ziua $n$. Scrieți relația de recurență.</p>
+            <p data-ex="11b">b) Aflați termenul general $x_n$. Câte vizualizări are videoclipul în ziua a $10$-a?</p>
+            <p data-ex="11c">c) Câte vizualizări are videoclipul, în total, în primele $10$ zile?</p>
+          </li>
+          <li>
+            <p>Șirul $(x_n)_{n\ge 1}$ are $x_1=5$ și $x_{n+1}=\frac{x_n+3}{4}$, pentru $n\ge 1$. Arătați prin inducție că șirul este strict descrescător.</p>
+          </li>
+        </ol>
+        <h3 id="s6-3">Nivel avansat</h3>
+        <ol class="exercises" start="13">
+          <li>
+            <p>Șirul $(x_n)_{n\ge 1}$ are $x_1=1$ și $x_n=\frac{n(n+1)}{(n-1)(n+2)}\cdot x_{n-1}$, pentru $n\ge 2$.</p>
+            <p data-ex="13a">a) Aflați termenul general.</p>
+            <p data-ex="13b">b) Studiați monotonia șirului.</p>
+            <p><em>Indicație:</em> despărțiți produsul în două „lanțuri”: $\frac{2}{1}\cdot \frac{3}{2}\cdot \ldots\cdot \frac{n}{n-1}$ și $\frac{3}{4}\cdot \frac{4}{5}\cdot \ldots\cdot \frac{n+1}{n+2}$.</p>
+          </li>
+          <li>
+            <p>Fie șirul $a_n=\frac{n^2}{2^n}$, $n\ge 1$.</p>
+            <p>a) Arătați că $\frac{a_{n+1}}{a_n}&lt;1$ dacă și numai dacă $n^2-2n-1&gt;0$.</p>
+            <p data-ex="14b">b) Calculați $a_1$, $a_2$, $a_3$, $a_4$. Este șirul monoton? Începând de la ce rang termenii scad?</p>
+          </li>
+          <li>
+            <p>Șirul $(x_n)_{n\ge 1}$ are $x_1=1$ și $x_{n+1}=\sqrt{x_n+2}$, pentru $n\ge 1$.</p>
+            <p>a) Arătați prin inducție că $x_n&lt;2$ pentru orice $n\ge 1$.</p>
+            <p>b) Arătați prin inducție că șirul este strict crescător.</p>
+          </li>
+          <li>
+            <p>Revenim la șirul de la exercițiul 4 a): $x_1=2$, $x_{n+1}=2x_n-1$.</p>
+            <p data-ex="16a">a) Comparați termenii $x_1;\ \ldots;\ x_5$ cu puterile lui $2$. Intuiți o formulă pentru $x_n$.</p>
+            <p>b) Demonstrați formula prin inducție matematică.</p>
+          </li>
+        </ol>
+        <h3 id="s6-4">Pentru cei care vor mai mult</h3>
+        <ol class="exercises" start="17">
+          <li>
+            <p data-ex="17">Determinați numerele reale $m$ pentru care șirul $a_n=\frac{n+m}{2^n}$, $n\ge 1$, este strict descrescător. Ce se întâmplă pentru $m=0$?</p>
+            <p><em>Indicație:</em> folosiți diferența. De ce nu putem folosi raportul pentru orice $m$?</p>
+          </li>
+        </ol>
+      </article>
+      <section class="faq" aria-labelledby="faq-heading"><h2 id="faq-heading" data-i18n="faq.title">Întrebări frecvente</h2><details><summary>Care este diferența dintre formula termenului general și o relație de recurență?</summary><p>Formula termenului general dă direct orice termen: înlocuiești n și calculezi. O relație de recurență dă un termen din cei dinaintea lui, deci trebuie să cunoști primul termen și să calculezi pe rând. Pentru recurențe de forma xₙ = xₙ₋₁ + f(n) sau xₙ = xₙ₋₁ · f(n) putem găsi formula termenului general adunând, respectiv înmulțind relațiile.</p></details><details><summary>Cum aflu termenul general al unui șir când știu suma primilor n termeni?</summary><p>Folosești șirul sumelor parțiale: a₁ = S₁ și aₙ = Sₙ − Sₙ₋₁ pentru n ≥ 2. Formula a doua nu se aplică pentru n = 1, așa că verifici separat dacă formula găsită dă și primul termen. Dacă nu îl dă, scrii termenul general pe două ramuri.</p></details><details><summary>Când folosesc diferența și când raportul pentru monotonia unui șir?</summary><p>Diferența aₙ₊₁ − aₙ merge la orice șir și e potrivită pentru fracții și sume: îi studiezi semnul. Raportul aₙ₊₁ / aₙ, comparat cu 1, se folosește numai când toți termenii sunt strict pozitivi și e comod pentru puteri și produse. Când șirul e dat doar prin recurență, monotonia se arată de obicei prin inducție.</p></details></section>
+      <aside class="related" id="material-related"><p><a class="more" href="../clasa-9.html">Toate materialele pentru Clasa a IX-a</a></p></aside>
+    </div>
+  </main>
+
+  <footer id="site-footer" class="site-footer"><div class="wrap"><p>© <span data-year>2026</span> Laura Miron. <span data-i18n="footer.text">Materiale gratuite pentru elevi.</span> · <a href="../despre.html" data-i18n="footer.about">Despre</a> · <a href="https://mqgrader.ro/" data-i18n="footer.mqgrader">MQGrader: corectare teste</a> · <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license">CC BY-NC-SA 4.0</a></p></div></footer>
+</body>
+</html>

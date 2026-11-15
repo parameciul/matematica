@@ -1,0 +1,748 @@
+{
+  "uid": "1036",
+  "version": 1,
+  "items": {
+    "5": {
+      "kind": "list",
+      "show": "Termenii: $-1;\\ 3;\\ -5;\\ 7;\\ -9$. Sumele: $S_1=-1$, $S_2=2$, $S_3=-3$, $S_4=4$, $S_5=-5$",
+      "accept": [
+        "-1; 2; -3; 4; -5"
+      ],
+      "hint": {
+        "ro": "$S_1$; $S_2$; $S_3$; $S_4$; $S_5$",
+        "en": "$S_1$; $S_2$; $S_3$; $S_4$; $S_5$"
+      }
+    },
+    "12": {
+      "check": false,
+      "why": "proof",
+      "show": "$x_2=2&lt;5$; din $x_k&gt;x_{k+1}$ rezultă $\\frac{x_k+3}{4}&gt;\\frac{x_{k+1}+3}{4}$"
+    },
+    "15": {
+      "check": false,
+      "why": "proof",
+      "show": "a) $x_{k+1}=\\sqrt{x_k+2}&lt;\\sqrt{4}=2$; b) $x_2=\\sqrt{3}&gt;1$ și $x_k&lt;x_{k+1}\\Rightarrow x_{k+1}&lt;x_{k+2}$"
+    },
+    "17": {
+      "kind": "interval",
+      "show": "$a_{n+1}-a_n=\\frac{1-n-m}{2^{n+1}}$; strict descrescător pentru $m&gt;0$ (pentru $m=0$: descrescător, dar nu strict)",
+      "accept": [
+        "(0; +inf)"
+      ],
+      "hint": {
+        "ro": "un interval pentru $m$",
+        "en": "an interval for $m$"
+      }
+    },
+    "1a": {
+      "kind": "list",
+      "show": "$a_1=\\frac{1}{3}$, $a_2=\\frac{3}{4}$, $a_3=1$, $a_4=\\frac{7}{6}$",
+      "accept": [
+        "1/3; 3/4; 1; 7/6"
+      ],
+      "hint": {
+        "ro": "$a_1$; $a_2$; $a_3$; $a_4$",
+        "en": "$a_1$; $a_2$; $a_3$; $a_4$"
+      }
+    },
+    "1b": {
+      "kind": "number",
+      "show": "$18n-9=13n+26\\Rightarrow n=7$",
+      "accept": [
+        "7"
+      ]
+    },
+    "1c": {
+      "kind": "options",
+      "options": [
+        {
+          "value": "da",
+          "label": {
+            "ro": "Da",
+            "en": "Yes"
+          }
+        },
+        {
+          "value": "nu",
+          "label": {
+            "ro": "Nu",
+            "en": "No"
+          }
+        }
+      ],
+      "accept": [
+        "nu"
+      ],
+      "show": "$2n-1=2n+4$ nu are soluții, deci $2$ nu este termen al șirului"
+    },
+    "2a": {
+      "kind": "list",
+      "show": "$2;\\ 3;\\ 5;\\ 7;\\ 11$",
+      "accept": [
+        "2; 3; 5; 7; 11"
+      ]
+    },
+    "2b": {
+      "kind": "list",
+      "show": "$1;\\ 4;\\ 9;\\ 16;\\ 25$",
+      "accept": [
+        "1; 4; 9; 16; 25"
+      ]
+    },
+    "2c": {
+      "kind": "list",
+      "show": "$1;\\ 2;\\ 0;\\ 1;\\ 2$",
+      "accept": [
+        "1; 2; 0; 1; 2"
+      ]
+    },
+    "3a": {
+      "kind": "text",
+      "show": "$a_n=2n+1$",
+      "accept": [
+        "1+2n",
+        "2n+1",
+        "a_n=1+2n",
+        "a_n=2n+1",
+        "an=1+2n",
+        "an=2n+1",
+        "x_n=1+2n",
+        "x_n=2n+1",
+        "xn=1+2n",
+        "xn=2n+1"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, de exemplu (n+1)/(2n) sau 3^n-1",
+        "en": "an expression in $n$, for example (n+1)/(2n) or 3^n-1"
+      }
+    },
+    "3b": {
+      "kind": "text",
+      "show": "$a_n=\\frac{n}{n+1}$",
+      "accept": [
+        "a_n=n/(n+1)",
+        "an=n/(n+1)",
+        "n/(n+1)",
+        "x_n=n/(n+1)",
+        "xn=n/(n+1)"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, de exemplu (n+1)/(2n) sau 3^n-1",
+        "en": "an expression in $n$, for example (n+1)/(2n) or 3^n-1"
+      }
+    },
+    "3c": {
+      "kind": "text",
+      "show": "$a_n=(-1)^n$",
+      "accept": [
+        "(-1)^n",
+        "a_n=(-1)^n",
+        "an=(-1)^n",
+        "x_n=(-1)^n",
+        "xn=(-1)^n"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, de exemplu (n+1)/(2n) sau 3^n-1",
+        "en": "an expression in $n$, for example (n+1)/(2n) or 3^n-1"
+      }
+    },
+    "3d": {
+      "kind": "text",
+      "show": "$a_n=n^2-1$",
+      "accept": [
+        "(n+1)(n-1)",
+        "(n+1)*(n-1)",
+        "(n-1)(n+1)",
+        "(n-1)*(n+1)",
+        "-1+n^2",
+        "a_n=(n+1)(n-1)",
+        "a_n=(n+1)*(n-1)",
+        "a_n=(n-1)(n+1)",
+        "a_n=(n-1)*(n+1)",
+        "a_n=-1+n^2",
+        "a_n=n^2-1",
+        "an=(n+1)(n-1)",
+        "an=(n+1)*(n-1)",
+        "an=(n-1)(n+1)",
+        "an=(n-1)*(n+1)",
+        "an=-1+n^2",
+        "an=n^2-1",
+        "n^2-1",
+        "x_n=(n+1)(n-1)",
+        "x_n=(n+1)*(n-1)",
+        "x_n=(n-1)(n+1)",
+        "x_n=(n-1)*(n+1)",
+        "x_n=-1+n^2",
+        "x_n=n^2-1",
+        "xn=(n+1)(n-1)",
+        "xn=(n+1)*(n-1)",
+        "xn=(n-1)(n+1)",
+        "xn=(n-1)*(n+1)",
+        "xn=-1+n^2",
+        "xn=n^2-1"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, de exemplu (n+1)/(2n) sau 3^n-1",
+        "en": "an expression in $n$, for example (n+1)/(2n) or 3^n-1"
+      }
+    },
+    "3e": {
+      "kind": "text",
+      "show": "$a_n=\\frac{1}{3^n}$",
+      "accept": [
+        "(1/3)^n",
+        "1/(3^n)",
+        "1/3^n",
+        "3^(-n)",
+        "a_n=(1/3)^n",
+        "a_n=1/(3^n)",
+        "a_n=1/3^n",
+        "a_n=3^(-n)",
+        "an=(1/3)^n",
+        "an=1/(3^n)",
+        "an=1/3^n",
+        "an=3^(-n)",
+        "x_n=(1/3)^n",
+        "x_n=1/(3^n)",
+        "x_n=1/3^n",
+        "x_n=3^(-n)",
+        "xn=(1/3)^n",
+        "xn=1/(3^n)",
+        "xn=1/3^n",
+        "xn=3^(-n)"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, de exemplu (n+1)/(2n) sau 3^n-1",
+        "en": "an expression in $n$, for example (n+1)/(2n) or 3^n-1"
+      }
+    },
+    "4a": {
+      "kind": "list",
+      "show": "$x_2=3$, $x_3=5$, $x_4=9$, $x_5=17$",
+      "accept": [
+        "3; 5; 9; 17"
+      ],
+      "hint": {
+        "ro": "$x_2$; $x_3$; $x_4$; $x_5$",
+        "en": "$x_2$; $x_3$; $x_4$; $x_5$"
+      }
+    },
+    "4b": {
+      "kind": "text",
+      "show": "$x_{n+1}=3x_n+1$, adică $a=3$, $b=1$",
+      "accept": [
+        "3;1",
+        "a=3;b=1"
+      ],
+      "hint": {
+        "ro": "$a$; $b$",
+        "en": "$a$; $b$"
+      }
+    },
+    "6a": {
+      "kind": "options",
+      "options": [
+        {
+          "value": "sc",
+          "label": {
+            "ro": "strict crescător",
+            "en": "strictly increasing"
+          },
+          "chip": {
+            "ro": "strict crescător",
+            "en": "strictly increasing"
+          }
+        },
+        {
+          "value": "sd",
+          "label": {
+            "ro": "strict descrescător",
+            "en": "strictly decreasing"
+          },
+          "chip": {
+            "ro": "strict descrescător",
+            "en": "strictly decreasing"
+          }
+        },
+        {
+          "value": "c",
+          "label": {
+            "ro": "constant",
+            "en": "constant"
+          }
+        },
+        {
+          "value": "nm",
+          "label": {
+            "ro": "nemonoton",
+            "en": "not monotonic"
+          },
+          "chip": {
+            "ro": "nemonoton",
+            "en": "not monotonic"
+          }
+        }
+      ],
+      "accept": [
+        "sc"
+      ],
+      "show": "$a_{n+1}-a_n=\\frac{2}{n(n+1)}&gt;0$: strict crescător"
+    },
+    "6b": {
+      "kind": "options",
+      "options": [
+        {
+          "value": "sc",
+          "label": {
+            "ro": "strict crescător",
+            "en": "strictly increasing"
+          },
+          "chip": {
+            "ro": "strict crescător",
+            "en": "strictly increasing"
+          }
+        },
+        {
+          "value": "sd",
+          "label": {
+            "ro": "strict descrescător",
+            "en": "strictly decreasing"
+          },
+          "chip": {
+            "ro": "strict descrescător",
+            "en": "strictly decreasing"
+          }
+        },
+        {
+          "value": "c",
+          "label": {
+            "ro": "constant",
+            "en": "constant"
+          }
+        },
+        {
+          "value": "nm",
+          "label": {
+            "ro": "nemonoton",
+            "en": "not monotonic"
+          },
+          "chip": {
+            "ro": "nemonoton",
+            "en": "not monotonic"
+          }
+        }
+      ],
+      "accept": [
+        "sd"
+      ],
+      "show": "$b_{n+1}-b_n=\\frac{-3}{(n+1)(n+2)}&lt;0$: strict descrescător"
+    },
+    "7a": {
+      "kind": "text",
+      "show": "$a_n=6n-4$",
+      "accept": [
+        "2(3n-2)",
+        "2*(3n-2)",
+        "6n-4",
+        "a_n=2(3n-2)",
+        "a_n=2*(3n-2)",
+        "a_n=6n-4",
+        "an=2(3n-2)",
+        "an=2*(3n-2)",
+        "an=6n-4",
+        "x_n=2(3n-2)",
+        "x_n=2*(3n-2)",
+        "x_n=6n-4",
+        "xn=2(3n-2)",
+        "xn=2*(3n-2)",
+        "xn=6n-4"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, de exemplu (n+1)/(2n) sau 3^n-1",
+        "en": "an expression in $n$, for example (n+1)/(2n) or 3^n-1"
+      }
+    },
+    "7b": {
+      "check": false,
+      "why": "open",
+      "show": "$a_1=3$, iar $a_n=2n$ pentru $n\\ge 2$ (formula nu dă $a_1$)"
+    },
+    "8a": {
+      "kind": "text",
+      "show": "$x_n=3n^2+n-2$",
+      "accept": [
+        "(3n-2)(n+1)",
+        "(3n-2)*(n+1)",
+        "(n+1)(3n-2)",
+        "(n+1)*(3n-2)",
+        "3n^2+n-2",
+        "a_n=(3n-2)(n+1)",
+        "a_n=(3n-2)*(n+1)",
+        "a_n=(n+1)(3n-2)",
+        "a_n=(n+1)*(3n-2)",
+        "a_n=3n^2+n-2",
+        "an=(3n-2)(n+1)",
+        "an=(3n-2)*(n+1)",
+        "an=(n+1)(3n-2)",
+        "an=(n+1)*(3n-2)",
+        "an=3n^2+n-2",
+        "x_n=(3n-2)(n+1)",
+        "x_n=(3n-2)*(n+1)",
+        "x_n=(n+1)(3n-2)",
+        "x_n=(n+1)*(3n-2)",
+        "x_n=3n^2+n-2",
+        "xn=(3n-2)(n+1)",
+        "xn=(3n-2)*(n+1)",
+        "xn=(n+1)(3n-2)",
+        "xn=(n+1)*(3n-2)",
+        "xn=3n^2+n-2"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, de exemplu (n+1)/(2n) sau 3^n-1",
+        "en": "an expression in $n$, for example (n+1)/(2n) or 3^n-1"
+      }
+    },
+    "8b": {
+      "kind": "text",
+      "show": "$x_n=\\frac{n(2n^2+3n+3)}{2}$",
+      "accept": [
+        "(2n^3+3n^2+3n)/2",
+        "a_n=(2n^3+3n^2+3n)/2",
+        "a_n=n(2n^2+3n+3)/2",
+        "a_n=n(n+1)(2n+1)/2+n",
+        "a_n=n(n+1)*(2n+1)/2+n",
+        "a_n=n*(2n^2+3n+3)/2",
+        "a_n=n*(n+1)(2n+1)/2+n",
+        "a_n=n*(n+1)*(2n+1)/2+n",
+        "a_n=n^3+3n^2/2+3n/2",
+        "an=(2n^3+3n^2+3n)/2",
+        "an=n(2n^2+3n+3)/2",
+        "an=n(n+1)(2n+1)/2+n",
+        "an=n(n+1)*(2n+1)/2+n",
+        "an=n*(2n^2+3n+3)/2",
+        "an=n*(n+1)(2n+1)/2+n",
+        "an=n*(n+1)*(2n+1)/2+n",
+        "an=n^3+3n^2/2+3n/2",
+        "n(2n^2+3n+3)/2",
+        "n(n+1)(2n+1)/2+n",
+        "n(n+1)*(2n+1)/2+n",
+        "n*(2n^2+3n+3)/2",
+        "n*(n+1)(2n+1)/2+n",
+        "n*(n+1)*(2n+1)/2+n",
+        "n^3+3n^2/2+3n/2",
+        "x_n=(2n^3+3n^2+3n)/2",
+        "x_n=n(2n^2+3n+3)/2",
+        "x_n=n(n+1)(2n+1)/2+n",
+        "x_n=n(n+1)*(2n+1)/2+n",
+        "x_n=n*(2n^2+3n+3)/2",
+        "x_n=n*(n+1)(2n+1)/2+n",
+        "x_n=n*(n+1)*(2n+1)/2+n",
+        "x_n=n^3+3n^2/2+3n/2",
+        "xn=(2n^3+3n^2+3n)/2",
+        "xn=n(2n^2+3n+3)/2",
+        "xn=n(n+1)(2n+1)/2+n",
+        "xn=n(n+1)*(2n+1)/2+n",
+        "xn=n*(2n^2+3n+3)/2",
+        "xn=n*(n+1)(2n+1)/2+n",
+        "xn=n*(n+1)*(2n+1)/2+n",
+        "xn=n^3+3n^2/2+3n/2"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, de exemplu (n+1)/(2n) sau 3^n-1",
+        "en": "an expression in $n$, for example (n+1)/(2n) or 3^n-1"
+      }
+    },
+    "9a": {
+      "kind": "text",
+      "show": "$x_n=\\frac{n(n+1)(n+2)}{6}$",
+      "accept": [
+        "(n^3+3n^2+2n)/6",
+        "a_n=(n^3+3n^2+2n)/6",
+        "a_n=n(n+1)(n+2)/6",
+        "a_n=n(n+1)*(n+2)/6",
+        "a_n=n*(n+1)(n+2)/6",
+        "a_n=n*(n+1)*(n+2)/6",
+        "an=(n^3+3n^2+2n)/6",
+        "an=n(n+1)(n+2)/6",
+        "an=n(n+1)*(n+2)/6",
+        "an=n*(n+1)(n+2)/6",
+        "an=n*(n+1)*(n+2)/6",
+        "n(n+1)(n+2)/6",
+        "n(n+1)*(n+2)/6",
+        "n*(n+1)(n+2)/6",
+        "n*(n+1)*(n+2)/6",
+        "x_n=(n^3+3n^2+2n)/6",
+        "x_n=n(n+1)(n+2)/6",
+        "x_n=n(n+1)*(n+2)/6",
+        "x_n=n*(n+1)(n+2)/6",
+        "x_n=n*(n+1)*(n+2)/6",
+        "xn=(n^3+3n^2+2n)/6",
+        "xn=n(n+1)(n+2)/6",
+        "xn=n(n+1)*(n+2)/6",
+        "xn=n*(n+1)(n+2)/6",
+        "xn=n*(n+1)*(n+2)/6"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, de exemplu (n+1)/(2n) sau 3^n-1",
+        "en": "an expression in $n$, for example (n+1)/(2n) or 3^n-1"
+      }
+    },
+    "9b": {
+      "kind": "text",
+      "show": "$x_n=\\frac{8}{n(n+1)}$",
+      "accept": [
+        "8/(n(n+1))",
+        "8/(n*(n+1))",
+        "8/(n^2+n)",
+        "a_n=8/(n(n+1))",
+        "a_n=8/(n*(n+1))",
+        "a_n=8/(n^2+n)",
+        "an=8/(n(n+1))",
+        "an=8/(n*(n+1))",
+        "an=8/(n^2+n)",
+        "x_n=8/(n(n+1))",
+        "x_n=8/(n*(n+1))",
+        "x_n=8/(n^2+n)",
+        "xn=8/(n(n+1))",
+        "xn=8/(n*(n+1))",
+        "xn=8/(n^2+n)"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, de exemplu (n+1)/(2n) sau 3^n-1",
+        "en": "an expression in $n$, for example (n+1)/(2n) or 3^n-1"
+      }
+    },
+    "10a": {
+      "kind": "options",
+      "options": [
+        {
+          "value": "sc",
+          "label": {
+            "ro": "strict crescător",
+            "en": "strictly increasing"
+          },
+          "chip": {
+            "ro": "strict crescător",
+            "en": "strictly increasing"
+          }
+        },
+        {
+          "value": "sd",
+          "label": {
+            "ro": "strict descrescător",
+            "en": "strictly decreasing"
+          },
+          "chip": {
+            "ro": "strict descrescător",
+            "en": "strictly decreasing"
+          }
+        },
+        {
+          "value": "c",
+          "label": {
+            "ro": "constant",
+            "en": "constant"
+          }
+        },
+        {
+          "value": "nm",
+          "label": {
+            "ro": "nemonoton",
+            "en": "not monotonic"
+          },
+          "chip": {
+            "ro": "nemonoton",
+            "en": "not monotonic"
+          }
+        }
+      ],
+      "accept": [
+        "sd"
+      ],
+      "show": "$\\frac{a_{n+1}}{a_n}=\\frac{n+1}{3n}&lt;1$: strict descrescător"
+    },
+    "10b": {
+      "kind": "options",
+      "options": [
+        {
+          "value": "sc",
+          "label": {
+            "ro": "strict crescător",
+            "en": "strictly increasing"
+          },
+          "chip": {
+            "ro": "strict crescător",
+            "en": "strictly increasing"
+          }
+        },
+        {
+          "value": "sd",
+          "label": {
+            "ro": "strict descrescător",
+            "en": "strictly decreasing"
+          },
+          "chip": {
+            "ro": "strict descrescător",
+            "en": "strictly decreasing"
+          }
+        },
+        {
+          "value": "c",
+          "label": {
+            "ro": "constant",
+            "en": "constant"
+          }
+        },
+        {
+          "value": "nm",
+          "label": {
+            "ro": "nemonoton",
+            "en": "not monotonic"
+          },
+          "chip": {
+            "ro": "nemonoton",
+            "en": "not monotonic"
+          }
+        }
+      ],
+      "accept": [
+        "sd"
+      ],
+      "show": "$\\frac{b_{n+1}}{b_n}=\\frac{3n+2}{3n+3}&lt;1$: strict descrescător"
+    },
+    "11a": {
+      "check": false,
+      "why": "open",
+      "show": "$x_1=10$, $x_n=x_{n-1}+2n$, pentru $n\\ge 2$"
+    },
+    "11b": {
+      "kind": "number",
+      "show": "$x_n=n^2+n+8$, deci $x_{10}=118$",
+      "accept": [
+        "118"
+      ]
+    },
+    "11c": {
+      "kind": "number",
+      "show": "$385+55+80=520$",
+      "accept": [
+        "520"
+      ]
+    },
+    "13a": {
+      "kind": "text",
+      "show": "$x_n=\\frac{3n}{n+2}$",
+      "accept": [
+        "3-6/(n+2)",
+        "3n/(n+2)",
+        "a_n=3-6/(n+2)",
+        "a_n=3n/(n+2)",
+        "an=3-6/(n+2)",
+        "an=3n/(n+2)",
+        "x_n=3-6/(n+2)",
+        "x_n=3n/(n+2)",
+        "xn=3-6/(n+2)",
+        "xn=3n/(n+2)"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, de exemplu (n+1)/(2n) sau 3^n-1",
+        "en": "an expression in $n$, for example (n+1)/(2n) or 3^n-1"
+      }
+    },
+    "13b": {
+      "kind": "options",
+      "options": [
+        {
+          "value": "sc",
+          "label": {
+            "ro": "strict crescător",
+            "en": "strictly increasing"
+          },
+          "chip": {
+            "ro": "strict crescător",
+            "en": "strictly increasing"
+          }
+        },
+        {
+          "value": "sd",
+          "label": {
+            "ro": "strict descrescător",
+            "en": "strictly decreasing"
+          },
+          "chip": {
+            "ro": "strict descrescător",
+            "en": "strictly decreasing"
+          }
+        },
+        {
+          "value": "c",
+          "label": {
+            "ro": "constant",
+            "en": "constant"
+          }
+        },
+        {
+          "value": "nm",
+          "label": {
+            "ro": "nemonoton",
+            "en": "not monotonic"
+          },
+          "chip": {
+            "ro": "nemonoton",
+            "en": "not monotonic"
+          }
+        }
+      ],
+      "accept": [
+        "sc"
+      ],
+      "show": "$x_{n+1}-x_n=\\frac{6}{(n+2)(n+3)}&gt;0$: strict crescător"
+    },
+    "14a": {
+      "check": false,
+      "why": "proof",
+      "show": "$\\frac{(n+1)^2}{2n^2}&lt;1\\Leftrightarrow n^2-2n-1&gt;0$"
+    },
+    "14b": {
+      "kind": "number",
+      "show": "$a_1=\\frac{1}{2}$, $a_2=1$, $a_3=\\frac{9}{8}$, $a_4=1$: șirul nu este monoton; termenii scad de la rangul $3$",
+      "accept": [
+        "3"
+      ],
+      "hint": {
+        "ro": "rangul de la care termenii scad",
+        "en": "the index from which the terms decrease"
+      }
+    },
+    "16a": {
+      "kind": "text",
+      "show": "$x_n=2^{n-1}+1$",
+      "accept": [
+        "1+2^(n-1)",
+        "2^(n-1)+1",
+        "2^n/2+1",
+        "a_n=1+2^(n-1)",
+        "a_n=2^(n-1)+1",
+        "a_n=2^n/2+1",
+        "an=1+2^(n-1)",
+        "an=2^(n-1)+1",
+        "an=2^n/2+1",
+        "x_n=1+2^(n-1)",
+        "x_n=2^(n-1)+1",
+        "x_n=2^n/2+1",
+        "xn=1+2^(n-1)",
+        "xn=2^(n-1)+1",
+        "xn=2^n/2+1"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, de exemplu (n+1)/(2n) sau 3^n-1",
+        "en": "an expression in $n$, for example (n+1)/(2n) or 3^n-1"
+      }
+    },
+    "16b": {
+      "check": false,
+      "why": "proof",
+      "show": "$x_{k+1}=2(2^{k-1}+1)-1=2^k+1$"
+    }
+  }
+}

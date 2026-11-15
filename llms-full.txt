@@ -2296,6 +2296,408 @@ b) Calculate the length of segment $AC$ and the distance from point $O$ to the l
 
 ## Clasa a IX-a / Grade 9
 
+### Fișă de lucru: șiruri, noțiuni introductive
+- Source (RO): https://lauramiron.pages.dev/materiale/fisa-lucru-siruri-notiuni-introductive-1036
+- Source (EN): https://lauramiron.pages.dev/en/materiale/fisa-lucru-siruri-notiuni-introductive-1036
+- Author: Laura Miron. License: CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/).
+- Published: 2026-11-15. Updated: 2026-11-15.
+- Fișă de lucru pentru clasa a IX-a: șiruri, moduri de definire, sume parțiale, termenul general din recurențe și monotonia șirurilor.
+- Rezumat: Fișa arată ce este un șir și cum îl putem da: în cuvinte, prin enumerare, prin formulă, prin recurență sau prin grafic. Urmează șirul sumelor parțiale, aflarea termenului general pentru recurențe cu sumă sau cu produs și monotonia, studiată cu diferența, cu raportul sau prin inducție. La final sunt probleme pe trei niveluri.
+- Întrebări frecvente:
+  - Q: Care este diferența dintre formula termenului general și o relație de recurență?
+  - A: Formula termenului general dă direct orice termen: înlocuiești n și calculezi. O relație de recurență dă un termen din cei dinaintea lui, deci trebuie să cunoști primul termen și să calculezi pe rând. Pentru recurențe de forma xₙ = xₙ₋₁ + f(n) sau xₙ = xₙ₋₁ · f(n) putem găsi formula termenului general adunând, respectiv înmulțind relațiile.
+  - Q: Cum aflu termenul general al unui șir când știu suma primilor n termeni?
+  - A: Folosești șirul sumelor parțiale: a₁ = S₁ și aₙ = Sₙ − Sₙ₋₁ pentru n ≥ 2. Formula a doua nu se aplică pentru n = 1, așa că verifici separat dacă formula găsită dă și primul termen. Dacă nu îl dă, scrii termenul general pe două ramuri.
+  - Q: Când folosesc diferența și când raportul pentru monotonia unui șir?
+  - A: Diferența aₙ₊₁ − aₙ merge la orice șir și e potrivită pentru fracții și sume: îi studiezi semnul. Raportul aₙ₊₁ / aₙ, comparat cu 1, se folosește numai când toți termenii sunt strict pozitivi și e comod pentru puteri și produse. Când șirul e dat doar prin recurență, monotonia se arată de obicei prin inducție.
+
+La finalul fișei vei ști să:
+- recunoști un șir și îi calculezi termenii;
+- treci de la un mod de definire a unui șir la altul;
+- lucrezi cu șirul sumelor parțiale;
+- afli termenul general pentru recurențe de forma $x_n=x_{n-1}+f(n)$ și $x_n=x_{n-1}\cdot f(n)$;
+- stabilești monotonia unui șir cu diferența, cu raportul sau prin inducție.
+1. Ce este un șir
+Definiție
+Un șir de numere reale este o funcție $f:\mathbb{N}^*\to \mathbb{R}$. Notăm $a_n=f(n)$.
+- $n$ este rangul (indicele) termenului.
+- $a_n$ este termenul de rang $n$, numit și termenul general.
+- Scriem șirul $(a_n)_{n\ge 1}$ sau, pe scurt, $a_1;\ a_2;\ a_3;\ \ldots$
+Rangul $n$ este întotdeauna un număr natural. Termenul $a_n$ poate fi orice număr real.
+Uneori numerotarea începe de la $0$: scriem atunci $(a_n)_{n\ge 0}$.
+Atenție! Ordinea termenilor contează. Șirurile $1;\ 2;\ 3;\ 4;\ \ldots$ și $2;\ 1;\ 4;\ 3;\ \ldots$ sunt diferite.
+2. Moduri de definire a unui șir
+Același șir poate fi dat în mai multe feluri. Iată șirul $3;\ 9;\ 19;\ 33;\ 51;\ \ldots$ scris în cinci moduri:
+Modul
+Cum arată
+La ce e bun
+În cuvinte (descriptiv)
+„fiecare termen este cu 1 mai mare decât dublul pătratului rangului său”
+spune regula pe înțeles
+Prin enumerarea primilor termeni
+$3;\ 9;\ 19;\ 33;\ 51;\ \ldots$
+arată cum „începe” șirul
+Prin formula termenului general
+$a_n=2n^2+1$, $n\ge 1$
+calculăm direct orice termen: $a_{10}=201$
+Printr-o relație de recurență
+$a_1=3$, $a_n=a_{n-1}+4n-2$, $n\ge 2$
+fiecare termen se obține din cel dinainte
+Prin tabel sau grafic
+punctele $(1;3)$, $(2;9)$, $(3;19)$, …
+vedem cum variază șirul
+De reținut
+- La o relație de recurență trebuie dat și primul termen. Fără el, șirul nu este bine definit.
+- Graficul unui șir este format din puncte izolate $(n;\ a_n)$. Nu le unim cu o linie.
+- Câțiva termeni nu determină singuri șirul. Din enumerare găsim o formulă posibilă, pe care o verificăm pe termenii dați.
+Exemplul 1
+Fie șirul $(a_n)_{n\ge 1}$, $a_n=\frac{n+4}{n+2}$.
+a) Primii patru termeni: $a_1=\frac{5}{3}$, $a_2=\frac{6}{4}=\frac{3}{2}$, $a_3=\frac{7}{5}$, $a_4=\frac{8}{6}=\frac{4}{3}$.
+b) Este $\frac{13}{12}$ termen al șirului? Rezolvăm $\frac{n+4}{n+2}=\frac{13}{12}$: $12n+48=13n+26$, deci $n=22$. Da, $\frac{13}{12}=a_{22}$.
+c) Graficul: punctele $(n;\ a_n)$ pentru $n=1;\ 2;\ \ldots;\ 8$.
+3. Șirul sumelor parțiale
+Definiție
+Pentru un șir $(a_n)_{n\ge 1}$ notăm
+$$S_n=a_1+a_2+\ldots+a_n=\sum_{k=1}^{n}{a_k}.$$
+Șirul $(S_n)_{n\ge 1}$ se numește șirul sumelor parțiale.
+- $S_1=a_1$ și $S_n=S_{n-1}+a_n$, pentru $n\ge 2$.
+- Invers, dacă știm $S_n$: $a_1=S_1$ și $a_n=S_n-S_{n-1}$, pentru $n\ge 2$.
+Atenție! Formula $a_n=S_n-S_{n-1}$ nu se aplică pentru $n=1$. Verificăm separat dacă formula găsită dă și termenul $a_1$.
+Exemplul 2
+Suma primilor $n$ termeni ai unui șir este $S_n=n^2+3n$. Aflăm $a_n$.
+- $a_1=S_1=1+3=4$.
+- Pentru $n\ge 2$: $a_n=S_n-S_{n-1}=n^2+3n-(n-1)^2-3(n-1)=2n+2$.
+- Pentru $n=1$, formula dă $2\cdot 1+2=4=a_1$. Deci $a_n=2n+2$ pentru orice $n\ge 1$.
+4. Termenul general din relații de recurență
+4.1. Recurențe de forma $x_n=x_{n-1}+f(n)$
+★ Metodă
+Adunăm relațiile
+- Scriem relația pentru $n=2;\ 3;\ \ldots;\ n$: $x_2=x_1+f(2)$, $x_3=x_2+f(3)$, …, $x_n=x_{n-1}+f(n)$.
+- Adunăm relațiile membru cu membru. Termenii $x_2;\ x_3;\ \ldots;\ x_{n-1}$ apar în ambii membri și se reduc.
+- Rămâne $x_n=x_1+f(2)+f(3)+\ldots+f(n)$. Calculăm suma cu sumele cunoscute.
+- Verificăm formula pe $x_1$ și $x_2$.
+Exemplul 3
+$x_1=1$ și $x_n=x_{n-1}+6n-5$, pentru $n\ge 2$.
+Adunând relațiile: $x_n=1+\sum_{k=2}^{n}{(6k-5)}$. Pentru $k=1$, termenul $6k-5$ este tocmai $1=x_1$, deci
+$$x_n=\sum_{k=1}^{n}{(6k-5)}=6\cdot \frac{n(n+1)}{2}-5n=3n^2-2n.$$
+Verificare: $x_1=3-2=1$ și $x_2=1+7=8=12-4$. ✓
+4.2. Recurențe de forma $x_n=x_{n-1}\cdot f(n)$
+★ Metodă
+Înmulțim relațiile
+- Scriem relația pentru $n=2;\ 3;\ \ldots;\ n$: $x_2=x_1\cdot f(2)$, $x_3=x_2\cdot f(3)$, …, $x_n=x_{n-1}\cdot f(n)$.
+- Înmulțim relațiile membru cu membru. Simplificăm cu $x_2;\ x_3;\ \ldots;\ x_{n-1}$ (sunt nenuli).
+- Rămâne $x_n=x_1\cdot f(2)\cdot f(3)\cdot \ldots\cdot f(n)$. Fracțiile se simplifică „în lanț”.
+- Verificăm formula pe $x_1$ și $x_2$.
+Exemplul 4
+$x_1=1$ și $x_n=\frac{2n}{n+1}\cdot x_{n-1}$, pentru $n\ge 2$.
+$$x_n=1\cdot \frac{2\cdot 2}{3}\cdot \frac{2\cdot 3}{4}\cdot \frac{2\cdot 4}{5}\cdot \ldots\cdot \frac{2\cdot n}{n+1}.$$
+Factorul $2$ apare de $n-1$ ori. Fracțiile $\frac{2}{3}\cdot \frac{3}{4}\cdot \ldots\cdot \frac{n}{n+1}$ se simplifică „în lanț” și rămâne $\frac{2}{n+1}$. Deci
+$$x_n=2^{n-1}\cdot \frac{2}{n+1}=\frac{2^n}{n+1}.$$
+Verificare: $x_1=\frac{2}{2}=1$ și $x_2=\frac{4}{3}\cdot 1=\frac{2^2}{3}$. ✓
+5. Monotonia unui șir
+Definiție
+Șirul $(a_n)_{n\ge 1}$ este:
+- strict crescător, dacă $a_n<a_{n+1}$ pentru orice $n\ge 1$;
+- crescător, dacă $a_n\le a_{n+1}$ pentru orice $n\ge 1$;
+- strict descrescător, dacă $a_n>a_{n+1}$ pentru orice $n\ge 1$;
+- descrescător, dacă $a_n\ge a_{n+1}$ pentru orice $n\ge 1$.
+Un șir crescător sau descrescător se numește monoton.
+Este monotonia funcției $f:\mathbb{N}^*\to \mathbb{R}$, $f(n)=a_n$. La șiruri este suficient să comparăm doi termeni consecutivi.
+Un șir este nemonoton dacă găsim trei termeni care „urcă și apoi coboară” (sau invers). De exemplu, $a_1<a_2$ și $a_2>a_3$.
+De reținut · Trei metode
+1. Diferența. Calculăm $a_{n+1}-a_n$, o aducem la o formă simplă și îi studiem semnul. Dacă $a_{n+1}-a_n>0$ pentru orice $n$, șirul este strict crescător. Dacă $a_{n+1}-a_n<0$ pentru orice $n$, șirul este strict descrescător.
+2. Raportul. Se folosește numai dacă toți termenii sunt strict pozitivi. Comparăm $\frac{a_{n+1}}{a_n}$ cu $1$. Dacă raportul este mai mare decât $1$, șirul este strict crescător. Dacă este mai mic decât $1$, șirul este strict descrescător. Metoda e potrivită când $a_n$ conține puteri sau produse.
+3. Inducția. Se folosește când șirul este dat prin recurență $x_{n+1}=g(x_n)$. Verificăm $x_1<x_2$ (sau $x_1>x_2$). Arătăm că din $x_k<x_{k+1}$ rezultă $x_{k+1}<x_{k+2}$.
+Exemplul 5
+a) Diferența. $a_n=\frac{4n+1}{n+2}$.
+$$a_{n+1}-a_n=\frac{4n+5}{n+3}-\frac{4n+1}{n+2}=\frac{(4n+5)(n+2)-(4n+1)(n+3)}{(n+2)(n+3)}=\frac{7}{(n+2)(n+3)}>0.$$
+Șirul este strict crescător.
+b) Raportul. Șirul din Exemplul 4: $x_n=\frac{2^n}{n+1}$. Toți termenii sunt strict pozitivi.
+$$\frac{x_{n+1}}{x_n}=\frac{2^{n+1}}{n+2}\cdot \frac{n+1}{2^n}=\frac{2n+2}{n+2}>1,$$
+pentru că $2n+2>n+2$ pentru orice $n\ge 1$. Șirul este strict crescător.
+c) Inducția. $x_1=1$ și $x_{n+1}=\frac{x_n+6}{3}$, pentru $n\ge 1$. Arătăm că $x_n<x_{n+1}$ pentru orice $n\ge 1$.
+- Verificare: $x_2=\frac{7}{3}>1=x_1$.
+- Pasul de inducție: presupunem $x_k<x_{k+1}$. Atunci $x_k+6<x_{k+1}+6$, deci $\frac{x_k+6}{3}<\frac{x_{k+1}+6}{3}$, adică $x_{k+1}<x_{k+2}$.
+Conform principiului inducției matematice, șirul este strict crescător.
+Exerciții
+Nivel de bază
+-
+Se consideră șirul $(a_n)_{n\ge 1}$, $a_n=\frac{2n-1}{n+2}$.
+a) Calculați $a_1$, $a_2$, $a_3$ și $a_4$.
+b) Arătați că $\frac{13}{9}$ este termen al șirului și aflați-i rangul.
+c) Este numărul $2$ termen al șirului? Justificați.
+-
+Scrieți primii cinci termeni ai fiecărui șir:
+a) șirul numerelor prime, în ordine crescătoare;
+b) șirul pătratelor perfecte nenule, în ordine crescătoare;
+c) șirul $(r_n)_{n\ge 1}$, unde $r_n$ este restul împărțirii lui $n$ la $3$.
+-
+Găsiți o formulă posibilă pentru termenul general, $n\ge 1$:
+a) $3;\ 5;\ 7;\ 9;\ \ldots$
+b) $\frac{1}{2};\ \frac{2}{3};\ \frac{3}{4};\ \frac{4}{5};\ \ldots$
+c) $-1;\ 1;\ -1;\ 1;\ \ldots$
+d) $0;\ 3;\ 8;\ 15;\ 24;\ \ldots$
+e) $\frac{1}{3};\ \frac{1}{9};\ \frac{1}{27};\ \frac{1}{81};\ \ldots$
+-
+Relații de recurență.
+a) Șirul $(x_n)_{n\ge 1}$ are $x_1=2$ și $x_{n+1}=2x_n-1$, pentru $n\ge 1$. Calculați $x_2$, $x_3$, $x_4$ și $x_5$.
+b) Primii termeni ai unui șir sunt $1;\ 4;\ 13;\ 40;\ 121$. Găsiți o relație de recurență de forma $x_{n+1}=a\cdot x_n+b$ care îi generează.
+Indicație: comparați fiecare termen cu triplul celui dinainte.
+-
+Fie șirul $a_n=(-1)^n\cdot (2n-1)$, $n\ge 1$. Scrieți primii cinci termeni, apoi calculați $S_1$, $S_2$, $S_3$, $S_4$ și $S_5$.
+-
+Studiați monotonia șirurilor folosind diferența:
+a) $a_n=5-\frac{2}{n}$;
+b) $b_n=\frac{n+4}{n+1}$.
+Nivel consolidat
+-
+Aflați termenul general $a_n$ al șirului pentru care suma primilor $n$ termeni este:
+a) $S_n=3n^2-n$;
+b) $S_n=n^2+n+1$.
+Indicație: la b) comparați formula obținută pentru $n\ge 2$ cu $a_1$.
+-
+Aflați termenul general al șirului:
+a) $x_1=2$, $x_n=x_{n-1}+6n-2$, pentru $n\ge 2$;
+b) $x_1=4$, $x_n=x_{n-1}+3n^2+1$, pentru $n\ge 2$.
+Indicație: folosiți sumele $\sum_{k=1}^{n}{k}$ și $\sum_{k=1}^{n}{k^2}$.
+-
+Aflați termenul general al șirului:
+a) $x_1=1$, $x_n=\frac{n+2}{n-1}\cdot x_{n-1}$, pentru $n\ge 2$;
+b) $x_1=4$, $x_n=\frac{n-1}{n+1}\cdot x_{n-1}$, pentru $n\ge 2$.
+-
+Studiați monotonia șirurilor folosind raportul:
+a) $a_n=\frac{n}{3^n}$;
+b) $b_n=\frac{2\cdot 5\cdot 8\cdot \ldots\cdot (3n-1)}{3\cdot 6\cdot 9\cdot \ldots\cdot (3n)}$.
+-
+Un videoclip are $10$ vizualizări în prima zi după postare. În fiecare zi următoare, numărul vizualizărilor din ziua $n$ este cu $2n$ mai mare decât în ziua precedentă.
+a) Notați cu $x_n$ numărul vizualizărilor din ziua $n$. Scrieți relația de recurență.
+b) Aflați termenul general $x_n$. Câte vizualizări are videoclipul în ziua a $10$-a?
+c) Câte vizualizări are videoclipul, în total, în primele $10$ zile?
+-
+Șirul $(x_n)_{n\ge 1}$ are $x_1=5$ și $x_{n+1}=\frac{x_n+3}{4}$, pentru $n\ge 1$. Arătați prin inducție că șirul este strict descrescător.
+Nivel avansat
+-
+Șirul $(x_n)_{n\ge 1}$ are $x_1=1$ și $x_n=\frac{n(n+1)}{(n-1)(n+2)}\cdot x_{n-1}$, pentru $n\ge 2$.
+a) Aflați termenul general.
+b) Studiați monotonia șirului.
+Indicație: despărțiți produsul în două „lanțuri”: $\frac{2}{1}\cdot \frac{3}{2}\cdot \ldots\cdot \frac{n}{n-1}$ și $\frac{3}{4}\cdot \frac{4}{5}\cdot \ldots\cdot \frac{n+1}{n+2}$.
+-
+Fie șirul $a_n=\frac{n^2}{2^n}$, $n\ge 1$.
+a) Arătați că $\frac{a_{n+1}}{a_n}<1$ dacă și numai dacă $n^2-2n-1>0$.
+b) Calculați $a_1$, $a_2$, $a_3$, $a_4$. Este șirul monoton? Începând de la ce rang termenii scad?
+-
+Șirul $(x_n)_{n\ge 1}$ are $x_1=1$ și $x_{n+1}=\sqrt{x_n+2}$, pentru $n\ge 1$.
+a) Arătați prin inducție că $x_n<2$ pentru orice $n\ge 1$.
+b) Arătați prin inducție că șirul este strict crescător.
+-
+Revenim la șirul de la exercițiul 4 a): $x_1=2$, $x_{n+1}=2x_n-1$.
+a) Comparați termenii $x_1;\ \ldots;\ x_5$ cu puterile lui $2$. Intuiți o formulă pentru $x_n$.
+b) Demonstrați formula prin inducție matematică.
+Pentru cei care vor mai mult
+-
+Determinați numerele reale $m$ pentru care șirul $a_n=\frac{n+m}{2^n}$, $n\ge 1$, este strict descrescător. Ce se întâmplă pentru $m=0$?
+Indicație: folosiți diferența. De ce nu putem folosi raportul pentru orice $m$?
+
+--- EN ---
+
+The worksheet shows what a sequence is and how it can be given: in words, by listing terms, by a formula, by a recurrence or by a graph. Then come the sequence of partial sums, the general term for recurrences with a sum or a product, and monotonicity, studied with the difference, the ratio or by induction. Problems on three levels close it.
+
+Q: What is the difference between a general-term formula and a recurrence relation?
+A: A general-term formula gives any term directly: you substitute n and compute. A recurrence relation gives a term from the ones before it, so you need the first term and you compute step by step. For recurrences of the form xₙ = xₙ₋₁ + f(n) or xₙ = xₙ₋₁ · f(n) you can find the general term by adding, or multiplying, the relations.
+Q: How do I find the general term of a sequence when I know the sum of its first n terms?
+A: You use the sequence of partial sums: a₁ = S₁ and aₙ = Sₙ − Sₙ₋₁ for n ≥ 2. The second formula does not work for n = 1, so you check separately whether the formula you found also gives the first term. If it does not, you write the general term in two cases.
+Q: When do I use the difference and when the ratio to study the monotonicity of a sequence?
+A: The difference aₙ₊₁ − aₙ works for any sequence and suits fractions and sums: you study its sign. The ratio aₙ₊₁ / aₙ, compared with 1, is used only when all terms are strictly positive and is handy for powers and products. When the sequence is given only by a recurrence, monotonicity is usually shown by induction.
+
+By the end of this worksheet you will be able to:
+- recognise a sequence and compute its terms;
+- move from one way of defining a sequence to another;
+- work with the sequence of partial sums;
+- find the general term for recurrences of the form $x_n=x_{n-1}+f(n)$ and $x_n=x_{n-1}\cdot f(n)$;
+- decide whether a sequence is monotonic using the difference, the ratio or induction.
+1. What is a sequence
+Definition
+A sequence of real numbers is a function $f:\mathbb{N}^*\to \mathbb{R}$. We write $a_n=f(n)$.
+- $n$ is the index (rank) of the term.
+- $a_n$ is the term of index $n$, also called the general term.
+- We write the sequence as $(a_n)_{n\ge 1}$ or, briefly, $a_1;\ a_2;\ a_3;\ \ldots$
+The index $n$ is always a natural number. The term $a_n$ can be any real number.
+Sometimes the numbering starts at $0$: then we write $(a_n)_{n\ge 0}$.
+Careful! The order of the terms matters. The sequences $1;\ 2;\ 3;\ 4;\ \ldots$ and $2;\ 1;\ 4;\ 3;\ \ldots$ are different.
+2. Ways to define a sequence
+The same sequence can be given in several ways. Here is the sequence $3;\ 9;\ 19;\ 33;\ 51;\ \ldots$ written in five ways:
+Way
+What it looks like
+What it is good for
+In words (descriptive)
+“each term is 1 more than twice the square of its index”
+states the rule plainly
+By listing the first terms
+$3;\ 9;\ 19;\ 33;\ 51;\ \ldots$
+shows how the sequence “starts”
+By a general-term formula
+$a_n=2n^2+1$, $n\ge 1$
+gives any term directly: $a_{10}=201$
+By a recurrence relation
+$a_1=3$, $a_n=a_{n-1}+4n-2$, $n\ge 2$
+each term comes from the one before
+By a table or a graph
+the points $(1;3)$, $(2;9)$, $(3;19)$, …
+shows how the sequence changes
+Remember
+- A recurrence relation must also give the first term. Without it, the sequence is not well defined.
+- The graph of a sequence is made of isolated points $(n;\ a_n)$. We do not join them with a line.
+- A few terms alone do not determine the sequence. From a list we find a possible formula and check it on the given terms.
+Example 1
+Let $(a_n)_{n\ge 1}$ be the sequence $a_n=\frac{n+4}{n+2}$.
+a) The first four terms: $a_1=\frac{5}{3}$, $a_2=\frac{6}{4}=\frac{3}{2}$, $a_3=\frac{7}{5}$, $a_4=\frac{8}{6}=\frac{4}{3}$.
+b) Is $\frac{13}{12}$ a term of the sequence? We solve $\frac{n+4}{n+2}=\frac{13}{12}$: $12n+48=13n+26$, so $n=22$. Yes, $\frac{13}{12}=a_{22}$.
+c) The graph: the points $(n;\ a_n)$ for $n=1;\ 2;\ \ldots;\ 8$.
+3. The sequence of partial sums
+Definition
+For a sequence $(a_n)_{n\ge 1}$ we write
+$$S_n=a_1+a_2+\ldots+a_n=\sum_{k=1}^{n}{a_k}.$$
+The sequence $(S_n)_{n\ge 1}$ is called the sequence of partial sums.
+- $S_1=a_1$ and $S_n=S_{n-1}+a_n$, for $n\ge 2$.
+- Conversely, if we know $S_n$: $a_1=S_1$ and $a_n=S_n-S_{n-1}$, for $n\ge 2$.
+Careful! The formula $a_n=S_n-S_{n-1}$ does not apply for $n=1$. We check separately whether the formula we found also gives the term $a_1$.
+Example 2
+The sum of the first $n$ terms of a sequence is $S_n=n^2+3n$. We find $a_n$.
+- $a_1=S_1=1+3=4$.
+- For $n\ge 2$: $a_n=S_n-S_{n-1}=n^2+3n-(n-1)^2-3(n-1)=2n+2$.
+- For $n=1$ the formula gives $2\cdot 1+2=4=a_1$. So $a_n=2n+2$ for every $n\ge 1$.
+4. The general term from recurrence relations
+4.1. Recurrences of the form $x_n=x_{n-1}+f(n)$
+★ Method
+Add the relations
+- Write the relation for $n=2;\ 3;\ \ldots;\ n$: $x_2=x_1+f(2)$, $x_3=x_2+f(3)$, …, $x_n=x_{n-1}+f(n)$.
+- Add the relations side by side. The terms $x_2;\ x_3;\ \ldots;\ x_{n-1}$ appear on both sides and cancel.
+- What is left is $x_n=x_1+f(2)+f(3)+\ldots+f(n)$. Compute the sum with the known sums.
+- Check the formula on $x_1$ and $x_2$.
+Example 3
+$x_1=1$ and $x_n=x_{n-1}+6n-5$, for $n\ge 2$.
+Adding the relations: $x_n=1+\sum_{k=2}^{n}{(6k-5)}$. For $k=1$ the term $6k-5$ is exactly $1=x_1$, so
+$$x_n=\sum_{k=1}^{n}{(6k-5)}=6\cdot \frac{n(n+1)}{2}-5n=3n^2-2n.$$
+Check: $x_1=3-2=1$ and $x_2=1+7=8=12-4$. ✓
+4.2. Recurrences of the form $x_n=x_{n-1}\cdot f(n)$
+★ Method
+Multiply the relations
+- Write the relation for $n=2;\ 3;\ \ldots;\ n$: $x_2=x_1\cdot f(2)$, $x_3=x_2\cdot f(3)$, …, $x_n=x_{n-1}\cdot f(n)$.
+- Multiply the relations side by side. Cancel $x_2;\ x_3;\ \ldots;\ x_{n-1}$ (they are nonzero).
+- What is left is $x_n=x_1\cdot f(2)\cdot f(3)\cdot \ldots\cdot f(n)$. The fractions cancel “in a chain”.
+- Check the formula on $x_1$ and $x_2$.
+Example 4
+$x_1=1$ and $x_n=\frac{2n}{n+1}\cdot x_{n-1}$, for $n\ge 2$.
+$$x_n=1\cdot \frac{2\cdot 2}{3}\cdot \frac{2\cdot 3}{4}\cdot \frac{2\cdot 4}{5}\cdot \ldots\cdot \frac{2\cdot n}{n+1}.$$
+The factor $2$ appears $n-1$ times. The fractions $\frac{2}{3}\cdot \frac{3}{4}\cdot \ldots\cdot \frac{n}{n+1}$ cancel “in a chain” and leave $\frac{2}{n+1}$. So
+$$x_n=2^{n-1}\cdot \frac{2}{n+1}=\frac{2^n}{n+1}.$$
+Check: $x_1=\frac{2}{2}=1$ and $x_2=\frac{4}{3}\cdot 1=\frac{2^2}{3}$. ✓
+5. Monotonic sequences
+Definition
+The sequence $(a_n)_{n\ge 1}$ is:
+- strictly increasing if $a_n<a_{n+1}$ for every $n\ge 1$;
+- increasing if $a_n\le a_{n+1}$ for every $n\ge 1$;
+- strictly decreasing if $a_n>a_{n+1}$ for every $n\ge 1$;
+- decreasing if $a_n\ge a_{n+1}$ for every $n\ge 1$.
+An increasing or decreasing sequence is called monotonic.
+This is the monotonicity of the function $f:\mathbb{N}^*\to \mathbb{R}$, $f(n)=a_n$. For sequences it is enough to compare two consecutive terms.
+A sequence is not monotonic if we find three terms that “go up and then down” (or the other way round). For example, $a_1<a_2$ and $a_2>a_3$.
+Remember · Three methods
+1. The difference. Compute $a_{n+1}-a_n$, simplify it and study its sign. If $a_{n+1}-a_n>0$ for every $n$, the sequence is strictly increasing. If $a_{n+1}-a_n<0$ for every $n$, the sequence is strictly decreasing.
+2. The ratio. Use it only if all terms are strictly positive. Compare $\frac{a_{n+1}}{a_n}$ with $1$. If the ratio is greater than $1$, the sequence is strictly increasing. If it is less than $1$, the sequence is strictly decreasing. The method suits terms with powers or products.
+3. Induction. Use it when the sequence is given by a recurrence $x_{n+1}=g(x_n)$. Check $x_1<x_2$ (or $x_1>x_2$). Show that $x_k<x_{k+1}$ implies $x_{k+1}<x_{k+2}$.
+Example 5
+a) The difference. $a_n=\frac{4n+1}{n+2}$.
+$$a_{n+1}-a_n=\frac{4n+5}{n+3}-\frac{4n+1}{n+2}=\frac{(4n+5)(n+2)-(4n+1)(n+3)}{(n+2)(n+3)}=\frac{7}{(n+2)(n+3)}>0.$$
+The sequence is strictly increasing.
+b) The ratio. The sequence from Example 4: $x_n=\frac{2^n}{n+1}$. All terms are strictly positive.
+$$\frac{x_{n+1}}{x_n}=\frac{2^{n+1}}{n+2}\cdot \frac{n+1}{2^n}=\frac{2n+2}{n+2}>1,$$
+because $2n+2>n+2$ for every $n\ge 1$. The sequence is strictly increasing.
+c) Induction. $x_1=1$ and $x_{n+1}=\frac{x_n+6}{3}$, for $n\ge 1$. We show that $x_n<x_{n+1}$ for every $n\ge 1$.
+- Check: $x_2=\frac{7}{3}>1=x_1$.
+- Inductive step: assume $x_k<x_{k+1}$. Then $x_k+6<x_{k+1}+6$, so $\frac{x_k+6}{3}<\frac{x_{k+1}+6}{3}$, that is $x_{k+1}<x_{k+2}$.
+By the principle of mathematical induction, the sequence is strictly increasing.
+Exercises
+Basic level
+-
+Consider the sequence $(a_n)_{n\ge 1}$, $a_n=\frac{2n-1}{n+2}$.
+a) Compute $a_1$, $a_2$, $a_3$ and $a_4$.
+b) Show that $\frac{13}{9}$ is a term of the sequence and find its index.
+c) Is the number $2$ a term of the sequence? Justify.
+-
+Write the first five terms of each sequence:
+a) the sequence of prime numbers, in increasing order;
+b) the sequence of nonzero perfect squares, in increasing order;
+c) the sequence $(r_n)_{n\ge 1}$, where $r_n$ is the remainder of $n$ divided by $3$.
+-
+Find a possible formula for the general term, $n\ge 1$:
+a) $3;\ 5;\ 7;\ 9;\ \ldots$
+b) $\frac{1}{2};\ \frac{2}{3};\ \frac{3}{4};\ \frac{4}{5};\ \ldots$
+c) $-1;\ 1;\ -1;\ 1;\ \ldots$
+d) $0;\ 3;\ 8;\ 15;\ 24;\ \ldots$
+e) $\frac{1}{3};\ \frac{1}{9};\ \frac{1}{27};\ \frac{1}{81};\ \ldots$
+-
+Recurrence relations.
+a) The sequence $(x_n)_{n\ge 1}$ has $x_1=2$ and $x_{n+1}=2x_n-1$, for $n\ge 1$. Compute $x_2$, $x_3$, $x_4$ and $x_5$.
+b) The first terms of a sequence are $1;\ 4;\ 13;\ 40;\ 121$. Find a recurrence relation of the form $x_{n+1}=a\cdot x_n+b$ that generates them.
+Hint: compare each term with three times the one before it.
+-
+Let $a_n=(-1)^n\cdot (2n-1)$, $n\ge 1$. Write the first five terms, then compute $S_1$, $S_2$, $S_3$, $S_4$ and $S_5$.
+-
+Study the monotonicity of the sequences using the difference:
+a) $a_n=5-\frac{2}{n}$;
+b) $b_n=\frac{n+4}{n+1}$.
+Intermediate level
+-
+Find the general term $a_n$ of the sequence whose sum of the first $n$ terms is:
+a) $S_n=3n^2-n$;
+b) $S_n=n^2+n+1$.
+Hint: in b) compare the formula you get for $n\ge 2$ with $a_1$.
+-
+Find the general term of the sequence:
+a) $x_1=2$, $x_n=x_{n-1}+6n-2$, for $n\ge 2$;
+b) $x_1=4$, $x_n=x_{n-1}+3n^2+1$, for $n\ge 2$.
+Hint: use the sums $\sum_{k=1}^{n}{k}$ and $\sum_{k=1}^{n}{k^2}$.
+-
+Find the general term of the sequence:
+a) $x_1=1$, $x_n=\frac{n+2}{n-1}\cdot x_{n-1}$, for $n\ge 2$;
+b) $x_1=4$, $x_n=\frac{n-1}{n+1}\cdot x_{n-1}$, for $n\ge 2$.
+-
+Study the monotonicity of the sequences using the ratio:
+a) $a_n=\frac{n}{3^n}$;
+b) $b_n=\frac{2\cdot 5\cdot 8\cdot \ldots\cdot (3n-1)}{3\cdot 6\cdot 9\cdot \ldots\cdot (3n)}$.
+-
+A video has $10$ views on its first day online. On each following day, the number of views on day $n$ is $2n$ more than on the day before.
+a) Let $x_n$ be the number of views on day $n$. Write the recurrence relation.
+b) Find the general term $x_n$. How many views does the video get on day $10$?
+c) How many views does the video get in total over the first $10$ days?
+-
+The sequence $(x_n)_{n\ge 1}$ has $x_1=5$ and $x_{n+1}=\frac{x_n+3}{4}$, for $n\ge 1$. Show by induction that the sequence is strictly decreasing.
+Advanced level
+-
+The sequence $(x_n)_{n\ge 1}$ has $x_1=1$ and $x_n=\frac{n(n+1)}{(n-1)(n+2)}\cdot x_{n-1}$, for $n\ge 2$.
+a) Find the general term.
+b) Study the monotonicity of the sequence.
+Hint: split the product into two “chains”: $\frac{2}{1}\cdot \frac{3}{2}\cdot \ldots\cdot \frac{n}{n-1}$ and $\frac{3}{4}\cdot \frac{4}{5}\cdot \ldots\cdot \frac{n+1}{n+2}$.
+-
+Let $a_n=\frac{n^2}{2^n}$, $n\ge 1$.
+a) Show that $\frac{a_{n+1}}{a_n}<1$ if and only if $n^2-2n-1>0$.
+b) Compute $a_1$, $a_2$, $a_3$, $a_4$. Is the sequence monotonic? From which index on do the terms decrease?
+-
+The sequence $(x_n)_{n\ge 1}$ has $x_1=1$ and $x_{n+1}=\sqrt{x_n+2}$, for $n\ge 1$.
+a) Show by induction that $x_n<2$ for every $n\ge 1$.
+b) Show by induction that the sequence is strictly increasing.
+-
+Back to the sequence from exercise 4 a): $x_1=2$, $x_{n+1}=2x_n-1$.
+a) Compare the terms $x_1;\ \ldots;\ x_5$ with the powers of $2$. Guess a formula for $x_n$.
+b) Prove the formula by mathematical induction.
+For those who want more
+-
+Find the real numbers $m$ for which the sequence $a_n=\frac{n+m}{2^n}$, $n\ge 1$, is strictly decreasing. What happens for $m=0$?
+Hint: use the difference. Why can we not use the ratio for every $m$?
+
+---
+
 ### Fișă de lucru: sume și inducție matematică
 - Source (RO): https://lauramiron.pages.dev/materiale/fisa-lucru-sume-inductie-matematica-1031
 - Source (EN): https://lauramiron.pages.dev/en/materiale/fisa-lucru-sume-inductie-matematica-1031

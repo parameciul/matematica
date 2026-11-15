@@ -47,6 +47,9 @@
 - Clasa a IX-a: https://lauramiron.pages.dev/clasa-9
 - Grade 9: https://lauramiron.pages.dev/en/clasa-9
 
+### Șiruri și progresii / Sequences and progressions
+- [Fișă de lucru: șiruri, noțiuni introductive](https://lauramiron.pages.dev/materiale/fisa-lucru-siruri-notiuni-introductive-1036) ([EN](https://lauramiron.pages.dev/en/materiale/fisa-lucru-siruri-notiuni-introductive-1036)): Fișă de lucru pentru clasa a IX-a: șiruri, moduri de definire, sume parțiale, termenul general din recurențe și monotonia șirurilor. (fisa-lucru, clasa a 9-a / grade 9, updated 2026-11-15)
+
 ### Elemente de logică matematică / Elements of mathematical logic
 - [Fișă de lucru: sume și inducție matematică](https://lauramiron.pages.dev/materiale/fisa-lucru-sume-inductie-matematica-1031) ([EN](https://lauramiron.pages.dev/en/materiale/fisa-lucru-sume-inductie-matematica-1031)): Fișă de lucru pentru clasa a IX-a: simbolul Σ, proprietățile sumelor, sumele remarcabile și metoda inducției matematice, cu probleme pe niveluri. (fisa-lucru, clasa a 9-a / grade 9, updated 2026-10-26)
 - [Probleme propuse: sume și inducție matematică](https://lauramiron.pages.dev/materiale/probleme-sume-inductie-matematica-1032) ([EN](https://lauramiron.pages.dev/en/materiale/probleme-sume-inductie-matematica-1032)): Probleme pentru clasa a IX-a: calculul sumelor cu Σ, sume remarcabile, sume telescopice și demonstrații prin inducție matematică, pe trei niveluri. (fisa-lucru, clasa a 9-a / grade 9, updated 2026-10-26)
