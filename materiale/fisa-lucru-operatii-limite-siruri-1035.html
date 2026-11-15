@@ -1,0 +1,608 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Operații cu limite de șiruri și nedeterminări – clasa a 11-a (XI)</title>
+  <meta name="description" content="Fișă de lucru pentru clasa a XI-a: operații cu limite de șiruri, calcule cu infinit, cazuri de nedeterminare, polinoame, exponențiale și radicali.">
+  <meta name="author" content="Laura Miron">
+  <meta name="robots" content="max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="google-site-verification" content="lwpe3phdRnlGTaxwvpfcxbuygEudOHDa7i_hl_1wQQc">
+  <meta name="msvalidate.01" content="79E7F21C210EE6E1F04FDB1E5956620C">
+  <link rel="canonical" href="https://lauramiron.pages.dev/materiale/fisa-lucru-operatii-limite-siruri-1035">
+  <link rel="alternate" hreflang="ro" href="https://lauramiron.pages.dev/materiale/fisa-lucru-operatii-limite-siruri-1035">
+  <link rel="alternate" hreflang="en" href="https://lauramiron.pages.dev/en/materiale/fisa-lucru-operatii-limite-siruri-1035">
+  <link rel="alternate" hreflang="x-default" href="https://lauramiron.pages.dev/materiale/fisa-lucru-operatii-limite-siruri-1035">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Operații cu limite de șiruri și nedeterminări – clasa a 11-a (XI)">
+  <meta property="og:description" content="Fișă de lucru pentru clasa a XI-a: operații cu limite de șiruri, calcule cu infinit, cazuri de nedeterminare, polinoame, exponențiale și radicali.">
+  <meta property="og:url" content="https://lauramiron.pages.dev/materiale/fisa-lucru-operatii-limite-siruri-1035">
+  <meta property="og:image" content="https://lauramiron.pages.dev/assets/img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Materiale de matematică pentru clasele V–XII – Laura Miron">
+  <meta property="og:locale" content="ro_RO">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:site_name" content="Laura Miron">
+  <meta property="article:published_time" content="2026-11-15">
+  <meta property="article:modified_time" content="2026-11-15">
+  <meta property="og:updated_time" content="2026-11-15">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Operații cu limite de șiruri și nedeterminări – clasa a 11-a (XI)">
+  <meta name="twitter:description" content="Fișă de lucru pentru clasa a XI-a: operații cu limite de șiruri, calcule cu infinit, cazuri de nedeterminare, polinoame, exponențiale și radicali.">
+  <meta name="twitter:image" content="https://lauramiron.pages.dev/assets/img/og-image.png">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fbfcfe">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1d2925">
+  <link rel="manifest" href="../site.webmanifest">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../favicon.ico" sizes="48x48">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+  <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('matematica.theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,700;0,800;1,400&family=Caveat:wght@600&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.18.1/dist/katex.min.css" integrity="sha384-1vdNCNel6Tx/NQa8IR1mGOGKsbGreCkOPfbtPPnUURJ5Tu2PRVfQ/7KLZC+Pi1p1" crossorigin="anonymous">
+  <link rel="stylesheet" href="../assets/css/style.css?v=dfd0a402b6">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.18.1/dist/katex.min.js" integrity="sha384-ycJ6GAwiS15LoUPipwJOrWTvkUHl/YqELValBwI5I4awP1EeEQJYarj+w85ntcz7" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.18.1/dist/contrib/auto-render.min.js" integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous"></script>
+  <script defer src="../assets/js/i18n.js?v=feb755cd88"></script>
+  <script defer src="../assets/js/catalog.js?v=7b3e472fde"></script>
+  <script defer src="../assets/js/shell.js?v=e464802201"></script>
+  <script defer src="../assets/js/site.js?v=86760ebbd4"></script>
+  <script defer src="../assets/js/searchbox.js?v=b3f954fcd7"></script>
+  <script defer src="../assets/js/material.js?v=eb2d425eaf"></script>
+  <script defer src="../assets/js/answers.js?v=25caed376f"></script>
+  <script defer src="../assets/js/check.js?v=beca89b12d"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","name":"Fișă de lucru: operații cu limite de șiruri","description":"Fișă de lucru pentru clasa a XI-a: operații cu limite de șiruri, calcule cu infinit, cazuri de nedeterminare, polinoame, exponențiale și radicali.","url":"https://lauramiron.pages.dev/materiale/fisa-lucru-operatii-limite-siruri-1035","mainEntityOfPage":"https://lauramiron.pages.dev/materiale/fisa-lucru-operatii-limite-siruri-1035","inLanguage":"ro","datePublished":"2026-11-15","dateModified":"2026-11-15","learningResourceType":"Fișă de lucru","educationalLevel":"Clasa a XI-a","teaches":"Șiruri de numere reale","educationalAlignment":{"@type":"AlignmentObject","alignmentType":"educationalSubject","educationalFramework":"Programa școlară românească","targetName":"Clasa a XI-a – Șiruri de numere reale","targetUrl":"https://lauramiron.pages.dev/clasa-11#siruri-numere-reale"},"isAccessibleForFree":true,"license":"https://creativecommons.org/licenses/by-nc-sa/4.0/","author":{"@type":"Person","name":"Laura Miron","url":"https://lauramiron.pages.dev/despre","jobTitle":"Profesoară de matematică","worksFor":{"@type":"EducationalOrganization","name":"Liceul William Shakespeare","url":"https://lauramiron.pages.dev/","logo":{"@type":"ImageObject","url":"https://lauramiron.pages.dev/assets/img/og-image.png","width":1200,"height":630},"address":{"@type":"PostalAddress","addressLocality":"Timișoara","addressCountry":"RO"}},"knowsAbout":["Mathematics","Matematică","Algebră","Geometrie","Analiză matematică","Algebra","Geometry","Mathematical analysis"],"sameAs":["https://www.youtube.com/@MatematicaLauraMiron"]},"publisher":{"@type":"Person","name":"Laura Miron","url":"https://lauramiron.pages.dev/despre","jobTitle":"Profesoară de matematică","worksFor":{"@type":"EducationalOrganization","name":"Liceul William Shakespeare","url":"https://lauramiron.pages.dev/","logo":{"@type":"ImageObject","url":"https://lauramiron.pages.dev/assets/img/og-image.png","width":1200,"height":630},"address":{"@type":"PostalAddress","addressLocality":"Timișoara","addressCountry":"RO"}},"knowsAbout":["Mathematics","Matematică","Algebră","Geometrie","Analiză matematică","Algebra","Geometry","Mathematical analysis"],"sameAs":["https://www.youtube.com/@MatematicaLauraMiron"]},"audience":{"@type":"EducationalAudience","educationalRole":"student"},"educationalUse":"practice","abstract":"Fișa începe cu teoria: operațiile cu șiruri convergente, calculele posibile cu ±∞ și cele șapte cazuri de nedeterminare. Urmează metodele pentru polinoame, rapoarte, exponențiale, radicali și sume, cu exemple rezolvate, o schemă recapitulativă și probleme pe trei niveluri.","speakable":{"@type":"SpeakableSpecification","cssSelector":[".rezumat",".faq"]},"encoding":{"@type":"MediaObject","contentUrl":"https://lauramiron.pages.dev/materiale/pdf/fisa-lucru-operatii-limite-siruri-1035.pdf","encodingFormat":"application/pdf","inLanguage":"ro"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Acasă","item":"https://lauramiron.pages.dev/"},{"@type":"ListItem","position":2,"name":"Clasa a XI-a","item":"https://lauramiron.pages.dev/clasa-11"},{"@type":"ListItem","position":3,"name":"Fișă de lucru: operații cu limite de șiruri","item":"https://lauramiron.pages.dev/materiale/fisa-lucru-operatii-limite-siruri-1035"}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Care sunt cazurile de nedeterminare la limitele de șiruri?","acceptedAnswer":{"@type":"Answer","text":"Sunt șapte: ∞ − ∞, 0 · ∞, ∞/∞, 0/0, 1^∞, ∞^0 și 0^0. Pentru ele regulile de calcul nu dau rezultatul: aceeași formă poate duce la limite diferite. Transformi expresia (factor comun forțat, conjugat, împărțire la termenul dominant) până ajungi la o formă determinată."}},{"@type":"Question","name":"Cum calculez limita unui raport de polinoame în n?","acceptedAnswer":{"@type":"Answer","text":"Compari gradele numărătorului și numitorului. Dacă gradul de sus este mai mic, limita este 0. La grade egale, limita este raportul coeficienților dominanți. Dacă gradul de sus este mai mare, limita este +∞ sau −∞, după semnul raportului coeficienților dominanți."}},{"@type":"Question","name":"Când amplific cu conjugatul la o limită de șir?","acceptedAnswer":{"@type":"Answer","text":"Când ai o diferență cu radicali de forma ∞ − ∞ în care termenii dominanți au același coeficient, de exemplu √(n² + 4n) − n. Conjugatul transformă diferența într-un cât în care termenii dominanți se reduc. Dacă coeficienții diferă, este suficient factorul comun forțat."}},{"@type":"Question","name":"De ce nu pot calcula termen cu termen limita unei sume cu n termeni?","acceptedAnswer":{"@type":"Answer","text":"Regulile de calcul sunt pentru un număr fix de termeni. Când numărul termenilor crește odată cu n, întâi calculezi suma cu o formulă (suma lui Gauss, progresia geometrică, telescoparea), apoi limita. De exemplu, 1/n adunat de n ori dă 1, deși fiecare termen tinde la 0."}}]}</script>
+</head>
+<body data-root="../" data-page-root="../">
+  <header id="site-header" class="site-header"><div class="wrap header-bar"><a class="brand" href="../index.html"><svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M10 48h44" fill="none" stroke="var(--brand-marker)" stroke-width="12" stroke-linecap="round"/><g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"><path d="M25 13c-3 11-6 21-9 31 7 0 13-2 18-6"/><path d="M33 45l4-23 6 13 8-15 2 25"/></g></svg><span class="brand-text"><span class="brand-name" data-i18n="site.title">Matematică cu Laura Miron</span><span class="brand-school" data-i18n="site.school">Liceul William Shakespeare, Timișoara</span></span></a><nav class="grade-nav" id="grade-nav" data-nav aria-label="Alege clasa"><span class="grade-nav-label" aria-hidden="true" data-i18n="nav.gradesLabel">Alege clasa</span><a href="../clasa-5.html" data-grade-link="5" aria-label="Clasa a V-a">5</a><a href="../clasa-6.html" data-grade-link="6" aria-label="Clasa a VI-a">6</a><a href="../clasa-7.html" data-grade-link="7" aria-label="Clasa a VII-a">7</a><a href="../clasa-8.html" data-grade-link="8" aria-label="Clasa a VIII-a">8</a><a href="../clasa-9.html" data-grade-link="9" class="gap" aria-label="Clasa a IX-a">9</a><a href="../clasa-10.html" data-grade-link="10" aria-label="Clasa a X-a">10</a><a href="../clasa-11.html" data-grade-link="11" aria-label="Clasa a XI-a">11</a><a href="../clasa-12.html" data-grade-link="12" aria-label="Clasa a XII-a">12</a></nav><form class="search" id="site-search" role="search" action="../cautare.html"><label class="sr-only" for="site-search-input" data-i18n="search.label">Caută materiale</label><svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="m20 20-3.8-3.8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><input id="site-search-input" name="q" type="search" autocomplete="off" spellcheck="false" enterkeyhint="search" placeholder="Caută: modul, fișă, test…"><input type="hidden" id="site-search-grade" name="c" value=""></form><div class="header-tools"><button type="button" class="icon-btn" data-toggle="search" aria-controls="site-search" aria-expanded="false"><svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="m20 20-3.8-3.8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><span class="sr-only" data-i18n="search.open">Caută</span></button><button type="button" class="icon-btn" data-toggle="grades" aria-controls="grade-nav" aria-expanded="false"><span data-i18n="nav.grades">Clase</span></button><button type="button" class="theme-btn" data-theme-toggle aria-pressed="false"><svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 14.5 A8.5 8.5 0 0 1 9.5 4 a8.5 8.5 0 1 0 10.5 10.5 Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2"/><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2.5 v2.2 M12 19.3 v2.2 M2.5 12 h2.2 M19.3 12 h2.2"/><path d="M5.3 5.3 l1.6 1.6 M17.1 17.1 l1.6 1.6 M18.7 5.3 l-1.6 1.6 M6.9 17.1 l-1.6 1.6"/></g></svg><span class="sr-only" data-i18n="theme.dark">Temă închisă</span></button><div class="lang" role="group" aria-label="Limba site-ului" data-lang-group><a hreflang="ro" lang="ro" aria-current="page" aria-label="Română" href="fisa-lucru-operatii-limite-siruri-1035.html">RO</a><a hreflang="en" href="../en/materiale/fisa-lucru-operatii-limite-siruri-1035.html" lang="en" aria-label="English">EN</a></div></div></div></header>
+
+  <main id="content" class="wrap">
+    <div class="page" id="material" data-id="1035" data-name="fisa-lucru-operatii-limite-siruri-1035" data-results="1">
+      <div id="material-head"><nav class="crumbs" aria-label="Navigare"><ol><li><a href="../index.html">Acasă</a></li><li><a href="../clasa-11.html">Clasa a XI-a</a></li><li><a href="../clasa-11.html#siruri-numere-reale">Șiruri de numere reale</a></li></ol></nav>
+      <span class="material-kinds"><span class="badge badge-fise">Fișă de lucru</span><span class="badge badge-lectii">Teorie</span></span>
+      <h1>Fișă de lucru: operații cu limite de șiruri</h1>
+      <p class="material-meta">Publicat <time datetime="2026-11-15">15 noiembrie 2026</time> · de <a href="../despre.html" rel="author">Laura Miron</a></p>
+      <p class="material-actions"><a class="button" href="../materiale/pdf/fisa-lucru-operatii-limite-siruri-1035.pdf" target="_blank" rel="noopener">Deschide PDF</a></p></div>
+      
+      <section class="rezumat" aria-labelledby="rezumat-heading"><h2 id="rezumat-heading" data-i18n="summary.title">Rezumat</h2><p>Fișa începe cu teoria: operațiile cu șiruri convergente, calculele posibile cu ±∞ și cele șapte cazuri de nedeterminare. Urmează metodele pentru polinoame, rapoarte, exponențiale, radicali și sume, cu exemple rezolvate, o schemă recapitulativă și probleme pe trei niveluri.</p></section><nav class="cuprins" aria-labelledby="cuprins-heading"><h2 id="cuprins-heading" data-i18n="toc.title">Cuprins</h2><ol><li><a href="#s1">Pornim de la ce știi</a></li><li><a href="#s2">Teorie pe scurt</a><ol><li><a href="#s2-1">1. Operații cu șiruri convergente</a></li><li><a href="#s2-2">2. Calcule posibile cu ±∞</a></li><li><a href="#s2-3">3. Cazuri de nedeterminare</a></li><li><a href="#s2-4">4. Limite fundamentale</a></li><li><a href="#s2-5">5. Polinoame și rapoarte de polinoame</a></li><li><a href="#s2-6">6. Exponențiale</a></li><li><a href="#s2-7">7. Radicali: diferențe și conjugatul</a></li><li><a href="#s2-8">8. Sume cu n termeni și șiruri mărginite</a></li><li><a href="#s2-9">Schemă recapitulativă: ce fac după forma șirului</a></li></ol></li><li><a href="#s3">Probleme pe niveluri</a><ol><li><a href="#s3-1">Nivel de bază</a></li><li><a href="#s3-2">Nivel consolidat</a></li><li><a href="#s3-3">Nivel avansat</a></li></ol></li></ol></nav>
+      
+      <div class="check-bar"><p class="note" id="check-note">Apasă «Verifică» lângă un exercițiu. Răspunsurile rămân pe acest dispozitiv.</p><button class="chip" type="button" id="check-reset" hidden>Șterge răspunsurile mele</button></div>
+      <article class="material-body" data-lang="ro" lang="ro">
+        <p><strong>Întrebarea fișei:</strong> Cum calculezi limita unui șir scris cu sume, produse, câturi, puteri și radicali și ce faci când regulile de calcul nu dau răspunsul?</p>
+        <h2 id="s1">Pornim de la ce știi</h2>
+        <p><em>Trei verificări rapide. Dacă una dintre ele îți ridică probleme, notează-o: la ea revii prima.</em></p>
+        <ol class="exercises">
+          <li>
+            <p>Completează:</p>
+            <p>a) $\lim\limits_{n\to\infty}\frac{1}{n}=\ldots$;</p>
+            <p>b) $\lim\limits_{n\to\infty} n^2=\ldots$;</p>
+            <p>c) $\lim\limits_{n\to\infty}\left(\frac{2}{3}\right)^n=\ldots$;</p>
+            <p>d) $\lim\limits_{n\to\infty} 3^n=\ldots$;</p>
+            <p>e) $\lim\limits_{n\to\infty}(-1)^n=\ldots$.</p>
+          </li>
+          <li>
+            <p>Dă factor comun forțat: $3n^2-5n+2=n^2\left(\ldots\right)$ și $3^n+2^n=3^n\left(\ldots\right)$.</p>
+          </li>
+          <li>
+            <p>Arată că $\sqrt{n+1}-\sqrt{n}=\frac{1}{\sqrt{n+1}+\sqrt{n}}$.</p>
+          </li>
+        </ol>
+        <h2 id="s2">Teorie pe scurt</h2>
+        <p><em>Întâi regulile de calcul și cazurile în care ele nu se aplică. Apoi, pentru fiecare tip de șir, metoda pas cu pas (în chenarul gros) și exemple rezolvate. La final găsești schema recapitulativă și firul logic.</em></p>
+        <h3 id="s2-1">1. Operații cu șiruri convergente</h3>
+        <div class="retine">
+          <p class="retine-title">Teoremă</p>
+          <p>Dacă $a_n\to a$ și $b_n\to b$, cu $a, b\in\mathbb{R}$, atunci:</p>
+          <ul>
+            <li><strong>suma și diferența:</strong> $a_n\pm b_n\to a\pm b$;</li>
+            <li><strong>produsul:</strong> $a_n\cdot b_n\to a\cdot b$; în particular $\lambda a_n\to\lambda a$, pentru $\lambda\in\mathbb{R}$;</li>
+            <li><strong>câtul:</strong> $\frac{a_n}{b_n}\to\frac{a}{b}$, dacă $b\ne 0$;</li>
+            <li><strong>puterea:</strong> $a_n^{b_n}\to a^b$, dacă $a_n&gt;0$ și $a&gt;0$;</li>
+            <li><strong>radicalul:</strong> $\sqrt[k]{a_n}\to\sqrt[k]{a}$ (cu $a_n\ge 0$, dacă $k$ este par);</li>
+            <li><strong>modulul:</strong> $|a_n|\to|a|$.</li>
+          </ul>
+          <p>Pe scurt: limita „trece” prin operații, atunci când rezultatul are sens. Regulile se folosesc fără demonstrație.</p>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Exemplul 1 · Șiruri convergente</p>
+          <p><strong>a)</strong> $\lim\limits_{n\to\infty}\left(3+\frac{2}{n}\right)\left(5-\frac{1}{n^2}\right)=3\cdot 5=15$</p>
+          <p><strong>b)</strong> $\lim\limits_{n\to\infty}\sqrt{4+\frac{1}{n}}=\sqrt{4}=2$</p>
+          <p><strong>c)</strong> $\lim\limits_{n\to\infty}\left(\frac{1}{2}+\frac{1}{n}\right)^{2+\frac{1}{n}}=\left(\frac{1}{2}\right)^2=\frac{1}{4}$ (baza și exponentul au limite finite, iar baza limită este pozitivă).</p>
+        </div>
+        <h3 id="s2-2">2. Calcule posibile cu ±∞</h3>
+        <p>Când cel puțin una dintre limite este infinită, rezultatul se citește din tabelul de mai jos. Aici $a, b\in\mathbb{R}$ sunt limite finite, iar $0_+$ ($0_-$) înseamnă limita $0$, cu termeni pozitivi (negativi) de la un rang încolo.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Operația</th>
+              <th>Calcule posibile</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Adunare</td>
+              <td>$a+(+\infty)=+\infty,\quad a+(-\infty)=-\infty$<br>$(+\infty)+(+\infty)=+\infty,\quad(-\infty)+(-\infty)=-\infty$</td>
+            </tr>
+            <tr>
+              <td>Înmulțire</td>
+              <td>$a\cdot(+\infty)=+\infty$ și $a\cdot(-\infty)=-\infty$, dacă $a&gt;0$<br>$a\cdot(+\infty)=-\infty$ și $a\cdot(-\infty)=+\infty$, dacă $a&lt;0$<br>$(+\infty)\cdot(+\infty)=(-\infty)\cdot(-\infty)=+\infty,\quad(+\infty)\cdot(-\infty)=-\infty$</td>
+            </tr>
+            <tr>
+              <td>Împărțire</td>
+              <td>$\frac{a}{+\infty}=\frac{a}{-\infty}=0$<br>$\frac{+\infty}{a}=+\infty$, dacă $a&gt;0$;  $\frac{+\infty}{a}=-\infty$, dacă $a&lt;0$<br>$\frac{a}{0_+}=+\infty$ și $\frac{a}{0_-}=-\infty$, dacă $a&gt;0$ (invers, dacă $a&lt;0$)<br>$\frac{+\infty}{0_+}=+\infty,\quad\frac{+\infty}{0_-}=-\infty$</td>
+            </tr>
+            <tr>
+              <td>Puteri (baza pozitivă)</td>
+              <td>$a^{+\infty}=+\infty$, dacă $a&gt;1$;  $a^{+\infty}=0$, dacă $0&lt;a&lt;1$<br>$a^{-\infty}=0$, dacă $a&gt;1$;  $a^{-\infty}=+\infty$, dacă $0&lt;a&lt;1$<br>$(+\infty)^b=+\infty$, dacă $b&gt;0$;  $(+\infty)^b=0$, dacă $b&lt;0$<br>$(+\infty)^{+\infty}=+\infty,\quad(+\infty)^{-\infty}=0,\quad 0_+^{+\infty}=0,\quad 0_+^{-\infty}=+\infty$</td>
+            </tr>
+            <tr>
+              <td>Radicali</td>
+              <td>$\sqrt[k]{+\infty}=+\infty$<br>$\sqrt[k]{-\infty}=-\infty$, pentru $k$ impar</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="retine retine-de-retinut">
+          <p class="retine-title">De reținut</p>
+          <ul>
+            <li>La adunare, un număr finit „nu contează” lângă $\pm\infty$.</li>
+            <li>La înmulțire și la împărțire, rezultatul se stabilește cu regula semnelor.</li>
+            <li>La $\frac{a}{0}$, cu $a\ne 0$, trebuie aflat semnul numitorului: $\frac{1}{0}$ fără semn nu are sens.</li>
+          </ul>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Exemplul 2 · Forme determinate</p>
+          <p><strong>a)</strong> $\lim\limits_{n\to\infty}(n^2+5)=+\infty$ (forma $+\infty+5$).</p>
+          <p><strong>b)</strong> $\lim\limits_{n\to\infty}\frac{-3}{n+1}=0$ (forma $\frac{-3}{+\infty}$).</p>
+          <p><strong>c)</strong> $\lim\limits_{n\to\infty}(2-n)\cdot 3^n=-\infty$ (forma $(-\infty)\cdot(+\infty)$).</p>
+          <p><strong>d)</strong> $\lim\limits_{n\to\infty}\left(2+\frac{1}{n}\right)^n=+\infty$ (forma $2^{+\infty}$), dar $\lim\limits_{n\to\infty}\left(\frac{1}{2}+\frac{1}{n}\right)^n=0$ (forma $\left(\frac{1}{2}\right)^{+\infty}$).</p>
+        </div>
+        <h3 id="s2-3">3. Cazuri de nedeterminare</h3>
+        <div class="retine">
+          <p class="retine-title">Definiție</p>
+          <p>Un <strong>caz de nedeterminare</strong> (caz exceptat) este o formă pentru care regulile de calcul nu dau rezultatul. Sunt șapte:</p>
+          <p>$$\infty-\infty,\quad 0\cdot\infty,\quad\frac{\infty}{\infty},\quad\frac{0}{0},\quad 1^{\infty},\quad\infty^{0},\quad 0^{0}$$</p>
+          <p>Rezultatul depinde de șirurile concrete. Transformi expresia până ajungi la o formă din tabelul de la punctul 2.</p>
+          <p>Cazurile $1^{\infty}$, $\infty^{0}$ și $0^{0}$ apar la puteri cu baza și exponentul variabile. Ele se rezolvă cu ajutorul numărului $e$.</p>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Exemplul 3 · De ce ∞ − ∞ nu este 0</p>
+          <p>Toate diferențele de mai jos au forma $\infty-\infty$, dar rezultatele diferă:</p>
+          <ul>
+            <li>$(n+3)-n=3\to 3$</li>
+            <li>$n^2-n=n(n-1)\to+\infty$</li>
+            <li>$n-n^2=n(1-n)\to-\infty$</li>
+            <li>$\left(n+(-1)^n\right)-n=(-1)^n$, care nu are limită.</li>
+          </ul>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Forma</th>
+              <th>Unde apare</th>
+              <th>Cum transformi</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>$\infty-\infty$</td>
+              <td>polinoame; diferențe de radicali; diferențe de fracții</td>
+              <td>factor comun forțat; amplific cu conjugatul; aduc la același numitor</td>
+            </tr>
+            <tr>
+              <td>$\frac{\infty}{\infty}$</td>
+              <td>rapoarte de polinoame, de radicali sau de exponențiale</td>
+              <td>dau factor comun forțat termenul dominant, sus și jos</td>
+            </tr>
+            <tr>
+              <td>$0\cdot\infty$</td>
+              <td>produse</td>
+              <td>scriu produsul ca un cât sau îl efectuez</td>
+            </tr>
+            <tr>
+              <td>$\frac{0}{0}$</td>
+              <td>câturi de șiruri cu limita 0</td>
+              <td>simplific; amplific cu conjugatul; înmulțesc sus și jos cu o putere a lui $n$</td>
+            </tr>
+            <tr>
+              <td>$1^{\infty}$, $\infty^{0}$, $0^{0}$</td>
+              <td>puteri cu baza și exponentul variabile</td>
+              <td>cu ajutorul numărului $e$</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="retine">
+          <p class="retine-title">Atenție · Greșeli frecvente</p>
+          <ul>
+            <li>$\infty-\infty$ nu este $0$, $\frac{\infty}{\infty}$ nu este $1$, $0\cdot\infty$ nu este $0$, iar $1^{\infty}$ nu este $1$.</li>
+            <li>În schimb, $(+\infty)+(+\infty)$, $(+\infty)\cdot(+\infty)$, $(+\infty)^{+\infty}$ și $0_+^{+\infty}$ <strong>nu</strong> sunt cazuri de nedeterminare.</li>
+            <li>Înainte de orice calcul, scrie ce formă ai. Dacă este caz de nedeterminare, transformi.</li>
+          </ul>
+        </div>
+        <h3 id="s2-4">4. Limite fundamentale</h3>
+        <div class="retine retine-de-retinut">
+          <p class="retine-title">De reținut</p>
+          <ul>
+            <li>$\lim\limits_{n\to\infty} n^k=+\infty$ și $\lim\limits_{n\to\infty}\frac{1}{n^k}=0$, pentru $k\in\mathbb{N}^*$.</li>
+            <li>$\lim\limits_{n\to\infty} n^{\alpha}=+\infty$, dacă $\alpha&gt;0$, și $\lim\limits_{n\to\infty} n^{\alpha}=0$, dacă $\alpha&lt;0$. De exemplu, $\lim\limits_{n\to\infty}\sqrt{n}=+\infty$ și $\lim\limits_{n\to\infty}\frac{1}{\sqrt[3]{n}}=0$.</li>
+            <li>Șirul putere:</li>
+          </ul>
+          <p>$$\lim\limits_{n\to\infty} q^n=\begin{cases}+\infty, &amp; q&gt;1\\ 1, &amp; q=1\\ 0, &amp; q\in(-1;1)\\ \text{nu există}, &amp; q\le -1\end{cases}$$</p>
+          <ul>
+            <li>$\lim\limits_{n\to\infty}\sqrt[n]{a}=1$, pentru $a&gt;0$: exponentul $\frac{1}{n}$ tinde la $0$, deci $a^{\frac{1}{n}}\to a^0=1$.</li>
+            <li>Dacă $(a_n)$ este mărginit și $b_n\to 0$, atunci $a_nb_n\to 0$ (criteriul majorării).</li>
+          </ul>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Exemplul 4 · Șirul putere</p>
+          <p><strong>a)</strong> $\lim\limits_{n\to\infty}\left(\frac{2}{3}\right)^n=0$, pentru că $\frac{2}{3}\in(-1;1)$.</p>
+          <p><strong>b)</strong> $\lim\limits_{n\to\infty}\left(-\frac{5}{4}\right)^n$ nu există, pentru că $-\frac{5}{4}\le -1$.</p>
+          <p><strong>c)</strong> $\lim\limits_{n\to\infty}\frac{1}{0{,}9^n}=+\infty$: numitorul tinde la $0_+$ (forma $\frac{1}{0_+}$).</p>
+        </div>
+        <h3 id="s2-5">5. Polinoame și rapoarte de polinoame</h3>
+        <div class="firul-logic">
+          <p class="firul-logic-label">★ Metodă</p>
+          <p class="firul-logic-lead">Factor comun forțat</p>
+          <ol class="firul-logic-steps">
+            <li><span>Găsesc puterea cea mai mare a lui $n$ (gradul), la numărător și la numitor.</span></li>
+            <li><span>Dau factor comun forțat această putere: $3n^2-5n+2=n^2\left(3-\frac{5}{n}+\frac{2}{n^2}\right)$.</span></li>
+            <li><span>În paranteză, toți termenii în afară de primul tind la 0. Paranteza tinde la coeficientul dominant.</span></li>
+            <li><span>Simplific (la un raport) și citesc rezultatul cu regulile de calcul.</span></li>
+          </ol>
+        </div>
+        <div class="retine retine-de-retinut">
+          <p class="retine-title">De reținut</p>
+          <p>Pentru $a_k\ne 0$ și $k\ge 1$: $\lim\limits_{n\to\infty}(a_kn^k+\ldots+a_1n+a_0)=a_k\cdot(+\infty)$, adică $+\infty$, dacă $a_k&gt;0$, și $-\infty$, dacă $a_k&lt;0$.</p>
+          <p>$$\lim\limits_{n\to\infty}\frac{a_kn^k+\ldots+a_0}{b_pn^p+\ldots+b_0}=\begin{cases}0, &amp; k&lt;p\\ \frac{a_k}{b_p}, &amp; k=p\\ \frac{a_k}{b_p}\cdot(+\infty), &amp; k&gt;p\end{cases}$$</p>
+          <p>Pe scurt: compari gradele. La grade egale, limita este raportul coeficienților dominanți.</p>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Exemplul 5 · Polinoame</p>
+          <p><strong>a)</strong> $\lim\limits_{n\to\infty}(2n^3-5n^2+1)=\lim\limits_{n\to\infty} n^3\left(2-\frac{5}{n}+\frac{1}{n^3}\right)=(+\infty)\cdot 2=+\infty$</p>
+          <p><strong>b)</strong> $\lim\limits_{n\to\infty}(3n-n^2)=\lim\limits_{n\to\infty} n^2\left(\frac{3}{n}-1\right)=(+\infty)\cdot(-1)=-\infty$. Forma era $\infty-\infty$.</p>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Exemplul 6 · Rapoarte de polinoame</p>
+          <p><strong>a)</strong> Grade egale:</p>
+          <p>$$\lim\limits_{n\to\infty}\frac{3n^2-n+4}{5n^2+2}=\lim\limits_{n\to\infty}\frac{n^2\left(3-\frac{1}{n}+\frac{4}{n^2}\right)}{n^2\left(5+\frac{2}{n^2}\right)}=\frac{3}{5}$$</p>
+          <p><strong>b)</strong> Gradul de sus este mai mic: $\lim\limits_{n\to\infty}\frac{n+7}{2n^2+3}=0$.</p>
+          <p><strong>c)</strong> Gradul de sus este mai mare: $\lim\limits_{n\to\infty}\frac{1-4n^3}{n^2+6n}=\frac{-4}{1}\cdot(+\infty)=-\infty$.</p>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Atenție · Gradul cu paranteze și radicali</p>
+          <ul>
+            <li>$(2n-1)^3$ are gradul $3$ și coeficientul dominant $2^3=8$. Nu e nevoie să desfaci paranteza.</li>
+            <li>$\sqrt{4n^2+n}=n\sqrt{4+\frac{1}{n}}$ „se poartă ca” $2n$: are gradul $1$ și coeficientul $2$. La fel, $\sqrt[3]{8n^3+1}$ se poartă ca $2n$.</li>
+            <li>$\sqrt{n}$ are gradul $\frac{1}{2}$, iar $n\sqrt{n}$ are gradul $\frac{3}{2}$.</li>
+          </ul>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Exemplul 7 · Raport cu radicali</p>
+          <p>$$\lim\limits_{n\to\infty}\frac{\sqrt{4n^2+1}+n}{3n-2}=\lim\limits_{n\to\infty}\frac{n\left(\sqrt{4+\frac{1}{n^2}}+1\right)}{n\left(3-\frac{2}{n}\right)}=\frac{2+1}{3}=1$$</p>
+        </div>
+        <h3 id="s2-6">6. Exponențiale</h3>
+        <div class="firul-logic">
+          <p class="firul-logic-label">★ Metodă</p>
+          <p class="firul-logic-lead">Împart la termenul dominant</p>
+          <ol class="firul-logic-steps">
+            <li><span>Scriu toate puterile cu exponentul $n$: $5^{n+1}=5\cdot 5^n$, $2^{2n}=4^n$, $3^{n-1}=\frac{3^n}{3}$.</span></li>
+            <li><span>Aleg puterea cu baza cea mai mare (în modul).</span></li>
+            <li><span>Dau factor comun forțat această putere, sus și jos.</span></li>
+            <li><span>Rapoartele care rămân au forma $q^n$, cu $|q|&lt;1$, deci tind la $0$.</span></li>
+          </ol>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Exemplul 8 · Raport de exponențiale</p>
+          <p>$$\lim\limits_{n\to\infty}\frac{2\cdot 5^n+3^n}{4\cdot 5^n-2^n}=\lim\limits_{n\to\infty}\frac{5^n\left(2+\left(\frac{3}{5}\right)^n\right)}{5^n\left(4-\left(\frac{2}{5}\right)^n\right)}=\frac{2+0}{4-0}=\frac{1}{2}$$</p>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Exemplul 9 · Diferență de exponențiale</p>
+          <p>Forma $\infty-\infty$: $\lim\limits_{n\to\infty}(3^n-2^n)=\lim\limits_{n\to\infty} 3^n\left(1-\left(\frac{2}{3}\right)^n\right)=(+\infty)\cdot 1=+\infty$.</p>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Atenție · Baze negative</p>
+          <p>$(-2)^n$ nu are limită, dar $\frac{(-2)^n}{3^n}=\left(-\frac{2}{3}\right)^n\to 0$. La baze negative compari modulele bazelor.</p>
+        </div>
+        <h3 id="s2-7">7. Radicali: diferențe și conjugatul</h3>
+        <div class="firul-logic">
+          <p class="firul-logic-label">★ Metodă</p>
+          <p class="firul-logic-lead">Amplific cu conjugatul</p>
+          <ol class="firul-logic-steps">
+            <li><span>Verific dacă este cu adevărat $\infty-\infty$ „strâns”: compar coeficienții dominanți ($\sqrt{n^2+3n}$ se poartă ca $n$).</span></li>
+            <li><span>Dacă coeficienții dominanți diferă, dau factor comun forțat $n$ și am terminat.</span></li>
+            <li><span>Dacă sunt egali, amplific cu conjugatul: $\sqrt{A}-B=\frac{A-B^2}{\sqrt{A}+B}$. Sus, termenii dominanți se reduc.</span></li>
+            <li><span>Obțin forma $\frac{\infty}{\infty}$ și dau factor comun forțat $n$, sus și jos.</span></li>
+          </ol>
+        </div>
+        <div class="retine retine-de-retinut">
+          <p class="retine-title">De reținut · Formule cu conjugatul</p>
+          <p>$$\sqrt{A}-\sqrt{B}=\frac{A-B}{\sqrt{A}+\sqrt{B}}$$</p>
+          <p>$$\sqrt{A}-B=\frac{A-B^2}{\sqrt{A}+B}$$</p>
+          <p>$$\sqrt[3]{A}-B=\frac{A-B^3}{\sqrt[3]{A^2}+B\sqrt[3]{A}+B^2}$$</p>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Exemplul 10 · Pas cu pas</p>
+          <p>Calculează $\lim\limits_{n\to\infty}\left(\sqrt{n^2+4n}-n\right)$.</p>
+          <p><strong>Pașii 1–2.</strong> Forma $\infty-\infty$; $\sqrt{n^2+4n}$ se poartă ca $n$: coeficienții sunt egali.</p>
+          <p><strong>Pasul 3.</strong> $\sqrt{n^2+4n}-n=\frac{n^2+4n-n^2}{\sqrt{n^2+4n}+n}=\frac{4n}{\sqrt{n^2+4n}+n}$</p>
+          <p><strong>Pasul 4.</strong> $\lim\limits_{n\to\infty}\frac{4n}{n\left(\sqrt{1+\frac{4}{n}}+1\right)}=\frac{4}{1+1}=2$</p>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Exemplul 11 · Doi radicali</p>
+          <p>$\lim\limits_{n\to\infty}\left(\sqrt{n+3}-\sqrt{n}\right)=\lim\limits_{n\to\infty}\frac{3}{\sqrt{n+3}+\sqrt{n}}=0$ (forma $\frac{3}{+\infty}$).</p>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Exemplul 12 · Coeficienți diferiți</p>
+          <p>$\lim\limits_{n\to\infty}\left(\sqrt{n^2+3n}-2n\right)=\lim\limits_{n\to\infty} n\left(\sqrt{1+\frac{3}{n}}-2\right)=(+\infty)\cdot(-1)=-\infty$. Nu a fost nevoie de conjugat.</p>
+        </div>
+        <h3 id="s2-8">8. Sume cu n termeni și șiruri mărginite</h3>
+        <div class="retine">
+          <p class="retine-title">Atenție · Câți termeni are suma?</p>
+          <p>Regulile de calcul sunt pentru un număr <strong>fix</strong> de termeni. Suma $\frac{1}{n}+\frac{1}{n}+\ldots+\frac{1}{n}$, cu $n$ termeni, este egală cu $1$, deși fiecare termen tinde la $0$. Întâi calculezi suma (o scrii fără „…”), apoi limita.</p>
+        </div>
+        <div class="retine retine-de-retinut">
+          <p class="retine-title">De reținut · Sume utile</p>
+          <p>$$1+2+\ldots+n=\frac{n(n+1)}{2}$$</p>
+          <p>$$1+3+5+\ldots+(2n-1)=n^2$$</p>
+          <p>$$1^2+2^2+\ldots+n^2=\frac{n(n+1)(2n+1)}{6}$$</p>
+          <p>$$1+q+q^2+\ldots+q^n=\frac{q^{n+1}-1}{q-1},\quad q\ne 1$$</p>
+          <p>$$\frac{1}{k(k+1)}=\frac{1}{k}-\frac{1}{k+1}$$</p>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Exemplul 13 · Sumă</p>
+          <p>$$\lim\limits_{n\to\infty}\frac{1+2+\ldots+n}{n^2}=\lim\limits_{n\to\infty}\frac{n(n+1)}{2n^2}=\frac{1}{2}$$</p>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Exemplul 14 · Mărginit ori șir cu limita 0</p>
+          <p><strong>a)</strong> $\left|\frac{\sin n}{n}\right|\le\frac{1}{n}\to 0$, deci $\lim\limits_{n\to\infty}\frac{\sin n}{n}=0$.</p>
+          <p><strong>b)</strong> $\lim\limits_{n\to\infty}\frac{n+\cos n}{2n+1}=\lim\limits_{n\to\infty}\frac{1+\frac{\cos n}{n}}{2+\frac{1}{n}}=\frac{1}{2}$, pentru că $\frac{\cos n}{n}\to 0$.</p>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Atenție · Ambele șiruri trebuie să aibă limită</p>
+          <p>Regulile de calcul cer ca ambele șiruri să aibă limită. Șirul $(\sin n)$ nu are limită, deci nu poți scrie $\lim\limits_{n\to\infty}\sin n\cdot\lim\limits_{n\to\infty}\frac{1}{n}$. Folosești criteriul majorării.</p>
+        </div>
+        <h3 id="s2-9">Schemă recapitulativă: ce fac după forma șirului</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Cum arată șirul</th>
+              <th>Forma</th>
+              <th>Ce fac</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>polinom în $n$</td>
+              <td>$\infty-\infty$</td>
+              <td>factor comun forțat puterea cea mai mare</td>
+            </tr>
+            <tr>
+              <td>raport de polinoame sau de radicali</td>
+              <td>$\frac{\infty}{\infty}$</td>
+              <td>compar gradele; factor comun forțat sus și jos</td>
+            </tr>
+            <tr>
+              <td>raport de exponențiale</td>
+              <td>$\frac{\infty}{\infty}$</td>
+              <td>împart la puterea cu baza cea mai mare</td>
+            </tr>
+            <tr>
+              <td>diferență cu radicali, coeficienți dominanți egali</td>
+              <td>$\infty-\infty$</td>
+              <td>amplific cu conjugatul</td>
+            </tr>
+            <tr>
+              <td>diferență cu radicali, coeficienți dominanți diferiți</td>
+              <td>$\infty-\infty$</td>
+              <td>factor comun forțat $n$</td>
+            </tr>
+            <tr>
+              <td>diferență de fracții</td>
+              <td>$\infty-\infty$</td>
+              <td>aduc la același numitor</td>
+            </tr>
+            <tr>
+              <td>sumă cu $n$ termeni</td>
+              <td>—</td>
+              <td>calculez întâi suma</td>
+            </tr>
+            <tr>
+              <td>mărginit ori șir cu limita 0</td>
+              <td>—</td>
+              <td>criteriul majorării</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="firul-logic">
+          <p class="firul-logic-label">★ Cel mai important</p>
+          <p class="firul-logic-lead">Firul logic: cum calculezi o limită de șir. Urmează pașii în această ordine, la fiecare problemă</p>
+          <ol class="firul-logic-steps">
+            <li><span>Înlocuiesc în gând fiecare bucată cu limita ei și scriu forma obținută.</span></li>
+            <li><span>Dacă forma este în tabelul de calcule posibile, scriu direct rezultatul.</span></li>
+            <li><span>Dacă este caz de nedeterminare, recunosc tipul șirului (schema de mai sus).</span></li>
+            <li><span>Transform: factor comun forțat, împărțire la termenul dominant, conjugat sau calculul sumei.</span></li>
+            <li><span>Scriu din nou forma: acum trebuie să fie determinată.</span></li>
+            <li><span>Verific semnul și, dacă pot, valoarea pentru un $n$ mare.</span></li>
+          </ol>
+        </div>
+        <h2 id="s3">Probleme pe niveluri</h2>
+        <p><em>La fiecare limită scrie întâi forma (de exemplu $\frac{\infty}{\infty}$), apoi transformarea pe care o faci.</em></p>
+        <h3 id="s3-1">Nivel de bază</h3>
+        <ol class="exercises">
+          <li>
+            <p>Stabilește dacă forma este caz de nedeterminare. Dacă nu este, scrie rezultatul:</p>
+            <p data-ex="1a">a) $(+\infty)+(+\infty)$;</p>
+            <p data-ex="1b">b) $(+\infty)-(+\infty)$;</p>
+            <p data-ex="1c">c) $0\cdot(+\infty)$;</p>
+            <p data-ex="1d">d) $\frac{5}{+\infty}$;</p>
+            <p data-ex="1e">e) $\frac{+\infty}{+\infty}$;</p>
+            <p data-ex="1f">f) $(-3)\cdot(+\infty)$;</p>
+            <p data-ex="1g">g) $1^{+\infty}$;</p>
+            <p data-ex="1h">h) $3^{+\infty}$;</p>
+            <p data-ex="1i">i) $\left(\frac{1}{2}\right)^{+\infty}$;</p>
+            <p data-ex="1j">j) $\frac{-2}{0_+}$;</p>
+            <p data-ex="1k">k) $(+\infty)^{0}$;</p>
+            <p data-ex="1l">l) $0_+^{+\infty}$.</p>
+          </li>
+          <li>
+            <p>Calculează (formele sunt determinate):</p>
+            <p data-ex="2a">a) $\lim\limits_{n\to\infty}\left(4-\frac{3}{n}\right)\left(2+\frac{1}{n^2}\right)$;</p>
+            <p data-ex="2b">b) $\lim\limits_{n\to\infty}\frac{6+\frac{1}{n}}{3-\frac{2}{n}}$;</p>
+            <p data-ex="2c">c) $\lim\limits_{n\to\infty}\sqrt{9+\frac{5}{n}}$;</p>
+            <p data-ex="2d">d) $\lim\limits_{n\to\infty}\left(n^2+\frac{1}{n}\right)$;</p>
+            <p data-ex="2e">e) $\lim\limits_{n\to\infty}(5-n^3)$;</p>
+            <p data-ex="2f">f) $\lim\limits_{n\to\infty}\left[\left(\frac{1}{3}\right)^n+2\right]$;</p>
+            <p data-ex="2g">g) $\lim\limits_{n\to\infty}\frac{7}{n^2+1}$;</p>
+            <p data-ex="2h">h) $\lim\limits_{n\to\infty}\left(3+\frac{1}{n}\right)^n$;</p>
+            <p data-ex="2i">i) $\lim\limits_{n\to\infty}\left(\frac{1}{2}-\frac{1}{n}\right)^n$;</p>
+            <p data-ex="2j">j) $\lim\limits_{n\to\infty}(2^n+n^2)$.</p>
+          </li>
+          <li>
+            <p>Calculează:</p>
+            <p data-ex="3a">a) $\lim\limits_{n\to\infty}(n^3-5n^2+2)$;</p>
+            <p data-ex="3b">b) $\lim\limits_{n\to\infty}(-2n^4+n^3+100n)$;</p>
+            <p data-ex="3c">c) $\lim\limits_{n\to\infty}(4n-n^2)$;</p>
+            <p data-ex="3d">d) $\lim\limits_{n\to\infty}\left[(2n+1)^2-4n^2\right]$;</p>
+            <p data-ex="3e">e) $\lim\limits_{n\to\infty}\left[(n+1)^3-n^3\right]$;</p>
+            <p data-ex="3f">f) $\lim\limits_{n\to\infty}\left[(n-2)^3-(n+1)^3\right]$.</p>
+          </li>
+          <li>
+            <p>Calculează:</p>
+            <p data-ex="4a">a) $\lim\limits_{n\to\infty}\frac{4n^2+3n}{2n^2-1}$;</p>
+            <p data-ex="4b">b) $\lim\limits_{n\to\infty}\frac{n+5}{n^2+1}$;</p>
+            <p data-ex="4c">c) $\lim\limits_{n\to\infty}\frac{2n^3-1}{1-n^2}$;</p>
+            <p data-ex="4d">d) $\lim\limits_{n\to\infty}\frac{(3n-1)^2}{4n^2+n}$;</p>
+            <p data-ex="4e">e) $\lim\limits_{n\to\infty}\frac{(1-2n)^3}{n^3+2}$;</p>
+            <p data-ex="4f">f) $\lim\limits_{n\to\infty}\frac{n^2+5n}{3n+1}$;</p>
+            <p data-ex="4g">g) $\lim\limits_{n\to\infty}\frac{(n+1)(n+2)(n+3)}{2n^3}$.</p>
+          </li>
+          <li>
+            <p>Calculează:</p>
+            <p data-ex="5a">a) $\lim\limits_{n\to\infty}\frac{3^n+2^n}{3^n-1}$;</p>
+            <p data-ex="5b">b) $\lim\limits_{n\to\infty}\frac{5^{n+1}+4^n}{5^n+3^n}$;</p>
+            <p data-ex="5c">c) $\lim\limits_{n\to\infty}\frac{2^n+3^n}{4^n+1}$;</p>
+            <p data-ex="5d">d) $\lim\limits_{n\to\infty}\frac{4^n-3^n}{2^{2n+1}+1}$;</p>
+            <p data-ex="5e">e) $\lim\limits_{n\to\infty}\frac{2^n+(-3)^n}{5^n}$;</p>
+            <p data-ex="5f">f) $\lim\limits_{n\to\infty}(5^n-4^n)$;</p>
+            <p data-ex="5g">g) $\lim\limits_{n\to\infty}\frac{6^n}{2^n+3^n}$.</p>
+          </li>
+          <li>
+            <p>Calculează:</p>
+            <p data-ex="6a">a) $\lim\limits_{n\to\infty}\left(\sqrt{n^2+6n}-n\right)$;</p>
+            <p data-ex="6b">b) $\lim\limits_{n\to\infty}\left(\sqrt{4n^2+n}-2n\right)$;</p>
+            <p data-ex="6c">c) $\lim\limits_{n\to\infty}\left(\sqrt{n+5}-\sqrt{n+1}\right)$;</p>
+            <p data-ex="6d">d) $\lim\limits_{n\to\infty}\left(\sqrt{n^2+n+1}-\sqrt{n^2-n}\right)$;</p>
+            <p data-ex="6e">e) $\lim\limits_{n\to\infty}\left(\sqrt{n^2+3n}-2n\right)$;</p>
+            <p data-ex="6f">f) $\lim\limits_{n\to\infty}\left(n-\sqrt{n^2-2n}\right)$.</p>
+          </li>
+        </ol>
+        <h3 id="s3-2">Nivel consolidat</h3>
+        <ol class="exercises" start="7">
+          <li>
+            <p>Calculează întâi suma, apoi limita:</p>
+            <p data-ex="7a">a) $\lim\limits_{n\to\infty}\frac{1+2+\ldots+n}{n^2+1}$;</p>
+            <p data-ex="7b">b) $\lim\limits_{n\to\infty}\frac{1+3+5+\ldots+(2n-1)}{2n^2+n}$;</p>
+            <p data-ex="7c">c) $\lim\limits_{n\to\infty}\frac{1^2+2^2+\ldots+n^2}{n^3}$;</p>
+            <p data-ex="7d">d) $\lim\limits_{n\to\infty}\left(1+\frac{1}{2}+\frac{1}{4}+\ldots+\frac{1}{2^n}\right)$;</p>
+            <p data-ex="7e">e) $\lim\limits_{n\to\infty}\left(\frac{1}{1\cdot 2}+\frac{1}{2\cdot 3}+\ldots+\frac{1}{n(n+1)}\right)$;</p>
+            <p data-ex="7f">f) $\lim\limits_{n\to\infty}\left(\frac{1+2+\ldots+n}{n+2}-\frac{n}{2}\right)$.</p>
+          </li>
+          <li>
+            <p>Calculează (compară gradele):</p>
+            <p data-ex="8a">a) $\lim\limits_{n\to\infty}\frac{\sqrt{9n^2+n}+2n}{n+5}$;</p>
+            <p data-ex="8b">b) $\lim\limits_{n\to\infty}\frac{\sqrt{n}+1}{\sqrt{4n+3}}$;</p>
+            <p data-ex="8c">c) $\lim\limits_{n\to\infty}\frac{\sqrt[3]{8n^3+n}-n}{2n+1}$;</p>
+            <p data-ex="8d">d) $\lim\limits_{n\to\infty}\frac{n\sqrt{n}+1}{2n^2+1}$;</p>
+            <p data-ex="8e">e) $\lim\limits_{n\to\infty}\frac{\sqrt{n^2+1}+\sqrt{4n^2+3}}{\sqrt{n^2+5}}$;</p>
+            <p data-ex="8f">f) $\lim\limits_{n\to\infty}\frac{\sqrt{n^4+n}}{n+1}$.</p>
+          </li>
+          <li>
+            <p>Calculează, folosind criteriul majorării unde este nevoie:</p>
+            <p data-ex="9a">a) $\lim\limits_{n\to\infty}\frac{(-1)^n}{\sqrt{n}}$;</p>
+            <p data-ex="9b">b) $\lim\limits_{n\to\infty}\frac{n\cos n}{n^2+1}$;</p>
+            <p data-ex="9c">c) $\lim\limits_{n\to\infty}\frac{3n+\sin n}{n+2}$;</p>
+            <p data-ex="9d">d) $\lim\limits_{n\to\infty}\frac{2^n+(-1)^n}{2^n}$.</p>
+          </li>
+          <li>
+            <p>Parametri.</p>
+            <p data-ex="10a">a) Determină $a\in\mathbb{R}$ pentru care $\lim\limits_{n\to\infty}\frac{an^2+3n+1}{2n^2+5}=3$.</p>
+            <p data-ex="10b">b) Determină $a\in\mathbb{R}$ pentru care limita $\lim\limits_{n\to\infty}\frac{(a-1)n^3+n}{n^2+1}$ este finită.</p>
+            <p>c) Calculează $\lim\limits_{n\to\infty}\frac{an^2+n}{n+1}$, discutând după $a\in\mathbb{R}$.</p>
+          </li>
+          <li>
+            <p>Calculează, discutând după $a&gt;0$:</p>
+            <p>a) $\lim\limits_{n\to\infty}\frac{a^n+2^n}{3^n+2^n}$;</p>
+            <p>b) $\lim\limits_{n\to\infty}\frac{a^{n+1}+2^n}{a^n+2^{n+1}}$.</p>
+          </li>
+          <li>
+            <p>Adevărat sau fals? Pentru fals, dă un contraexemplu.</p>
+            <p data-ex="12a">a) Dacă $a_n\to+\infty$ și $b_n\to+\infty$, atunci $a_n-b_n\to 0$.</p>
+            <p data-ex="12b">b) Dacă $a_n\to 0$ și $(b_n)$ este mărginit, atunci $a_nb_n\to 0$.</p>
+            <p data-ex="12c">c) Dacă șirul $(a_n+b_n)$ are limită, atunci șirurile $(a_n)$ și $(b_n)$ au limită.</p>
+            <p data-ex="12d">d) Dacă $a_n\to 2$ și $b_n\to-\infty$, atunci $a_nb_n\to-\infty$.</p>
+            <p data-ex="12e">e) Dacă $a_n&gt;0$, $a_n\to 1$ și $b_n\to+\infty$, atunci $a_n^{b_n}\to 1$.</p>
+            <p data-ex="12f">f) Dacă $a_n&gt;0$ și $a_n\to 0$, atunci $\frac{1}{a_n}\to+\infty$.</p>
+          </li>
+          <li>
+            <p>Fie șirul $x_1=1$, $x_{n+1}=\frac{1}{2}x_n+3$, $n\ge 1$.</p>
+            <p>a) Arată că $x_n=6-\frac{5}{2^{n-1}}$, pentru orice $n\ge 1$.</p>
+            <p data-ex="13b">b) Calculează $\lim\limits_{n\to\infty} x_n$.</p>
+            <p data-ex="13c">c) Calculează $\lim\limits_{n\to\infty} 2^n(6-x_n)$. Ce formă avea limita?</p>
+          </li>
+          <li>
+            <p>Cazurile $0\cdot\infty$ și $\infty-\infty$ cu fracții. Calculează:</p>
+            <p data-ex="14a">a) $\lim\limits_{n\to\infty} n\left(\sqrt{n^2+1}-n\right)$;</p>
+            <p data-ex="14b">b) $\lim\limits_{n\to\infty}\sqrt{n}\left(\sqrt{n+1}-\sqrt{n}\right)$;</p>
+            <p data-ex="14c">c) $\lim\limits_{n\to\infty}\frac{1}{n}\sqrt{n^2+n}$;</p>
+            <p data-ex="14d">d) $\lim\limits_{n\to\infty}\left(\frac{n^2+1}{n+1}-n\right)$;</p>
+            <p data-ex="14e">e) $\lim\limits_{n\to\infty}\left(\frac{n^2}{n+1}-\frac{n^2}{n+2}\right)$.</p>
+          </li>
+        </ol>
+        <h3 id="s3-3">Nivel avansat</h3>
+        <ol class="exercises" start="15">
+          <li>
+            <p>Calculează (conjugatul pentru radicalul de ordinul 3):</p>
+            <p data-ex="15a">a) $\lim\limits_{n\to\infty}\left(\sqrt[3]{n^3+3n^2}-n\right)$;</p>
+            <p data-ex="15b">b) $\lim\limits_{n\to\infty}\left(\sqrt[3]{n^3+2n^2}-\sqrt{n^2+n}\right)$;</p>
+            <p data-ex="15c">c) $\lim\limits_{n\to\infty} n\left(\sqrt[3]{n^3+n}-n\right)$.</p>
+            <p><em>Indicație la b):</em> adună și scade $n$.</p>
+          </li>
+          <li>
+            <p>Calculează:</p>
+            <p data-ex="16a">a) $\lim\limits_{n\to\infty}\frac{1\cdot 2+2\cdot 3+\ldots+n(n+1)}{n^3}$;</p>
+            <p data-ex="16b">b) $\lim\limits_{n\to\infty}\frac{1}{\sqrt{n}}\left(\frac{1}{1+\sqrt{2}}+\frac{1}{\sqrt{2}+\sqrt{3}}+\ldots+\frac{1}{\sqrt{n}+\sqrt{n+1}}\right)$;</p>
+            <p data-ex="16c">c) $\lim\limits_{n\to\infty}\left(\frac{1}{1\cdot 3}+\frac{1}{3\cdot 5}+\ldots+\frac{1}{(2n-1)(2n+1)}\right)$;</p>
+            <p data-ex="16d">d) $\lim\limits_{n\to\infty}\frac{1+3+3^2+\ldots+3^n}{3^n}$.</p>
+          </li>
+          <li>
+            <p>Determină parametrii reali:</p>
+            <p data-ex="17a">a) $a$ și $b$, astfel încât $\lim\limits_{n\to\infty}\left(\sqrt{4n^2+an+1}-bn\right)=3$;</p>
+            <p data-ex="17b">b) $a$ și $b$, astfel încât $\lim\limits_{n\to\infty}\left(\frac{n^2+1}{n+1}-an-b\right)=0$.</p>
+          </li>
+          <li>
+            <p>Calculează cu criteriul cleștelui:</p>
+            <p data-ex="18a">a) $\lim\limits_{n\to\infty}\sqrt[n]{2^n+3^n}$;</p>
+            <p data-ex="18b">b) $\lim\limits_{n\to\infty}\left(\frac{1}{\sqrt{n^2+1}}+\frac{1}{\sqrt{n^2+2}}+\ldots+\frac{1}{\sqrt{n^2+n}}\right)$.</p>
+          </li>
+          <li>
+            <p>Discută după parametru:</p>
+            <p>a) $\lim\limits_{n\to\infty}\left(\frac{a-1}{2}\right)^n$, $a\in\mathbb{R}$;</p>
+            <p>b) $\lim\limits_{n\to\infty}\frac{a^n+1}{a^n+2}$, $a&gt;0$.</p>
+          </li>
+        </ol>
+      </article>
+      <section class="faq" aria-labelledby="faq-heading"><h2 id="faq-heading" data-i18n="faq.title">Întrebări frecvente</h2><details><summary>Care sunt cazurile de nedeterminare la limitele de șiruri?</summary><p>Sunt șapte: ∞ − ∞, 0 · ∞, ∞/∞, 0/0, 1^∞, ∞^0 și 0^0. Pentru ele regulile de calcul nu dau rezultatul: aceeași formă poate duce la limite diferite. Transformi expresia (factor comun forțat, conjugat, împărțire la termenul dominant) până ajungi la o formă determinată.</p></details><details><summary>Cum calculez limita unui raport de polinoame în n?</summary><p>Compari gradele numărătorului și numitorului. Dacă gradul de sus este mai mic, limita este 0. La grade egale, limita este raportul coeficienților dominanți. Dacă gradul de sus este mai mare, limita este +∞ sau −∞, după semnul raportului coeficienților dominanți.</p></details><details><summary>Când amplific cu conjugatul la o limită de șir?</summary><p>Când ai o diferență cu radicali de forma ∞ − ∞ în care termenii dominanți au același coeficient, de exemplu √(n² + 4n) − n. Conjugatul transformă diferența într-un cât în care termenii dominanți se reduc. Dacă coeficienții diferă, este suficient factorul comun forțat.</p></details><details><summary>De ce nu pot calcula termen cu termen limita unei sume cu n termeni?</summary><p>Regulile de calcul sunt pentru un număr fix de termeni. Când numărul termenilor crește odată cu n, întâi calculezi suma cu o formulă (suma lui Gauss, progresia geometrică, telescoparea), apoi limita. De exemplu, 1/n adunat de n ori dă 1, deși fiecare termen tinde la 0.</p></details></section>
+      <aside class="related" id="material-related"><h2>Din aceeași temă</h2>
+        <ul class="material-list">
+        <li class="m-row"><a class="m-link" href="fisa-lucru-siruri-recurente-1033.html"><span class="m-badges"><span class="badge badge-fise">Fișă de lucru</span><span class="badge badge-lectii">Teorie</span><time class="m-date" datetime="2026-10-26">26 oct. 2026</time></span><span class="m-title">Fișă de lucru: șiruri date prin recurențe</span></a></li>
+        </ul>
+        <p><a class="more" href="../clasa-11.html">Toate materialele pentru Clasa a XI-a</a></p></aside>
+    </div>
+  </main>
+
+  <footer id="site-footer" class="site-footer"><div class="wrap"><p>© <span data-year>2026</span> Laura Miron. <span data-i18n="footer.text">Materiale gratuite pentru elevi.</span> · <a href="../despre.html" data-i18n="footer.about">Despre</a> · <a href="https://mqgrader.ro/" data-i18n="footer.mqgrader">MQGrader: corectare teste</a> · <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license">CC BY-NC-SA 4.0</a></p></div></footer>
+</body>
+</html>

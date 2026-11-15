@@ -1,0 +1,1603 @@
+{
+  "uid": "1035",
+  "version": 1,
+  "items": {
+    "1a": {
+      "kind": "options",
+      "options": [
+        {
+          "value": "ned",
+          "label": {
+            "ro": "caz de nedeterminare",
+            "en": "indeterminate form"
+          },
+          "chip": {
+            "ro": "nedeterminare",
+            "en": "indeterminate"
+          }
+        },
+        {
+          "value": "0",
+          "label": {
+            "ro": "$0$",
+            "en": "$0$"
+          }
+        },
+        {
+          "value": "+inf",
+          "label": {
+            "ro": "$+\\infty$",
+            "en": "$+\\infty$"
+          },
+          "chip": {
+            "ro": "+∞",
+            "en": "+∞"
+          }
+        },
+        {
+          "value": "-inf",
+          "label": {
+            "ro": "$-\\infty$",
+            "en": "$-\\infty$"
+          },
+          "chip": {
+            "ro": "−∞",
+            "en": "−∞"
+          }
+        }
+      ],
+      "accept": [
+        "+inf"
+      ],
+      "show": "$+\\infty$"
+    },
+    "1b": {
+      "kind": "options",
+      "options": [
+        {
+          "value": "ned",
+          "label": {
+            "ro": "caz de nedeterminare",
+            "en": "indeterminate form"
+          },
+          "chip": {
+            "ro": "nedeterminare",
+            "en": "indeterminate"
+          }
+        },
+        {
+          "value": "0",
+          "label": {
+            "ro": "$0$",
+            "en": "$0$"
+          }
+        },
+        {
+          "value": "+inf",
+          "label": {
+            "ro": "$+\\infty$",
+            "en": "$+\\infty$"
+          },
+          "chip": {
+            "ro": "+∞",
+            "en": "+∞"
+          }
+        },
+        {
+          "value": "-inf",
+          "label": {
+            "ro": "$-\\infty$",
+            "en": "$-\\infty$"
+          },
+          "chip": {
+            "ro": "−∞",
+            "en": "−∞"
+          }
+        }
+      ],
+      "accept": [
+        "ned"
+      ],
+      "show": "caz de nedeterminare ($\\infty-\\infty$)"
+    },
+    "1c": {
+      "kind": "options",
+      "options": [
+        {
+          "value": "ned",
+          "label": {
+            "ro": "caz de nedeterminare",
+            "en": "indeterminate form"
+          },
+          "chip": {
+            "ro": "nedeterminare",
+            "en": "indeterminate"
+          }
+        },
+        {
+          "value": "0",
+          "label": {
+            "ro": "$0$",
+            "en": "$0$"
+          }
+        },
+        {
+          "value": "+inf",
+          "label": {
+            "ro": "$+\\infty$",
+            "en": "$+\\infty$"
+          },
+          "chip": {
+            "ro": "+∞",
+            "en": "+∞"
+          }
+        },
+        {
+          "value": "-inf",
+          "label": {
+            "ro": "$-\\infty$",
+            "en": "$-\\infty$"
+          },
+          "chip": {
+            "ro": "−∞",
+            "en": "−∞"
+          }
+        }
+      ],
+      "accept": [
+        "ned"
+      ],
+      "show": "caz de nedeterminare ($0\\cdot\\infty$)"
+    },
+    "1d": {
+      "kind": "options",
+      "options": [
+        {
+          "value": "ned",
+          "label": {
+            "ro": "caz de nedeterminare",
+            "en": "indeterminate form"
+          },
+          "chip": {
+            "ro": "nedeterminare",
+            "en": "indeterminate"
+          }
+        },
+        {
+          "value": "0",
+          "label": {
+            "ro": "$0$",
+            "en": "$0$"
+          }
+        },
+        {
+          "value": "+inf",
+          "label": {
+            "ro": "$+\\infty$",
+            "en": "$+\\infty$"
+          },
+          "chip": {
+            "ro": "+∞",
+            "en": "+∞"
+          }
+        },
+        {
+          "value": "-inf",
+          "label": {
+            "ro": "$-\\infty$",
+            "en": "$-\\infty$"
+          },
+          "chip": {
+            "ro": "−∞",
+            "en": "−∞"
+          }
+        }
+      ],
+      "accept": [
+        "0"
+      ],
+      "show": "$0$"
+    },
+    "1e": {
+      "kind": "options",
+      "options": [
+        {
+          "value": "ned",
+          "label": {
+            "ro": "caz de nedeterminare",
+            "en": "indeterminate form"
+          },
+          "chip": {
+            "ro": "nedeterminare",
+            "en": "indeterminate"
+          }
+        },
+        {
+          "value": "0",
+          "label": {
+            "ro": "$0$",
+            "en": "$0$"
+          }
+        },
+        {
+          "value": "+inf",
+          "label": {
+            "ro": "$+\\infty$",
+            "en": "$+\\infty$"
+          },
+          "chip": {
+            "ro": "+∞",
+            "en": "+∞"
+          }
+        },
+        {
+          "value": "-inf",
+          "label": {
+            "ro": "$-\\infty$",
+            "en": "$-\\infty$"
+          },
+          "chip": {
+            "ro": "−∞",
+            "en": "−∞"
+          }
+        }
+      ],
+      "accept": [
+        "ned"
+      ],
+      "show": "caz de nedeterminare ($\\frac{\\infty}{\\infty}$)"
+    },
+    "1f": {
+      "kind": "options",
+      "options": [
+        {
+          "value": "ned",
+          "label": {
+            "ro": "caz de nedeterminare",
+            "en": "indeterminate form"
+          },
+          "chip": {
+            "ro": "nedeterminare",
+            "en": "indeterminate"
+          }
+        },
+        {
+          "value": "0",
+          "label": {
+            "ro": "$0$",
+            "en": "$0$"
+          }
+        },
+        {
+          "value": "+inf",
+          "label": {
+            "ro": "$+\\infty$",
+            "en": "$+\\infty$"
+          },
+          "chip": {
+            "ro": "+∞",
+            "en": "+∞"
+          }
+        },
+        {
+          "value": "-inf",
+          "label": {
+            "ro": "$-\\infty$",
+            "en": "$-\\infty$"
+          },
+          "chip": {
+            "ro": "−∞",
+            "en": "−∞"
+          }
+        }
+      ],
+      "accept": [
+        "-inf"
+      ],
+      "show": "$-\\infty$"
+    },
+    "1g": {
+      "kind": "options",
+      "options": [
+        {
+          "value": "ned",
+          "label": {
+            "ro": "caz de nedeterminare",
+            "en": "indeterminate form"
+          },
+          "chip": {
+            "ro": "nedeterminare",
+            "en": "indeterminate"
+          }
+        },
+        {
+          "value": "0",
+          "label": {
+            "ro": "$0$",
+            "en": "$0$"
+          }
+        },
+        {
+          "value": "+inf",
+          "label": {
+            "ro": "$+\\infty$",
+            "en": "$+\\infty$"
+          },
+          "chip": {
+            "ro": "+∞",
+            "en": "+∞"
+          }
+        },
+        {
+          "value": "-inf",
+          "label": {
+            "ro": "$-\\infty$",
+            "en": "$-\\infty$"
+          },
+          "chip": {
+            "ro": "−∞",
+            "en": "−∞"
+          }
+        }
+      ],
+      "accept": [
+        "ned"
+      ],
+      "show": "caz de nedeterminare ($1^{\\infty}$)"
+    },
+    "1h": {
+      "kind": "options",
+      "options": [
+        {
+          "value": "ned",
+          "label": {
+            "ro": "caz de nedeterminare",
+            "en": "indeterminate form"
+          },
+          "chip": {
+            "ro": "nedeterminare",
+            "en": "indeterminate"
+          }
+        },
+        {
+          "value": "0",
+          "label": {
+            "ro": "$0$",
+            "en": "$0$"
+          }
+        },
+        {
+          "value": "+inf",
+          "label": {
+            "ro": "$+\\infty$",
+            "en": "$+\\infty$"
+          },
+          "chip": {
+            "ro": "+∞",
+            "en": "+∞"
+          }
+        },
+        {
+          "value": "-inf",
+          "label": {
+            "ro": "$-\\infty$",
+            "en": "$-\\infty$"
+          },
+          "chip": {
+            "ro": "−∞",
+            "en": "−∞"
+          }
+        }
+      ],
+      "accept": [
+        "+inf"
+      ],
+      "show": "$+\\infty$"
+    },
+    "1i": {
+      "kind": "options",
+      "options": [
+        {
+          "value": "ned",
+          "label": {
+            "ro": "caz de nedeterminare",
+            "en": "indeterminate form"
+          },
+          "chip": {
+            "ro": "nedeterminare",
+            "en": "indeterminate"
+          }
+        },
+        {
+          "value": "0",
+          "label": {
+            "ro": "$0$",
+            "en": "$0$"
+          }
+        },
+        {
+          "value": "+inf",
+          "label": {
+            "ro": "$+\\infty$",
+            "en": "$+\\infty$"
+          },
+          "chip": {
+            "ro": "+∞",
+            "en": "+∞"
+          }
+        },
+        {
+          "value": "-inf",
+          "label": {
+            "ro": "$-\\infty$",
+            "en": "$-\\infty$"
+          },
+          "chip": {
+            "ro": "−∞",
+            "en": "−∞"
+          }
+        }
+      ],
+      "accept": [
+        "0"
+      ],
+      "show": "$0$"
+    },
+    "1j": {
+      "kind": "options",
+      "options": [
+        {
+          "value": "ned",
+          "label": {
+            "ro": "caz de nedeterminare",
+            "en": "indeterminate form"
+          },
+          "chip": {
+            "ro": "nedeterminare",
+            "en": "indeterminate"
+          }
+        },
+        {
+          "value": "0",
+          "label": {
+            "ro": "$0$",
+            "en": "$0$"
+          }
+        },
+        {
+          "value": "+inf",
+          "label": {
+            "ro": "$+\\infty$",
+            "en": "$+\\infty$"
+          },
+          "chip": {
+            "ro": "+∞",
+            "en": "+∞"
+          }
+        },
+        {
+          "value": "-inf",
+          "label": {
+            "ro": "$-\\infty$",
+            "en": "$-\\infty$"
+          },
+          "chip": {
+            "ro": "−∞",
+            "en": "−∞"
+          }
+        }
+      ],
+      "accept": [
+        "-inf"
+      ],
+      "show": "$-\\infty$"
+    },
+    "1k": {
+      "kind": "options",
+      "options": [
+        {
+          "value": "ned",
+          "label": {
+            "ro": "caz de nedeterminare",
+            "en": "indeterminate form"
+          },
+          "chip": {
+            "ro": "nedeterminare",
+            "en": "indeterminate"
+          }
+        },
+        {
+          "value": "0",
+          "label": {
+            "ro": "$0$",
+            "en": "$0$"
+          }
+        },
+        {
+          "value": "+inf",
+          "label": {
+            "ro": "$+\\infty$",
+            "en": "$+\\infty$"
+          },
+          "chip": {
+            "ro": "+∞",
+            "en": "+∞"
+          }
+        },
+        {
+          "value": "-inf",
+          "label": {
+            "ro": "$-\\infty$",
+            "en": "$-\\infty$"
+          },
+          "chip": {
+            "ro": "−∞",
+            "en": "−∞"
+          }
+        }
+      ],
+      "accept": [
+        "ned"
+      ],
+      "show": "caz de nedeterminare ($\\infty^0$)"
+    },
+    "1l": {
+      "kind": "options",
+      "options": [
+        {
+          "value": "ned",
+          "label": {
+            "ro": "caz de nedeterminare",
+            "en": "indeterminate form"
+          },
+          "chip": {
+            "ro": "nedeterminare",
+            "en": "indeterminate"
+          }
+        },
+        {
+          "value": "0",
+          "label": {
+            "ro": "$0$",
+            "en": "$0$"
+          }
+        },
+        {
+          "value": "+inf",
+          "label": {
+            "ro": "$+\\infty$",
+            "en": "$+\\infty$"
+          },
+          "chip": {
+            "ro": "+∞",
+            "en": "+∞"
+          }
+        },
+        {
+          "value": "-inf",
+          "label": {
+            "ro": "$-\\infty$",
+            "en": "$-\\infty$"
+          },
+          "chip": {
+            "ro": "−∞",
+            "en": "−∞"
+          }
+        }
+      ],
+      "accept": [
+        "0"
+      ],
+      "show": "$0$"
+    },
+    "2a": {
+      "kind": "text",
+      "show": "$4\\cdot 2=8$",
+      "accept": [
+        "8"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "2b": {
+      "kind": "text",
+      "show": "$\\frac{6}{3}=2$",
+      "accept": [
+        "2"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "2c": {
+      "kind": "text",
+      "show": "$\\sqrt{9}=3$",
+      "accept": [
+        "3"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "2d": {
+      "kind": "text",
+      "show": "$+\\infty$ (forma $+\\infty+0$)",
+      "accept": [
+        "+∞",
+        "∞",
+        "+inf",
+        "inf",
+        "+infinit",
+        "infinit",
+        "+infinity",
+        "infinity"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "2e": {
+      "kind": "text",
+      "show": "$-\\infty$ (forma $5-\\infty$)",
+      "accept": [
+        "-∞",
+        "-inf",
+        "-infinit",
+        "-infinity"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "2f": {
+      "kind": "text",
+      "show": "$0+2=2$",
+      "accept": [
+        "2"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "2g": {
+      "kind": "text",
+      "show": "$0$ (forma $\\frac{7}{+\\infty}$)",
+      "accept": [
+        "0"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "2h": {
+      "kind": "text",
+      "show": "$+\\infty$ (forma $3^{+\\infty}$)",
+      "accept": [
+        "+∞",
+        "∞",
+        "+inf",
+        "inf",
+        "+infinit",
+        "infinit",
+        "+infinity",
+        "infinity"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "2i": {
+      "kind": "text",
+      "show": "$0$ (forma $\\left(\\frac{1}{2}\\right)^{+\\infty}$)",
+      "accept": [
+        "0"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "2j": {
+      "kind": "text",
+      "show": "$+\\infty$ (forma $+\\infty+\\infty$)",
+      "accept": [
+        "+∞",
+        "∞",
+        "+inf",
+        "inf",
+        "+infinit",
+        "infinit",
+        "+infinity",
+        "infinity"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "3a": {
+      "kind": "text",
+      "show": "$n^3\\left(1-\\frac{5}{n}+\\frac{2}{n^3}\\right)\\to+\\infty$",
+      "accept": [
+        "+∞",
+        "∞",
+        "+inf",
+        "inf",
+        "+infinit",
+        "infinit",
+        "+infinity",
+        "infinity"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "3b": {
+      "kind": "text",
+      "show": "$n^4\\left(-2+\\frac{1}{n}+\\frac{100}{n^3}\\right)\\to-\\infty$",
+      "accept": [
+        "-∞",
+        "-inf",
+        "-infinit",
+        "-infinity"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "3c": {
+      "kind": "text",
+      "show": "$n^2\\left(\\frac{4}{n}-1\\right)\\to-\\infty$",
+      "accept": [
+        "-∞",
+        "-inf",
+        "-infinit",
+        "-infinity"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "3d": {
+      "kind": "text",
+      "show": "$(2n+1)^2-4n^2=4n+1\\to+\\infty$",
+      "accept": [
+        "+∞",
+        "∞",
+        "+inf",
+        "inf",
+        "+infinit",
+        "infinit",
+        "+infinity",
+        "infinity"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "3e": {
+      "kind": "text",
+      "show": "$(n+1)^3-n^3=3n^2+3n+1\\to+\\infty$",
+      "accept": [
+        "+∞",
+        "∞",
+        "+inf",
+        "inf",
+        "+infinit",
+        "infinit",
+        "+infinity",
+        "infinity"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "3f": {
+      "kind": "text",
+      "show": "$(n-2)^3-(n+1)^3=-9n^2+9n-9\\to-\\infty$",
+      "accept": [
+        "-∞",
+        "-inf",
+        "-infinit",
+        "-infinity"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "4a": {
+      "kind": "text",
+      "show": "grade egale: $\\frac{4}{2}=2$",
+      "accept": [
+        "2"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "4b": {
+      "kind": "text",
+      "show": "gradul de sus este mai mic: $0$",
+      "accept": [
+        "0"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "4c": {
+      "kind": "text",
+      "show": "gradul de sus este mai mare: $\\frac{2}{-1}\\cdot(+\\infty)=-\\infty$",
+      "accept": [
+        "-∞",
+        "-inf",
+        "-infinit",
+        "-infinity"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "4d": {
+      "kind": "text",
+      "show": "grade egale: $\\frac{9}{4}$",
+      "accept": [
+        "9/4",
+        "(9)/(4)",
+        "2.25",
+        "2,25"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "4e": {
+      "kind": "text",
+      "show": "grade egale: $\\frac{(-2)^3}{1}=-8$",
+      "accept": [
+        "-8"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "4f": {
+      "kind": "text",
+      "show": "gradul de sus este mai mare: $\\frac{1}{3}\\cdot(+\\infty)=+\\infty$",
+      "accept": [
+        "+∞",
+        "∞",
+        "+inf",
+        "inf",
+        "+infinit",
+        "infinit",
+        "+infinity",
+        "infinity"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "4g": {
+      "kind": "text",
+      "show": "grade egale: $\\frac{1}{2}$",
+      "accept": [
+        "1/2",
+        "(1)/(2)",
+        "0.5",
+        "0,5",
+        ".5",
+        ",5"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "5a": {
+      "kind": "text",
+      "show": "$\\frac{1+\\left(\\frac{2}{3}\\right)^n}{1-\\frac{1}{3^n}}\\to 1$",
+      "accept": [
+        "1"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "5b": {
+      "kind": "text",
+      "show": "$\\frac{5+\\left(\\frac{4}{5}\\right)^n}{1+\\left(\\frac{3}{5}\\right)^n}\\to 5$",
+      "accept": [
+        "5"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "5c": {
+      "kind": "text",
+      "show": "$\\frac{\\left(\\frac{2}{4}\\right)^n+\\left(\\frac{3}{4}\\right)^n}{1+\\frac{1}{4^n}}\\to 0$",
+      "accept": [
+        "0"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "5d": {
+      "kind": "text",
+      "show": "$2^{2n+1}=2\\cdot 4^n$; $\\frac{1-\\left(\\frac{3}{4}\\right)^n}{2+\\frac{1}{4^n}}\\to\\frac{1}{2}$",
+      "accept": [
+        "1/2",
+        "(1)/(2)",
+        "0.5",
+        "0,5",
+        ".5",
+        ",5"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "5e": {
+      "kind": "text",
+      "show": "$\\left(\\frac{2}{5}\\right)^n+\\left(-\\frac{3}{5}\\right)^n\\to 0$",
+      "accept": [
+        "0"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "5f": {
+      "kind": "text",
+      "show": "$5^n\\left(1-\\left(\\frac{4}{5}\\right)^n\\right)\\to+\\infty$",
+      "accept": [
+        "+∞",
+        "∞",
+        "+inf",
+        "inf",
+        "+infinit",
+        "infinit",
+        "+infinity",
+        "infinity"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "5g": {
+      "kind": "text",
+      "show": "$\\frac{2^n}{\\left(\\frac{2}{3}\\right)^n+1}\\to+\\infty$",
+      "accept": [
+        "+∞",
+        "∞",
+        "+inf",
+        "inf",
+        "+infinit",
+        "infinit",
+        "+infinity",
+        "infinity"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "6a": {
+      "kind": "text",
+      "show": "$\\frac{6n}{\\sqrt{n^2+6n}+n}\\to\\frac{6}{2}=3$",
+      "accept": [
+        "3"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "6b": {
+      "kind": "text",
+      "show": "$\\frac{n}{\\sqrt{4n^2+n}+2n}\\to\\frac{1}{4}$",
+      "accept": [
+        "1/4",
+        "(1)/(4)",
+        "0.25",
+        "0,25",
+        ".25",
+        ",25"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "6c": {
+      "kind": "text",
+      "show": "$\\frac{4}{\\sqrt{n+5}+\\sqrt{n+1}}\\to 0$",
+      "accept": [
+        "0"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "6d": {
+      "kind": "text",
+      "show": "$\\frac{2n+1}{\\sqrt{n^2+n+1}+\\sqrt{n^2-n}}\\to\\frac{2}{2}=1$",
+      "accept": [
+        "1"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "6e": {
+      "kind": "text",
+      "show": "coeficienți diferiți: $n\\left(\\sqrt{1+\\frac{3}{n}}-2\\right)\\to-\\infty$",
+      "accept": [
+        "-∞",
+        "-inf",
+        "-infinit",
+        "-infinity"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "6f": {
+      "kind": "text",
+      "show": "$\\frac{2n}{n+\\sqrt{n^2-2n}}\\to\\frac{2}{2}=1$",
+      "accept": [
+        "1"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "7a": {
+      "kind": "text",
+      "show": "$\\frac{n(n+1)}{2(n^2+1)}\\to\\frac{1}{2}$",
+      "accept": [
+        "1/2",
+        "(1)/(2)",
+        "0.5",
+        "0,5",
+        ".5",
+        ",5"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "7b": {
+      "kind": "text",
+      "show": "$\\frac{n^2}{2n^2+n}\\to\\frac{1}{2}$",
+      "accept": [
+        "1/2",
+        "(1)/(2)",
+        "0.5",
+        "0,5",
+        ".5",
+        ",5"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "7c": {
+      "kind": "text",
+      "show": "$\\frac{n(n+1)(2n+1)}{6n^3}\\to\\frac{2}{6}=\\frac{1}{3}$",
+      "accept": [
+        "1/3",
+        "(1)/(3)"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "7d": {
+      "kind": "text",
+      "show": "$\\frac{1-\\left(\\frac{1}{2}\\right)^{n+1}}{1-\\frac{1}{2}}=2-\\frac{1}{2^n}\\to 2$",
+      "accept": [
+        "2"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "7e": {
+      "kind": "text",
+      "show": "telescopare: $1-\\frac{1}{n+1}\\to 1$",
+      "accept": [
+        "1"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "7f": {
+      "kind": "text",
+      "show": "$\\frac{n(n+1)}{2(n+2)}-\\frac{n}{2}=\\frac{-n}{2(n+2)}\\to-\\frac{1}{2}$",
+      "accept": [
+        "-1/2",
+        "-(1)/(2)",
+        "-0.5",
+        "-0,5",
+        "-.5",
+        "-,5"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "8a": {
+      "kind": "text",
+      "show": "$\\frac{3+2}{1}=5$",
+      "accept": [
+        "5"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "8b": {
+      "kind": "text",
+      "show": "$\\frac{1}{\\sqrt{4}}=\\frac{1}{2}$",
+      "accept": [
+        "1/2",
+        "(1)/(2)",
+        "0.5",
+        "0,5",
+        ".5",
+        ",5"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "8c": {
+      "kind": "text",
+      "show": "$\\frac{2-1}{2}=\\frac{1}{2}$",
+      "accept": [
+        "1/2",
+        "(1)/(2)",
+        "0.5",
+        "0,5",
+        ".5",
+        ",5"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "8d": {
+      "kind": "text",
+      "show": "gradul $\\frac{3}{2}<2$: $0$",
+      "accept": [
+        "0"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "8e": {
+      "kind": "text",
+      "show": "$\\frac{1+2}{1}=3$",
+      "accept": [
+        "3"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "8f": {
+      "kind": "text",
+      "show": "gradul $2>1$: $+\\infty$",
+      "accept": [
+        "+∞",
+        "∞",
+        "+inf",
+        "inf",
+        "+infinit",
+        "infinit",
+        "+infinity",
+        "infinity"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "9a": {
+      "kind": "text",
+      "show": "$\\left|\\frac{(-1)^n}{\\sqrt{n}}\\right|=\\frac{1}{\\sqrt{n}}\\to 0$",
+      "accept": [
+        "0"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "9b": {
+      "kind": "text",
+      "show": "$\\left|\\frac{n\\cos n}{n^2+1}\\right|\\le\\frac{n}{n^2+1}\\to 0$",
+      "accept": [
+        "0"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "9c": {
+      "kind": "text",
+      "show": "$\\frac{3+\\frac{\\sin n}{n}}{1+\\frac{2}{n}}\\to 3$",
+      "accept": [
+        "3"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "9d": {
+      "kind": "text",
+      "show": "$1+\\left(-\\frac{1}{2}\\right)^n\\to 1$",
+      "accept": [
+        "1"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "10a": {
+      "kind": "number",
+      "show": "grade egale: $\\frac{a}{2}=3$, deci $a=6$",
+      "accept": [
+        "6"
+      ]
+    },
+    "10b": {
+      "kind": "number",
+      "show": "pentru $a\\ne 1$ limita este $\\pm\\infty$; pentru $a=1$ limita este $\\lim\\limits_{n\\to\\infty}\\frac{n}{n^2+1}=0$, finită. Deci $a=1$",
+      "accept": [
+        "1"
+      ]
+    },
+    "10c": {
+      "check": false,
+      "why": "open",
+      "show": "$a>0$: $+\\infty$; $a=0$: $\\lim\\limits_{n\\to\\infty}\\frac{n}{n+1}=1$; $a<0$: $-\\infty$"
+    },
+    "11a": {
+      "check": false,
+      "why": "open",
+      "show": "$0<a<3$: $0$; $a=3$: $1$; $a>3$: $+\\infty$"
+    },
+    "11b": {
+      "check": false,
+      "why": "open",
+      "show": "$0<a<2$: $\\frac{1}{2}$; $a=2$: $\\frac{3\\cdot 2^n}{3\\cdot 2^n}=1$; $a>2$: $a$"
+    },
+    "12a": {
+      "kind": "truefalse",
+      "accept": [
+        "F"
+      ],
+      "show": "Fals: $a_n=n+3$, $b_n=n$ dau $a_n-b_n\\to 3$"
+    },
+    "12b": {
+      "kind": "truefalse",
+      "accept": [
+        "A"
+      ],
+      "show": "Adevărat: $|a_nb_n|\\le M|a_n|\\to 0$ (criteriul majorării)"
+    },
+    "12c": {
+      "kind": "truefalse",
+      "accept": [
+        "F"
+      ],
+      "show": "Fals: $a_n=(-1)^n$, $b_n=(-1)^{n+1}$; $a_n+b_n=0$"
+    },
+    "12d": {
+      "kind": "truefalse",
+      "accept": [
+        "A"
+      ],
+      "show": "Adevărat: $2\\cdot(-\\infty)=-\\infty$"
+    },
+    "12e": {
+      "kind": "truefalse",
+      "accept": [
+        "F"
+      ],
+      "show": "Fals: $1^{\\infty}$ este caz de nedeterminare (de exemplu $\\left(1+\\frac{1}{n}\\right)^{n^2}\\to+\\infty$)"
+    },
+    "12f": {
+      "kind": "truefalse",
+      "accept": [
+        "A"
+      ],
+      "show": "Adevărat: forma $\\frac{1}{0_+}=+\\infty$"
+    },
+    "13a": {
+      "check": false,
+      "why": "proof",
+      "show": "prin inducție: $x_1=6-5=1$; $x_{n+1}=\\frac{1}{2}\\left(6-\\frac{5}{2^{n-1}}\\right)+3=6-\\frac{5}{2^n}$"
+    },
+    "13b": {
+      "kind": "text",
+      "show": "$6-0=6$",
+      "accept": [
+        "6"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "13c": {
+      "kind": "text",
+      "show": "forma $\\infty\\cdot 0$; $2^n\\cdot\\frac{5}{2^{n-1}}=10$",
+      "accept": [
+        "10"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "14a": {
+      "kind": "text",
+      "show": "$\\frac{n}{\\sqrt{n^2+1}+n}\\to\\frac{1}{2}$",
+      "accept": [
+        "1/2",
+        "(1)/(2)",
+        "0.5",
+        "0,5",
+        ".5",
+        ",5"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "14b": {
+      "kind": "text",
+      "show": "$\\frac{\\sqrt{n}}{\\sqrt{n+1}+\\sqrt{n}}\\to\\frac{1}{2}$",
+      "accept": [
+        "1/2",
+        "(1)/(2)",
+        "0.5",
+        "0,5",
+        ".5",
+        ",5"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "14c": {
+      "kind": "text",
+      "show": "$\\sqrt{\\frac{n^2+n}{n^2}}=\\sqrt{1+\\frac{1}{n}}\\to 1$",
+      "accept": [
+        "1"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "14d": {
+      "kind": "text",
+      "show": "$\\frac{n^2+1-n^2-n}{n+1}=\\frac{1-n}{n+1}\\to-1$",
+      "accept": [
+        "-1"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "14e": {
+      "kind": "text",
+      "show": "$\\frac{n^2}{(n+1)(n+2)}\\to 1$",
+      "accept": [
+        "1"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "15a": {
+      "kind": "text",
+      "show": "$\\frac{3n^2}{\\sqrt[3]{(n^3+3n^2)^2}+n\\sqrt[3]{n^3+3n^2}+n^2}\\to\\frac{3}{3}=1$",
+      "accept": [
+        "1"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "15b": {
+      "kind": "text",
+      "show": "$\\left(\\sqrt[3]{n^3+2n^2}-n\\right)-\\left(\\sqrt{n^2+n}-n\\right)\\to\\frac{2}{3}-\\frac{1}{2}=\\frac{1}{6}$",
+      "accept": [
+        "1/6",
+        "(1)/(6)"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "15c": {
+      "kind": "text",
+      "show": "$\\frac{n\\cdot n}{\\sqrt[3]{(n^3+n)^2}+n\\sqrt[3]{n^3+n}+n^2}\\to\\frac{1}{3}$",
+      "accept": [
+        "1/3",
+        "(1)/(3)"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "16a": {
+      "kind": "text",
+      "show": "$k(k+1)=k^2+k$; suma este $\\frac{n(n+1)(n+2)}{3}$; limita $\\frac{1}{3}$",
+      "accept": [
+        "1/3",
+        "(1)/(3)"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "16b": {
+      "kind": "text",
+      "show": "$\\frac{1}{\\sqrt{k}+\\sqrt{k+1}}=\\sqrt{k+1}-\\sqrt{k}$; suma este $\\sqrt{n+1}-1$; $\\frac{\\sqrt{n+1}-1}{\\sqrt{n}}\\to 1$",
+      "accept": [
+        "1"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "16c": {
+      "kind": "text",
+      "show": "$\\frac{1}{(2k-1)(2k+1)}=\\frac{1}{2}\\left(\\frac{1}{2k-1}-\\frac{1}{2k+1}\\right)$; suma $\\frac{1}{2}\\left(1-\\frac{1}{2n+1}\\right)\\to\\frac{1}{2}$",
+      "accept": [
+        "1/2",
+        "(1)/(2)",
+        "0.5",
+        "0,5",
+        ".5",
+        ",5"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "16d": {
+      "kind": "text",
+      "show": "suma este $\\frac{3^{n+1}-1}{2}$; $\\frac{3^{n+1}-1}{2\\cdot 3^n}\\to\\frac{3}{2}$",
+      "accept": [
+        "3/2",
+        "(3)/(2)",
+        "1.5",
+        "1,5"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "17a": {
+      "kind": "list",
+      "show": "$b=2$ (altfel limita este $\\pm\\infty$); apoi $\\frac{an+1}{\\sqrt{4n^2+an+1}+2n}\\to\\frac{a}{4}=3$, deci $a=12$",
+      "accept": [
+        "12; 2"
+      ],
+      "hint": {
+        "ro": "în ordinea $a$; $b$",
+        "en": "in the order $a$; $b$"
+      }
+    },
+    "17b": {
+      "kind": "list",
+      "show": "$\\frac{n^2+1}{n+1}=n-1+\\frac{2}{n+1}$; expresia este $(1-a)n-1-b+\\frac{2}{n+1}$, deci $a=1$, $b=-1$",
+      "accept": [
+        "1; -1"
+      ],
+      "hint": {
+        "ro": "în ordinea $a$; $b$",
+        "en": "in the order $a$; $b$"
+      }
+    },
+    "18a": {
+      "kind": "text",
+      "show": "$3^n<2^n+3^n<2\\cdot 3^n$, deci $3<x_n<3\\sqrt[n]{2}\\to 3$",
+      "accept": [
+        "3"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "18b": {
+      "kind": "text",
+      "show": "$\\frac{n}{\\sqrt{n^2+n}}\\le x_n\\le\\frac{n}{\\sqrt{n^2+1}}$; ambele margini tind la $1$",
+      "accept": [
+        "1"
+      ],
+      "hint": {
+        "ro": "o limită: un număr (de exemplu 3/2 sau -4), +∞ sau -∞",
+        "en": "a limit: a number (for example 3/2 or -4), +∞ or -∞"
+      }
+    },
+    "19a": {
+      "check": false,
+      "why": "open",
+      "show": "$a\\in(-1;3)$: $0$; $a=3$: $1$; $a>3$: $+\\infty$; $a\\le -1$: nu există (baza $\\le -1$)"
+    },
+    "19b": {
+      "check": false,
+      "why": "open",
+      "show": "$0<a<1$: $\\frac{1}{2}$; $a=1$: $\\frac{2}{3}$; $a>1$: $\\frac{1+\\frac{1}{a^n}}{1+\\frac{2}{a^n}}\\to 1$"
+    }
+  }
+}
