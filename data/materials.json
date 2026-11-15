@@ -97,6 +97,14 @@
       }
     },
     {
+      "id": "matrice",
+      "grade": 11,
+      "title": {
+        "ro": "Matrice",
+        "en": "Matrices"
+      }
+    },
+    {
       "id": "siruri-progresii",
       "grade": 9,
       "title": {
@@ -2711,6 +2719,83 @@
       "results": {
         "version": 1,
         "checks": 51
+      }
+    },
+    {
+      "slug": "fisa-lucru-puterile-matrice-patratice",
+      "uid": "1034",
+      "topic": "matrice",
+      "kind": "fisa-lucru",
+      "alsoKind": "teorie",
+      "title": {
+        "ro": "Fișă de lucru: puterile unei matrice pătratice",
+        "en": "Worksheet: powers of a square matrix"
+      },
+      "seoTitle": {
+        "ro": "Puterea a n-a a unei matrice: metode de calcul",
+        "en": "Powers of a square matrix: computation methods"
+      },
+      "published": "2026-11-15",
+      "description": {
+        "ro": "Fișă de lucru pentru clasa a XI-a: puterile unei matrice pătratice prin inducție, binomul lui Newton, relația Hamilton–Cayley și matrice de rotație.",
+        "en": "Grade 11 worksheet: powers of a square matrix by induction, the binomial theorem, the Cayley–Hamilton relation and rotation matrices."
+      },
+      "pdf": "materiale/pdf/fisa-lucru-puterile-matrice-patratice-1034.pdf",
+      "youtube": null,
+      "import": {
+        "date": "2026-11-15",
+        "workflow": 5,
+        "pdf": "generated"
+      },
+      "summary": {
+        "ro": "Fișa arată cinci metode pentru puterile unei matrice pătratice: inducția, puterile care se repetă, binomul lui Newton, relația Hamilton–Cayley și matricele cu sin și cos. Fiecare metodă are pașii și un exemplu rezolvat. Urmează exerciții pe trei niveluri, o activitate pe grupe și probleme cu matrice de tranziție.",
+        "en": "The worksheet shows five methods for the powers of a square matrix: induction, repeating powers, the binomial theorem, the Cayley–Hamilton relation and matrices with sin and cos. Each method has its steps and a worked example. Then come exercises on three levels, a group activity and problems with transition matrices."
+      },
+      "faq": [
+        {
+          "q": {
+            "ro": "Cum calculez puterea a n-a a unei matrice pătratice?",
+            "en": "How do I compute the n-th power of a square matrix?"
+          },
+          "a": {
+            "ro": "Începi cu A² și, eventual, A³. Dacă apare Iₚ, −Iₚ, Oₚ sau un multiplu al lui A, puterile se repetă. Dacă A = aIₚ + B cu o putere a lui B egală cu Oₚ, folosești binomul lui Newton. O matrice de forma (a −b; b a) se scrie r·R(t). Pentru alte matrice de ordinul 2 folosești relația Hamilton–Cayley, iar când vezi un model clar, îl demonstrezi prin inducție.",
+            "en": "Start with A² and maybe A³. If Iₚ, −Iₚ, Oₚ or a multiple of A appears, the powers repeat. If A = aIₚ + B and a power of B equals Oₚ, use the binomial theorem. A matrix of the form (a −b; b a) is written as r·R(t). For other 2×2 matrices use the Cayley–Hamilton relation, and when you see a clear pattern, prove it by induction."
+          }
+        },
+        {
+          "q": {
+            "ro": "Ce spune relația Hamilton–Cayley pentru o matrice de ordinul 2?",
+            "en": "What does the Cayley–Hamilton relation say for a 2×2 matrix?"
+          },
+          "a": {
+            "ro": "Pentru A cu elementele a, b pe prima linie și c, d pe a doua, A² − (a + d)·A + (ad − bc)·I₂ = O₂. Se verifică prin calcul direct. Din ea, orice putere se scrie Aⁿ = xₙ·A + yₙ·I₂, iar xₙ verifică o recurență liniară de ordinul 2.",
+            "en": "For A with entries a, b in the first row and c, d in the second, A² − (a + d)·A + (ad − bc)·I₂ = O₂. You check it by direct computation. From it, every power can be written as Aⁿ = xₙ·A + yₙ·I₂, and xₙ satisfies a linear recurrence of order 2."
+          }
+        },
+        {
+          "q": {
+            "ro": "Când pot folosi binomul lui Newton pentru matrice?",
+            "en": "When can I use the binomial theorem for matrices?"
+          },
+          "a": {
+            "ro": "Numai când cele două matrice comută: XY = YX. Matricea unitate comută cu orice matrice, deci pentru A = aIₚ + B formula merge mereu. Metoda e rapidă când B² sau B³ este matricea nulă, pentru că suma se oprește după doi sau trei termeni.",
+            "en": "Only when the two matrices commute: XY = YX. The identity matrix commutes with every matrix, so for A = aIₚ + B the formula always works. The method is fast when B² or B³ is the zero matrix, because the sum stops after two or three terms."
+          }
+        },
+        {
+          "q": {
+            "ro": "Cum ridic la putere o matrice cu sin și cos?",
+            "en": "How do I raise a matrix with sin and cos to a power?"
+          },
+          "a": {
+            "ro": "Pentru matricea de rotație R(t), cu cos t și −sin t pe prima linie și sin t, cos t pe a doua, avem R(t)·R(u) = R(t + u), deci R(t)ⁿ = R(nt). O matrice cu a, −b pe prima linie și b, a pe a doua se scrie r·R(t), cu r = √(a² + b²), ca la forma trigonometrică a numărului a + bi.",
+            "en": "For the rotation matrix R(t), with cos t and −sin t in the first row and sin t, cos t in the second, R(t)·R(u) = R(t + u), so R(t)ⁿ = R(nt). A matrix with a, −b in the first row and b, a in the second is r·R(t), with r = √(a² + b²), as in the trigonometric form of the number a + bi."
+          }
+        }
+      ],
+      "results": {
+        "version": 1,
+        "checks": 43
       }
     },
     {

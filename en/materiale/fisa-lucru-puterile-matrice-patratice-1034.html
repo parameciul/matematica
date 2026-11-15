@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Powers of a square matrix: computation methods – Grade 11</title>
+  <meta name="description" content="Grade 11 worksheet: powers of a square matrix by induction, the binomial theorem, the Cayley–Hamilton relation and rotation matrices.">
+  <meta name="author" content="Laura Miron">
+  <meta name="robots" content="max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="google-site-verification" content="lwpe3phdRnlGTaxwvpfcxbuygEudOHDa7i_hl_1wQQc">
+  <meta name="msvalidate.01" content="79E7F21C210EE6E1F04FDB1E5956620C">
+  <link rel="canonical" href="https://lauramiron.pages.dev/en/materiale/fisa-lucru-puterile-matrice-patratice-1034">
+  <link rel="alternate" hreflang="ro" href="https://lauramiron.pages.dev/materiale/fisa-lucru-puterile-matrice-patratice-1034">
+  <link rel="alternate" hreflang="en" href="https://lauramiron.pages.dev/en/materiale/fisa-lucru-puterile-matrice-patratice-1034">
+  <link rel="alternate" hreflang="x-default" href="https://lauramiron.pages.dev/materiale/fisa-lucru-puterile-matrice-patratice-1034">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Powers of a square matrix: computation methods – Grade 11">
+  <meta property="og:description" content="Grade 11 worksheet: powers of a square matrix by induction, the binomial theorem, the Cayley–Hamilton relation and rotation matrices.">
+  <meta property="og:url" content="https://lauramiron.pages.dev/en/materiale/fisa-lucru-puterile-matrice-patratice-1034">
+  <meta property="og:image" content="https://lauramiron.pages.dev/assets/img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Math materials for grades 5–12 – Laura Miron">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="ro_RO">
+  <meta property="og:site_name" content="Laura Miron">
+  <meta property="article:published_time" content="2026-11-15">
+  <meta property="article:modified_time" content="2026-11-15">
+  <meta property="og:updated_time" content="2026-11-15">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Powers of a square matrix: computation methods – Grade 11">
+  <meta name="twitter:description" content="Grade 11 worksheet: powers of a square matrix by induction, the binomial theorem, the Cayley–Hamilton relation and rotation matrices.">
+  <meta name="twitter:image" content="https://lauramiron.pages.dev/assets/img/og-image.png">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fbfcfe">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1d2925">
+  <link rel="manifest" href="../../site.webmanifest">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../../favicon.ico" sizes="48x48">
+  <link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+  <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('matematica.theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,700;0,800;1,400&family=Caveat:wght@600&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.18.1/dist/katex.min.css" integrity="sha384-1vdNCNel6Tx/NQa8IR1mGOGKsbGreCkOPfbtPPnUURJ5Tu2PRVfQ/7KLZC+Pi1p1" crossorigin="anonymous">
+  <link rel="stylesheet" href="../../assets/css/style.css?v=dfd0a402b6">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.18.1/dist/katex.min.js" integrity="sha384-ycJ6GAwiS15LoUPipwJOrWTvkUHl/YqELValBwI5I4awP1EeEQJYarj+w85ntcz7" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.18.1/dist/contrib/auto-render.min.js" integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous"></script>
+  <script defer src="../../assets/js/i18n.js?v=feb755cd88"></script>
+  <script defer src="../../assets/js/catalog.js?v=7b3e472fde"></script>
+  <script defer src="../../assets/js/shell.js?v=e464802201"></script>
+  <script defer src="../../assets/js/site.js?v=86760ebbd4"></script>
+  <script defer src="../../assets/js/searchbox.js?v=b3f954fcd7"></script>
+  <script defer src="../../assets/js/material.js?v=eb2d425eaf"></script>
+  <script defer src="../../assets/js/answers.js?v=25caed376f"></script>
+  <script defer src="../../assets/js/check.js?v=beca89b12d"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","name":"Worksheet: powers of a square matrix","description":"Grade 11 worksheet: powers of a square matrix by induction, the binomial theorem, the Cayley–Hamilton relation and rotation matrices.","url":"https://lauramiron.pages.dev/en/materiale/fisa-lucru-puterile-matrice-patratice-1034","mainEntityOfPage":"https://lauramiron.pages.dev/en/materiale/fisa-lucru-puterile-matrice-patratice-1034","inLanguage":"en","datePublished":"2026-11-15","dateModified":"2026-11-15","learningResourceType":"Worksheet","educationalLevel":"Grade 11","teaches":"Matrices","educationalAlignment":{"@type":"AlignmentObject","alignmentType":"educationalSubject","educationalFramework":"Romanian curriculum","targetName":"Grade 11 – Matrices","targetUrl":"https://lauramiron.pages.dev/en/clasa-11#matrice"},"isAccessibleForFree":true,"license":"https://creativecommons.org/licenses/by-nc-sa/4.0/","author":{"@type":"Person","name":"Laura Miron","url":"https://lauramiron.pages.dev/en/despre","jobTitle":"Math teacher","worksFor":{"@type":"EducationalOrganization","name":"Liceul William Shakespeare","url":"https://lauramiron.pages.dev/","logo":{"@type":"ImageObject","url":"https://lauramiron.pages.dev/assets/img/og-image.png","width":1200,"height":630},"address":{"@type":"PostalAddress","addressLocality":"Timișoara","addressCountry":"RO"}},"knowsAbout":["Mathematics","Matematică","Algebră","Geometrie","Analiză matematică","Algebra","Geometry","Mathematical analysis"],"sameAs":["https://www.youtube.com/@MatematicaLauraMiron"]},"publisher":{"@type":"Person","name":"Laura Miron","url":"https://lauramiron.pages.dev/en/despre","jobTitle":"Math teacher","worksFor":{"@type":"EducationalOrganization","name":"Liceul William Shakespeare","url":"https://lauramiron.pages.dev/","logo":{"@type":"ImageObject","url":"https://lauramiron.pages.dev/assets/img/og-image.png","width":1200,"height":630},"address":{"@type":"PostalAddress","addressLocality":"Timișoara","addressCountry":"RO"}},"knowsAbout":["Mathematics","Matematică","Algebră","Geometrie","Analiză matematică","Algebra","Geometry","Mathematical analysis"],"sameAs":["https://www.youtube.com/@MatematicaLauraMiron"]},"audience":{"@type":"EducationalAudience","educationalRole":"student"},"educationalUse":"practice","abstract":"The worksheet shows five methods for the powers of a square matrix: induction, repeating powers, the binomial theorem, the Cayley–Hamilton relation and matrices with sin and cos. Each method has its steps and a worked example. Then come exercises on three levels, a group activity and problems with transition matrices.","speakable":{"@type":"SpeakableSpecification","cssSelector":[".rezumat",".faq"]},"encoding":{"@type":"MediaObject","contentUrl":"https://lauramiron.pages.dev/materiale/pdf/fisa-lucru-puterile-matrice-patratice-1034.pdf","encodingFormat":"application/pdf","inLanguage":"ro"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://lauramiron.pages.dev/"},{"@type":"ListItem","position":2,"name":"Grade 11","item":"https://lauramiron.pages.dev/clasa-11"},{"@type":"ListItem","position":3,"name":"Worksheet: powers of a square matrix","item":"https://lauramiron.pages.dev/en/materiale/fisa-lucru-puterile-matrice-patratice-1034"}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I compute the n-th power of a square matrix?","acceptedAnswer":{"@type":"Answer","text":"Start with A² and maybe A³. If Iₚ, −Iₚ, Oₚ or a multiple of A appears, the powers repeat. If A = aIₚ + B and a power of B equals Oₚ, use the binomial theorem. A matrix of the form (a −b; b a) is written as r·R(t). For other 2×2 matrices use the Cayley–Hamilton relation, and when you see a clear pattern, prove it by induction."}},{"@type":"Question","name":"What does the Cayley–Hamilton relation say for a 2×2 matrix?","acceptedAnswer":{"@type":"Answer","text":"For A with entries a, b in the first row and c, d in the second, A² − (a + d)·A + (ad − bc)·I₂ = O₂. You check it by direct computation. From it, every power can be written as Aⁿ = xₙ·A + yₙ·I₂, and xₙ satisfies a linear recurrence of order 2."}},{"@type":"Question","name":"When can I use the binomial theorem for matrices?","acceptedAnswer":{"@type":"Answer","text":"Only when the two matrices commute: XY = YX. The identity matrix commutes with every matrix, so for A = aIₚ + B the formula always works. The method is fast when B² or B³ is the zero matrix, because the sum stops after two or three terms."}},{"@type":"Question","name":"How do I raise a matrix with sin and cos to a power?","acceptedAnswer":{"@type":"Answer","text":"For the rotation matrix R(t), with cos t and −sin t in the first row and sin t, cos t in the second, R(t)·R(u) = R(t + u), so R(t)ⁿ = R(nt). A matrix with a, −b in the first row and b, a in the second is r·R(t), with r = √(a² + b²), as in the trigonometric form of the number a + bi."}}]}</script>
+</head>
+<body data-root="../../" data-page-root="../">
+  <header id="site-header" class="site-header"><div class="wrap header-bar"><a class="brand" href="../index.html"><svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M10 48h44" fill="none" stroke="var(--brand-marker)" stroke-width="12" stroke-linecap="round"/><g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"><path d="M25 13c-3 11-6 21-9 31 7 0 13-2 18-6"/><path d="M33 45l4-23 6 13 8-15 2 25"/></g></svg><span class="brand-text"><span class="brand-name" data-i18n="site.title">Math with Laura Miron</span><span class="brand-school" data-i18n="site.school">Liceul William Shakespeare, Timișoara</span></span></a><nav class="grade-nav" id="grade-nav" data-nav aria-label="Choose a grade"><span class="grade-nav-label" aria-hidden="true" data-i18n="nav.gradesLabel">Choose a grade</span><a href="../clasa-5.html" data-grade-link="5" aria-label="Grade 5">5</a><a href="../clasa-6.html" data-grade-link="6" aria-label="Grade 6">6</a><a href="../clasa-7.html" data-grade-link="7" aria-label="Grade 7">7</a><a href="../clasa-8.html" data-grade-link="8" aria-label="Grade 8">8</a><a href="../clasa-9.html" data-grade-link="9" class="gap" aria-label="Grade 9">9</a><a href="../clasa-10.html" data-grade-link="10" aria-label="Grade 10">10</a><a href="../clasa-11.html" data-grade-link="11" aria-label="Grade 11">11</a><a href="../clasa-12.html" data-grade-link="12" aria-label="Grade 12">12</a></nav><form class="search" id="site-search" role="search" action="../cautare.html"><label class="sr-only" for="site-search-input" data-i18n="search.label">Search materials</label><svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="m20 20-3.8-3.8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><input id="site-search-input" name="q" type="search" autocomplete="off" spellcheck="false" enterkeyhint="search" placeholder="Search: absolute value, worksheet…"><input type="hidden" id="site-search-grade" name="c" value=""></form><div class="header-tools"><button type="button" class="icon-btn" data-toggle="search" aria-controls="site-search" aria-expanded="false"><svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="m20 20-3.8-3.8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><span class="sr-only" data-i18n="search.open">Search</span></button><button type="button" class="icon-btn" data-toggle="grades" aria-controls="grade-nav" aria-expanded="false"><span data-i18n="nav.grades">Grades</span></button><button type="button" class="theme-btn" data-theme-toggle aria-pressed="false"><svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 14.5 A8.5 8.5 0 0 1 9.5 4 a8.5 8.5 0 1 0 10.5 10.5 Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2"/><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2.5 v2.2 M12 19.3 v2.2 M2.5 12 h2.2 M19.3 12 h2.2"/><path d="M5.3 5.3 l1.6 1.6 M17.1 17.1 l1.6 1.6 M18.7 5.3 l-1.6 1.6 M6.9 17.1 l-1.6 1.6"/></g></svg><span class="sr-only" data-i18n="theme.dark">Dark theme</span></button><div class="lang" role="group" aria-label="Site language" data-lang-group><a hreflang="ro" href="../../materiale/fisa-lucru-puterile-matrice-patratice-1034.html" lang="ro" aria-label="Română">RO</a><a hreflang="en" lang="en" aria-current="page" aria-label="English" href="fisa-lucru-puterile-matrice-patratice-1034.html">EN</a></div></div></div></header>
+
+  <main id="content" class="wrap">
+    <div class="page" id="material" data-id="1034" data-name="fisa-lucru-puterile-matrice-patratice-1034" data-results="1">
+      <div id="material-head"><nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="../clasa-11.html">Grade 11</a></li><li><a href="../clasa-11.html#matrice">Matrices</a></li></ol></nav>
+      <span class="material-kinds"><span class="badge badge-fise">Worksheet</span><span class="badge badge-lectii">Theory</span></span>
+      <h1>Worksheet: powers of a square matrix</h1>
+      <p class="material-meta">Published <time datetime="2026-11-15">15 November 2026</time> · by <a href="../despre.html" rel="author">Laura Miron</a></p>
+      <p class="material-actions"><a class="button" href="../../materiale/pdf/fisa-lucru-puterile-matrice-patratice-1034.pdf" target="_blank" rel="noopener">Open PDF</a> <span class="note">The PDF is in Romanian.</span></p></div>
+      
+      <section class="rezumat" aria-labelledby="rezumat-heading"><h2 id="rezumat-heading" data-i18n="summary.title">Summary</h2><p>The worksheet shows five methods for the powers of a square matrix: induction, repeating powers, the binomial theorem, the Cayley–Hamilton relation and matrices with sin and cos. Each method has its steps and a worked example. Then come exercises on three levels, a group activity and problems with transition matrices.</p></section><nav class="cuprins" aria-labelledby="cuprins-heading"><h2 id="cuprins-heading" data-i18n="toc.title">Contents</h2><ol><li><a href="#s1">Start from what you know</a></li><li><a href="#s2">Theory in brief</a><ol><li><a href="#s2-1">1. Compute, guess, prove by induction</a></li><li><a href="#s2-2">2. Repeating powers</a></li><li><a href="#s2-3">3. The binomial theorem</a></li><li><a href="#s2-4">4. The Cayley–Hamilton relation (2×2 matrices)</a></li><li><a href="#s2-5">5. Matrices with sin and cos</a></li></ol></li><li><a href="#s3">Exercises</a><ol><li><a href="#s3-1">Basic level</a></li><li><a href="#s3-2">Intermediate level</a></li><li><a href="#s3-3">Advanced level</a></li></ol></li><li><a href="#s4">Matrices in real situations</a></li></ol></nav>
+      
+      <div class="check-bar"><p class="note" id="check-note">Press “Check” next to an exercise. Your answers stay on this device.</p><button class="chip" type="button" id="check-reset" hidden>Delete my answers</button></div>
+      <article class="material-body" data-lang="en" lang="en">
+        <p><strong>The question of this worksheet:</strong> How do you compute $A^{2026}$, or even $A^n$, without multiplying the matrix by itself 2025 times?</p>
+        <h2 id="s1">Start from what you know</h2>
+        <p><em>Four quick checks. If one of them gives you trouble, write it down: go back to it first.</em></p>
+        <ol class="exercises">
+          <li>
+            <p data-ex="1">Compute $A^2=A\cdot A$ for $A=\begin{pmatrix}1&amp;2\\3&amp;4\end{pmatrix}$.</p>
+          </li>
+          <li>
+            <p>Expand $(x+1)^4$ with the binomial theorem.</p>
+            <p data-ex="2">What is $C_5^2$?</p>
+          </li>
+          <li>
+            <p>Fill in: $\cos(a+b)=\ldots$ and $\sin(a+b)=\ldots$</p>
+            <p data-ex="3">Compute $\cos\frac{2\pi}{3}$ and $\sin\frac{2\pi}{3}$.</p>
+          </li>
+          <li>
+            <p data-ex="4">Find the remainder when 2026 is divided by 3, by 4 and by 6.</p>
+          </li>
+        </ol>
+        <h2 id="s2">Theory in brief</h2>
+        <p><em>For each method: when to use it, the steps (in the thick frame) and a worked example. At the end you will find the logical thread that helps you choose the method.</em></p>
+        <div class="retine">
+          <p class="retine-title">Definition</p>
+          <p>Let $A\in\mathcal{M}_p(\mathbb{C})$ be a square matrix. The powers of $A$ are defined by $A^1=A$ and $A^{n+1}=A^n\cdot A$, for $n\in\mathbb{N}^*$. By convention, $A^0=I_p$.</p>
+        </div>
+        <div class="retine retine-de-retinut">
+          <p class="retine-title">Remember</p>
+          <p>$A^m\cdot A^n=A^{m+n}$, $\quad (A^m)^n=A^{mn}$, $\quad (kA)^n=k^nA^n$ for any number $k$.</p>
+          <p><strong>Careful!</strong> Matrix multiplication is not commutative. In general $(AB)^n\ne A^nB^n$ and $(A+B)^2=A^2+AB+BA+B^2$, not $A^2+2AB+B^2$.</p>
+        </div>
+        <h3 id="s2-1">1. Compute, guess, prove by induction</h3>
+        <div class="firul-logic">
+          <p class="firul-logic-label">★ Method</p>
+          <p class="firul-logic-lead">The method of mathematical induction</p>
+          <ol class="firul-logic-steps">
+            <li><span>I compute $A^2$, $A^3$ (and $A^4$ if needed).</span></li>
+            <li><span>I look at which entries stay the same and how the others change. I write the guessed form of $A^n$ as a statement $P(n)$.</span></li>
+            <li><span>I check $P(1)$.</span></li>
+            <li><span>I assume $P(k)$ is true and compute $A^{k+1}=A^k\cdot A$. I get $P(k+1)$.</span></li>
+          </ol>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Example 1 · Induction</p>
+          <p>Compute $A^n$ for $A=\begin{pmatrix}2&amp;1\\0&amp;1\end{pmatrix}$.</p>
+          <p><strong>Step 1.</strong> $A^2=\begin{pmatrix}4&amp;3\\0&amp;1\end{pmatrix}$, $\ A^3=\begin{pmatrix}8&amp;7\\0&amp;1\end{pmatrix}$.</p>
+          <p><strong>Step 2.</strong> The first entry is a power of 2 and the entry next to it is 1 less. I guess $P(n)\colon A^n=\begin{pmatrix}2^n&amp;2^n-1\\0&amp;1\end{pmatrix}$.</p>
+          <p><strong>Step 3.</strong> For $n=1$ I get $\begin{pmatrix}2&amp;1\\0&amp;1\end{pmatrix}=A$ ✓.</p>
+          <p><strong>Step 4.</strong> $A^{k+1}=\begin{pmatrix}2^k&amp;2^k-1\\0&amp;1\end{pmatrix}\begin{pmatrix}2&amp;1\\0&amp;1\end{pmatrix}=\begin{pmatrix}2^{k+1}&amp;2^k+2^k-1\\0&amp;1\end{pmatrix}=\begin{pmatrix}2^{k+1}&amp;2^{k+1}-1\\0&amp;1\end{pmatrix}$ ✓.</p>
+        </div>
+        <h3 id="s2-2">2. Repeating powers</h3>
+        <p>Sometimes, after a few multiplications, a simple matrix appears: $I_p$, $-I_p$, $O_p$ or even $A$ times a number. Then the powers “repeat” and you no longer need induction for every exercise.</p>
+        <div class="firul-logic">
+          <p class="firul-logic-label">★ Method</p>
+          <p class="firul-logic-lead">The method of repeating powers</p>
+          <ol class="firul-logic-steps">
+            <li><span>I compute $A^2$, $A^3$, … until $I_p$, $-I_p$, $O_p$ or a multiple of $A$ appears.</span></li>
+            <li><span>If $A^k=I_p$, I divide $n$ by $k$: $n=k\cdot q+r$, with $0\le r&lt;k$.</span></li>
+            <li><span>I write $A^n=\left(A^k\right)^q\cdot A^r=A^r$ (with $A^0=I_p$).</span></li>
+          </ol>
+        </div>
+        <div class="retine retine-de-retinut">
+          <p class="retine-title">Remember</p>
+          <p>$A^k=I_p\ \Rightarrow\ A^n=A^r$, where $r$ is the remainder of $n$ divided by $k$.</p>
+          <p>$A^k=-I_p\ \Rightarrow\ A^{2k}=I_p$.</p>
+          <p>$B^k=O_p\ \Rightarrow\ B^n=O_p$ for every $n\ge k$ (a <strong>nilpotent</strong> matrix).</p>
+          <p>$A^2=kA\ \Rightarrow\ A^n=k^{n-1}A$ for every $n\ge 1$.</p>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Example 2 · The powers repeat</p>
+          <p>Compute $A^{2026}$ for $A=\begin{pmatrix}0&amp;-1\\1&amp;-1\end{pmatrix}$.</p>
+          <p>$A^2=\begin{pmatrix}-1&amp;1\\-1&amp;0\end{pmatrix}$, $\ A^3=A^2\cdot A=\begin{pmatrix}1&amp;0\\0&amp;1\end{pmatrix}=I_2$.</p>
+          <p>$2026=3\cdot 675+1$, so $A^{2026}=\left(A^3\right)^{675}\cdot A=A$.</p>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Example 3 · $A^2=kA$</p>
+          <p>For $A=\begin{pmatrix}1&amp;2\\2&amp;4\end{pmatrix}$: $\ A^2=\begin{pmatrix}5&amp;10\\10&amp;20\end{pmatrix}=5A$.</p>
+          <p>Then $A^3=A^2\cdot A=5A^2=5^2A$ and, by induction, $A^n=5^{n-1}A$.</p>
+        </div>
+        <h3 id="s2-3">3. The binomial theorem</h3>
+        <p>The identity matrix commutes with every matrix: $I_p\cdot B=B\cdot I_p=B$. That is why for $A=aI_p+B$ you may use the binomial theorem. The method is fast when a power of $B$ is $O_p$: the sum stops after a few terms.</p>
+        <div class="retine retine-de-retinut">
+          <p class="retine-title">Remember</p>
+          <p>If $XY=YX$, then $(X+Y)^n=\sum_{k=0}^{n}C_n^k\,X^{n-k}Y^k$.</p>
+          <p>If $A=aI_p+B$ and $B^2=O_p$, then $A^n=a^nI_p+n\,a^{n-1}B$.</p>
+          <p>If $A=aI_p+B$ and $B^3=O_p$, then $A^n=a^nI_p+n\,a^{n-1}B+\frac{n(n-1)}{2}\,a^{n-2}B^2$.</p>
+        </div>
+        <div class="firul-logic">
+          <p class="firul-logic-label">★ Method</p>
+          <p class="firul-logic-lead">The binomial theorem method</p>
+          <ol class="firul-logic-steps">
+            <li><span>I write $A=aI_p+B$. Usually $a$ is the number repeated on the main diagonal.</span></li>
+            <li><span>I compute $B^2$, $B^3$, … until I get $O_p$.</span></li>
+            <li><span>I apply the binomial theorem. The terms that contain $B^k=O_p$ vanish.</span></li>
+            <li><span>I add the remaining matrices and check the formula for $n=1$.</span></li>
+          </ol>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Example 4 · The binomial theorem</p>
+          <p>Compute $A^n$ for $A=\begin{pmatrix}3&amp;1&amp;0\\0&amp;3&amp;1\\0&amp;0&amp;3\end{pmatrix}$.</p>
+          <p>$A=3I_3+B$, with $B=\begin{pmatrix}0&amp;1&amp;0\\0&amp;0&amp;1\\0&amp;0&amp;0\end{pmatrix}$, $\ B^2=\begin{pmatrix}0&amp;0&amp;1\\0&amp;0&amp;0\\0&amp;0&amp;0\end{pmatrix}$, $\ B^3=O_3$.</p>
+          <p>$$A^n=3^nI_3+n\cdot 3^{n-1}B+\frac{n(n-1)}{2}\cdot 3^{n-2}B^2=\begin{pmatrix}3^n&amp;n\cdot 3^{n-1}&amp;\frac{n(n-1)}{2}\cdot 3^{n-2}\\0&amp;3^n&amp;n\cdot 3^{n-1}\\0&amp;0&amp;3^n\end{pmatrix}$$</p>
+          <p>Check: for $n=1$ I get $A$ itself ✓.</p>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Careful</p>
+          <p>The binomial theorem works only for matrices that commute. For $X=\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix}$ and $Y=\begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix}$ we have $XY\ne YX$. Check for yourself that $(X+Y)^2\ne X^2+2XY+Y^2$.</p>
+        </div>
+        <h3 id="s2-4">4. The Cayley–Hamilton relation (2×2 matrices)</h3>
+        <p>Every matrix $A=\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}\in\mathcal{M}_2(\mathbb{C})$ satisfies the relation below. The number $a+d$ is the sum of the entries on the main diagonal (the <strong>trace</strong> of the matrix). The number $ad-bc$ is the product of the entries on the main diagonal minus the product of those on the other diagonal.</p>
+        <div class="retine retine-de-retinut">
+          <p class="retine-title">Remember</p>
+          <p>$$A^2-(a+d)\,A+(ad-bc)\,I_2=O_2$$</p>
+          <p>With $s=a+d$ and $p=ad-bc$: $\ A^2=s\,A-p\,I_2$. The proof is a direct computation: you do it in exercise 5.</p>
+        </div>
+        <p>From the relation, every power of $A$ can be written as $A^n=x_nA+y_nI_2$. Multiplying by $A$ and replacing $A^2$:</p>
+        <p>$$A^{n+1}=x_nA^2+y_nA=(s\,x_n+y_n)\,A-p\,x_n\,I_2$$</p>
+        <p>So $x_{n+1}=s\,x_n+y_n$, $y_{n+1}=-p\,x_n$, that is $x_{n+2}=s\,x_{n+1}-p\,x_n$: a <strong>linear recurrence of order 2</strong>, as in the worksheet on sequences given by recurrences. Its characteristic equation, $r^2-s\,r+p=0$, has the same coefficients as the Cayley–Hamilton relation.</p>
+        <div class="firul-logic">
+          <p class="firul-logic-label">★ Method</p>
+          <p class="firul-logic-lead">The Cayley–Hamilton method</p>
+          <ol class="firul-logic-steps">
+            <li><span>I compute $s=a+d$, $p=ad-bc$ and write $A^2=s\,A-p\,I_2$.</span></li>
+            <li><span>I look for the easy cases. If $p=0$: $A^2=sA$, so $A^n=s^{n-1}A$ (method 2). If $s^2=4p$: $\left(A-\frac{s}{2}I_2\right)^2=O_2$ (method 3).</span></li>
+            <li><span>Otherwise, I write $A^n=x_nA+y_nI_2$, with $x_1=1$, $x_2=s$ and $x_{n+2}=s\,x_{n+1}-p\,x_n$.</span></li>
+            <li><span>I solve the recurrence, write $y_n=-p\,x_{n-1}$ and check the formula for $n=1$ and $n=2$.</span></li>
+          </ol>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Example 5 · Cayley–Hamilton</p>
+          <p>Compute $A^3$ and $A^n$ for $A=\begin{pmatrix}4&amp;-2\\1&amp;1\end{pmatrix}$.</p>
+          <p><strong>Step 1.</strong> $s=4+1=5$, $p=4\cdot 1-(-2)\cdot 1=6$, so $A^2=5A-6I_2$. Then $A^3=5A^2-6A=5(5A-6I_2)-6A=19A-30I_2$.</p>
+          <p><strong>Steps 2–3.</strong> $p\ne 0$ and $s^2\ne 4p$. I write $x_{n+2}=5x_{n+1}-6x_n$, $x_1=1$, $x_2=5$.</p>
+          <p><strong>Step 4.</strong> $r^2-5r+6=0$, $r_1=2$, $r_2=3$, so $x_n=3^n-2^n$ and $y_n=-6x_{n-1}=3\cdot 2^n-2\cdot 3^n$.</p>
+          <p>$$A^n=(3^n-2^n)\,A+(3\cdot 2^n-2\cdot 3^n)\,I_2=\begin{pmatrix}2\cdot 3^n-2^n&amp;2^{n+1}-2\cdot 3^n\\3^n-2^n&amp;2^{n+1}-3^n\end{pmatrix}$$</p>
+          <p>Check: $x_3=27-8=19$ and $y_3=24-54=-30$, the same as in Step 1 ✓.</p>
+        </div>
+        <h3 id="s2-5">5. Matrices with sin and cos</h3>
+        <div class="retine">
+          <p class="retine-title">Definition</p>
+          <p>For $t\in\mathbb{R}$ we write $R(t)=\begin{pmatrix}\cos t&amp;-\sin t\\\sin t&amp;\cos t\end{pmatrix}$. Multiplying by $R(t)$ rotates a point of the plane about the origin by the angle $t$ (a <strong>rotation matrix</strong>).</p>
+        </div>
+        <div class="retine retine-de-retinut">
+          <p class="retine-title">Remember</p>
+          <p>$R(t)\cdot R(u)=R(t+u)$: it follows from the formulas for $\cos(t+u)$ and $\sin(t+u)$.</p>
+          <p>$R(t)^n=R(nt)$ for every $n\in\mathbb{N}^*$ (by induction). In particular $R(\pi)=-I_2$ and $R(2\pi)=I_2$.</p>
+          <p><strong>Matrices that reduce to $R(t)$.</strong> If $A=\begin{pmatrix}a&amp;-b\\b&amp;a\end{pmatrix}$, $(a,b)\ne(0,0)$, and $r=\sqrt{a^2+b^2}$, then $A=r\begin{pmatrix}\frac{a}{r}&amp;-\frac{b}{r}\\\frac{b}{r}&amp;\frac{a}{r}\end{pmatrix}=r\,R(t)$, with $\cos t=\frac{a}{r}$, $\sin t=\frac{b}{r}$. So $A^n=r^n\,R(nt)$.</p>
+          <p>It is the same idea as the trigonometric form of the complex number $a+bi=r(\cos t+i\,\sin t)$.</p>
+        </div>
+        <div class="firul-logic">
+          <p class="firul-logic-label">★ Method</p>
+          <p class="firul-logic-lead">The rotation matrix method</p>
+          <ol class="firul-logic-steps">
+            <li><span>I check the form: the same number $a$ on the main diagonal, $-b$ (top) and $b$ (bottom) on the other diagonal.</span></li>
+            <li><span>I compute $r=\sqrt{a^2+b^2}$ and factor out $r$.</span></li>
+            <li><span>I find $t$ with $\cos t=\frac{a}{r}$ and $\sin t=\frac{b}{r}$.</span></li>
+            <li><span>I write $A^n=r^n\,R(nt)$ and reduce the angle $nt$ to an angle in $[0,2\pi)$.</span></li>
+          </ol>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Example 6 · A rotation matrix</p>
+          <p>Compute $A^6$ and $A^{2026}$ for $A=\begin{pmatrix}1&amp;-\sqrt{3}\\\sqrt{3}&amp;1\end{pmatrix}$.</p>
+          <p>$r=\sqrt{1+3}=2$, $\cos t=\frac{1}{2}$, $\sin t=\frac{\sqrt{3}}{2}$, so $t=\frac{\pi}{3}$ and $A=2R\left(\frac{\pi}{3}\right)$.</p>
+          <p>$A^n=2^n\begin{pmatrix}\cos\frac{n\pi}{3}&amp;-\sin\frac{n\pi}{3}\\\sin\frac{n\pi}{3}&amp;\cos\frac{n\pi}{3}\end{pmatrix}$, so $A^6=2^6R(2\pi)=64\,I_2$.</p>
+          <p>$2026=6\cdot 337+4$, so $A^{2026}=2^{2026}R\left(\frac{4\pi}{3}\right)=2^{2026}\begin{pmatrix}-\frac{1}{2}&amp;\frac{\sqrt{3}}{2}\\-\frac{\sqrt{3}}{2}&amp;-\frac{1}{2}\end{pmatrix}=2^{2025}\begin{pmatrix}-1&amp;\sqrt{3}\\-\sqrt{3}&amp;-1\end{pmatrix}$.</p>
+        </div>
+        <div class="firul-logic">
+          <p class="firul-logic-label">★ Most important</p>
+          <p class="firul-logic-lead">How do I choose the method? Always start with $A^2$: most of the time it shows you the way.</p>
+          <ol class="firul-logic-steps">
+            <li><span>I compute $A^2$ (maybe $A^3$). Do $I_p$, $-I_p$, $O_p$ or $kA$ appear? → repeating powers.</span></li>
+            <li><span>Is the same number $a$ repeated on the main diagonal, and does $B=A-aI_p$ have $B^2=O_p$ or $B^3=O_p$? → the binomial theorem.</span></li>
+            <li><span>Does the matrix have the form $\begin{pmatrix}a&amp;-b\\b&amp;a\end{pmatrix}$? → $A=r\,R(t)$ and $A^n=r^n\,R(nt)$.</span></li>
+            <li><span>Another 2×2 matrix? → the Cayley–Hamilton relation.</span></li>
+            <li><span>Do $A^2$, $A^3$ show a clear pattern? → I guess the form of $A^n$ and prove it by induction.</span></li>
+          </ol>
+        </div>
+        <h2 id="s3">Exercises</h2>
+        <p><em>Work in order. For each exercise, first write down which method you choose and why.</em></p>
+        <h3 id="s3-1">Basic level</h3>
+        <ol class="exercises" start="5">
+          <li>
+            <p>Let $A=\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}\in\mathcal{M}_2(\mathbb{C})$. Compute $A^2$ and $(a+d)A$, then show that $A^2-(a+d)A+(ad-bc)I_2=O_2$.</p>
+          </li>
+          <li>
+            <p>Let $A=\begin{pmatrix}1&amp;3\\0&amp;1\end{pmatrix}$.</p>
+            <p data-ex="6a">a) Compute $A^2$ and $A^3$.</p>
+            <p>b) Guess the form of $A^n$ and prove it by mathematical induction.</p>
+            <p data-ex="6c">c) Compute $A^{10}$.</p>
+          </li>
+          <li>
+            <p>Let $A=\begin{pmatrix}2&amp;0&amp;0\\0&amp;-1&amp;0\\0&amp;0&amp;3\end{pmatrix}$ be a diagonal matrix.</p>
+            <p>a) Compute $A^n$, $n\in\mathbb{N}^*$.</p>
+            <p data-ex="7b">b) Compute $A^5$.</p>
+          </li>
+          <li>
+            <p>Let $A=\begin{pmatrix}0&amp;1\\-1&amp;0\end{pmatrix}$.</p>
+            <p data-ex="8a">a) Compute $A^2$ and show that $A^4=I_2$.</p>
+            <p data-ex="8b">b) Compute $A^{2026}$ and $A^{2027}$.</p>
+          </li>
+          <li>
+            <p>Let $A=\begin{pmatrix}2&amp;-2\\1&amp;-1\end{pmatrix}$.</p>
+            <p>a) Show that $A^2=A$.</p>
+            <p data-ex="9b">b) Compute $A^{2026}$ and the sum $A+A^2+\ldots+A^{10}$.</p>
+          </li>
+          <li>
+            <p>Let $A=\begin{pmatrix}1&amp;2\\3&amp;6\end{pmatrix}$.</p>
+            <p data-ex="10a">a) Find the real number $k$ for which $A^2=kA$.</p>
+            <p data-ex="10b">b) Compute $A^n$, $n\in\mathbb{N}^*$, and then $A^3$.</p>
+          </li>
+          <li>
+            <p data-ex="11">Let $B=\begin{pmatrix}0&amp;1&amp;2\\0&amp;0&amp;3\\0&amp;0&amp;0\end{pmatrix}$. Compute $B^2$ and $B^3$. What is $B^{2026}$?</p>
+          </li>
+          <li>
+            <p>Let $A=\begin{pmatrix}2&amp;1\\0&amp;2\end{pmatrix}$.</p>
+            <p>a) Write $A=2I_2+B$ and compute $B^2$.</p>
+            <p>b) Compute $A^n$ with the binomial theorem.</p>
+            <p data-ex="12c">c) Compute $A^5$.</p>
+          </li>
+          <li>
+            <p>Let $A=\begin{pmatrix}1&amp;2\\3&amp;4\end{pmatrix}$.</p>
+            <p>a) Write the Cayley–Hamilton relation for $A$.</p>
+            <p data-ex="13b">b) Find the real numbers $x$ and $y$ for which $A^3=xA+yI_2$.</p>
+            <p data-ex="13c">c) Compute $A^3$.</p>
+          </li>
+          <li>
+            <p>Let $A=\begin{pmatrix}\frac{1}{2}&amp;-\frac{\sqrt{3}}{2}\\\frac{\sqrt{3}}{2}&amp;\frac{1}{2}\end{pmatrix}$.</p>
+            <p data-ex="14a">a) Find $t\in[0,2\pi)$ for which $A=R(t)$.</p>
+            <p data-ex="14b">b) Compute $A^3$ and $A^6$.</p>
+            <p data-ex="14c">c) What is the smallest $n\in\mathbb{N}^*$ for which $A^n=I_2$?</p>
+          </li>
+          <li>
+            <p>True or false? For each false statement, give a counterexample in $\mathcal{M}_2(\mathbb{R})$.</p>
+            <p data-ex="15a">a) If $A^2=O_2$, then $A=O_2$.</p>
+            <p data-ex="15b">b) $(A+I_2)^n=\sum_{k=0}^{n}C_n^k\,A^k$ for every $A\in\mathcal{M}_2(\mathbb{R})$ and $n\in\mathbb{N}^*$.</p>
+            <p data-ex="15c">c) $(AB)^2=A^2B^2$ for all $A,B\in\mathcal{M}_2(\mathbb{R})$.</p>
+            <p data-ex="15d">d) If $A^3=I_2$, then $A^{2027}=A^2$.</p>
+          </li>
+        </ol>
+        <h3 id="s3-2">Intermediate level</h3>
+        <ol class="exercises" start="16">
+          <li>
+            <p>Let $A=\begin{pmatrix}1&amp;1&amp;1\\0&amp;1&amp;1\\0&amp;0&amp;1\end{pmatrix}$.</p>
+            <p>a) Write $A=I_3+B$ and compute $B^2$ and $B^3$.</p>
+            <p>b) Show that $A^n=\begin{pmatrix}1&amp;n&amp;\frac{n(n+1)}{2}\\0&amp;1&amp;n\\0&amp;0&amp;1\end{pmatrix}$ for every $n\in\mathbb{N}^*$.</p>
+            <p data-ex="16c">c) Compute $A^{10}$.</p>
+          </li>
+          <li>
+            <p>Let $A=\begin{pmatrix}3&amp;1\\-1&amp;1\end{pmatrix}$.</p>
+            <p>a) Write the Cayley–Hamilton relation for $A$ and show that $(A-2I_2)^2=O_2$.</p>
+            <p>b) Compute $A^n$, $n\in\mathbb{N}^*$.</p>
+            <p data-ex="17c">c) Compute $A^4$ in two ways: with the formula from b) and as $A^2\cdot A^2$.</p>
+          </li>
+          <li>
+            <p>Let $A=\begin{pmatrix}5&amp;-6\\3&amp;-4\end{pmatrix}$.</p>
+            <p>a) Show that $A^2=A+2I_2$.</p>
+            <p>b) Write $A^n=x_nA+y_nI_2$ and show that $x_{n+2}=x_{n+1}+2x_n$.</p>
+            <p>c) Find $x_n$, $y_n$ and $A^n$.</p>
+            <p data-ex="18d">d) Compute $A^5$.</p>
+          </li>
+          <li>
+            <p><em>Group work · One matrix, three paths.</em> Let $A=\begin{pmatrix}1&amp;-1\\1&amp;1\end{pmatrix}$. The class splits into three groups.</p>
+            <p><strong>Group 1:</strong> compute $A^2$ and $A^4$ and use the repeating powers.</p>
+            <p><strong>Group 2:</strong> write the Cayley–Hamilton relation and express $A^3$ and $A^4$ in terms of $A$ and $I_2$.</p>
+            <p><strong>Group 3:</strong> write $A=\sqrt{2}\,R(t)$ and use $R(t)^n=R(nt)$.</p>
+            <p data-ex="19a">a) All groups: compute $A^8$.</p>
+            <p data-ex="19b">b) Show that $A^{2026}=2^m\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix}$ and find the natural number $m$.</p>
+            <p>c) Compare your solutions: which path was the shortest? Which path would you choose for $A^{2027}$?</p>
+          </li>
+          <li>
+            <p>Let $A=\begin{pmatrix}\sqrt{3}&amp;1\\-1&amp;\sqrt{3}\end{pmatrix}$.</p>
+            <p data-ex="20a">a) Find $t\in(-\pi,\pi]$ for which $A=2R(t)$. Watch the signs!</p>
+            <p data-ex="20b">b) Compute $A^6$ and $A^{12}$.</p>
+            <p data-ex="20c">c) What is the smallest $n\in\mathbb{N}^*$ for which $A^n=k\,I_2$, with $k$ a real number?</p>
+          </li>
+          <li>
+            <p><em>Find the mistake.</em> A student writes: “$A=\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}=2I_2+B$, with $B=\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}$, so $A^n=2^nI_2+n\cdot 2^{n-1}B$.”</p>
+            <p>a) Check the student’s formula for $n=2$. Where is the mistake?</p>
+            <p>b) Compute $B^2$ and redo the computation with the binomial theorem, grouping the terms with $B^k=I_2$ and those with $B^k=B$ separately. <em>Hint:</em> $3^n=(2+1)^n$ and $1=(2-1)^n$.</p>
+            <p data-ex="21c">c) Show that $A^n=\frac{3^n+1}{2}\,I_2+\frac{3^n-1}{2}\,B$ and compute $A^4$.</p>
+          </li>
+          <li>
+            <p>Let $J=\begin{pmatrix}1&amp;1&amp;1\\1&amp;1&amp;1\\1&amp;1&amp;1\end{pmatrix}$.</p>
+            <p>a) Show that $J^2=3J$ and deduce that $J^k=3^{k-1}J$ for $k\ge 1$.</p>
+            <p>b) Using the binomial theorem, show that $(I_3+J)^n=I_3+\frac{4^n-1}{3}\,J$.</p>
+            <p data-ex="22c">c) Compute $\begin{pmatrix}2&amp;1&amp;1\\1&amp;2&amp;1\\1&amp;1&amp;2\end{pmatrix}^3$.</p>
+          </li>
+        </ol>
+        <h3 id="s3-3">Advanced level</h3>
+        <ol class="exercises" start="23">
+          <li>
+            <p>For $x\in\mathbb{R}$ let $M(x)=\begin{pmatrix}1&amp;x&amp;\frac{x^2}{2}\\0&amp;1&amp;x\\0&amp;0&amp;1\end{pmatrix}$.</p>
+            <p>a) Show that $M(x)\cdot M(y)=M(x+y)$ for all $x,y\in\mathbb{R}$.</p>
+            <p data-ex="23b">b) Deduce $\left(M(x)\right)^n$ and compute $\left(M(1)\right)^{10}$.</p>
+            <p data-ex="23c">c) Compute the product $M(1)\cdot M(2)\cdot\ldots\cdot M(10)$.</p>
+          </li>
+          <li>
+            <p>The Fibonacci sequence is defined by $F_0=0$, $F_1=1$, $F_{n+1}=F_n+F_{n-1}$, $n\ge 1$. Let $A=\begin{pmatrix}1&amp;1\\1&amp;0\end{pmatrix}$.</p>
+            <p>a) Prove by induction that $A^n=\begin{pmatrix}F_{n+1}&amp;F_n\\F_n&amp;F_{n-1}\end{pmatrix}$ for every $n\in\mathbb{N}^*$.</p>
+            <p data-ex="24b">b) Compute $A^{10}$.</p>
+            <p>c) Using $A^{m+n}=A^m\cdot A^n$, show that $F_{m+n}=F_{m+1}F_n+F_mF_{n-1}$ for all $m,n\in\mathbb{N}^*$.</p>
+          </li>
+          <li>
+            <p>Let $A\in\mathcal{M}_2(\mathbb{R})$ with $A^3=O_2$, and let $s$ and $p$ be the numbers in the Cayley–Hamilton relation $A^2=sA-pI_2$.</p>
+            <p>a) Show that $A^3=(s^2-p)\,A-sp\,I_2$.</p>
+            <p>b) Show that $A^2=O_2$. <em>Hint:</em> treat the case $A=k\,I_2$ separately.</p>
+          </li>
+          <li>
+            <p>How many distinct matrices does the set $\{A^n\mid n\in\mathbb{N}^*\}$ have for each of the matrices below?</p>
+            <p data-ex="26a">a) $A=R\left(\frac{2\pi}{7}\right)$</p>
+            <p data-ex="26b">b) $A=\begin{pmatrix}0&amp;-1\\1&amp;-1\end{pmatrix}$ (from Example 2)</p>
+            <p>c) $A=\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix}$</p>
+          </li>
+          <li>
+            <p><em>Make up your own.</em> Work in pairs.</p>
+            <p>a) Find a matrix $B\in\mathcal{M}_2(\mathbb{Z})$, $B\ne O_2$, with $B^2=O_2$.</p>
+            <p>b) Use it to build a matrix $A=aI_2+B$ and write an exercise like exercise 12 for your deskmate. Solve it yourself too, then swap notebooks and compare your solutions.</p>
+          </li>
+        </ol>
+        <h2 id="s4">Matrices in real situations</h2>
+        <p><em>The situations are made up, but they resemble real ones. You turn the data of a table into a matrix and use its powers to predict what comes next.</em></p>
+        <ol class="exercises" start="28">
+          <li>
+            <p><em>Bikes for rent.</em> A company has 100 bikes and two stations: Centre (C) and Park (P). On Monday morning all the bikes are at C. Every day, of the bikes that are at C in the morning, 80% end up at C again in the evening and 20% at P. Of those at P, 30% end up at C and 70% stay at P. No bike is lost and no new bikes are added.</p>
+            <table>
+              <thead>
+                <tr>
+                  <th>end up at \ leave from</th>
+                  <th>C</th>
+                  <th>P</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>C</td>
+                  <td>$0{,}8$</td>
+                  <td>$0{,}3$</td>
+                </tr>
+                <tr>
+                  <td>P</td>
+                  <td>$0{,}2$</td>
+                  <td>$0{,}7$</td>
+                </tr>
+              </tbody>
+            </table>
+            <p>a) Write the transition matrix $T$ from the table. What does the entry $0{,}3$ mean? What do you notice about the sum of the entries in each column?</p>
+            <p>b) Let $X_n=\begin{pmatrix}c_n\\p_n\end{pmatrix}$ be the number of bikes at C and at P after $n$ days, $X_0=\begin{pmatrix}100\\0\end{pmatrix}$. Show that $X_{n+1}=T\,X_n$ and deduce that $X_n=T^n X_0$.</p>
+            <p data-ex="28c">c) Compute $X_1$, $X_2$ and $X_3$.</p>
+            <p>d) Write the Cayley–Hamilton relation for $T$, find $T^n$ and show that $c_n=60+\frac{40}{2^n}$.</p>
+            <p data-ex="28e">e) What happens to the number of bikes at each station after very many days? How many bikes should there be at C and at P so that their number no longer changes from one day to the next?</p>
+          </li>
+          <li>
+            <p><em>The ship in the game.</em> In a computer game, a ship starts at the point $(1,0)$. Each time a key is pressed, the ship rotates about the origin by $30^\circ$, counterclockwise. After $n$ presses its coordinates are $\begin{pmatrix}x_n\\y_n\end{pmatrix}=R\left(\frac{\pi}{6}\right)^n\begin{pmatrix}1\\0\end{pmatrix}$.</p>
+            <p data-ex="29a">a) After how many presses does the ship first get back to its starting point?</p>
+            <p data-ex="29b">b) Where is the ship after 2026 presses?</p>
+            <p data-ex="29c">c) The programmer wants the ship to also move away from the origin at each press: its distance to the origin doubles. Which matrix $A$ must be used instead of $R\left(\frac{\pi}{6}\right)$?</p>
+          </li>
+        </ol>
+      </article>
+      <section class="faq" aria-labelledby="faq-heading"><h2 id="faq-heading" data-i18n="faq.title">Frequently asked questions</h2><details><summary>How do I compute the n-th power of a square matrix?</summary><p>Start with A² and maybe A³. If Iₚ, −Iₚ, Oₚ or a multiple of A appears, the powers repeat. If A = aIₚ + B and a power of B equals Oₚ, use the binomial theorem. A matrix of the form (a −b; b a) is written as r·R(t). For other 2×2 matrices use the Cayley–Hamilton relation, and when you see a clear pattern, prove it by induction.</p></details><details><summary>What does the Cayley–Hamilton relation say for a 2×2 matrix?</summary><p>For A with entries a, b in the first row and c, d in the second, A² − (a + d)·A + (ad − bc)·I₂ = O₂. You check it by direct computation. From it, every power can be written as Aⁿ = xₙ·A + yₙ·I₂, and xₙ satisfies a linear recurrence of order 2.</p></details><details><summary>When can I use the binomial theorem for matrices?</summary><p>Only when the two matrices commute: XY = YX. The identity matrix commutes with every matrix, so for A = aIₚ + B the formula always works. The method is fast when B² or B³ is the zero matrix, because the sum stops after two or three terms.</p></details><details><summary>How do I raise a matrix with sin and cos to a power?</summary><p>For the rotation matrix R(t), with cos t and −sin t in the first row and sin t, cos t in the second, R(t)·R(u) = R(t + u), so R(t)ⁿ = R(nt). A matrix with a, −b in the first row and b, a in the second is r·R(t), with r = √(a² + b²), as in the trigonometric form of the number a + bi.</p></details></section>
+      <aside class="related" id="material-related"><p><a class="more" href="../clasa-11.html">All materials for Grade 11</a></p></aside>
+    </div>
+  </main>
+
+  <footer id="site-footer" class="site-footer"><div class="wrap"><p>© <span data-year>2026</span> Laura Miron. <span data-i18n="footer.text">Free materials for students.</span> · <a href="../despre.html" data-i18n="footer.about">About</a> · <a href="https://mqgrader.ro/" data-i18n="footer.mqgrader">MQGrader: test grading</a> · <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license">CC BY-NC-SA 4.0</a></p></div></footer>
+</body>
+</html>

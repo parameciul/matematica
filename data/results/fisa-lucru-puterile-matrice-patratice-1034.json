@@ -1,0 +1,573 @@
+{
+  "uid": "1034",
+  "version": 1,
+  "items": {
+    "1": {
+      "show": "$A^2=\\begin{pmatrix}7&10\\\\15&22\\end{pmatrix}$",
+      "kind": "list",
+      "accept": [
+        "7; 10; 15; 22"
+      ],
+      "hint": {
+        "ro": "elementele lui $A^2$, pe linii: $a_{11}$; $a_{12}$; $a_{21}$; $a_{22}$",
+        "en": "the entries of $A^2$, by rows: $a_{11}$; $a_{12}$; $a_{21}$; $a_{22}$"
+      }
+    },
+    "2": {
+      "show": "$(x+1)^4=x^4+4x^3+6x^2+4x+1$; $C_5^2=10$",
+      "kind": "number",
+      "accept": [
+        "10"
+      ]
+    },
+    "3": {
+      "show": "$\\cos(a+b)=\\cos a\\cos b-\\sin a\\sin b$, $\\sin(a+b)=\\sin a\\cos b+\\cos a\\sin b$; $\\cos\\frac{2\\pi}{3}=-\\frac{1}{2}$, $\\sin\\frac{2\\pi}{3}=\\frac{\\sqrt{3}}{2}$",
+      "kind": "list",
+      "accept": [
+        "-1/2; √3/2"
+      ],
+      "hint": {
+        "ro": "în ordinea $\\cos\\frac{2\\pi}{3}$; $\\sin\\frac{2\\pi}{3}$",
+        "en": "in the order $\\cos\\frac{2\\pi}{3}$; $\\sin\\frac{2\\pi}{3}$"
+      }
+    },
+    "4": {
+      "show": "$2026=3\\cdot 675+1=4\\cdot 506+2=6\\cdot 337+4$: resturile sunt $1$, $2$, $4$",
+      "kind": "list",
+      "accept": [
+        "1; 2; 4"
+      ],
+      "hint": {
+        "ro": "în ordinea: restul la 3; la 4; la 6",
+        "en": "in the order: remainder for 3; for 4; for 6"
+      }
+    },
+    "5": {
+      "show": "$A^2=\\begin{pmatrix}a^2+bc&ab+bd\\\\ac+cd&bc+d^2\\end{pmatrix}$, $(a+d)A=\\begin{pmatrix}a^2+ad&ab+bd\\\\ac+cd&ad+d^2\\end{pmatrix}$; diferența este $\\begin{pmatrix}bc-ad&0\\\\0&bc-ad\\end{pmatrix}=-(ad-bc)I_2$",
+      "check": false,
+      "why": "proof"
+    },
+    "11": {
+      "show": "$B^2=\\begin{pmatrix}0&0&3\\\\0&0&0\\\\0&0&0\\end{pmatrix}$, $B^3=O_3$, deci $B^{2026}=O_3$",
+      "kind": "list",
+      "accept": [
+        "0; 0; 3; 0; 0; 0; 0; 0; 0"
+      ],
+      "hint": {
+        "ro": "elementele lui $B^2$, pe linii, de la stânga la dreapta (9 numere)",
+        "en": "the entries of $B^2$, by rows, left to right (9 numbers)"
+      }
+    },
+    "19": {
+      "show": "Grupa 1: $A^2=\\begin{pmatrix}0&-2\\\\2&0\\end{pmatrix}$, $A^4=-4I_2$. Grupa 2: $s=2$, $p=2$, $A^2=2A-2I_2$, $A^3=2A-4I_2$, $A^4=-4I_2$. Grupa 3: $A=\\sqrt{2}\\,R\\left(\\frac{\\pi}{4}\\right)$, $A^n=2^{\\frac{n}{2}}R\\left(\\frac{n\\pi}{4}\\right)$",
+      "check": false,
+      "why": "open"
+    },
+    "27": {
+      "show": "De exemplu $B=\\begin{pmatrix}1&-1\\\\1&-1\\end{pmatrix}$ sau $B=\\begin{pmatrix}0&1\\\\0&0\\end{pmatrix}$; enunțurile diferă de la o pereche la alta",
+      "check": false,
+      "why": "open"
+    },
+    "6a": {
+      "show": "$A^2=\\begin{pmatrix}1&6\\\\0&1\\end{pmatrix}$, $A^3=\\begin{pmatrix}1&9\\\\0&1\\end{pmatrix}$",
+      "kind": "list",
+      "accept": [
+        "1; 6; 0; 1; 1; 9; 0; 1"
+      ],
+      "hint": {
+        "ro": "elementele lui $A^2$, apoi ale lui $A^3$, fiecare pe linii: $a_{11}$; $a_{12}$; $a_{21}$; $a_{22}$",
+        "en": "the entries of $A^2$, then those of $A^3$, each by rows: $a_{11}$; $a_{12}$; $a_{21}$; $a_{22}$"
+      }
+    },
+    "6b": {
+      "show": "$A^n=\\begin{pmatrix}1&3n\\\\0&1\\end{pmatrix}$; pasul de inducție: $\\begin{pmatrix}1&3k\\\\0&1\\end{pmatrix}\\begin{pmatrix}1&3\\\\0&1\\end{pmatrix}=\\begin{pmatrix}1&3k+3\\\\0&1\\end{pmatrix}$",
+      "check": false,
+      "why": "proof"
+    },
+    "6c": {
+      "show": "$A^{10}=\\begin{pmatrix}1&30\\\\0&1\\end{pmatrix}$",
+      "kind": "list",
+      "accept": [
+        "1; 30; 0; 1"
+      ],
+      "hint": {
+        "ro": "elementele lui $A^{10}$, pe linii: $a_{11}$; $a_{12}$; $a_{21}$; $a_{22}$",
+        "en": "the entries of $A^{10}$, by rows: $a_{11}$; $a_{12}$; $a_{21}$; $a_{22}$"
+      }
+    },
+    "7a": {
+      "show": "$A^n=\\begin{pmatrix}2^n&0&0\\\\0&(-1)^n&0\\\\0&0&3^n\\end{pmatrix}$",
+      "check": false,
+      "why": "open"
+    },
+    "7b": {
+      "show": "$A^5=\\begin{pmatrix}32&0&0\\\\0&-1&0\\\\0&0&243\\end{pmatrix}$",
+      "kind": "list",
+      "accept": [
+        "32; 0; 0; 0; -1; 0; 0; 0; 243"
+      ],
+      "hint": {
+        "ro": "elementele lui $A^5$, pe linii, de la stânga la dreapta (9 numere)",
+        "en": "the entries of $A^5$, by rows, left to right (9 numbers)"
+      }
+    },
+    "8a": {
+      "show": "$A^2=-I_2=\\begin{pmatrix}-1&0\\\\0&-1\\end{pmatrix}$, deci $A^4=(-I_2)^2=I_2$",
+      "kind": "list",
+      "accept": [
+        "-1; 0; 0; -1"
+      ],
+      "hint": {
+        "ro": "elementele lui $A^2$, pe linii: $a_{11}$; $a_{12}$; $a_{21}$; $a_{22}$",
+        "en": "the entries of $A^2$, by rows: $a_{11}$; $a_{12}$; $a_{21}$; $a_{22}$"
+      }
+    },
+    "8b": {
+      "show": "$2026=4\\cdot 506+2$: $A^{2026}=A^2=-I_2$; $A^{2027}=A^3=-A=\\begin{pmatrix}0&-1\\\\1&0\\end{pmatrix}$",
+      "kind": "list",
+      "accept": [
+        "-1; 0; 0; -1; 0; -1; 1; 0"
+      ],
+      "hint": {
+        "ro": "elementele lui $A^{2026}$, apoi ale lui $A^{2027}$, fiecare pe linii: $a_{11}$; $a_{12}$; $a_{21}$; $a_{22}$",
+        "en": "the entries of $A^{2026}$, then those of $A^{2027}$, each by rows: $a_{11}$; $a_{12}$; $a_{21}$; $a_{22}$"
+      }
+    },
+    "9a": {
+      "show": "$A^2=\\begin{pmatrix}4-2&-4+2\\\\2-1&-2+1\\end{pmatrix}=A$",
+      "check": false,
+      "why": "proof"
+    },
+    "9b": {
+      "show": "$A^n=A$ pentru orice $n\\ge 1$: $A^{2026}=A$, iar suma este $10A=\\begin{pmatrix}20&-20\\\\10&-10\\end{pmatrix}$",
+      "kind": "list",
+      "accept": [
+        "2; -2; 1; -1; 20; -20; 10; -10"
+      ],
+      "hint": {
+        "ro": "elementele lui $A^{2026}$, apoi ale sumei, fiecare pe linii: $a_{11}$; $a_{12}$; $a_{21}$; $a_{22}$",
+        "en": "the entries of $A^{2026}$, then those of the sum, each by rows: $a_{11}$; $a_{12}$; $a_{21}$; $a_{22}$"
+      }
+    },
+    "10a": {
+      "show": "$A^2=\\begin{pmatrix}7&14\\\\21&42\\end{pmatrix}=7A$, deci $k=7$",
+      "kind": "number",
+      "accept": [
+        "7"
+      ]
+    },
+    "10b": {
+      "show": "$A^n=7^{n-1}A$; $A^3=49A=\\begin{pmatrix}49&98\\\\147&294\\end{pmatrix}$",
+      "kind": "list",
+      "accept": [
+        "49; 98; 147; 294"
+      ],
+      "hint": {
+        "ro": "elementele lui $A^3$, pe linii: $a_{11}$; $a_{12}$; $a_{21}$; $a_{22}$",
+        "en": "the entries of $A^3$, by rows: $a_{11}$; $a_{12}$; $a_{21}$; $a_{22}$"
+      }
+    },
+    "12a": {
+      "show": "$B=\\begin{pmatrix}0&1\\\\0&0\\end{pmatrix}$, $B^2=O_2$",
+      "check": false,
+      "why": "open"
+    },
+    "12b": {
+      "show": "$A^n=2^nI_2+n\\cdot 2^{n-1}B=\\begin{pmatrix}2^n&n\\cdot 2^{n-1}\\\\0&2^n\\end{pmatrix}$",
+      "check": false,
+      "why": "open"
+    },
+    "12c": {
+      "show": "$A^5=\\begin{pmatrix}32&80\\\\0&32\\end{pmatrix}$",
+      "kind": "list",
+      "accept": [
+        "32; 80; 0; 32"
+      ],
+      "hint": {
+        "ro": "elementele lui $A^5$, pe linii: $a_{11}$; $a_{12}$; $a_{21}$; $a_{22}$",
+        "en": "the entries of $A^5$, by rows: $a_{11}$; $a_{12}$; $a_{21}$; $a_{22}$"
+      }
+    },
+    "13a": {
+      "show": "$s=5$, $p=4-6=-2$: $A^2-5A-2I_2=O_2$",
+      "check": false,
+      "why": "open"
+    },
+    "13b": {
+      "show": "$A^2=5A+2I_2$, $A^3=5A^2+2A=27A+10I_2$: $x=27$, $y=10$",
+      "kind": "list",
+      "accept": [
+        "27; 10"
+      ],
+      "hint": {
+        "ro": "în ordinea $x$; $y$",
+        "en": "in the order $x$; $y$"
+      }
+    },
+    "13c": {
+      "show": "$A^3=27A+10I_2=\\begin{pmatrix}37&54\\\\81&118\\end{pmatrix}$",
+      "kind": "list",
+      "accept": [
+        "37; 54; 81; 118"
+      ],
+      "hint": {
+        "ro": "elementele lui $A^3$, pe linii: $a_{11}$; $a_{12}$; $a_{21}$; $a_{22}$",
+        "en": "the entries of $A^3$, by rows: $a_{11}$; $a_{12}$; $a_{21}$; $a_{22}$"
+      }
+    },
+    "14a": {
+      "show": "$\\cos t=\\frac{1}{2}$, $\\sin t=\\frac{\\sqrt{3}}{2}$: $t=\\frac{\\pi}{3}$",
+      "kind": "number",
+      "accept": [
+        "π/3"
+      ]
+    },
+    "14b": {
+      "show": "$A^3=R(\\pi)=-I_2$, $A^6=R(2\\pi)=I_2$",
+      "kind": "list",
+      "accept": [
+        "-1; 0; 0; -1; 1; 0; 0; 1"
+      ],
+      "hint": {
+        "ro": "elementele lui $A^3$, apoi ale lui $A^6$, fiecare pe linii: $a_{11}$; $a_{12}$; $a_{21}$; $a_{22}$",
+        "en": "the entries of $A^3$, then those of $A^6$, each by rows: $a_{11}$; $a_{12}$; $a_{21}$; $a_{22}$"
+      }
+    },
+    "14c": {
+      "show": "$A^n=R\\left(\\frac{n\\pi}{3}\\right)=I_2$ dacă și numai dacă $6\\mid n$: $n=6$",
+      "kind": "number",
+      "accept": [
+        "6"
+      ]
+    },
+    "15a": {
+      "show": "F: $A=\\begin{pmatrix}0&1\\\\0&0\\end{pmatrix}\\ne O_2$, dar $A^2=O_2$",
+      "kind": "truefalse",
+      "accept": [
+        "F"
+      ]
+    },
+    "15b": {
+      "show": "A: $A$ și $I_2$ comută, deci se aplică binomul lui Newton",
+      "kind": "truefalse",
+      "accept": [
+        "A"
+      ]
+    },
+    "15c": {
+      "show": "F: de exemplu $A=\\begin{pmatrix}1&2\\\\0&1\\end{pmatrix}$, $B=\\begin{pmatrix}1&0\\\\3&1\\end{pmatrix}$; $(AB)^2=ABAB$, care diferă în general de $AABB$",
+      "kind": "truefalse",
+      "accept": [
+        "F"
+      ]
+    },
+    "15d": {
+      "show": "A: $2027=3\\cdot 675+2$, deci $A^{2027}=\\left(A^3\\right)^{675}A^2=A^2$",
+      "kind": "truefalse",
+      "accept": [
+        "A"
+      ]
+    },
+    "16a": {
+      "show": "$B=\\begin{pmatrix}0&1&1\\\\0&0&1\\\\0&0&0\\end{pmatrix}$, $B^2=\\begin{pmatrix}0&0&1\\\\0&0&0\\\\0&0&0\\end{pmatrix}$, $B^3=O_3$",
+      "check": false,
+      "why": "open"
+    },
+    "16b": {
+      "show": "$A^n=I_3+nB+\\frac{n(n-1)}{2}B^2$; elementul din colțul dreapta sus: $n+\\frac{n(n-1)}{2}=\\frac{n(n+1)}{2}$",
+      "check": false,
+      "why": "proof"
+    },
+    "16c": {
+      "show": "$A^{10}=\\begin{pmatrix}1&10&55\\\\0&1&10\\\\0&0&1\\end{pmatrix}$",
+      "kind": "list",
+      "accept": [
+        "1; 10; 55; 0; 1; 10; 0; 0; 1"
+      ],
+      "hint": {
+        "ro": "elementele lui $A^{10}$, pe linii, de la stânga la dreapta (9 numere)",
+        "en": "the entries of $A^{10}$, by rows, left to right (9 numbers)"
+      }
+    },
+    "17a": {
+      "show": "$s=4$, $p=3+1=4$: $A^2-4A+4I_2=O_2$, adică $(A-2I_2)^2=O_2$",
+      "check": false,
+      "why": "proof"
+    },
+    "17b": {
+      "show": "$A^n=2^nI_2+n\\cdot 2^{n-1}(A-2I_2)=2^{n-1}\\begin{pmatrix}2+n&n\\\\-n&2-n\\end{pmatrix}$",
+      "check": false,
+      "why": "open"
+    },
+    "17c": {
+      "show": "$A^2=\\begin{pmatrix}8&4\\\\-4&0\\end{pmatrix}$, $A^4=\\begin{pmatrix}48&32\\\\-32&-16\\end{pmatrix}$",
+      "kind": "list",
+      "accept": [
+        "48; 32; -32; -16"
+      ],
+      "hint": {
+        "ro": "elementele lui $A^4$, pe linii: $a_{11}$; $a_{12}$; $a_{21}$; $a_{22}$",
+        "en": "the entries of $A^4$, by rows: $a_{11}$; $a_{12}$; $a_{21}$; $a_{22}$"
+      }
+    },
+    "18a": {
+      "show": "$s=1$, $p=-20+18=-2$: $A^2=A+2I_2$",
+      "check": false,
+      "why": "proof"
+    },
+    "18b": {
+      "show": "$A^{n+1}=x_nA^2+y_nA=(x_n+y_n)A+2x_nI_2$, deci $x_{n+1}=x_n+y_n$, $y_{n+1}=2x_n$ și $x_{n+2}=x_{n+1}+2x_n$",
+      "check": false,
+      "why": "proof"
+    },
+    "18c": {
+      "show": "$r^2-r-2=0$, $r\\in\\{2,-1\\}$; $x_n=\\frac{2^n-(-1)^n}{3}$, $y_n=\\frac{2^n+2(-1)^n}{3}$; $A^n=\\begin{pmatrix}2^{n+1}-(-1)^n&2(-1)^n-2^{n+1}\\\\2^n-(-1)^n&2(-1)^n-2^n\\end{pmatrix}$",
+      "check": false,
+      "why": "open"
+    },
+    "18d": {
+      "show": "$x_5=11$, $y_5=10$: $A^5=11A+10I_2=\\begin{pmatrix}65&-66\\\\33&-34\\end{pmatrix}$",
+      "kind": "list",
+      "accept": [
+        "65; -66; 33; -34"
+      ],
+      "hint": {
+        "ro": "elementele lui $A^5$, pe linii: $a_{11}$; $a_{12}$; $a_{21}$; $a_{22}$",
+        "en": "the entries of $A^5$, by rows: $a_{11}$; $a_{12}$; $a_{21}$; $a_{22}$"
+      }
+    },
+    "19a": {
+      "show": "$A^8=(-4I_2)^2=16I_2$",
+      "kind": "list",
+      "accept": [
+        "16; 0; 0; 16"
+      ],
+      "hint": {
+        "ro": "elementele lui $A^8$, pe linii: $a_{11}$; $a_{12}$; $a_{21}$; $a_{22}$",
+        "en": "the entries of $A^8$, by rows: $a_{11}$; $a_{12}$; $a_{21}$; $a_{22}$"
+      }
+    },
+    "19b": {
+      "show": "$2026=4\\cdot 506+2$: $A^{2026}=(-4)^{506}A^2=2^{1012}\\cdot 2\\begin{pmatrix}0&-1\\\\1&0\\end{pmatrix}$, deci $m=1013$",
+      "kind": "number",
+      "accept": [
+        "1013"
+      ]
+    },
+    "19c": {
+      "show": "Discuție: pentru $A^{2027}=A^{2024}\\cdot A^3=2^{1012}(2A-4I_2)$, cel mai scurt drum este cel cu $A^4=-4I_2$ (sau rotația)",
+      "check": false,
+      "why": "open"
+    },
+    "20a": {
+      "show": "$A=2\\begin{pmatrix}\\frac{\\sqrt{3}}{2}&\\frac{1}{2}\\\\-\\frac{1}{2}&\\frac{\\sqrt{3}}{2}\\end{pmatrix}$: $\\cos t=\\frac{\\sqrt{3}}{2}$, $\\sin t=-\\frac{1}{2}$, deci $t=-\\frac{\\pi}{6}$",
+      "kind": "number",
+      "accept": [
+        "-π/6"
+      ]
+    },
+    "20b": {
+      "show": "$A^6=2^6R(-\\pi)=-64I_2$, $A^{12}=4096I_2$",
+      "kind": "list",
+      "accept": [
+        "-64; 0; 0; -64; 4096; 0; 0; 4096"
+      ],
+      "hint": {
+        "ro": "elementele lui $A^6$, apoi ale lui $A^{12}$, fiecare pe linii: $a_{11}$; $a_{12}$; $a_{21}$; $a_{22}$",
+        "en": "the entries of $A^6$, then those of $A^{12}$, each by rows: $a_{11}$; $a_{12}$; $a_{21}$; $a_{22}$"
+      }
+    },
+    "20c": {
+      "show": "$A^n=2^nR\\left(-\\frac{n\\pi}{6}\\right)$ este multiplu de $I_2$ dacă $\\sin\\frac{n\\pi}{6}=0$, adică $6\\mid n$: $n=6$",
+      "kind": "number",
+      "accept": [
+        "6"
+      ]
+    },
+    "21a": {
+      "show": "Pentru $n=2$: $A^2=\\begin{pmatrix}5&4\\\\4&5\\end{pmatrix}$, dar formula dă $4I_2+4B=\\begin{pmatrix}4&4\\\\4&4\\end{pmatrix}$. Greșeala: $B^2=I_2\\ne O_2$, deci suma nu se oprește după doi termeni",
+      "check": false,
+      "why": "open"
+    },
+    "21b": {
+      "show": "$A^n=\\sum C_n^k2^{n-k}B^k=\\left(\\sum_{k\\text{ par}}C_n^k2^{n-k}\\right)I_2+\\left(\\sum_{k\\text{ impar}}C_n^k2^{n-k}\\right)B$; prima sumă este $\\frac{(2+1)^n+(2-1)^n}{2}$, a doua $\\frac{(2+1)^n-(2-1)^n}{2}$",
+      "check": false,
+      "why": "proof"
+    },
+    "21c": {
+      "show": "$A^4=41I_2+40B=\\begin{pmatrix}41&40\\\\40&41\\end{pmatrix}$",
+      "kind": "list",
+      "accept": [
+        "41; 40; 40; 41"
+      ],
+      "hint": {
+        "ro": "elementele lui $A^4$, pe linii: $a_{11}$; $a_{12}$; $a_{21}$; $a_{22}$",
+        "en": "the entries of $A^4$, by rows: $a_{11}$; $a_{12}$; $a_{21}$; $a_{22}$"
+      }
+    },
+    "22a": {
+      "show": "$J^2=3J$; prin inducție $J^{k+1}=3^{k-1}J\\cdot J=3^kJ$",
+      "check": false,
+      "why": "proof"
+    },
+    "22b": {
+      "show": "$(I_3+J)^n=I_3+\\sum_{k=1}^{n}C_n^k3^{k-1}J=I_3+\\frac{(1+3)^n-1}{3}J$",
+      "check": false,
+      "why": "proof"
+    },
+    "22c": {
+      "show": "$(I_3+J)^3=I_3+21J=\\begin{pmatrix}22&21&21\\\\21&22&21\\\\21&21&22\\end{pmatrix}$",
+      "kind": "list",
+      "accept": [
+        "22; 21; 21; 21; 22; 21; 21; 21; 22"
+      ],
+      "hint": {
+        "ro": "elementele lui matricei, pe linii, de la stânga la dreapta (9 numere)",
+        "en": "the entries of the matrix, by rows, left to right (9 numbers)"
+      }
+    },
+    "23a": {
+      "show": "Elementul din colțul dreapta sus: $\\frac{y^2}{2}+xy+\\frac{x^2}{2}=\\frac{(x+y)^2}{2}$",
+      "check": false,
+      "why": "proof"
+    },
+    "23b": {
+      "show": "$\\left(M(x)\\right)^n=M(nx)$; $\\left(M(1)\\right)^{10}=M(10)=\\begin{pmatrix}1&10&50\\\\0&1&10\\\\0&0&1\\end{pmatrix}$",
+      "kind": "list",
+      "accept": [
+        "1; 10; 50; 0; 1; 10; 0; 0; 1"
+      ],
+      "hint": {
+        "ro": "elementele lui $\\left(M(1)\\right)^{10}$, pe linii, de la stânga la dreapta (9 numere)",
+        "en": "the entries of $\\left(M(1)\\right)^{10}$, by rows, left to right (9 numbers)"
+      }
+    },
+    "23c": {
+      "show": "$M(1+2+\\ldots+10)=M(55)=\\begin{pmatrix}1&55&\\frac{3025}{2}\\\\0&1&55\\\\0&0&1\\end{pmatrix}$",
+      "kind": "list",
+      "accept": [
+        "1; 55; 1512,5; 0; 1; 55; 0; 0; 1"
+      ],
+      "hint": {
+        "ro": "elementele lui produsului, pe linii, de la stânga la dreapta (9 numere)",
+        "en": "the entries of the product, by rows, left to right (9 numbers)"
+      }
+    },
+    "24a": {
+      "show": "$A^{k+1}=\\begin{pmatrix}F_{k+1}&F_k\\\\F_k&F_{k-1}\\end{pmatrix}\\begin{pmatrix}1&1\\\\1&0\\end{pmatrix}=\\begin{pmatrix}F_{k+1}+F_k&F_{k+1}\\\\F_k+F_{k-1}&F_k\\end{pmatrix}=\\begin{pmatrix}F_{k+2}&F_{k+1}\\\\F_{k+1}&F_k\\end{pmatrix}$",
+      "check": false,
+      "why": "proof"
+    },
+    "24b": {
+      "show": "$A^{10}=\\begin{pmatrix}F_{11}&F_{10}\\\\F_{10}&F_9\\end{pmatrix}=\\begin{pmatrix}89&55\\\\55&34\\end{pmatrix}$",
+      "kind": "list",
+      "accept": [
+        "89; 55; 55; 34"
+      ],
+      "hint": {
+        "ro": "elementele lui $A^{10}$, pe linii: $a_{11}$; $a_{12}$; $a_{21}$; $a_{22}$",
+        "en": "the entries of $A^{10}$, by rows: $a_{11}$; $a_{12}$; $a_{21}$; $a_{22}$"
+      }
+    },
+    "24c": {
+      "show": "Elementul de pe linia 1, coloana 2 din $A^{m+n}=A^mA^n$: $F_{m+n}=F_{m+1}F_n+F_mF_{n-1}$",
+      "check": false,
+      "why": "proof"
+    },
+    "25a": {
+      "show": "$A^3=A\\cdot A^2=sA^2-pA=s(sA-pI_2)-pA=(s^2-p)A-spI_2$",
+      "check": false,
+      "why": "proof"
+    },
+    "25b": {
+      "show": "Dacă $A\\ne kI_2$: din $(s^2-p)A=spI_2$ rezultă $s^2-p=0$ și $sp=0$, deci $s=p=0$ și $A^2=sA-pI_2=O_2$. Dacă $A=kI_2$: $k^3=0$, deci $A=O_2$",
+      "check": false,
+      "why": "proof"
+    },
+    "26a": {
+      "show": "$A^n=R\\left(\\frac{2n\\pi}{7}\\right)$ și $A^7=I_2$: 7 matrice",
+      "kind": "number",
+      "accept": [
+        "7"
+      ]
+    },
+    "26b": {
+      "show": "$A^3=I_2$: matricele $A$, $A^2$, $I_2$, deci 3",
+      "kind": "number",
+      "accept": [
+        "3"
+      ]
+    },
+    "26c": {
+      "show": "$A^n=\\begin{pmatrix}1&n\\\\0&1\\end{pmatrix}$ sunt toate diferite: o infinitate",
+      "check": false,
+      "why": "open"
+    },
+    "28a": {
+      "show": "$T=\\begin{pmatrix}0{,}8&0{,}3\\\\0{,}2&0{,}7\\end{pmatrix}$; $0{,}3$ este partea din bicicletele aflate dimineața în P care ajung seara în C; suma pe fiecare coloană este $1$ (nu se pierd biciclete)",
+      "check": false,
+      "why": "open"
+    },
+    "28b": {
+      "show": "$c_{n+1}=0{,}8c_n+0{,}3p_n$, $p_{n+1}=0{,}2c_n+0{,}7p_n$, adică $X_{n+1}=TX_n$; prin inducție $X_n=T^nX_0$",
+      "check": false,
+      "why": "proof"
+    },
+    "28c": {
+      "show": "$X_1=\\begin{pmatrix}80\\\\20\\end{pmatrix}$, $X_2=\\begin{pmatrix}70\\\\30\\end{pmatrix}$, $X_3=\\begin{pmatrix}65\\\\35\\end{pmatrix}$",
+      "kind": "list",
+      "accept": [
+        "80; 20; 70; 30; 65; 35"
+      ],
+      "hint": {
+        "ro": "în ordinea $c_1$; $p_1$; $c_2$; $p_2$; $c_3$; $p_3$",
+        "en": "in the order $c_1$; $p_1$; $c_2$; $p_2$; $c_3$; $p_3$"
+      }
+    },
+    "28d": {
+      "show": "$s=1{,}5$, $p=0{,}5$: $T^2=1{,}5T-0{,}5I_2$; $x_n=2-\\frac{1}{2^{n-1}}$, $T^n=\\frac{1}{5}\\begin{pmatrix}3&3\\\\2&2\\end{pmatrix}+\\frac{1}{5\\cdot 2^n}\\begin{pmatrix}2&-3\\\\-2&3\\end{pmatrix}$; $c_n=60+\\frac{40}{2^n}$, $p_n=40-\\frac{40}{2^n}$",
+      "check": false,
+      "why": "proof"
+    },
+    "28e": {
+      "show": "$\\frac{40}{2^n}$ devine foarte mic: numerele se apropie de 60 și 40. Pentru $X=\\begin{pmatrix}60\\\\40\\end{pmatrix}$ avem $TX=X$",
+      "kind": "list",
+      "accept": [
+        "60; 40"
+      ],
+      "hint": {
+        "ro": "în ordinea: C; P",
+        "en": "in the order: C; P"
+      }
+    },
+    "29a": {
+      "show": "$R\\left(\\frac{\\pi}{6}\\right)^n=R\\left(\\frac{n\\pi}{6}\\right)=I_2$ pentru prima dată la $n=12$",
+      "kind": "number",
+      "accept": [
+        "12"
+      ]
+    },
+    "29b": {
+      "show": "$2026=12\\cdot 168+10$: $R\\left(\\frac{5\\pi}{3}\\right)\\begin{pmatrix}1\\\\0\\end{pmatrix}=\\begin{pmatrix}\\frac{1}{2}\\\\-\\frac{\\sqrt{3}}{2}\\end{pmatrix}$, punctul $\\left(\\frac{1}{2},-\\frac{\\sqrt{3}}{2}\\right)$",
+      "kind": "list",
+      "accept": [
+        "1/2; -√3/2"
+      ],
+      "hint": {
+        "ro": "coordonatele punctului, în ordinea $x$; $y$",
+        "en": "the coordinates of the point, in the order $x$; $y$"
+      }
+    },
+    "29c": {
+      "show": "$A=2R\\left(\\frac{\\pi}{6}\\right)=\\begin{pmatrix}\\sqrt{3}&-1\\\\1&\\sqrt{3}\\end{pmatrix}$",
+      "kind": "list",
+      "accept": [
+        "√3; -1; 1; √3"
+      ],
+      "hint": {
+        "ro": "elementele lui $A$, pe linii: $a_{11}$; $a_{12}$; $a_{21}$; $a_{22}$",
+        "en": "the entries of $A$, by rows: $a_{11}$; $a_{12}$; $a_{21}$; $a_{22}$"
+      }
+    }
+  }
+}

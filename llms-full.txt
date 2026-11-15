@@ -5758,6 +5758,548 @@ Show that the perimeter of triangle $CMN$ is constant and independent of the pos
 
 ## Clasa a XI-a / Grade 11
 
+### Fișă de lucru: puterile unei matrice pătratice
+- Source (RO): https://lauramiron.pages.dev/materiale/fisa-lucru-puterile-matrice-patratice-1034
+- Source (EN): https://lauramiron.pages.dev/en/materiale/fisa-lucru-puterile-matrice-patratice-1034
+- Author: Laura Miron. License: CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/).
+- Published: 2026-11-15. Updated: 2026-11-15.
+- Fișă de lucru pentru clasa a XI-a: puterile unei matrice pătratice prin inducție, binomul lui Newton, relația Hamilton–Cayley și matrice de rotație.
+- Rezumat: Fișa arată cinci metode pentru puterile unei matrice pătratice: inducția, puterile care se repetă, binomul lui Newton, relația Hamilton–Cayley și matricele cu sin și cos. Fiecare metodă are pașii și un exemplu rezolvat. Urmează exerciții pe trei niveluri, o activitate pe grupe și probleme cu matrice de tranziție.
+- Întrebări frecvente:
+  - Q: Cum calculez puterea a n-a a unei matrice pătratice?
+  - A: Începi cu A² și, eventual, A³. Dacă apare Iₚ, −Iₚ, Oₚ sau un multiplu al lui A, puterile se repetă. Dacă A = aIₚ + B cu o putere a lui B egală cu Oₚ, folosești binomul lui Newton. O matrice de forma (a −b; b a) se scrie r·R(t). Pentru alte matrice de ordinul 2 folosești relația Hamilton–Cayley, iar când vezi un model clar, îl demonstrezi prin inducție.
+  - Q: Ce spune relația Hamilton–Cayley pentru o matrice de ordinul 2?
+  - A: Pentru A cu elementele a, b pe prima linie și c, d pe a doua, A² − (a + d)·A + (ad − bc)·I₂ = O₂. Se verifică prin calcul direct. Din ea, orice putere se scrie Aⁿ = xₙ·A + yₙ·I₂, iar xₙ verifică o recurență liniară de ordinul 2.
+  - Q: Când pot folosi binomul lui Newton pentru matrice?
+  - A: Numai când cele două matrice comută: XY = YX. Matricea unitate comută cu orice matrice, deci pentru A = aIₚ + B formula merge mereu. Metoda e rapidă când B² sau B³ este matricea nulă, pentru că suma se oprește după doi sau trei termeni.
+  - Q: Cum ridic la putere o matrice cu sin și cos?
+  - A: Pentru matricea de rotație R(t), cu cos t și −sin t pe prima linie și sin t, cos t pe a doua, avem R(t)·R(u) = R(t + u), deci R(t)ⁿ = R(nt). O matrice cu a, −b pe prima linie și b, a pe a doua se scrie r·R(t), cu r = √(a² + b²), ca la forma trigonometrică a numărului a + bi.
+
+Întrebarea fișei: Cum calculezi $A^{2026}$, sau chiar $A^n$, fără să înmulțești matricea cu ea însăși de 2025 de ori?
+Pornim de la ce știi
+Patru verificări rapide. Dacă una dintre ele îți ridică probleme, notează-o: la ea revii prima.
+-
+Calculează $A^2=A\cdot A$ pentru $A=\begin{pmatrix}1&2\\3&4\end{pmatrix}$.
+-
+Dezvoltă $(x+1)^4$ cu binomul lui Newton.
+Cât este $C_5^2$?
+-
+Completează: $\cos(a+b)=\ldots$ și $\sin(a+b)=\ldots$
+Calculează $\cos\frac{2\pi}{3}$ și $\sin\frac{2\pi}{3}$.
+-
+Află restul împărțirii lui 2026 la 3, la 4 și la 6.
+Teorie pe scurt
+Pentru fiecare metodă: când o folosești, pașii (în chenarul gros) și un exemplu rezolvat. La final găsești firul logic care te ajută să alegi metoda.
+Definiție
+Fie $A\in\mathcal{M}_p(\mathbb{C})$ o matrice pătratică. Puterile lui $A$ se definesc prin $A^1=A$ și $A^{n+1}=A^n\cdot A$, pentru $n\in\mathbb{N}^*$. Prin convenție, $A^0=I_p$.
+De reținut
+$A^m\cdot A^n=A^{m+n}$, $\quad (A^m)^n=A^{mn}$, $\quad (kA)^n=k^nA^n$ pentru orice număr $k$.
+Atenție! Înmulțirea matricelor nu este comutativă. În general $(AB)^n\ne A^nB^n$ și $(A+B)^2=A^2+AB+BA+B^2$, nu $A^2+2AB+B^2$.
+1. Calculez, intuiesc, demonstrez prin inducție
+★ Metodă
+Metoda inducției matematice
+- Calculez $A^2$, $A^3$ (dacă e nevoie, și $A^4$).
+- Observ ce elemente rămân la fel și cum se schimbă celelalte. Scriu forma bănuită a lui $A^n$ ca propoziție $P(n)$.
+- Verific $P(1)$.
+- Presupun $P(k)$ adevărată și calculez $A^{k+1}=A^k\cdot A$. Obțin $P(k+1)$.
+Exemplul 1 · Inducție
+Calculează $A^n$ pentru $A=\begin{pmatrix}2&1\\0&1\end{pmatrix}$.
+Pasul 1. $A^2=\begin{pmatrix}4&3\\0&1\end{pmatrix}$, $\ A^3=\begin{pmatrix}8&7\\0&1\end{pmatrix}$.
+Pasul 2. Pe prima poziție apar puterile lui 2, iar alături un număr cu 1 mai mic. Bănuiesc $P(n)\colon A^n=\begin{pmatrix}2^n&2^n-1\\0&1\end{pmatrix}$.
+Pasul 3. Pentru $n=1$ obțin $\begin{pmatrix}2&1\\0&1\end{pmatrix}=A$ ✓.
+Pasul 4. $A^{k+1}=\begin{pmatrix}2^k&2^k-1\\0&1\end{pmatrix}\begin{pmatrix}2&1\\0&1\end{pmatrix}=\begin{pmatrix}2^{k+1}&2^k+2^k-1\\0&1\end{pmatrix}=\begin{pmatrix}2^{k+1}&2^{k+1}-1\\0&1\end{pmatrix}$ ✓.
+2. Puteri care se repetă
+Uneori, după câteva înmulțiri, apare o matrice simplă: $I_p$, $-I_p$, $O_p$ sau chiar $A$ înmulțită cu un număr. Atunci puterile „se repetă” și nu mai ai nevoie de inducție pentru fiecare exercițiu.
+★ Metodă
+Metoda puterilor care se repetă
+- Calculez $A^2$, $A^3$, … până apare $I_p$, $-I_p$, $O_p$ sau un multiplu al lui $A$.
+- Dacă $A^k=I_p$, împart $n$ la $k$: $n=k\cdot q+r$, cu $0\le r<k$.
+- Scriu $A^n=\left(A^k\right)^q\cdot A^r=A^r$ (cu $A^0=I_p$).
+De reținut
+$A^k=I_p\ \Rightarrow\ A^n=A^r$, unde $r$ este restul împărțirii lui $n$ la $k$.
+$A^k=-I_p\ \Rightarrow\ A^{2k}=I_p$.
+$B^k=O_p\ \Rightarrow\ B^n=O_p$, pentru orice $n\ge k$ (matrice nilpotentă).
+$A^2=kA\ \Rightarrow\ A^n=k^{n-1}A$, pentru orice $n\ge 1$.
+Exemplul 2 · Puterile se repetă
+Calculează $A^{2026}$ pentru $A=\begin{pmatrix}0&-1\\1&-1\end{pmatrix}$.
+$A^2=\begin{pmatrix}-1&1\\-1&0\end{pmatrix}$, $\ A^3=A^2\cdot A=\begin{pmatrix}1&0\\0&1\end{pmatrix}=I_2$.
+$2026=3\cdot 675+1$, deci $A^{2026}=\left(A^3\right)^{675}\cdot A=A$.
+Exemplul 3 · $A^2=kA$
+Pentru $A=\begin{pmatrix}1&2\\2&4\end{pmatrix}$: $\ A^2=\begin{pmatrix}5&10\\10&20\end{pmatrix}=5A$.
+Atunci $A^3=A^2\cdot A=5A^2=5^2A$ și, prin inducție, $A^n=5^{n-1}A$.
+3. Binomul lui Newton
+Matricea unitate comută cu orice matrice: $I_p\cdot B=B\cdot I_p=B$. De aceea, pentru $A=aI_p+B$ poți folosi binomul lui Newton. Metoda e rapidă când o putere a lui $B$ este $O_p$: suma se oprește după câțiva termeni.
+De reținut
+Dacă $XY=YX$, atunci $(X+Y)^n=\sum_{k=0}^{n}C_n^k\,X^{n-k}Y^k$.
+Dacă $A=aI_p+B$ și $B^2=O_p$, atunci $A^n=a^nI_p+n\,a^{n-1}B$.
+Dacă $A=aI_p+B$ și $B^3=O_p$, atunci $A^n=a^nI_p+n\,a^{n-1}B+\frac{n(n-1)}{2}\,a^{n-2}B^2$.
+★ Metodă
+Metoda binomului lui Newton
+- Scriu $A=aI_p+B$. De obicei, $a$ este numărul care se repetă pe diagonala principală.
+- Calculez $B^2$, $B^3$, … până obțin $O_p$.
+- Aplic binomul lui Newton. Termenii care conțin $B^k=O_p$ dispar.
+- Adun matricele rămase și verific formula pentru $n=1$.
+Exemplul 4 · Binomul lui Newton
+Calculează $A^n$ pentru $A=\begin{pmatrix}3&1&0\\0&3&1\\0&0&3\end{pmatrix}$.
+$A=3I_3+B$, cu $B=\begin{pmatrix}0&1&0\\0&0&1\\0&0&0\end{pmatrix}$, $\ B^2=\begin{pmatrix}0&0&1\\0&0&0\\0&0&0\end{pmatrix}$, $\ B^3=O_3$.
+$$A^n=3^nI_3+n\cdot 3^{n-1}B+\frac{n(n-1)}{2}\cdot 3^{n-2}B^2=\begin{pmatrix}3^n&n\cdot 3^{n-1}&\frac{n(n-1)}{2}\cdot 3^{n-2}\\0&3^n&n\cdot 3^{n-1}\\0&0&3^n\end{pmatrix}$$
+Verificare: pentru $n=1$ obțin chiar $A$ ✓.
+Atenție
+Binomul lui Newton se aplică numai matricelor care comută. Pentru $X=\begin{pmatrix}1&0\\0&0\end{pmatrix}$ și $Y=\begin{pmatrix}0&1\\0&0\end{pmatrix}$ avem $XY\ne YX$. Verifică singur că $(X+Y)^2\ne X^2+2XY+Y^2$.
+4. Relația Hamilton–Cayley (matrice de ordinul 2)
+Orice matrice $A=\begin{pmatrix}a&b\\c&d\end{pmatrix}\in\mathcal{M}_2(\mathbb{C})$ verifică relația de mai jos. Numărul $a+d$ este suma elementelor de pe diagonala principală (urma matricei). Numărul $ad-bc$ este produsul elementelor de pe diagonala principală minus produsul celor de pe diagonala secundară.
+De reținut
+$$A^2-(a+d)\,A+(ad-bc)\,I_2=O_2$$
+Cu $s=a+d$ și $p=ad-bc$: $\ A^2=s\,A-p\,I_2$. Demonstrația este un calcul direct: o faci tu, la exercițiul 5.
+Din relație, orice putere a lui $A$ se scrie $A^n=x_nA+y_nI_2$. Înmulțind cu $A$ și înlocuind $A^2$:
+$$A^{n+1}=x_nA^2+y_nA=(s\,x_n+y_n)\,A-p\,x_n\,I_2$$
+Deci $x_{n+1}=s\,x_n+y_n$, $y_{n+1}=-p\,x_n$, adică $x_{n+2}=s\,x_{n+1}-p\,x_n$: o recurență liniară de ordinul 2, ca în fișa despre șiruri date prin recurențe. Ecuația ei caracteristică, $r^2-s\,r+p=0$, are aceiași coeficienți ca relația Hamilton–Cayley.
+★ Metodă
+Metoda relației Hamilton–Cayley
+- Calculez $s=a+d$, $p=ad-bc$ și scriu $A^2=s\,A-p\,I_2$.
+- Caut cazurile simple. Dacă $p=0$: $A^2=sA$, deci $A^n=s^{n-1}A$ (metoda 2). Dacă $s^2=4p$: $\left(A-\frac{s}{2}I_2\right)^2=O_2$ (metoda 3).
+- Altfel, scriu $A^n=x_nA+y_nI_2$, cu $x_1=1$, $x_2=s$ și $x_{n+2}=s\,x_{n+1}-p\,x_n$.
+- Rezolv recurența, scriu $y_n=-p\,x_{n-1}$ și verific formula pentru $n=1$ și $n=2$.
+Exemplul 5 · Hamilton–Cayley
+Calculează $A^3$ și $A^n$ pentru $A=\begin{pmatrix}4&-2\\1&1\end{pmatrix}$.
+Pasul 1. $s=4+1=5$, $p=4\cdot 1-(-2)\cdot 1=6$, deci $A^2=5A-6I_2$. Atunci $A^3=5A^2-6A=5(5A-6I_2)-6A=19A-30I_2$.
+Pașii 2–3. $p\ne 0$ și $s^2\ne 4p$. Scriu $x_{n+2}=5x_{n+1}-6x_n$, $x_1=1$, $x_2=5$.
+Pasul 4. $r^2-5r+6=0$, $r_1=2$, $r_2=3$, deci $x_n=3^n-2^n$ și $y_n=-6x_{n-1}=3\cdot 2^n-2\cdot 3^n$.
+$$A^n=(3^n-2^n)\,A+(3\cdot 2^n-2\cdot 3^n)\,I_2=\begin{pmatrix}2\cdot 3^n-2^n&2^{n+1}-2\cdot 3^n\\3^n-2^n&2^{n+1}-3^n\end{pmatrix}$$
+Verificare: $x_3=27-8=19$ și $y_3=24-54=-30$, la fel ca la Pasul 1 ✓.
+5. Matrice cu sin și cos
+Definiție
+Pentru $t\in\mathbb{R}$ notăm $R(t)=\begin{pmatrix}\cos t&-\sin t\\\sin t&\cos t\end{pmatrix}$. Înmulțirea cu $R(t)$ rotește un punct din plan în jurul originii cu unghiul $t$ (o matrice de rotație).
+De reținut
+$R(t)\cdot R(u)=R(t+u)$: rezultă din formulele pentru $\cos(t+u)$ și $\sin(t+u)$.
+$R(t)^n=R(nt)$, pentru orice $n\in\mathbb{N}^*$ (prin inducție). În particular $R(\pi)=-I_2$ și $R(2\pi)=I_2$.
+Matrice reductibile la $R(t)$. Dacă $A=\begin{pmatrix}a&-b\\b&a\end{pmatrix}$, $(a,b)\ne(0,0)$, și $r=\sqrt{a^2+b^2}$, atunci $A=r\begin{pmatrix}\frac{a}{r}&-\frac{b}{r}\\\frac{b}{r}&\frac{a}{r}\end{pmatrix}=r\,R(t)$, cu $\cos t=\frac{a}{r}$, $\sin t=\frac{b}{r}$. Deci $A^n=r^n\,R(nt)$.
+Este aceeași idee ca la forma trigonometrică a numărului complex $a+bi=r(\cos t+i\,\sin t)$.
+★ Metodă
+Metoda matricelor de rotație
+- Verific forma: pe diagonala principală același număr $a$, pe cealaltă diagonală $-b$ (sus) și $b$ (jos).
+- Calculez $r=\sqrt{a^2+b^2}$ și dau factor comun $r$.
+- Găsesc $t$ cu $\cos t=\frac{a}{r}$ și $\sin t=\frac{b}{r}$.
+- Scriu $A^n=r^n\,R(nt)$ și reduc unghiul $nt$ la un unghi din $[0,2\pi)$.
+Exemplul 6 · Matrice de rotație
+Calculează $A^6$ și $A^{2026}$ pentru $A=\begin{pmatrix}1&-\sqrt{3}\\\sqrt{3}&1\end{pmatrix}$.
+$r=\sqrt{1+3}=2$, $\cos t=\frac{1}{2}$, $\sin t=\frac{\sqrt{3}}{2}$, deci $t=\frac{\pi}{3}$ și $A=2R\left(\frac{\pi}{3}\right)$.
+$A^n=2^n\begin{pmatrix}\cos\frac{n\pi}{3}&-\sin\frac{n\pi}{3}\\\sin\frac{n\pi}{3}&\cos\frac{n\pi}{3}\end{pmatrix}$, deci $A^6=2^6R(2\pi)=64\,I_2$.
+$2026=6\cdot 337+4$, deci $A^{2026}=2^{2026}R\left(\frac{4\pi}{3}\right)=2^{2026}\begin{pmatrix}-\frac{1}{2}&\frac{\sqrt{3}}{2}\\-\frac{\sqrt{3}}{2}&-\frac{1}{2}\end{pmatrix}=2^{2025}\begin{pmatrix}-1&\sqrt{3}\\-\sqrt{3}&-1\end{pmatrix}$.
+★ Cel mai important
+Cum aleg metoda? Începe mereu cu $A^2$: de cele mai multe ori îți arată drumul.
+- Calculez $A^2$ (eventual $A^3$). Apare $I_p$, $-I_p$, $O_p$ sau $kA$? → puteri care se repetă.
+- Pe diagonala principală se repetă același număr $a$, iar $B=A-aI_p$ are $B^2=O_p$ sau $B^3=O_p$? → binomul lui Newton.
+- Matricea are forma $\begin{pmatrix}a&-b\\b&a\end{pmatrix}$? → $A=r\,R(t)$ și $A^n=r^n\,R(nt)$.
+- Altă matrice de ordinul 2? → relația Hamilton–Cayley.
+- În $A^2$, $A^3$ se vede un model clar? → intuiesc forma lui $A^n$ și o demonstrez prin inducție.
+Exerciții
+Lucrează în ordine. La fiecare exercițiu, scrie mai întâi ce metodă alegi și de ce.
+Nivel de bază
+-
+Fie $A=\begin{pmatrix}a&b\\c&d\end{pmatrix}\in\mathcal{M}_2(\mathbb{C})$. Calculează $A^2$ și $(a+d)A$, apoi arată că $A^2-(a+d)A+(ad-bc)I_2=O_2$.
+-
+Fie $A=\begin{pmatrix}1&3\\0&1\end{pmatrix}$.
+a) Calculează $A^2$ și $A^3$.
+b) Intuiește forma lui $A^n$ și demonstreaz-o prin inducție matematică.
+c) Calculează $A^{10}$.
+-
+Fie matricea diagonală $A=\begin{pmatrix}2&0&0\\0&-1&0\\0&0&3\end{pmatrix}$.
+a) Calculează $A^n$, $n\in\mathbb{N}^*$.
+b) Calculează $A^5$.
+-
+Fie $A=\begin{pmatrix}0&1\\-1&0\end{pmatrix}$.
+a) Calculează $A^2$ și arată că $A^4=I_2$.
+b) Calculează $A^{2026}$ și $A^{2027}$.
+-
+Fie $A=\begin{pmatrix}2&-2\\1&-1\end{pmatrix}$.
+a) Arată că $A^2=A$.
+b) Calculează $A^{2026}$ și suma $A+A^2+\ldots+A^{10}$.
+-
+Fie $A=\begin{pmatrix}1&2\\3&6\end{pmatrix}$.
+a) Determină numărul real $k$ pentru care $A^2=kA$.
+b) Calculează $A^n$, $n\in\mathbb{N}^*$, și apoi $A^3$.
+-
+Fie $B=\begin{pmatrix}0&1&2\\0&0&3\\0&0&0\end{pmatrix}$. Calculează $B^2$ și $B^3$. Cât este $B^{2026}$?
+-
+Fie $A=\begin{pmatrix}2&1\\0&2\end{pmatrix}$.
+a) Scrie $A=2I_2+B$ și calculează $B^2$.
+b) Calculează $A^n$ cu binomul lui Newton.
+c) Calculează $A^5$.
+-
+Fie $A=\begin{pmatrix}1&2\\3&4\end{pmatrix}$.
+a) Scrie relația Hamilton–Cayley pentru $A$.
+b) Determină numerele reale $x$ și $y$ pentru care $A^3=xA+yI_2$.
+c) Calculează $A^3$.
+-
+Fie $A=\begin{pmatrix}\frac{1}{2}&-\frac{\sqrt{3}}{2}\\\frac{\sqrt{3}}{2}&\frac{1}{2}\end{pmatrix}$.
+a) Găsește $t\in[0,2\pi)$ pentru care $A=R(t)$.
+b) Calculează $A^3$ și $A^6$.
+c) Care este cel mai mic $n\in\mathbb{N}^*$ pentru care $A^n=I_2$?
+-
+Adevărat sau fals? Pentru fiecare propoziție falsă, dă un contraexemplu din $\mathcal{M}_2(\mathbb{R})$.
+a) Dacă $A^2=O_2$, atunci $A=O_2$.
+b) $(A+I_2)^n=\sum_{k=0}^{n}C_n^k\,A^k$, pentru orice $A\in\mathcal{M}_2(\mathbb{R})$ și $n\in\mathbb{N}^*$.
+c) $(AB)^2=A^2B^2$, pentru orice $A,B\in\mathcal{M}_2(\mathbb{R})$.
+d) Dacă $A^3=I_2$, atunci $A^{2027}=A^2$.
+Nivel consolidat
+-
+Fie $A=\begin{pmatrix}1&1&1\\0&1&1\\0&0&1\end{pmatrix}$.
+a) Scrie $A=I_3+B$ și calculează $B^2$ și $B^3$.
+b) Arată că $A^n=\begin{pmatrix}1&n&\frac{n(n+1)}{2}\\0&1&n\\0&0&1\end{pmatrix}$, pentru orice $n\in\mathbb{N}^*$.
+c) Calculează $A^{10}$.
+-
+Fie $A=\begin{pmatrix}3&1\\-1&1\end{pmatrix}$.
+a) Scrie relația Hamilton–Cayley pentru $A$ și arată că $(A-2I_2)^2=O_2$.
+b) Calculează $A^n$, $n\in\mathbb{N}^*$.
+c) Calculează $A^4$ în două moduri: cu formula de la b) și ca $A^2\cdot A^2$.
+-
+Fie $A=\begin{pmatrix}5&-6\\3&-4\end{pmatrix}$.
+a) Arată că $A^2=A+2I_2$.
+b) Scrie $A^n=x_nA+y_nI_2$ și arată că $x_{n+2}=x_{n+1}+2x_n$.
+c) Determină $x_n$, $y_n$ și $A^n$.
+d) Calculează $A^5$.
+-
+Activitate pe grupe · Aceeași matrice, trei drumuri. Fie $A=\begin{pmatrix}1&-1\\1&1\end{pmatrix}$. Clasa se împarte în trei grupe.
+Grupa 1: calculează $A^2$ și $A^4$ și folosește puterile care se repetă.
+Grupa 2: scrie relația Hamilton–Cayley și exprimă $A^3$ și $A^4$ în funcție de $A$ și $I_2$.
+Grupa 3: scrie $A=\sqrt{2}\,R(t)$ și folosește $R(t)^n=R(nt)$.
+a) Toate grupele: calculează $A^8$.
+b) Arată că $A^{2026}=2^m\begin{pmatrix}0&-1\\1&0\end{pmatrix}$ și află numărul natural $m$.
+c) Comparați rezolvările: care drum a fost cel mai scurt? Ce drum ați alege pentru $A^{2027}$?
+-
+Fie $A=\begin{pmatrix}\sqrt{3}&1\\-1&\sqrt{3}\end{pmatrix}$.
+a) Găsește $t\in(-\pi,\pi]$ pentru care $A=2R(t)$. Atenție la semne!
+b) Calculează $A^6$ și $A^{12}$.
+c) Care este cel mai mic $n\in\mathbb{N}^*$ pentru care $A^n=k\,I_2$, cu $k$ număr real?
+-
+Găsește greșeala. Un elev scrie: „$A=\begin{pmatrix}2&1\\1&2\end{pmatrix}=2I_2+B$, cu $B=\begin{pmatrix}0&1\\1&0\end{pmatrix}$, deci $A^n=2^nI_2+n\cdot 2^{n-1}B$.”
+a) Verifică formula elevului pentru $n=2$. Unde a greșit?
+b) Calculează $B^2$ și reia calculul cu binomul lui Newton, grupând separat termenii cu $B^k=I_2$ și pe cei cu $B^k=B$. Indicație: $3^n=(2+1)^n$ și $1=(2-1)^n$.
+c) Arată că $A^n=\frac{3^n+1}{2}\,I_2+\frac{3^n-1}{2}\,B$ și calculează $A^4$.
+-
+Fie $J=\begin{pmatrix}1&1&1\\1&1&1\\1&1&1\end{pmatrix}$.
+a) Arată că $J^2=3J$ și dedu că $J^k=3^{k-1}J$, pentru $k\ge 1$.
+b) Folosind binomul lui Newton, arată că $(I_3+J)^n=I_3+\frac{4^n-1}{3}\,J$.
+c) Calculează $\begin{pmatrix}2&1&1\\1&2&1\\1&1&2\end{pmatrix}^3$.
+Nivel avansat
+-
+Pentru $x\in\mathbb{R}$ fie $M(x)=\begin{pmatrix}1&x&\frac{x^2}{2}\\0&1&x\\0&0&1\end{pmatrix}$.
+a) Arată că $M(x)\cdot M(y)=M(x+y)$, pentru orice $x,y\in\mathbb{R}$.
+b) Dedu $\left(M(x)\right)^n$ și calculează $\left(M(1)\right)^{10}$.
+c) Calculează produsul $M(1)\cdot M(2)\cdot\ldots\cdot M(10)$.
+-
+Șirul lui Fibonacci este definit prin $F_0=0$, $F_1=1$, $F_{n+1}=F_n+F_{n-1}$, $n\ge 1$. Fie $A=\begin{pmatrix}1&1\\1&0\end{pmatrix}$.
+a) Demonstrează prin inducție că $A^n=\begin{pmatrix}F_{n+1}&F_n\\F_n&F_{n-1}\end{pmatrix}$, pentru orice $n\in\mathbb{N}^*$.
+b) Calculează $A^{10}$.
+c) Folosind $A^{m+n}=A^m\cdot A^n$, arată că $F_{m+n}=F_{m+1}F_n+F_mF_{n-1}$, pentru orice $m,n\in\mathbb{N}^*$.
+-
+Fie $A\in\mathcal{M}_2(\mathbb{R})$ cu $A^3=O_2$, iar $s$ și $p$ numerele din relația Hamilton–Cayley, $A^2=sA-pI_2$.
+a) Arată că $A^3=(s^2-p)\,A-sp\,I_2$.
+b) Arată că $A^2=O_2$. Indicație: tratează separat cazul $A=k\,I_2$.
+-
+Câte matrice distincte are mulțimea $\{A^n\mid n\in\mathbb{N}^*\}$ pentru fiecare dintre matricele de mai jos?
+a) $A=R\left(\frac{2\pi}{7}\right)$
+b) $A=\begin{pmatrix}0&-1\\1&-1\end{pmatrix}$ (din Exemplul 2)
+c) $A=\begin{pmatrix}1&1\\0&1\end{pmatrix}$
+-
+Formulează tu. Lucrați în perechi.
+a) Găsește o matrice $B\in\mathcal{M}_2(\mathbb{Z})$, $B\ne O_2$, cu $B^2=O_2$.
+b) Construiește cu ea o matrice $A=aI_2+B$ și scrie pentru colegul de bancă un exercițiu ca exercițiul 12. Rezolvă-l și tu, apoi schimbați caietele și comparați rezolvările.
+Matrice în situații practice
+Situațiile sunt inventate, dar seamănă cu cele reale. Treci datele dintr-un tabel într-o matrice și folosești puterile ei ca să prezici ce urmează.
+-
+Biciclete de închiriat. O firmă are 100 de biciclete și două stații: Centru (C) și Parc (P). Luni dimineața toate bicicletele sunt în C. În fiecare zi, din bicicletele aflate dimineața în C, 80% ajung seara tot în C și 20% în P. Din cele aflate în P, 30% ajung în C și 70% rămân în P. Nu se pierde nicio bicicletă și nu se adaugă altele.
+ajung în \ pleacă din
+C
+P
+C
+$0{,}8$
+$0{,}3$
+P
+$0{,}2$
+$0{,}7$
+a) Scrie matricea de tranziție $T$ din tabel. Ce înseamnă elementul $0{,}3$? Ce observi la suma elementelor de pe fiecare coloană?
+b) Notăm cu $X_n=\begin{pmatrix}c_n\\p_n\end{pmatrix}$ numărul de biciclete din C și din P după $n$ zile, $X_0=\begin{pmatrix}100\\0\end{pmatrix}$. Arată că $X_{n+1}=T\,X_n$ și dedu că $X_n=T^n X_0$.
+c) Calculează $X_1$, $X_2$ și $X_3$.
+d) Scrie relația Hamilton–Cayley pentru $T$, determină $T^n$ și arată că $c_n=60+\frac{40}{2^n}$.
+e) Ce se întâmplă cu numărul de biciclete din fiecare stație după foarte multe zile? Câte biciclete ar trebui să fie în C și în P pentru ca numărul lor să nu se mai schimbe de la o zi la alta?
+-
+Nava din joc. Într-un joc pe calculator, o navă pornește din punctul $(1,0)$. La fiecare apăsare a unei taste, nava se rotește în jurul originii cu $30^\circ$, în sens trigonometric. După $n$ apăsări, coordonatele ei sunt $\begin{pmatrix}x_n\\y_n\end{pmatrix}=R\left(\frac{\pi}{6}\right)^n\begin{pmatrix}1\\0\end{pmatrix}$.
+a) După câte apăsări ajunge nava prima dată înapoi în punctul de plecare?
+b) Unde se află nava după 2026 de apăsări?
+c) Programatorul vrea ca, la fiecare apăsare, nava să se și depărteze de origine: distanța până la origine se dublează. Ce matrice $A$ trebuie să folosească în loc de $R\left(\frac{\pi}{6}\right)$?
+
+--- EN ---
+
+The worksheet shows five methods for the powers of a square matrix: induction, repeating powers, the binomial theorem, the Cayley–Hamilton relation and matrices with sin and cos. Each method has its steps and a worked example. Then come exercises on three levels, a group activity and problems with transition matrices.
+
+Q: How do I compute the n-th power of a square matrix?
+A: Start with A² and maybe A³. If Iₚ, −Iₚ, Oₚ or a multiple of A appears, the powers repeat. If A = aIₚ + B and a power of B equals Oₚ, use the binomial theorem. A matrix of the form (a −b; b a) is written as r·R(t). For other 2×2 matrices use the Cayley–Hamilton relation, and when you see a clear pattern, prove it by induction.
+Q: What does the Cayley–Hamilton relation say for a 2×2 matrix?
+A: For A with entries a, b in the first row and c, d in the second, A² − (a + d)·A + (ad − bc)·I₂ = O₂. You check it by direct computation. From it, every power can be written as Aⁿ = xₙ·A + yₙ·I₂, and xₙ satisfies a linear recurrence of order 2.
+Q: When can I use the binomial theorem for matrices?
+A: Only when the two matrices commute: XY = YX. The identity matrix commutes with every matrix, so for A = aIₚ + B the formula always works. The method is fast when B² or B³ is the zero matrix, because the sum stops after two or three terms.
+Q: How do I raise a matrix with sin and cos to a power?
+A: For the rotation matrix R(t), with cos t and −sin t in the first row and sin t, cos t in the second, R(t)·R(u) = R(t + u), so R(t)ⁿ = R(nt). A matrix with a, −b in the first row and b, a in the second is r·R(t), with r = √(a² + b²), as in the trigonometric form of the number a + bi.
+
+The question of this worksheet: How do you compute $A^{2026}$, or even $A^n$, without multiplying the matrix by itself 2025 times?
+Start from what you know
+Four quick checks. If one of them gives you trouble, write it down: go back to it first.
+-
+Compute $A^2=A\cdot A$ for $A=\begin{pmatrix}1&2\\3&4\end{pmatrix}$.
+-
+Expand $(x+1)^4$ with the binomial theorem.
+What is $C_5^2$?
+-
+Fill in: $\cos(a+b)=\ldots$ and $\sin(a+b)=\ldots$
+Compute $\cos\frac{2\pi}{3}$ and $\sin\frac{2\pi}{3}$.
+-
+Find the remainder when 2026 is divided by 3, by 4 and by 6.
+Theory in brief
+For each method: when to use it, the steps (in the thick frame) and a worked example. At the end you will find the logical thread that helps you choose the method.
+Definition
+Let $A\in\mathcal{M}_p(\mathbb{C})$ be a square matrix. The powers of $A$ are defined by $A^1=A$ and $A^{n+1}=A^n\cdot A$, for $n\in\mathbb{N}^*$. By convention, $A^0=I_p$.
+Remember
+$A^m\cdot A^n=A^{m+n}$, $\quad (A^m)^n=A^{mn}$, $\quad (kA)^n=k^nA^n$ for any number $k$.
+Careful! Matrix multiplication is not commutative. In general $(AB)^n\ne A^nB^n$ and $(A+B)^2=A^2+AB+BA+B^2$, not $A^2+2AB+B^2$.
+1. Compute, guess, prove by induction
+★ Method
+The method of mathematical induction
+- I compute $A^2$, $A^3$ (and $A^4$ if needed).
+- I look at which entries stay the same and how the others change. I write the guessed form of $A^n$ as a statement $P(n)$.
+- I check $P(1)$.
+- I assume $P(k)$ is true and compute $A^{k+1}=A^k\cdot A$. I get $P(k+1)$.
+Example 1 · Induction
+Compute $A^n$ for $A=\begin{pmatrix}2&1\\0&1\end{pmatrix}$.
+Step 1. $A^2=\begin{pmatrix}4&3\\0&1\end{pmatrix}$, $\ A^3=\begin{pmatrix}8&7\\0&1\end{pmatrix}$.
+Step 2. The first entry is a power of 2 and the entry next to it is 1 less. I guess $P(n)\colon A^n=\begin{pmatrix}2^n&2^n-1\\0&1\end{pmatrix}$.
+Step 3. For $n=1$ I get $\begin{pmatrix}2&1\\0&1\end{pmatrix}=A$ ✓.
+Step 4. $A^{k+1}=\begin{pmatrix}2^k&2^k-1\\0&1\end{pmatrix}\begin{pmatrix}2&1\\0&1\end{pmatrix}=\begin{pmatrix}2^{k+1}&2^k+2^k-1\\0&1\end{pmatrix}=\begin{pmatrix}2^{k+1}&2^{k+1}-1\\0&1\end{pmatrix}$ ✓.
+2. Repeating powers
+Sometimes, after a few multiplications, a simple matrix appears: $I_p$, $-I_p$, $O_p$ or even $A$ times a number. Then the powers “repeat” and you no longer need induction for every exercise.
+★ Method
+The method of repeating powers
+- I compute $A^2$, $A^3$, … until $I_p$, $-I_p$, $O_p$ or a multiple of $A$ appears.
+- If $A^k=I_p$, I divide $n$ by $k$: $n=k\cdot q+r$, with $0\le r<k$.
+- I write $A^n=\left(A^k\right)^q\cdot A^r=A^r$ (with $A^0=I_p$).
+Remember
+$A^k=I_p\ \Rightarrow\ A^n=A^r$, where $r$ is the remainder of $n$ divided by $k$.
+$A^k=-I_p\ \Rightarrow\ A^{2k}=I_p$.
+$B^k=O_p\ \Rightarrow\ B^n=O_p$ for every $n\ge k$ (a nilpotent matrix).
+$A^2=kA\ \Rightarrow\ A^n=k^{n-1}A$ for every $n\ge 1$.
+Example 2 · The powers repeat
+Compute $A^{2026}$ for $A=\begin{pmatrix}0&-1\\1&-1\end{pmatrix}$.
+$A^2=\begin{pmatrix}-1&1\\-1&0\end{pmatrix}$, $\ A^3=A^2\cdot A=\begin{pmatrix}1&0\\0&1\end{pmatrix}=I_2$.
+$2026=3\cdot 675+1$, so $A^{2026}=\left(A^3\right)^{675}\cdot A=A$.
+Example 3 · $A^2=kA$
+For $A=\begin{pmatrix}1&2\\2&4\end{pmatrix}$: $\ A^2=\begin{pmatrix}5&10\\10&20\end{pmatrix}=5A$.
+Then $A^3=A^2\cdot A=5A^2=5^2A$ and, by induction, $A^n=5^{n-1}A$.
+3. The binomial theorem
+The identity matrix commutes with every matrix: $I_p\cdot B=B\cdot I_p=B$. That is why for $A=aI_p+B$ you may use the binomial theorem. The method is fast when a power of $B$ is $O_p$: the sum stops after a few terms.
+Remember
+If $XY=YX$, then $(X+Y)^n=\sum_{k=0}^{n}C_n^k\,X^{n-k}Y^k$.
+If $A=aI_p+B$ and $B^2=O_p$, then $A^n=a^nI_p+n\,a^{n-1}B$.
+If $A=aI_p+B$ and $B^3=O_p$, then $A^n=a^nI_p+n\,a^{n-1}B+\frac{n(n-1)}{2}\,a^{n-2}B^2$.
+★ Method
+The binomial theorem method
+- I write $A=aI_p+B$. Usually $a$ is the number repeated on the main diagonal.
+- I compute $B^2$, $B^3$, … until I get $O_p$.
+- I apply the binomial theorem. The terms that contain $B^k=O_p$ vanish.
+- I add the remaining matrices and check the formula for $n=1$.
+Example 4 · The binomial theorem
+Compute $A^n$ for $A=\begin{pmatrix}3&1&0\\0&3&1\\0&0&3\end{pmatrix}$.
+$A=3I_3+B$, with $B=\begin{pmatrix}0&1&0\\0&0&1\\0&0&0\end{pmatrix}$, $\ B^2=\begin{pmatrix}0&0&1\\0&0&0\\0&0&0\end{pmatrix}$, $\ B^3=O_3$.
+$$A^n=3^nI_3+n\cdot 3^{n-1}B+\frac{n(n-1)}{2}\cdot 3^{n-2}B^2=\begin{pmatrix}3^n&n\cdot 3^{n-1}&\frac{n(n-1)}{2}\cdot 3^{n-2}\\0&3^n&n\cdot 3^{n-1}\\0&0&3^n\end{pmatrix}$$
+Check: for $n=1$ I get $A$ itself ✓.
+Careful
+The binomial theorem works only for matrices that commute. For $X=\begin{pmatrix}1&0\\0&0\end{pmatrix}$ and $Y=\begin{pmatrix}0&1\\0&0\end{pmatrix}$ we have $XY\ne YX$. Check for yourself that $(X+Y)^2\ne X^2+2XY+Y^2$.
+4. The Cayley–Hamilton relation (2×2 matrices)
+Every matrix $A=\begin{pmatrix}a&b\\c&d\end{pmatrix}\in\mathcal{M}_2(\mathbb{C})$ satisfies the relation below. The number $a+d$ is the sum of the entries on the main diagonal (the trace of the matrix). The number $ad-bc$ is the product of the entries on the main diagonal minus the product of those on the other diagonal.
+Remember
+$$A^2-(a+d)\,A+(ad-bc)\,I_2=O_2$$
+With $s=a+d$ and $p=ad-bc$: $\ A^2=s\,A-p\,I_2$. The proof is a direct computation: you do it in exercise 5.
+From the relation, every power of $A$ can be written as $A^n=x_nA+y_nI_2$. Multiplying by $A$ and replacing $A^2$:
+$$A^{n+1}=x_nA^2+y_nA=(s\,x_n+y_n)\,A-p\,x_n\,I_2$$
+So $x_{n+1}=s\,x_n+y_n$, $y_{n+1}=-p\,x_n$, that is $x_{n+2}=s\,x_{n+1}-p\,x_n$: a linear recurrence of order 2, as in the worksheet on sequences given by recurrences. Its characteristic equation, $r^2-s\,r+p=0$, has the same coefficients as the Cayley–Hamilton relation.
+★ Method
+The Cayley–Hamilton method
+- I compute $s=a+d$, $p=ad-bc$ and write $A^2=s\,A-p\,I_2$.
+- I look for the easy cases. If $p=0$: $A^2=sA$, so $A^n=s^{n-1}A$ (method 2). If $s^2=4p$: $\left(A-\frac{s}{2}I_2\right)^2=O_2$ (method 3).
+- Otherwise, I write $A^n=x_nA+y_nI_2$, with $x_1=1$, $x_2=s$ and $x_{n+2}=s\,x_{n+1}-p\,x_n$.
+- I solve the recurrence, write $y_n=-p\,x_{n-1}$ and check the formula for $n=1$ and $n=2$.
+Example 5 · Cayley–Hamilton
+Compute $A^3$ and $A^n$ for $A=\begin{pmatrix}4&-2\\1&1\end{pmatrix}$.
+Step 1. $s=4+1=5$, $p=4\cdot 1-(-2)\cdot 1=6$, so $A^2=5A-6I_2$. Then $A^3=5A^2-6A=5(5A-6I_2)-6A=19A-30I_2$.
+Steps 2–3. $p\ne 0$ and $s^2\ne 4p$. I write $x_{n+2}=5x_{n+1}-6x_n$, $x_1=1$, $x_2=5$.
+Step 4. $r^2-5r+6=0$, $r_1=2$, $r_2=3$, so $x_n=3^n-2^n$ and $y_n=-6x_{n-1}=3\cdot 2^n-2\cdot 3^n$.
+$$A^n=(3^n-2^n)\,A+(3\cdot 2^n-2\cdot 3^n)\,I_2=\begin{pmatrix}2\cdot 3^n-2^n&2^{n+1}-2\cdot 3^n\\3^n-2^n&2^{n+1}-3^n\end{pmatrix}$$
+Check: $x_3=27-8=19$ and $y_3=24-54=-30$, the same as in Step 1 ✓.
+5. Matrices with sin and cos
+Definition
+For $t\in\mathbb{R}$ we write $R(t)=\begin{pmatrix}\cos t&-\sin t\\\sin t&\cos t\end{pmatrix}$. Multiplying by $R(t)$ rotates a point of the plane about the origin by the angle $t$ (a rotation matrix).
+Remember
+$R(t)\cdot R(u)=R(t+u)$: it follows from the formulas for $\cos(t+u)$ and $\sin(t+u)$.
+$R(t)^n=R(nt)$ for every $n\in\mathbb{N}^*$ (by induction). In particular $R(\pi)=-I_2$ and $R(2\pi)=I_2$.
+Matrices that reduce to $R(t)$. If $A=\begin{pmatrix}a&-b\\b&a\end{pmatrix}$, $(a,b)\ne(0,0)$, and $r=\sqrt{a^2+b^2}$, then $A=r\begin{pmatrix}\frac{a}{r}&-\frac{b}{r}\\\frac{b}{r}&\frac{a}{r}\end{pmatrix}=r\,R(t)$, with $\cos t=\frac{a}{r}$, $\sin t=\frac{b}{r}$. So $A^n=r^n\,R(nt)$.
+It is the same idea as the trigonometric form of the complex number $a+bi=r(\cos t+i\,\sin t)$.
+★ Method
+The rotation matrix method
+- I check the form: the same number $a$ on the main diagonal, $-b$ (top) and $b$ (bottom) on the other diagonal.
+- I compute $r=\sqrt{a^2+b^2}$ and factor out $r$.
+- I find $t$ with $\cos t=\frac{a}{r}$ and $\sin t=\frac{b}{r}$.
+- I write $A^n=r^n\,R(nt)$ and reduce the angle $nt$ to an angle in $[0,2\pi)$.
+Example 6 · A rotation matrix
+Compute $A^6$ and $A^{2026}$ for $A=\begin{pmatrix}1&-\sqrt{3}\\\sqrt{3}&1\end{pmatrix}$.
+$r=\sqrt{1+3}=2$, $\cos t=\frac{1}{2}$, $\sin t=\frac{\sqrt{3}}{2}$, so $t=\frac{\pi}{3}$ and $A=2R\left(\frac{\pi}{3}\right)$.
+$A^n=2^n\begin{pmatrix}\cos\frac{n\pi}{3}&-\sin\frac{n\pi}{3}\\\sin\frac{n\pi}{3}&\cos\frac{n\pi}{3}\end{pmatrix}$, so $A^6=2^6R(2\pi)=64\,I_2$.
+$2026=6\cdot 337+4$, so $A^{2026}=2^{2026}R\left(\frac{4\pi}{3}\right)=2^{2026}\begin{pmatrix}-\frac{1}{2}&\frac{\sqrt{3}}{2}\\-\frac{\sqrt{3}}{2}&-\frac{1}{2}\end{pmatrix}=2^{2025}\begin{pmatrix}-1&\sqrt{3}\\-\sqrt{3}&-1\end{pmatrix}$.
+★ Most important
+How do I choose the method? Always start with $A^2$: most of the time it shows you the way.
+- I compute $A^2$ (maybe $A^3$). Do $I_p$, $-I_p$, $O_p$ or $kA$ appear? → repeating powers.
+- Is the same number $a$ repeated on the main diagonal, and does $B=A-aI_p$ have $B^2=O_p$ or $B^3=O_p$? → the binomial theorem.
+- Does the matrix have the form $\begin{pmatrix}a&-b\\b&a\end{pmatrix}$? → $A=r\,R(t)$ and $A^n=r^n\,R(nt)$.
+- Another 2×2 matrix? → the Cayley–Hamilton relation.
+- Do $A^2$, $A^3$ show a clear pattern? → I guess the form of $A^n$ and prove it by induction.
+Exercises
+Work in order. For each exercise, first write down which method you choose and why.
+Basic level
+-
+Let $A=\begin{pmatrix}a&b\\c&d\end{pmatrix}\in\mathcal{M}_2(\mathbb{C})$. Compute $A^2$ and $(a+d)A$, then show that $A^2-(a+d)A+(ad-bc)I_2=O_2$.
+-
+Let $A=\begin{pmatrix}1&3\\0&1\end{pmatrix}$.
+a) Compute $A^2$ and $A^3$.
+b) Guess the form of $A^n$ and prove it by mathematical induction.
+c) Compute $A^{10}$.
+-
+Let $A=\begin{pmatrix}2&0&0\\0&-1&0\\0&0&3\end{pmatrix}$ be a diagonal matrix.
+a) Compute $A^n$, $n\in\mathbb{N}^*$.
+b) Compute $A^5$.
+-
+Let $A=\begin{pmatrix}0&1\\-1&0\end{pmatrix}$.
+a) Compute $A^2$ and show that $A^4=I_2$.
+b) Compute $A^{2026}$ and $A^{2027}$.
+-
+Let $A=\begin{pmatrix}2&-2\\1&-1\end{pmatrix}$.
+a) Show that $A^2=A$.
+b) Compute $A^{2026}$ and the sum $A+A^2+\ldots+A^{10}$.
+-
+Let $A=\begin{pmatrix}1&2\\3&6\end{pmatrix}$.
+a) Find the real number $k$ for which $A^2=kA$.
+b) Compute $A^n$, $n\in\mathbb{N}^*$, and then $A^3$.
+-
+Let $B=\begin{pmatrix}0&1&2\\0&0&3\\0&0&0\end{pmatrix}$. Compute $B^2$ and $B^3$. What is $B^{2026}$?
+-
+Let $A=\begin{pmatrix}2&1\\0&2\end{pmatrix}$.
+a) Write $A=2I_2+B$ and compute $B^2$.
+b) Compute $A^n$ with the binomial theorem.
+c) Compute $A^5$.
+-
+Let $A=\begin{pmatrix}1&2\\3&4\end{pmatrix}$.
+a) Write the Cayley–Hamilton relation for $A$.
+b) Find the real numbers $x$ and $y$ for which $A^3=xA+yI_2$.
+c) Compute $A^3$.
+-
+Let $A=\begin{pmatrix}\frac{1}{2}&-\frac{\sqrt{3}}{2}\\\frac{\sqrt{3}}{2}&\frac{1}{2}\end{pmatrix}$.
+a) Find $t\in[0,2\pi)$ for which $A=R(t)$.
+b) Compute $A^3$ and $A^6$.
+c) What is the smallest $n\in\mathbb{N}^*$ for which $A^n=I_2$?
+-
+True or false? For each false statement, give a counterexample in $\mathcal{M}_2(\mathbb{R})$.
+a) If $A^2=O_2$, then $A=O_2$.
+b) $(A+I_2)^n=\sum_{k=0}^{n}C_n^k\,A^k$ for every $A\in\mathcal{M}_2(\mathbb{R})$ and $n\in\mathbb{N}^*$.
+c) $(AB)^2=A^2B^2$ for all $A,B\in\mathcal{M}_2(\mathbb{R})$.
+d) If $A^3=I_2$, then $A^{2027}=A^2$.
+Intermediate level
+-
+Let $A=\begin{pmatrix}1&1&1\\0&1&1\\0&0&1\end{pmatrix}$.
+a) Write $A=I_3+B$ and compute $B^2$ and $B^3$.
+b) Show that $A^n=\begin{pmatrix}1&n&\frac{n(n+1)}{2}\\0&1&n\\0&0&1\end{pmatrix}$ for every $n\in\mathbb{N}^*$.
+c) Compute $A^{10}$.
+-
+Let $A=\begin{pmatrix}3&1\\-1&1\end{pmatrix}$.
+a) Write the Cayley–Hamilton relation for $A$ and show that $(A-2I_2)^2=O_2$.
+b) Compute $A^n$, $n\in\mathbb{N}^*$.
+c) Compute $A^4$ in two ways: with the formula from b) and as $A^2\cdot A^2$.
+-
+Let $A=\begin{pmatrix}5&-6\\3&-4\end{pmatrix}$.
+a) Show that $A^2=A+2I_2$.
+b) Write $A^n=x_nA+y_nI_2$ and show that $x_{n+2}=x_{n+1}+2x_n$.
+c) Find $x_n$, $y_n$ and $A^n$.
+d) Compute $A^5$.
+-
+Group work · One matrix, three paths. Let $A=\begin{pmatrix}1&-1\\1&1\end{pmatrix}$. The class splits into three groups.
+Group 1: compute $A^2$ and $A^4$ and use the repeating powers.
+Group 2: write the Cayley–Hamilton relation and express $A^3$ and $A^4$ in terms of $A$ and $I_2$.
+Group 3: write $A=\sqrt{2}\,R(t)$ and use $R(t)^n=R(nt)$.
+a) All groups: compute $A^8$.
+b) Show that $A^{2026}=2^m\begin{pmatrix}0&-1\\1&0\end{pmatrix}$ and find the natural number $m$.
+c) Compare your solutions: which path was the shortest? Which path would you choose for $A^{2027}$?
+-
+Let $A=\begin{pmatrix}\sqrt{3}&1\\-1&\sqrt{3}\end{pmatrix}$.
+a) Find $t\in(-\pi,\pi]$ for which $A=2R(t)$. Watch the signs!
+b) Compute $A^6$ and $A^{12}$.
+c) What is the smallest $n\in\mathbb{N}^*$ for which $A^n=k\,I_2$, with $k$ a real number?
+-
+Find the mistake. A student writes: “$A=\begin{pmatrix}2&1\\1&2\end{pmatrix}=2I_2+B$, with $B=\begin{pmatrix}0&1\\1&0\end{pmatrix}$, so $A^n=2^nI_2+n\cdot 2^{n-1}B$.”
+a) Check the student’s formula for $n=2$. Where is the mistake?
+b) Compute $B^2$ and redo the computation with the binomial theorem, grouping the terms with $B^k=I_2$ and those with $B^k=B$ separately. Hint: $3^n=(2+1)^n$ and $1=(2-1)^n$.
+c) Show that $A^n=\frac{3^n+1}{2}\,I_2+\frac{3^n-1}{2}\,B$ and compute $A^4$.
+-
+Let $J=\begin{pmatrix}1&1&1\\1&1&1\\1&1&1\end{pmatrix}$.
+a) Show that $J^2=3J$ and deduce that $J^k=3^{k-1}J$ for $k\ge 1$.
+b) Using the binomial theorem, show that $(I_3+J)^n=I_3+\frac{4^n-1}{3}\,J$.
+c) Compute $\begin{pmatrix}2&1&1\\1&2&1\\1&1&2\end{pmatrix}^3$.
+Advanced level
+-
+For $x\in\mathbb{R}$ let $M(x)=\begin{pmatrix}1&x&\frac{x^2}{2}\\0&1&x\\0&0&1\end{pmatrix}$.
+a) Show that $M(x)\cdot M(y)=M(x+y)$ for all $x,y\in\mathbb{R}$.
+b) Deduce $\left(M(x)\right)^n$ and compute $\left(M(1)\right)^{10}$.
+c) Compute the product $M(1)\cdot M(2)\cdot\ldots\cdot M(10)$.
+-
+The Fibonacci sequence is defined by $F_0=0$, $F_1=1$, $F_{n+1}=F_n+F_{n-1}$, $n\ge 1$. Let $A=\begin{pmatrix}1&1\\1&0\end{pmatrix}$.
+a) Prove by induction that $A^n=\begin{pmatrix}F_{n+1}&F_n\\F_n&F_{n-1}\end{pmatrix}$ for every $n\in\mathbb{N}^*$.
+b) Compute $A^{10}$.
+c) Using $A^{m+n}=A^m\cdot A^n$, show that $F_{m+n}=F_{m+1}F_n+F_mF_{n-1}$ for all $m,n\in\mathbb{N}^*$.
+-
+Let $A\in\mathcal{M}_2(\mathbb{R})$ with $A^3=O_2$, and let $s$ and $p$ be the numbers in the Cayley–Hamilton relation $A^2=sA-pI_2$.
+a) Show that $A^3=(s^2-p)\,A-sp\,I_2$.
+b) Show that $A^2=O_2$. Hint: treat the case $A=k\,I_2$ separately.
+-
+How many distinct matrices does the set $\{A^n\mid n\in\mathbb{N}^*\}$ have for each of the matrices below?
+a) $A=R\left(\frac{2\pi}{7}\right)$
+b) $A=\begin{pmatrix}0&-1\\1&-1\end{pmatrix}$ (from Example 2)
+c) $A=\begin{pmatrix}1&1\\0&1\end{pmatrix}$
+-
+Make up your own. Work in pairs.
+a) Find a matrix $B\in\mathcal{M}_2(\mathbb{Z})$, $B\ne O_2$, with $B^2=O_2$.
+b) Use it to build a matrix $A=aI_2+B$ and write an exercise like exercise 12 for your deskmate. Solve it yourself too, then swap notebooks and compare your solutions.
+Matrices in real situations
+The situations are made up, but they resemble real ones. You turn the data of a table into a matrix and use its powers to predict what comes next.
+-
+Bikes for rent. A company has 100 bikes and two stations: Centre (C) and Park (P). On Monday morning all the bikes are at C. Every day, of the bikes that are at C in the morning, 80% end up at C again in the evening and 20% at P. Of those at P, 30% end up at C and 70% stay at P. No bike is lost and no new bikes are added.
+end up at \ leave from
+C
+P
+C
+$0{,}8$
+$0{,}3$
+P
+$0{,}2$
+$0{,}7$
+a) Write the transition matrix $T$ from the table. What does the entry $0{,}3$ mean? What do you notice about the sum of the entries in each column?
+b) Let $X_n=\begin{pmatrix}c_n\\p_n\end{pmatrix}$ be the number of bikes at C and at P after $n$ days, $X_0=\begin{pmatrix}100\\0\end{pmatrix}$. Show that $X_{n+1}=T\,X_n$ and deduce that $X_n=T^n X_0$.
+c) Compute $X_1$, $X_2$ and $X_3$.
+d) Write the Cayley–Hamilton relation for $T$, find $T^n$ and show that $c_n=60+\frac{40}{2^n}$.
+e) What happens to the number of bikes at each station after very many days? How many bikes should there be at C and at P so that their number no longer changes from one day to the next?
+-
+The ship in the game. In a computer game, a ship starts at the point $(1,0)$. Each time a key is pressed, the ship rotates about the origin by $30^\circ$, counterclockwise. After $n$ presses its coordinates are $\begin{pmatrix}x_n\\y_n\end{pmatrix}=R\left(\frac{\pi}{6}\right)^n\begin{pmatrix}1\\0\end{pmatrix}$.
+a) After how many presses does the ship first get back to its starting point?
+b) Where is the ship after 2026 presses?
+c) The programmer wants the ship to also move away from the origin at each press: its distance to the origin doubles. Which matrix $A$ must be used instead of $R\left(\frac{\pi}{6}\right)$?
+
+---
+
 ### Fișă de lucru: șiruri date prin recurențe
 - Source (RO): https://lauramiron.pages.dev/materiale/fisa-lucru-siruri-recurente-1033
 - Source (EN): https://lauramiron.pages.dev/en/materiale/fisa-lucru-siruri-recurente-1033

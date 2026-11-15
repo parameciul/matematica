@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Puterea a n-a a unei matrice: metode de calcul – clasa a 11-a (XI)</title>
+  <meta name="description" content="Fișă de lucru pentru clasa a XI-a: puterile unei matrice pătratice prin inducție, binomul lui Newton, relația Hamilton–Cayley și matrice de rotație.">
+  <meta name="author" content="Laura Miron">
+  <meta name="robots" content="max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="google-site-verification" content="lwpe3phdRnlGTaxwvpfcxbuygEudOHDa7i_hl_1wQQc">
+  <meta name="msvalidate.01" content="79E7F21C210EE6E1F04FDB1E5956620C">
+  <link rel="canonical" href="https://lauramiron.pages.dev/materiale/fisa-lucru-puterile-matrice-patratice-1034">
+  <link rel="alternate" hreflang="ro" href="https://lauramiron.pages.dev/materiale/fisa-lucru-puterile-matrice-patratice-1034">
+  <link rel="alternate" hreflang="en" href="https://lauramiron.pages.dev/en/materiale/fisa-lucru-puterile-matrice-patratice-1034">
+  <link rel="alternate" hreflang="x-default" href="https://lauramiron.pages.dev/materiale/fisa-lucru-puterile-matrice-patratice-1034">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Puterea a n-a a unei matrice: metode de calcul – clasa a 11-a (XI)">
+  <meta property="og:description" content="Fișă de lucru pentru clasa a XI-a: puterile unei matrice pătratice prin inducție, binomul lui Newton, relația Hamilton–Cayley și matrice de rotație.">
+  <meta property="og:url" content="https://lauramiron.pages.dev/materiale/fisa-lucru-puterile-matrice-patratice-1034">
+  <meta property="og:image" content="https://lauramiron.pages.dev/assets/img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Materiale de matematică pentru clasele V–XII – Laura Miron">
+  <meta property="og:locale" content="ro_RO">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:site_name" content="Laura Miron">
+  <meta property="article:published_time" content="2026-11-15">
+  <meta property="article:modified_time" content="2026-11-15">
+  <meta property="og:updated_time" content="2026-11-15">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Puterea a n-a a unei matrice: metode de calcul – clasa a 11-a (XI)">
+  <meta name="twitter:description" content="Fișă de lucru pentru clasa a XI-a: puterile unei matrice pătratice prin inducție, binomul lui Newton, relația Hamilton–Cayley și matrice de rotație.">
+  <meta name="twitter:image" content="https://lauramiron.pages.dev/assets/img/og-image.png">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fbfcfe">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1d2925">
+  <link rel="manifest" href="../site.webmanifest">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../favicon.ico" sizes="48x48">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+  <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('matematica.theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,700;0,800;1,400&family=Caveat:wght@600&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.18.1/dist/katex.min.css" integrity="sha384-1vdNCNel6Tx/NQa8IR1mGOGKsbGreCkOPfbtPPnUURJ5Tu2PRVfQ/7KLZC+Pi1p1" crossorigin="anonymous">
+  <link rel="stylesheet" href="../assets/css/style.css?v=dfd0a402b6">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.18.1/dist/katex.min.js" integrity="sha384-ycJ6GAwiS15LoUPipwJOrWTvkUHl/YqELValBwI5I4awP1EeEQJYarj+w85ntcz7" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.18.1/dist/contrib/auto-render.min.js" integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous"></script>
+  <script defer src="../assets/js/i18n.js?v=feb755cd88"></script>
+  <script defer src="../assets/js/catalog.js?v=7b3e472fde"></script>
+  <script defer src="../assets/js/shell.js?v=e464802201"></script>
+  <script defer src="../assets/js/site.js?v=86760ebbd4"></script>
+  <script defer src="../assets/js/searchbox.js?v=b3f954fcd7"></script>
+  <script defer src="../assets/js/material.js?v=eb2d425eaf"></script>
+  <script defer src="../assets/js/answers.js?v=25caed376f"></script>
+  <script defer src="../assets/js/check.js?v=beca89b12d"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","name":"Fișă de lucru: puterile unei matrice pătratice","description":"Fișă de lucru pentru clasa a XI-a: puterile unei matrice pătratice prin inducție, binomul lui Newton, relația Hamilton–Cayley și matrice de rotație.","url":"https://lauramiron.pages.dev/materiale/fisa-lucru-puterile-matrice-patratice-1034","mainEntityOfPage":"https://lauramiron.pages.dev/materiale/fisa-lucru-puterile-matrice-patratice-1034","inLanguage":"ro","datePublished":"2026-11-15","dateModified":"2026-11-15","learningResourceType":"Fișă de lucru","educationalLevel":"Clasa a XI-a","teaches":"Matrice","educationalAlignment":{"@type":"AlignmentObject","alignmentType":"educationalSubject","educationalFramework":"Programa școlară românească","targetName":"Clasa a XI-a – Matrice","targetUrl":"https://lauramiron.pages.dev/clasa-11#matrice"},"isAccessibleForFree":true,"license":"https://creativecommons.org/licenses/by-nc-sa/4.0/","author":{"@type":"Person","name":"Laura Miron","url":"https://lauramiron.pages.dev/despre","jobTitle":"Profesoară de matematică","worksFor":{"@type":"EducationalOrganization","name":"Liceul William Shakespeare","url":"https://lauramiron.pages.dev/","logo":{"@type":"ImageObject","url":"https://lauramiron.pages.dev/assets/img/og-image.png","width":1200,"height":630},"address":{"@type":"PostalAddress","addressLocality":"Timișoara","addressCountry":"RO"}},"knowsAbout":["Mathematics","Matematică","Algebră","Geometrie","Analiză matematică","Algebra","Geometry","Mathematical analysis"],"sameAs":["https://www.youtube.com/@MatematicaLauraMiron"]},"publisher":{"@type":"Person","name":"Laura Miron","url":"https://lauramiron.pages.dev/despre","jobTitle":"Profesoară de matematică","worksFor":{"@type":"EducationalOrganization","name":"Liceul William Shakespeare","url":"https://lauramiron.pages.dev/","logo":{"@type":"ImageObject","url":"https://lauramiron.pages.dev/assets/img/og-image.png","width":1200,"height":630},"address":{"@type":"PostalAddress","addressLocality":"Timișoara","addressCountry":"RO"}},"knowsAbout":["Mathematics","Matematică","Algebră","Geometrie","Analiză matematică","Algebra","Geometry","Mathematical analysis"],"sameAs":["https://www.youtube.com/@MatematicaLauraMiron"]},"audience":{"@type":"EducationalAudience","educationalRole":"student"},"educationalUse":"practice","abstract":"Fișa arată cinci metode pentru puterile unei matrice pătratice: inducția, puterile care se repetă, binomul lui Newton, relația Hamilton–Cayley și matricele cu sin și cos. Fiecare metodă are pașii și un exemplu rezolvat. Urmează exerciții pe trei niveluri, o activitate pe grupe și probleme cu matrice de tranziție.","speakable":{"@type":"SpeakableSpecification","cssSelector":[".rezumat",".faq"]},"encoding":{"@type":"MediaObject","contentUrl":"https://lauramiron.pages.dev/materiale/pdf/fisa-lucru-puterile-matrice-patratice-1034.pdf","encodingFormat":"application/pdf","inLanguage":"ro"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Acasă","item":"https://lauramiron.pages.dev/"},{"@type":"ListItem","position":2,"name":"Clasa a XI-a","item":"https://lauramiron.pages.dev/clasa-11"},{"@type":"ListItem","position":3,"name":"Fișă de lucru: puterile unei matrice pătratice","item":"https://lauramiron.pages.dev/materiale/fisa-lucru-puterile-matrice-patratice-1034"}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Cum calculez puterea a n-a a unei matrice pătratice?","acceptedAnswer":{"@type":"Answer","text":"Începi cu A² și, eventual, A³. Dacă apare Iₚ, −Iₚ, Oₚ sau un multiplu al lui A, puterile se repetă. Dacă A = aIₚ + B cu o putere a lui B egală cu Oₚ, folosești binomul lui Newton. O matrice de forma (a −b; b a) se scrie r·R(t). Pentru alte matrice de ordinul 2 folosești relația Hamilton–Cayley, iar când vezi un model clar, îl demonstrezi prin inducție."}},{"@type":"Question","name":"Ce spune relația Hamilton–Cayley pentru o matrice de ordinul 2?","acceptedAnswer":{"@type":"Answer","text":"Pentru A cu elementele a, b pe prima linie și c, d pe a doua, A² − (a + d)·A + (ad − bc)·I₂ = O₂. Se verifică prin calcul direct. Din ea, orice putere se scrie Aⁿ = xₙ·A + yₙ·I₂, iar xₙ verifică o recurență liniară de ordinul 2."}},{"@type":"Question","name":"Când pot folosi binomul lui Newton pentru matrice?","acceptedAnswer":{"@type":"Answer","text":"Numai când cele două matrice comută: XY = YX. Matricea unitate comută cu orice matrice, deci pentru A = aIₚ + B formula merge mereu. Metoda e rapidă când B² sau B³ este matricea nulă, pentru că suma se oprește după doi sau trei termeni."}},{"@type":"Question","name":"Cum ridic la putere o matrice cu sin și cos?","acceptedAnswer":{"@type":"Answer","text":"Pentru matricea de rotație R(t), cu cos t și −sin t pe prima linie și sin t, cos t pe a doua, avem R(t)·R(u) = R(t + u), deci R(t)ⁿ = R(nt). O matrice cu a, −b pe prima linie și b, a pe a doua se scrie r·R(t), cu r = √(a² + b²), ca la forma trigonometrică a numărului a + bi."}}]}</script>
+</head>
+<body data-root="../" data-page-root="../">
+  <header id="site-header" class="site-header"><div class="wrap header-bar"><a class="brand" href="../index.html"><svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M10 48h44" fill="none" stroke="var(--brand-marker)" stroke-width="12" stroke-linecap="round"/><g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"><path d="M25 13c-3 11-6 21-9 31 7 0 13-2 18-6"/><path d="M33 45l4-23 6 13 8-15 2 25"/></g></svg><span class="brand-text"><span class="brand-name" data-i18n="site.title">Matematică cu Laura Miron</span><span class="brand-school" data-i18n="site.school">Liceul William Shakespeare, Timișoara</span></span></a><nav class="grade-nav" id="grade-nav" data-nav aria-label="Alege clasa"><span class="grade-nav-label" aria-hidden="true" data-i18n="nav.gradesLabel">Alege clasa</span><a href="../clasa-5.html" data-grade-link="5" aria-label="Clasa a V-a">5</a><a href="../clasa-6.html" data-grade-link="6" aria-label="Clasa a VI-a">6</a><a href="../clasa-7.html" data-grade-link="7" aria-label="Clasa a VII-a">7</a><a href="../clasa-8.html" data-grade-link="8" aria-label="Clasa a VIII-a">8</a><a href="../clasa-9.html" data-grade-link="9" class="gap" aria-label="Clasa a IX-a">9</a><a href="../clasa-10.html" data-grade-link="10" aria-label="Clasa a X-a">10</a><a href="../clasa-11.html" data-grade-link="11" aria-label="Clasa a XI-a">11</a><a href="../clasa-12.html" data-grade-link="12" aria-label="Clasa a XII-a">12</a></nav><form class="search" id="site-search" role="search" action="../cautare.html"><label class="sr-only" for="site-search-input" data-i18n="search.label">Caută materiale</label><svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="m20 20-3.8-3.8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><input id="site-search-input" name="q" type="search" autocomplete="off" spellcheck="false" enterkeyhint="search" placeholder="Caută: modul, fișă, test…"><input type="hidden" id="site-search-grade" name="c" value=""></form><div class="header-tools"><button type="button" class="icon-btn" data-toggle="search" aria-controls="site-search" aria-expanded="false"><svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="m20 20-3.8-3.8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><span class="sr-only" data-i18n="search.open">Caută</span></button><button type="button" class="icon-btn" data-toggle="grades" aria-controls="grade-nav" aria-expanded="false"><span data-i18n="nav.grades">Clase</span></button><button type="button" class="theme-btn" data-theme-toggle aria-pressed="false"><svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 14.5 A8.5 8.5 0 0 1 9.5 4 a8.5 8.5 0 1 0 10.5 10.5 Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2"/><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2.5 v2.2 M12 19.3 v2.2 M2.5 12 h2.2 M19.3 12 h2.2"/><path d="M5.3 5.3 l1.6 1.6 M17.1 17.1 l1.6 1.6 M18.7 5.3 l-1.6 1.6 M6.9 17.1 l-1.6 1.6"/></g></svg><span class="sr-only" data-i18n="theme.dark">Temă închisă</span></button><div class="lang" role="group" aria-label="Limba site-ului" data-lang-group><a hreflang="ro" lang="ro" aria-current="page" aria-label="Română" href="fisa-lucru-puterile-matrice-patratice-1034.html">RO</a><a hreflang="en" href="../en/materiale/fisa-lucru-puterile-matrice-patratice-1034.html" lang="en" aria-label="English">EN</a></div></div></div></header>
+
+  <main id="content" class="wrap">
+    <div class="page" id="material" data-id="1034" data-name="fisa-lucru-puterile-matrice-patratice-1034" data-results="1">
+      <div id="material-head"><nav class="crumbs" aria-label="Navigare"><ol><li><a href="../index.html">Acasă</a></li><li><a href="../clasa-11.html">Clasa a XI-a</a></li><li><a href="../clasa-11.html#matrice">Matrice</a></li></ol></nav>
+      <span class="material-kinds"><span class="badge badge-fise">Fișă de lucru</span><span class="badge badge-lectii">Teorie</span></span>
+      <h1>Fișă de lucru: puterile unei matrice pătratice</h1>
+      <p class="material-meta">Publicat <time datetime="2026-11-15">15 noiembrie 2026</time> · de <a href="../despre.html" rel="author">Laura Miron</a></p>
+      <p class="material-actions"><a class="button" href="../materiale/pdf/fisa-lucru-puterile-matrice-patratice-1034.pdf" target="_blank" rel="noopener">Deschide PDF</a></p></div>
+      
+      <section class="rezumat" aria-labelledby="rezumat-heading"><h2 id="rezumat-heading" data-i18n="summary.title">Rezumat</h2><p>Fișa arată cinci metode pentru puterile unei matrice pătratice: inducția, puterile care se repetă, binomul lui Newton, relația Hamilton–Cayley și matricele cu sin și cos. Fiecare metodă are pașii și un exemplu rezolvat. Urmează exerciții pe trei niveluri, o activitate pe grupe și probleme cu matrice de tranziție.</p></section><nav class="cuprins" aria-labelledby="cuprins-heading"><h2 id="cuprins-heading" data-i18n="toc.title">Cuprins</h2><ol><li><a href="#s1">Pornim de la ce știi</a></li><li><a href="#s2">Teorie pe scurt</a><ol><li><a href="#s2-1">1. Calculez, intuiesc, demonstrez prin inducție</a></li><li><a href="#s2-2">2. Puteri care se repetă</a></li><li><a href="#s2-3">3. Binomul lui Newton</a></li><li><a href="#s2-4">4. Relația Hamilton–Cayley (matrice de ordinul 2)</a></li><li><a href="#s2-5">5. Matrice cu sin și cos</a></li></ol></li><li><a href="#s3">Exerciții</a><ol><li><a href="#s3-1">Nivel de bază</a></li><li><a href="#s3-2">Nivel consolidat</a></li><li><a href="#s3-3">Nivel avansat</a></li></ol></li><li><a href="#s4">Matrice în situații practice</a></li></ol></nav>
+      
+      <div class="check-bar"><p class="note" id="check-note">Apasă «Verifică» lângă un exercițiu. Răspunsurile rămân pe acest dispozitiv.</p><button class="chip" type="button" id="check-reset" hidden>Șterge răspunsurile mele</button></div>
+      <article class="material-body" data-lang="ro" lang="ro">
+        <p><strong>Întrebarea fișei:</strong> Cum calculezi $A^{2026}$, sau chiar $A^n$, fără să înmulțești matricea cu ea însăși de 2025 de ori?</p>
+        <h2 id="s1">Pornim de la ce știi</h2>
+        <p><em>Patru verificări rapide. Dacă una dintre ele îți ridică probleme, notează-o: la ea revii prima.</em></p>
+        <ol class="exercises">
+          <li>
+            <p data-ex="1">Calculează $A^2=A\cdot A$ pentru $A=\begin{pmatrix}1&amp;2\\3&amp;4\end{pmatrix}$.</p>
+          </li>
+          <li>
+            <p>Dezvoltă $(x+1)^4$ cu binomul lui Newton.</p>
+            <p data-ex="2">Cât este $C_5^2$?</p>
+          </li>
+          <li>
+            <p>Completează: $\cos(a+b)=\ldots$ și $\sin(a+b)=\ldots$</p>
+            <p data-ex="3">Calculează $\cos\frac{2\pi}{3}$ și $\sin\frac{2\pi}{3}$.</p>
+          </li>
+          <li>
+            <p data-ex="4">Află restul împărțirii lui 2026 la 3, la 4 și la 6.</p>
+          </li>
+        </ol>
+        <h2 id="s2">Teorie pe scurt</h2>
+        <p><em>Pentru fiecare metodă: când o folosești, pașii (în chenarul gros) și un exemplu rezolvat. La final găsești firul logic care te ajută să alegi metoda.</em></p>
+        <div class="retine">
+          <p class="retine-title">Definiție</p>
+          <p>Fie $A\in\mathcal{M}_p(\mathbb{C})$ o matrice pătratică. Puterile lui $A$ se definesc prin $A^1=A$ și $A^{n+1}=A^n\cdot A$, pentru $n\in\mathbb{N}^*$. Prin convenție, $A^0=I_p$.</p>
+        </div>
+        <div class="retine retine-de-retinut">
+          <p class="retine-title">De reținut</p>
+          <p>$A^m\cdot A^n=A^{m+n}$, $\quad (A^m)^n=A^{mn}$, $\quad (kA)^n=k^nA^n$ pentru orice număr $k$.</p>
+          <p><strong>Atenție!</strong> Înmulțirea matricelor nu este comutativă. În general $(AB)^n\ne A^nB^n$ și $(A+B)^2=A^2+AB+BA+B^2$, nu $A^2+2AB+B^2$.</p>
+        </div>
+        <h3 id="s2-1">1. Calculez, intuiesc, demonstrez prin inducție</h3>
+        <div class="firul-logic">
+          <p class="firul-logic-label">★ Metodă</p>
+          <p class="firul-logic-lead">Metoda inducției matematice</p>
+          <ol class="firul-logic-steps">
+            <li><span>Calculez $A^2$, $A^3$ (dacă e nevoie, și $A^4$).</span></li>
+            <li><span>Observ ce elemente rămân la fel și cum se schimbă celelalte. Scriu forma bănuită a lui $A^n$ ca propoziție $P(n)$.</span></li>
+            <li><span>Verific $P(1)$.</span></li>
+            <li><span>Presupun $P(k)$ adevărată și calculez $A^{k+1}=A^k\cdot A$. Obțin $P(k+1)$.</span></li>
+          </ol>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Exemplul 1 · Inducție</p>
+          <p>Calculează $A^n$ pentru $A=\begin{pmatrix}2&amp;1\\0&amp;1\end{pmatrix}$.</p>
+          <p><strong>Pasul 1.</strong> $A^2=\begin{pmatrix}4&amp;3\\0&amp;1\end{pmatrix}$, $\ A^3=\begin{pmatrix}8&amp;7\\0&amp;1\end{pmatrix}$.</p>
+          <p><strong>Pasul 2.</strong> Pe prima poziție apar puterile lui 2, iar alături un număr cu 1 mai mic. Bănuiesc $P(n)\colon A^n=\begin{pmatrix}2^n&amp;2^n-1\\0&amp;1\end{pmatrix}$.</p>
+          <p><strong>Pasul 3.</strong> Pentru $n=1$ obțin $\begin{pmatrix}2&amp;1\\0&amp;1\end{pmatrix}=A$ ✓.</p>
+          <p><strong>Pasul 4.</strong> $A^{k+1}=\begin{pmatrix}2^k&amp;2^k-1\\0&amp;1\end{pmatrix}\begin{pmatrix}2&amp;1\\0&amp;1\end{pmatrix}=\begin{pmatrix}2^{k+1}&amp;2^k+2^k-1\\0&amp;1\end{pmatrix}=\begin{pmatrix}2^{k+1}&amp;2^{k+1}-1\\0&amp;1\end{pmatrix}$ ✓.</p>
+        </div>
+        <h3 id="s2-2">2. Puteri care se repetă</h3>
+        <p>Uneori, după câteva înmulțiri, apare o matrice simplă: $I_p$, $-I_p$, $O_p$ sau chiar $A$ înmulțită cu un număr. Atunci puterile „se repetă” și nu mai ai nevoie de inducție pentru fiecare exercițiu.</p>
+        <div class="firul-logic">
+          <p class="firul-logic-label">★ Metodă</p>
+          <p class="firul-logic-lead">Metoda puterilor care se repetă</p>
+          <ol class="firul-logic-steps">
+            <li><span>Calculez $A^2$, $A^3$, … până apare $I_p$, $-I_p$, $O_p$ sau un multiplu al lui $A$.</span></li>
+            <li><span>Dacă $A^k=I_p$, împart $n$ la $k$: $n=k\cdot q+r$, cu $0\le r&lt;k$.</span></li>
+            <li><span>Scriu $A^n=\left(A^k\right)^q\cdot A^r=A^r$ (cu $A^0=I_p$).</span></li>
+          </ol>
+        </div>
+        <div class="retine retine-de-retinut">
+          <p class="retine-title">De reținut</p>
+          <p>$A^k=I_p\ \Rightarrow\ A^n=A^r$, unde $r$ este restul împărțirii lui $n$ la $k$.</p>
+          <p>$A^k=-I_p\ \Rightarrow\ A^{2k}=I_p$.</p>
+          <p>$B^k=O_p\ \Rightarrow\ B^n=O_p$, pentru orice $n\ge k$ (matrice <strong>nilpotentă</strong>).</p>
+          <p>$A^2=kA\ \Rightarrow\ A^n=k^{n-1}A$, pentru orice $n\ge 1$.</p>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Exemplul 2 · Puterile se repetă</p>
+          <p>Calculează $A^{2026}$ pentru $A=\begin{pmatrix}0&amp;-1\\1&amp;-1\end{pmatrix}$.</p>
+          <p>$A^2=\begin{pmatrix}-1&amp;1\\-1&amp;0\end{pmatrix}$, $\ A^3=A^2\cdot A=\begin{pmatrix}1&amp;0\\0&amp;1\end{pmatrix}=I_2$.</p>
+          <p>$2026=3\cdot 675+1$, deci $A^{2026}=\left(A^3\right)^{675}\cdot A=A$.</p>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Exemplul 3 · $A^2=kA$</p>
+          <p>Pentru $A=\begin{pmatrix}1&amp;2\\2&amp;4\end{pmatrix}$: $\ A^2=\begin{pmatrix}5&amp;10\\10&amp;20\end{pmatrix}=5A$.</p>
+          <p>Atunci $A^3=A^2\cdot A=5A^2=5^2A$ și, prin inducție, $A^n=5^{n-1}A$.</p>
+        </div>
+        <h3 id="s2-3">3. Binomul lui Newton</h3>
+        <p>Matricea unitate comută cu orice matrice: $I_p\cdot B=B\cdot I_p=B$. De aceea, pentru $A=aI_p+B$ poți folosi binomul lui Newton. Metoda e rapidă când o putere a lui $B$ este $O_p$: suma se oprește după câțiva termeni.</p>
+        <div class="retine retine-de-retinut">
+          <p class="retine-title">De reținut</p>
+          <p>Dacă $XY=YX$, atunci $(X+Y)^n=\sum_{k=0}^{n}C_n^k\,X^{n-k}Y^k$.</p>
+          <p>Dacă $A=aI_p+B$ și $B^2=O_p$, atunci $A^n=a^nI_p+n\,a^{n-1}B$.</p>
+          <p>Dacă $A=aI_p+B$ și $B^3=O_p$, atunci $A^n=a^nI_p+n\,a^{n-1}B+\frac{n(n-1)}{2}\,a^{n-2}B^2$.</p>
+        </div>
+        <div class="firul-logic">
+          <p class="firul-logic-label">★ Metodă</p>
+          <p class="firul-logic-lead">Metoda binomului lui Newton</p>
+          <ol class="firul-logic-steps">
+            <li><span>Scriu $A=aI_p+B$. De obicei, $a$ este numărul care se repetă pe diagonala principală.</span></li>
+            <li><span>Calculez $B^2$, $B^3$, … până obțin $O_p$.</span></li>
+            <li><span>Aplic binomul lui Newton. Termenii care conțin $B^k=O_p$ dispar.</span></li>
+            <li><span>Adun matricele rămase și verific formula pentru $n=1$.</span></li>
+          </ol>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Exemplul 4 · Binomul lui Newton</p>
+          <p>Calculează $A^n$ pentru $A=\begin{pmatrix}3&amp;1&amp;0\\0&amp;3&amp;1\\0&amp;0&amp;3\end{pmatrix}$.</p>
+          <p>$A=3I_3+B$, cu $B=\begin{pmatrix}0&amp;1&amp;0\\0&amp;0&amp;1\\0&amp;0&amp;0\end{pmatrix}$, $\ B^2=\begin{pmatrix}0&amp;0&amp;1\\0&amp;0&amp;0\\0&amp;0&amp;0\end{pmatrix}$, $\ B^3=O_3$.</p>
+          <p>$$A^n=3^nI_3+n\cdot 3^{n-1}B+\frac{n(n-1)}{2}\cdot 3^{n-2}B^2=\begin{pmatrix}3^n&amp;n\cdot 3^{n-1}&amp;\frac{n(n-1)}{2}\cdot 3^{n-2}\\0&amp;3^n&amp;n\cdot 3^{n-1}\\0&amp;0&amp;3^n\end{pmatrix}$$</p>
+          <p>Verificare: pentru $n=1$ obțin chiar $A$ ✓.</p>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Atenție</p>
+          <p>Binomul lui Newton se aplică numai matricelor care comută. Pentru $X=\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix}$ și $Y=\begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix}$ avem $XY\ne YX$. Verifică singur că $(X+Y)^2\ne X^2+2XY+Y^2$.</p>
+        </div>
+        <h3 id="s2-4">4. Relația Hamilton–Cayley (matrice de ordinul 2)</h3>
+        <p>Orice matrice $A=\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}\in\mathcal{M}_2(\mathbb{C})$ verifică relația de mai jos. Numărul $a+d$ este suma elementelor de pe diagonala principală (<strong>urma</strong> matricei). Numărul $ad-bc$ este produsul elementelor de pe diagonala principală minus produsul celor de pe diagonala secundară.</p>
+        <div class="retine retine-de-retinut">
+          <p class="retine-title">De reținut</p>
+          <p>$$A^2-(a+d)\,A+(ad-bc)\,I_2=O_2$$</p>
+          <p>Cu $s=a+d$ și $p=ad-bc$: $\ A^2=s\,A-p\,I_2$. Demonstrația este un calcul direct: o faci tu, la exercițiul 5.</p>
+        </div>
+        <p>Din relație, orice putere a lui $A$ se scrie $A^n=x_nA+y_nI_2$. Înmulțind cu $A$ și înlocuind $A^2$:</p>
+        <p>$$A^{n+1}=x_nA^2+y_nA=(s\,x_n+y_n)\,A-p\,x_n\,I_2$$</p>
+        <p>Deci $x_{n+1}=s\,x_n+y_n$, $y_{n+1}=-p\,x_n$, adică $x_{n+2}=s\,x_{n+1}-p\,x_n$: o <strong>recurență liniară de ordinul 2</strong>, ca în fișa despre șiruri date prin recurențe. Ecuația ei caracteristică, $r^2-s\,r+p=0$, are aceiași coeficienți ca relația Hamilton–Cayley.</p>
+        <div class="firul-logic">
+          <p class="firul-logic-label">★ Metodă</p>
+          <p class="firul-logic-lead">Metoda relației Hamilton–Cayley</p>
+          <ol class="firul-logic-steps">
+            <li><span>Calculez $s=a+d$, $p=ad-bc$ și scriu $A^2=s\,A-p\,I_2$.</span></li>
+            <li><span>Caut cazurile simple. Dacă $p=0$: $A^2=sA$, deci $A^n=s^{n-1}A$ (metoda 2). Dacă $s^2=4p$: $\left(A-\frac{s}{2}I_2\right)^2=O_2$ (metoda 3).</span></li>
+            <li><span>Altfel, scriu $A^n=x_nA+y_nI_2$, cu $x_1=1$, $x_2=s$ și $x_{n+2}=s\,x_{n+1}-p\,x_n$.</span></li>
+            <li><span>Rezolv recurența, scriu $y_n=-p\,x_{n-1}$ și verific formula pentru $n=1$ și $n=2$.</span></li>
+          </ol>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Exemplul 5 · Hamilton–Cayley</p>
+          <p>Calculează $A^3$ și $A^n$ pentru $A=\begin{pmatrix}4&amp;-2\\1&amp;1\end{pmatrix}$.</p>
+          <p><strong>Pasul 1.</strong> $s=4+1=5$, $p=4\cdot 1-(-2)\cdot 1=6$, deci $A^2=5A-6I_2$. Atunci $A^3=5A^2-6A=5(5A-6I_2)-6A=19A-30I_2$.</p>
+          <p><strong>Pașii 2–3.</strong> $p\ne 0$ și $s^2\ne 4p$. Scriu $x_{n+2}=5x_{n+1}-6x_n$, $x_1=1$, $x_2=5$.</p>
+          <p><strong>Pasul 4.</strong> $r^2-5r+6=0$, $r_1=2$, $r_2=3$, deci $x_n=3^n-2^n$ și $y_n=-6x_{n-1}=3\cdot 2^n-2\cdot 3^n$.</p>
+          <p>$$A^n=(3^n-2^n)\,A+(3\cdot 2^n-2\cdot 3^n)\,I_2=\begin{pmatrix}2\cdot 3^n-2^n&amp;2^{n+1}-2\cdot 3^n\\3^n-2^n&amp;2^{n+1}-3^n\end{pmatrix}$$</p>
+          <p>Verificare: $x_3=27-8=19$ și $y_3=24-54=-30$, la fel ca la Pasul 1 ✓.</p>
+        </div>
+        <h3 id="s2-5">5. Matrice cu sin și cos</h3>
+        <div class="retine">
+          <p class="retine-title">Definiție</p>
+          <p>Pentru $t\in\mathbb{R}$ notăm $R(t)=\begin{pmatrix}\cos t&amp;-\sin t\\\sin t&amp;\cos t\end{pmatrix}$. Înmulțirea cu $R(t)$ rotește un punct din plan în jurul originii cu unghiul $t$ (o <strong>matrice de rotație</strong>).</p>
+        </div>
+        <div class="retine retine-de-retinut">
+          <p class="retine-title">De reținut</p>
+          <p>$R(t)\cdot R(u)=R(t+u)$: rezultă din formulele pentru $\cos(t+u)$ și $\sin(t+u)$.</p>
+          <p>$R(t)^n=R(nt)$, pentru orice $n\in\mathbb{N}^*$ (prin inducție). În particular $R(\pi)=-I_2$ și $R(2\pi)=I_2$.</p>
+          <p><strong>Matrice reductibile la $R(t)$.</strong> Dacă $A=\begin{pmatrix}a&amp;-b\\b&amp;a\end{pmatrix}$, $(a,b)\ne(0,0)$, și $r=\sqrt{a^2+b^2}$, atunci $A=r\begin{pmatrix}\frac{a}{r}&amp;-\frac{b}{r}\\\frac{b}{r}&amp;\frac{a}{r}\end{pmatrix}=r\,R(t)$, cu $\cos t=\frac{a}{r}$, $\sin t=\frac{b}{r}$. Deci $A^n=r^n\,R(nt)$.</p>
+          <p>Este aceeași idee ca la forma trigonometrică a numărului complex $a+bi=r(\cos t+i\,\sin t)$.</p>
+        </div>
+        <div class="firul-logic">
+          <p class="firul-logic-label">★ Metodă</p>
+          <p class="firul-logic-lead">Metoda matricelor de rotație</p>
+          <ol class="firul-logic-steps">
+            <li><span>Verific forma: pe diagonala principală același număr $a$, pe cealaltă diagonală $-b$ (sus) și $b$ (jos).</span></li>
+            <li><span>Calculez $r=\sqrt{a^2+b^2}$ și dau factor comun $r$.</span></li>
+            <li><span>Găsesc $t$ cu $\cos t=\frac{a}{r}$ și $\sin t=\frac{b}{r}$.</span></li>
+            <li><span>Scriu $A^n=r^n\,R(nt)$ și reduc unghiul $nt$ la un unghi din $[0,2\pi)$.</span></li>
+          </ol>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Exemplul 6 · Matrice de rotație</p>
+          <p>Calculează $A^6$ și $A^{2026}$ pentru $A=\begin{pmatrix}1&amp;-\sqrt{3}\\\sqrt{3}&amp;1\end{pmatrix}$.</p>
+          <p>$r=\sqrt{1+3}=2$, $\cos t=\frac{1}{2}$, $\sin t=\frac{\sqrt{3}}{2}$, deci $t=\frac{\pi}{3}$ și $A=2R\left(\frac{\pi}{3}\right)$.</p>
+          <p>$A^n=2^n\begin{pmatrix}\cos\frac{n\pi}{3}&amp;-\sin\frac{n\pi}{3}\\\sin\frac{n\pi}{3}&amp;\cos\frac{n\pi}{3}\end{pmatrix}$, deci $A^6=2^6R(2\pi)=64\,I_2$.</p>
+          <p>$2026=6\cdot 337+4$, deci $A^{2026}=2^{2026}R\left(\frac{4\pi}{3}\right)=2^{2026}\begin{pmatrix}-\frac{1}{2}&amp;\frac{\sqrt{3}}{2}\\-\frac{\sqrt{3}}{2}&amp;-\frac{1}{2}\end{pmatrix}=2^{2025}\begin{pmatrix}-1&amp;\sqrt{3}\\-\sqrt{3}&amp;-1\end{pmatrix}$.</p>
+        </div>
+        <div class="firul-logic">
+          <p class="firul-logic-label">★ Cel mai important</p>
+          <p class="firul-logic-lead">Cum aleg metoda? Începe mereu cu $A^2$: de cele mai multe ori îți arată drumul.</p>
+          <ol class="firul-logic-steps">
+            <li><span>Calculez $A^2$ (eventual $A^3$). Apare $I_p$, $-I_p$, $O_p$ sau $kA$? → puteri care se repetă.</span></li>
+            <li><span>Pe diagonala principală se repetă același număr $a$, iar $B=A-aI_p$ are $B^2=O_p$ sau $B^3=O_p$? → binomul lui Newton.</span></li>
+            <li><span>Matricea are forma $\begin{pmatrix}a&amp;-b\\b&amp;a\end{pmatrix}$? → $A=r\,R(t)$ și $A^n=r^n\,R(nt)$.</span></li>
+            <li><span>Altă matrice de ordinul 2? → relația Hamilton–Cayley.</span></li>
+            <li><span>În $A^2$, $A^3$ se vede un model clar? → intuiesc forma lui $A^n$ și o demonstrez prin inducție.</span></li>
+          </ol>
+        </div>
+        <h2 id="s3">Exerciții</h2>
+        <p><em>Lucrează în ordine. La fiecare exercițiu, scrie mai întâi ce metodă alegi și de ce.</em></p>
+        <h3 id="s3-1">Nivel de bază</h3>
+        <ol class="exercises" start="5">
+          <li>
+            <p>Fie $A=\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}\in\mathcal{M}_2(\mathbb{C})$. Calculează $A^2$ și $(a+d)A$, apoi arată că $A^2-(a+d)A+(ad-bc)I_2=O_2$.</p>
+          </li>
+          <li>
+            <p>Fie $A=\begin{pmatrix}1&amp;3\\0&amp;1\end{pmatrix}$.</p>
+            <p data-ex="6a">a) Calculează $A^2$ și $A^3$.</p>
+            <p>b) Intuiește forma lui $A^n$ și demonstreaz-o prin inducție matematică.</p>
+            <p data-ex="6c">c) Calculează $A^{10}$.</p>
+          </li>
+          <li>
+            <p>Fie matricea diagonală $A=\begin{pmatrix}2&amp;0&amp;0\\0&amp;-1&amp;0\\0&amp;0&amp;3\end{pmatrix}$.</p>
+            <p>a) Calculează $A^n$, $n\in\mathbb{N}^*$.</p>
+            <p data-ex="7b">b) Calculează $A^5$.</p>
+          </li>
+          <li>
+            <p>Fie $A=\begin{pmatrix}0&amp;1\\-1&amp;0\end{pmatrix}$.</p>
+            <p data-ex="8a">a) Calculează $A^2$ și arată că $A^4=I_2$.</p>
+            <p data-ex="8b">b) Calculează $A^{2026}$ și $A^{2027}$.</p>
+          </li>
+          <li>
+            <p>Fie $A=\begin{pmatrix}2&amp;-2\\1&amp;-1\end{pmatrix}$.</p>
+            <p>a) Arată că $A^2=A$.</p>
+            <p data-ex="9b">b) Calculează $A^{2026}$ și suma $A+A^2+\ldots+A^{10}$.</p>
+          </li>
+          <li>
+            <p>Fie $A=\begin{pmatrix}1&amp;2\\3&amp;6\end{pmatrix}$.</p>
+            <p data-ex="10a">a) Determină numărul real $k$ pentru care $A^2=kA$.</p>
+            <p data-ex="10b">b) Calculează $A^n$, $n\in\mathbb{N}^*$, și apoi $A^3$.</p>
+          </li>
+          <li>
+            <p data-ex="11">Fie $B=\begin{pmatrix}0&amp;1&amp;2\\0&amp;0&amp;3\\0&amp;0&amp;0\end{pmatrix}$. Calculează $B^2$ și $B^3$. Cât este $B^{2026}$?</p>
+          </li>
+          <li>
+            <p>Fie $A=\begin{pmatrix}2&amp;1\\0&amp;2\end{pmatrix}$.</p>
+            <p>a) Scrie $A=2I_2+B$ și calculează $B^2$.</p>
+            <p>b) Calculează $A^n$ cu binomul lui Newton.</p>
+            <p data-ex="12c">c) Calculează $A^5$.</p>
+          </li>
+          <li>
+            <p>Fie $A=\begin{pmatrix}1&amp;2\\3&amp;4\end{pmatrix}$.</p>
+            <p>a) Scrie relația Hamilton–Cayley pentru $A$.</p>
+            <p data-ex="13b">b) Determină numerele reale $x$ și $y$ pentru care $A^3=xA+yI_2$.</p>
+            <p data-ex="13c">c) Calculează $A^3$.</p>
+          </li>
+          <li>
+            <p>Fie $A=\begin{pmatrix}\frac{1}{2}&amp;-\frac{\sqrt{3}}{2}\\\frac{\sqrt{3}}{2}&amp;\frac{1}{2}\end{pmatrix}$.</p>
+            <p data-ex="14a">a) Găsește $t\in[0,2\pi)$ pentru care $A=R(t)$.</p>
+            <p data-ex="14b">b) Calculează $A^3$ și $A^6$.</p>
+            <p data-ex="14c">c) Care este cel mai mic $n\in\mathbb{N}^*$ pentru care $A^n=I_2$?</p>
+          </li>
+          <li>
+            <p>Adevărat sau fals? Pentru fiecare propoziție falsă, dă un contraexemplu din $\mathcal{M}_2(\mathbb{R})$.</p>
+            <p data-ex="15a">a) Dacă $A^2=O_2$, atunci $A=O_2$.</p>
+            <p data-ex="15b">b) $(A+I_2)^n=\sum_{k=0}^{n}C_n^k\,A^k$, pentru orice $A\in\mathcal{M}_2(\mathbb{R})$ și $n\in\mathbb{N}^*$.</p>
+            <p data-ex="15c">c) $(AB)^2=A^2B^2$, pentru orice $A,B\in\mathcal{M}_2(\mathbb{R})$.</p>
+            <p data-ex="15d">d) Dacă $A^3=I_2$, atunci $A^{2027}=A^2$.</p>
+          </li>
+        </ol>
+        <h3 id="s3-2">Nivel consolidat</h3>
+        <ol class="exercises" start="16">
+          <li>
+            <p>Fie $A=\begin{pmatrix}1&amp;1&amp;1\\0&amp;1&amp;1\\0&amp;0&amp;1\end{pmatrix}$.</p>
+            <p>a) Scrie $A=I_3+B$ și calculează $B^2$ și $B^3$.</p>
+            <p>b) Arată că $A^n=\begin{pmatrix}1&amp;n&amp;\frac{n(n+1)}{2}\\0&amp;1&amp;n\\0&amp;0&amp;1\end{pmatrix}$, pentru orice $n\in\mathbb{N}^*$.</p>
+            <p data-ex="16c">c) Calculează $A^{10}$.</p>
+          </li>
+          <li>
+            <p>Fie $A=\begin{pmatrix}3&amp;1\\-1&amp;1\end{pmatrix}$.</p>
+            <p>a) Scrie relația Hamilton–Cayley pentru $A$ și arată că $(A-2I_2)^2=O_2$.</p>
+            <p>b) Calculează $A^n$, $n\in\mathbb{N}^*$.</p>
+            <p data-ex="17c">c) Calculează $A^4$ în două moduri: cu formula de la b) și ca $A^2\cdot A^2$.</p>
+          </li>
+          <li>
+            <p>Fie $A=\begin{pmatrix}5&amp;-6\\3&amp;-4\end{pmatrix}$.</p>
+            <p>a) Arată că $A^2=A+2I_2$.</p>
+            <p>b) Scrie $A^n=x_nA+y_nI_2$ și arată că $x_{n+2}=x_{n+1}+2x_n$.</p>
+            <p>c) Determină $x_n$, $y_n$ și $A^n$.</p>
+            <p data-ex="18d">d) Calculează $A^5$.</p>
+          </li>
+          <li>
+            <p><em>Activitate pe grupe · Aceeași matrice, trei drumuri.</em> Fie $A=\begin{pmatrix}1&amp;-1\\1&amp;1\end{pmatrix}$. Clasa se împarte în trei grupe.</p>
+            <p><strong>Grupa 1:</strong> calculează $A^2$ și $A^4$ și folosește puterile care se repetă.</p>
+            <p><strong>Grupa 2:</strong> scrie relația Hamilton–Cayley și exprimă $A^3$ și $A^4$ în funcție de $A$ și $I_2$.</p>
+            <p><strong>Grupa 3:</strong> scrie $A=\sqrt{2}\,R(t)$ și folosește $R(t)^n=R(nt)$.</p>
+            <p data-ex="19a">a) Toate grupele: calculează $A^8$.</p>
+            <p data-ex="19b">b) Arată că $A^{2026}=2^m\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix}$ și află numărul natural $m$.</p>
+            <p>c) Comparați rezolvările: care drum a fost cel mai scurt? Ce drum ați alege pentru $A^{2027}$?</p>
+          </li>
+          <li>
+            <p>Fie $A=\begin{pmatrix}\sqrt{3}&amp;1\\-1&amp;\sqrt{3}\end{pmatrix}$.</p>
+            <p data-ex="20a">a) Găsește $t\in(-\pi,\pi]$ pentru care $A=2R(t)$. Atenție la semne!</p>
+            <p data-ex="20b">b) Calculează $A^6$ și $A^{12}$.</p>
+            <p data-ex="20c">c) Care este cel mai mic $n\in\mathbb{N}^*$ pentru care $A^n=k\,I_2$, cu $k$ număr real?</p>
+          </li>
+          <li>
+            <p><em>Găsește greșeala.</em> Un elev scrie: „$A=\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}=2I_2+B$, cu $B=\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}$, deci $A^n=2^nI_2+n\cdot 2^{n-1}B$.”</p>
+            <p>a) Verifică formula elevului pentru $n=2$. Unde a greșit?</p>
+            <p>b) Calculează $B^2$ și reia calculul cu binomul lui Newton, grupând separat termenii cu $B^k=I_2$ și pe cei cu $B^k=B$. <em>Indicație:</em> $3^n=(2+1)^n$ și $1=(2-1)^n$.</p>
+            <p data-ex="21c">c) Arată că $A^n=\frac{3^n+1}{2}\,I_2+\frac{3^n-1}{2}\,B$ și calculează $A^4$.</p>
+          </li>
+          <li>
+            <p>Fie $J=\begin{pmatrix}1&amp;1&amp;1\\1&amp;1&amp;1\\1&amp;1&amp;1\end{pmatrix}$.</p>
+            <p>a) Arată că $J^2=3J$ și dedu că $J^k=3^{k-1}J$, pentru $k\ge 1$.</p>
+            <p>b) Folosind binomul lui Newton, arată că $(I_3+J)^n=I_3+\frac{4^n-1}{3}\,J$.</p>
+            <p data-ex="22c">c) Calculează $\begin{pmatrix}2&amp;1&amp;1\\1&amp;2&amp;1\\1&amp;1&amp;2\end{pmatrix}^3$.</p>
+          </li>
+        </ol>
+        <h3 id="s3-3">Nivel avansat</h3>
+        <ol class="exercises" start="23">
+          <li>
+            <p>Pentru $x\in\mathbb{R}$ fie $M(x)=\begin{pmatrix}1&amp;x&amp;\frac{x^2}{2}\\0&amp;1&amp;x\\0&amp;0&amp;1\end{pmatrix}$.</p>
+            <p>a) Arată că $M(x)\cdot M(y)=M(x+y)$, pentru orice $x,y\in\mathbb{R}$.</p>
+            <p data-ex="23b">b) Dedu $\left(M(x)\right)^n$ și calculează $\left(M(1)\right)^{10}$.</p>
+            <p data-ex="23c">c) Calculează produsul $M(1)\cdot M(2)\cdot\ldots\cdot M(10)$.</p>
+          </li>
+          <li>
+            <p>Șirul lui Fibonacci este definit prin $F_0=0$, $F_1=1$, $F_{n+1}=F_n+F_{n-1}$, $n\ge 1$. Fie $A=\begin{pmatrix}1&amp;1\\1&amp;0\end{pmatrix}$.</p>
+            <p>a) Demonstrează prin inducție că $A^n=\begin{pmatrix}F_{n+1}&amp;F_n\\F_n&amp;F_{n-1}\end{pmatrix}$, pentru orice $n\in\mathbb{N}^*$.</p>
+            <p data-ex="24b">b) Calculează $A^{10}$.</p>
+            <p>c) Folosind $A^{m+n}=A^m\cdot A^n$, arată că $F_{m+n}=F_{m+1}F_n+F_mF_{n-1}$, pentru orice $m,n\in\mathbb{N}^*$.</p>
+          </li>
+          <li>
+            <p>Fie $A\in\mathcal{M}_2(\mathbb{R})$ cu $A^3=O_2$, iar $s$ și $p$ numerele din relația Hamilton–Cayley, $A^2=sA-pI_2$.</p>
+            <p>a) Arată că $A^3=(s^2-p)\,A-sp\,I_2$.</p>
+            <p>b) Arată că $A^2=O_2$. <em>Indicație:</em> tratează separat cazul $A=k\,I_2$.</p>
+          </li>
+          <li>
+            <p>Câte matrice distincte are mulțimea $\{A^n\mid n\in\mathbb{N}^*\}$ pentru fiecare dintre matricele de mai jos?</p>
+            <p data-ex="26a">a) $A=R\left(\frac{2\pi}{7}\right)$</p>
+            <p data-ex="26b">b) $A=\begin{pmatrix}0&amp;-1\\1&amp;-1\end{pmatrix}$ (din Exemplul 2)</p>
+            <p>c) $A=\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix}$</p>
+          </li>
+          <li>
+            <p><em>Formulează tu.</em> Lucrați în perechi.</p>
+            <p>a) Găsește o matrice $B\in\mathcal{M}_2(\mathbb{Z})$, $B\ne O_2$, cu $B^2=O_2$.</p>
+            <p>b) Construiește cu ea o matrice $A=aI_2+B$ și scrie pentru colegul de bancă un exercițiu ca exercițiul 12. Rezolvă-l și tu, apoi schimbați caietele și comparați rezolvările.</p>
+          </li>
+        </ol>
+        <h2 id="s4">Matrice în situații practice</h2>
+        <p><em>Situațiile sunt inventate, dar seamănă cu cele reale. Treci datele dintr-un tabel într-o matrice și folosești puterile ei ca să prezici ce urmează.</em></p>
+        <ol class="exercises" start="28">
+          <li>
+            <p><em>Biciclete de închiriat.</em> O firmă are 100 de biciclete și două stații: Centru (C) și Parc (P). Luni dimineața toate bicicletele sunt în C. În fiecare zi, din bicicletele aflate dimineața în C, 80% ajung seara tot în C și 20% în P. Din cele aflate în P, 30% ajung în C și 70% rămân în P. Nu se pierde nicio bicicletă și nu se adaugă altele.</p>
+            <table>
+              <thead>
+                <tr>
+                  <th>ajung în \ pleacă din</th>
+                  <th>C</th>
+                  <th>P</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>C</td>
+                  <td>$0{,}8$</td>
+                  <td>$0{,}3$</td>
+                </tr>
+                <tr>
+                  <td>P</td>
+                  <td>$0{,}2$</td>
+                  <td>$0{,}7$</td>
+                </tr>
+              </tbody>
+            </table>
+            <p>a) Scrie matricea de tranziție $T$ din tabel. Ce înseamnă elementul $0{,}3$? Ce observi la suma elementelor de pe fiecare coloană?</p>
+            <p>b) Notăm cu $X_n=\begin{pmatrix}c_n\\p_n\end{pmatrix}$ numărul de biciclete din C și din P după $n$ zile, $X_0=\begin{pmatrix}100\\0\end{pmatrix}$. Arată că $X_{n+1}=T\,X_n$ și dedu că $X_n=T^n X_0$.</p>
+            <p data-ex="28c">c) Calculează $X_1$, $X_2$ și $X_3$.</p>
+            <p>d) Scrie relația Hamilton–Cayley pentru $T$, determină $T^n$ și arată că $c_n=60+\frac{40}{2^n}$.</p>
+            <p data-ex="28e">e) Ce se întâmplă cu numărul de biciclete din fiecare stație după foarte multe zile? Câte biciclete ar trebui să fie în C și în P pentru ca numărul lor să nu se mai schimbe de la o zi la alta?</p>
+          </li>
+          <li>
+            <p><em>Nava din joc.</em> Într-un joc pe calculator, o navă pornește din punctul $(1,0)$. La fiecare apăsare a unei taste, nava se rotește în jurul originii cu $30^\circ$, în sens trigonometric. După $n$ apăsări, coordonatele ei sunt $\begin{pmatrix}x_n\\y_n\end{pmatrix}=R\left(\frac{\pi}{6}\right)^n\begin{pmatrix}1\\0\end{pmatrix}$.</p>
+            <p data-ex="29a">a) După câte apăsări ajunge nava prima dată înapoi în punctul de plecare?</p>
+            <p data-ex="29b">b) Unde se află nava după 2026 de apăsări?</p>
+            <p data-ex="29c">c) Programatorul vrea ca, la fiecare apăsare, nava să se și depărteze de origine: distanța până la origine se dublează. Ce matrice $A$ trebuie să folosească în loc de $R\left(\frac{\pi}{6}\right)$?</p>
+          </li>
+        </ol>
+      </article>
+      <section class="faq" aria-labelledby="faq-heading"><h2 id="faq-heading" data-i18n="faq.title">Întrebări frecvente</h2><details><summary>Cum calculez puterea a n-a a unei matrice pătratice?</summary><p>Începi cu A² și, eventual, A³. Dacă apare Iₚ, −Iₚ, Oₚ sau un multiplu al lui A, puterile se repetă. Dacă A = aIₚ + B cu o putere a lui B egală cu Oₚ, folosești binomul lui Newton. O matrice de forma (a −b; b a) se scrie r·R(t). Pentru alte matrice de ordinul 2 folosești relația Hamilton–Cayley, iar când vezi un model clar, îl demonstrezi prin inducție.</p></details><details><summary>Ce spune relația Hamilton–Cayley pentru o matrice de ordinul 2?</summary><p>Pentru A cu elementele a, b pe prima linie și c, d pe a doua, A² − (a + d)·A + (ad − bc)·I₂ = O₂. Se verifică prin calcul direct. Din ea, orice putere se scrie Aⁿ = xₙ·A + yₙ·I₂, iar xₙ verifică o recurență liniară de ordinul 2.</p></details><details><summary>Când pot folosi binomul lui Newton pentru matrice?</summary><p>Numai când cele două matrice comută: XY = YX. Matricea unitate comută cu orice matrice, deci pentru A = aIₚ + B formula merge mereu. Metoda e rapidă când B² sau B³ este matricea nulă, pentru că suma se oprește după doi sau trei termeni.</p></details><details><summary>Cum ridic la putere o matrice cu sin și cos?</summary><p>Pentru matricea de rotație R(t), cu cos t și −sin t pe prima linie și sin t, cos t pe a doua, avem R(t)·R(u) = R(t + u), deci R(t)ⁿ = R(nt). O matrice cu a, −b pe prima linie și b, a pe a doua se scrie r·R(t), cu r = √(a² + b²), ca la forma trigonometrică a numărului a + bi.</p></details></section>
+      <aside class="related" id="material-related"><p><a class="more" href="../clasa-11.html">Toate materialele pentru Clasa a XI-a</a></p></aside>
+    </div>
+  </main>
+
+  <footer id="site-footer" class="site-footer"><div class="wrap"><p>© <span data-year>2026</span> Laura Miron. <span data-i18n="footer.text">Materiale gratuite pentru elevi.</span> · <a href="../despre.html" data-i18n="footer.about">Despre</a> · <a href="https://mqgrader.ro/" data-i18n="footer.mqgrader">MQGrader: corectare teste</a> · <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license">CC BY-NC-SA 4.0</a></p></div></footer>
+</body>
+</html>
