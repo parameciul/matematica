@@ -355,6 +355,7 @@ function renderHead(opts) {
     `<title>${esc(opts.title)}</title>`,
   ];
   if (opts.description) lines.push(`<meta name="description" content="${esc(opts.description)}">`);
+  lines.push('<meta name="author" content="Laura Miron">');
   if (opts.noindex) {
     lines.push('<meta name="robots" content="noindex, follow">');
   } else {
@@ -1594,6 +1595,7 @@ export function renderQuizPage(html, material, topic, opts) {
   const block = `<!-- seo -->
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(description)}">
+<meta name="author" content="Laura Miron">
 ${robots}
 <link rel="canonical" href="${canonical}">
 <meta property="og:type" content="article">
