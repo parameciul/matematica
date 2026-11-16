@@ -983,3 +983,20 @@ test('an admin page without the site head fails', () => {
     /tm25mlg\/index\.html: the head must load the site fonts/,
   );
 });
+
+test('a published file that names the old host fails', () => {
+  expectFailure(
+    withSite((dir) => writeFileSync(join(dir, 'old-link.txt'), 'https://lauramiron.pages.dev/clasa-9\n')),
+    /old-link\.txt: names the old host lauramiron\.pages\.dev/,
+  );
+});
+
+test('a YouTube description under video/ may keep the old host', () => {
+  // The descriptions already uploaded to YouTube keep the address they had;
+  // the old host redirects, so they still work.
+  const result = withSite((dir) => {
+    mkdirSync(join(dir, 'video'), { recursive: true });
+    writeFileSync(join(dir, 'video', '01-x.youtube-description.txt'), 'https://lauramiron.pages.dev/\n');
+  });
+  assert.equal(result.code, 0, result.out);
+});

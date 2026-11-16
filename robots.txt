@@ -31,4 +31,4 @@ Allow: /
 User-agent: DuckAssistBot
 Allow: /
 
-Sitemap: https://lauramiron.pages.dev/sitemap.xml
+Sitemap: https://lauramiron.mqgrader.ro/sitemap.xml

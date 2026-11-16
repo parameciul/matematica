@@ -3,7 +3,7 @@
 Lecții de matematică pentru clasele V–XII, de prof. Laura Miron, Liceul William Shakespeare, Timișoara.
 Math lessons for grades 5–12.
 
-Site: https://lauramiron.pages.dev/
+Site: https://lauramiron.mqgrader.ro/
 
 - Materials list: `data/materials.source.json`
 - Material pages: `materiale/`

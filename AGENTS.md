@@ -3,7 +3,7 @@
 Math materials site for Laura Miron (math teacher, Liceul William Shakespeare, Timișoara).
 Grades 5-12. Romanian by default, with an English switch. Plain HTML/CSS/JS: no build step, no npm dependencies.
 
-- Live: https://lauramiron.pages.dev/
+- Live: https://lauramiron.mqgrader.ro/ (the old https://lauramiron.pages.dev/ redirects there with 301; branch previews stay at `https://<branch>.lauramiron.pages.dev/`)
 - Repo: https://github.com/parameciul/matematica (public)
 - Design: `docs/superpowers/specs/2026-09-15-real-content-structure-design.md`
 
@@ -81,4 +81,4 @@ The timer and admin saves push to `main` by themselves, so run `git pull` before
 1. `npm test` and `python -m pytest tools -q` must pass.
 2. `git add -A`, then `git commit -m "<what changed>"`, then `git push`.
 3. Build logs: Cloudflare dashboard, Workers & Pages, `lauramiron`, Deployments.
-4. Open https://lauramiron.pages.dev/ and check the changed page.
+4. Open https://lauramiron.mqgrader.ro/ and check the changed page.

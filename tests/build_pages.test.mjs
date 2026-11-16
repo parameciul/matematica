@@ -99,6 +99,10 @@ function ldBlocks(page) {
   return [...page.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((m) => JSON.parse(m[1]));
 }
 
+test('the site lives on lauramiron.mqgrader.ro', () => {
+  assert.equal(SITE_URL, 'https://lauramiron.mqgrader.ro/');
+});
+
 test('canonical URLs have no .html', () => {
   assert.equal(canonicalFor('index.html'), `${SITE_URL}`);
   assert.equal(canonicalFor('en/index.html'), `${SITE_URL}en/`);
@@ -291,7 +295,7 @@ test('the migration splits a two-article file', (t) => {
 test('_headers gives every PDF the canonical of its page', (t) => {
   const dir = makeRoot(t, { pages: stdPages() });
   const headers = buildSite(dir).get('_headers');
-  assert.match(headers, /\/materiale\/pdf\/teorie-reale-1001\.pdf\n  Link: <https:\/\/lauramiron\.pages\.dev\/materiale\/teorie-reale-1001>; rel="canonical"/);
+  assert.ok(headers.includes(`/materiale/pdf/teorie-reale-1001.pdf\n  Link: <${SITE_URL}materiale/teorie-reale-1001>; rel="canonical"`), headers);
   assert.match(headers, /X-Robots-Tag: noindex/);
 });
 
