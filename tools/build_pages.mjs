@@ -767,7 +767,7 @@ function renderMaterialPage({ data, material, topic, lang, dict, assetBase, page
   const cardFor = (c, n) => {
     const kicker = dict['clips.of'].replace('{n}', n).replace('{total}', clips.length);
     return `<a class="clip-card" id="clip-${n}" href="https://www.youtube.com/watch?v=${c.id}" data-clip="${c.id}" data-n="${n}" data-title="${esc(`${kicker}: ${clipTitle(c)}`)}">` +
-      `<span class="clip-thumb"><img src="${thumbFor(c.id, 'mqdefault')}" alt="" loading="lazy" width="320" height="180"><span class="clip-play" aria-hidden="true"></span><span class="clip-dur">${Clips.clock(c.duration)}</span></span>` +
+      `<span class="clip-thumb"><img src="${thumbFor(c.id, 'mqdefault')}" alt="${esc(clipTitle(c))}" loading="lazy" width="320" height="180"><span class="clip-play" aria-hidden="true"></span><span class="clip-dur">${Clips.clock(c.duration)}</span></span>` +
       `<span class="clip-text"><span class="clip-kicker">${esc(kicker)}</span><span class="clip-name">${esc(clipTitle(c))}</span><span class="clip-seen" hidden>✓ ${esc(dict['clips.seen'])}</span></span></a>`;
   };
   const placed = filled && clips.length > 1;
@@ -777,7 +777,7 @@ function renderMaterialPage({ data, material, topic, lang, dict, assetBase, page
     const heroTitle = `${dict['material.video']}: ${materialTitle}`;
     const heroClock = Clips.clock(c.duration);
     videoBlock = `<a class="clip-card clip-hero" id="clip-1" href="https://www.youtube.com/watch?v=${c.id}" data-clip="${c.id}" data-n="1" data-title="${esc(heroTitle)}" aria-label="${esc(`${heroTitle} (${heroClock})`)}">` +
-      `<span class="clip-thumb"><img src="${thumbFor(c.id)}" alt="" width="480" height="360"><span class="clip-play" aria-hidden="true"></span><span class="clip-dur">${heroClock}</span></span></a>\n` +
+      `<span class="clip-thumb"><img src="${thumbFor(c.id)}" alt="${esc(heroTitle)}" width="480" height="360"><span class="clip-play" aria-hidden="true"></span><span class="clip-dur">${heroClock}</span></span></a>\n` +
       `      <p class="video-link"><a href="https://www.youtube.com/watch?v=${c.id}" target="_blank" rel="noopener">${esc(dict['material.openYoutube'])}</a></p>`;
   } else if (clips.length > 1) {
     const rows = clips.map((c, i) => `<li data-clip="${c.id}" data-n="${i + 1}"><a href="#clip-${i + 1}">` +
