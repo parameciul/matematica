@@ -32,7 +32,7 @@ const Clips = require('../assets/js/clips-core.js');
 export const ADMIN_FOLDER = 'tm25mlg';
 
 // The one place the public address lives. A custom domain later = a one-line change.
-export const SITE_URL = 'https://lauramiron.pages.dev/';
+export const SITE_URL = 'https://lauramiron.mqgrader.ro/';
 
 // KaTeX for material pages. Material pages must load exactly this version;
 // tests/validate.mjs checks it.

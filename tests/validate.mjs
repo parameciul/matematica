@@ -996,6 +996,22 @@ if (exists('_headers')) {
     fail('_headers: must serve /sitemap.xsl as "Content-Type: text/xsl" so browsers apply the sitemap stylesheet');
   }
 }
+// The site moved to lauramiron.mqgrader.ro; the old host only redirects there.
+// No published file may name it again. The YouTube descriptions under video/
+// keep the address that was uploaded, and the _headers preview rule names
+// ":project.pages.dev", never the host itself.
+{
+  const OLD_HOST = 'lauramiron.pages.dev';
+  const PUBLISHED_EXT = ['.html', '.xml', '.txt', '.json', '.webmanifest'];
+  for (const f of files) {
+    if (f.startsWith('video/')) continue;
+    const name = f.split('/').pop();
+    if (!PUBLISHED_EXT.includes(extname(f)) && name !== '_headers' && name !== '_redirects') continue;
+    if (read(f).includes(OLD_HOST)) {
+      fail(`${f}: names the old host ${OLD_HOST}. Use SITE_URL (https://lauramiron.mqgrader.ro/) and regenerate.`);
+    }
+  }
+}
 // The sitemap renders as a styled page in browsers (XSLT); crawlers read the raw XML.
 if (exists('sitemap.xml')) {
   const sm = read('sitemap.xml');
