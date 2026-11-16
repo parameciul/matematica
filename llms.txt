@@ -76,7 +76,6 @@
 
 ### Șiruri de numere reale / Sequences of real numbers
 - [Fișă de lucru: operații cu limite de șiruri](https://lauramiron.pages.dev/materiale/fisa-lucru-operatii-limite-siruri-1035) ([EN](https://lauramiron.pages.dev/en/materiale/fisa-lucru-operatii-limite-siruri-1035)): Fișă de lucru pentru clasa a XI-a: operații cu limite de șiruri, calcule cu infinit, cazuri de nedeterminare, polinoame, exponențiale și radicali. (fisa-lucru, clasa a 11-a / grade 11, updated 2026-11-15)
-- [Fișă de lucru: șiruri date prin recurențe](https://lauramiron.pages.dev/materiale/fisa-lucru-siruri-recurente-1033) ([EN](https://lauramiron.pages.dev/en/materiale/fisa-lucru-siruri-recurente-1033)): Fișă de lucru pentru clasa a XI-a: șiruri date prin recurențe, aflarea termenului general, recurența omografică, monotonie și mărginire. (fisa-lucru, clasa a 11-a / grade 11, updated 2026-10-26)
 
 ### Matrice / Matrices
 - [Fișă de lucru: puterile unei matrice pătratice](https://lauramiron.pages.dev/materiale/fisa-lucru-puterile-matrice-patratice-1034) ([EN](https://lauramiron.pages.dev/en/materiale/fisa-lucru-puterile-matrice-patratice-1034)): Fișă de lucru pentru clasa a XI-a: puterile unei matrice pătratice prin inducție, binomul lui Newton, relația Hamilton–Cayley și matrice de rotație. (fisa-lucru, clasa a 11-a / grade 11, updated 2026-11-15)
