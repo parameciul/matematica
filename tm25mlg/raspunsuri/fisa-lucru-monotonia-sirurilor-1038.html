@@ -1,0 +1,54 @@
+<h3>A. Metoda diferenței</h3>
+<p><strong>1.</strong> a) $a_{n+1}-a_n=3&gt;0$: strict crescător.</p>
+<p>b) $b_{n+1}-b_n=4-(n+1)^2-4+n^2=-(2n+1)&lt;0$: strict descrescător.</p>
+<p>c) $c_{n+1}-c_n=\frac{3n+2}{n+2}-\frac{3n-1}{n+1}=\frac{(3n+2)(n+1)-(3n-1)(n+2)}{(n+1)(n+2)}=\frac{4}{(n+1)(n+2)}&gt;0$: strict crescător.</p>
+<p><strong>2.</strong> a) $a_{n+1}-a_n=\frac{3-2n}{n+4}-\frac{5-2n}{n+3}=\frac{(-2n^2-3n+9)-(-2n^2-3n+20)}{(n+3)(n+4)}=\frac{-11}{(n+3)(n+4)}&lt;0$.</p>
+<p>b) $b_1=5$, $b_2=2$, $b_3=1$, $b_4=2$ și $b_{n+1}-b_n=2n-5$. Cum $b_2&gt;b_3$ și $b_3&lt;b_4$, șirul nu este monoton. Pentru $n\ge 3$, $2n-5&gt;0$, deci $b_3&lt;b_4&lt;b_5&lt;\ldots$: șirul este strict crescător începând de la rangul $3$.</p>
+<p><strong>3.</strong> a) $a_{n+1}-a_n=\frac{1}{n+1}&gt;0$: strict crescător.</p>
+<p>b) $b_{n+1}=\frac{1}{n+2}+\ldots+\frac{1}{2n}+\frac{1}{2n+1}+\frac{1}{2n+2}$: apar $\frac{1}{2n+1}$ și $\frac{1}{2n+2}$, dispare $\frac{1}{n+1}$. $$b_{n+1}-b_n=\frac{1}{2n+1}+\frac{1}{2n+2}-\frac{1}{n+1}=\frac{1}{2n+1}-\frac{1}{2n+2}=\frac{1}{(2n+1)(2n+2)}&gt;0.$$ Șirul este strict crescător.</p>
+<p><strong>4.</strong> $a_{n+1}-a_n=2n+1+a$.</p>
+<p>a) Cea mai mică valoare a lui $2n+1+a$ se obține pentru $n=1$ și este $3+a$. Șirul este strict crescător dacă și numai dacă $3+a&gt;0$, adică $a&gt;-3$.</p>
+<p>b) Pentru $a=-3$: $a_{n+1}-a_n=2n-2\ge 0$, cu egalitate pentru $n=1$ ($a_1=a_2=-2$). Șirul este crescător, dar nu strict crescător.</p>
+<h3>B. Metoda raportului</h3>
+<p><strong>5.</strong> Termenii sunt strict pozitivi.</p>
+<p>a) $\frac{a_{n+1}}{a_n}=\frac{n+2}{4^{n+1}}\cdot\frac{4^n}{n+1}=\frac{n+2}{4n+4}&lt;1$: strict descrescător.</p>
+<p>b) $\frac{b_{n+1}}{b_n}=\frac{3^{n+1}}{2n+3}\cdot\frac{2n+1}{3^n}=\frac{6n+3}{2n+3}&gt;1$, pentru că $6n+3&gt;2n+3$: strict crescător.</p>
+<p><strong>6.</strong> a) $\frac{a_{n+1}}{a_n}=\frac{3n+1}{3n+3}&lt;1$: strict descrescător.</p>
+<p>b) $b_{n+1}=\frac{(n+2)\cdot\ldots\cdot(2n)(2n+1)(2n+2)}{4^{n+1}}$, deci $$\frac{b_{n+1}}{b_n}=\frac{(2n+1)(2n+2)}{4(n+1)}=\frac{2n+1}{2}\ge\frac{3}{2}&gt;1:\ \text{strict crescător}.$$</p>
+<p><strong>7.</strong> a) $\frac{a_{n+1}}{a_n}=\frac{(n+1)\cdot 2^{n+1}}{3^{n+1}}\cdot\frac{3^n}{n\cdot 2^n}=\frac{2(n+1)}{3n}$.</p>
+<p>b) $\frac{2(n+1)}{3n}&lt;1\Leftrightarrow 2n+2&lt;3n\Leftrightarrow n&gt;2$. Raportul este $\frac{4}{3}&gt;1$ pentru $n=1$, egal cu $1$ pentru $n=2$ și mai mic decât $1$ pentru $n\ge 3$.</p>
+<p>c) $a_1=\frac{2}{3}&lt;a_2=\frac{8}{9}=a_3&gt;a_4=\frac{64}{81}&gt;\ldots$ Șirul nu este monoton. Este strict descrescător începând de la rangul $3$ (descrescător începând de la rangul $2$).</p>
+<p><strong>8.</strong> a) $a_1=-2$, $a_2=-2$, $a_3=-\frac{8}{3}$. Avem $a_3&lt;a_2$, deci șirul nu este crescător: concluzia este greșită.</p>
+<p>b) Toți termenii sunt <strong>negativi</strong>, deci metoda raportului nu se aplică direct. Din $\frac{a_{n+1}}{a_n}\ge 1$ și $a_n&lt;0$, înmulțind cu $a_n$ se schimbă sensul: $a_{n+1}\le a_n$. Șirul este descrescător (nu strict, pentru că $a_1=a_2$). Altfel: $b_n=-a_n=\frac{2^n}{n}&gt;0$ este crescător, deci $a_n$ este descrescător.</p>
+<h3>C. Metoda inducției</h3>
+<p><strong>9.</strong> a) $x_2=3&gt;1=x_1$. Din $x_k&lt;x_{k+1}$ rezultă $\frac{x_k+8}{3}&lt;\frac{x_{k+1}+8}{3}$, adică $x_{k+1}&lt;x_{k+2}$: strict crescător.</p>
+<p>b) $y_2=6&lt;10=y_1$ și, la fel, din $y_k&gt;y_{k+1}$ rezultă $y_{k+1}&gt;y_{k+2}$: strict descrescător.</p>
+<p>c) $z_2=4=z_1$, deci $z_n=4$ pentru orice $n$: șir constant.</p>
+<p>Observație: aceeași relație de recurență dă șiruri cu monotonii diferite; contează primul termen. Numărul $4$ verifică $4=\frac{4+8}{3}$.</p>
+<p><strong>10.</strong> a) $x_1=9&gt;5$. Dacă $x_k&gt;5$, atunci $x_{k+1}=\sqrt{x_k+20}&gt;\sqrt{25}=5$.</p>
+<p>b) $x_2=\sqrt{29}&lt;9=x_1$ (pentru că $29&lt;81$). Dacă $x_k&gt;x_{k+1}$, atunci $x_k+20&gt;x_{k+1}+20&gt;0$ și, extrăgând radicalul, $x_{k+1}&gt;x_{k+2}$. Șirul este strict descrescător.</p>
+<p><strong>11.</strong> a) $x_1=1&gt;0$. Dacă $x_k&gt;0$, atunci $x_{k+1}=\frac{x_k}{1+x_k}&gt;0$.</p>
+<p>b) $x_{n+1}-x_n=\frac{x_n-x_n-x_n^2}{1+x_n}=-\frac{x_n^2}{1+x_n}&lt;0$, deoarece $x_n&gt;0$. Șirul este strict descrescător.</p>
+<p>c) $x_2=\frac{1}{2}$, $x_3=\frac{1}{3}$, $x_4=\frac{1}{4}$, deci $x_n=\frac{1}{n}$. Dacă $x_k=\frac{1}{k}$, atunci $x_{k+1}=\frac{1/k}{1+1/k}=\frac{1}{k+1}$.</p>
+<p><strong>12.</strong> a) $x_1=3&gt;2$. Dacă $x_k&gt;2$, atunci $x_{k+1}-2=1-\frac{2}{x_k}=\frac{x_k-2}{x_k}&gt;0$.</p>
+<p>b) $x_{n+1}-x_n=3-\frac{2}{x_n}-x_n=\frac{-x_n^2+3x_n-2}{x_n}=-\frac{(x_n-1)(x_n-2)}{x_n}$. Cum $x_n&gt;2$, avem $x_n-1&gt;0$, $x_n-2&gt;0$, $x_n&gt;0$, deci diferența este negativă: strict descrescător.</p>
+<h3>D. Alegeți metoda</h3>
+<p><strong>13.</strong> a) $a_n=\frac{1}{\sqrt{n+1}+\sqrt{n}}$. Numitorul crește strict, termenii sunt pozitivi, deci șirul este strict descrescător.</p>
+<p>b) $b_{n+1}-b_n=1+\frac{1}{n+1}-\frac{1}{n}=1-\frac{1}{n(n+1)}=\frac{n^2+n-1}{n(n+1)}&gt;0$: strict crescător.</p>
+<p>c) $c_n=1-\frac{1}{n^2+1}$; $c_{n+1}-c_n=\frac{1}{n^2+1}-\frac{1}{(n+1)^2+1}&gt;0$: strict crescător.</p>
+<p><strong>14.</strong> a) $a_1=-1&lt;a_2=\frac{1}{2}&gt;a_3=-\frac{1}{3}$: nu este monoton.</p>
+<p>b) $b_1=0&lt;b_2=3&gt;b_3=2$: nu este monoton.</p>
+<p>c) $c_{n+1}-c_n=2+(-1)^{n+1}-(-1)^n=2-2\cdot(-1)^n\in\{0;\ 4\}$, deci $c_{n+1}-c_n\ge 0$: șirul este crescător, dar nu strict ($c_2=c_3=5$).</p>
+<h3>Pentru cei care vor mai mult</h3>
+<p><strong>15.</strong> a) $x_{n+1}-1=x_n^2-2x_n+1=(x_n-1)^2$ și $x_{n+1}-x_n=x_n^2-3x_n+2=(x_n-1)(x_n-2)$.</p>
+<p>b) Arătăm prin inducție că $1&lt;x_n&lt;2$: dacă $0&lt;x_k-1&lt;1$, atunci $0&lt;(x_k-1)^2&lt;1$, adică $1&lt;x_{k+1}&lt;2$. Atunci $(x_n-1)(x_n-2)&lt;0$: strict descrescător.</p>
+<p>c) Prin inducție, $x_n&gt;2$: dacă $x_k-1&gt;1$, atunci $(x_k-1)^2&gt;1$, adică $x_{k+1}&gt;2$. Atunci $(x_n-1)(x_n-2)&gt;0$: strict crescător.</p>
+<p>d) Șirul este constant dacă și numai dacă $x_2=x_1$, adică $(a-1)(a-2)=0$: $a=1$ sau $a=2$. (Pentru $a=0$, de exemplu, $x_1=0$ și $x_n=2$ pentru $n\ge 2$: șirul nu este constant.)</p>
+<h3>Greșeli frecvente de urmărit</h3>
+<ul>
+  <li>Metoda raportului folosită pentru termeni negativi sau de semne diferite (ex. 8, 14).</li>
+  <li>Concluzia „strict crescător” când diferența poate fi $0$ (ex. 4 b, 14 c).</li>
+  <li>La 3 b): $b_{n+1}$ scris greșit – se uită că dispare $\frac{1}{n+1}$ și apar doi termeni noi.</li>
+  <li>La inducție: lipsa verificării $x_1&lt;x_2$ (sau $x_1&gt;x_2$) sau a mărginirii folosite la pas (ex. 10, 12).</li>
+  <li>Șir nemonoton afirmat fără a da trei termeni concreți care „urcă și coboară”.</li>
+</ul>

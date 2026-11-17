@@ -1,0 +1,464 @@
+{
+  "uid": "1037",
+  "version": 1,
+  "items": {
+    "4": {
+      "kind": "number",
+      "show": "$2(2x+1)=(x-1)+(4x-3)\\Rightarrow x=6$; numerele $5;\\ 13;\\ 21$, rația $8$",
+      "accept": [
+        "6"
+      ]
+    },
+    "5": {
+      "kind": "list",
+      "show": "$r=-3$, $a_1=19$, $a_{20}=-38$",
+      "accept": [
+        "19; -3; -38"
+      ],
+      "hint": {
+        "ro": "$a_1$; $r$; $a_{20}$",
+        "en": "$a_1$; $r$; $a_{20}$"
+      }
+    },
+    "7": {
+      "kind": "list",
+      "show": "$r=4$: $7;\\ 11;\\ 15;\\ 19$",
+      "accept": [
+        "7; 11; 15; 19"
+      ]
+    },
+    "10": {
+      "kind": "list",
+      "show": "$r=3$, $a_1=-1$, $S_{10}=125$",
+      "accept": [
+        "-1; 3; 125"
+      ],
+      "hint": {
+        "ro": "$a_1$; $r$; $S_{10}$",
+        "en": "$a_1$; $r$; $S_{10}$"
+      }
+    },
+    "11": {
+      "kind": "number",
+      "show": "$n(2n+3)=230\\Rightarrow n=10$",
+      "accept": [
+        "10"
+      ]
+    },
+    "15": {
+      "kind": "list",
+      "show": "$x=9$, $r=\\pm 4$: $5;\\ 9;\\ 13$",
+      "accept": [
+        "5; 9; 13",
+        "13; 9; 5"
+      ]
+    },
+    "16": {
+      "check": false,
+      "why": "proof",
+      "show": "$a=2b-c\\Rightarrow a^2+8bc=4b^2+4bc+c^2=(2b+c)^2$"
+    },
+    "17": {
+      "kind": "number",
+      "show": "$x^2-x-2=0\\Rightarrow x\\in\\{-1;\\ 2\\}$; pentru $x=-1$ al patrulea număr nu convine, deci $x=2$",
+      "accept": [
+        "2"
+      ]
+    },
+    "18": {
+      "kind": "list",
+      "show": "$a_n=4n+1$: $a_1=5$, $r=4$",
+      "accept": [
+        "5; 4"
+      ],
+      "hint": {
+        "ro": "$a_1$; $r$",
+        "en": "$a_1$; $r$"
+      }
+    },
+    "20": {
+      "kind": "number",
+      "show": "$100;\\ 107;\\ \\ldots;\\ 996$: $129$ de numere, suma $70\\,692$",
+      "accept": [
+        "70692"
+      ]
+    },
+    "22": {
+      "check": false,
+      "why": "proof",
+      "show": "$a_q-a_p=(q-p)r=p-q\\Rightarrow r=-1$; $a_{p+q}=a_p+qr=0$"
+    },
+    "23": {
+      "check": false,
+      "why": "proof",
+      "show": "$2(a+b)(b+c)-(a+c)(a+2b+c)=2b^2-a^2-c^2=0$"
+    },
+    "1a": {
+      "kind": "list",
+      "show": "Da: $a_1=5$, $r=3$, strict crescătoare",
+      "accept": [
+        "5; 3"
+      ],
+      "hint": {
+        "ro": "$a_1$; $r$",
+        "en": "$a_1$; $r$"
+      }
+    },
+    "1b": {
+      "kind": "list",
+      "show": "Da: $b_1=5$, $r=-2$, strict descrescătoare",
+      "accept": [
+        "5; -2"
+      ],
+      "hint": {
+        "ro": "$a_1$; $r$",
+        "en": "$a_1$; $r$"
+      }
+    },
+    "1c": {
+      "kind": "options",
+      "options": [
+        {
+          "value": "da",
+          "label": {
+            "ro": "Da",
+            "en": "Yes"
+          }
+        },
+        {
+          "value": "nu",
+          "label": {
+            "ro": "Nu",
+            "en": "No"
+          }
+        }
+      ],
+      "accept": [
+        "nu"
+      ],
+      "show": "Nu: $c_{n+1}-c_n=2n+1$ depinde de $n$"
+    },
+    "1d": {
+      "kind": "list",
+      "show": "Da: $d_1=1$, $r=\\frac{1}{2}$, strict crescătoare",
+      "accept": [
+        "1; 1/2"
+      ],
+      "hint": {
+        "ro": "$a_1$; $r$",
+        "en": "$a_1$; $r$"
+      }
+    },
+    "1e": {
+      "kind": "list",
+      "show": "Da: $e_1=5$, $r=0$, șir constant",
+      "accept": [
+        "5; 0"
+      ],
+      "hint": {
+        "ro": "$a_1$; $r$",
+        "en": "$a_1$; $r$"
+      }
+    },
+    "2a": {
+      "kind": "list",
+      "show": "$a_2=7$, $a_3=10$, $a_{10}=31$, $a_{25}=76$",
+      "accept": [
+        "7; 10; 31; 76"
+      ],
+      "hint": {
+        "ro": "$a_2$; $a_3$; $a_{10}$; $a_{25}$",
+        "en": "$a_2$; $a_3$; $a_{10}$; $a_{25}$"
+      }
+    },
+    "2b": {
+      "kind": "text",
+      "show": "$a_n=3n+1$",
+      "accept": [
+        "1+3n",
+        "3n+1",
+        "4+(n-1)*3",
+        "4+(n-1)3",
+        "4+3(n-1)",
+        "4+3*(n-1)",
+        "a_n=1+3n",
+        "a_n=3n+1",
+        "a_n=4+(n-1)*3",
+        "a_n=4+(n-1)3",
+        "a_n=4+3(n-1)",
+        "a_n=4+3*(n-1)",
+        "an=1+3n",
+        "an=3n+1",
+        "an=4+(n-1)*3",
+        "an=4+(n-1)3",
+        "an=4+3(n-1)",
+        "an=4+3*(n-1)",
+        "x_n=1+3n",
+        "x_n=3n+1",
+        "x_n=4+(n-1)*3",
+        "x_n=4+(n-1)3",
+        "x_n=4+3(n-1)",
+        "x_n=4+3*(n-1)",
+        "xn=1+3n",
+        "xn=3n+1",
+        "xn=4+(n-1)*3",
+        "xn=4+(n-1)3",
+        "xn=4+3(n-1)",
+        "xn=4+3*(n-1)"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, de exemplu 2n+5",
+        "en": "an expression in $n$, for example 2n+5"
+      }
+    },
+    "3a": {
+      "kind": "number",
+      "show": "$a_n=3n-1$, deci $a_{50}=149$",
+      "accept": [
+        "149"
+      ]
+    },
+    "3b": {
+      "kind": "options",
+      "options": [
+        {
+          "value": "da",
+          "label": {
+            "ro": "Da",
+            "en": "Yes"
+          }
+        },
+        {
+          "value": "nu",
+          "label": {
+            "ro": "Nu",
+            "en": "No"
+          }
+        }
+      ],
+      "accept": [
+        "da; nu"
+      ],
+      "parts": [
+        {
+          "ro": "Primul număr",
+          "en": "The first number"
+        },
+        {
+          "ro": "Al doilea număr",
+          "en": "The second number"
+        }
+      ],
+      "show": "$2027=a_{676}$ este termen; $3n-1=2026$ nu are soluție naturală, deci $2026$ nu este termen"
+    },
+    "6a": {
+      "kind": "number",
+      "show": "$a_{20}=79$, $S_{20}=820$",
+      "accept": [
+        "820"
+      ]
+    },
+    "6b": {
+      "kind": "number",
+      "show": "$50$ de termeni: $S=2500$",
+      "accept": [
+        "2500"
+      ]
+    },
+    "6c": {
+      "kind": "number",
+      "show": "$21$ de termeni: $S=714$",
+      "accept": [
+        "714"
+      ]
+    },
+    "8a": {
+      "kind": "number",
+      "show": "$a_{12}=50+11\\cdot 15=215$ lei",
+      "accept": [
+        "215"
+      ]
+    },
+    "8b": {
+      "kind": "number",
+      "show": "$S_{12}=\\frac{(50+215)\\cdot 12}{2}=1590$ lei",
+      "accept": [
+        "1590"
+      ]
+    },
+    "9a": {
+      "kind": "number",
+      "show": "$a_{20}=12+19\\cdot 2=50$ de scaune",
+      "accept": [
+        "50"
+      ]
+    },
+    "9b": {
+      "kind": "number",
+      "show": "$S_{20}=\\frac{(12+50)\\cdot 20}{2}=620$ de scaune",
+      "accept": [
+        "620"
+      ]
+    },
+    "12a": {
+      "kind": "number",
+      "show": "$7+14=3+18$, deci $a_7+a_{14}=50$",
+      "accept": [
+        "50"
+      ]
+    },
+    "12b": {
+      "kind": "number",
+      "show": "$a_1+a_{20}=50$, $S_{20}=500$",
+      "accept": [
+        "500"
+      ]
+    },
+    "13a": {
+      "kind": "number",
+      "show": "$a_{12}=150-11\\cdot 6=84$ de lei",
+      "accept": [
+        "84"
+      ]
+    },
+    "13b": {
+      "check": false,
+      "why": "open",
+      "show": "A: $S_n=153n-3n^2$ lei; B: $120n$ lei"
+    },
+    "13c": {
+      "kind": "number",
+      "show": "după $11$ luni (ambele $1320$ de lei); pentru $6$ luni oferta B ($720&lt;810$), pentru $12$ luni oferta A ($1404&lt;1440$)",
+      "accept": [
+        "11"
+      ],
+      "hint": {
+        "ro": "numărul de luni",
+        "en": "the number of months"
+      }
+    },
+    "14a": {
+      "kind": "number",
+      "show": "$a_{10}=480$ MB",
+      "accept": [
+        "480"
+      ]
+    },
+    "14b": {
+      "kind": "number",
+      "show": "$S_{20}=9800$ MB",
+      "accept": [
+        "9800"
+      ]
+    },
+    "14c": {
+      "kind": "number",
+      "show": "$S_{26}=14\\,300$, $S_{27}=15\\,120$: datele se termină în ziua a $27$-a",
+      "accept": [
+        "27"
+      ],
+      "hint": {
+        "ro": "ziua în care se termină datele",
+        "en": "the day the data runs out"
+      }
+    },
+    "19a": {
+      "check": false,
+      "why": "open",
+      "show": "$A=\\frac{r}{2}$, $B=a_1-\\frac{r}{2}$"
+    },
+    "19b": {
+      "kind": "number",
+      "show": "$A=1$, $B=0$, deci $S_{30}=900$",
+      "accept": [
+        "900"
+      ]
+    },
+    "21a": {
+      "kind": "number",
+      "show": "$n(2n-1)=231\\Rightarrow n=11$, $x=41$",
+      "accept": [
+        "41"
+      ]
+    },
+    "21b": {
+      "kind": "number",
+      "show": "$10x+145=155\\Rightarrow x=1$",
+      "accept": [
+        "1"
+      ]
+    },
+    "24a": {
+      "kind": "list",
+      "show": "$\\sphericalangle B=60^\\circ$, $\\sphericalangle A=40^\\circ$, $\\sphericalangle C=80^\\circ$",
+      "accept": [
+        "40; 60; 80"
+      ],
+      "hint": {
+        "ro": "$\\sphericalangle A$; $\\sphericalangle B$; $\\sphericalangle C$ (în grade)",
+        "en": "$\\sphericalangle A$; $\\sphericalangle B$; $\\sphericalangle C$ (in degrees)"
+      }
+    },
+    "24b": {
+      "check": false,
+      "why": "proof",
+      "show": "$(x-r)^2+x^2=(x+r)^2\\Rightarrow x=4r$: laturile $3r;\\ 4r;\\ 5r$"
+    },
+    "25a": {
+      "kind": "text",
+      "show": "$\\frac{n(n-1)}{2}+1$",
+      "accept": [
+        "(n^2-n)/2+1",
+        "(n^2-n+2)/2",
+        "1+n(n-1)/2",
+        "1+n*(n-1)/2",
+        "a_n=(n^2-n)/2+1",
+        "a_n=(n^2-n+2)/2",
+        "a_n=1+n(n-1)/2",
+        "a_n=1+n*(n-1)/2",
+        "a_n=n(n-1)/2+1",
+        "a_n=n*(n-1)/2+1",
+        "an=(n^2-n)/2+1",
+        "an=(n^2-n+2)/2",
+        "an=1+n(n-1)/2",
+        "an=1+n*(n-1)/2",
+        "an=n(n-1)/2+1",
+        "an=n*(n-1)/2+1",
+        "n(n-1)/2+1",
+        "n*(n-1)/2+1",
+        "x_n=(n^2-n)/2+1",
+        "x_n=(n^2-n+2)/2",
+        "x_n=1+n(n-1)/2",
+        "x_n=1+n*(n-1)/2",
+        "x_n=n(n-1)/2+1",
+        "x_n=n*(n-1)/2+1",
+        "xn=(n^2-n)/2+1",
+        "xn=(n^2-n+2)/2",
+        "xn=1+n(n-1)/2",
+        "xn=1+n*(n-1)/2",
+        "xn=n(n-1)/2+1",
+        "xn=n*(n-1)/2+1"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, de exemplu (n+1)/2",
+        "en": "an expression in $n$, for example (n+1)/2"
+      }
+    },
+    "25b": {
+      "check": false,
+      "why": "proof",
+      "show": "$\\frac{n}{2}\\left[\\frac{n(n-1)}{2}+1+\\frac{n(n+1)}{2}\\right]=\\frac{n(n^2+1)}{2}$"
+    },
+    "25c": {
+      "kind": "list",
+      "show": "grupa $64$ (de la $2017$ la $2080$), poziția $10$",
+      "accept": [
+        "64; 10"
+      ],
+      "hint": {
+        "ro": "grupa; poziția",
+        "en": "group; position"
+      }
+    }
+  }
+}

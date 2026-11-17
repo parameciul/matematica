@@ -2964,6 +2964,186 @@
         "version": 1,
         "checks": 90
       }
+    },
+    {
+      "slug": "fisa-lucru-progresii-aritmetice",
+      "uid": "1037",
+      "topic": "siruri-progresii",
+      "kind": "fisa-lucru",
+      "alsoKind": "teorie",
+      "title": {
+        "ro": "Fișă de lucru: progresii aritmetice",
+        "en": "Worksheet: arithmetic progressions"
+      },
+      "seoTitle": {
+        "ro": "Progresii aritmetice: rație, termen general, sumă",
+        "en": "Arithmetic progressions: general term and sum"
+      },
+      "published": "2026-11-17",
+      "description": {
+        "ro": "Fișă de lucru pentru clasa a IX-a: progresii aritmetice, rația, termenul general, trei termeni consecutivi și suma primilor n termeni.",
+        "en": "Grade 9 worksheet: arithmetic progressions, the common difference, the general term, three consecutive terms and the sum of the first n terms."
+      },
+      "pdf": "materiale/pdf/fisa-lucru-progresii-aritmetice-1037.pdf",
+      "youtube": null,
+      "import": {
+        "date": "2026-11-17",
+        "workflow": 5,
+        "pdf": "generated"
+      },
+      "summary": {
+        "ro": "Fișa începe cu teoria pe scurt: definiția progresiei aritmetice, rația, termenul general, legătura dintre trei termeni consecutivi și suma primilor n termeni, cu două exemple rezolvate. Urmează 25 de probleme pe niveluri, multe din viața de zi cu zi: economii, abonamente, rânduri de scaune, date mobile.",
+        "en": "The worksheet opens with a short theory part: the definition of an arithmetic progression, the common difference, the general term, three consecutive terms and the sum of the first n terms, with two worked examples. Then come 25 problems on levels, many from daily life: savings, subscriptions, rows of seats, mobile data."
+      },
+      "faq": [
+        {
+          "q": {
+            "ro": "Cum recunosc că un șir este o progresie aritmetică?",
+            "en": "How do I recognise that a sequence is an arithmetic progression?"
+          },
+          "a": {
+            "ro": "Calculezi diferența aₙ₊₁ − aₙ dintre doi termeni consecutivi. Dacă ea este aceeași pentru orice n, adică nu depinde de n, șirul este o progresie aritmetică, iar această diferență este rația r. De exemplu, aₙ = 3n + 2 dă diferența 3, dar aₙ = n² + 1 dă 2n + 1, care depinde de n.",
+            "en": "You compute the difference aₙ₊₁ − aₙ between two consecutive terms. If it is the same for every n, that is, it does not depend on n, the sequence is an arithmetic progression and this difference is the common difference r. For example, aₙ = 3n + 2 gives the difference 3, but aₙ = n² + 1 gives 2n + 1, which depends on n."
+          }
+        },
+        {
+          "q": {
+            "ro": "Cum verific dacă trei numere sunt în progresie aritmetică?",
+            "en": "How do I check whether three numbers are in arithmetic progression?"
+          },
+          "a": {
+            "ro": "Numerele a, b, c sunt, în această ordine, în progresie aritmetică dacă și numai dacă 2b = a + c, adică termenul din mijloc este media aritmetică a vecinilor. Pentru mai multe numere verifici că toate diferențele dintre numere vecine sunt egale.",
+            "en": "The numbers a, b, c are, in this order, in arithmetic progression if and only if 2b = a + c, that is, the middle term is the arithmetic mean of its neighbours. For more numbers you check that all the differences between neighbouring numbers are equal."
+          }
+        },
+        {
+          "q": {
+            "ro": "De unde vine formula sumei primilor n termeni ai unei progresii aritmetice?",
+            "en": "Where does the formula for the sum of the first n terms of an arithmetic progression come from?"
+          },
+          "a": {
+            "ro": "Scrii suma de două ori, a doua oară în ordine inversă, și aduni termen cu termen. Fiecare pereche a₁ + aₙ, a₂ + aₙ₋₁, … are aceeași valoare, a₁ + aₙ, și sunt n perechi. Deci 2Sₙ = (a₁ + aₙ)·n, adică Sₙ = (a₁ + aₙ)·n / 2.",
+            "en": "You write the sum twice, the second time in reverse order, and add term by term. Every pair a₁ + aₙ, a₂ + aₙ₋₁, … has the same value, a₁ + aₙ, and there are n pairs. So 2Sₙ = (a₁ + aₙ)·n, that is, Sₙ = (a₁ + aₙ)·n / 2."
+          }
+        }
+      ],
+      "keywords": {
+        "ro": [
+          "progresii aritmetice",
+          "rația unei progresii aritmetice",
+          "termenul general",
+          "suma primilor n termeni",
+          "trei termeni consecutivi",
+          "media aritmetică",
+          "probleme cu progresii",
+          "clasa a 9-a",
+          "clasa a IX-a"
+        ],
+        "en": [
+          "arithmetic progressions",
+          "common difference",
+          "general term",
+          "sum of the first n terms",
+          "three consecutive terms",
+          "arithmetic mean",
+          "progression word problems",
+          "grade 9"
+        ]
+      },
+      "results": {
+        "version": 1,
+        "checks": 38
+      }
+    },
+    {
+      "slug": "fisa-lucru-monotonia-sirurilor",
+      "uid": "1038",
+      "topic": "siruri-numere-reale",
+      "kind": "fisa-lucru",
+      "alsoKind": "teorie",
+      "title": {
+        "ro": "Fișă de lucru: monotonia șirurilor",
+        "en": "Worksheet: monotonic sequences"
+      },
+      "seoTitle": {
+        "ro": "Monotonia șirurilor: diferența, raportul, inducția",
+        "en": "Monotonic sequences: difference, ratio, induction"
+      },
+      "published": "2026-11-17",
+      "description": {
+        "ro": "Fișă de lucru pentru clasa a XI-a: monotonia șirurilor studiată cu diferența, cu raportul și prin inducție, cu 15 probleme grupate pe metode.",
+        "en": "Grade 11 worksheet: the monotonicity of sequences studied with the difference, the ratio and induction, with 15 problems grouped by method."
+      },
+      "pdf": "materiale/pdf/fisa-lucru-monotonia-sirurilor-1038.pdf",
+      "youtube": null,
+      "import": {
+        "date": "2026-11-17",
+        "workflow": 5,
+        "pdf": "generated"
+      },
+      "summary": {
+        "ro": "Fișa recapitulează pe scurt ce înseamnă un șir crescător, descrescător, monoton sau nemonoton și cele trei metode de studiu al monotoniei: diferența, raportul pentru termeni pozitivi și inducția pentru șiruri date prin recurență, fiecare cu un exemplu rezolvat. Urmează 15 probleme grupate pe metode.",
+        "en": "The worksheet briefly reviews what increasing, decreasing, monotonic and non-monotonic sequences are, and the three ways to study monotonicity: the difference, the ratio for positive terms and induction for sequences given by a recurrence, each with a worked example. Then come 15 problems grouped by method."
+      },
+      "faq": [
+        {
+          "q": {
+            "ro": "Când pot folosi raportul pentru a studia monotonia unui șir?",
+            "en": "When can I use the ratio to study the monotonicity of a sequence?"
+          },
+          "a": {
+            "ro": "Numai când toți termenii șirului sunt strict pozitivi. Atunci, dacă aₙ₊₁ / aₙ > 1 pentru orice n, șirul este strict crescător, iar dacă raportul este mai mic decât 1, șirul este strict descrescător. Pentru termeni negativi concluzia se inversează, așa că e mai sigur să folosești diferența.",
+            "en": "Only when all the terms of the sequence are strictly positive. Then, if aₙ₊₁ / aₙ > 1 for every n, the sequence is strictly increasing, and if the ratio is less than 1, it is strictly decreasing. For negative terms the conclusion is reversed, so it is safer to use the difference."
+          }
+        },
+        {
+          "q": {
+            "ro": "Cum arăt că un șir nu este monoton?",
+            "en": "How do I show that a sequence is not monotonic?"
+          },
+          "a": {
+            "ro": "Găsești trei termeni consecutivi care urcă și apoi coboară sau coboară și apoi urcă, de exemplu a₁ < a₂ și a₂ > a₃. Un singur astfel de contraexemplu ajunge: șirul nu poate fi nici crescător, nici descrescător.",
+            "en": "You find three consecutive terms that go up and then down, or down and then up, for example a₁ < a₂ and a₂ > a₃. A single such counterexample is enough: the sequence can be neither increasing nor decreasing."
+          }
+        },
+        {
+          "q": {
+            "ro": "De ce folosim inducția la șirurile date prin recurență?",
+            "en": "Why do we use induction for sequences given by a recurrence?"
+          },
+          "a": {
+            "ro": "Când știm doar x₁ și relația xₙ₊₁ = g(xₙ), nu avem o formulă pentru xₙ, deci nu putem calcula direct diferența. Verificăm inegalitatea pentru primii doi termeni și arătăm că ea se transmite de la un pas la următorul, de obicei pentru că funcția g este crescătoare.",
+            "en": "When we only know x₁ and the relation xₙ₊₁ = g(xₙ), we have no formula for xₙ, so we cannot compute the difference directly. We check the inequality for the first two terms and show that it passes from one step to the next, usually because the function g is increasing."
+          }
+        }
+      ],
+      "keywords": {
+        "ro": [
+          "monotonia șirurilor",
+          "șir crescător",
+          "șir descrescător",
+          "șir nemonoton",
+          "metoda diferenței",
+          "metoda raportului",
+          "inducția matematică",
+          "clasa a 11-a",
+          "clasa a XI-a"
+        ],
+        "en": [
+          "monotonic sequences",
+          "increasing sequence",
+          "decreasing sequence",
+          "non-monotonic sequence",
+          "difference method",
+          "ratio method",
+          "mathematical induction",
+          "grade 11"
+        ]
+      },
+      "results": {
+        "version": 1,
+        "checks": 27
+      }
     }
   ]
 }

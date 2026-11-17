@@ -48,6 +48,7 @@
 - Grade 9: https://lauramiron.mqgrader.ro/en/clasa-9
 
 ### Șiruri și progresii / Sequences and progressions
+- [Fișă de lucru: progresii aritmetice](https://lauramiron.mqgrader.ro/materiale/fisa-lucru-progresii-aritmetice-1037) ([EN](https://lauramiron.mqgrader.ro/en/materiale/fisa-lucru-progresii-aritmetice-1037)): Fișă de lucru pentru clasa a IX-a: progresii aritmetice, rația, termenul general, trei termeni consecutivi și suma primilor n termeni. (fisa-lucru, clasa a 9-a / grade 9, updated 2026-11-17)
 - [Fișă de lucru: șiruri, noțiuni introductive](https://lauramiron.mqgrader.ro/materiale/fisa-lucru-siruri-notiuni-introductive-1036) ([EN](https://lauramiron.mqgrader.ro/en/materiale/fisa-lucru-siruri-notiuni-introductive-1036)): Fișă de lucru pentru clasa a IX-a: șiruri, moduri de definire, sume parțiale, termenul general din recurențe și monotonia șirurilor. (fisa-lucru, clasa a 9-a / grade 9, updated 2026-11-15)
 
 ### Elemente de logică matematică / Elements of mathematical logic
@@ -75,6 +76,7 @@
 - Grade 11: https://lauramiron.mqgrader.ro/en/clasa-11
 
 ### Șiruri de numere reale / Sequences of real numbers
+- [Fișă de lucru: monotonia șirurilor](https://lauramiron.mqgrader.ro/materiale/fisa-lucru-monotonia-sirurilor-1038) ([EN](https://lauramiron.mqgrader.ro/en/materiale/fisa-lucru-monotonia-sirurilor-1038)): Fișă de lucru pentru clasa a XI-a: monotonia șirurilor studiată cu diferența, cu raportul și prin inducție, cu 15 probleme grupate pe metode. (fisa-lucru, clasa a 11-a / grade 11, updated 2026-11-17)
 - [Fișă de lucru: operații cu limite de șiruri](https://lauramiron.mqgrader.ro/materiale/fisa-lucru-operatii-limite-siruri-1035) ([EN](https://lauramiron.mqgrader.ro/en/materiale/fisa-lucru-operatii-limite-siruri-1035)): Fișă de lucru pentru clasa a XI-a: operații cu limite de șiruri, calcule cu infinit, cazuri de nedeterminare, polinoame, exponențiale și radicali. (fisa-lucru, clasa a 11-a / grade 11, updated 2026-11-15)
 - [Fișă de lucru: șiruri date prin recurențe](https://lauramiron.mqgrader.ro/materiale/fisa-lucru-siruri-recurente-1033) ([EN](https://lauramiron.mqgrader.ro/en/materiale/fisa-lucru-siruri-recurente-1033)): Fișă de lucru pentru clasa a XI-a: șiruri date prin recurențe, aflarea termenului general, recurența omografică, monotonie și mărginire. (fisa-lucru, clasa a 11-a / grade 11, updated 2026-10-26)
 

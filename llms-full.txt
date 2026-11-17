@@ -2296,6 +2296,314 @@ b) Calculate the length of segment $AC$ and the distance from point $O$ to the l
 
 ## Clasa a IX-a / Grade 9
 
+### Fișă de lucru: progresii aritmetice
+- Source (RO): https://lauramiron.mqgrader.ro/materiale/fisa-lucru-progresii-aritmetice-1037
+- Source (EN): https://lauramiron.mqgrader.ro/en/materiale/fisa-lucru-progresii-aritmetice-1037
+- Author: Laura Miron. License: CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/).
+- Published: 2026-11-17. Updated: 2026-11-17.
+- Fișă de lucru pentru clasa a IX-a: progresii aritmetice, rația, termenul general, trei termeni consecutivi și suma primilor n termeni.
+- Rezumat: Fișa începe cu teoria pe scurt: definiția progresiei aritmetice, rația, termenul general, legătura dintre trei termeni consecutivi și suma primilor n termeni, cu două exemple rezolvate. Urmează 25 de probleme pe niveluri, multe din viața de zi cu zi: economii, abonamente, rânduri de scaune, date mobile.
+- Întrebări frecvente:
+  - Q: Cum recunosc că un șir este o progresie aritmetică?
+  - A: Calculezi diferența aₙ₊₁ − aₙ dintre doi termeni consecutivi. Dacă ea este aceeași pentru orice n, adică nu depinde de n, șirul este o progresie aritmetică, iar această diferență este rația r. De exemplu, aₙ = 3n + 2 dă diferența 3, dar aₙ = n² + 1 dă 2n + 1, care depinde de n.
+  - Q: Cum verific dacă trei numere sunt în progresie aritmetică?
+  - A: Numerele a, b, c sunt, în această ordine, în progresie aritmetică dacă și numai dacă 2b = a + c, adică termenul din mijloc este media aritmetică a vecinilor. Pentru mai multe numere verifici că toate diferențele dintre numere vecine sunt egale.
+  - Q: De unde vine formula sumei primilor n termeni ai unei progresii aritmetice?
+  - A: Scrii suma de două ori, a doua oară în ordine inversă, și aduni termen cu termen. Fiecare pereche a₁ + aₙ, a₂ + aₙ₋₁, … are aceeași valoare, a₁ + aₙ, și sunt n perechi. Deci 2Sₙ = (a₁ + aₙ)·n, adică Sₙ = (a₁ + aₙ)·n / 2.
+
+La finalul fișei vei ști să:
+- recunoști o progresie aritmetică și îi afli rația;
+- calculezi orice termen al unei progresii aritmetice și determini progresia din două informații;
+- verifici dacă trei sau mai multe numere sunt termeni consecutivi ai unei progresii aritmetice;
+- calculezi suma primilor $n$ termeni;
+- descrii cu progresii aritmetice situații din viața de zi cu zi.
+1. Progresia aritmetică. Rația
+Definiție
+Șirul $(a_n)_{n\ge 1}$ este o progresie aritmetică dacă există un număr real $r$ astfel încât
+$$a_{n+1}=a_n+r,\ \text{pentru orice}\ n\ge 1.$$
+Numărul $r=a_{n+1}-a_n$ se numește rația progresiei. Scriem $\div\ a_1;\ a_2;\ a_3;\ \ldots$
+- Un șir este progresie aritmetică dacă diferența $a_{n+1}-a_n$ este aceeași pentru orice $n$ (nu depinde de $n$).
+- Dacă $r>0$, progresia este strict crescătoare. Dacă $r<0$, este strict descrescătoare. Dacă $r=0$, este constantă.
+2. Termenul general
+Formula termenului general
+$$a_n=a_1+(n-1)r,\ \text{pentru orice}\ n\ge 1.$$
+Mai general, pentru orice ranguri $n$ și $k$: $a_n=a_k+(n-k)r$. De exemplu, $a_{10}=a_4+6r$.
+Demonstrație (inducție). Pentru $n=1$: $a_1=a_1+0\cdot r$, adevărat. Dacă $a_k=a_1+(k-1)r$, atunci $a_{k+1}=a_k+r=a_1+kr$.
+3. Trei termeni consecutivi
+Proprietate
+Șirul $(a_n)_{n\ge 1}$ este progresie aritmetică dacă și numai dacă fiecare termen, începând cu al doilea, este media aritmetică a vecinilor săi:
+$$a_n=\frac{a_{n-1}+a_{n+1}}{2},\ \text{pentru orice}\ n\ge 2.$$
+- Numerele $a;\ b;\ c$ sunt, în această ordine, termeni consecutivi ai unei progresii aritmetice dacă și numai dacă $2b=a+c$.
+- Numerele $x_1;\ x_2;\ \ldots;\ x_n$ ($n\ge 3$) sunt, în această ordine, în progresie aritmetică dacă și numai dacă $x_2-x_1=x_3-x_2=\ldots=x_n-x_{n-1}$, adică $2x_k=x_{k-1}+x_{k+1}$ pentru $k=2;\ 3;\ \ldots;\ n-1$.
+4. Termeni egal depărtați de extremi
+Proprietate
+Dacă $m+n=p+q$, atunci $a_m+a_n=a_p+a_q$. În particular,
+$$a_1+a_n=a_2+a_{n-1}=a_3+a_{n-2}=\ldots$$
+5. Suma primilor $n$ termeni
+Formula sumei
+Pentru $S_n=a_1+a_2+\ldots+a_n$:
+$$S_n=\frac{(a_1+a_n)\cdot n}{2}=\frac{\left[2a_1+(n-1)r\right]\cdot n}{2}.$$
+Caz particular: $1+2+3+\ldots+n=\frac{n(n+1)}{2}$.
+De unde vine: scriem suma de două ori, a doua oară în ordine inversă, și adunăm. Fiecare pereche $a_k+a_{n+1-k}$ este egală cu $a_1+a_n$ și sunt $n$ perechi, deci $2S_n=(a_1+a_n)\cdot n$.
+De reținut
+- O progresie aritmetică este complet determinată de primul termen $a_1$ și de rație $r$. Din două informații despre progresie scriem un sistem cu necunoscutele $a_1$ și $r$.
+- Numărul termenilor dintre $a_k$ și $a_n$ (inclusiv aceștia) este $n-k+1$. De exemplu, $4;\ 7;\ \ldots;\ 64$ are $\frac{64-4}{3}+1=21$ de termeni.
+- Trei numere în progresie aritmetică le notăm convenabil $x-r;\ x;\ x+r$. Suma lor este $3x$.
+6. Exemple rezolvate
+Exemplul 1
+Într-o progresie aritmetică, $a_3=7$ și $a_8=22$. Aflăm $a_1$, $r$ și $S_{10}$.
+$a_8=a_3+5r$, deci $22=7+5r$ și $r=3$. Apoi $a_1=a_3-2r=1$.
+$a_{10}=1+9\cdot 3=28$, deci $S_{10}=\frac{(1+28)\cdot 10}{2}=145$.
+Exemplul 2
+Aflăm $x$ pentru care numerele $x+1;\ 3x;\ 4x+2$ sunt, în această ordine, în progresie aritmetică.
+$2\cdot 3x=(x+1)+(4x+2)$, adică $6x=5x+3$, deci $x=3$. Numerele sunt $4;\ 9;\ 14$, cu rația $5$.
+Exerciții
+Nivel de bază
+-
+Stabiliți care dintre șirurile următoare sunt progresii aritmetice. Pentru acestea, precizați primul termen, rația și monotonia.
+a) $a_n=3n+2$;
+b) $b_n=7-2n$;
+c) $c_n=n^2+1$;
+d) $d_n=\frac{n+1}{2}$;
+e) $e_n=5$.
+-
+O progresie aritmetică are $a_1=4$ și rația $r=3$.
+a) Calculați $a_2$, $a_3$, $a_{10}$ și $a_{25}$.
+b) Scrieți formula termenului general $a_n$.
+-
+Se consideră progresia aritmetică $2;\ 5;\ 8;\ 11;\ \ldots$
+a) Calculați $a_{50}$.
+b) Este $2027$ termen al progresiei? Dar $2026$? Justificați.
+-
+Aflați numărul real $x$ pentru care numerele $x-1;\ 2x+1;\ 4x-3$ sunt, în această ordine, termeni consecutivi ai unei progresii aritmetice. Scrieți apoi cele trei numere și rația.
+-
+Într-o progresie aritmetică, $a_4=10$ și $a_9=-5$. Aflați $a_1$, rația și $a_{20}$.
+-
+Calculați sumele:
+a) suma primilor $20$ de termeni ai progresiei aritmetice cu $a_1=3$ și $r=4$;
+b) $1+3+5+\ldots+99$;
+c) $4+7+10+\ldots+64$.
+-
+Între numerele $3$ și $23$ inserați patru numere, astfel încât cele șase numere să fie, în această ordine, în progresie aritmetică.
+-
+Andrei pune deoparte $50$ de lei în prima lună. În fiecare lună care urmează, pune deoparte cu $15$ lei mai mult decât în luna precedentă.
+a) Câți lei pune deoparte în luna a $12$-a?
+b) Câți lei a economisit, în total, după $12$ luni?
+-
+O sală de spectacole are $20$ de rânduri de scaune. Primul rând are $12$ scaune, iar fiecare rând următor are cu $2$ scaune mai mult decât rândul din fața lui.
+a) Câte scaune are ultimul rând?
+b) Câte scaune are sala în total?
+Nivel consolidat
+-
+Determinați progresia aritmetică $(a_n)_{n\ge 1}$ pentru care $a_2+a_6=16$ și $a_4+a_9=31$. Calculați apoi $S_{10}$.
+-
+Câți termeni ai progresiei aritmetice $5;\ 9;\ 13;\ \ldots$ trebuie adunați, începând cu primul, pentru a obține suma $230$?
+-
+Într-o progresie aritmetică, $a_3+a_{18}=50$.
+a) Calculați $a_7+a_{14}$.
+b) Calculați $S_{20}$.
+-
+O sală de sport oferă două tipuri de abonament lunar.
+- Oferta A: $150$ de lei în prima lună, apoi în fiecare lună cu $6$ lei mai puțin decât în luna precedentă (cel mult $12$ luni).
+- Oferta B: $120$ de lei în fiecare lună.
+a) Cât costă oferta A în luna a $12$-a?
+b) Cât se plătește, în total, pentru $n$ luni cu oferta A? Dar cu oferta B?
+c) După câte luni costul total este același pentru cele două oferte? Ce ofertă alegeți pentru $6$ luni? Dar pentru $12$ luni?
+-
+Mara are un abonament cu $15$ GB de date mobile pe lună ($1$ GB $=1000$ MB). În prima zi a lunii consumă $300$ MB, iar în fiecare zi care urmează consumă cu $20$ MB mai mult decât în ziua precedentă.
+a) Câți MB consumă în ziua a $10$-a?
+b) Câți MB a consumat, în total, în primele $20$ de zile?
+c) Îi ajung datele pentru o lună de $30$ de zile? Dacă nu, în ce zi termină datele?
+Indicație: la c) comparați $S_{26}$ și $S_{27}$ cu $15\,000$.
+-
+Trei numere sunt în progresie aritmetică. Suma lor este $27$, iar produsul lor este $585$. Aflați numerele.
+-
+Numerele reale $a;\ b;\ c$ sunt, în această ordine, în progresie aritmetică. Arătați că $a^2+8bc=(2b+c)^2$.
+-
+Determinați numărul real $x$ pentru care numerele $x^2;\ 2x+3;\ 3x+4;\ 6x+1$ sunt, în această ordine, termeni consecutivi ai unei progresii aritmetice.
+Indicație: aflați întâi valorile lui $x$ pentru primii trei termeni, apoi verificați al patrulea.
+-
+Suma primilor $n$ termeni ai unui șir $(a_n)_{n\ge 1}$ este $S_n=2n^2+3n$, pentru orice $n\ge 1$. Arătați că șirul este o progresie aritmetică și aflați primul termen și rația.
+Indicație: $a_1=S_1$ și $a_n=S_n-S_{n-1}$, pentru $n\ge 2$.
+Nivel avansat
+-
+Fie $(a_n)_{n\ge 1}$ o progresie aritmetică.
+a) Arătați că există numerele reale $A$ și $B$ astfel încât $S_n=An^2+Bn$ pentru orice $n\ge 1$. Exprimați $A$ și $B$ cu ajutorul lui $a_1$ și $r$.
+b) Într-o progresie aritmetică, $S_{10}=100$ și $S_{20}=400$. Calculați $S_{30}$.
+-
+Calculați suma tuturor numerelor naturale de trei cifre care dau restul $2$ la împărțirea la $7$.
+-
+Rezolvați ecuațiile:
+a) $1+5+9+\ldots+x=231$;
+b) $(x+1)+(x+4)+(x+7)+\ldots+(x+28)=155$.
+-
+Într-o progresie aritmetică, $a_p=q$ și $a_q=p$, unde $p$ și $q$ sunt numere naturale nenule distincte. Arătați că rația este $-1$ și că $a_{p+q}=0$.
+-
+Numerele strict pozitive $a;\ b;\ c$ au proprietatea că $a^2;\ b^2;\ c^2$ sunt, în această ordine, în progresie aritmetică. Arătați că numerele $\frac{1}{b+c};\ \frac{1}{c+a};\ \frac{1}{a+b}$ sunt, în această ordine, în progresie aritmetică.
+-
+Triunghiuri și progresii.
+a) Măsurile unghiurilor triunghiului $ABC$ sunt în progresie aritmetică, cu $\sphericalangle A<\sphericalangle B<\sphericalangle C$, iar $\sphericalangle C=2\cdot\sphericalangle A$. Aflați măsurile unghiurilor.
+b) Lungimile laturilor unui triunghi dreptunghic sunt în progresie aritmetică. Arătați că ele sunt proporționale cu $3$, $4$ și $5$.
+Pentru cei care vor mai mult
+-
+Numerele naturale nenule se grupează astfel: $(1);\ (2;\ 3);\ (4;\ 5;\ 6);\ (7;\ 8;\ 9;\ 10);\ \ldots$ Grupa a $n$-a conține $n$ numere consecutive.
+a) Care este primul număr din grupa a $n$-a?
+b) Arătați că suma numerelor din grupa a $n$-a este $\frac{n(n^2+1)}{2}$.
+c) În ce grupă se află numărul $2026$ și pe ce poziție în grupă?
+
+--- EN ---
+
+The worksheet opens with a short theory part: the definition of an arithmetic progression, the common difference, the general term, three consecutive terms and the sum of the first n terms, with two worked examples. Then come 25 problems on levels, many from daily life: savings, subscriptions, rows of seats, mobile data.
+
+Q: How do I recognise that a sequence is an arithmetic progression?
+A: You compute the difference aₙ₊₁ − aₙ between two consecutive terms. If it is the same for every n, that is, it does not depend on n, the sequence is an arithmetic progression and this difference is the common difference r. For example, aₙ = 3n + 2 gives the difference 3, but aₙ = n² + 1 gives 2n + 1, which depends on n.
+Q: How do I check whether three numbers are in arithmetic progression?
+A: The numbers a, b, c are, in this order, in arithmetic progression if and only if 2b = a + c, that is, the middle term is the arithmetic mean of its neighbours. For more numbers you check that all the differences between neighbouring numbers are equal.
+Q: Where does the formula for the sum of the first n terms of an arithmetic progression come from?
+A: You write the sum twice, the second time in reverse order, and add term by term. Every pair a₁ + aₙ, a₂ + aₙ₋₁, … has the same value, a₁ + aₙ, and there are n pairs. So 2Sₙ = (a₁ + aₙ)·n, that is, Sₙ = (a₁ + aₙ)·n / 2.
+
+By the end of this worksheet you will be able to:
+- recognise an arithmetic progression and find its common difference;
+- calculate any term of an arithmetic progression and find the progression from two pieces of information;
+- check whether three or more numbers are consecutive terms of an arithmetic progression;
+- calculate the sum of the first $n$ terms;
+- describe everyday situations with arithmetic progressions.
+1. The arithmetic progression. The common difference
+Definition
+The sequence $(a_n)_{n\ge 1}$ is an arithmetic progression if there is a real number $r$ such that
+$$a_{n+1}=a_n+r,\ \text{for every}\ n\ge 1.$$
+The number $r=a_{n+1}-a_n$ is called the common difference of the progression. We write $\div\ a_1;\ a_2;\ a_3;\ \ldots$
+- A sequence is an arithmetic progression if the difference $a_{n+1}-a_n$ is the same for every $n$ (it does not depend on $n$).
+- If $r>0$, the progression is strictly increasing. If $r<0$, it is strictly decreasing. If $r=0$, it is constant.
+2. The general term
+The general-term formula
+$$a_n=a_1+(n-1)r,\ \text{for every}\ n\ge 1.$$
+More generally, for any indices $n$ and $k$: $a_n=a_k+(n-k)r$. For example, $a_{10}=a_4+6r$.
+Proof (induction). For $n=1$: $a_1=a_1+0\cdot r$, true. If $a_k=a_1+(k-1)r$, then $a_{k+1}=a_k+r=a_1+kr$.
+3. Three consecutive terms
+Property
+The sequence $(a_n)_{n\ge 1}$ is an arithmetic progression if and only if every term, from the second one on, is the arithmetic mean of its neighbours:
+$$a_n=\frac{a_{n-1}+a_{n+1}}{2},\ \text{for every}\ n\ge 2.$$
+- The numbers $a;\ b;\ c$ are, in this order, consecutive terms of an arithmetic progression if and only if $2b=a+c$.
+- The numbers $x_1;\ x_2;\ \ldots;\ x_n$ ($n\ge 3$) are, in this order, in arithmetic progression if and only if $x_2-x_1=x_3-x_2=\ldots=x_n-x_{n-1}$, that is, $2x_k=x_{k-1}+x_{k+1}$ for $k=2;\ 3;\ \ldots;\ n-1$.
+4. Terms equally far from the ends
+Property
+If $m+n=p+q$, then $a_m+a_n=a_p+a_q$. In particular,
+$$a_1+a_n=a_2+a_{n-1}=a_3+a_{n-2}=\ldots$$
+5. The sum of the first $n$ terms
+The sum formula
+For $S_n=a_1+a_2+\ldots+a_n$:
+$$S_n=\frac{(a_1+a_n)\cdot n}{2}=\frac{\left[2a_1+(n-1)r\right]\cdot n}{2}.$$
+Special case: $1+2+3+\ldots+n=\frac{n(n+1)}{2}$.
+Where it comes from: we write the sum twice, the second time in reverse order, and add. Every pair $a_k+a_{n+1-k}$ equals $a_1+a_n$ and there are $n$ pairs, so $2S_n=(a_1+a_n)\cdot n$.
+Remember
+- An arithmetic progression is completely determined by its first term $a_1$ and its common difference $r$. From two pieces of information about the progression we write a system with the unknowns $a_1$ and $r$.
+- The number of terms from $a_k$ to $a_n$ (both included) is $n-k+1$. For example, $4;\ 7;\ \ldots;\ 64$ has $\frac{64-4}{3}+1=21$ terms.
+- We write three numbers in arithmetic progression conveniently as $x-r;\ x;\ x+r$. Their sum is $3x$.
+6. Worked examples
+Example 1
+In an arithmetic progression, $a_3=7$ and $a_8=22$. We find $a_1$, $r$ and $S_{10}$.
+$a_8=a_3+5r$, so $22=7+5r$ and $r=3$. Then $a_1=a_3-2r=1$.
+$a_{10}=1+9\cdot 3=28$, so $S_{10}=\frac{(1+28)\cdot 10}{2}=145$.
+Example 2
+We find $x$ for which the numbers $x+1;\ 3x;\ 4x+2$ are, in this order, in arithmetic progression.
+$2\cdot 3x=(x+1)+(4x+2)$, that is, $6x=5x+3$, so $x=3$. The numbers are $4;\ 9;\ 14$, with common difference $5$.
+Exercises
+Basic level
+-
+Decide which of the following sequences are arithmetic progressions. For those that are, give the first term, the common difference and the monotonicity.
+a) $a_n=3n+2$;
+b) $b_n=7-2n$;
+c) $c_n=n^2+1$;
+d) $d_n=\frac{n+1}{2}$;
+e) $e_n=5$.
+-
+An arithmetic progression has $a_1=4$ and common difference $r=3$.
+a) Calculate $a_2$, $a_3$, $a_{10}$ and $a_{25}$.
+b) Write the formula of the general term $a_n$.
+-
+Consider the arithmetic progression $2;\ 5;\ 8;\ 11;\ \ldots$
+a) Calculate $a_{50}$.
+b) Is $2027$ a term of the progression? What about $2026$? Justify your answer.
+-
+Find the real number $x$ for which the numbers $x-1;\ 2x+1;\ 4x-3$ are, in this order, consecutive terms of an arithmetic progression. Then write the three numbers and the common difference.
+-
+In an arithmetic progression, $a_4=10$ and $a_9=-5$. Find $a_1$, the common difference and $a_{20}$.
+-
+Calculate the sums:
+a) the sum of the first $20$ terms of the arithmetic progression with $a_1=3$ and $r=4$;
+b) $1+3+5+\ldots+99$;
+c) $4+7+10+\ldots+64$.
+-
+Insert four numbers between $3$ and $23$ so that the six numbers are, in this order, in arithmetic progression.
+-
+Andrei saves $50$ lei in the first month. In every following month, he saves $15$ lei more than in the month before.
+a) How many lei does he save in month $12$?
+b) How many lei has he saved in total after $12$ months?
+-
+A theatre has $20$ rows of seats. The first row has $12$ seats, and every following row has $2$ seats more than the row in front of it.
+a) How many seats does the last row have?
+b) How many seats does the theatre have in total?
+Consolidation level
+-
+Find the arithmetic progression $(a_n)_{n\ge 1}$ for which $a_2+a_6=16$ and $a_4+a_9=31$. Then calculate $S_{10}$.
+-
+How many terms of the arithmetic progression $5;\ 9;\ 13;\ \ldots$ must be added, starting with the first one, to get the sum $230$?
+-
+In an arithmetic progression, $a_3+a_{18}=50$.
+a) Calculate $a_7+a_{14}$.
+b) Calculate $S_{20}$.
+-
+A gym offers two kinds of monthly membership.
+- Offer A: $150$ lei in the first month, then each month $6$ lei less than the month before (for at most $12$ months).
+- Offer B: $120$ lei every month.
+a) How much does offer A cost in month $12$?
+b) How much do you pay in total for $n$ months with offer A? And with offer B?
+c) After how many months is the total cost the same for the two offers? Which offer do you choose for $6$ months? And for $12$ months?
+-
+Mara has a plan with $15$ GB of mobile data per month ($1$ GB $=1000$ MB). On the first day of the month she uses $300$ MB, and on every following day she uses $20$ MB more than on the day before.
+a) How many MB does she use on day $10$?
+b) How many MB has she used in total in the first $20$ days?
+c) Is the data enough for a $30$-day month? If not, on which day does it run out?
+Hint: for c) compare $S_{26}$ and $S_{27}$ with $15\,000$.
+-
+Three numbers are in arithmetic progression. Their sum is $27$ and their product is $585$. Find the numbers.
+-
+The real numbers $a;\ b;\ c$ are, in this order, in arithmetic progression. Show that $a^2+8bc=(2b+c)^2$.
+-
+Find the real number $x$ for which the numbers $x^2;\ 2x+3;\ 3x+4;\ 6x+1$ are, in this order, consecutive terms of an arithmetic progression.
+Hint: first find the values of $x$ for the first three terms, then check the fourth one.
+-
+The sum of the first $n$ terms of a sequence $(a_n)_{n\ge 1}$ is $S_n=2n^2+3n$, for every $n\ge 1$. Show that the sequence is an arithmetic progression and find its first term and common difference.
+Hint: $a_1=S_1$ and $a_n=S_n-S_{n-1}$, for $n\ge 2$.
+Advanced level
+-
+Let $(a_n)_{n\ge 1}$ be an arithmetic progression.
+a) Show that there are real numbers $A$ and $B$ such that $S_n=An^2+Bn$ for every $n\ge 1$. Write $A$ and $B$ in terms of $a_1$ and $r$.
+b) In an arithmetic progression, $S_{10}=100$ and $S_{20}=400$. Calculate $S_{30}$.
+-
+Calculate the sum of all three-digit natural numbers that leave remainder $2$ when divided by $7$.
+-
+Solve the equations:
+a) $1+5+9+\ldots+x=231$;
+b) $(x+1)+(x+4)+(x+7)+\ldots+(x+28)=155$.
+-
+In an arithmetic progression, $a_p=q$ and $a_q=p$, where $p$ and $q$ are different nonzero natural numbers. Show that the common difference is $-1$ and that $a_{p+q}=0$.
+-
+The strictly positive numbers $a;\ b;\ c$ are such that $a^2;\ b^2;\ c^2$ are, in this order, in arithmetic progression. Show that the numbers $\frac{1}{b+c};\ \frac{1}{c+a};\ \frac{1}{a+b}$ are, in this order, in arithmetic progression.
+-
+Triangles and progressions.
+a) The angles of triangle $ABC$ are in arithmetic progression, with $\sphericalangle A<\sphericalangle B<\sphericalangle C$, and $\sphericalangle C=2\cdot\sphericalangle A$. Find the angles.
+b) The side lengths of a right triangle are in arithmetic progression. Show that they are proportional to $3$, $4$ and $5$.
+For those who want more
+-
+The nonzero natural numbers are grouped like this: $(1);\ (2;\ 3);\ (4;\ 5;\ 6);\ (7;\ 8;\ 9;\ 10);\ \ldots$ Group $n$ holds $n$ consecutive numbers.
+a) What is the first number in group $n$?
+b) Show that the sum of the numbers in group $n$ is $\frac{n(n^2+1)}{2}$.
+c) In which group is the number $2026$, and in which position within the group?
+
+---
+
 ### Fișă de lucru: șiruri, noțiuni introductive
 - Source (RO): https://lauramiron.mqgrader.ro/materiale/fisa-lucru-siruri-notiuni-introductive-1036
 - Source (EN): https://lauramiron.mqgrader.ro/en/materiale/fisa-lucru-siruri-notiuni-introductive-1036
@@ -5757,6 +6065,292 @@ Show that the perimeter of triangle $CMN$ is constant and independent of the pos
 ---
 
 ## Clasa a XI-a / Grade 11
+
+### Fișă de lucru: monotonia șirurilor
+- Source (RO): https://lauramiron.mqgrader.ro/materiale/fisa-lucru-monotonia-sirurilor-1038
+- Source (EN): https://lauramiron.mqgrader.ro/en/materiale/fisa-lucru-monotonia-sirurilor-1038
+- Author: Laura Miron. License: CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/).
+- Published: 2026-11-17. Updated: 2026-11-17.
+- Fișă de lucru pentru clasa a XI-a: monotonia șirurilor studiată cu diferența, cu raportul și prin inducție, cu 15 probleme grupate pe metode.
+- Rezumat: Fișa recapitulează pe scurt ce înseamnă un șir crescător, descrescător, monoton sau nemonoton și cele trei metode de studiu al monotoniei: diferența, raportul pentru termeni pozitivi și inducția pentru șiruri date prin recurență, fiecare cu un exemplu rezolvat. Urmează 15 probleme grupate pe metode.
+- Întrebări frecvente:
+  - Q: Când pot folosi raportul pentru a studia monotonia unui șir?
+  - A: Numai când toți termenii șirului sunt strict pozitivi. Atunci, dacă aₙ₊₁ / aₙ > 1 pentru orice n, șirul este strict crescător, iar dacă raportul este mai mic decât 1, șirul este strict descrescător. Pentru termeni negativi concluzia se inversează, așa că e mai sigur să folosești diferența.
+  - Q: Cum arăt că un șir nu este monoton?
+  - A: Găsești trei termeni consecutivi care urcă și apoi coboară sau coboară și apoi urcă, de exemplu a₁ < a₂ și a₂ > a₃. Un singur astfel de contraexemplu ajunge: șirul nu poate fi nici crescător, nici descrescător.
+  - Q: De ce folosim inducția la șirurile date prin recurență?
+  - A: Când știm doar x₁ și relația xₙ₊₁ = g(xₙ), nu avem o formulă pentru xₙ, deci nu putem calcula direct diferența. Verificăm inegalitatea pentru primii doi termeni și arătăm că ea se transmite de la un pas la următorul, de obicei pentru că funcția g este crescătoare.
+
+La finalul fișei vei ști să:
+- studiezi monotonia unui șir cu diferența $a_{n+1}-a_n$;
+- studiezi monotonia unui șir cu termeni pozitivi cu raportul $\frac{a_{n+1}}{a_n}$;
+- studiezi prin inducție monotonia unui șir dat printr-o relație de recurență;
+- alegi metoda potrivită și arăți că un șir nu este monoton.
+1. Șiruri monotone
+Definiție
+Șirul $(a_n)_{n\ge 1}$ este:
+- strict crescător, dacă $a_n<a_{n+1}$ pentru orice $n\ge 1$;
+- crescător, dacă $a_n\le a_{n+1}$ pentru orice $n\ge 1$;
+- strict descrescător, dacă $a_n>a_{n+1}$ pentru orice $n\ge 1$;
+- descrescător, dacă $a_n\ge a_{n+1}$ pentru orice $n\ge 1$.
+Un șir crescător sau descrescător se numește monoton.
+Un șir este nemonoton dacă există trei termeni consecutivi care „urcă și apoi coboară” sau „coboară și apoi urcă”, de exemplu $a_1<a_2$ și $a_2>a_3$.
+2. Cele trei metode
+2.1. Diferența
+★ Metodă
+Studiem semnul diferenței $a_{n+1}-a_n$
+- Calculăm $a_{n+1}-a_n$ și o aducem la o formă simplă (aducem la același numitor, dăm factor comun).
+- Dacă $a_{n+1}-a_n>0$ pentru orice $n$, șirul este strict crescător.
+- Dacă $a_{n+1}-a_n<0$ pentru orice $n$, șirul este strict descrescător.
+Exemplul 1
+$a_n=\frac{n+2}{2n+1}$.
+$$a_{n+1}-a_n=\frac{n+3}{2n+3}-\frac{n+2}{2n+1}=\frac{(n+3)(2n+1)-(n+2)(2n+3)}{(2n+1)(2n+3)}=\frac{-3}{(2n+1)(2n+3)}<0.$$
+Șirul este strict descrescător.
+2.2. Raportul
+★ Metodă
+Comparăm raportul $\frac{a_{n+1}}{a_n}$ cu $1$
+- Verificăm întâi că toți termenii sunt strict pozitivi. Altfel metoda nu se aplică.
+- Calculăm $\frac{a_{n+1}}{a_n}$ și îl simplificăm.
+- Dacă raportul este mai mare decât $1$ pentru orice $n$, șirul este strict crescător; dacă este mai mic decât $1$, șirul este strict descrescător.
+Exemplul 2
+$a_n=\frac{3^n}{n+1}$, cu toți termenii strict pozitivi.
+$$\frac{a_{n+1}}{a_n}=\frac{3^{n+1}}{n+2}\cdot\frac{n+1}{3^n}=\frac{3n+3}{n+2}>1,\ \text{pentru că}\ 3n+3>n+2.$$
+Șirul este strict crescător.
+2.3. Inducția
+★ Metodă
+Pentru un șir dat prin $x_1$ și $x_{n+1}=g(x_n)$
+- Verificăm $x_1<x_2$ (sau $x_1>x_2$).
+- Arătăm că din $x_k<x_{k+1}$ rezultă $x_{k+1}<x_{k+2}$ (sau inegalitățile inverse).
+- Uneori demonstrăm întâi prin inducție că termenii stau într-un interval, apoi studiem semnul diferenței $x_{n+1}-x_n$.
+Exemplul 3
+$x_1=2$ și $x_{n+1}=\frac{x_n+3}{2}$. Arătăm că $x_n<x_{n+1}$ pentru orice $n\ge 1$.
+- Verificare: $x_2=\frac{5}{2}>2=x_1$.
+- Pasul de inducție: din $x_k<x_{k+1}$ rezultă $x_k+3<x_{k+1}+3$, deci $\frac{x_k+3}{2}<\frac{x_{k+1}+3}{2}$, adică $x_{k+1}<x_{k+2}$.
+Conform principiului inducției matematice, șirul este strict crescător.
+3. Cum aleg metoda?
+De reținut
+- Termenul general este o sumă sau o fracție cu $n$ la numărător și la numitor → diferența.
+- Termenul general conține puteri $q^n$ sau produse lungi, iar termenii sunt pozitivi → raportul (se simplifică mult).
+- Am doar relația $x_{n+1}=g(x_n)$ → inducția.
+Exerciții
+A. Metoda diferenței
+-
+Studiați monotonia șirurilor:
+a) $a_n=3n-7$;
+b) $b_n=4-n^2$;
+c) $c_n=\frac{3n-1}{n+1}$.
+-
+Diferența și semnul ei.
+a) Arătați că șirul $a_n=\frac{5-2n}{n+3}$, $n\ge 1$, este strict descrescător.
+b) Fie $b_n=n^2-6n+10$, $n\ge 1$. Calculați $b_1$, $b_2$, $b_3$, $b_4$ și $b_{n+1}-b_n$. Este șirul monoton? Începând de la ce rang este strict crescător?
+-
+Studiați monotonia șirurilor:
+a) $a_n=1+\frac{1}{2}+\frac{1}{3}+\ldots+\frac{1}{n}$;
+b) $b_n=\frac{1}{n+1}+\frac{1}{n+2}+\ldots+\frac{1}{2n}$.
+Indicație: la b) scrieți atent $b_{n+1}$: ce termeni apar în plus și ce termen dispare?
+-
+Fie $a$ un număr real și șirul $a_n=n^2+an$, $n\ge 1$.
+a) Determinați valorile lui $a$ pentru care șirul este strict crescător.
+b) Pentru $a=-3$, este șirul crescător? Este strict crescător?
+B. Metoda raportului
+-
+Studiați monotonia șirurilor:
+a) $a_n=\frac{n+1}{4^n}$;
+b) $b_n=\frac{3^n}{2n+1}$.
+-
+Studiați monotonia șirurilor:
+a) $a_n=\frac{1\cdot 4\cdot 7\cdot\ldots\cdot(3n-2)}{3\cdot 6\cdot 9\cdot\ldots\cdot(3n)}$;
+b) $b_n=\frac{(n+1)(n+2)\cdot\ldots\cdot(2n)}{4^n}$.
+-
+Fie șirul $a_n=n\cdot\left(\frac{2}{3}\right)^n$, $n\ge 1$.
+a) Arătați că $\frac{a_{n+1}}{a_n}=\frac{2(n+1)}{3n}$.
+b) Comparați acest raport cu $1$, în funcție de $n$.
+c) Este șirul monoton? Începând de la ce rang este strict descrescător?
+-
+Fie șirul $a_n=-\frac{2^n}{n}$, $n\ge 1$. Un elev scrie: „$\frac{a_{n+1}}{a_n}=\frac{2n}{n+1}\ge 1$, deci șirul este crescător.”
+a) Calculați $a_1$, $a_2$, $a_3$. Este corectă concluzia elevului?
+b) Unde greșește elevul? Stabiliți corect monotonia șirului.
+C. Metoda inducției
+-
+Studiați monotonia șirurilor date prin recurență, pentru $n\ge 1$:
+a) $x_1=1$, $x_{n+1}=\frac{x_n+8}{3}$;
+b) $y_1=10$, $y_{n+1}=\frac{y_n+8}{3}$;
+c) $z_1=4$, $z_{n+1}=\frac{z_n+8}{3}$.
+Ce observați?
+-
+Șirul $(x_n)_{n\ge 1}$ are $x_1=9$ și $x_{n+1}=\sqrt{x_n+20}$, pentru $n\ge 1$.
+a) Arătați prin inducție că $x_n>5$ pentru orice $n\ge 1$.
+b) Arătați prin inducție că șirul este strict descrescător.
+-
+Șirul $(x_n)_{n\ge 1}$ are $x_1=1$ și $x_{n+1}=\frac{x_n}{1+x_n}$, pentru $n\ge 1$.
+a) Arătați prin inducție că $x_n>0$ pentru orice $n\ge 1$.
+b) Arătați că $x_{n+1}-x_n=-\frac{x_n^2}{1+x_n}$ și dedu monotonia șirului.
+c) Calculați $x_2$, $x_3$, $x_4$, intuiți formula termenului general și demonstrați-o prin inducție.
+-
+Șirul $(x_n)_{n\ge 1}$ are $x_1=3$ și $x_{n+1}=3-\frac{2}{x_n}$, pentru $n\ge 1$.
+a) Arătați prin inducție că $x_n>2$ pentru orice $n\ge 1$.
+b) Arătați că $x_{n+1}-x_n=-\frac{(x_n-1)(x_n-2)}{x_n}$ și dedu că șirul este strict descrescător.
+D. Alegeți metoda
+-
+Studiați monotonia șirurilor:
+a) $a_n=\sqrt{n+1}-\sqrt{n}$;
+b) $b_n=n+\frac{1}{n}$;
+c) $c_n=\frac{n^2}{n^2+1}$.
+Indicație: la a) amplificați cu conjugata.
+-
+Precizați care dintre șirurile următoare sunt monotone. Justificați.
+a) $a_n=\frac{(-1)^n}{n}$;
+b) $b_n=n+(-1)^n$;
+c) $c_n=2n+(-1)^n$.
+Pentru cei care vor mai mult
+-
+Fie $a$ un număr real și șirul $x_1=a$, $x_{n+1}=x_n^2-2x_n+2$, pentru $n\ge 1$.
+a) Arătați că $x_{n+1}-1=(x_n-1)^2$ și $x_{n+1}-x_n=(x_n-1)(x_n-2)$.
+b) Dacă $a\in(1;\ 2)$, arătați că șirul este strict descrescător.
+c) Dacă $a>2$, arătați că șirul este strict crescător.
+d) Pentru ce valori ale lui $a$ șirul este constant?
+
+--- EN ---
+
+The worksheet briefly reviews what increasing, decreasing, monotonic and non-monotonic sequences are, and the three ways to study monotonicity: the difference, the ratio for positive terms and induction for sequences given by a recurrence, each with a worked example. Then come 15 problems grouped by method.
+
+Q: When can I use the ratio to study the monotonicity of a sequence?
+A: Only when all the terms of the sequence are strictly positive. Then, if aₙ₊₁ / aₙ > 1 for every n, the sequence is strictly increasing, and if the ratio is less than 1, it is strictly decreasing. For negative terms the conclusion is reversed, so it is safer to use the difference.
+Q: How do I show that a sequence is not monotonic?
+A: You find three consecutive terms that go up and then down, or down and then up, for example a₁ < a₂ and a₂ > a₃. A single such counterexample is enough: the sequence can be neither increasing nor decreasing.
+Q: Why do we use induction for sequences given by a recurrence?
+A: When we only know x₁ and the relation xₙ₊₁ = g(xₙ), we have no formula for xₙ, so we cannot compute the difference directly. We check the inequality for the first two terms and show that it passes from one step to the next, usually because the function g is increasing.
+
+By the end of this worksheet you will be able to:
+- study the monotonicity of a sequence with the difference $a_{n+1}-a_n$;
+- study the monotonicity of a sequence with positive terms with the ratio $\frac{a_{n+1}}{a_n}$;
+- use induction to study the monotonicity of a sequence given by a recurrence relation;
+- choose the right method and show that a sequence is not monotonic.
+1. Monotonic sequences
+Definition
+The sequence $(a_n)_{n\ge 1}$ is:
+- strictly increasing, if $a_n<a_{n+1}$ for every $n\ge 1$;
+- increasing, if $a_n\le a_{n+1}$ for every $n\ge 1$;
+- strictly decreasing, if $a_n>a_{n+1}$ for every $n\ge 1$;
+- decreasing, if $a_n\ge a_{n+1}$ for every $n\ge 1$.
+An increasing or decreasing sequence is called monotonic.
+A sequence is not monotonic if there are three consecutive terms that "go up and then down" or "go down and then up", for example $a_1<a_2$ and $a_2>a_3$.
+2. The three methods
+2.1. The difference
+★ Method
+We study the sign of the difference $a_{n+1}-a_n$
+- We calculate $a_{n+1}-a_n$ and bring it to a simple form (common denominator, common factor).
+- If $a_{n+1}-a_n>0$ for every $n$, the sequence is strictly increasing.
+- If $a_{n+1}-a_n<0$ for every $n$, the sequence is strictly decreasing.
+Example 1
+$a_n=\frac{n+2}{2n+1}$.
+$$a_{n+1}-a_n=\frac{n+3}{2n+3}-\frac{n+2}{2n+1}=\frac{(n+3)(2n+1)-(n+2)(2n+3)}{(2n+1)(2n+3)}=\frac{-3}{(2n+1)(2n+3)}<0.$$
+The sequence is strictly decreasing.
+2.2. The ratio
+★ Method
+We compare the ratio $\frac{a_{n+1}}{a_n}$ with $1$
+- First we check that all the terms are strictly positive. Otherwise the method does not apply.
+- We calculate $\frac{a_{n+1}}{a_n}$ and simplify it.
+- If the ratio is greater than $1$ for every $n$, the sequence is strictly increasing; if it is less than $1$, the sequence is strictly decreasing.
+Example 2
+$a_n=\frac{3^n}{n+1}$, with all terms strictly positive.
+$$\frac{a_{n+1}}{a_n}=\frac{3^{n+1}}{n+2}\cdot\frac{n+1}{3^n}=\frac{3n+3}{n+2}>1,\ \text{because}\ 3n+3>n+2.$$
+The sequence is strictly increasing.
+2.3. Induction
+★ Method
+For a sequence given by $x_1$ and $x_{n+1}=g(x_n)$
+- We check that $x_1<x_2$ (or $x_1>x_2$).
+- We show that $x_k<x_{k+1}$ implies $x_{k+1}<x_{k+2}$ (or the reverse inequalities).
+- Sometimes we first prove by induction that the terms lie in an interval, then study the sign of the difference $x_{n+1}-x_n$.
+Example 3
+$x_1=2$ and $x_{n+1}=\frac{x_n+3}{2}$. We show that $x_n<x_{n+1}$ for every $n\ge 1$.
+- Check: $x_2=\frac{5}{2}>2=x_1$.
+- Induction step: $x_k<x_{k+1}$ gives $x_k+3<x_{k+1}+3$, so $\frac{x_k+3}{2}<\frac{x_{k+1}+3}{2}$, that is, $x_{k+1}<x_{k+2}$.
+By the principle of mathematical induction, the sequence is strictly increasing.
+3. How do I choose the method?
+Remember
+- The general term is a sum, or a fraction with $n$ in the numerator and the denominator → the difference.
+- The general term contains powers $q^n$ or long products, and the terms are positive → the ratio (it simplifies a lot).
+- I only have the relation $x_{n+1}=g(x_n)$ → induction.
+Exercises
+A. The difference method
+-
+Study the monotonicity of the sequences:
+a) $a_n=3n-7$;
+b) $b_n=4-n^2$;
+c) $c_n=\frac{3n-1}{n+1}$.
+-
+The difference and its sign.
+a) Show that the sequence $a_n=\frac{5-2n}{n+3}$, $n\ge 1$, is strictly decreasing.
+b) Let $b_n=n^2-6n+10$, $n\ge 1$. Calculate $b_1$, $b_2$, $b_3$, $b_4$ and $b_{n+1}-b_n$. Is the sequence monotonic? From which index on is it strictly increasing?
+-
+Study the monotonicity of the sequences:
+a) $a_n=1+\frac{1}{2}+\frac{1}{3}+\ldots+\frac{1}{n}$;
+b) $b_n=\frac{1}{n+1}+\frac{1}{n+2}+\ldots+\frac{1}{2n}$.
+Hint: for b) write $b_{n+1}$ carefully: which terms are added and which term disappears?
+-
+Let $a$ be a real number and the sequence $a_n=n^2+an$, $n\ge 1$.
+a) Find the values of $a$ for which the sequence is strictly increasing.
+b) For $a=-3$, is the sequence increasing? Is it strictly increasing?
+B. The ratio method
+-
+Study the monotonicity of the sequences:
+a) $a_n=\frac{n+1}{4^n}$;
+b) $b_n=\frac{3^n}{2n+1}$.
+-
+Study the monotonicity of the sequences:
+a) $a_n=\frac{1\cdot 4\cdot 7\cdot\ldots\cdot(3n-2)}{3\cdot 6\cdot 9\cdot\ldots\cdot(3n)}$;
+b) $b_n=\frac{(n+1)(n+2)\cdot\ldots\cdot(2n)}{4^n}$.
+-
+Consider the sequence $a_n=n\cdot\left(\frac{2}{3}\right)^n$, $n\ge 1$.
+a) Show that $\frac{a_{n+1}}{a_n}=\frac{2(n+1)}{3n}$.
+b) Compare this ratio with $1$, depending on $n$.
+c) Is the sequence monotonic? From which index on is it strictly decreasing?
+-
+Consider the sequence $a_n=-\frac{2^n}{n}$, $n\ge 1$. A student writes: "$\frac{a_{n+1}}{a_n}=\frac{2n}{n+1}\ge 1$, so the sequence is increasing."
+a) Calculate $a_1$, $a_2$, $a_3$. Is the student's conclusion correct?
+b) Where does the student go wrong? Find the correct monotonicity of the sequence.
+C. The induction method
+-
+Study the monotonicity of the sequences given by recurrence, for $n\ge 1$:
+a) $x_1=1$, $x_{n+1}=\frac{x_n+8}{3}$;
+b) $y_1=10$, $y_{n+1}=\frac{y_n+8}{3}$;
+c) $z_1=4$, $z_{n+1}=\frac{z_n+8}{3}$.
+What do you notice?
+-
+The sequence $(x_n)_{n\ge 1}$ has $x_1=9$ and $x_{n+1}=\sqrt{x_n+20}$, for $n\ge 1$.
+a) Prove by induction that $x_n>5$ for every $n\ge 1$.
+b) Prove by induction that the sequence is strictly decreasing.
+-
+The sequence $(x_n)_{n\ge 1}$ has $x_1=1$ and $x_{n+1}=\frac{x_n}{1+x_n}$, for $n\ge 1$.
+a) Prove by induction that $x_n>0$ for every $n\ge 1$.
+b) Show that $x_{n+1}-x_n=-\frac{x_n^2}{1+x_n}$ and deduce the monotonicity of the sequence.
+c) Calculate $x_2$, $x_3$, $x_4$, guess the formula of the general term and prove it by induction.
+-
+The sequence $(x_n)_{n\ge 1}$ has $x_1=3$ and $x_{n+1}=3-\frac{2}{x_n}$, for $n\ge 1$.
+a) Prove by induction that $x_n>2$ for every $n\ge 1$.
+b) Show that $x_{n+1}-x_n=-\frac{(x_n-1)(x_n-2)}{x_n}$ and deduce that the sequence is strictly decreasing.
+D. Choose the method
+-
+Study the monotonicity of the sequences:
+a) $a_n=\sqrt{n+1}-\sqrt{n}$;
+b) $b_n=n+\frac{1}{n}$;
+c) $c_n=\frac{n^2}{n^2+1}$.
+Hint: for a) multiply by the conjugate.
+-
+Decide which of the following sequences are monotonic. Justify your answer.
+a) $a_n=\frac{(-1)^n}{n}$;
+b) $b_n=n+(-1)^n$;
+c) $c_n=2n+(-1)^n$.
+For those who want more
+-
+Let $a$ be a real number and the sequence $x_1=a$, $x_{n+1}=x_n^2-2x_n+2$, for $n\ge 1$.
+a) Show that $x_{n+1}-1=(x_n-1)^2$ and $x_{n+1}-x_n=(x_n-1)(x_n-2)$.
+b) If $a\in(1;\ 2)$, show that the sequence is strictly decreasing.
+c) If $a>2$, show that the sequence is strictly increasing.
+d) For which values of $a$ is the sequence constant?
+
+---
 
 ### Fișă de lucru: operații cu limite de șiruri
 - Source (RO): https://lauramiron.mqgrader.ro/materiale/fisa-lucru-operatii-limite-siruri-1035
