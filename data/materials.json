@@ -111,6 +111,14 @@
         "ro": "Șiruri și progresii",
         "en": "Sequences and progressions"
       }
+    },
+    {
+      "id": "numere-complexe",
+      "grade": 10,
+      "title": {
+        "ro": "Numere complexe",
+        "en": "Complex numbers"
+      }
     }
   ],
   "grades": {
@@ -3143,6 +3151,94 @@
       "results": {
         "version": 1,
         "checks": 27
+      }
+    },
+    {
+      "slug": "fisa-lucru-forma-trigonometrica-numere-complexe",
+      "uid": "1039",
+      "topic": "numere-complexe",
+      "kind": "fisa-lucru",
+      "alsoKind": "teorie",
+      "title": {
+        "ro": "Fișă de lucru: forma trigonometrică a numerelor complexe",
+        "en": "Worksheet: the trigonometric form of complex numbers"
+      },
+      "seoTitle": {
+        "ro": "Forma trigonometrică a numerelor complexe",
+        "en": "Trigonometric form of complex numbers"
+      },
+      "published": "2026-11-23",
+      "description": {
+        "ro": "Fișă de lucru pentru clasa a X-a: modulul, argumentul redus și forma trigonometrică a unui număr complex, înmulțire și împărțire, 16 exerciții.",
+        "en": "Grade 10 worksheet: the modulus, the principal argument and the trigonometric form of a complex number, multiplication and division, 16 exercises."
+      },
+      "pdf": "materiale/pdf/fisa-lucru-forma-trigonometrica-numere-complexe-1039.pdf",
+      "youtube": null,
+      "import": {
+        "date": "2026-11-23",
+        "workflow": 5,
+        "pdf": "source"
+      },
+      "summary": {
+        "ro": "Fișa arată cum se calculează modulul și argumentul redus al unui număr complex, cum se trece din forma algebrică în forma trigonometrică și invers și cum se recunoaște o scriere greșită. Se înmulțesc și se împart numere complexe în formă trigonometrică, cu interpretarea geometrică: rotație și omotetie.",
+        "en": "The worksheet shows how to find the modulus and the principal argument of a complex number, how to go from the algebraic form to the trigonometric form and back, and how to spot a wrong form. Complex numbers are multiplied and divided in trigonometric form, with the geometric meaning: rotation and dilation."
+      },
+      "faq": [
+        {
+          "q": {
+            "ro": "Cum aleg argumentul redus după cadran?",
+            "en": "How do I choose the principal argument by the quadrant?"
+          },
+          "a": {
+            "ro": "Afli întâi unghiul ascuțit t₀ din tg t₀ = |b| / |a|. Apoi, după semnele lui a și b: în cadranul I argumentul este t₀, în cadranul II este π − t₀, în cadranul III este π + t₀, iar în cadranul IV este 2π − t₀. La final verifici că r cos t = a și r sin t = b.",
+            "en": "First find the acute angle t₀ from tg t₀ = |b| / |a|. Then, by the signs of a and b: in quadrant I the argument is t₀, in quadrant II it is π − t₀, in quadrant III it is π + t₀, and in quadrant IV it is 2π − t₀. At the end check that r cos t = a and r sin t = b."
+          }
+        },
+        {
+          "q": {
+            "ro": "De ce −2(cos t + i sin t) nu este formă trigonometrică?",
+            "en": "Why is −2(cos t + i sin t) not a trigonometric form?"
+          },
+          "a": {
+            "ro": "În forma trigonometrică factorul din fața parantezei este modulul, deci trebuie să fie strict pozitiv. Semnul minus se mută în unghi: −cos t = cos(π + t) și −sin t = sin(π + t), deci numărul este 2(cos(π + t) + i sin(π + t)), cu unghiul adus apoi în intervalul [0, 2π).",
+            "en": "In the trigonometric form the factor in front of the bracket is the modulus, so it must be strictly positive. The minus sign moves into the angle: −cos t = cos(π + t) and −sin t = sin(π + t), so the number is 2(cos(π + t) + i sin(π + t)), with the angle then brought into the interval [0, 2π)."
+          }
+        },
+        {
+          "q": {
+            "ro": "Ce înseamnă geometric înmulțirea a două numere complexe?",
+            "en": "What does multiplying two complex numbers mean geometrically?"
+          },
+          "a": {
+            "ro": "Modulele se înmulțesc, iar argumentele se adună. Așadar, înmulțirea cu r(cos t + i sin t) rotește punctul în jurul originii cu unghiul t și îl depărtează de origine de r ori: o rotație compusă cu o omotetie. De exemplu, înmulțirea cu i este rotația cu π/2.",
+            "en": "The moduli multiply and the arguments add. So multiplying by r(cos t + i sin t) rotates the point about the origin by the angle t and moves it r times as far from the origin: a rotation combined with a dilation. For example, multiplying by i is the rotation by π/2."
+          }
+        }
+      ],
+      "keywords": {
+        "ro": [
+          "forma trigonometrică",
+          "numere complexe",
+          "modulul unui număr complex",
+          "argumentul redus",
+          "înmulțirea numerelor complexe",
+          "rotație",
+          "clasa a 10-a",
+          "clasa a X-a"
+        ],
+        "en": [
+          "trigonometric form",
+          "complex numbers",
+          "modulus of a complex number",
+          "principal argument",
+          "multiplying complex numbers",
+          "rotation",
+          "grade 10"
+        ]
+      },
+      "results": {
+        "version": 1,
+        "checks": 46
       }
     }
   ]

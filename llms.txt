@@ -70,6 +70,14 @@
 - [Fișă recapitulativă: pregătire pentru testul inițial (model Evaluare Națională)](https://lauramiron.mqgrader.ro/materiale/fisa-recapitulativa-gimnaziu-test-initial-1003) ([EN](https://lauramiron.mqgrader.ro/en/materiale/fisa-recapitulativa-gimnaziu-test-initial-1003)): Fișă recapitulativă pentru clasa a IX-a: pregătire pentru testul inițial, în format de Evaluare Națională, cu algebră și geometrie. (fisa-recapitulativa, clasa a 9-a / grade 9, updated 2026-09-13)
 - [Fișă de recapitulare și evaluare inițială (profil matematică-informatică)](https://lauramiron.mqgrader.ro/materiale/fisa-recapitulare-evaluare-initiala-1004) ([EN](https://lauramiron.mqgrader.ro/en/materiale/fisa-recapitulare-evaluare-initiala-1004)): Fișă de recapitulare și evaluare inițială pentru clasa a IX-a, matematică-informatică: funcții, trigonometrie și geometrie. (fisa-recapitulativa, clasa a 9-a / grade 9, updated 2026-09-13)
 
+## Clasa a X-a / Grade 10
+
+- Clasa a X-a: https://lauramiron.mqgrader.ro/clasa-10
+- Grade 10: https://lauramiron.mqgrader.ro/en/clasa-10
+
+### Numere complexe / Complex numbers
+- [Fișă de lucru: forma trigonometrică a numerelor complexe](https://lauramiron.mqgrader.ro/materiale/fisa-lucru-forma-trigonometrica-numere-complexe-1039) ([EN](https://lauramiron.mqgrader.ro/en/materiale/fisa-lucru-forma-trigonometrica-numere-complexe-1039)): Fișă de lucru pentru clasa a X-a: modulul, argumentul redus și forma trigonometrică a unui număr complex, înmulțire și împărțire, 16 exerciții. (fisa-lucru, clasa a 10-a / grade 10, updated 2026-11-23)
+
 ## Clasa a XI-a / Grade 11
 
 - Clasa a XI-a: https://lauramiron.mqgrader.ro/clasa-11

@@ -1,0 +1,670 @@
+{
+  "uid": "1039",
+  "version": 1,
+  "items": {
+    "7": {
+      "kind": "set",
+      "accept": [
+        "{π/3; 5π/3}"
+      ],
+      "show": "$z_{1,2}=1\\pm i\\sqrt{3}$: $2\\left(\\cos\\frac{\\pi}{3}+i\\sin\\frac{\\pi}{3}\\right)$ și $2\\left(\\cos\\frac{5\\pi}{3}+i\\sin\\frac{5\\pi}{3}\\right)$; argumentele au suma $2\\pi$",
+      "hint": {
+        "ro": "mulțimea argumentelor reduse ale soluțiilor",
+        "en": "the set of the principal arguments of the solutions"
+      }
+    },
+    "1a": {
+      "kind": "list",
+      "show": "$5=5(\\cos 0+i\\sin 0)$",
+      "accept": [
+        "5; 0"
+      ],
+      "hint": {
+        "ro": "modulul; argumentul redus",
+        "en": "modulus; principal argument"
+      }
+    },
+    "1b": {
+      "kind": "list",
+      "show": "$-3=3(\\cos\\pi+i\\sin\\pi)$",
+      "accept": [
+        "3; π"
+      ],
+      "hint": {
+        "ro": "modulul; argumentul redus",
+        "en": "modulus; principal argument"
+      }
+    },
+    "1c": {
+      "kind": "list",
+      "show": "$2i=2\\left(\\cos\\frac{\\pi}{2}+i\\sin\\frac{\\pi}{2}\\right)$",
+      "accept": [
+        "2; π/2"
+      ],
+      "hint": {
+        "ro": "modulul; argumentul redus",
+        "en": "modulus; principal argument"
+      }
+    },
+    "1d": {
+      "kind": "list",
+      "show": "$-4i=4\\left(\\cos\\frac{3\\pi}{2}+i\\sin\\frac{3\\pi}{2}\\right)$",
+      "accept": [
+        "4; 3π/2"
+      ],
+      "hint": {
+        "ro": "modulul; argumentul redus",
+        "en": "modulus; principal argument"
+      }
+    },
+    "2a": {
+      "check": false,
+      "why": "open",
+      "show": "$z_A=3+3i$, $z_B=-2+2i$, $z_C=-4$, $z_D=-1-i$, $z_E=2-2i$, $z_F=3i$"
+    },
+    "2b": {
+      "check": false,
+      "why": "open",
+      "show": "$A$: cadranul I, $B$: cadranul II, $C$: semiaxa negativă $Ox$, $D$: cadranul III, $E$: cadranul IV, $F$: semiaxa pozitivă $Oy$"
+    },
+    "2c": {
+      "kind": "list",
+      "show": "$A$: $3\\sqrt{2}$, $\\frac{\\pi}{4}$; $B$: $2\\sqrt{2}$, $\\frac{3\\pi}{4}$; $C$: $4$, $\\pi$; $D$: $\\sqrt{2}$, $\\frac{5\\pi}{4}$; $E$: $2\\sqrt{2}$, $\\frac{7\\pi}{4}$; $F$: $3$, $\\frac{\\pi}{2}$",
+      "accept": [
+        "3√2; π/4; 2√2; 3π/4; 4; π; √2; 5π/4; 2√2; 7π/4; 3; π/2"
+      ],
+      "hint": {
+        "ro": "modulul; argumentul, pe rând pentru $A$, $B$, $C$, $D$, $E$, $F$ (12 valori)",
+        "en": "modulus; argument, in turn for $A$, $B$, $C$, $D$, $E$, $F$ (12 values)"
+      }
+    },
+    "3a": {
+      "kind": "options",
+      "options": [
+        {
+          "value": "I",
+          "label": {
+            "ro": "cadranul I",
+            "en": "quadrant I"
+          }
+        },
+        {
+          "value": "II",
+          "label": {
+            "ro": "cadranul II",
+            "en": "quadrant II"
+          }
+        },
+        {
+          "value": "III",
+          "label": {
+            "ro": "cadranul III",
+            "en": "quadrant III"
+          }
+        },
+        {
+          "value": "IV",
+          "label": {
+            "ro": "cadranul IV",
+            "en": "quadrant IV"
+          }
+        }
+      ],
+      "accept": [
+        "IV"
+      ],
+      "show": "cadranul IV, $\\arg z_1\\in\\left(\\frac{3\\pi}{2},2\\pi\\right)$"
+    },
+    "3b": {
+      "kind": "options",
+      "options": [
+        {
+          "value": "I",
+          "label": {
+            "ro": "cadranul I",
+            "en": "quadrant I"
+          }
+        },
+        {
+          "value": "II",
+          "label": {
+            "ro": "cadranul II",
+            "en": "quadrant II"
+          }
+        },
+        {
+          "value": "III",
+          "label": {
+            "ro": "cadranul III",
+            "en": "quadrant III"
+          }
+        },
+        {
+          "value": "IV",
+          "label": {
+            "ro": "cadranul IV",
+            "en": "quadrant IV"
+          }
+        }
+      ],
+      "accept": [
+        "II"
+      ],
+      "show": "cadranul II, $\\arg z_2\\in\\left(\\frac{\\pi}{2},\\pi\\right)$"
+    },
+    "3c": {
+      "kind": "options",
+      "options": [
+        {
+          "value": "I",
+          "label": {
+            "ro": "cadranul I",
+            "en": "quadrant I"
+          }
+        },
+        {
+          "value": "II",
+          "label": {
+            "ro": "cadranul II",
+            "en": "quadrant II"
+          }
+        },
+        {
+          "value": "III",
+          "label": {
+            "ro": "cadranul III",
+            "en": "quadrant III"
+          }
+        },
+        {
+          "value": "IV",
+          "label": {
+            "ro": "cadranul IV",
+            "en": "quadrant IV"
+          }
+        }
+      ],
+      "accept": [
+        "III"
+      ],
+      "show": "cadranul III, $\\arg z_3\\in\\left(\\pi,\\frac{3\\pi}{2}\\right)$"
+    },
+    "3d": {
+      "kind": "options",
+      "options": [
+        {
+          "value": "I",
+          "label": {
+            "ro": "cadranul I",
+            "en": "quadrant I"
+          }
+        },
+        {
+          "value": "II",
+          "label": {
+            "ro": "cadranul II",
+            "en": "quadrant II"
+          }
+        },
+        {
+          "value": "III",
+          "label": {
+            "ro": "cadranul III",
+            "en": "quadrant III"
+          }
+        },
+        {
+          "value": "IV",
+          "label": {
+            "ro": "cadranul IV",
+            "en": "quadrant IV"
+          }
+        }
+      ],
+      "accept": [
+        "I"
+      ],
+      "show": "cadranul I, $\\arg z_4\\in\\left(0,\\frac{\\pi}{2}\\right)$"
+    },
+    "4a": {
+      "check": false,
+      "why": "open",
+      "show": "cercul de centru $O$ și rază $2$"
+    },
+    "4b": {
+      "check": false,
+      "why": "open",
+      "show": "semidreapta deschisă din $O$, bisectoarea cadranului I, fără $O$"
+    },
+    "4c": {
+      "check": false,
+      "why": "open",
+      "show": "sfertul de disc de centru $O$ și rază $2$ din cadranul I, cu marginea, fără $O$"
+    },
+    "5a": {
+      "kind": "list",
+      "show": "$\\sqrt{2}\\left(\\cos\\frac{\\pi}{4}+i\\sin\\frac{\\pi}{4}\\right)$",
+      "accept": [
+        "√2; π/4"
+      ],
+      "hint": {
+        "ro": "modulul; argumentul redus",
+        "en": "modulus; principal argument"
+      }
+    },
+    "5b": {
+      "kind": "list",
+      "show": "$\\sqrt{2}\\left(\\cos\\frac{3\\pi}{4}+i\\sin\\frac{3\\pi}{4}\\right)$",
+      "accept": [
+        "√2; 3π/4"
+      ],
+      "hint": {
+        "ro": "modulul; argumentul redus",
+        "en": "modulus; principal argument"
+      }
+    },
+    "5c": {
+      "kind": "list",
+      "show": "$2\\left(\\cos\\frac{\\pi}{6}+i\\sin\\frac{\\pi}{6}\\right)$",
+      "accept": [
+        "2; π/6"
+      ],
+      "hint": {
+        "ro": "modulul; argumentul redus",
+        "en": "modulus; principal argument"
+      }
+    },
+    "5d": {
+      "kind": "list",
+      "show": "$2\\left(\\cos\\frac{5\\pi}{3}+i\\sin\\frac{5\\pi}{3}\\right)$",
+      "accept": [
+        "2; 5π/3"
+      ],
+      "hint": {
+        "ro": "modulul; argumentul redus",
+        "en": "modulus; principal argument"
+      }
+    },
+    "5e": {
+      "kind": "list",
+      "show": "$2\\sqrt{2}\\left(\\cos\\frac{5\\pi}{4}+i\\sin\\frac{5\\pi}{4}\\right)$",
+      "accept": [
+        "2√2; 5π/4"
+      ],
+      "hint": {
+        "ro": "modulul; argumentul redus",
+        "en": "modulus; principal argument"
+      }
+    },
+    "5f": {
+      "kind": "list",
+      "show": "$2\\left(\\cos\\frac{7\\pi}{6}+i\\sin\\frac{7\\pi}{6}\\right)$",
+      "accept": [
+        "2; 7π/6"
+      ],
+      "hint": {
+        "ro": "modulul; argumentul redus",
+        "en": "modulus; principal argument"
+      }
+    },
+    "6a": {
+      "kind": "list",
+      "show": "$z_1=i=\\cos\\frac{\\pi}{2}+i\\sin\\frac{\\pi}{2}$",
+      "accept": [
+        "1; π/2"
+      ],
+      "hint": {
+        "ro": "modulul; argumentul redus",
+        "en": "modulus; principal argument"
+      }
+    },
+    "6b": {
+      "kind": "list",
+      "show": "$z_2=1-i\\sqrt{3}=2\\left(\\cos\\frac{5\\pi}{3}+i\\sin\\frac{5\\pi}{3}\\right)$",
+      "accept": [
+        "2; 5π/3"
+      ],
+      "hint": {
+        "ro": "modulul; argumentul redus",
+        "en": "modulus; principal argument"
+      }
+    },
+    "6c": {
+      "kind": "list",
+      "show": "$z_3=-i=\\cos\\frac{3\\pi}{2}+i\\sin\\frac{3\\pi}{2}$",
+      "accept": [
+        "1; 3π/2"
+      ],
+      "hint": {
+        "ro": "modulul; argumentul redus",
+        "en": "modulus; principal argument"
+      }
+    },
+    "6d": {
+      "kind": "list",
+      "show": "$i^{2027}=-i$, $z_4=1-i=\\sqrt{2}\\left(\\cos\\frac{7\\pi}{4}+i\\sin\\frac{7\\pi}{4}\\right)$",
+      "accept": [
+        "√2; 7π/4"
+      ],
+      "hint": {
+        "ro": "modulul; argumentul redus",
+        "en": "modulus; principal argument"
+      }
+    },
+    "8a": {
+      "kind": "list",
+      "show": "$\\sqrt{2}\\left(\\frac{\\sqrt{2}}{2}+i\\frac{\\sqrt{2}}{2}\\right)=1+i\\ne -1-i$",
+      "accept": [
+        "1; 1"
+      ],
+      "hint": {
+        "ro": "partea reală; partea imaginară",
+        "en": "real part; imaginary part"
+      }
+    },
+    "8b": {
+      "kind": "list",
+      "show": "cadranul III, $t=\\frac{5\\pi}{4}$: $z=\\sqrt{2}\\left(\\cos\\frac{5\\pi}{4}+i\\sin\\frac{5\\pi}{4}\\right)$",
+      "accept": [
+        "√2; 5π/4"
+      ],
+      "hint": {
+        "ro": "modulul; argumentul redus",
+        "en": "modulus; principal argument"
+      }
+    },
+    "9a": {
+      "kind": "list",
+      "show": "$z_1=1+i\\sqrt{3}$",
+      "accept": [
+        "1; √3"
+      ],
+      "hint": {
+        "ro": "partea reală; partea imaginară",
+        "en": "real part; imaginary part"
+      }
+    },
+    "9b": {
+      "kind": "list",
+      "show": "$z_2=-2\\sqrt{3}+2i$",
+      "accept": [
+        "-2√3; 2"
+      ],
+      "hint": {
+        "ro": "partea reală; partea imaginară",
+        "en": "real part; imaginary part"
+      }
+    },
+    "9c": {
+      "kind": "list",
+      "show": "$z_3=1-i$",
+      "accept": [
+        "1; -1"
+      ],
+      "hint": {
+        "ro": "partea reală; partea imaginară",
+        "en": "real part; imaginary part"
+      }
+    },
+    "9d": {
+      "kind": "list",
+      "show": "$z_4=-3$",
+      "accept": [
+        "-3; 0"
+      ],
+      "hint": {
+        "ro": "partea reală; partea imaginară",
+        "en": "real part; imaginary part"
+      }
+    },
+    "9e": {
+      "kind": "list",
+      "show": "$z_5=-3-3i\\sqrt{3}$",
+      "accept": [
+        "-3; -3√3"
+      ],
+      "hint": {
+        "ro": "partea reală; partea imaginară",
+        "en": "real part; imaginary part"
+      }
+    },
+    "10a": {
+      "kind": "list",
+      "show": "$\\overline{z}=2\\left(\\cos\\frac{11\\pi}{6}+i\\sin\\frac{11\\pi}{6}\\right)$, $-z=2\\left(\\cos\\frac{7\\pi}{6}+i\\sin\\frac{7\\pi}{6}\\right)$, $-\\overline{z}=2\\left(\\cos\\frac{5\\pi}{6}+i\\sin\\frac{5\\pi}{6}\\right)$",
+      "accept": [
+        "11π/6; 7π/6; 5π/6"
+      ],
+      "hint": {
+        "ro": "argumentele reduse ale lui $\\overline{z}$, $-z$, $-\\overline{z}$",
+        "en": "the principal arguments of $\\overline{z}$, $-z$, $-\\overline{z}$"
+      }
+    },
+    "10b": {
+      "check": false,
+      "why": "open",
+      "show": "simetrice față de $Ox$, față de $O$ și față de $Oy$; cele patru puncte formează un dreptunghi"
+    },
+    "11a": {
+      "kind": "list",
+      "show": "Da",
+      "accept": [
+        "3; π/7"
+      ],
+      "hint": {
+        "ro": "modulul; argumentul redus",
+        "en": "modulus; principal argument"
+      }
+    },
+    "11b": {
+      "kind": "list",
+      "show": "Nu: $2\\left(\\cos\\frac{9\\pi}{5}+i\\sin\\frac{9\\pi}{5}\\right)$",
+      "accept": [
+        "2; 9π/5"
+      ],
+      "hint": {
+        "ro": "modulul; argumentul redus",
+        "en": "modulus; principal argument"
+      }
+    },
+    "11c": {
+      "kind": "list",
+      "show": "Nu: $4\\left(\\cos\\frac{4\\pi}{3}+i\\sin\\frac{4\\pi}{3}\\right)$",
+      "accept": [
+        "4; 4π/3"
+      ],
+      "hint": {
+        "ro": "modulul; argumentul redus",
+        "en": "modulus; principal argument"
+      }
+    },
+    "11d": {
+      "kind": "list",
+      "show": "Nu: $\\cos\\frac{3\\pi}{8}+i\\sin\\frac{3\\pi}{8}$",
+      "accept": [
+        "1; 3π/8"
+      ],
+      "hint": {
+        "ro": "modulul; argumentul redus",
+        "en": "modulus; principal argument"
+      }
+    },
+    "11e": {
+      "kind": "list",
+      "show": "Nu: $5\\left(\\cos\\frac{\\pi}{4}+i\\sin\\frac{\\pi}{4}\\right)$",
+      "accept": [
+        "5; π/4"
+      ],
+      "hint": {
+        "ro": "modulul; argumentul redus",
+        "en": "modulus; principal argument"
+      }
+    },
+    "11f": {
+      "kind": "list",
+      "show": "Nu: $\\sqrt{3}+i\\sqrt{3}=\\sqrt{6}\\left(\\cos\\frac{\\pi}{4}+i\\sin\\frac{\\pi}{4}\\right)$",
+      "accept": [
+        "√6; π/4"
+      ],
+      "hint": {
+        "ro": "modulul; argumentul redus",
+        "en": "modulus; principal argument"
+      }
+    },
+    "12a": {
+      "kind": "text",
+      "show": "$\\cos\\left(\\frac{\\pi}{2}-x\\right)+i\\sin\\left(\\frac{\\pi}{2}-x\\right)$",
+      "accept": [
+        "pi/2-x",
+        "-x+pi/2",
+        "π/2-x",
+        "-x+π/2"
+      ],
+      "hint": {
+        "ro": "argumentul redus, în funcție de x, de exemplu pi-x",
+        "en": "the principal argument in terms of x, for example pi-x"
+      }
+    },
+    "12b": {
+      "kind": "text",
+      "show": "$\\cos(\\pi-x)+i\\sin(\\pi-x)$",
+      "accept": [
+        "pi-x",
+        "-x+pi",
+        "π-x",
+        "-x+π"
+      ],
+      "hint": {
+        "ro": "argumentul redus, în funcție de x, de exemplu pi-x",
+        "en": "the principal argument in terms of x, for example pi-x"
+      }
+    },
+    "12c": {
+      "kind": "text",
+      "show": "$\\cos(\\pi+x)+i\\sin(\\pi+x)$",
+      "accept": [
+        "pi+x",
+        "x+pi",
+        "π+x",
+        "x+π"
+      ],
+      "hint": {
+        "ro": "argumentul redus, în funcție de x, de exemplu pi-x",
+        "en": "the principal argument in terms of x, for example pi-x"
+      }
+    },
+    "13a": {
+      "kind": "list",
+      "show": "$8\\left(\\cos\\frac{\\pi}{2}+i\\sin\\frac{\\pi}{2}\\right)=8i$",
+      "accept": [
+        "0; 8"
+      ],
+      "hint": {
+        "ro": "partea reală; partea imaginară",
+        "en": "real part; imaginary part"
+      }
+    },
+    "13b": {
+      "kind": "list",
+      "show": "$2\\left(\\cos\\frac{\\pi}{3}+i\\sin\\frac{\\pi}{3}\\right)=1+i\\sqrt{3}$",
+      "accept": [
+        "1; √3"
+      ],
+      "hint": {
+        "ro": "partea reală; partea imaginară",
+        "en": "real part; imaginary part"
+      }
+    },
+    "13c": {
+      "kind": "list",
+      "show": "$\\frac{1}{2}\\left(\\cos\\frac{5\\pi}{3}+i\\sin\\frac{5\\pi}{3}\\right)=\\frac{1}{4}-\\frac{\\sqrt{3}}{4}i$",
+      "accept": [
+        "1/4; -√3/4"
+      ],
+      "hint": {
+        "ro": "partea reală; partea imaginară",
+        "en": "real part; imaginary part"
+      }
+    },
+    "14a": {
+      "kind": "list",
+      "show": "$z_1=\\sqrt{2}\\left(\\cos\\frac{\\pi}{4}+i\\sin\\frac{\\pi}{4}\\right)$, $z_2=2\\left(\\cos\\frac{\\pi}{6}+i\\sin\\frac{\\pi}{6}\\right)$",
+      "accept": [
+        "√2; π/4; 2; π/6"
+      ],
+      "hint": {
+        "ro": "modulul și argumentul lui $z_1$, apoi ale lui $z_2$",
+        "en": "the modulus and argument of $z_1$, then of $z_2$"
+      }
+    },
+    "14b": {
+      "kind": "list",
+      "show": "$\\left(\\sqrt{3}-1\\right)+\\left(\\sqrt{3}+1\\right)i=2\\sqrt{2}\\left(\\cos\\frac{5\\pi}{12}+i\\sin\\frac{5\\pi}{12}\\right)$",
+      "accept": [
+        "√3-1; √3+1"
+      ],
+      "hint": {
+        "ro": "partea reală; partea imaginară",
+        "en": "real part; imaginary part"
+      }
+    },
+    "14c": {
+      "kind": "list",
+      "show": "$\\cos\\frac{5\\pi}{12}=\\frac{\\sqrt{6}-\\sqrt{2}}{4}$, $\\sin\\frac{5\\pi}{12}=\\frac{\\sqrt{6}+\\sqrt{2}}{4}$",
+      "accept": [
+        "(√6-√2)/4; (√6+√2)/4"
+      ],
+      "hint": {
+        "ro": "$\\cos\\frac{5\\pi}{12}$; $\\sin\\frac{5\\pi}{12}$",
+        "en": "$\\cos\\frac{5\\pi}{12}$; $\\sin\\frac{5\\pi}{12}$"
+      }
+    },
+    "15a": {
+      "kind": "list",
+      "show": "$z_B=i(3+i)=-1+3i$",
+      "accept": [
+        "-1; 3"
+      ],
+      "hint": {
+        "ro": "partea reală; partea imaginară",
+        "en": "real part; imaginary part"
+      }
+    },
+    "15b": {
+      "check": false,
+      "why": "open",
+      "show": "rotația de centru $O$ și unghi $\\frac{\\pi}{4}$ compusă cu omotetia de raport $\\sqrt{2}$; rotația de unghi $\\frac{5\\pi}{3}$ compusă cu omotetia de raport $2$"
+    },
+    "15c": {
+      "kind": "list",
+      "show": "$z_Q=2+2i\\sqrt{3}$; $OP=OQ=PQ=4$",
+      "accept": [
+        "2; 2√3"
+      ],
+      "hint": {
+        "ro": "partea reală; partea imaginară",
+        "en": "real part; imaginary part"
+      }
+    },
+    "16a": {
+      "check": false,
+      "why": "proof",
+      "show": "$1+\\cos x=2\\cos^2\\frac{x}{2}$, $\\sin x=2\\sin\\frac{x}{2}\\cos\\frac{x}{2}$"
+    },
+    "16b": {
+      "check": false,
+      "why": "open",
+      "show": "$|z|=2\\cos\\frac{x}{2}$, $\\arg z=\\frac{x}{2}$"
+    },
+    "16c": {
+      "kind": "list",
+      "show": "$\\cos\\frac{\\pi}{3}+i\\sin\\frac{\\pi}{3}$",
+      "accept": [
+        "1; π/3"
+      ],
+      "hint": {
+        "ro": "modulul; argumentul redus",
+        "en": "modulus; principal argument"
+      }
+    }
+  }
+}

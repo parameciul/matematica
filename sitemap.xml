@@ -3,28 +3,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://lauramiron.mqgrader.ro/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <xhtml:link rel="alternate" hreflang="ro" href="https://lauramiron.mqgrader.ro/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://lauramiron.mqgrader.ro/en/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://lauramiron.mqgrader.ro/"/>
   </url>
   <url>
     <loc>https://lauramiron.mqgrader.ro/en/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <xhtml:link rel="alternate" hreflang="ro" href="https://lauramiron.mqgrader.ro/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://lauramiron.mqgrader.ro/en/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://lauramiron.mqgrader.ro/"/>
   </url>
   <url>
     <loc>https://lauramiron.mqgrader.ro/despre</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <xhtml:link rel="alternate" hreflang="ro" href="https://lauramiron.mqgrader.ro/despre"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://lauramiron.mqgrader.ro/en/despre"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://lauramiron.mqgrader.ro/despre"/>
   </url>
   <url>
     <loc>https://lauramiron.mqgrader.ro/en/despre</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <xhtml:link rel="alternate" hreflang="ro" href="https://lauramiron.mqgrader.ro/despre"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://lauramiron.mqgrader.ro/en/despre"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://lauramiron.mqgrader.ro/despre"/>
@@ -84,6 +84,20 @@
     <xhtml:link rel="alternate" hreflang="ro" href="https://lauramiron.mqgrader.ro/clasa-9"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://lauramiron.mqgrader.ro/en/clasa-9"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://lauramiron.mqgrader.ro/clasa-9"/>
+  </url>
+  <url>
+    <loc>https://lauramiron.mqgrader.ro/clasa-10</loc>
+    <lastmod>2026-11-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://lauramiron.mqgrader.ro/clasa-10"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lauramiron.mqgrader.ro/en/clasa-10"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lauramiron.mqgrader.ro/clasa-10"/>
+  </url>
+  <url>
+    <loc>https://lauramiron.mqgrader.ro/en/clasa-10</loc>
+    <lastmod>2026-11-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://lauramiron.mqgrader.ro/clasa-10"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lauramiron.mqgrader.ro/en/clasa-10"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lauramiron.mqgrader.ro/clasa-10"/>
   </url>
   <url>
     <loc>https://lauramiron.mqgrader.ro/clasa-11</loc>
@@ -596,5 +610,19 @@
     <xhtml:link rel="alternate" hreflang="ro" href="https://lauramiron.mqgrader.ro/materiale/fisa-lucru-monotonia-sirurilor-1038"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://lauramiron.mqgrader.ro/en/materiale/fisa-lucru-monotonia-sirurilor-1038"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://lauramiron.mqgrader.ro/materiale/fisa-lucru-monotonia-sirurilor-1038"/>
+  </url>
+  <url>
+    <loc>https://lauramiron.mqgrader.ro/materiale/fisa-lucru-forma-trigonometrica-numere-complexe-1039</loc>
+    <lastmod>2026-11-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://lauramiron.mqgrader.ro/materiale/fisa-lucru-forma-trigonometrica-numere-complexe-1039"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lauramiron.mqgrader.ro/en/materiale/fisa-lucru-forma-trigonometrica-numere-complexe-1039"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lauramiron.mqgrader.ro/materiale/fisa-lucru-forma-trigonometrica-numere-complexe-1039"/>
+  </url>
+  <url>
+    <loc>https://lauramiron.mqgrader.ro/en/materiale/fisa-lucru-forma-trigonometrica-numere-complexe-1039</loc>
+    <lastmod>2026-11-23</lastmod>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://lauramiron.mqgrader.ro/materiale/fisa-lucru-forma-trigonometrica-numere-complexe-1039"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lauramiron.mqgrader.ro/en/materiale/fisa-lucru-forma-trigonometrica-numere-complexe-1039"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lauramiron.mqgrader.ro/materiale/fisa-lucru-forma-trigonometrica-numere-complexe-1039"/>
   </url>
 </urlset>
