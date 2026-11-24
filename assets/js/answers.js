@@ -21,6 +21,8 @@
 // of the picked option, compared as text. With parts (one radio group per
 // part, like each simple proposition of a statement) the answer is the picked
 // values in part order, joined with ";".
+// Solutions: an item with `solutions: N` needs N different answers (a problem
+// with two solutions, like the triples 5; 9; 13 and 13; 9; 5). See readItem.
 (function () {
   const KINDS = ['choice', 'truefalse', 'number', 'list', 'set', 'interval', 'text', 'perm', 'grid', 'options'];
   const TOL = 1e-9;
@@ -382,12 +384,49 @@
       const v = String(answer == null ? '' : answer).trim().toUpperCase();
       return (v === 'A' || v === 'F') && String((item.accept || [])[0]).toUpperCase().trim() === v;
     }
+    if (solutionCount(item)) return verifySolutions(item, answer);
     const r = read(item.kind, answer);
     if (!r.ok) return false;
     return equal(item.kind, r, item.accept || []);
   }
 
-  const api = { KINDS, TOL, sameValue, parseNumber, splitValues, read, cleanupText, equal, exampleFor, verify };
+  // An item with `solutions: N` (N >= 2) has N required answers, one box
+  // each, joined with "|" in the saved text. Each box is read as the item's
+  // kind; every entry of `accept` is one required solution, and the student
+  // must give each of them once, in any order.
+  function solutionCount(item) {
+    return item && Number.isInteger(item.solutions) && item.solutions >= 2 ? item.solutions : 0;
+  }
+
+  function readItem(item, text) {
+    const n = solutionCount(item);
+    if (!n) return read(item.kind, text);
+    const parts = String(text == null ? '' : text).split('|');
+    if (parts.length !== n) return { ok: false };
+    const reads = [];
+    for (const p of parts) {
+      const r = read(item.kind, p);
+      if (!r.ok) return { ok: false };
+      reads.push(r);
+    }
+    return { ok: true, reads };
+  }
+
+  function verifySolutions(item, text) {
+    const r = readItem(item, text);
+    if (!r.ok) return false;
+    const accept = item.accept || [];
+    if (accept.length !== r.reads.length) return false;
+    const used = new Array(accept.length).fill(false);
+    return r.reads.every((student) => {
+      for (let i = 0; i < accept.length; i++) {
+        if (!used[i] && equal(item.kind, student, [accept[i]])) { used[i] = true; return true; }
+      }
+      return false;
+    });
+  }
+
+  const api = { KINDS, TOL, sameValue, parseNumber, splitValues, read, readItem, solutionCount, cleanupText, equal, exampleFor, verify };
   if (typeof module === 'object' && module.exports) module.exports = api;
   if (typeof window !== 'undefined') window.Answers = api;
 })();

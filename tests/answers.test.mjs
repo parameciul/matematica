@@ -175,3 +175,32 @@ test('unreadable answers fail every kind with an example', () => {
   assert.equal(Answers.read('interval', '[1; 2').ok, false);
   assert.equal(Answers.read('set', '{1; }').ok, false);
 });
+
+test('solutions: every required answer must be given, in any order', async () => {
+  const item = { kind: 'list', solutions: 2, accept: ['5; 9; 13', '13; 9; 5'] };
+  assert.equal(await Answers.verify(item, '5; 9; 13 | 13; 9; 5'), true);
+  assert.equal(await Answers.verify(item, '13; 9; 5 | 5; 9; 13'), true);
+  assert.equal(await Answers.verify(item, '5, 9, 13 | 13, 9, 5'), true);
+});
+
+test('solutions: one answer, a repeated answer or a wrong answer fails', async () => {
+  const item = { kind: 'list', solutions: 2, accept: ['5; 9; 13', '13; 9; 5'] };
+  assert.equal(await Answers.verify(item, '5; 9; 13'), false);
+  assert.equal(await Answers.verify(item, '5; 9; 13 | 5; 9; 13'), false);
+  assert.equal(await Answers.verify(item, '5; 9; 13 | 13; 9; 6'), false);
+  assert.equal(await Answers.verify(item, '5; 9; 13 | 13; 9; 5 | 1; 2; 3'), false);
+});
+
+test('solutions: readItem reports an unreadable or missing box', () => {
+  const item = { kind: 'list', solutions: 2, accept: ['1; 2', '2; 1'] };
+  assert.equal(Answers.readItem(item, '1; 2 | abc').ok, false);
+  assert.equal(Answers.readItem(item, '1; 2').ok, false);
+  assert.equal(Answers.readItem(item, '1; 2 | 2; 1').ok, true);
+  assert.equal(Answers.solutionCount(item), 2);
+  assert.equal(Answers.solutionCount({ kind: 'list', accept: ['1'] }), 0);
+});
+
+test('without solutions a list still accepts either listed order', async () => {
+  const item = { kind: 'list', accept: ['5; 9; 13', '13; 9; 5'] };
+  assert.equal(await Answers.verify(item, '5; 9; 13'), true);
+});

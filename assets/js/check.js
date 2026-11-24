@@ -221,20 +221,27 @@
       // buttons: a second row holds plain numbers only).
       openPerm(body, item);
     } else if (kind) {
-      const field = el('input', 'check-field');
-      field.type = 'text';
-      field.autocomplete = 'off';
-      field.spellcheck = false;
-      field.setAttribute('aria-label', t('check.answer'));
-      field.placeholder = window.Answers.exampleFor(kind);
-      body.appendChild(field);
+      const count = window.Answers.solutionCount(item) || 1;
+      let lastField = null;
+      if (count > 1) body.appendChild(el('p', 'check-example', t('check.solutionsHelp').replace('{n}', String(count))));
+      for (let i = 0; i < count; i++) {
+        const field = el('input', 'check-field');
+        field.type = 'text';
+        field.autocomplete = 'off';
+        field.spellcheck = false;
+        field.setAttribute('aria-label', count > 1 ? t('check.solutionN').replace('{n}', String(i + 1)) : t('check.answer'));
+        field.placeholder = count > 1 ? `${t('check.solutionN').replace('{n}', String(i + 1))}: ${window.Answers.exampleFor(kind)}` : window.Answers.exampleFor(kind);
+        field.addEventListener('focus', () => { lastField = field; });
+        body.appendChild(field);
+      }
+      const field = { get current() { return lastField || body.querySelector('.check-field'); } };
       const example = el('p', 'check-example', t('check.example').replace('{example}', window.Answers.exampleFor(kind)));
       body.appendChild(example);
       const syms = el('div', 'check-syms');
       SYMBOLS.forEach((s) => {
         const btn = el('button', 'sym', s);
         btn.type = 'button';
-        btn.addEventListener('click', () => typeAt(field, s));
+        btn.addEventListener('click', () => typeAt(field.current, s));
         syms.appendChild(btn);
       });
       body.appendChild(syms);
@@ -442,8 +449,13 @@
       const parts = inputs.map((i) => i.value.trim());
       return { value: parts.join('; '), incomplete: parts.some((p) => !p) };
     }
-    const field = body.querySelector('.check-field');
-    return field ? { value: field.value } : null;
+    const fields = Array.from(body.querySelectorAll('.check-field'));
+    if (!fields.length) return null;
+    if (fields.length > 1) {
+      const parts = fields.map((f) => f.value.trim());
+      return { value: parts.join(' | '), incomplete: parts.some((p) => !p) };
+    }
+    return { value: fields[0].value };
   }
 
   async function ensureItems() {
@@ -514,7 +526,7 @@
       say(t('check.fillAll'), 'error');
       return;
     }
-    const read = window.Answers.read(item.kind, given.value);
+    const read = window.Answers.readItem(item, given.value);
     if (!read.ok) {
       say(t('check.unreadable').replace('{example}', window.Answers.exampleFor(item.kind)), 'error');
       return;

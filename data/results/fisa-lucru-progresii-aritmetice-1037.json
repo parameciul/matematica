@@ -1,6 +1,6 @@
 {
   "uid": "1037",
-  "version": 1,
+  "version": 2,
   "items": {
     "4": {
       "kind": "number",
@@ -47,6 +47,7 @@
     },
     "15": {
       "kind": "list",
+      "solutions": 2,
       "show": "$x=9$, $r=\\pm 4$: $5;\\ 9;\\ 13$",
       "accept": [
         "5; 9; 13",

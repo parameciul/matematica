@@ -256,6 +256,16 @@ export function checkItems(items) {
         if (!Answers.read(item.kind, a).ok) problems.push(`${where}: accept "${a}" cannot be read as ${item.kind}`);
       }
     }
+    if (item.solutions !== undefined) {
+      // N required answers, one box each; every accept entry is one of them.
+      if (!Number.isInteger(item.solutions) || item.solutions < 2 || item.solutions > 6) {
+        problems.push(`${where}: solutions must be a whole number from 2 to 6`);
+      } else if (!['number', 'list', 'set', 'interval', 'text'].includes(item.kind)) {
+        problems.push(`${where}: solutions only works with kind number, list, set, interval or text`);
+      } else if (Array.isArray(item.accept) && item.accept.length !== item.solutions) {
+        problems.push(`${where}: solutions is ${item.solutions} but accept holds ${item.accept.length} answers (one per solution)`);
+      }
+    }
     if (item.hint !== undefined) {
       const hint = item.hint;
       if (!hint || typeof hint.ro !== 'string' || !hint.ro.trim() || typeof hint.en !== 'string' || !hint.en.trim()) {
