@@ -44,6 +44,8 @@ https://:version.:project.pages.dev/*
 /tm25mlg/*
   X-Robots-Tag: noindex
   Cache-Control: no-store
+/materiale/pdf/fisa-lucru-criterii-convergenta-numarul-e-1041.pdf
+  Link: <https://lauramiron.mqgrader.ro/materiale/fisa-lucru-criterii-convergenta-numarul-e-1041>; rel="canonical"
 /materiale/pdf/fisa-lucru-evaluare-nationala-subiectul-1-1029.pdf
   Link: <https://lauramiron.mqgrader.ro/materiale/fisa-lucru-evaluare-nationala-subiectul-1-1029>; rel="canonical"
 /materiale/pdf/fisa-lucru-evaluare-nationala-subiectul-2-1030.pdf

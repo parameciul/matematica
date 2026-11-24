@@ -1,0 +1,774 @@
+{
+  "uid": "1041",
+  "version": 2,
+  "items": {
+    "14": {
+      "kind": "number",
+      "show": "$L=a+2=5$, deci $a=3$",
+      "accept": [
+        "3"
+      ],
+      "hint": {
+        "ro": "$a$",
+        "en": "$a$"
+      }
+    },
+    "20": {
+      "check": false,
+      "why": "open",
+      "show": "raportul tinde la $\\frac{a}{e}$: limita $0$ pentru $a<e$, $+\\infty$ pentru $a>e$; pentru $a=e$ criteriul nu decide"
+    },
+    "21": {
+      "kind": "text",
+      "show": "$\\frac{n(n+1)}{2}x-n<S_n\\le\\frac{n(n+1)}{2}x$; limita este $\\frac{x}{2}$",
+      "accept": [
+        "x/2",
+        "x:2",
+        "0,5x",
+        "0.5x",
+        "(1/2)x",
+        "(1/2)*x",
+        "(1/2)·x",
+        "1/2*x",
+        "1/2·x"
+      ],
+      "hint": {
+        "ro": "limita, în funcție de x",
+        "en": "the limit in terms of x"
+      }
+    },
+    "1a": {
+      "kind": "number",
+      "show": "$\\left|\\frac{n\\cos n}{n^2+1}\\right|\\le\\frac{1}{n}\\to 0$; limita este $0$",
+      "accept": [
+        "0"
+      ],
+      "hint": {
+        "ro": "limita: un număr (de exemplu 3/2 sau √2)",
+        "en": "the limit: a number (for example 3/2 or √2)"
+      }
+    },
+    "1b": {
+      "kind": "number",
+      "show": "$|x_n-2|\\le\\frac{3}{2n+1}\\to 0$; limita este $2$",
+      "accept": [
+        "2"
+      ],
+      "hint": {
+        "ro": "limita: un număr (de exemplu 3/2 sau √2)",
+        "en": "the limit: a number (for example 3/2 or √2)"
+      }
+    },
+    "1c": {
+      "kind": "number",
+      "show": "$\\left|x_n-\\frac{1}{3}\\right|\\le\\frac{3n+2}{3(3n^2+2)}\\to 0$; limita este $\\frac{1}{3}$",
+      "accept": [
+        "1/3"
+      ],
+      "hint": {
+        "ro": "limita: un număr (de exemplu 3/2 sau √2)",
+        "en": "the limit: a number (for example 3/2 or √2)"
+      }
+    },
+    "2a": {
+      "kind": "text",
+      "show": "$x_n\\ge n^2-5n\\to+\\infty$; limita este $+\\infty$",
+      "accept": [
+        "+∞",
+        "∞",
+        "+inf",
+        "inf",
+        "+infinit",
+        "infinit",
+        "+infinity",
+        "infinity"
+      ],
+      "hint": {
+        "ro": "limita: un număr, +∞ sau -∞",
+        "en": "the limit: a number, +∞ or -∞"
+      }
+    },
+    "2b": {
+      "kind": "text",
+      "show": "$x_n\\ge\\frac{n}{\\sqrt{n}}=\\sqrt{n}\\to+\\infty$; limita este $+\\infty$",
+      "accept": [
+        "+∞",
+        "∞",
+        "+inf",
+        "inf",
+        "+infinit",
+        "infinit",
+        "+infinity",
+        "infinity"
+      ],
+      "hint": {
+        "ro": "limita: un număr, +∞ sau -∞",
+        "en": "the limit: a number, +∞ or -∞"
+      }
+    },
+    "2c": {
+      "kind": "text",
+      "show": "Bernoulli: $x_n\\ge 1+n\\to+\\infty$; limita este $+\\infty$",
+      "accept": [
+        "+∞",
+        "∞",
+        "+inf",
+        "inf",
+        "+infinit",
+        "infinit",
+        "+infinity",
+        "infinity"
+      ],
+      "hint": {
+        "ro": "limita: un număr, +∞ sau -∞",
+        "en": "the limit: a number, +∞ or -∞"
+      }
+    },
+    "2d": {
+      "kind": "text",
+      "show": "$x_n\\le 2-\\sqrt{n}\\to-\\infty$; limita este $-\\infty$",
+      "accept": [
+        "-∞",
+        "-inf",
+        "-infinit",
+        "-infinity"
+      ],
+      "hint": {
+        "ro": "limita: un număr, +∞ sau -∞",
+        "en": "the limit: a number, +∞ or -∞"
+      }
+    },
+    "3a": {
+      "kind": "truefalse",
+      "show": "Adevărat: $|x_n-0|\\le\\frac{1}{n}\\to 0$",
+      "accept": [
+        "A"
+      ]
+    },
+    "3b": {
+      "kind": "truefalse",
+      "show": "Fals: $x_n=0$",
+      "accept": [
+        "F"
+      ]
+    },
+    "3c": {
+      "kind": "truefalse",
+      "show": "Adevărat: consecința criteriului majorării",
+      "accept": [
+        "A"
+      ]
+    },
+    "3d": {
+      "kind": "truefalse",
+      "show": "Fals: $x_n=1$, $y_n=\\frac{1}{n}$",
+      "accept": [
+        "F"
+      ]
+    },
+    "3e": {
+      "kind": "truefalse",
+      "show": "Fals: $x_n=(-1)^n$",
+      "accept": [
+        "F"
+      ]
+    },
+    "4a": {
+      "kind": "number",
+      "show": "$\\frac{\\sqrt{n}-1}{\\sqrt{n}}<x_n\\le 1$; limita este $1$",
+      "accept": [
+        "1"
+      ],
+      "hint": {
+        "ro": "limita: un număr (de exemplu 3/2 sau √2)",
+        "en": "the limit: a number (for example 3/2 or √2)"
+      }
+    },
+    "4b": {
+      "kind": "number",
+      "show": "$\\frac{n\\sqrt{2}-1}{n+1}<x_n\\le\\frac{n\\sqrt{2}}{n+1}$; limita este $\\sqrt{2}$",
+      "accept": [
+        "√2"
+      ],
+      "hint": {
+        "ro": "limita: un număr (de exemplu 3/2 sau √2)",
+        "en": "the limit: a number (for example 3/2 or √2)"
+      }
+    },
+    "4c": {
+      "kind": "number",
+      "show": "$\\frac{\\sqrt{4n^2+n}-1}{n}<x_n\\le\\sqrt{4+\\frac{1}{n}}$; limita este $2$",
+      "accept": [
+        "2"
+      ],
+      "hint": {
+        "ro": "limita: un număr (de exemplu 3/2 sau √2)",
+        "en": "the limit: a number (for example 3/2 or √2)"
+      }
+    },
+    "5a": {
+      "kind": "number",
+      "show": "$\\frac{n}{\\sqrt{n^2+n}}\\le x_n\\le\\frac{n}{\\sqrt{n^2+1}}$; limita este $1$",
+      "accept": [
+        "1"
+      ],
+      "hint": {
+        "ro": "limita: un număr (de exemplu 3/2 sau √2)",
+        "en": "the limit: a number (for example 3/2 or √2)"
+      }
+    },
+    "5b": {
+      "kind": "number",
+      "show": "$\\frac{1}{2}\\le x_n\\le\\frac{n(n+1)}{2(n^2+1)}$; limita este $\\frac{1}{2}$",
+      "accept": [
+        "1/2"
+      ],
+      "hint": {
+        "ro": "limita: un număr (de exemplu 3/2 sau √2)",
+        "en": "the limit: a number (for example 3/2 or √2)"
+      }
+    },
+    "5c": {
+      "kind": "number",
+      "show": "$\\frac{n}{n^2+n}\\le x_n\\le\\frac{n}{n^2+1}$; limita este $0$",
+      "accept": [
+        "0"
+      ],
+      "hint": {
+        "ro": "limita: un număr (de exemplu 3/2 sau √2)",
+        "en": "the limit: a number (for example 3/2 or √2)"
+      }
+    },
+    "6a": {
+      "kind": "number",
+      "show": "$5\\le x_n\\le 5\\sqrt[n]{2}$; limita este $5$",
+      "accept": [
+        "5"
+      ],
+      "hint": {
+        "ro": "limita: un număr (de exemplu 3/2 sau √2)",
+        "en": "the limit: a number (for example 3/2 or √2)"
+      }
+    },
+    "6b": {
+      "kind": "number",
+      "show": "$4\\le x_n\\le 4\\sqrt[n]{3}$; limita este $4$",
+      "accept": [
+        "4"
+      ],
+      "hint": {
+        "ro": "limita: un număr (de exemplu 3/2 sau √2)",
+        "en": "the limit: a number (for example 3/2 or √2)"
+      }
+    },
+    "6c": {
+      "kind": "number",
+      "show": "$3\\le x_n\\le 3\\sqrt[n]{2}$; limita este $3$",
+      "accept": [
+        "3"
+      ],
+      "hint": {
+        "ro": "limita: un număr (de exemplu 3/2 sau √2)",
+        "en": "the limit: a number (for example 3/2 or √2)"
+      }
+    },
+    "7a": {
+      "check": false,
+      "why": "open",
+      "show": "marginile $0$ și $1$ au limite diferite; criteriul cleștelui cere aceeași limită"
+    },
+    "7b": {
+      "kind": "list",
+      "show": "$x_{2n}=\\frac{2n}{2n+1}\\to 1$, $x_{2n+1}=0\\to 0$; șirul nu are limită",
+      "accept": [
+        "1; 0"
+      ],
+      "hint": {
+        "ro": "$\\lim x_{2n}$; $\\lim x_{2n+1}$",
+        "en": "$\\lim x_{2n}$; $\\lim x_{2n+1}$"
+      }
+    },
+    "8a": {
+      "check": false,
+      "why": "proof",
+      "show": "crescător; $\\frac{1}{2}\\le x_n<1$"
+    },
+    "8b": {
+      "check": false,
+      "why": "proof",
+      "show": "crescător; $x_n\\le 2-\\frac{1}{n}<2$"
+    },
+    "8c": {
+      "check": false,
+      "why": "proof",
+      "show": "crescător; $x_n\\le 2-\\frac{1}{2^{n-1}}<2$"
+    },
+    "8d": {
+      "check": false,
+      "why": "proof",
+      "show": "$\\frac{x_{n+1}}{x_n}=\\frac{2n+1}{2n+2}<1$: descrescător; $0<x_n\\le\\frac{1}{2}$"
+    },
+    "9a": {
+      "kind": "list",
+      "show": "$x_2=\\sqrt{7}$, $x_3=\\sqrt{4+3\\sqrt{7}}$",
+      "accept": [
+        "√7; √(4+3√7)"
+      ],
+      "hint": {
+        "ro": "$x_2$; $x_3$",
+        "en": "$x_2$; $x_3$"
+      }
+    },
+    "9b": {
+      "check": false,
+      "why": "proof",
+      "show": "inducție: $0<x_{n+1}=\\sqrt{3x_n+4}<\\sqrt{16}=4$"
+    },
+    "9c": {
+      "check": false,
+      "why": "proof",
+      "show": "$x_{n+1}^2-x_n^2=(4-x_n)(1+x_n)>0$"
+    },
+    "9d": {
+      "kind": "number",
+      "show": "$\\ell=\\sqrt{3\\ell+4}$, $\\ell\\in\\{-1,4\\}$, $\\ell\\ge 1$: limita este $4$",
+      "accept": [
+        "4"
+      ],
+      "hint": {
+        "ro": "limita: un număr (de exemplu 3/2 sau √2)",
+        "en": "the limit: a number (for example 3/2 or √2)"
+      }
+    },
+    "10a": {
+      "kind": "number",
+      "show": "$x_2=\\frac{11}{6}$",
+      "accept": [
+        "11/6"
+      ],
+      "hint": {
+        "ro": "$x_2$",
+        "en": "$x_2$"
+      }
+    },
+    "10b": {
+      "check": false,
+      "why": "proof",
+      "show": "$x_{n+1}=\\frac{x_n}{2}+\\frac{1}{x_n}\\ge 2\\sqrt{\\frac{x_n}{2}\\cdot\\frac{1}{x_n}}=\\sqrt{2}$"
+    },
+    "10c": {
+      "check": false,
+      "why": "proof",
+      "show": "$x_{n+1}-x_n=\\frac{2-x_n^2}{2x_n}\\le 0$"
+    },
+    "10d": {
+      "kind": "number",
+      "show": "$\\ell=\\frac{\\ell}{2}+\\frac{1}{\\ell}$, $\\ell\\ge\\sqrt{2}$: limita este $\\sqrt{2}$",
+      "accept": [
+        "√2"
+      ],
+      "hint": {
+        "ro": "limita: un număr (de exemplu 3/2 sau √2)",
+        "en": "the limit: a number (for example 3/2 or √2)"
+      }
+    },
+    "11a": {
+      "kind": "list",
+      "show": "$x_2=4$, $x_3=16$, $x_4=256$",
+      "accept": [
+        "4; 16; 256"
+      ],
+      "hint": {
+        "ro": "$x_2$; $x_3$; $x_4$",
+        "en": "$x_2$; $x_3$; $x_4$"
+      }
+    },
+    "11b": {
+      "check": false,
+      "why": "open",
+      "show": "elevul trece la limită fără să știe că șirul are limită finită"
+    },
+    "11c": {
+      "kind": "text",
+      "show": "crescător și $x_n\\ge 2^n$; limita este $+\\infty$",
+      "accept": [
+        "+∞",
+        "∞",
+        "+inf",
+        "inf",
+        "+infinit",
+        "infinit",
+        "+infinity",
+        "infinity"
+      ],
+      "hint": {
+        "ro": "limita: un număr, +∞ sau -∞",
+        "en": "the limit: a number, +∞ or -∞"
+      }
+    },
+    "12a": {
+      "kind": "text",
+      "show": "$u_n=\\frac{5}{n}$, $L=5$: $e^5$",
+      "accept": [
+        "e^5",
+        "e^(5)",
+        "e⁵"
+      ],
+      "hint": {
+        "ro": "limita: o putere a lui e (de exemplu e^3 sau e^(-1)), un număr, +∞ sau -∞",
+        "en": "the limit: a power of e (for example e^3 or e^(-1)), a number, +∞ or -∞"
+      }
+    },
+    "12b": {
+      "kind": "text",
+      "show": "$u_n=-\\frac{2}{n}$, $L=-2$: $e^{-2}$",
+      "accept": [
+        "e^-2",
+        "e^(-2)",
+        "e⁻²",
+        "1/e^2",
+        "1/(e^2)",
+        "1/e²"
+      ],
+      "hint": {
+        "ro": "limita: o putere a lui e (de exemplu e^3 sau e^(-1)), un număr, +∞ sau -∞",
+        "en": "the limit: a power of e (for example e^3 or e^(-1)), a number, +∞ or -∞"
+      }
+    },
+    "12c": {
+      "kind": "text",
+      "show": "$u_n=\\frac{1}{n+1}$, $L=1$: $e$",
+      "accept": [
+        "e",
+        "e^1",
+        "e^(1)"
+      ],
+      "hint": {
+        "ro": "limita: o putere a lui e (de exemplu e^3 sau e^(-1)), un număr, +∞ sau -∞",
+        "en": "the limit: a power of e (for example e^3 or e^(-1)), a number, +∞ or -∞"
+      }
+    },
+    "12d": {
+      "kind": "text",
+      "show": "$u_n=\\frac{4}{2n-3}$, $L=2$: $e^2$",
+      "accept": [
+        "e^2",
+        "e^(2)",
+        "e²"
+      ],
+      "hint": {
+        "ro": "limita: o putere a lui e (de exemplu e^3 sau e^(-1)), un număr, +∞ sau -∞",
+        "en": "the limit: a power of e (for example e^3 or e^(-1)), a number, +∞ or -∞"
+      }
+    },
+    "12e": {
+      "kind": "text",
+      "show": "$u_n=\\frac{3n+1}{n^2-2n}$, $L=3$: $e^3$",
+      "accept": [
+        "e^3",
+        "e^(3)",
+        "e³"
+      ],
+      "hint": {
+        "ro": "limita: o putere a lui e (de exemplu e^3 sau e^(-1)), un număr, +∞ sau -∞",
+        "en": "the limit: a power of e (for example e^3 or e^(-1)), a number, +∞ or -∞"
+      }
+    },
+    "12f": {
+      "kind": "text",
+      "show": "$u_n=-\\frac{3}{n^2+2}$, $L=-3$: $e^{-3}$",
+      "accept": [
+        "e^-3",
+        "e^(-3)",
+        "e⁻³",
+        "1/e^3",
+        "1/(e^3)",
+        "1/e³"
+      ],
+      "hint": {
+        "ro": "limita: o putere a lui e (de exemplu e^3 sau e^(-1)), un număr, +∞ sau -∞",
+        "en": "the limit: a power of e (for example e^3 or e^(-1)), a number, +∞ or -∞"
+      }
+    },
+    "13a": {
+      "kind": "number",
+      "show": "$L=\\lim\\frac{n}{n^2}=0$: $e^0=1$",
+      "accept": [
+        "1"
+      ],
+      "hint": {
+        "ro": "limita: o putere a lui e (de exemplu e^3 sau e^(-1)), un număr, +∞ sau -∞",
+        "en": "the limit: a power of e (for example e^3 or e^(-1)), a number, +∞ or -∞"
+      }
+    },
+    "13b": {
+      "kind": "text",
+      "show": "$L=\\lim 2\\sqrt{n}=+\\infty$: limita este $+\\infty$",
+      "accept": [
+        "+∞",
+        "∞",
+        "+inf",
+        "inf",
+        "+infinit",
+        "infinit",
+        "+infinity",
+        "infinity"
+      ],
+      "hint": {
+        "ro": "limita: un număr, +∞ sau -∞",
+        "en": "the limit: a number, +∞ or -∞"
+      }
+    },
+    "13c": {
+      "kind": "number",
+      "show": "baza tinde la $\\frac{1}{2}$; $0<x_n\\le\\left(\\frac{2}{3}\\right)^n\\to 0$: limita este $0$",
+      "accept": [
+        "0"
+      ],
+      "hint": {
+        "ro": "limita: o putere a lui e (de exemplu e^3 sau e^(-1)), un număr, +∞ sau -∞",
+        "en": "the limit: a power of e (for example e^3 or e^(-1)), a number, +∞ or -∞"
+      }
+    },
+    "13d": {
+      "kind": "text",
+      "show": "baza tinde la $3$; $x_n\\ge 2^n$ pentru $n\\ge 3$: limita este $+\\infty$",
+      "accept": [
+        "+∞",
+        "∞",
+        "+inf",
+        "inf",
+        "+infinit",
+        "infinit",
+        "+infinity",
+        "infinity"
+      ],
+      "hint": {
+        "ro": "limita: un număr, +∞ sau -∞",
+        "en": "the limit: a number, +∞ or -∞"
+      }
+    },
+    "15a": {
+      "kind": "options",
+      "accept": [
+        "2"
+      ],
+      "options": [
+        {
+          "value": "1",
+          "label": {
+            "ro": "primul elev",
+            "en": "the first student"
+          },
+          "chip": {
+            "ro": "primul elev",
+            "en": "the first student"
+          }
+        },
+        {
+          "value": "2",
+          "label": {
+            "ro": "al doilea elev",
+            "en": "the second student"
+          },
+          "chip": {
+            "ro": "al doilea elev",
+            "en": "the second student"
+          }
+        }
+      ],
+      "show": "al doilea: $\\left[\\left(1+\\frac{1}{n}\\right)^n\\right]^3\\to e^3$"
+    },
+    "15b": {
+      "check": false,
+      "why": "open",
+      "show": "primul tratează cazul exceptat $1^{\\infty}$ ca pe $1$"
+    },
+    "16a": {
+      "kind": "number",
+      "show": "$2\\cdot\\frac{\\ln(1+u_n)}{u_n}$, $u_n=\\frac{2}{n}$: limita este $2$",
+      "accept": [
+        "2"
+      ],
+      "hint": {
+        "ro": "limita: un număr (de exemplu 3/2 sau √2)",
+        "en": "the limit: a number (for example 3/2 or √2)"
+      }
+    },
+    "16b": {
+      "kind": "text",
+      "show": "$\\frac{3^{u_n}-1}{u_n}\\to\\ln 3$, $u_n=\\frac{1}{n}$",
+      "accept": [
+        "ln3",
+        "ln(3)"
+      ],
+      "hint": {
+        "ro": "limita, de exemplu ln5",
+        "en": "the limit, for example ln5"
+      }
+    },
+    "16c": {
+      "kind": "number",
+      "show": "$\\frac{e^{u_n}-1}{u_n}\\to 1$, $u_n=\\frac{1}{n}$",
+      "accept": [
+        "1"
+      ],
+      "hint": {
+        "ro": "limita: un număr (de exemplu 3/2 sau √2)",
+        "en": "the limit: a number (for example 3/2 or √2)"
+      }
+    },
+    "17a": {
+      "kind": "number",
+      "show": "$\\frac{a_{n+1}}{a_n}\\to\\frac{1}{2}<1$: limita este $0$",
+      "accept": [
+        "0"
+      ],
+      "hint": {
+        "ro": "limita: un număr, +∞ sau -∞",
+        "en": "the limit: a number, +∞ or -∞"
+      }
+    },
+    "17b": {
+      "kind": "number",
+      "show": "$\\frac{a_{n+1}}{a_n}=2\\left(\\frac{n}{n+1}\\right)^n\\to\\frac{2}{e}<1$: limita este $0$",
+      "accept": [
+        "0"
+      ],
+      "hint": {
+        "ro": "limita: un număr, +∞ sau -∞",
+        "en": "the limit: a number, +∞ or -∞"
+      }
+    },
+    "17c": {
+      "kind": "text",
+      "show": "$\\frac{a_{n+1}}{a_n}=\\frac{n+1}{4}\\to+\\infty$: limita este $+\\infty$",
+      "accept": [
+        "+∞",
+        "∞",
+        "+inf",
+        "inf",
+        "+infinit",
+        "infinit",
+        "+infinity",
+        "infinity"
+      ],
+      "hint": {
+        "ro": "limita: un număr, +∞ sau -∞",
+        "en": "the limit: a number, +∞ or -∞"
+      }
+    },
+    "17d": {
+      "kind": "text",
+      "show": "$\\frac{a_{n+1}}{a_n}=\\frac{2(2n+1)}{n+1}\\to 4>1$: limita este $+\\infty$",
+      "accept": [
+        "+∞",
+        "∞",
+        "+inf",
+        "inf",
+        "+infinit",
+        "infinit",
+        "+infinity",
+        "infinity"
+      ],
+      "hint": {
+        "ro": "limita: un număr, +∞ sau -∞",
+        "en": "the limit: a number, +∞ or -∞"
+      }
+    },
+    "17e": {
+      "kind": "number",
+      "show": "raportul tinde la $1$, criteriul nu decide; direct, limita este $2$",
+      "accept": [
+        "2"
+      ],
+      "hint": {
+        "ro": "limita: un număr, +∞ sau -∞",
+        "en": "the limit: a number, +∞ or -∞"
+      }
+    },
+    "18a": {
+      "kind": "number",
+      "show": "criteriul majorării: $\\left|x_n-\\frac{1}{2}\\right|\\le\\frac{7}{2(2n^2+1)}$; limita este $\\frac{1}{2}$",
+      "accept": [
+        "1/2"
+      ],
+      "hint": {
+        "ro": "limita: o putere a lui e (de exemplu e^3 sau e^(-1)), un număr, +∞ sau -∞",
+        "en": "the limit: a power of e (for example e^3 or e^(-1)), a number, +∞ or -∞"
+      }
+    },
+    "18b": {
+      "kind": "text",
+      "show": "numărul $e$: $u_n=\\frac{2}{n^2+1}$, $L=2$; limita este $e^2$",
+      "accept": [
+        "e^2",
+        "e^(2)",
+        "e²"
+      ],
+      "hint": {
+        "ro": "limita: o putere a lui e (de exemplu e^3 sau e^(-1)), un număr, +∞ sau -∞",
+        "en": "the limit: a power of e (for example e^3 or e^(-1)), a number, +∞ or -∞"
+      }
+    },
+    "18c": {
+      "kind": "number",
+      "show": "împărțim la $n!$; $\\frac{2^n}{n!}\\to 0$, $\\frac{3^n}{n!}\\to 0$: limita este $1$",
+      "accept": [
+        "1"
+      ],
+      "hint": {
+        "ro": "limita: o putere a lui e (de exemplu e^3 sau e^(-1)), un număr, +∞ sau -∞",
+        "en": "the limit: a power of e (for example e^3 or e^(-1)), a number, +∞ or -∞"
+      }
+    },
+    "18d": {
+      "kind": "number",
+      "show": "criteriul cleștelui: $2\\le x_n\\le 2\\sqrt[n]{2}$; limita este $2$",
+      "accept": [
+        "2"
+      ],
+      "hint": {
+        "ro": "limita: o putere a lui e (de exemplu e^3 sau e^(-1)), un număr, +∞ sau -∞",
+        "en": "the limit: a power of e (for example e^3 or e^(-1)), a number, +∞ or -∞"
+      }
+    },
+    "18e": {
+      "kind": "number",
+      "show": "Weierstrass: descrescător, $x_n>3$; $\\ell=\\sqrt{2\\ell+3}$: limita este $3$",
+      "accept": [
+        "3"
+      ],
+      "hint": {
+        "ro": "limita: o putere a lui e (de exemplu e^3 sau e^(-1)), un număr, +∞ sau -∞",
+        "en": "the limit: a power of e (for example e^3 or e^(-1)), a number, +∞ or -∞"
+      }
+    },
+    "18f": {
+      "kind": "number",
+      "show": "$\\frac{n(n+1)(2n+1)}{6n^3}\\to\\frac{1}{3}$",
+      "accept": [
+        "1/3"
+      ],
+      "hint": {
+        "ro": "limita: o putere a lui e (de exemplu e^3 sau e^(-1)), un număr, +∞ sau -∞",
+        "en": "the limit: a power of e (for example e^3 or e^(-1)), a number, +∞ or -∞"
+      }
+    },
+    "19a": {
+      "check": false,
+      "why": "proof",
+      "show": "inegalitatea mediilor: $\\sqrt[n+1]{\\left(1+\\frac{1}{n}\\right)^n}<1+\\frac{1}{n+1}$"
+    },
+    "19b": {
+      "check": false,
+      "why": "proof",
+      "show": "$C_n^k\\frac{1}{n^k}\\le\\frac{1}{k!}\\le\\frac{1}{2^{k-1}}$, deci $e_n<3$"
+    },
+    "19c": {
+      "check": false,
+      "why": "proof",
+      "show": "crescător și mărginit: Weierstrass"
+    }
+  }
+}

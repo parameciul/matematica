@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Criterii de convergență a șirurilor. Numărul e – clasa a 11-a (XI)</title>
+  <meta name="description" content="Fișă de lucru pentru clasa a XI-a: criteriul majorării, criteriul cleștelui, Weierstrass, numărul e și criteriul raportului, cu 21 de exerciții.">
+  <meta name="author" content="Laura Miron">
+  <meta name="robots" content="max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="google-site-verification" content="lwpe3phdRnlGTaxwvpfcxbuygEudOHDa7i_hl_1wQQc">
+  <meta name="msvalidate.01" content="79E7F21C210EE6E1F04FDB1E5956620C">
+  <link rel="canonical" href="https://lauramiron.mqgrader.ro/materiale/fisa-lucru-criterii-convergenta-numarul-e-1041">
+  <link rel="alternate" hreflang="ro" href="https://lauramiron.mqgrader.ro/materiale/fisa-lucru-criterii-convergenta-numarul-e-1041">
+  <link rel="alternate" hreflang="en" href="https://lauramiron.mqgrader.ro/en/materiale/fisa-lucru-criterii-convergenta-numarul-e-1041">
+  <link rel="alternate" hreflang="x-default" href="https://lauramiron.mqgrader.ro/materiale/fisa-lucru-criterii-convergenta-numarul-e-1041">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Criterii de convergență a șirurilor. Numărul e – clasa a 11-a (XI)">
+  <meta property="og:description" content="Fișă de lucru pentru clasa a XI-a: criteriul majorării, criteriul cleștelui, Weierstrass, numărul e și criteriul raportului, cu 21 de exerciții.">
+  <meta property="og:url" content="https://lauramiron.mqgrader.ro/materiale/fisa-lucru-criterii-convergenta-numarul-e-1041">
+  <meta property="og:image" content="https://lauramiron.mqgrader.ro/assets/img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Materiale de matematică pentru clasele V–XII – Laura Miron">
+  <meta property="og:locale" content="ro_RO">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:site_name" content="Laura Miron">
+  <meta property="article:published_time" content="2026-11-24">
+  <meta property="article:modified_time" content="2026-11-24">
+  <meta property="og:updated_time" content="2026-11-24">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Criterii de convergență a șirurilor. Numărul e – clasa a 11-a (XI)">
+  <meta name="twitter:description" content="Fișă de lucru pentru clasa a XI-a: criteriul majorării, criteriul cleștelui, Weierstrass, numărul e și criteriul raportului, cu 21 de exerciții.">
+  <meta name="twitter:image" content="https://lauramiron.mqgrader.ro/assets/img/og-image.png">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fbfcfe">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1d2925">
+  <link rel="manifest" href="../site.webmanifest">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../favicon.ico" sizes="48x48">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+  <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('matematica.theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,700;0,800;1,400&family=Caveat:wght@600&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.18.1/dist/katex.min.css" integrity="sha384-1vdNCNel6Tx/NQa8IR1mGOGKsbGreCkOPfbtPPnUURJ5Tu2PRVfQ/7KLZC+Pi1p1" crossorigin="anonymous">
+  <link rel="stylesheet" href="../assets/css/style.css?v=dfd0a402b6">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.18.1/dist/katex.min.js" integrity="sha384-ycJ6GAwiS15LoUPipwJOrWTvkUHl/YqELValBwI5I4awP1EeEQJYarj+w85ntcz7" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.18.1/dist/contrib/auto-render.min.js" integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous"></script>
+  <script defer src="../assets/js/i18n.js?v=feb755cd88"></script>
+  <script defer src="../assets/js/catalog.js?v=7b3e472fde"></script>
+  <script defer src="../assets/js/shell.js?v=e464802201"></script>
+  <script defer src="../assets/js/site.js?v=86760ebbd4"></script>
+  <script defer src="../assets/js/searchbox.js?v=b3f954fcd7"></script>
+  <script defer src="../assets/js/material.js?v=eb2d425eaf"></script>
+  <script defer src="../assets/js/answers.js?v=25caed376f"></script>
+  <script defer src="../assets/js/check.js?v=beca89b12d"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","name":"Fișă de lucru: criterii de convergență și numărul e","description":"Fișă de lucru pentru clasa a XI-a: criteriul majorării, criteriul cleștelui, Weierstrass, numărul e și criteriul raportului, cu 21 de exerciții.","url":"https://lauramiron.mqgrader.ro/materiale/fisa-lucru-criterii-convergenta-numarul-e-1041","mainEntityOfPage":"https://lauramiron.mqgrader.ro/materiale/fisa-lucru-criterii-convergenta-numarul-e-1041","inLanguage":"ro","datePublished":"2026-11-24","dateModified":"2026-11-24","learningResourceType":"Fișă de lucru","educationalLevel":"Clasa a XI-a","teaches":"Șiruri de numere reale","educationalAlignment":{"@type":"AlignmentObject","alignmentType":"educationalSubject","educationalFramework":"Programa școlară românească","targetName":"Clasa a XI-a – Șiruri de numere reale","targetUrl":"https://lauramiron.mqgrader.ro/clasa-11#siruri-numere-reale"},"isAccessibleForFree":true,"license":"https://creativecommons.org/licenses/by-nc-sa/4.0/","author":{"@type":"Person","name":"Laura Miron","url":"https://lauramiron.mqgrader.ro/despre","jobTitle":"Profesoară de matematică","worksFor":{"@type":"EducationalOrganization","name":"Liceul William Shakespeare","url":"https://lauramiron.mqgrader.ro/","logo":{"@type":"ImageObject","url":"https://lauramiron.mqgrader.ro/assets/img/og-image.png","width":1200,"height":630},"address":{"@type":"PostalAddress","addressLocality":"Timișoara","addressCountry":"RO"}},"knowsAbout":["Mathematics","Matematică","Algebră","Geometrie","Analiză matematică","Algebra","Geometry","Mathematical analysis"],"sameAs":["https://www.youtube.com/@MatematicaLauraMiron"]},"publisher":{"@type":"Person","name":"Laura Miron","url":"https://lauramiron.mqgrader.ro/despre","jobTitle":"Profesoară de matematică","worksFor":{"@type":"EducationalOrganization","name":"Liceul William Shakespeare","url":"https://lauramiron.mqgrader.ro/","logo":{"@type":"ImageObject","url":"https://lauramiron.mqgrader.ro/assets/img/og-image.png","width":1200,"height":630},"address":{"@type":"PostalAddress","addressLocality":"Timișoara","addressCountry":"RO"}},"knowsAbout":["Mathematics","Matematică","Algebră","Geometrie","Analiză matematică","Algebra","Geometry","Mathematical analysis"],"sameAs":["https://www.youtube.com/@MatematicaLauraMiron"]},"audience":{"@type":"EducationalAudience","educationalRole":"student"},"educationalUse":"practice","keywords":"criterii de convergență, criteriul cleștelui, criteriul majorării, proprietatea lui Weierstrass, numărul e, criteriul raportului, limite de șiruri, clasa a 11-a, clasa a XI-a","abstract":"Fișa adună criteriile prin care arăți că un șir are limită și o calculezi: majorarea cu un șir care tinde la 0, criteriul cleștelui, proprietatea lui Weierstrass pentru șiruri monotone și mărginite, numărul e pentru cazul 1 la infinit și criteriul raportului. Fiecare criteriu are o metodă pe pași și un exemplu rezolvat.","speakable":{"@type":"SpeakableSpecification","cssSelector":[".rezumat",".faq"]},"encoding":{"@type":"MediaObject","contentUrl":"https://lauramiron.mqgrader.ro/materiale/pdf/fisa-lucru-criterii-convergenta-numarul-e-1041.pdf","encodingFormat":"application/pdf","inLanguage":"ro"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Acasă","item":"https://lauramiron.mqgrader.ro/"},{"@type":"ListItem","position":2,"name":"Clasa a XI-a","item":"https://lauramiron.mqgrader.ro/clasa-11"},{"@type":"ListItem","position":3,"name":"Fișă de lucru: criterii de convergență și numărul e","item":"https://lauramiron.mqgrader.ro/materiale/fisa-lucru-criterii-convergenta-numarul-e-1041"}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Când folosesc criteriul cleștelui?","acceptedAnswer":{"@type":"Answer","text":"Când nu poți calcula șirul direct, dar îl poți încadra între două șiruri cu aceeași limită: o sumă cu n termeni pe care nu o poți aduna, partea întreagă sau un radical de ordinul n dintr-o sumă de puteri. Dacă marginile au limite diferite, criteriul nu spune nimic și cauți margini mai fine."}},{"@type":"Question","name":"De ce 1 la puterea infinit nu este 1?","acceptedAnswer":{"@type":"Answer","text":"Baza nu este egală cu 1, ci doar se apropie de 1, iar exponentul crește nelimitat. Cele două tendințe se luptă: (1 + 1/n)^n tinde la e, (1 + 1/n²)^n tinde la 1, iar (1 + 1/n)^(n²) tinde la infinit. De aceea 1 la infinit este caz exceptat și se rezolvă cu numărul e."}},{"@type":"Question","name":"Ce fac dacă limita raportului este 1?","acceptedAnswer":{"@type":"Answer","text":"Criteriul raportului nu decide: pentru n, 1/n și șirul constant 1 raportul tinde la 1, dar limitele sunt infinit, 0 și 1. Alegi altă metodă: calcul direct, criteriul majorării, criteriul cleștelui sau proprietatea lui Weierstrass."}}]}</script>
+</head>
+<body data-root="../" data-page-root="../">
+  <header id="site-header" class="site-header"><div class="wrap header-bar"><a class="brand" href="../index.html"><svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M10 48h44" fill="none" stroke="var(--brand-marker)" stroke-width="12" stroke-linecap="round"/><g fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"><path d="M25 13c-3 11-6 21-9 31 7 0 13-2 18-6"/><path d="M33 45l4-23 6 13 8-15 2 25"/></g></svg><span class="brand-text"><span class="brand-name" data-i18n="site.title">Matematică cu Laura Miron</span><span class="brand-school" data-i18n="site.school">Liceul William Shakespeare, Timișoara</span></span></a><nav class="grade-nav" id="grade-nav" data-nav aria-label="Alege clasa"><span class="grade-nav-label" aria-hidden="true" data-i18n="nav.gradesLabel">Alege clasa</span><a href="../clasa-5.html" data-grade-link="5" aria-label="Clasa a V-a">5</a><a href="../clasa-6.html" data-grade-link="6" aria-label="Clasa a VI-a">6</a><a href="../clasa-7.html" data-grade-link="7" aria-label="Clasa a VII-a">7</a><a href="../clasa-8.html" data-grade-link="8" aria-label="Clasa a VIII-a">8</a><a href="../clasa-9.html" data-grade-link="9" class="gap" aria-label="Clasa a IX-a">9</a><a href="../clasa-10.html" data-grade-link="10" aria-label="Clasa a X-a">10</a><a href="../clasa-11.html" data-grade-link="11" aria-label="Clasa a XI-a">11</a><a href="../clasa-12.html" data-grade-link="12" aria-label="Clasa a XII-a">12</a></nav><form class="search" id="site-search" role="search" action="../cautare.html"><label class="sr-only" for="site-search-input" data-i18n="search.label">Caută materiale</label><svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="m20 20-3.8-3.8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><input id="site-search-input" name="q" type="search" autocomplete="off" spellcheck="false" enterkeyhint="search" placeholder="Caută: modul, fișă, test…"><input type="hidden" id="site-search-grade" name="c" value=""></form><div class="header-tools"><button type="button" class="icon-btn" data-toggle="search" aria-controls="site-search" aria-expanded="false"><svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="m20 20-3.8-3.8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><span class="sr-only" data-i18n="search.open">Caută</span></button><button type="button" class="icon-btn" data-toggle="grades" aria-controls="grade-nav" aria-expanded="false"><span data-i18n="nav.grades">Clase</span></button><button type="button" class="theme-btn" data-theme-toggle aria-pressed="false"><svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 14.5 A8.5 8.5 0 0 1 9.5 4 a8.5 8.5 0 1 0 10.5 10.5 Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2"/><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2.5 v2.2 M12 19.3 v2.2 M2.5 12 h2.2 M19.3 12 h2.2"/><path d="M5.3 5.3 l1.6 1.6 M17.1 17.1 l1.6 1.6 M18.7 5.3 l-1.6 1.6 M6.9 17.1 l-1.6 1.6"/></g></svg><span class="sr-only" data-i18n="theme.dark">Temă închisă</span></button><div class="lang" role="group" aria-label="Limba site-ului" data-lang-group><a hreflang="ro" lang="ro" aria-current="page" aria-label="Română" href="fisa-lucru-criterii-convergenta-numarul-e-1041.html">RO</a><a hreflang="en" href="../en/materiale/fisa-lucru-criterii-convergenta-numarul-e-1041.html" lang="en" aria-label="English">EN</a></div></div></div></header>
+
+  <main id="content" class="wrap">
+    <div class="page" id="material" data-id="1041" data-name="fisa-lucru-criterii-convergenta-numarul-e-1041" data-results="2">
+      <div id="material-head"><nav class="crumbs" aria-label="Navigare"><ol><li><a href="../index.html">Acasă</a></li><li><a href="../clasa-11.html">Clasa a XI-a</a></li><li><a href="../clasa-11.html#siruri-numere-reale">Șiruri de numere reale</a></li></ol></nav>
+      <span class="material-kinds"><span class="badge badge-fise">Fișă de lucru</span><span class="badge badge-lectii">Teorie</span></span>
+      <h1>Fișă de lucru: criterii de convergență și numărul e</h1>
+      <p class="material-meta">Publicat <time datetime="2026-11-24">24 noiembrie 2026</time> · de <a href="../despre.html" rel="author">Laura Miron</a></p>
+      <p class="material-actions"><a class="button" href="../materiale/pdf/fisa-lucru-criterii-convergenta-numarul-e-1041.pdf" target="_blank" rel="noopener">Deschide PDF</a></p></div>
+      
+      <section class="rezumat" aria-labelledby="rezumat-heading"><h2 id="rezumat-heading" data-i18n="summary.title">Rezumat</h2><p>Fișa adună criteriile prin care arăți că un șir are limită și o calculezi: majorarea cu un șir care tinde la 0, criteriul cleștelui, proprietatea lui Weierstrass pentru șiruri monotone și mărginite, numărul e pentru cazul 1 la infinit și criteriul raportului. Fiecare criteriu are o metodă pe pași și un exemplu rezolvat.</p></section><nav class="cuprins" aria-labelledby="cuprins-heading"><h2 id="cuprins-heading" data-i18n="toc.title">Cuprins</h2><ol><li><a href="#s1">1. Criteriul majorării</a></li><li><a href="#s2">2. Criteriul cleștelui</a></li><li><a href="#s3">3. Proprietatea lui Weierstrass</a></li><li><a href="#s4">4. Numărul e</a></li><li><a href="#s5">5. Criteriul raportului</a></li><li><a href="#s6">6. Ce criteriu aleg?</a></li><li><a href="#s7">Exerciții</a><ol><li><a href="#s7-1">A. Criteriul majorării</a></li><li><a href="#s7-2">B. Criteriul cleștelui</a></li><li><a href="#s7-3">C. Proprietatea lui Weierstrass</a></li><li><a href="#s7-4">D. Numărul e</a></li><li><a href="#s7-5">E. Criteriul raportului</a></li><li><a href="#s7-6">F. Alegeți criteriul</a></li><li><a href="#s7-7">Pentru cei care vor mai mult</a></li></ol></li></ol></nav>
+      
+      <div class="check-bar"><p class="note" id="check-note">Apasă «Verifică» lângă un exercițiu. Răspunsurile rămân pe acest dispozitiv.</p><button class="chip" type="button" id="check-reset" hidden>Șterge răspunsurile mele</button></div>
+      <article class="material-body" data-lang="ro" lang="ro">
+        <p><strong>La finalul fișei vei ști să:</strong></p>
+        <ul>
+          <li>calculezi limita unui șir prin majorări și minorări (criteriul majorării, criteriul cleștelui);</li>
+          <li>arăți că un șir este monoton și mărginit și deduci, cu proprietatea lui Weierstrass, că este convergent;</li>
+          <li>calculezi limita unui șir dat prin recurență, după ce ai arătat că este convergent;</li>
+          <li>calculezi limite de forma $1^{\infty}$ cu ajutorul numărului $e$;</li>
+          <li>folosești criteriul raportului pentru șiruri cu factoriale și puteri;</li>
+          <li>alegi criteriul potrivit pentru un șir dat.</li>
+        </ul>
+        <h2 id="s1">1. Criteriul majorării</h2>
+        <div class="retine">
+          <p class="retine-title">Criteriul majorării</p>
+          <p>Fie $(x_n)$, $(y_n)$, $(a_n)$ șiruri de numere reale.</p>
+          <p>a) Dacă $|x_n-\ell|\le a_n$ de la un rang încolo și $a_n\to 0$, atunci $x_n\to\ell$ ($\ell\in\mathbb{R}$).</p>
+          <p>b) Dacă $x_n\ge y_n$ de la un rang încolo și $y_n\to+\infty$, atunci $x_n\to+\infty$.</p>
+          <p>c) Dacă $x_n\le y_n$ de la un rang încolo și $y_n\to-\infty$, atunci $x_n\to-\infty$.</p>
+          <p><strong>Consecință.</strong> Dacă $(b_n)$ este mărginit și $a_n\to 0$, atunci $a_nb_n\to 0$.</p>
+        </div>
+        <div class="retine retine-de-retinut">
+          <p class="retine-title">Majorări și minorări utile</p>
+          <ul>
+            <li>$|\sin x|\le 1$, $|\cos x|\le 1$, $|(-1)^n|=1$;</li>
+            <li>$x-1&lt;[x]\le x$, pentru orice $x\in\mathbb{R}$ ($[x]$ este partea întreagă a lui $x$);</li>
+            <li>inegalitatea lui Bernoulli: $(1+a)^n\ge 1+na$, pentru $a&gt;-1$ și $n\in\mathbb{N}$;</li>
+            <li>$\lim\limits_{n\to\infty}\sqrt[n]{a}=1$, pentru orice $a&gt;0$.</li>
+          </ul>
+        </div>
+        <div class="firul-logic">
+          <p class="firul-logic-label">★ Metodă</p>
+          <p class="firul-logic-lead">Cum aplic criteriul majorării</p>
+          <ol class="firul-logic-steps">
+            <li><span>Ghicesc limita $\ell$ (de exemplu, neglijând termenii mărginiți față de cei care cresc).</span></li>
+            <li><span>Calculez $|x_n-\ell|$ și aduc la același numitor.</span></li>
+            <li><span>Majorez: înlocuiesc $|\sin|$, $|\cos|$, $|(-1)^n|$ cu $1$, până obțin un șir $a_n$ simplu.</span></li>
+            <li><span>Arăt că $a_n\to 0$ și scriu concluzia.</span></li>
+            <li><span>Pentru limita $+\infty$ caut un minorant care tinde la $+\infty$; pentru $-\infty$, un majorant care tinde la $-\infty$.</span></li>
+          </ol>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Exemplul 1</p>
+          <p>a) Fie $x_n=\frac{3n+(-1)^n}{n+2}$. Ghicim $\ell=3$. Avem</p>
+          <p>$$|x_n-3|=\frac{|(-1)^n-6|}{n+2}\le\frac{7}{n+2}\to 0,$$</p>
+          <p>deci $\lim\limits_{n\to\infty}x_n=3$.</p>
+          <p>b) Fie $y_n=\sqrt{n}+\sin n$. Cum $\sin n\ge -1$, avem $y_n\ge\sqrt{n}-1\to+\infty$, deci $\lim\limits_{n\to\infty}y_n=+\infty$.</p>
+        </div>
+        <h2 id="s2">2. Criteriul cleștelui</h2>
+        <div class="retine">
+          <p class="retine-title">Criteriul cleștelui</p>
+          <p>Dacă $a_n\le x_n\le b_n$ de la un rang încolo și $\lim\limits_{n\to\infty}a_n=\lim\limits_{n\to\infty}b_n=\ell\in\mathbb{R}$, atunci $\lim\limits_{n\to\infty}x_n=\ell$.</p>
+          <p><strong>Atenție!</strong> Cele două margini trebuie să aibă <strong>aceeași</strong> limită. Din $0\le x_n\le 1$ nu rezultă că șirul $(x_n)$ are limită.</p>
+        </div>
+        <div class="firul-logic">
+          <p class="firul-logic-label">★ Metodă</p>
+          <p class="firul-logic-lead">O sumă cu $n$ termeni care nu se poate calcula</p>
+          <ol class="firul-logic-steps">
+            <li><span>Număr termenii sumei.</span></li>
+            <li><span>Găsesc cel mai mic și cel mai mare termen (de obicei primul și ultimul).</span></li>
+            <li><span>Minorez: suma este cel puțin (numărul termenilor) $\cdot$ (cel mai mic termen). Majorez: suma este cel mult (numărul termenilor) $\cdot$ (cel mai mare termen).</span></li>
+            <li><span>Calculez limitele celor două margini. Dacă sunt egale, aplic criteriul cleștelui.</span></li>
+          </ol>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Exemplul 2</p>
+          <p>$x_n=\frac{n}{n^2+1}+\frac{n}{n^2+2}+\ldots+\frac{n}{n^2+n}$.</p>
+          <p>Suma are $n$ termeni. Cel mai mic este $\frac{n}{n^2+n}$, iar cel mai mare este $\frac{n}{n^2+1}$. Atunci</p>
+          <p>$$\frac{n^2}{n^2+n}\le x_n\le\frac{n^2}{n^2+1}.$$</p>
+          <p>Ambele margini au limita $1$, deci, din criteriul cleștelui, $\lim\limits_{n\to\infty}x_n=1$.</p>
+        </div>
+        <h2 id="s3">3. Proprietatea lui Weierstrass</h2>
+        <div class="retine">
+          <p class="retine-title">Proprietatea lui Weierstrass</p>
+          <p>Orice șir <strong>monoton și mărginit</strong> este convergent.</p>
+          <ul>
+            <li>Un șir crescător și majorat are limita egală cu marginea superioară a mulțimii termenilor săi; un șir descrescător și minorat are limita egală cu marginea inferioară.</li>
+            <li>Un șir crescător și nemajorat are limita $+\infty$; un șir descrescător și neminorat are limita $-\infty$. Așadar orice șir monoton are limită.</li>
+          </ul>
+          <p><strong>Atenție!</strong> Proprietatea spune că limita <strong>există</strong>, nu cât este. Un șir convergent nu este neapărat monoton: $\frac{(-1)^n}{n}\to 0$.</p>
+        </div>
+        <div class="retine retine-de-retinut">
+          <p class="retine-title">Monotonie și mărginire</p>
+          <ul>
+            <li>Monotonia: semnul diferenței $x_{n+1}-x_n$, raportul $\frac{x_{n+1}}{x_n}$ comparat cu $1$ (pentru termeni pozitivi) sau inducția matematică.</li>
+            <li>Mărginirea: majorări și minorări. De exemplu, $\frac{1}{k^2}&lt;\frac{1}{k(k-1)}=\frac{1}{k-1}-\frac{1}{k}$ și $k!\ge 2^{k-1}$.</li>
+          </ul>
+        </div>
+        <div class="firul-logic">
+          <p class="firul-logic-label">★ Metodă</p>
+          <p class="firul-logic-lead">Șirul dat prin recurența $x_{n+1}=f(x_n)$</p>
+          <ol class="firul-logic-steps">
+            <li><span>Calculez câțiva termeni și observ dacă șirul crește sau descrește.</span></li>
+            <li><span>Găsesc punctele fixe, adică soluțiile ecuației $\ell=f(\ell)$. Doar ele pot fi limite finite ale șirului.</span></li>
+            <li><span>Mărginirea: arăt prin inducție că termenii rămân între două numere (de obicei, unul dintre ele este un punct fix).</span></li>
+            <li><span>Monotonia: studiez semnul diferenței $x_{n+1}-x_n$.</span></li>
+            <li><span>Din proprietatea lui Weierstrass, șirul are o limită $\ell\in\mathbb{R}$. Trec la limită în recurență, obțin $\ell=f(\ell)$ și aleg punctul fix potrivit mărginirii.</span></li>
+          </ol>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Exemplul 3</p>
+          <p>Fie $x_1=1$ și $x_{n+1}=\frac{x_n^2+6}{5}$, $n\ge 1$.</p>
+          <p><em>Punctele fixe:</em> $\ell=\frac{\ell^2+6}{5}\Leftrightarrow\ell^2-5\ell+6=0\Leftrightarrow\ell\in\{2,3\}$.</p>
+          <p><em>Mărginire:</em> arătăm prin inducție că $0&lt;x_n&lt;2$. Avem $x_1=1$, iar dacă $0&lt;x_n&lt;2$, atunci $0&lt;x_{n+1}=\frac{x_n^2+6}{5}&lt;\frac{4+6}{5}=2$.</p>
+          <p><em>Monotonie:</em> $x_{n+1}-x_n=\frac{x_n^2-5x_n+6}{5}=\frac{(x_n-2)(x_n-3)}{5}&gt;0$, pentru că ambii factori sunt negativi. Șirul este strict crescător.</p>
+          <p><em>Limita:</em> șirul este crescător și mărginit, deci convergent; fie $\ell$ limita lui. Cum $1\le x_n&lt;2$, avem $\ell\in[1,2]$. Trecând la limită în recurență, $\ell\in\{2,3\}$, deci $\ell=2$.</p>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Atenție la trecerea la limită</p>
+          <p>Treci la limită în recurență <strong>numai după</strong> ce ai arătat că limita există și este finită. De exemplu, pentru $x_1=1$ și $x_{n+1}=2x_n$, egalitatea „$\ell=2\ell$, deci $\ell=0$” este greșită: $x_n=2^{n-1}\to+\infty$.</p>
+        </div>
+        <h2 id="s4">4. Numărul e</h2>
+        <div class="retine">
+          <p class="retine-title">Numărul $e$</p>
+          <p>Șirul $e_n=\left(1+\frac{1}{n}\right)^n$, $n\ge 1$, este strict crescător și mărginit ($2\le e_n&lt;3$). Din proprietatea lui Weierstrass, el este convergent. Limita lui se notează cu $e$:</p>
+          <p>$$e=\lim_{n\to\infty}\left(1+\frac{1}{n}\right)^n\approx 2{,}71828.$$</p>
+          <p>Numărul $e$ este irațional și este baza logaritmului natural: $\ln x=\log_e x$.</p>
+          <p><strong>Generalizare.</strong> Dacă $u_n\to 0$ și $u_n\ne 0$ de la un rang încolo, atunci</p>
+          <p>$$\lim_{n\to\infty}\left(1+u_n\right)^{\frac{1}{u_n}}=e.$$</p>
+          <p><strong>Consecințe.</strong> În aceleași condiții, $\lim\limits_{n\to\infty}\frac{\ln(1+u_n)}{u_n}=1$ și $\lim\limits_{n\to\infty}\frac{a^{u_n}-1}{u_n}=\ln a$, pentru $a&gt;0$. În particular, $\lim\limits_{n\to\infty}\frac{e^{u_n}-1}{u_n}=1$.</p>
+        </div>
+        <div class="retine retine-de-retinut">
+          <p class="retine-title">Cazul $1^{\infty}$</p>
+          <p>Dacă $a_n\to 1$, $a_n\ne 1$ și $b_n\to\pm\infty$, atunci</p>
+          <p>$$a_n^{b_n}=\left[\left(1+(a_n-1)\right)^{\frac{1}{a_n-1}}\right]^{(a_n-1)b_n},$$</p>
+          <p>deci $\lim\limits_{n\to\infty}a_n^{b_n}=e^{L}$, unde $L=\lim\limits_{n\to\infty}(a_n-1)b_n$. Dacă $L=+\infty$, limita este $+\infty$; dacă $L=-\infty$, limita este $0$.</p>
+          <ul>
+            <li>$1^{\infty}$ este caz exceptat: rezultatul <strong>nu</strong> este, în general, $1$.</li>
+            <li>Verifică întâi baza. Dacă baza tinde la un număr $a&gt;0$, $a\ne 1$, nu este cazul $1^{\infty}$.</li>
+          </ul>
+        </div>
+        <div class="firul-logic">
+          <p class="firul-logic-label">★ Metodă</p>
+          <p class="firul-logic-lead">Limite de forma $1^{\infty}$</p>
+          <ol class="firul-logic-steps">
+            <li><span>Verific: baza tinde la $1$, iar exponentul la $+\infty$ sau la $-\infty$.</span></li>
+            <li><span>Scriu baza sub forma $1+u_n$, cu $u_n=a_n-1\to 0$ (aduc la același numitor).</span></li>
+            <li><span>Forțez exponentul $\frac{1}{u_n}$: $a_n^{b_n}=\left[\left(1+u_n\right)^{\frac{1}{u_n}}\right]^{u_nb_n}$.</span></li>
+            <li><span>Calculez $L=\lim\limits_{n\to\infty}u_nb_n$. Limita cerută este $e^{L}$.</span></li>
+          </ol>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Exemplul 4</p>
+          <p>$\lim\limits_{n\to\infty}\left(\frac{n+3}{n-1}\right)^{2n}$. Baza tinde la $1$, exponentul la $+\infty$: cazul $1^{\infty}$.</p>
+          <p>Avem $u_n=\frac{n+3}{n-1}-1=\frac{4}{n-1}$ și $u_n\cdot 2n=\frac{8n}{n-1}\to 8$. Așadar</p>
+          <p>$$\lim_{n\to\infty}\left(\frac{n+3}{n-1}\right)^{2n}=e^{8}.$$</p>
+        </div>
+        <h2 id="s5">5. Criteriul raportului</h2>
+        <div class="retine">
+          <p class="retine-title">Criteriul raportului</p>
+          <p>Fie $(a_n)$ un șir cu $a_n&gt;0$ pentru orice $n$, pentru care există $\lim\limits_{n\to\infty}\frac{a_{n+1}}{a_n}=\ell\in[0,+\infty]$.</p>
+          <ul>
+            <li>Dacă $\ell&lt;1$, atunci $\lim\limits_{n\to\infty}a_n=0$.</li>
+            <li>Dacă $\ell&gt;1$, atunci $\lim\limits_{n\to\infty}a_n=+\infty$.</li>
+            <li>Dacă $\ell=1$, criteriul <strong>nu decide</strong>: pentru $a_n=n$, $a_n=\frac{1}{n}$ și $a_n=1$ raportul are limita $1$, iar limitele șirurilor sunt $+\infty$, $0$, respectiv $1$.</li>
+          </ul>
+          <p><strong>Atenție!</strong> La monotonie comparăm cu $1$ raportul $\frac{a_{n+1}}{a_n}$ pentru fiecare $n$. Aici comparăm cu $1$ <strong>limita</strong> raportului.</p>
+        </div>
+        <div class="firul-logic">
+          <p class="firul-logic-label">★ Metodă</p>
+          <p class="firul-logic-lead">Șiruri cu factoriale, puteri $a^n$ și $n^n$</p>
+          <ol class="firul-logic-steps">
+            <li><span>Scriu $a_{n+1}$, înlocuind peste tot $n$ cu $n+1$.</span></li>
+            <li><span>Formez raportul $\frac{a_{n+1}}{a_n}$ și simplific: $\frac{(n+1)!}{n!}=n+1$, $\frac{a^{n+1}}{a^n}=a$, $\frac{n^n}{(n+1)^n}=\frac{1}{\left(1+\frac{1}{n}\right)^n}\to\frac{1}{e}$.</span></li>
+            <li><span>Calculez $\ell=\lim\limits_{n\to\infty}\frac{a_{n+1}}{a_n}$ și îl compar cu $1$.</span></li>
+          </ol>
+        </div>
+        <div class="retine">
+          <p class="retine-title">Exemplul 5</p>
+          <p>$a_n=\frac{3^n\cdot n!}{n^n}$. Avem</p>
+          <p>$$\frac{a_{n+1}}{a_n}=\frac{3^{n+1}(n+1)!}{(n+1)^{n+1}}\cdot\frac{n^n}{3^n\cdot n!}=3\left(\frac{n}{n+1}\right)^n=\frac{3}{\left(1+\frac{1}{n}\right)^n}\to\frac{3}{e}.$$</p>
+          <p>Cum $\frac{3}{e}&gt;1$ (pentru că $e&lt;3$), rezultă $\lim\limits_{n\to\infty}a_n=+\infty$.</p>
+        </div>
+        <h2 id="s6">6. Ce criteriu aleg?</h2>
+        <table>
+          <thead><tr><th>Cum arată șirul</th><th>Ce folosesc</th></tr></thead>
+          <tbody>
+            <tr><td>conține $\sin$, $\cos$ sau $(-1)^n$ ca factori mărginiți</td><td>criteriul majorării</td></tr>
+            <tr><td>sumă cu $n$ termeni care nu se poate calcula; partea întreagă</td><td>criteriul cleștelui</td></tr>
+            <tr><td>$\sqrt[n]{a^n+b^n+\ldots}$</td><td>criteriul cleștelui (scot puterea cea mai mare)</td></tr>
+            <tr><td>șir dat prin recurență; sumă care nu se poate calcula, cu termeni pozitivi</td><td>proprietatea lui Weierstrass</td></tr>
+            <tr><td>putere $a_n^{b_n}$, cu $a_n\to 1$ și $b_n\to\pm\infty$</td><td>numărul $e$</td></tr>
+            <tr><td>produse și câturi cu $n!$, $a^n$, $n^n$</td><td>criteriul raportului</td></tr>
+          </tbody>
+        </table>
+        <h2 id="s7">Exerciții</h2>
+        <h3 id="s7-1">A. Criteriul majorării</h3>
+        <ol class="exercises">
+          <li>
+            <p>Folosind criteriul majorării, calculați:</p>
+            <p data-ex="1a">a) $\lim\limits_{n\to\infty}\frac{n\cos n}{n^2+1}$;</p>
+            <p data-ex="1b">b) $\lim\limits_{n\to\infty}\frac{4n-\sin n}{2n+1}$;</p>
+            <p data-ex="1c">c) $\lim\limits_{n\to\infty}\frac{n^2+(-1)^n n}{3n^2+2}$.</p>
+          </li>
+          <li>
+            <p>Găsind un minorant sau un majorant potrivit, calculați limita șirului:</p>
+            <p data-ex="2a">a) $x_n=n^2-5n\sin n$;</p>
+            <p data-ex="2b">b) $x_n=1+\frac{1}{\sqrt{2}}+\frac{1}{\sqrt{3}}+\ldots+\frac{1}{\sqrt{n}}$;</p>
+            <p data-ex="2c">c) $x_n=\left(1+\frac{1}{n}\right)^{n^2}$ (folosiți inegalitatea lui Bernoulli);</p>
+            <p data-ex="2d">d) $x_n=2\cos n-\sqrt{n}$.</p>
+          </li>
+          <li>
+            <p>Adevărat sau fals? Pentru fiecare afirmație falsă, dați un contraexemplu.</p>
+            <p data-ex="3a">a) Dacă $|x_n|\le\frac{1}{n}$ pentru orice $n\ge 1$, atunci $\lim\limits_{n\to\infty}x_n=0$.</p>
+            <p data-ex="3b">b) Dacă $x_n\le n$ pentru orice $n$, atunci $\lim\limits_{n\to\infty}x_n=+\infty$.</p>
+            <p data-ex="3c">c) Dacă $(x_n)$ este mărginit și $y_n\to 0$, atunci $x_ny_n\to 0$.</p>
+            <p data-ex="3d">d) Dacă $x_ny_n\to 0$ și $(y_n)$ este mărginit, atunci $x_n\to 0$.</p>
+            <p data-ex="3e">e) Dacă $\lim\limits_{n\to\infty}|x_n|=1$, atunci $\lim\limits_{n\to\infty}x_n=1$.</p>
+          </li>
+        </ol>
+        <h3 id="s7-2">B. Criteriul cleștelui</h3>
+        <ol class="exercises" start="4">
+          <li>
+            <p>Calculați, folosind $x-1&lt;[x]\le x$:</p>
+            <p data-ex="4a">a) $\lim\limits_{n\to\infty}\frac{[\sqrt{n}]}{\sqrt{n}}$;</p>
+            <p data-ex="4b">b) $\lim\limits_{n\to\infty}\frac{[n\sqrt{2}]}{n+1}$;</p>
+            <p data-ex="4c">c) $\lim\limits_{n\to\infty}\frac{\left[\sqrt{4n^2+n}\right]}{n}$.</p>
+          </li>
+          <li>
+            <p>Calculați limitele șirurilor:</p>
+            <p data-ex="5a">a) $x_n=\frac{1}{\sqrt{n^2+1}}+\frac{1}{\sqrt{n^2+2}}+\ldots+\frac{1}{\sqrt{n^2+n}}$;</p>
+            <p data-ex="5b">b) $x_n=\frac{1}{n^2+1}+\frac{2}{n^2+2}+\ldots+\frac{n}{n^2+n}$;</p>
+            <p data-ex="5c">c) $x_n=\frac{1}{n^2+1}+\frac{1}{n^2+2}+\ldots+\frac{1}{n^2+n}$.</p>
+            <p><em>Indicație la b):</em> minorați și majorați numai numitorii; $1+2+\ldots+n=\frac{n(n+1)}{2}$.</p>
+          </li>
+          <li>
+            <p>Calculați:</p>
+            <p data-ex="6a">a) $\lim\limits_{n\to\infty}\sqrt[n]{2^n+5^n}$;</p>
+            <p data-ex="6b">b) $\lim\limits_{n\to\infty}\sqrt[n]{1+3^n+4^n}$;</p>
+            <p data-ex="6c">c) $\lim\limits_{n\to\infty}\sqrt[n]{n+3^n}$.</p>
+            <p><em>Indicație:</em> $5^n\le 2^n+5^n\le 2\cdot 5^n$.</p>
+          </li>
+          <li>
+            <p>Fie $x_n=\frac{1+(-1)^n}{2}\cdot\frac{n}{n+1}$. Un elev scrie: „$0\le x_n\le 1$ pentru orice $n$, deci, din criteriul cleștelui, șirul $(x_n)$ este convergent.”</p>
+            <p>a) Unde greșește elevul?</p>
+            <p data-ex="7b">b) Calculați $\lim\limits_{n\to\infty}x_{2n}$ și $\lim\limits_{n\to\infty}x_{2n+1}$. Are șirul $(x_n)$ limită?</p>
+          </li>
+        </ol>
+        <h3 id="s7-3">C. Proprietatea lui Weierstrass</h3>
+        <ol class="exercises" start="8">
+          <li>
+            <p>Arătați că șirul este monoton și mărginit, apoi deduceți că este convergent (fără a-i calcula limita):</p>
+            <p>a) $x_n=\frac{1}{n+1}+\frac{1}{n+2}+\ldots+\frac{1}{2n}$;</p>
+            <p>b) $x_n=1+\frac{1}{2^2}+\frac{1}{3^2}+\ldots+\frac{1}{n^2}$;</p>
+            <p>c) $x_n=\frac{1}{1!}+\frac{1}{2!}+\ldots+\frac{1}{n!}$;</p>
+            <p>d) $x_n=\frac{1\cdot 3\cdot 5\cdots(2n-1)}{2\cdot 4\cdot 6\cdots(2n)}$.</p>
+          </li>
+          <li>
+            <p>Fie $x_1=1$ și $x_{n+1}=\sqrt{3x_n+4}$, $n\ge 1$.</p>
+            <p data-ex="9a">a) Calculați $x_2$ și $x_3$.</p>
+            <p>b) Arătați că $0&lt;x_n&lt;4$ pentru orice $n\ge 1$.</p>
+            <p>c) Arătați că șirul $(x_n)$ este strict crescător.</p>
+            <p data-ex="9d">d) Deduceți că șirul este convergent și calculați limita lui.</p>
+          </li>
+          <li>
+            <p>Fie $x_1=3$ și $x_{n+1}=\frac{x_n}{2}+\frac{1}{x_n}$, $n\ge 1$.</p>
+            <p data-ex="10a">a) Calculați $x_2$.</p>
+            <p>b) Arătați că $x_n&gt;0$ și $x_n\ge\sqrt{2}$ pentru orice $n\ge 1$ (folosiți inegalitatea mediilor).</p>
+            <p>c) Arătați că șirul $(x_n)$ este descrescător.</p>
+            <p data-ex="10d">d) Deduceți că șirul este convergent și calculați limita lui.</p>
+          </li>
+          <li>
+            <p>Fie $x_1=2$ și $x_{n+1}=x_n^2$, $n\ge 1$. Un elev scrie: „Trec la limită în recurență: $\ell=\ell^2$, deci $\ell\in\{0,1\}$. Termenii sunt pozitivi, deci $\ell=1$.”</p>
+            <p data-ex="11a">a) Calculați $x_2$, $x_3$ și $x_4$.</p>
+            <p>b) Unde greșește elevul?</p>
+            <p data-ex="11c">c) Arătați că șirul este crescător și că $x_n\ge 2^n$ pentru orice $n\ge 1$. Care este limita șirului?</p>
+          </li>
+        </ol>
+        <h3 id="s7-4">D. Numărul e</h3>
+        <ol class="exercises" start="12">
+          <li>
+            <p>Calculați:</p>
+            <p data-ex="12a">a) $\lim\limits_{n\to\infty}\left(1+\frac{5}{n}\right)^{n}$;</p>
+            <p data-ex="12b">b) $\lim\limits_{n\to\infty}\left(1-\frac{2}{n}\right)^{n}$;</p>
+            <p data-ex="12c">c) $\lim\limits_{n\to\infty}\left(\frac{n+2}{n+1}\right)^{n}$;</p>
+            <p data-ex="12d">d) $\lim\limits_{n\to\infty}\left(\frac{2n+1}{2n-3}\right)^{n+5}$;</p>
+            <p data-ex="12e">e) $\lim\limits_{n\to\infty}\left(\frac{n^2+n+1}{n^2-2n}\right)^{n}$, $n\ge 3$;</p>
+            <p data-ex="12f">f) $\lim\limits_{n\to\infty}\left(\frac{n^2-1}{n^2+2}\right)^{n^2}$.</p>
+          </li>
+          <li>
+            <p>Atenție la bază și la exponent! Calculați:</p>
+            <p data-ex="13a">a) $\lim\limits_{n\to\infty}\left(1+\frac{1}{n^2}\right)^{n}$;</p>
+            <p data-ex="13b">b) $\lim\limits_{n\to\infty}\left(\frac{n+2}{n}\right)^{n\sqrt{n}}$;</p>
+            <p data-ex="13c">c) $\lim\limits_{n\to\infty}\left(\frac{n+1}{2n+1}\right)^{n}$;</p>
+            <p data-ex="13d">d) $\lim\limits_{n\to\infty}\left(\frac{3n+1}{n+2}\right)^{n}$.</p>
+          </li>
+          <li>
+            <p data-ex="14">Determinați numărul real $a$ pentru care $\lim\limits_{n\to\infty}\left(\frac{n+a}{n-2}\right)^{n}=e^5$ (șirul este definit pentru $n\ge 3$).</p>
+          </li>
+          <li>
+            <p>Doi elevi calculează $\lim\limits_{n\to\infty}\left(1+\frac{1}{n}\right)^{3n}$. Primul scrie: „Baza tinde la $1$, iar $1$ la orice putere este $1$, deci limita este $1$.” Al doilea obține $e^3$.</p>
+            <p data-ex="15a">a) Care dintre ei are dreptate? Justificați.</p>
+            <p>b) Ce greșeală face celălalt elev?</p>
+          </li>
+          <li>
+            <p>Folosind consecințele limitei $\lim\limits_{n\to\infty}(1+u_n)^{\frac{1}{u_n}}=e$, calculați:</p>
+            <p data-ex="16a">a) $\lim\limits_{n\to\infty}n\ln\left(1+\frac{2}{n}\right)$;</p>
+            <p data-ex="16b">b) $\lim\limits_{n\to\infty}n\left(\sqrt[n]{3}-1\right)$;</p>
+            <p data-ex="16c">c) $\lim\limits_{n\to\infty}n\left(e^{\frac{1}{n}}-1\right)$.</p>
+          </li>
+        </ol>
+        <h3 id="s7-5">E. Criteriul raportului</h3>
+        <ol class="exercises" start="17">
+          <li>
+            <p>Folosind criteriul raportului, calculați:</p>
+            <p data-ex="17a">a) $\lim\limits_{n\to\infty}\frac{n^3}{2^n}$;</p>
+            <p data-ex="17b">b) $\lim\limits_{n\to\infty}\frac{2^n\cdot n!}{n^n}$;</p>
+            <p data-ex="17c">c) $\lim\limits_{n\to\infty}\frac{n!}{4^n}$;</p>
+            <p data-ex="17d">d) $\lim\limits_{n\to\infty}\frac{(2n)!}{(n!)^2}$;</p>
+            <p data-ex="17e">e) $\lim\limits_{n\to\infty}\frac{2n+1}{n+3}$. Ce observați? Calculați limita altfel.</p>
+          </li>
+        </ol>
+        <h3 id="s7-6">F. Alegeți criteriul</h3>
+        <ol class="exercises" start="18">
+          <li>
+            <p>Precizați ce criteriu folosiți, apoi calculați limita:</p>
+            <p data-ex="18a">a) $\lim\limits_{n\to\infty}\frac{n^2+3\cos n}{2n^2+1}$;</p>
+            <p data-ex="18b">b) $\lim\limits_{n\to\infty}\left(\frac{n^2+3}{n^2+1}\right)^{n^2}$;</p>
+            <p data-ex="18c">c) $\lim\limits_{n\to\infty}\frac{n!+2^n}{n!+3^n}$;</p>
+            <p data-ex="18d">d) $\lim\limits_{n\to\infty}\sqrt[n]{n^2+2^n}$ (pentru $n\ge 4$, $n^2\le 2^n$);</p>
+            <p data-ex="18e">e) $\lim\limits_{n\to\infty}x_n$, unde $x_1=5$ și $x_{n+1}=\sqrt{2x_n+3}$, $n\ge 1$;</p>
+            <p data-ex="18f">f) $\lim\limits_{n\to\infty}\frac{1^2+2^2+\ldots+n^2}{n^3}$.</p>
+          </li>
+        </ol>
+        <h3 id="s7-7">Pentru cei care vor mai mult</h3>
+        <ol class="exercises" start="19">
+          <li>
+            <p>Fie $e_n=\left(1+\frac{1}{n}\right)^n$, $n\ge 1$.</p>
+            <p>a) Aplicând inegalitatea mediilor (media geometrică $\le$ media aritmetică) numerelor $1$ și $1+\frac{1}{n}$, luat de $n$ ori, arătați că $e_n&lt;e_{n+1}$.</p>
+            <p>b) Folosind binomul lui Newton și $\frac{1}{k!}\le\frac{1}{2^{k-1}}$, arătați că $e_n&lt;3$.</p>
+            <p>c) Deduceți că șirul $(e_n)$ este convergent.</p>
+          </li>
+          <li>
+            <p>Fie $a&gt;0$ și $a_n=\frac{a^n\cdot n!}{n^n}$, $n\ge 1$. Calculați $\lim\limits_{n\to\infty}\frac{a_{n+1}}{a_n}$ și discutați, după valorile lui $a$, ce se poate spune despre $\lim\limits_{n\to\infty}a_n$ cu ajutorul criteriului raportului.</p>
+          </li>
+          <li>
+            <p data-ex="21">Fie $x\in\mathbb{R}$. Calculați $\lim\limits_{n\to\infty}\frac{[x]+[2x]+\ldots+[nx]}{n^2}$.</p>
+          </li>
+        </ol>
+      </article>
+      <section class="faq" aria-labelledby="faq-heading"><h2 id="faq-heading" data-i18n="faq.title">Întrebări frecvente</h2><details><summary>Când folosesc criteriul cleștelui?</summary><p>Când nu poți calcula șirul direct, dar îl poți încadra între două șiruri cu aceeași limită: o sumă cu n termeni pe care nu o poți aduna, partea întreagă sau un radical de ordinul n dintr-o sumă de puteri. Dacă marginile au limite diferite, criteriul nu spune nimic și cauți margini mai fine.</p></details><details><summary>De ce 1 la puterea infinit nu este 1?</summary><p>Baza nu este egală cu 1, ci doar se apropie de 1, iar exponentul crește nelimitat. Cele două tendințe se luptă: (1 + 1/n)^n tinde la e, (1 + 1/n²)^n tinde la 1, iar (1 + 1/n)^(n²) tinde la infinit. De aceea 1 la infinit este caz exceptat și se rezolvă cu numărul e.</p></details><details><summary>Ce fac dacă limita raportului este 1?</summary><p>Criteriul raportului nu decide: pentru n, 1/n și șirul constant 1 raportul tinde la 1, dar limitele sunt infinit, 0 și 1. Alegi altă metodă: calcul direct, criteriul majorării, criteriul cleștelui sau proprietatea lui Weierstrass.</p></details></section>
+      <aside class="related" id="material-related"><h2>Din aceeași temă</h2>
+        <ul class="material-list">
+        <li class="m-row"><a class="m-link" href="fisa-lucru-monotonia-sirurilor-1038.html"><span class="m-badges"><span class="badge badge-fise">Fișă de lucru</span><span class="badge badge-lectii">Teorie</span><time class="m-date" datetime="2026-11-17">17 nov. 2026</time></span><span class="m-title">Fișă de lucru: monotonia șirurilor</span></a></li>
+        <li class="m-row"><a class="m-link" href="fisa-lucru-operatii-limite-siruri-1035.html"><span class="m-badges"><span class="badge badge-fise">Fișă de lucru</span><span class="badge badge-lectii">Teorie</span><time class="m-date" datetime="2026-11-15">15 nov. 2026</time></span><span class="m-title">Fișă de lucru: operații cu limite de șiruri</span></a></li>
+        <li class="m-row"><a class="m-link" href="fisa-lucru-siruri-recurente-1033.html"><span class="m-badges"><span class="badge badge-fise">Fișă de lucru</span><span class="badge badge-lectii">Teorie</span><time class="m-date" datetime="2026-10-26">26 oct. 2026</time></span><span class="m-title">Fișă de lucru: șiruri date prin recurențe</span></a></li>
+        </ul>
+        <p><a class="more" href="../clasa-11.html">Toate materialele pentru Clasa a XI-a</a></p></aside>
+    </div>
+  </main>
+
+  <footer id="site-footer" class="site-footer"><div class="wrap"><p>© <span data-year>2026</span> Laura Miron. <span data-i18n="footer.text">Materiale gratuite pentru elevi.</span> · <a href="../despre.html" data-i18n="footer.about">Despre</a> · <a href="https://mqgrader.ro/" data-i18n="footer.mqgrader">MQGrader: corectare teste</a> · <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license">CC BY-NC-SA 4.0</a></p></div></footer>
+</body>
+</html>

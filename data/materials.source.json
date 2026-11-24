@@ -3293,8 +3293,98 @@
         "version": 1,
         "checks": 46
       }
+    },
+    {
+      "slug": "fisa-lucru-criterii-convergenta-numarul-e",
+      "uid": "1041",
+      "topic": "siruri-numere-reale",
+      "kind": "fisa-lucru",
+      "alsoKind": "teorie",
+      "title": {
+        "ro": "Fișă de lucru: criterii de convergență și numărul e",
+        "en": "Worksheet: convergence tests and the number e"
+      },
+      "seoTitle": {
+        "ro": "Criterii de convergență a șirurilor. Numărul e",
+        "en": "Sequence convergence tests and the number e"
+      },
+      "published": "2026-11-24",
+      "description": {
+        "ro": "Fișă de lucru pentru clasa a XI-a: criteriul majorării, criteriul cleștelui, Weierstrass, numărul e și criteriul raportului, cu 21 de exerciții.",
+        "en": "Grade 11 worksheet: the comparison test, the squeeze theorem, Weierstrass's theorem, the number e and the ratio test, with 21 exercises."
+      },
+      "pdf": "materiale/pdf/fisa-lucru-criterii-convergenta-numarul-e-1041.pdf",
+      "youtube": null,
+      "import": {
+        "date": "2026-11-24",
+        "workflow": 5,
+        "pdf": "source"
+      },
+      "summary": {
+        "ro": "Fișa adună criteriile prin care arăți că un șir are limită și o calculezi: majorarea cu un șir care tinde la 0, criteriul cleștelui, proprietatea lui Weierstrass pentru șiruri monotone și mărginite, numărul e pentru cazul 1 la infinit și criteriul raportului. Fiecare criteriu are o metodă pe pași și un exemplu rezolvat.",
+        "en": "The worksheet gathers the tests that show a sequence has a limit and find it: bounding by a sequence that tends to 0, the squeeze theorem, Weierstrass's theorem for monotonic bounded sequences, the number e for the case 1 to the power infinity, and the ratio test. Each test has a step-by-step method and a worked example."
+      },
+      "faq": [
+        {
+          "q": {
+            "ro": "Când folosesc criteriul cleștelui?",
+            "en": "When do I use the squeeze theorem?"
+          },
+          "a": {
+            "ro": "Când nu poți calcula șirul direct, dar îl poți încadra între două șiruri cu aceeași limită: o sumă cu n termeni pe care nu o poți aduna, partea întreagă sau un radical de ordinul n dintr-o sumă de puteri. Dacă marginile au limite diferite, criteriul nu spune nimic și cauți margini mai fine.",
+            "en": "When you cannot work out the sequence directly, but you can trap it between two sequences with the same limit: a sum of n terms you cannot add up, the integer part, or an n-th root of a sum of powers. If the bounds have different limits, the theorem says nothing and you look for tighter bounds."
+          }
+        },
+        {
+          "q": {
+            "ro": "De ce 1 la puterea infinit nu este 1?",
+            "en": "Why is 1 to the power infinity not 1?"
+          },
+          "a": {
+            "ro": "Baza nu este egală cu 1, ci doar se apropie de 1, iar exponentul crește nelimitat. Cele două tendințe se luptă: (1 + 1/n)^n tinde la e, (1 + 1/n²)^n tinde la 1, iar (1 + 1/n)^(n²) tinde la infinit. De aceea 1 la infinit este caz exceptat și se rezolvă cu numărul e.",
+            "en": "The base is not equal to 1, it only gets close to 1, while the exponent grows without bound. The two pull against each other: (1 + 1/n)^n tends to e, (1 + 1/n²)^n tends to 1 and (1 + 1/n)^(n²) tends to infinity. That is why 1 to the power infinity is an indeterminate form, solved with the number e."
+          }
+        },
+        {
+          "q": {
+            "ro": "Ce fac dacă limita raportului este 1?",
+            "en": "What do I do if the limit of the ratio is 1?"
+          },
+          "a": {
+            "ro": "Criteriul raportului nu decide: pentru n, 1/n și șirul constant 1 raportul tinde la 1, dar limitele sunt infinit, 0 și 1. Alegi altă metodă: calcul direct, criteriul majorării, criteriul cleștelui sau proprietatea lui Weierstrass.",
+            "en": "The ratio test does not decide: for n, 1/n and the constant sequence 1 the ratio tends to 1, but the limits are infinity, 0 and 1. Choose another method: a direct calculation, the comparison test, the squeeze theorem or Weierstrass's theorem."
+          }
+        }
+      ],
+      "keywords": {
+        "ro": [
+          "criterii de convergență",
+          "criteriul cleștelui",
+          "criteriul majorării",
+          "proprietatea lui Weierstrass",
+          "numărul e",
+          "criteriul raportului",
+          "limite de șiruri",
+          "clasa a 11-a",
+          "clasa a XI-a"
+        ],
+        "en": [
+          "convergence tests",
+          "squeeze theorem",
+          "comparison test",
+          "monotone convergence theorem",
+          "the number e",
+          "ratio test",
+          "limits of sequences",
+          "grade 11"
+        ]
+      },
+      "results": {
+        "version": 2,
+        "checks": 55
+      }
     }
   ],
-  "nextUid": 1040,
+  "nextUid": 1042,
   "retired": []
 }

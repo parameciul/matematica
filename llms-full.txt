@@ -6404,6 +6404,524 @@ c) Write in trigonometric form the number $1+\cos\frac{2\pi}{3}+i\sin\frac{2\pi}
 
 ## Clasa a XI-a / Grade 11
 
+### Fișă de lucru: criterii de convergență și numărul e
+- Source (RO): https://lauramiron.mqgrader.ro/materiale/fisa-lucru-criterii-convergenta-numarul-e-1041
+- Source (EN): https://lauramiron.mqgrader.ro/en/materiale/fisa-lucru-criterii-convergenta-numarul-e-1041
+- Author: Laura Miron. License: CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/).
+- Published: 2026-11-24. Updated: 2026-11-24.
+- Fișă de lucru pentru clasa a XI-a: criteriul majorării, criteriul cleștelui, Weierstrass, numărul e și criteriul raportului, cu 21 de exerciții.
+- Rezumat: Fișa adună criteriile prin care arăți că un șir are limită și o calculezi: majorarea cu un șir care tinde la 0, criteriul cleștelui, proprietatea lui Weierstrass pentru șiruri monotone și mărginite, numărul e pentru cazul 1 la infinit și criteriul raportului. Fiecare criteriu are o metodă pe pași și un exemplu rezolvat.
+- Întrebări frecvente:
+  - Q: Când folosesc criteriul cleștelui?
+  - A: Când nu poți calcula șirul direct, dar îl poți încadra între două șiruri cu aceeași limită: o sumă cu n termeni pe care nu o poți aduna, partea întreagă sau un radical de ordinul n dintr-o sumă de puteri. Dacă marginile au limite diferite, criteriul nu spune nimic și cauți margini mai fine.
+  - Q: De ce 1 la puterea infinit nu este 1?
+  - A: Baza nu este egală cu 1, ci doar se apropie de 1, iar exponentul crește nelimitat. Cele două tendințe se luptă: (1 + 1/n)^n tinde la e, (1 + 1/n²)^n tinde la 1, iar (1 + 1/n)^(n²) tinde la infinit. De aceea 1 la infinit este caz exceptat și se rezolvă cu numărul e.
+  - Q: Ce fac dacă limita raportului este 1?
+  - A: Criteriul raportului nu decide: pentru n, 1/n și șirul constant 1 raportul tinde la 1, dar limitele sunt infinit, 0 și 1. Alegi altă metodă: calcul direct, criteriul majorării, criteriul cleștelui sau proprietatea lui Weierstrass.
+
+La finalul fișei vei ști să:
+- calculezi limita unui șir prin majorări și minorări (criteriul majorării, criteriul cleștelui);
+- arăți că un șir este monoton și mărginit și deduci, cu proprietatea lui Weierstrass, că este convergent;
+- calculezi limita unui șir dat prin recurență, după ce ai arătat că este convergent;
+- calculezi limite de forma $1^{\infty}$ cu ajutorul numărului $e$;
+- folosești criteriul raportului pentru șiruri cu factoriale și puteri;
+- alegi criteriul potrivit pentru un șir dat.
+1. Criteriul majorării
+Criteriul majorării
+Fie $(x_n)$, $(y_n)$, $(a_n)$ șiruri de numere reale.
+a) Dacă $|x_n-\ell|\le a_n$ de la un rang încolo și $a_n\to 0$, atunci $x_n\to\ell$ ($\ell\in\mathbb{R}$).
+b) Dacă $x_n\ge y_n$ de la un rang încolo și $y_n\to+\infty$, atunci $x_n\to+\infty$.
+c) Dacă $x_n\le y_n$ de la un rang încolo și $y_n\to-\infty$, atunci $x_n\to-\infty$.
+Consecință. Dacă $(b_n)$ este mărginit și $a_n\to 0$, atunci $a_nb_n\to 0$.
+Majorări și minorări utile
+- $|\sin x|\le 1$, $|\cos x|\le 1$, $|(-1)^n|=1$;
+- $x-1<[x]\le x$, pentru orice $x\in\mathbb{R}$ ($[x]$ este partea întreagă a lui $x$);
+- inegalitatea lui Bernoulli: $(1+a)^n\ge 1+na$, pentru $a>-1$ și $n\in\mathbb{N}$;
+- $\lim\limits_{n\to\infty}\sqrt[n]{a}=1$, pentru orice $a>0$.
+★ Metodă
+Cum aplic criteriul majorării
+- Ghicesc limita $\ell$ (de exemplu, neglijând termenii mărginiți față de cei care cresc).
+- Calculez $|x_n-\ell|$ și aduc la același numitor.
+- Majorez: înlocuiesc $|\sin|$, $|\cos|$, $|(-1)^n|$ cu $1$, până obțin un șir $a_n$ simplu.
+- Arăt că $a_n\to 0$ și scriu concluzia.
+- Pentru limita $+\infty$ caut un minorant care tinde la $+\infty$; pentru $-\infty$, un majorant care tinde la $-\infty$.
+Exemplul 1
+a) Fie $x_n=\frac{3n+(-1)^n}{n+2}$. Ghicim $\ell=3$. Avem
+$$|x_n-3|=\frac{|(-1)^n-6|}{n+2}\le\frac{7}{n+2}\to 0,$$
+deci $\lim\limits_{n\to\infty}x_n=3$.
+b) Fie $y_n=\sqrt{n}+\sin n$. Cum $\sin n\ge -1$, avem $y_n\ge\sqrt{n}-1\to+\infty$, deci $\lim\limits_{n\to\infty}y_n=+\infty$.
+2. Criteriul cleștelui
+Criteriul cleștelui
+Dacă $a_n\le x_n\le b_n$ de la un rang încolo și $\lim\limits_{n\to\infty}a_n=\lim\limits_{n\to\infty}b_n=\ell\in\mathbb{R}$, atunci $\lim\limits_{n\to\infty}x_n=\ell$.
+Atenție! Cele două margini trebuie să aibă aceeași limită. Din $0\le x_n\le 1$ nu rezultă că șirul $(x_n)$ are limită.
+★ Metodă
+O sumă cu $n$ termeni care nu se poate calcula
+- Număr termenii sumei.
+- Găsesc cel mai mic și cel mai mare termen (de obicei primul și ultimul).
+- Minorez: suma este cel puțin (numărul termenilor) $\cdot$ (cel mai mic termen). Majorez: suma este cel mult (numărul termenilor) $\cdot$ (cel mai mare termen).
+- Calculez limitele celor două margini. Dacă sunt egale, aplic criteriul cleștelui.
+Exemplul 2
+$x_n=\frac{n}{n^2+1}+\frac{n}{n^2+2}+\ldots+\frac{n}{n^2+n}$.
+Suma are $n$ termeni. Cel mai mic este $\frac{n}{n^2+n}$, iar cel mai mare este $\frac{n}{n^2+1}$. Atunci
+$$\frac{n^2}{n^2+n}\le x_n\le\frac{n^2}{n^2+1}.$$
+Ambele margini au limita $1$, deci, din criteriul cleștelui, $\lim\limits_{n\to\infty}x_n=1$.
+3. Proprietatea lui Weierstrass
+Proprietatea lui Weierstrass
+Orice șir monoton și mărginit este convergent.
+- Un șir crescător și majorat are limita egală cu marginea superioară a mulțimii termenilor săi; un șir descrescător și minorat are limita egală cu marginea inferioară.
+- Un șir crescător și nemajorat are limita $+\infty$; un șir descrescător și neminorat are limita $-\infty$. Așadar orice șir monoton are limită.
+Atenție! Proprietatea spune că limita există, nu cât este. Un șir convergent nu este neapărat monoton: $\frac{(-1)^n}{n}\to 0$.
+Monotonie și mărginire
+- Monotonia: semnul diferenței $x_{n+1}-x_n$, raportul $\frac{x_{n+1}}{x_n}$ comparat cu $1$ (pentru termeni pozitivi) sau inducția matematică.
+- Mărginirea: majorări și minorări. De exemplu, $\frac{1}{k^2}<\frac{1}{k(k-1)}=\frac{1}{k-1}-\frac{1}{k}$ și $k!\ge 2^{k-1}$.
+★ Metodă
+Șirul dat prin recurența $x_{n+1}=f(x_n)$
+- Calculez câțiva termeni și observ dacă șirul crește sau descrește.
+- Găsesc punctele fixe, adică soluțiile ecuației $\ell=f(\ell)$. Doar ele pot fi limite finite ale șirului.
+- Mărginirea: arăt prin inducție că termenii rămân între două numere (de obicei, unul dintre ele este un punct fix).
+- Monotonia: studiez semnul diferenței $x_{n+1}-x_n$.
+- Din proprietatea lui Weierstrass, șirul are o limită $\ell\in\mathbb{R}$. Trec la limită în recurență, obțin $\ell=f(\ell)$ și aleg punctul fix potrivit mărginirii.
+Exemplul 3
+Fie $x_1=1$ și $x_{n+1}=\frac{x_n^2+6}{5}$, $n\ge 1$.
+Punctele fixe: $\ell=\frac{\ell^2+6}{5}\Leftrightarrow\ell^2-5\ell+6=0\Leftrightarrow\ell\in\{2,3\}$.
+Mărginire: arătăm prin inducție că $0<x_n<2$. Avem $x_1=1$, iar dacă $0<x_n<2$, atunci $0<x_{n+1}=\frac{x_n^2+6}{5}<\frac{4+6}{5}=2$.
+Monotonie: $x_{n+1}-x_n=\frac{x_n^2-5x_n+6}{5}=\frac{(x_n-2)(x_n-3)}{5}>0$, pentru că ambii factori sunt negativi. Șirul este strict crescător.
+Limita: șirul este crescător și mărginit, deci convergent; fie $\ell$ limita lui. Cum $1\le x_n<2$, avem $\ell\in[1,2]$. Trecând la limită în recurență, $\ell\in\{2,3\}$, deci $\ell=2$.
+Atenție la trecerea la limită
+Treci la limită în recurență numai după ce ai arătat că limita există și este finită. De exemplu, pentru $x_1=1$ și $x_{n+1}=2x_n$, egalitatea „$\ell=2\ell$, deci $\ell=0$” este greșită: $x_n=2^{n-1}\to+\infty$.
+4. Numărul e
+Numărul $e$
+Șirul $e_n=\left(1+\frac{1}{n}\right)^n$, $n\ge 1$, este strict crescător și mărginit ($2\le e_n<3$). Din proprietatea lui Weierstrass, el este convergent. Limita lui se notează cu $e$:
+$$e=\lim_{n\to\infty}\left(1+\frac{1}{n}\right)^n\approx 2{,}71828.$$
+Numărul $e$ este irațional și este baza logaritmului natural: $\ln x=\log_e x$.
+Generalizare. Dacă $u_n\to 0$ și $u_n\ne 0$ de la un rang încolo, atunci
+$$\lim_{n\to\infty}\left(1+u_n\right)^{\frac{1}{u_n}}=e.$$
+Consecințe. În aceleași condiții, $\lim\limits_{n\to\infty}\frac{\ln(1+u_n)}{u_n}=1$ și $\lim\limits_{n\to\infty}\frac{a^{u_n}-1}{u_n}=\ln a$, pentru $a>0$. În particular, $\lim\limits_{n\to\infty}\frac{e^{u_n}-1}{u_n}=1$.
+Cazul $1^{\infty}$
+Dacă $a_n\to 1$, $a_n\ne 1$ și $b_n\to\pm\infty$, atunci
+$$a_n^{b_n}=\left[\left(1+(a_n-1)\right)^{\frac{1}{a_n-1}}\right]^{(a_n-1)b_n},$$
+deci $\lim\limits_{n\to\infty}a_n^{b_n}=e^{L}$, unde $L=\lim\limits_{n\to\infty}(a_n-1)b_n$. Dacă $L=+\infty$, limita este $+\infty$; dacă $L=-\infty$, limita este $0$.
+- $1^{\infty}$ este caz exceptat: rezultatul nu este, în general, $1$.
+- Verifică întâi baza. Dacă baza tinde la un număr $a>0$, $a\ne 1$, nu este cazul $1^{\infty}$.
+★ Metodă
+Limite de forma $1^{\infty}$
+- Verific: baza tinde la $1$, iar exponentul la $+\infty$ sau la $-\infty$.
+- Scriu baza sub forma $1+u_n$, cu $u_n=a_n-1\to 0$ (aduc la același numitor).
+- Forțez exponentul $\frac{1}{u_n}$: $a_n^{b_n}=\left[\left(1+u_n\right)^{\frac{1}{u_n}}\right]^{u_nb_n}$.
+- Calculez $L=\lim\limits_{n\to\infty}u_nb_n$. Limita cerută este $e^{L}$.
+Exemplul 4
+$\lim\limits_{n\to\infty}\left(\frac{n+3}{n-1}\right)^{2n}$. Baza tinde la $1$, exponentul la $+\infty$: cazul $1^{\infty}$.
+Avem $u_n=\frac{n+3}{n-1}-1=\frac{4}{n-1}$ și $u_n\cdot 2n=\frac{8n}{n-1}\to 8$. Așadar
+$$\lim_{n\to\infty}\left(\frac{n+3}{n-1}\right)^{2n}=e^{8}.$$
+5. Criteriul raportului
+Criteriul raportului
+Fie $(a_n)$ un șir cu $a_n>0$ pentru orice $n$, pentru care există $\lim\limits_{n\to\infty}\frac{a_{n+1}}{a_n}=\ell\in[0,+\infty]$.
+- Dacă $\ell<1$, atunci $\lim\limits_{n\to\infty}a_n=0$.
+- Dacă $\ell>1$, atunci $\lim\limits_{n\to\infty}a_n=+\infty$.
+- Dacă $\ell=1$, criteriul nu decide: pentru $a_n=n$, $a_n=\frac{1}{n}$ și $a_n=1$ raportul are limita $1$, iar limitele șirurilor sunt $+\infty$, $0$, respectiv $1$.
+Atenție! La monotonie comparăm cu $1$ raportul $\frac{a_{n+1}}{a_n}$ pentru fiecare $n$. Aici comparăm cu $1$ limita raportului.
+★ Metodă
+Șiruri cu factoriale, puteri $a^n$ și $n^n$
+- Scriu $a_{n+1}$, înlocuind peste tot $n$ cu $n+1$.
+- Formez raportul $\frac{a_{n+1}}{a_n}$ și simplific: $\frac{(n+1)!}{n!}=n+1$, $\frac{a^{n+1}}{a^n}=a$, $\frac{n^n}{(n+1)^n}=\frac{1}{\left(1+\frac{1}{n}\right)^n}\to\frac{1}{e}$.
+- Calculez $\ell=\lim\limits_{n\to\infty}\frac{a_{n+1}}{a_n}$ și îl compar cu $1$.
+Exemplul 5
+$a_n=\frac{3^n\cdot n!}{n^n}$. Avem
+$$\frac{a_{n+1}}{a_n}=\frac{3^{n+1}(n+1)!}{(n+1)^{n+1}}\cdot\frac{n^n}{3^n\cdot n!}=3\left(\frac{n}{n+1}\right)^n=\frac{3}{\left(1+\frac{1}{n}\right)^n}\to\frac{3}{e}.$$
+Cum $\frac{3}{e}>1$ (pentru că $e<3$), rezultă $\lim\limits_{n\to\infty}a_n=+\infty$.
+6. Ce criteriu aleg?
+Cum arată șirul
+Ce folosesc
+conține $\sin$, $\cos$ sau $(-1)^n$ ca factori mărginiți
+criteriul majorării
+sumă cu $n$ termeni care nu se poate calcula; partea întreagă
+criteriul cleștelui
+$\sqrt[n]{a^n+b^n+\ldots}$
+criteriul cleștelui (scot puterea cea mai mare)
+șir dat prin recurență; sumă care nu se poate calcula, cu termeni pozitivi
+proprietatea lui Weierstrass
+putere $a_n^{b_n}$, cu $a_n\to 1$ și $b_n\to\pm\infty$
+numărul $e$
+produse și câturi cu $n!$, $a^n$, $n^n$
+criteriul raportului
+Exerciții
+A. Criteriul majorării
+-
+Folosind criteriul majorării, calculați:
+a) $\lim\limits_{n\to\infty}\frac{n\cos n}{n^2+1}$;
+b) $\lim\limits_{n\to\infty}\frac{4n-\sin n}{2n+1}$;
+c) $\lim\limits_{n\to\infty}\frac{n^2+(-1)^n n}{3n^2+2}$.
+-
+Găsind un minorant sau un majorant potrivit, calculați limita șirului:
+a) $x_n=n^2-5n\sin n$;
+b) $x_n=1+\frac{1}{\sqrt{2}}+\frac{1}{\sqrt{3}}+\ldots+\frac{1}{\sqrt{n}}$;
+c) $x_n=\left(1+\frac{1}{n}\right)^{n^2}$ (folosiți inegalitatea lui Bernoulli);
+d) $x_n=2\cos n-\sqrt{n}$.
+-
+Adevărat sau fals? Pentru fiecare afirmație falsă, dați un contraexemplu.
+a) Dacă $|x_n|\le\frac{1}{n}$ pentru orice $n\ge 1$, atunci $\lim\limits_{n\to\infty}x_n=0$.
+b) Dacă $x_n\le n$ pentru orice $n$, atunci $\lim\limits_{n\to\infty}x_n=+\infty$.
+c) Dacă $(x_n)$ este mărginit și $y_n\to 0$, atunci $x_ny_n\to 0$.
+d) Dacă $x_ny_n\to 0$ și $(y_n)$ este mărginit, atunci $x_n\to 0$.
+e) Dacă $\lim\limits_{n\to\infty}|x_n|=1$, atunci $\lim\limits_{n\to\infty}x_n=1$.
+B. Criteriul cleștelui
+-
+Calculați, folosind $x-1<[x]\le x$:
+a) $\lim\limits_{n\to\infty}\frac{[\sqrt{n}]}{\sqrt{n}}$;
+b) $\lim\limits_{n\to\infty}\frac{[n\sqrt{2}]}{n+1}$;
+c) $\lim\limits_{n\to\infty}\frac{\left[\sqrt{4n^2+n}\right]}{n}$.
+-
+Calculați limitele șirurilor:
+a) $x_n=\frac{1}{\sqrt{n^2+1}}+\frac{1}{\sqrt{n^2+2}}+\ldots+\frac{1}{\sqrt{n^2+n}}$;
+b) $x_n=\frac{1}{n^2+1}+\frac{2}{n^2+2}+\ldots+\frac{n}{n^2+n}$;
+c) $x_n=\frac{1}{n^2+1}+\frac{1}{n^2+2}+\ldots+\frac{1}{n^2+n}$.
+Indicație la b): minorați și majorați numai numitorii; $1+2+\ldots+n=\frac{n(n+1)}{2}$.
+-
+Calculați:
+a) $\lim\limits_{n\to\infty}\sqrt[n]{2^n+5^n}$;
+b) $\lim\limits_{n\to\infty}\sqrt[n]{1+3^n+4^n}$;
+c) $\lim\limits_{n\to\infty}\sqrt[n]{n+3^n}$.
+Indicație: $5^n\le 2^n+5^n\le 2\cdot 5^n$.
+-
+Fie $x_n=\frac{1+(-1)^n}{2}\cdot\frac{n}{n+1}$. Un elev scrie: „$0\le x_n\le 1$ pentru orice $n$, deci, din criteriul cleștelui, șirul $(x_n)$ este convergent.”
+a) Unde greșește elevul?
+b) Calculați $\lim\limits_{n\to\infty}x_{2n}$ și $\lim\limits_{n\to\infty}x_{2n+1}$. Are șirul $(x_n)$ limită?
+C. Proprietatea lui Weierstrass
+-
+Arătați că șirul este monoton și mărginit, apoi deduceți că este convergent (fără a-i calcula limita):
+a) $x_n=\frac{1}{n+1}+\frac{1}{n+2}+\ldots+\frac{1}{2n}$;
+b) $x_n=1+\frac{1}{2^2}+\frac{1}{3^2}+\ldots+\frac{1}{n^2}$;
+c) $x_n=\frac{1}{1!}+\frac{1}{2!}+\ldots+\frac{1}{n!}$;
+d) $x_n=\frac{1\cdot 3\cdot 5\cdots(2n-1)}{2\cdot 4\cdot 6\cdots(2n)}$.
+-
+Fie $x_1=1$ și $x_{n+1}=\sqrt{3x_n+4}$, $n\ge 1$.
+a) Calculați $x_2$ și $x_3$.
+b) Arătați că $0<x_n<4$ pentru orice $n\ge 1$.
+c) Arătați că șirul $(x_n)$ este strict crescător.
+d) Deduceți că șirul este convergent și calculați limita lui.
+-
+Fie $x_1=3$ și $x_{n+1}=\frac{x_n}{2}+\frac{1}{x_n}$, $n\ge 1$.
+a) Calculați $x_2$.
+b) Arătați că $x_n>0$ și $x_n\ge\sqrt{2}$ pentru orice $n\ge 1$ (folosiți inegalitatea mediilor).
+c) Arătați că șirul $(x_n)$ este descrescător.
+d) Deduceți că șirul este convergent și calculați limita lui.
+-
+Fie $x_1=2$ și $x_{n+1}=x_n^2$, $n\ge 1$. Un elev scrie: „Trec la limită în recurență: $\ell=\ell^2$, deci $\ell\in\{0,1\}$. Termenii sunt pozitivi, deci $\ell=1$.”
+a) Calculați $x_2$, $x_3$ și $x_4$.
+b) Unde greșește elevul?
+c) Arătați că șirul este crescător și că $x_n\ge 2^n$ pentru orice $n\ge 1$. Care este limita șirului?
+D. Numărul e
+-
+Calculați:
+a) $\lim\limits_{n\to\infty}\left(1+\frac{5}{n}\right)^{n}$;
+b) $\lim\limits_{n\to\infty}\left(1-\frac{2}{n}\right)^{n}$;
+c) $\lim\limits_{n\to\infty}\left(\frac{n+2}{n+1}\right)^{n}$;
+d) $\lim\limits_{n\to\infty}\left(\frac{2n+1}{2n-3}\right)^{n+5}$;
+e) $\lim\limits_{n\to\infty}\left(\frac{n^2+n+1}{n^2-2n}\right)^{n}$, $n\ge 3$;
+f) $\lim\limits_{n\to\infty}\left(\frac{n^2-1}{n^2+2}\right)^{n^2}$.
+-
+Atenție la bază și la exponent! Calculați:
+a) $\lim\limits_{n\to\infty}\left(1+\frac{1}{n^2}\right)^{n}$;
+b) $\lim\limits_{n\to\infty}\left(\frac{n+2}{n}\right)^{n\sqrt{n}}$;
+c) $\lim\limits_{n\to\infty}\left(\frac{n+1}{2n+1}\right)^{n}$;
+d) $\lim\limits_{n\to\infty}\left(\frac{3n+1}{n+2}\right)^{n}$.
+-
+Determinați numărul real $a$ pentru care $\lim\limits_{n\to\infty}\left(\frac{n+a}{n-2}\right)^{n}=e^5$ (șirul este definit pentru $n\ge 3$).
+-
+Doi elevi calculează $\lim\limits_{n\to\infty}\left(1+\frac{1}{n}\right)^{3n}$. Primul scrie: „Baza tinde la $1$, iar $1$ la orice putere este $1$, deci limita este $1$.” Al doilea obține $e^3$.
+a) Care dintre ei are dreptate? Justificați.
+b) Ce greșeală face celălalt elev?
+-
+Folosind consecințele limitei $\lim\limits_{n\to\infty}(1+u_n)^{\frac{1}{u_n}}=e$, calculați:
+a) $\lim\limits_{n\to\infty}n\ln\left(1+\frac{2}{n}\right)$;
+b) $\lim\limits_{n\to\infty}n\left(\sqrt[n]{3}-1\right)$;
+c) $\lim\limits_{n\to\infty}n\left(e^{\frac{1}{n}}-1\right)$.
+E. Criteriul raportului
+-
+Folosind criteriul raportului, calculați:
+a) $\lim\limits_{n\to\infty}\frac{n^3}{2^n}$;
+b) $\lim\limits_{n\to\infty}\frac{2^n\cdot n!}{n^n}$;
+c) $\lim\limits_{n\to\infty}\frac{n!}{4^n}$;
+d) $\lim\limits_{n\to\infty}\frac{(2n)!}{(n!)^2}$;
+e) $\lim\limits_{n\to\infty}\frac{2n+1}{n+3}$. Ce observați? Calculați limita altfel.
+F. Alegeți criteriul
+-
+Precizați ce criteriu folosiți, apoi calculați limita:
+a) $\lim\limits_{n\to\infty}\frac{n^2+3\cos n}{2n^2+1}$;
+b) $\lim\limits_{n\to\infty}\left(\frac{n^2+3}{n^2+1}\right)^{n^2}$;
+c) $\lim\limits_{n\to\infty}\frac{n!+2^n}{n!+3^n}$;
+d) $\lim\limits_{n\to\infty}\sqrt[n]{n^2+2^n}$ (pentru $n\ge 4$, $n^2\le 2^n$);
+e) $\lim\limits_{n\to\infty}x_n$, unde $x_1=5$ și $x_{n+1}=\sqrt{2x_n+3}$, $n\ge 1$;
+f) $\lim\limits_{n\to\infty}\frac{1^2+2^2+\ldots+n^2}{n^3}$.
+Pentru cei care vor mai mult
+-
+Fie $e_n=\left(1+\frac{1}{n}\right)^n$, $n\ge 1$.
+a) Aplicând inegalitatea mediilor (media geometrică $\le$ media aritmetică) numerelor $1$ și $1+\frac{1}{n}$, luat de $n$ ori, arătați că $e_n<e_{n+1}$.
+b) Folosind binomul lui Newton și $\frac{1}{k!}\le\frac{1}{2^{k-1}}$, arătați că $e_n<3$.
+c) Deduceți că șirul $(e_n)$ este convergent.
+-
+Fie $a>0$ și $a_n=\frac{a^n\cdot n!}{n^n}$, $n\ge 1$. Calculați $\lim\limits_{n\to\infty}\frac{a_{n+1}}{a_n}$ și discutați, după valorile lui $a$, ce se poate spune despre $\lim\limits_{n\to\infty}a_n$ cu ajutorul criteriului raportului.
+-
+Fie $x\in\mathbb{R}$. Calculați $\lim\limits_{n\to\infty}\frac{[x]+[2x]+\ldots+[nx]}{n^2}$.
+
+--- EN ---
+
+The worksheet gathers the tests that show a sequence has a limit and find it: bounding by a sequence that tends to 0, the squeeze theorem, Weierstrass's theorem for monotonic bounded sequences, the number e for the case 1 to the power infinity, and the ratio test. Each test has a step-by-step method and a worked example.
+
+Q: When do I use the squeeze theorem?
+A: When you cannot work out the sequence directly, but you can trap it between two sequences with the same limit: a sum of n terms you cannot add up, the integer part, or an n-th root of a sum of powers. If the bounds have different limits, the theorem says nothing and you look for tighter bounds.
+Q: Why is 1 to the power infinity not 1?
+A: The base is not equal to 1, it only gets close to 1, while the exponent grows without bound. The two pull against each other: (1 + 1/n)^n tends to e, (1 + 1/n²)^n tends to 1 and (1 + 1/n)^(n²) tends to infinity. That is why 1 to the power infinity is an indeterminate form, solved with the number e.
+Q: What do I do if the limit of the ratio is 1?
+A: The ratio test does not decide: for n, 1/n and the constant sequence 1 the ratio tends to 1, but the limits are infinity, 0 and 1. Choose another method: a direct calculation, the comparison test, the squeeze theorem or Weierstrass's theorem.
+
+By the end of the worksheet you will be able to:
+- find the limit of a sequence by bounding it from above and below (the comparison test, the squeeze theorem);
+- show that a sequence is monotonic and bounded and conclude, with Weierstrass's theorem, that it converges;
+- find the limit of a sequence defined by a recurrence, after showing that it converges;
+- find limits of the form $1^{\infty}$ with the number $e$;
+- use the ratio test for sequences with factorials and powers;
+- choose the right test for a given sequence.
+1. The comparison test
+The comparison test
+Let $(x_n)$, $(y_n)$, $(a_n)$ be sequences of real numbers.
+a) If $|x_n-\ell|\le a_n$ from some index on and $a_n\to 0$, then $x_n\to\ell$ ($\ell\in\mathbb{R}$).
+b) If $x_n\ge y_n$ from some index on and $y_n\to+\infty$, then $x_n\to+\infty$.
+c) If $x_n\le y_n$ from some index on and $y_n\to-\infty$, then $x_n\to-\infty$.
+Consequence. If $(b_n)$ is bounded and $a_n\to 0$, then $a_nb_n\to 0$.
+Useful upper and lower bounds
+- $|\sin x|\le 1$, $|\cos x|\le 1$, $|(-1)^n|=1$;
+- $x-1<[x]\le x$, for every $x\in\mathbb{R}$ ($[x]$ is the integer part of $x$);
+- Bernoulli's inequality: $(1+a)^n\ge 1+na$, for $a>-1$ and $n\in\mathbb{N}$;
+- $\lim\limits_{n\to\infty}\sqrt[n]{a}=1$, for every $a>0$.
+★ Method
+How to use the comparison test
+- Guess the limit $\ell$ (for example, by ignoring the bounded terms next to the ones that grow).
+- Work out $|x_n-\ell|$ over a common denominator.
+- Bound it from above: replace $|\sin|$, $|\cos|$, $|(-1)^n|$ by $1$ until you get a simple sequence $a_n$.
+- Show that $a_n\to 0$ and write the conclusion.
+- For the limit $+\infty$, look for a lower bound that tends to $+\infty$; for $-\infty$, an upper bound that tends to $-\infty$.
+Example 1
+a) Let $x_n=\frac{3n+(-1)^n}{n+2}$. We guess $\ell=3$. We have
+$$|x_n-3|=\frac{|(-1)^n-6|}{n+2}\le\frac{7}{n+2}\to 0,$$
+so $\lim\limits_{n\to\infty}x_n=3$.
+b) Let $y_n=\sqrt{n}+\sin n$. Since $\sin n\ge -1$, we have $y_n\ge\sqrt{n}-1\to+\infty$, so $\lim\limits_{n\to\infty}y_n=+\infty$.
+2. The squeeze theorem
+The squeeze theorem
+If $a_n\le x_n\le b_n$ from some index on and $\lim\limits_{n\to\infty}a_n=\lim\limits_{n\to\infty}b_n=\ell\in\mathbb{R}$, then $\lim\limits_{n\to\infty}x_n=\ell$.
+Watch out! The two bounds must have the same limit. From $0\le x_n\le 1$ it does not follow that $(x_n)$ has a limit.
+★ Method
+A sum of $n$ terms that cannot be worked out
+- Count the terms of the sum.
+- Find the smallest and the largest term (usually the first and the last one).
+- Lower bound: the sum is at least (number of terms) $\cdot$ (smallest term). Upper bound: the sum is at most (number of terms) $\cdot$ (largest term).
+- Find the limits of the two bounds. If they are equal, apply the squeeze theorem.
+Example 2
+$x_n=\frac{n}{n^2+1}+\frac{n}{n^2+2}+\ldots+\frac{n}{n^2+n}$.
+The sum has $n$ terms. The smallest one is $\frac{n}{n^2+n}$ and the largest one is $\frac{n}{n^2+1}$. Then
+$$\frac{n^2}{n^2+n}\le x_n\le\frac{n^2}{n^2+1}.$$
+Both bounds tend to $1$, so, by the squeeze theorem, $\lim\limits_{n\to\infty}x_n=1$.
+3. Weierstrass's theorem
+Weierstrass's theorem
+Every monotonic and bounded sequence converges.
+- An increasing sequence that is bounded above tends to the supremum of the set of its terms; a decreasing sequence that is bounded below tends to the infimum.
+- An increasing sequence that is not bounded above tends to $+\infty$; a decreasing sequence that is not bounded below tends to $-\infty$. So every monotonic sequence has a limit.
+Watch out! The theorem says that the limit exists, not what it is. A convergent sequence need not be monotonic: $\frac{(-1)^n}{n}\to 0$.
+Monotonicity and boundedness
+- Monotonicity: the sign of the difference $x_{n+1}-x_n$, the ratio $\frac{x_{n+1}}{x_n}$ compared with $1$ (for positive terms), or mathematical induction.
+- Boundedness: upper and lower bounds. For example, $\frac{1}{k^2}<\frac{1}{k(k-1)}=\frac{1}{k-1}-\frac{1}{k}$ and $k!\ge 2^{k-1}$.
+★ Method
+A sequence defined by the recurrence $x_{n+1}=f(x_n)$
+- Work out a few terms and see whether the sequence increases or decreases.
+- Find the fixed points, the solutions of the equation $\ell=f(\ell)$. Only they can be finite limits of the sequence.
+- Boundedness: show by induction that the terms stay between two numbers (usually one of them is a fixed point).
+- Monotonicity: study the sign of the difference $x_{n+1}-x_n$.
+- By Weierstrass's theorem, the sequence has a limit $\ell\in\mathbb{R}$. Pass to the limit in the recurrence, get $\ell=f(\ell)$ and choose the fixed point that fits the bounds.
+Example 3
+Let $x_1=1$ and $x_{n+1}=\frac{x_n^2+6}{5}$, $n\ge 1$.
+Fixed points: $\ell=\frac{\ell^2+6}{5}\Leftrightarrow\ell^2-5\ell+6=0\Leftrightarrow\ell\in\{2,3\}$.
+Bounds: we show by induction that $0<x_n<2$. We have $x_1=1$, and if $0<x_n<2$, then $0<x_{n+1}=\frac{x_n^2+6}{5}<\frac{4+6}{5}=2$.
+Monotonicity: $x_{n+1}-x_n=\frac{x_n^2-5x_n+6}{5}=\frac{(x_n-2)(x_n-3)}{5}>0$, because both factors are negative. The sequence is strictly increasing.
+The limit: the sequence is increasing and bounded, so it converges; let $\ell$ be its limit. Since $1\le x_n<2$, we have $\ell\in[1,2]$. Passing to the limit in the recurrence, $\ell\in\{2,3\}$, so $\ell=2$.
+Watch out when passing to the limit
+Pass to the limit in the recurrence only after you have shown that the limit exists and is finite. For example, for $x_1=1$ and $x_{n+1}=2x_n$, writing "$\ell=2\ell$, so $\ell=0$" is wrong: $x_n=2^{n-1}\to+\infty$.
+4. The number e
+The number $e$
+The sequence $e_n=\left(1+\frac{1}{n}\right)^n$, $n\ge 1$, is strictly increasing and bounded ($2\le e_n<3$). By Weierstrass's theorem, it converges. Its limit is denoted by $e$:
+$$e=\lim_{n\to\infty}\left(1+\frac{1}{n}\right)^n\approx 2{,}71828.$$
+The number $e$ is irrational and is the base of the natural logarithm: $\ln x=\log_e x$.
+Generalisation. If $u_n\to 0$ and $u_n\ne 0$ from some index on, then
+$$\lim_{n\to\infty}\left(1+u_n\right)^{\frac{1}{u_n}}=e.$$
+Consequences. Under the same conditions, $\lim\limits_{n\to\infty}\frac{\ln(1+u_n)}{u_n}=1$ and $\lim\limits_{n\to\infty}\frac{a^{u_n}-1}{u_n}=\ln a$, for $a>0$. In particular, $\lim\limits_{n\to\infty}\frac{e^{u_n}-1}{u_n}=1$.
+The case $1^{\infty}$
+If $a_n\to 1$, $a_n\ne 1$ and $b_n\to\pm\infty$, then
+$$a_n^{b_n}=\left[\left(1+(a_n-1)\right)^{\frac{1}{a_n-1}}\right]^{(a_n-1)b_n},$$
+so $\lim\limits_{n\to\infty}a_n^{b_n}=e^{L}$, where $L=\lim\limits_{n\to\infty}(a_n-1)b_n$. If $L=+\infty$, the limit is $+\infty$; if $L=-\infty$, the limit is $0$.
+- $1^{\infty}$ is an indeterminate form: the result is not, in general, $1$.
+- Check the base first. If the base tends to a number $a>0$, $a\ne 1$, it is not the case $1^{\infty}$.
+★ Method
+Limits of the form $1^{\infty}$
+- Check: the base tends to $1$ and the exponent to $+\infty$ or to $-\infty$.
+- Write the base as $1+u_n$, with $u_n=a_n-1\to 0$ (use a common denominator).
+- Force the exponent $\frac{1}{u_n}$: $a_n^{b_n}=\left[\left(1+u_n\right)^{\frac{1}{u_n}}\right]^{u_nb_n}$.
+- Work out $L=\lim\limits_{n\to\infty}u_nb_n$. The limit is $e^{L}$.
+Example 4
+$\lim\limits_{n\to\infty}\left(\frac{n+3}{n-1}\right)^{2n}$. The base tends to $1$ and the exponent to $+\infty$: the case $1^{\infty}$.
+We have $u_n=\frac{n+3}{n-1}-1=\frac{4}{n-1}$ and $u_n\cdot 2n=\frac{8n}{n-1}\to 8$. So
+$$\lim_{n\to\infty}\left(\frac{n+3}{n-1}\right)^{2n}=e^{8}.$$
+5. The ratio test
+The ratio test
+Let $(a_n)$ be a sequence with $a_n>0$ for every $n$, such that the limit $\lim\limits_{n\to\infty}\frac{a_{n+1}}{a_n}=\ell\in[0,+\infty]$ exists.
+- If $\ell<1$, then $\lim\limits_{n\to\infty}a_n=0$.
+- If $\ell>1$, then $\lim\limits_{n\to\infty}a_n=+\infty$.
+- If $\ell=1$, the test does not decide: for $a_n=n$, $a_n=\frac{1}{n}$ and $a_n=1$ the ratio tends to $1$, while the limits of the sequences are $+\infty$, $0$ and $1$.
+Watch out! For monotonicity we compare the ratio $\frac{a_{n+1}}{a_n}$ with $1$ for each $n$. Here we compare the limit of the ratio with $1$.
+★ Method
+Sequences with factorials, powers $a^n$ and $n^n$
+- Write $a_{n+1}$ by replacing $n$ with $n+1$ everywhere.
+- Form the ratio $\frac{a_{n+1}}{a_n}$ and simplify: $\frac{(n+1)!}{n!}=n+1$, $\frac{a^{n+1}}{a^n}=a$, $\frac{n^n}{(n+1)^n}=\frac{1}{\left(1+\frac{1}{n}\right)^n}\to\frac{1}{e}$.
+- Work out $\ell=\lim\limits_{n\to\infty}\frac{a_{n+1}}{a_n}$ and compare it with $1$.
+Example 5
+$a_n=\frac{3^n\cdot n!}{n^n}$. We have
+$$\frac{a_{n+1}}{a_n}=\frac{3^{n+1}(n+1)!}{(n+1)^{n+1}}\cdot\frac{n^n}{3^n\cdot n!}=3\left(\frac{n}{n+1}\right)^n=\frac{3}{\left(1+\frac{1}{n}\right)^n}\to\frac{3}{e}.$$
+Since $\frac{3}{e}>1$ (because $e<3$), it follows that $\lim\limits_{n\to\infty}a_n=+\infty$.
+6. Which test do I choose?
+What the sequence looks like
+What I use
+it has $\sin$, $\cos$ or $(-1)^n$ as bounded factors
+the comparison test
+a sum of $n$ terms that cannot be worked out; the integer part
+the squeeze theorem
+$\sqrt[n]{a^n+b^n+\ldots}$
+the squeeze theorem (take out the largest power)
+a sequence defined by a recurrence; a sum of positive terms that cannot be worked out
+Weierstrass's theorem
+a power $a_n^{b_n}$, with $a_n\to 1$ and $b_n\to\pm\infty$
+the number $e$
+products and quotients with $n!$, $a^n$, $n^n$
+the ratio test
+Exercises
+A. The comparison test
+-
+Using the comparison test, find:
+a) $\lim\limits_{n\to\infty}\frac{n\cos n}{n^2+1}$;
+b) $\lim\limits_{n\to\infty}\frac{4n-\sin n}{2n+1}$;
+c) $\lim\limits_{n\to\infty}\frac{n^2+(-1)^n n}{3n^2+2}$.
+-
+By finding a suitable lower or upper bound, find the limit of the sequence:
+a) $x_n=n^2-5n\sin n$;
+b) $x_n=1+\frac{1}{\sqrt{2}}+\frac{1}{\sqrt{3}}+\ldots+\frac{1}{\sqrt{n}}$;
+c) $x_n=\left(1+\frac{1}{n}\right)^{n^2}$ (use Bernoulli's inequality);
+d) $x_n=2\cos n-\sqrt{n}$.
+-
+True or false? For each false statement, give a counterexample.
+a) If $|x_n|\le\frac{1}{n}$ for every $n\ge 1$, then $\lim\limits_{n\to\infty}x_n=0$.
+b) If $x_n\le n$ for every $n$, then $\lim\limits_{n\to\infty}x_n=+\infty$.
+c) If $(x_n)$ is bounded and $y_n\to 0$, then $x_ny_n\to 0$.
+d) If $x_ny_n\to 0$ and $(y_n)$ is bounded, then $x_n\to 0$.
+e) If $\lim\limits_{n\to\infty}|x_n|=1$, then $\lim\limits_{n\to\infty}x_n=1$.
+B. The squeeze theorem
+-
+Using $x-1<[x]\le x$, find:
+a) $\lim\limits_{n\to\infty}\frac{[\sqrt{n}]}{\sqrt{n}}$;
+b) $\lim\limits_{n\to\infty}\frac{[n\sqrt{2}]}{n+1}$;
+c) $\lim\limits_{n\to\infty}\frac{\left[\sqrt{4n^2+n}\right]}{n}$.
+-
+Find the limits of the sequences:
+a) $x_n=\frac{1}{\sqrt{n^2+1}}+\frac{1}{\sqrt{n^2+2}}+\ldots+\frac{1}{\sqrt{n^2+n}}$;
+b) $x_n=\frac{1}{n^2+1}+\frac{2}{n^2+2}+\ldots+\frac{n}{n^2+n}$;
+c) $x_n=\frac{1}{n^2+1}+\frac{1}{n^2+2}+\ldots+\frac{1}{n^2+n}$.
+Hint for b): bound only the denominators; $1+2+\ldots+n=\frac{n(n+1)}{2}$.
+-
+Find:
+a) $\lim\limits_{n\to\infty}\sqrt[n]{2^n+5^n}$;
+b) $\lim\limits_{n\to\infty}\sqrt[n]{1+3^n+4^n}$;
+c) $\lim\limits_{n\to\infty}\sqrt[n]{n+3^n}$.
+Hint: $5^n\le 2^n+5^n\le 2\cdot 5^n$.
+-
+Let $x_n=\frac{1+(-1)^n}{2}\cdot\frac{n}{n+1}$. A student writes: "$0\le x_n\le 1$ for every $n$, so, by the squeeze theorem, the sequence $(x_n)$ converges."
+a) Where is the student's mistake?
+b) Find $\lim\limits_{n\to\infty}x_{2n}$ and $\lim\limits_{n\to\infty}x_{2n+1}$. Does the sequence $(x_n)$ have a limit?
+C. Weierstrass's theorem
+-
+Show that the sequence is monotonic and bounded, then conclude that it converges (without finding its limit):
+a) $x_n=\frac{1}{n+1}+\frac{1}{n+2}+\ldots+\frac{1}{2n}$;
+b) $x_n=1+\frac{1}{2^2}+\frac{1}{3^2}+\ldots+\frac{1}{n^2}$;
+c) $x_n=\frac{1}{1!}+\frac{1}{2!}+\ldots+\frac{1}{n!}$;
+d) $x_n=\frac{1\cdot 3\cdot 5\cdots(2n-1)}{2\cdot 4\cdot 6\cdots(2n)}$.
+-
+Let $x_1=1$ and $x_{n+1}=\sqrt{3x_n+4}$, $n\ge 1$.
+a) Find $x_2$ and $x_3$.
+b) Show that $0<x_n<4$ for every $n\ge 1$.
+c) Show that the sequence $(x_n)$ is strictly increasing.
+d) Conclude that the sequence converges and find its limit.
+-
+Let $x_1=3$ and $x_{n+1}=\frac{x_n}{2}+\frac{1}{x_n}$, $n\ge 1$.
+a) Find $x_2$.
+b) Show that $x_n>0$ and $x_n\ge\sqrt{2}$ for every $n\ge 1$ (use the AM-GM inequality).
+c) Show that the sequence $(x_n)$ is decreasing.
+d) Conclude that the sequence converges and find its limit.
+-
+Let $x_1=2$ and $x_{n+1}=x_n^2$, $n\ge 1$. A student writes: "I pass to the limit in the recurrence: $\ell=\ell^2$, so $\ell\in\{0,1\}$. The terms are positive, so $\ell=1$."
+a) Find $x_2$, $x_3$ and $x_4$.
+b) Where is the student's mistake?
+c) Show that the sequence is increasing and that $x_n\ge 2^n$ for every $n\ge 1$. What is the limit of the sequence?
+D. The number e
+-
+Find:
+a) $\lim\limits_{n\to\infty}\left(1+\frac{5}{n}\right)^{n}$;
+b) $\lim\limits_{n\to\infty}\left(1-\frac{2}{n}\right)^{n}$;
+c) $\lim\limits_{n\to\infty}\left(\frac{n+2}{n+1}\right)^{n}$;
+d) $\lim\limits_{n\to\infty}\left(\frac{2n+1}{2n-3}\right)^{n+5}$;
+e) $\lim\limits_{n\to\infty}\left(\frac{n^2+n+1}{n^2-2n}\right)^{n}$, $n\ge 3$;
+f) $\lim\limits_{n\to\infty}\left(\frac{n^2-1}{n^2+2}\right)^{n^2}$.
+-
+Watch the base and the exponent! Find:
+a) $\lim\limits_{n\to\infty}\left(1+\frac{1}{n^2}\right)^{n}$;
+b) $\lim\limits_{n\to\infty}\left(\frac{n+2}{n}\right)^{n\sqrt{n}}$;
+c) $\lim\limits_{n\to\infty}\left(\frac{n+1}{2n+1}\right)^{n}$;
+d) $\lim\limits_{n\to\infty}\left(\frac{3n+1}{n+2}\right)^{n}$.
+-
+Find the real number $a$ for which $\lim\limits_{n\to\infty}\left(\frac{n+a}{n-2}\right)^{n}=e^5$ (the sequence is defined for $n\ge 3$).
+-
+Two students find $\lim\limits_{n\to\infty}\left(1+\frac{1}{n}\right)^{3n}$. The first one writes: "The base tends to $1$, and $1$ to any power is $1$, so the limit is $1$." The second one gets $e^3$.
+a) Which of them is right? Explain.
+b) What mistake does the other student make?
+-
+Using the consequences of the limit $\lim\limits_{n\to\infty}(1+u_n)^{\frac{1}{u_n}}=e$, find:
+a) $\lim\limits_{n\to\infty}n\ln\left(1+\frac{2}{n}\right)$;
+b) $\lim\limits_{n\to\infty}n\left(\sqrt[n]{3}-1\right)$;
+c) $\lim\limits_{n\to\infty}n\left(e^{\frac{1}{n}}-1\right)$.
+E. The ratio test
+-
+Using the ratio test, find:
+a) $\lim\limits_{n\to\infty}\frac{n^3}{2^n}$;
+b) $\lim\limits_{n\to\infty}\frac{2^n\cdot n!}{n^n}$;
+c) $\lim\limits_{n\to\infty}\frac{n!}{4^n}$;
+d) $\lim\limits_{n\to\infty}\frac{(2n)!}{(n!)^2}$;
+e) $\lim\limits_{n\to\infty}\frac{2n+1}{n+3}$. What do you notice? Find the limit another way.
+F. Choose the test
+-
+State which test you use, then find the limit:
+a) $\lim\limits_{n\to\infty}\frac{n^2+3\cos n}{2n^2+1}$;
+b) $\lim\limits_{n\to\infty}\left(\frac{n^2+3}{n^2+1}\right)^{n^2}$;
+c) $\lim\limits_{n\to\infty}\frac{n!+2^n}{n!+3^n}$;
+d) $\lim\limits_{n\to\infty}\sqrt[n]{n^2+2^n}$ (for $n\ge 4$, $n^2\le 2^n$);
+e) $\lim\limits_{n\to\infty}x_n$, where $x_1=5$ and $x_{n+1}=\sqrt{2x_n+3}$, $n\ge 1$;
+f) $\lim\limits_{n\to\infty}\frac{1^2+2^2+\ldots+n^2}{n^3}$.
+For those who want more
+-
+Let $e_n=\left(1+\frac{1}{n}\right)^n$, $n\ge 1$.
+a) Applying the AM-GM inequality (geometric mean $\le$ arithmetic mean) to the numbers $1$ and $1+\frac{1}{n}$, taken $n$ times, show that $e_n<e_{n+1}$.
+b) Using the binomial theorem and $\frac{1}{k!}\le\frac{1}{2^{k-1}}$, show that $e_n<3$.
+c) Conclude that the sequence $(e_n)$ converges.
+-
+Let $a>0$ and $a_n=\frac{a^n\cdot n!}{n^n}$, $n\ge 1$. Find $\lim\limits_{n\to\infty}\frac{a_{n+1}}{a_n}$ and discuss, depending on $a$, what the ratio test says about $\lim\limits_{n\to\infty}a_n$.
+-
+Let $x\in\mathbb{R}$. Find $\lim\limits_{n\to\infty}\frac{[x]+[2x]+\ldots+[nx]}{n^2}$.
+
+---
+
 ### Fișă de lucru: monotonia șirurilor
 - Source (RO): https://lauramiron.mqgrader.ro/materiale/fisa-lucru-monotonia-sirurilor-1038
 - Source (EN): https://lauramiron.mqgrader.ro/en/materiale/fisa-lucru-monotonia-sirurilor-1038
