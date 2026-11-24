@@ -1,0 +1,95 @@
+<h3>A. Noțiunea de matrice. Tipuri de matrice. Transpusa</h3>
+<p><strong>1.</strong> a) $A\in\mathcal{M}_{3,4}(\mathbb{R})$: $3$ linii și $4$ coloane.</p>
+<p>b) $a_{12}=-1$, $a_{23}=-2$, $a_{31}=1$, $a_{34}=-3$.</p>
+<p>c) Linia a doua: $5+4-2+7=14$. Coloana a treia: $0\cdot(-2)\cdot 6=0$.</p>
+<p>d) ${}^tA=\begin{pmatrix}3&amp;5&amp;1\\-1&amp;4&amp;0\\0&amp;-2&amp;6\\2&amp;7&amp;-3\end{pmatrix}\in\mathcal{M}_{4,3}(\mathbb{R})$.</p>
+<p><strong>2.</strong> $A=\begin{pmatrix}1&amp;0&amp;-1\\3&amp;2&amp;1\end{pmatrix}$.</p>
+<p><strong>3.</strong> a) $A=\begin{pmatrix}1&amp;-1&amp;1\\-1&amp;2&amp;-2\\1&amp;-2&amp;3\end{pmatrix}$.</p>
+<p>b) Diagonala principală: $1+2+3=6$. Diagonala secundară: $1+2+1=4$.</p>
+<p>c) $a_{ij}=a_{ji}$, pentru că $(-1)^{i+j}=(-1)^{j+i}$ și $\min(i,j)=\min(j,i)$. Deci ${}^tA=A$.</p>
+<p><strong>4.</strong> $A\in\mathcal{M}_2(\mathbb{R})$, $B\in\mathcal{M}_3(\mathbb{R})$, $C\in\mathcal{M}_{2,3}(\mathbb{R})$, $D\in\mathcal{M}_{1,3}(\mathbb{R})$, $E\in\mathcal{M}_{2,1}(\mathbb{R})$, $F\in\mathcal{M}_3(\mathbb{R})$. Pătratice: $A$, $B$, $F$. Diagonale: $A$ și $B$. Unitate: $B=I_3$. Nulă: $C=O_{2,3}$. Matrice linie: $D$. Matrice coloană: $E$. ($F$ nu este diagonală: are elemente nenule deasupra diagonalei principale.)</p>
+<p><strong>5.</strong> a) ${}^tA=A$ înseamnă $x=4$, $y=-2$, $z=3$.</p>
+<p>b) ${}^tB=-B$ înseamnă $a=-2$, $c=1$, $b=-3$.</p>
+<p><strong>6.</strong> a) $V=\begin{pmatrix}40&amp;25&amp;10\\35&amp;30&amp;10\end{pmatrix}$, $P=\begin{pmatrix}5\\3\\120\end{pmatrix}$.</p>
+<p>b) $VP=\begin{pmatrix}1475\\1465\end{pmatrix}$: încasările (în lei) ale filialelor $F_1$ și $F_2$ în acea săptămână.</p>
+<p>c) $W=1{,}2\,V=\begin{pmatrix}48&amp;30&amp;12\\42&amp;36&amp;12\end{pmatrix}$, $V+W=\begin{pmatrix}88&amp;55&amp;22\\77&amp;66&amp;22\end{pmatrix}$.</p>
+<p><strong>7.</strong> Dacă $A\in\mathcal{M}_{m,n}(\mathbb{R})$, atunci ${}^tA\in\mathcal{M}_{n,m}(\mathbb{R})$. Avem $mn=12$ și $n=m+1$, deci $m(m+1)=12$, $m=3$, $n=4$: $A\in\mathcal{M}_{3,4}(\mathbb{R})$.</p>
+<h3>B. Egalitatea matricelor</h3>
+<p><strong>8.</strong> $x=3$, $y=-4$.</p>
+<p><strong>9.</strong> $x+y=7$, $x-y=1$, deci $x=4$, $y=3$.</p>
+<p><strong>10.</strong> $x^2=9$, deci $x\in\{-3,3\}$; $2^y=8$, deci $y=3$; $\log_3{z}=2$, deci $z=9$.</p>
+<p><strong>11.</strong> Din $4=x+2$ obținem $x=2$; verificare: $x^2-3x=-2$ ✓. Din $y+1=0$ obținem $y=-1$; verificare: $y^2=1$ ✓.</p>
+<p><strong>12.</strong> a) $x^2=4$, $x=-2$, $x+4=2$ ✓, deci $x=-2$.</p>
+<p>b) $x^2=1$ și $x=-1$, dar atunci $x+2=1\ne 3$. Nu există $x$.</p>
+<p><strong>13.</strong> $2a-1=5$, $2-b=-1$, $2b-a=3$, $6-c=2$, deci $a=3$, $b=3$, $c=4$ (a treia egalitate este verificată).</p>
+<h3>C. Adunarea, înmulțirea cu un număr, transpusa. Ecuații simple</h3>
+<p><strong>14.</strong> a) $A+B=\begin{pmatrix}3&amp;-1&amp;-2\\2&amp;6&amp;7\end{pmatrix}$, $A-B=\begin{pmatrix}1&amp;-1&amp;2\\4&amp;-4&amp;1\end{pmatrix}$, $3A-2B=\begin{pmatrix}4&amp;-3&amp;4\\11&amp;-7&amp;6\end{pmatrix}$.</p>
+<p>b) ${}^t(A+B)={}^tA+{}^tB=\begin{pmatrix}3&amp;2\\-1&amp;6\\-2&amp;7\end{pmatrix}$.</p>
+<p><strong>15.</strong> a) $A+{}^tA=\begin{pmatrix}2&amp;-1\\-1&amp;0\end{pmatrix}$ este simetrică, $A-{}^tA=\begin{pmatrix}0&amp;5\\-5&amp;0\end{pmatrix}$ este antisimetrică.</p>
+<p>b) $A=\frac{1}{2}\left(A+{}^tA\right)+\frac{1}{2}\left(A-{}^tA\right)=\begin{pmatrix}1&amp;-\frac{1}{2}\\-\frac{1}{2}&amp;0\end{pmatrix}+\begin{pmatrix}0&amp;\frac{5}{2}\\-\frac{5}{2}&amp;0\end{pmatrix}$.</p>
+<p><strong>16.</strong> $X=\begin{pmatrix}3&amp;3\\-4&amp;5\end{pmatrix}$.</p>
+<p><strong>17.</strong> $2X=B+3A=\begin{pmatrix}4&amp;4\\0&amp;4\end{pmatrix}$, deci $X=\begin{pmatrix}2&amp;2\\0&amp;2\end{pmatrix}$.</p>
+<p><strong>18.</strong> Adunând: $2X=\begin{pmatrix}4&amp;-2\\4&amp;6\end{pmatrix}$, deci $X=\begin{pmatrix}2&amp;-1\\2&amp;3\end{pmatrix}$ și $Y=\begin{pmatrix}1&amp;2\\-2&amp;2\end{pmatrix}$.</p>
+<p><strong>19.</strong> Adunând: $3X=\begin{pmatrix}3&amp;3\\-3&amp;3\end{pmatrix}$, deci $X=\begin{pmatrix}1&amp;1\\-1&amp;1\end{pmatrix}$ și $Y=\begin{pmatrix}-1&amp;-2\\2&amp;-1\end{pmatrix}$.</p>
+<p><strong>20.</strong> Cu $X=\begin{pmatrix}x&amp;y\\z&amp;t\end{pmatrix}$: $X+2\,{}^tX=\begin{pmatrix}3x&amp;y+2z\\z+2y&amp;3t\end{pmatrix}$. Rezultă $x=1$, $t=2$, $y+2z=5$, $2y+z=4$, deci $y=1$, $z=2$ și $X=\begin{pmatrix}1&amp;1\\2&amp;2\end{pmatrix}$.</p>
+<p><strong>21.</strong> a) $aE+bF=\begin{pmatrix}a&amp;2a+b\\b&amp;a\end{pmatrix}$, deci $a=3$, $b=-2$ (și $2a+b=4$ ✓).</p>
+<p>b) Ar trebui $a=1$ și $a=2$ (elementele de pe diagonala principală): imposibil.</p>
+<h3>D. Înmulțirea matricelor. Proprietăți</h3>
+<p><strong>22.</strong> $AB\in\mathcal{M}_2(\mathbb{R})$, $BA\in\mathcal{M}_3(\mathbb{R})$, $AC\in\mathcal{M}_{2,3}(\mathbb{R})$, $CB\in\mathcal{M}_{3,2}(\mathbb{R})$, $DA\in\mathcal{M}_{2,3}(\mathbb{R})$, $ABD\in\mathcal{M}_2(\mathbb{R})$. Nu există: $CA$, $BC$, $AD$.</p>
+<p><strong>23.</strong> a) $\begin{pmatrix}4&amp;1\\8&amp;1\end{pmatrix}$; b) $(1)$; c) $\begin{pmatrix}3&amp;-3&amp;6\\0&amp;0&amp;0\\-1&amp;1&amp;-2\end{pmatrix}$; d) $\begin{pmatrix}5&amp;5\\5&amp;-3\end{pmatrix}$.</p>
+<p><strong>24.</strong> a) $AB=\begin{pmatrix}7&amp;2\\3&amp;1\end{pmatrix}$, $BA=\begin{pmatrix}1&amp;2\\3&amp;7\end{pmatrix}$, deci $AB\ne BA$.</p>
+<p>b) $(A+B)^2=\begin{pmatrix}10&amp;8\\12&amp;10\end{pmatrix}$, iar $A^2+2AB+B^2=\begin{pmatrix}16&amp;8\\12&amp;4\end{pmatrix}$.</p>
+<p>c) $(X+Y)^2=X^2+XY+YX+Y^2$. Egalitatea cu $X^2+2XY+Y^2$ revine la $YX=XY$.</p>
+<p><strong>25.</strong> $AB=O_2$; $BA=\begin{pmatrix}-1&amp;-1\\1&amp;1\end{pmatrix}\ne O_2$.</p>
+<p><strong>26.</strong> $AX=\begin{pmatrix}x+z&amp;y+t\\z&amp;t\end{pmatrix}$, $XA=\begin{pmatrix}x&amp;x+y\\z&amp;z+t\end{pmatrix}$, deci $z=0$, $t=x$: $X=\begin{pmatrix}a&amp;b\\0&amp;a\end{pmatrix}$, cu $a,b\in\mathbb{R}$.</p>
+<p><strong>27.</strong> $AB=\begin{pmatrix}0&amp;1\\-1&amp;1\end{pmatrix}$, $BC=\begin{pmatrix}0&amp;3\\2&amp;2\end{pmatrix}$, $AC=\begin{pmatrix}2&amp;-1\\4&amp;-5\end{pmatrix}$.</p>
+<p>a) $(AB)C=A(BC)=\begin{pmatrix}0&amp;3\\-2&amp;4\end{pmatrix}$.</p>
+<p>b) $A(B+C)=AB+AC=\begin{pmatrix}2&amp;0\\3&amp;-4\end{pmatrix}$.</p>
+<p><strong>28.</strong> a) $AB=\begin{pmatrix}2&amp;-1\\1&amp;10\end{pmatrix}$, ${}^t(AB)={}^tB\cdot{}^tA=\begin{pmatrix}2&amp;1\\-1&amp;10\end{pmatrix}$.</p>
+<p>b) ${}^tA\cdot{}^tB\in\mathcal{M}_3(\mathbb{R})$, ${}^tA\cdot{}^tB=\begin{pmatrix}1&amp;1&amp;-3\\5&amp;-1&amp;6\\3&amp;-3&amp;12\end{pmatrix}$. Nu poate fi egală cu ${}^t(AB)\in\mathcal{M}_2(\mathbb{R})$: au tipuri diferite.</p>
+<p><strong>29.</strong> a) $A^2=\begin{pmatrix}3&amp;2\\-2&amp;-1\end{pmatrix}$, iar $A^2-2A+I_2=O_2$.</p>
+<p>b) $A^3=A\cdot A^2=2A^2-A=2(2A-I_2)-A=3A-2I_2$, deci $x=3$, $y=-2$.</p>
+<p><strong>30.</strong> $A^2=\begin{pmatrix}x^2+2&amp;2x+2\\x+1&amp;3\end{pmatrix}$, deci $x+1=3$, $x=2$; verificare: $x^2+2=6$, $2x+2=6$ ✓.</p>
+<p><strong>31.</strong> a) $M(a)=I_2+aN$, cu $N=\begin{pmatrix}2&amp;-1\\4&amp;-2\end{pmatrix}$ și $N^2=O_2$. Atunci $M(a)M(b)=I_2+(a+b)N+ab\,N^2=M(a+b)$.</p>
+<p>b) $M(1)M(2)\cdots M(20)=M(1+2+\ldots+20)=M(210)=\begin{pmatrix}421&amp;-210\\840&amp;-419\end{pmatrix}$.</p>
+<p>c) Inducție: $P(1)$ evidentă; $\bigl(M(1)\bigr)^{k+1}=M(k)M(1)=M(k+1)$.</p>
+<h3>E. Ecuații matriceale</h3>
+<p><strong>32.</strong> $\begin{pmatrix}x+2z&amp;y+2t\\z&amp;t\end{pmatrix}=\begin{pmatrix}5&amp;4\\2&amp;1\end{pmatrix}$, deci $X=\begin{pmatrix}1&amp;2\\2&amp;1\end{pmatrix}$.</p>
+<p><strong>33.</strong> $\begin{pmatrix}x&amp;x+2y\\z&amp;z+2t\end{pmatrix}=\begin{pmatrix}3&amp;5\\-1&amp;1\end{pmatrix}$, deci $X=\begin{pmatrix}3&amp;1\\-1&amp;1\end{pmatrix}$.</p>
+<p><strong>34.</strong> a) $X\in\mathcal{M}_{2,1}(\mathbb{R})$, $X=\begin{pmatrix}a\\b\end{pmatrix}$: $2a+b=4$, $a-b=5$, deci $X=\begin{pmatrix}3\\-2\end{pmatrix}$.</p>
+<p>b) $X\in\mathcal{M}_{1,2}(\mathbb{R})$, $X=\begin{pmatrix}a&amp;b\end{pmatrix}$: $a+b=2$, $a+2b=3$, deci $X=\begin{pmatrix}1&amp;1\end{pmatrix}$.</p>
+<p><strong>35.</strong> $X^2=\begin{pmatrix}a^2&amp;2ab\\0&amp;a^2\end{pmatrix}$: $a^2=4$, $ab=6$. Soluții: $X=\begin{pmatrix}2&amp;3\\0&amp;2\end{pmatrix}$ și $X=\begin{pmatrix}-2&amp;-3\\0&amp;-2\end{pmatrix}$.</p>
+<p><strong>36.</strong> Pentru $X=\begin{pmatrix}p&amp;0\\0&amp;q\end{pmatrix}$: $p^2-3p+2=0$ și $q^2-3q+2=0$, deci $p,q\in\{1,2\}$. Patru soluții: $I_2$, $2I_2$, $\begin{pmatrix}1&amp;0\\0&amp;2\end{pmatrix}$, $\begin{pmatrix}2&amp;0\\0&amp;1\end{pmatrix}$.</p>
+<p><strong>37.</strong> Linia a doua a lui $A$ este dublul primei linii, deci și linia a doua a lui $AX$ este dublul primei linii: $AX=\begin{pmatrix}x+2z&amp;y+2t\\2(x+2z)&amp;2(y+2t)\end{pmatrix}$. Pentru $I_2$ ar trebui $0=2\cdot 1$: imposibil.</p>
+<p><strong>38.</strong> $\begin{pmatrix}x+z&amp;y+t\\x+z&amp;y+t\end{pmatrix}=\begin{pmatrix}2&amp;3\\2&amp;3\end{pmatrix}$, deci $X=\begin{pmatrix}a&amp;b\\2-a&amp;3-b\end{pmatrix}$, cu $a,b\in\mathbb{R}$. Ecuația are o infinitate de soluții.</p>
+<h3>F. Puterile unei matrice pătratice</h3>
+<p><strong>39.</strong> $A^2=\begin{pmatrix}1&amp;0\\4&amp;1\end{pmatrix}$, $A^3=\begin{pmatrix}1&amp;0\\6&amp;1\end{pmatrix}$, $A^n=\begin{pmatrix}1&amp;0\\2n&amp;1\end{pmatrix}$. Pasul de inducție: $A^{k+1}=A^kA=\begin{pmatrix}1&amp;0\\2k+2&amp;1\end{pmatrix}$.</p>
+<p><strong>40.</strong> a) $A^2=-I_2$, $A^3=-A=\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix}$, $A^4=I_2$.</p>
+<p>b) $2026=4\cdot 506+2$, deci $A^{2026}=A^2=-I_2$; $A^{2027}=A^3=\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix}$.</p>
+<p>c) $A+A^2+A^3+A^4=A-I_2-A+I_2=O_2$, iar suma are $2028=4\cdot 507$ termeni, grupați câte patru: suma este $O_2$.</p>
+<p><strong>41.</strong> a) $A^2=O_2$, deci $A^n=O_2$ pentru $n\ge 2$.</p>
+<p>b) $I_2$ comută cu $A$, deci $(I_2+A)^{10}=I_2+10A=\begin{pmatrix}21&amp;-40\\10&amp;-19\end{pmatrix}$.</p>
+<p><strong>42.</strong> $A^2=\begin{pmatrix}3&amp;-3\\-6&amp;6\end{pmatrix}=3A$, deci $A^n=3^{n-1}A=\begin{pmatrix}3^{n-1}&amp;-3^{n-1}\\-2\cdot 3^{n-1}&amp;2\cdot 3^{n-1}\end{pmatrix}$.</p>
+<p><strong>43.</strong> a) $B^2=\begin{pmatrix}0&amp;0&amp;0\\0&amp;0&amp;0\\4&amp;0&amp;0\end{pmatrix}$, $B^3=O_3$.</p>
+<p>b) $A^n=I_3+nB+\frac{n(n-1)}{2}B^2=\begin{pmatrix}1&amp;0&amp;0\\2n&amp;1&amp;0\\n(2n+1)&amp;2n&amp;1\end{pmatrix}$.</p>
+<p><strong>44.</strong> a) $A-3I_2=\begin{pmatrix}1&amp;-1\\1&amp;-1\end{pmatrix}$, iar pătratul ei este $O_2$.</p>
+<p>b) $A^n=3^nI_2+n\cdot 3^{n-1}(A-3I_2)=3^{n-1}\begin{pmatrix}n+3&amp;-n\\n&amp;3-n\end{pmatrix}$.</p>
+<p><strong>45.</strong> a) Calcul direct ($a+d=5$, $ad-bc=4$: relația Hamilton–Cayley).</p>
+<p>b) $A^3=5A^2-4A=5(5A-4I_2)-4A=21A-20I_2$: $x=21$, $y=-20$.</p>
+<p>c) $P(1)$: $A=1\cdot A+0\cdot I_2$ ✓. Dacă $A^k=x_kA+y_kI_2$, atunci $A^{k+1}=x_kA^2+y_kA=(5x_k+y_k)A-4x_kI_2$. Cu $x_k=\frac{4^k-1}{3}$, $y_k=\frac{4-4^k}{3}$: $5x_k+y_k=\frac{4^{k+1}-1}{3}$ și $-4x_k=\frac{4-4^{k+1}}{3}$ ✓.</p>
+<p><strong>46.</strong> $A=R\left(\frac{\pi}{6}\right)$, deci $A^n=R\left(\frac{n\pi}{6}\right)$.</p>
+<p>a) $A^n=I_2$ dacă $\frac{n\pi}{6}$ este multiplu de $2\pi$, adică $12\mid n$: $n=12$.</p>
+<p>b) $2026=12\cdot 168+10$, deci $A^{2026}=A^{10}=R\left(\frac{5\pi}{3}\right)=\begin{pmatrix}\frac{1}{2}&amp;\frac{\sqrt{3}}{2}\\-\frac{\sqrt{3}}{2}&amp;\frac{1}{2}\end{pmatrix}$.</p>
+<p><strong>47.</strong> $AB=\begin{pmatrix}2&amp;1\\1&amp;1\end{pmatrix}$, $(AB)^2=\begin{pmatrix}5&amp;3\\3&amp;2\end{pmatrix}$, $A^2B^2=\begin{pmatrix}1&amp;2\\0&amp;1\end{pmatrix}\begin{pmatrix}1&amp;0\\2&amp;1\end{pmatrix}=\begin{pmatrix}5&amp;2\\2&amp;1\end{pmatrix}$. Deci $(AB)^2\ne A^2B^2$, pentru că $AB\ne BA$.</p>
+<h3>G. Aplicații practice</h3>
+<p><strong>48.</strong> a) $M=\begin{pmatrix}0&amp;1&amp;1&amp;0\\1&amp;0&amp;1&amp;0\\1&amp;1&amp;0&amp;1\\0&amp;0&amp;1&amp;0\end{pmatrix}$. Este simetrică pentru că drumurile se parcurg în ambele sensuri: $m_{ij}=m_{ji}$.</p>
+<p>b) $M^2=\begin{pmatrix}2&amp;1&amp;1&amp;1\\1&amp;2&amp;1&amp;1\\1&amp;1&amp;3&amp;0\\1&amp;1&amp;0&amp;1\end{pmatrix}$.</p>
+<p>c) De la $A$ la $D$: $1$ traseu ($A$–$C$–$D$). De la $C$ la $D$: $0$ trasee (singurul drum este cel direct).</p>
+<p><strong>49.</strong> a) $T=\begin{pmatrix}0{,}8&amp;0{,}4\\0{,}2&amp;0{,}6\end{pmatrix}$.</p>
+<p>b) $X_2=\begin{pmatrix}360\\240\end{pmatrix}$, $X_3=\begin{pmatrix}384\\216\end{pmatrix}$.</p>
+<p>c) $T\begin{pmatrix}400\\200\end{pmatrix}=\begin{pmatrix}320+80\\80+120\end{pmatrix}=\begin{pmatrix}400\\200\end{pmatrix}$.</p>
+<p>d) Numărul total este $c_n+m_n=600$, deci $c_{n+1}=0{,}8\,c_n+0{,}4\,(600-c_n)=0{,}4\,c_n+240$. $P(1)$: $c_1=400-100=300$ ✓. Dacă $c_k=400-100\cdot {0{,}4}^{k-1}$, atunci $c_{k+1}=160-100\cdot {0{,}4}^{k}+240=400-100\cdot {0{,}4}^{k}$ ✓.</p>
+<h3>Pentru cei care vor mai mult</h3>
+<p><strong>50.</strong> a) Cu $X=\begin{pmatrix}x&amp;y\\z&amp;t\end{pmatrix}$, egalitatea $AX=XA$ dă $2z=3y$ și $x=t+\frac{y}{2}$. Atunci $X=tI_2+\frac{y}{2}\,A$. Reciproc, $\alpha I_2+\beta A$ comută cu $A$.</p>
+<p>b) $A^2=\begin{pmatrix}7&amp;2\\3&amp;6\end{pmatrix}=A+6I_2$ (relația Hamilton–Cayley, cu $a+d=1$, $ad-bc=-6$).</p>
+<p>c) $X=\alpha I_2+\beta A$, deci $X^2=\alpha^2I_2+2\alpha\beta A+\beta^2A^2=(\alpha^2+6\beta^2)I_2+(2\alpha\beta+\beta^2)A=\begin{pmatrix}\alpha^2+6\beta^2+2\alpha\beta+\beta^2&amp;2(2\alpha\beta+\beta^2)\\3(2\alpha\beta+\beta^2)&amp;\alpha^2+6\beta^2\end{pmatrix}$. Din $X^2=O_2$, elementul de pe poziția $(2,2)$ dă $\alpha^2+6\beta^2=0$, deci $\alpha=\beta=0$ și $X=O_2$.</p>

@@ -3295,6 +3295,92 @@
       }
     },
     {
+      "slug": "fisa-recapitulativa-matrice",
+      "uid": "1040",
+      "topic": "matrice",
+      "kind": "fisa-recapitulativa",
+      "alsoKind": "teorie",
+      "title": {
+        "ro": "Fișă recapitulativă: matrice",
+        "en": "Review worksheet: matrices"
+      },
+      "published": "2026-11-24",
+      "description": {
+        "ro": "Fișă recapitulativă pentru clasa a XI-a: tipuri de matrice, egalitate, operații, ecuații matriceale simple și puterile unei matrice, 50 de probleme.",
+        "en": "Grade 11 review worksheet: types of matrices, equality, operations, simple matrix equations and powers of a matrix, 50 problems."
+      },
+      "pdf": "materiale/pdf/fisa-recapitulativa-matrice-1040.pdf",
+      "youtube": null,
+      "import": {
+        "date": "2026-11-24",
+        "workflow": 5,
+        "pdf": "source"
+      },
+      "summary": {
+        "ro": "Fișa recapitulează capitolul despre matrice: tipurile de matrice și transpusa, egalitatea a două matrice, adunarea, înmulțirea cu un număr și înmulțirea matricelor, cu proprietățile lor. Urmează ecuații matriceale rezolvate prin egalitatea matricelor, puterile unei matrice pătratice și două aplicații practice.",
+        "en": "The worksheet reviews the chapter on matrices: the types of matrices and the transpose, equality of two matrices, addition, multiplication by a number and matrix multiplication, with their properties. Then come matrix equations solved through equality of matrices, powers of a square matrix and two real-life applications."
+      },
+      "faq": [
+        {
+          "q": {
+            "ro": "Când există produsul AB a două matrice?",
+            "en": "When does the product AB of two matrices exist?"
+          },
+          "a": {
+            "ro": "Produsul AB există numai dacă numărul de coloane ale lui A este egal cu numărul de linii ale lui B. Dacă A are m linii și n coloane, iar B are n linii și p coloane, atunci AB are m linii și p coloane. De aceea se poate întâmpla ca AB să existe, iar BA nu.",
+            "en": "The product AB exists only if the number of columns of A equals the number of rows of B. If A has m rows and n columns and B has n rows and p columns, then AB has m rows and p columns. That is why AB may exist while BA does not."
+          }
+        },
+        {
+          "q": {
+            "ro": "De ce (A + B)² nu este, în general, A² + 2AB + B²?",
+            "en": "Why is (A + B)² not A² + 2AB + B² in general?"
+          },
+          "a": {
+            "ro": "Înmulțirea matricelor nu este comutativă. Desfăcând parantezele obținem (A + B)² = A² + AB + BA + B², iar AB și BA pot fi diferite. Formula cu 2AB, ca și binomul lui Newton, este adevărată numai pentru matrice care comută, adică AB = BA.",
+            "en": "Matrix multiplication is not commutative. Expanding the brackets gives (A + B)² = A² + AB + BA + B², and AB and BA can be different. The formula with 2AB, like Newton's binomial formula, holds only for matrices that commute, that is AB = BA."
+          }
+        },
+        {
+          "q": {
+            "ro": "Cum rezolv o ecuație matriceală ca AX = B fără inversa matricei?",
+            "en": "How do I solve a matrix equation like AX = B without the inverse matrix?"
+          },
+          "a": {
+            "ro": "Scrii necunoscuta cu elementele ei, de exemplu X cu elementele x, y, z, t, și calculezi produsul AX. Din egalitatea matricelor AX = B obții un sistem de ecuații cu numere, pe care îl rezolvi. Sistemul poate avea o soluție, o infinitate de soluții sau niciuna. La final verifici prin înmulțire.",
+            "en": "Write the unknown with its entries, for example X with the entries x, y, z, t, and work out the product AX. Equality of the matrices AX = B gives a system of equations with numbers, which you solve. The system can have one solution, infinitely many or none. At the end check by multiplying."
+          }
+        }
+      ],
+      "keywords": {
+        "ro": [
+          "matrice",
+          "operații cu matrice",
+          "înmulțirea matricelor",
+          "egalitatea matricelor",
+          "ecuații matriceale",
+          "puterile unei matrice",
+          "transpusa unei matrice",
+          "clasa a 11-a",
+          "clasa a XI-a"
+        ],
+        "en": [
+          "matrices",
+          "matrix operations",
+          "matrix multiplication",
+          "equality of matrices",
+          "matrix equations",
+          "powers of a matrix",
+          "transpose of a matrix",
+          "grade 11"
+        ]
+      },
+      "results": {
+        "version": 1,
+        "checks": 64
+      }
+    },
+    {
       "slug": "fisa-lucru-criterii-convergenta-numarul-e",
       "uid": "1041",
       "topic": "siruri-numere-reale",

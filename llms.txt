@@ -90,6 +90,7 @@
 - [Fișă de lucru: șiruri date prin recurențe](https://lauramiron.mqgrader.ro/materiale/fisa-lucru-siruri-recurente-1033) ([EN](https://lauramiron.mqgrader.ro/en/materiale/fisa-lucru-siruri-recurente-1033)): Fișă de lucru pentru clasa a XI-a: șiruri date prin recurențe, aflarea termenului general, recurența omografică, monotonie și mărginire. (fisa-lucru, clasa a 11-a / grade 11, updated 2026-10-26)
 
 ### Matrice / Matrices
+- [Fișă recapitulativă: matrice](https://lauramiron.mqgrader.ro/materiale/fisa-recapitulativa-matrice-1040) ([EN](https://lauramiron.mqgrader.ro/en/materiale/fisa-recapitulativa-matrice-1040)): Fișă recapitulativă pentru clasa a XI-a: tipuri de matrice, egalitate, operații, ecuații matriceale simple și puterile unei matrice, 50 de probleme. (fisa-recapitulativa, clasa a 11-a / grade 11, updated 2026-11-24)
 - [Fișă de lucru: puterile unei matrice pătratice](https://lauramiron.mqgrader.ro/materiale/fisa-lucru-puterile-matrice-patratice-1034) ([EN](https://lauramiron.mqgrader.ro/en/materiale/fisa-lucru-puterile-matrice-patratice-1034)): Fișă de lucru pentru clasa a XI-a: puterile unei matrice pătratice prin inducție, binomul lui Newton, relația Hamilton–Cayley și matrice de rotație. (fisa-lucru, clasa a 11-a / grade 11, updated 2026-11-15)
 
 ### Mulțimi de puncte pe dreapta reală / Sets of points on the real line

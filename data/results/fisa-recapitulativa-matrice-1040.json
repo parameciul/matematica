@@ -1,0 +1,818 @@
+{
+  "uid": "1040",
+  "version": 1,
+  "items": {
+    "2": {
+      "kind": "list",
+      "show": "$A=\\begin{pmatrix}1&0&-1\\\\3&2&1\\end{pmatrix}$",
+      "accept": [
+        "1; 0; -1; 3; 2; 1"
+      ],
+      "hint": {
+        "ro": "elementele lui $A$, pe linii",
+        "en": "the entries of $A$, row by row"
+      }
+    },
+    "4": {
+      "check": false,
+      "why": "open",
+      "show": "$A\\in\\mathcal{M}_2$, $B\\in\\mathcal{M}_3$, $C\\in\\mathcal{M}_{2,3}$, $D\\in\\mathcal{M}_{1,3}$, $E\\in\\mathcal{M}_{2,1}$, $F\\in\\mathcal{M}_3$; pătratice: $A$, $B$, $F$; diagonale: $A$, $B$; unitate: $B=I_3$; nulă: $C$; linie: $D$; coloană: $E$"
+    },
+    "7": {
+      "kind": "list",
+      "show": "$A\\in\\mathcal{M}_{3,4}(\\mathbb{R})$",
+      "accept": [
+        "3; 4"
+      ],
+      "hint": {
+        "ro": "numărul de linii; numărul de coloane",
+        "en": "number of rows; number of columns"
+      }
+    },
+    "8": {
+      "kind": "list",
+      "show": "$x=3$, $y=-4$",
+      "accept": [
+        "3; -4"
+      ],
+      "hint": {
+        "ro": "$x$; $y$",
+        "en": "$x$; $y$"
+      }
+    },
+    "9": {
+      "kind": "list",
+      "show": "$x=4$, $y=3$",
+      "accept": [
+        "4; 3"
+      ],
+      "hint": {
+        "ro": "$x$; $y$",
+        "en": "$x$; $y$"
+      }
+    },
+    "10": {
+      "kind": "list",
+      "show": "$x\\in\\{-3,3\\}$, $y=3$, $z=9$",
+      "accept": [
+        "-3; 3; 3; 9"
+      ],
+      "hint": {
+        "ro": "cele două valori ale lui $x$, în ordine crescătoare; $y$; $z$",
+        "en": "the two values of $x$, in increasing order; $y$; $z$"
+      }
+    },
+    "11": {
+      "kind": "list",
+      "show": "$x=2$, $y=-1$",
+      "accept": [
+        "2; -1"
+      ],
+      "hint": {
+        "ro": "$x$; $y$",
+        "en": "$x$; $y$"
+      }
+    },
+    "13": {
+      "kind": "list",
+      "show": "$a=3$, $b=3$, $c=4$",
+      "accept": [
+        "3; 3; 4"
+      ],
+      "hint": {
+        "ro": "$a$; $b$; $c$",
+        "en": "$a$; $b$; $c$"
+      }
+    },
+    "16": {
+      "kind": "list",
+      "show": "$X=\\begin{pmatrix}3&3\\\\-4&5\\end{pmatrix}$",
+      "accept": [
+        "3; 3; -4; 5"
+      ],
+      "hint": {
+        "ro": "elementele lui $X$, pe linii",
+        "en": "the entries of $X$, row by row"
+      }
+    },
+    "17": {
+      "kind": "list",
+      "show": "$2X=B+3A$, $X=\\begin{pmatrix}2&2\\\\0&2\\end{pmatrix}$",
+      "accept": [
+        "2; 2; 0; 2"
+      ],
+      "hint": {
+        "ro": "elementele lui $X$, pe linii",
+        "en": "the entries of $X$, row by row"
+      }
+    },
+    "18": {
+      "kind": "list",
+      "show": "$X=\\begin{pmatrix}2&-1\\\\2&3\\end{pmatrix}$, $Y=\\begin{pmatrix}1&2\\\\-2&2\\end{pmatrix}$",
+      "accept": [
+        "2; -1; 2; 3; 1; 2; -2; 2"
+      ],
+      "hint": {
+        "ro": "elementele lui $X$, apoi ale lui $Y$, pe linii (8 valori)",
+        "en": "the entries of $X$, then of $Y$, row by row (8 values)"
+      }
+    },
+    "19": {
+      "kind": "list",
+      "show": "$X=\\begin{pmatrix}1&1\\\\-1&1\\end{pmatrix}$, $Y=\\begin{pmatrix}-1&-2\\\\2&-1\\end{pmatrix}$",
+      "accept": [
+        "1; 1; -1; 1; -1; -2; 2; -1"
+      ],
+      "hint": {
+        "ro": "elementele lui $X$, apoi ale lui $Y$, pe linii (8 valori)",
+        "en": "the entries of $X$, then of $Y$, row by row (8 values)"
+      }
+    },
+    "20": {
+      "kind": "list",
+      "show": "$X=\\begin{pmatrix}1&1\\\\2&2\\end{pmatrix}$",
+      "accept": [
+        "1; 1; 2; 2"
+      ],
+      "hint": {
+        "ro": "elementele lui $X$, pe linii",
+        "en": "the entries of $X$, row by row"
+      }
+    },
+    "22": {
+      "check": false,
+      "why": "open",
+      "show": "$AB\\in\\mathcal{M}_2$, $BA\\in\\mathcal{M}_3$, $AC\\in\\mathcal{M}_{2,3}$, $CB\\in\\mathcal{M}_{3,2}$, $DA\\in\\mathcal{M}_{2,3}$, $ABD\\in\\mathcal{M}_2$; nu există $CA$, $BC$, $AD$"
+    },
+    "25": {
+      "kind": "list",
+      "show": "$AB=O_2$; $BA=\\begin{pmatrix}-1&-1\\\\1&1\\end{pmatrix}\\ne O_2$",
+      "accept": [
+        "-1; -1; 1; 1"
+      ],
+      "hint": {
+        "ro": "elementele lui $BA$, pe linii",
+        "en": "the entries of $BA$, row by row"
+      }
+    },
+    "26": {
+      "check": false,
+      "why": "open",
+      "show": "$X=\\begin{pmatrix}a&b\\\\0&a\\end{pmatrix}$, $a,b\\in\\mathbb{R}$"
+    },
+    "30": {
+      "kind": "number",
+      "show": "$x=2$",
+      "accept": [
+        "2"
+      ]
+    },
+    "32": {
+      "kind": "list",
+      "show": "$X=\\begin{pmatrix}1&2\\\\2&1\\end{pmatrix}$",
+      "accept": [
+        "1; 2; 2; 1"
+      ],
+      "hint": {
+        "ro": "elementele lui $X$, pe linii",
+        "en": "the entries of $X$, row by row"
+      }
+    },
+    "33": {
+      "kind": "list",
+      "show": "$X=\\begin{pmatrix}3&1\\\\-1&1\\end{pmatrix}$",
+      "accept": [
+        "3; 1; -1; 1"
+      ],
+      "hint": {
+        "ro": "elementele lui $X$, pe linii",
+        "en": "the entries of $X$, row by row"
+      }
+    },
+    "35": {
+      "kind": "list",
+      "show": "$X=\\begin{pmatrix}2&3\\\\0&2\\end{pmatrix}$ și $X=\\begin{pmatrix}-2&-3\\\\0&-2\\end{pmatrix}$",
+      "accept": [
+        "2; 3; -2; -3"
+      ],
+      "hint": {
+        "ro": "$a$; $b$ pentru soluția cu $a>0$, apoi $a$; $b$ pentru cealaltă",
+        "en": "$a$; $b$ for the solution with $a>0$, then $a$; $b$ for the other one"
+      }
+    },
+    "36": {
+      "check": false,
+      "why": "open",
+      "show": "$I_2$, $2I_2$, $\\begin{pmatrix}1&0\\\\0&2\\end{pmatrix}$, $\\begin{pmatrix}2&0\\\\0&1\\end{pmatrix}$"
+    },
+    "37": {
+      "check": false,
+      "why": "proof",
+      "show": "linia a doua a lui $AX$ este dublul primei linii; pentru $I_2$ ar trebui $0=2$"
+    },
+    "38": {
+      "check": false,
+      "why": "open",
+      "show": "$X=\\begin{pmatrix}a&b\\\\2-a&3-b\\end{pmatrix}$, $a,b\\in\\mathbb{R}$: o infinitate de soluții"
+    },
+    "39": {
+      "check": false,
+      "why": "open",
+      "show": "$A^n=\\begin{pmatrix}1&0\\\\2n&1\\end{pmatrix}$"
+    },
+    "42": {
+      "check": false,
+      "why": "open",
+      "show": "$A^n=3^{n-1}A$"
+    },
+    "47": {
+      "kind": "list",
+      "show": "$(AB)^2=\\begin{pmatrix}5&3\\\\3&2\\end{pmatrix}$, $A^2B^2=\\begin{pmatrix}5&2\\\\2&1\\end{pmatrix}$: diferite, pentru că $AB\\ne BA$",
+      "accept": [
+        "5; 3; 3; 2; 5; 2; 2; 1"
+      ],
+      "hint": {
+        "ro": "elementele lui $(AB)^2$, apoi ale lui $A^2B^2$, pe linii (8 valori)",
+        "en": "the entries of $(AB)^2$, then of $A^2B^2$, row by row (8 values)"
+      }
+    },
+    "1a": {
+      "kind": "list",
+      "show": "$A\\in\\mathcal{M}_{3,4}(\\mathbb{R})$",
+      "accept": [
+        "3; 4"
+      ],
+      "hint": {
+        "ro": "numărul de linii; numărul de coloane",
+        "en": "number of rows; number of columns"
+      }
+    },
+    "1b": {
+      "kind": "list",
+      "show": "$a_{12}=-1$, $a_{23}=-2$, $a_{31}=1$, $a_{34}=-3$",
+      "accept": [
+        "-1; -2; 1; -3"
+      ],
+      "hint": {
+        "ro": "$a_{12}$; $a_{23}$; $a_{31}$; $a_{34}$",
+        "en": "$a_{12}$; $a_{23}$; $a_{31}$; $a_{34}$"
+      }
+    },
+    "1c": {
+      "kind": "list",
+      "show": "$5+4-2+7=14$; $0\\cdot(-2)\\cdot 6=0$",
+      "accept": [
+        "14; 0"
+      ],
+      "hint": {
+        "ro": "suma de pe linia a doua; produsul de pe coloana a treia",
+        "en": "the sum in row 2; the product in column 3"
+      }
+    },
+    "1d": {
+      "kind": "list",
+      "show": "${}^tA=\\begin{pmatrix}3&5&1\\\\-1&4&0\\\\0&-2&6\\\\2&7&-3\\end{pmatrix}\\in\\mathcal{M}_{4,3}(\\mathbb{R})$",
+      "accept": [
+        "3; 5; 1; -1; 4; 0; 0; -2; 6; 2; 7; -3"
+      ],
+      "hint": {
+        "ro": "elementele lui ${}^tA$, pe linii (12 valori)",
+        "en": "the entries of ${}^tA$, row by row (12 values)"
+      }
+    },
+    "3a": {
+      "kind": "list",
+      "show": "$A=\\begin{pmatrix}1&-1&1\\\\-1&2&-2\\\\1&-2&3\\end{pmatrix}$",
+      "accept": [
+        "1; -1; 1; -1; 2; -2; 1; -2; 3"
+      ],
+      "hint": {
+        "ro": "elementele lui $A$, pe linii",
+        "en": "the entries of $A$, row by row"
+      }
+    },
+    "3b": {
+      "kind": "list",
+      "show": "$1+2+3=6$; $1+2+1=4$",
+      "accept": [
+        "6; 4"
+      ],
+      "hint": {
+        "ro": "suma pe diagonala principală; suma pe diagonala secundară",
+        "en": "main diagonal sum; secondary diagonal sum"
+      }
+    },
+    "3c": {
+      "check": false,
+      "why": "proof",
+      "show": "$a_{ij}=a_{ji}$, deci ${}^tA=A$"
+    },
+    "5a": {
+      "kind": "list",
+      "show": "$x=4$, $y=-2$, $z=3$",
+      "accept": [
+        "4; -2; 3"
+      ],
+      "hint": {
+        "ro": "$x$; $y$; $z$",
+        "en": "$x$; $y$; $z$"
+      }
+    },
+    "5b": {
+      "kind": "list",
+      "show": "$a=-2$, $b=-3$, $c=1$",
+      "accept": [
+        "-2; -3; 1"
+      ],
+      "hint": {
+        "ro": "$a$; $b$; $c$",
+        "en": "$a$; $b$; $c$"
+      }
+    },
+    "6a": {
+      "kind": "list",
+      "show": "$V=\\begin{pmatrix}40&25&10\\\\35&30&10\\end{pmatrix}$, $P=\\begin{pmatrix}5\\\\3\\\\120\\end{pmatrix}$",
+      "accept": [
+        "40; 25; 10; 35; 30; 10; 5; 3; 120"
+      ],
+      "hint": {
+        "ro": "elementele lui $V$ pe linii, apoi cele ale lui $P$ (9 valori)",
+        "en": "the entries of $V$ row by row, then those of $P$ (9 values)"
+      }
+    },
+    "6b": {
+      "kind": "list",
+      "show": "$VP=\\begin{pmatrix}1475\\\\1465\\end{pmatrix}$",
+      "accept": [
+        "1475; 1465"
+      ],
+      "hint": {
+        "ro": "elementele lui $VP$",
+        "en": "the entries of $VP$"
+      }
+    },
+    "6c": {
+      "kind": "list",
+      "show": "$W=1{,}2\\,V=\\begin{pmatrix}48&30&12\\\\42&36&12\\end{pmatrix}$, $V+W=\\begin{pmatrix}88&55&22\\\\77&66&22\\end{pmatrix}$",
+      "accept": [
+        "48; 30; 12; 42; 36; 12; 88; 55; 22; 77; 66; 22"
+      ],
+      "hint": {
+        "ro": "elementele lui $W$, apoi ale lui $V+W$, pe linii (12 valori)",
+        "en": "the entries of $W$, then of $V+W$, row by row (12 values)"
+      }
+    },
+    "12a": {
+      "kind": "set",
+      "show": "$x=-2$",
+      "accept": [
+        "{-2}"
+      ],
+      "hint": {
+        "ro": "mulțimea valorilor lui $x$ (∅ dacă nu există)",
+        "en": "the set of values of $x$ (∅ if there is none)"
+      }
+    },
+    "12b": {
+      "kind": "set",
+      "show": "nu există $x$: din $x^2=1$ și $x=-1$ rezultă $x+2=1\\ne 3$",
+      "accept": [
+        "∅"
+      ],
+      "hint": {
+        "ro": "mulțimea valorilor lui $x$ (∅ dacă nu există)",
+        "en": "the set of values of $x$ (∅ if there is none)"
+      }
+    },
+    "14a": {
+      "kind": "list",
+      "show": "$A+B=\\begin{pmatrix}3&-1&-2\\\\2&6&7\\end{pmatrix}$, $A-B=\\begin{pmatrix}1&-1&2\\\\4&-4&1\\end{pmatrix}$, $3A-2B=\\begin{pmatrix}4&-3&4\\\\11&-7&6\\end{pmatrix}$",
+      "accept": [
+        "4; -3; 4; 11; -7; 6"
+      ],
+      "hint": {
+        "ro": "elementele lui $3A-2B$, pe linii",
+        "en": "the entries of $3A-2B$, row by row"
+      }
+    },
+    "14b": {
+      "kind": "list",
+      "show": "${}^t(A+B)={}^tA+{}^tB=\\begin{pmatrix}3&2\\\\-1&6\\\\-2&7\\end{pmatrix}$",
+      "accept": [
+        "3; 2; -1; 6; -2; 7"
+      ],
+      "hint": {
+        "ro": "elementele lui ${}^t(A+B)$, pe linii",
+        "en": "the entries of ${}^t(A+B)$, row by row"
+      }
+    },
+    "15a": {
+      "kind": "list",
+      "show": "$A+{}^tA=\\begin{pmatrix}2&-1\\\\-1&0\\end{pmatrix}$ (simetrică), $A-{}^tA=\\begin{pmatrix}0&5\\\\-5&0\\end{pmatrix}$ (antisimetrică)",
+      "accept": [
+        "2; -1; -1; 0; 0; 5; -5; 0"
+      ],
+      "hint": {
+        "ro": "elementele lui $A+{}^tA$, apoi ale lui $A-{}^tA$, pe linii (8 valori)",
+        "en": "the entries of $A+{}^tA$, then of $A-{}^tA$, row by row (8 values)"
+      }
+    },
+    "15b": {
+      "kind": "list",
+      "show": "$A=\\begin{pmatrix}1&- \\frac{1}{2}\\\\- \\frac{1}{2}&0\\end{pmatrix}+\\begin{pmatrix}0&\\frac{5}{2}\\\\- \\frac{5}{2}&0\\end{pmatrix}$",
+      "accept": [
+        "1; -1/2; -1/2; 0; 0; 5/2; -5/2; 0"
+      ],
+      "hint": {
+        "ro": "elementele matricei simetrice, apoi ale celei antisimetrice, pe linii (8 valori)",
+        "en": "the entries of the symmetric matrix, then of the antisymmetric one, row by row (8 values)"
+      }
+    },
+    "21a": {
+      "kind": "list",
+      "show": "$a=3$, $b=-2$",
+      "accept": [
+        "3; -2"
+      ],
+      "hint": {
+        "ro": "$a$; $b$",
+        "en": "$a$; $b$"
+      }
+    },
+    "21b": {
+      "check": false,
+      "why": "proof",
+      "show": "pe diagonala principală ar trebui $a=1$ și $a=2$"
+    },
+    "23a": {
+      "kind": "list",
+      "show": "$\\begin{pmatrix}4&1\\\\8&1\\end{pmatrix}$",
+      "accept": [
+        "4; 1; 8; 1"
+      ],
+      "hint": {
+        "ro": "elementele produsului, pe linii",
+        "en": "the entries of the product, row by row"
+      }
+    },
+    "23b": {
+      "kind": "number",
+      "show": "$(1)$",
+      "accept": [
+        "1"
+      ]
+    },
+    "23c": {
+      "kind": "list",
+      "show": "$\\begin{pmatrix}3&-3&6\\\\0&0&0\\\\-1&1&-2\\end{pmatrix}$",
+      "accept": [
+        "3; -3; 6; 0; 0; 0; -1; 1; -2"
+      ],
+      "hint": {
+        "ro": "elementele produsului, pe linii (9 valori)",
+        "en": "the entries of the product, row by row (9 values)"
+      }
+    },
+    "23d": {
+      "kind": "list",
+      "show": "$\\begin{pmatrix}5&5\\\\5&-3\\end{pmatrix}$",
+      "accept": [
+        "5; 5; 5; -3"
+      ],
+      "hint": {
+        "ro": "elementele produsului, pe linii",
+        "en": "the entries of the product, row by row"
+      }
+    },
+    "24a": {
+      "kind": "list",
+      "show": "$AB=\\begin{pmatrix}7&2\\\\3&1\\end{pmatrix}$, $BA=\\begin{pmatrix}1&2\\\\3&7\\end{pmatrix}$: $AB\\ne BA$",
+      "accept": [
+        "7; 2; 3; 1; 1; 2; 3; 7"
+      ],
+      "hint": {
+        "ro": "elementele lui $AB$, apoi ale lui $BA$, pe linii (8 valori)",
+        "en": "the entries of $AB$, then of $BA$, row by row (8 values)"
+      }
+    },
+    "24b": {
+      "kind": "list",
+      "show": "$(A+B)^2=\\begin{pmatrix}10&8\\\\12&10\\end{pmatrix}$, $A^2+2AB+B^2=\\begin{pmatrix}16&8\\\\12&4\\end{pmatrix}$",
+      "accept": [
+        "10; 8; 12; 10; 16; 8; 12; 4"
+      ],
+      "hint": {
+        "ro": "elementele lui $(A+B)^2$, apoi ale lui $A^2+2AB+B^2$, pe linii (8 valori)",
+        "en": "the entries of $(A+B)^2$, then of $A^2+2AB+B^2$, row by row (8 values)"
+      }
+    },
+    "24c": {
+      "check": false,
+      "why": "proof",
+      "show": "$(X+Y)^2=X^2+XY+YX+Y^2$"
+    },
+    "27a": {
+      "kind": "list",
+      "show": "$(AB)C=A(BC)=\\begin{pmatrix}0&3\\\\-2&4\\end{pmatrix}$",
+      "accept": [
+        "0; 3; -2; 4"
+      ],
+      "hint": {
+        "ro": "elementele matricei obținute, pe linii",
+        "en": "the entries of the matrix you get, row by row"
+      }
+    },
+    "27b": {
+      "kind": "list",
+      "show": "$A(B+C)=AB+AC=\\begin{pmatrix}2&0\\\\3&-4\\end{pmatrix}$",
+      "accept": [
+        "2; 0; 3; -4"
+      ],
+      "hint": {
+        "ro": "elementele matricei obținute, pe linii",
+        "en": "the entries of the matrix you get, row by row"
+      }
+    },
+    "28a": {
+      "kind": "list",
+      "show": "$AB=\\begin{pmatrix}2&-1\\\\1&10\\end{pmatrix}$, ${}^t(AB)={}^tB\\cdot{}^tA=\\begin{pmatrix}2&1\\\\-1&10\\end{pmatrix}$",
+      "accept": [
+        "2; -1; 1; 10"
+      ],
+      "hint": {
+        "ro": "elementele lui $AB$, pe linii",
+        "en": "the entries of $AB$, row by row"
+      }
+    },
+    "28b": {
+      "kind": "list",
+      "show": "${}^tA\\cdot{}^tB\\in\\mathcal{M}_3(\\mathbb{R})$; nu poate fi egală cu ${}^t(AB)\\in\\mathcal{M}_2(\\mathbb{R})$",
+      "accept": [
+        "3; 3"
+      ],
+      "hint": {
+        "ro": "numărul de linii; numărul de coloane ale lui ${}^tA\\cdot{}^tB$",
+        "en": "number of rows; number of columns of ${}^tA\\cdot{}^tB$"
+      }
+    },
+    "29a": {
+      "check": false,
+      "why": "proof",
+      "show": "$A^2=\\begin{pmatrix}3&2\\\\-2&-1\\end{pmatrix}$"
+    },
+    "29b": {
+      "kind": "list",
+      "show": "$A^3=3A-2I_2$",
+      "accept": [
+        "3; -2"
+      ],
+      "hint": {
+        "ro": "$x$; $y$",
+        "en": "$x$; $y$"
+      }
+    },
+    "31a": {
+      "check": false,
+      "why": "proof",
+      "show": "$M(a)=I_2+aN$, $N^2=O_2$"
+    },
+    "31b": {
+      "kind": "list",
+      "show": "$M(210)=\\begin{pmatrix}421&-210\\\\840&-419\\end{pmatrix}$",
+      "accept": [
+        "421; -210; 840; -419"
+      ],
+      "hint": {
+        "ro": "elementele lui $M(210)$, pe linii",
+        "en": "the entries of $M(210)$, row by row"
+      }
+    },
+    "31c": {
+      "check": false,
+      "why": "proof",
+      "show": "inducție: $\\bigl(M(1)\\bigr)^{k+1}=M(k)M(1)=M(k+1)$"
+    },
+    "34a": {
+      "kind": "list",
+      "show": "$X\\in\\mathcal{M}_{2,1}(\\mathbb{R})$, $X=\\begin{pmatrix}3\\\\-2\\end{pmatrix}$",
+      "accept": [
+        "3; -2"
+      ],
+      "hint": {
+        "ro": "elementele lui $X$, pe linii",
+        "en": "the entries of $X$, row by row"
+      }
+    },
+    "34b": {
+      "kind": "list",
+      "show": "$X\\in\\mathcal{M}_{1,2}(\\mathbb{R})$, $X=\\begin{pmatrix}1&1\\end{pmatrix}$",
+      "accept": [
+        "1; 1"
+      ],
+      "hint": {
+        "ro": "elementele lui $X$, pe linii",
+        "en": "the entries of $X$, row by row"
+      }
+    },
+    "40a": {
+      "kind": "list",
+      "show": "$A^2=-I_2$, $A^3=-A=\\begin{pmatrix}0&-1\\\\1&0\\end{pmatrix}$, $A^4=I_2$",
+      "accept": [
+        "-1; 0; 0; -1; 0; -1; 1; 0; 1; 0; 0; 1"
+      ],
+      "hint": {
+        "ro": "elementele lui $A^2$, $A^3$, $A^4$, fiecare pe linii (12 valori)",
+        "en": "the entries of $A^2$, $A^3$, $A^4$, each row by row (12 values)"
+      }
+    },
+    "40b": {
+      "kind": "list",
+      "show": "$A^{2026}=A^2=-I_2$, $A^{2027}=A^3=\\begin{pmatrix}0&-1\\\\1&0\\end{pmatrix}$",
+      "accept": [
+        "-1; 0; 0; -1; 0; -1; 1; 0"
+      ],
+      "hint": {
+        "ro": "elementele lui $A^{2026}$, apoi ale lui $A^{2027}$, pe linii (8 valori)",
+        "en": "the entries of $A^{2026}$, then of $A^{2027}$, row by row (8 values)"
+      }
+    },
+    "40c": {
+      "kind": "list",
+      "show": "$O_2$ (grupe de câte patru termeni cu suma $O_2$)",
+      "accept": [
+        "0; 0; 0; 0"
+      ],
+      "hint": {
+        "ro": "elementele sumei, pe linii",
+        "en": "the entries of the sum, row by row"
+      }
+    },
+    "41a": {
+      "kind": "list",
+      "show": "$A^2=O_2$, deci $A^n=O_2$ pentru $n\\ge 2$",
+      "accept": [
+        "0; 0; 0; 0"
+      ],
+      "hint": {
+        "ro": "elementele lui $A^2$, pe linii",
+        "en": "the entries of $A^2$, row by row"
+      }
+    },
+    "41b": {
+      "kind": "list",
+      "show": "$(I_2+A)^{10}=I_2+10A=\\begin{pmatrix}21&-40\\\\10&-19\\end{pmatrix}$",
+      "accept": [
+        "21; -40; 10; -19"
+      ],
+      "hint": {
+        "ro": "elementele lui $(I_2+A)^{10}$, pe linii",
+        "en": "the entries of $(I_2+A)^{10}$, row by row"
+      }
+    },
+    "43a": {
+      "kind": "list",
+      "show": "$B^2=\\begin{pmatrix}0&0&0\\\\0&0&0\\\\4&0&0\\end{pmatrix}$, $B^3=O_3$",
+      "accept": [
+        "0; 0; 0; 0; 0; 0; 4; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0"
+      ],
+      "hint": {
+        "ro": "elementele lui $B^2$, apoi ale lui $B^3$, pe linii (18 valori)",
+        "en": "the entries of $B^2$, then of $B^3$, row by row (18 values)"
+      }
+    },
+    "43b": {
+      "check": false,
+      "why": "open",
+      "show": "$A^n=\\begin{pmatrix}1&0&0\\\\2n&1&0\\\\n(2n+1)&2n&1\\end{pmatrix}$"
+    },
+    "44a": {
+      "check": false,
+      "why": "proof",
+      "show": "$A-3I_2=\\begin{pmatrix}1&-1\\\\1&-1\\end{pmatrix}$, iar pătratul ei este $O_2$"
+    },
+    "44b": {
+      "check": false,
+      "why": "open",
+      "show": "$A^n=3^{n-1}\\begin{pmatrix}n+3&-n\\\\n&3-n\\end{pmatrix}$"
+    },
+    "45a": {
+      "check": false,
+      "why": "proof",
+      "show": "relația Hamilton–Cayley: $a+d=5$, $ad-bc=4$"
+    },
+    "45b": {
+      "kind": "list",
+      "show": "$A^3=21A-20I_2$",
+      "accept": [
+        "21; -20"
+      ],
+      "hint": {
+        "ro": "$x$; $y$",
+        "en": "$x$; $y$"
+      }
+    },
+    "45c": {
+      "check": false,
+      "why": "proof",
+      "show": "$A^{k+1}=(5x_k+y_k)A-4x_kI_2$"
+    },
+    "46a": {
+      "kind": "number",
+      "show": "$n=12$",
+      "accept": [
+        "12"
+      ]
+    },
+    "46b": {
+      "kind": "list",
+      "show": "$A^{2026}=A^{10}=\\begin{pmatrix}\\frac{1}{2}&\\frac{\\sqrt{3}}{2}\\\\-\\frac{\\sqrt{3}}{2}&\\frac{1}{2}\\end{pmatrix}$",
+      "accept": [
+        "1/2; √3/2; -√3/2; 1/2"
+      ],
+      "hint": {
+        "ro": "elementele lui $A^{2026}$, pe linii",
+        "en": "the entries of $A^{2026}$, row by row"
+      }
+    },
+    "48a": {
+      "kind": "list",
+      "show": "$M=\\begin{pmatrix}0&1&1&0\\\\1&0&1&0\\\\1&1&0&1\\\\0&0&1&0\\end{pmatrix}$; simetrică: $m_{ij}=m_{ji}$",
+      "accept": [
+        "0; 1; 1; 0; 1; 0; 1; 0; 1; 1; 0; 1; 0; 0; 1; 0"
+      ],
+      "hint": {
+        "ro": "elementele lui $M$, pe linii (16 valori)",
+        "en": "the entries of $M$, row by row (16 values)"
+      }
+    },
+    "48b": {
+      "kind": "list",
+      "show": "$M^2=\\begin{pmatrix}2&1&1&1\\\\1&2&1&1\\\\1&1&3&0\\\\1&1&0&1\\end{pmatrix}$",
+      "accept": [
+        "2; 1; 1; 1; 1; 2; 1; 1; 1; 1; 3; 0; 1; 1; 0; 1"
+      ],
+      "hint": {
+        "ro": "elementele lui $M^2$, pe linii (16 valori)",
+        "en": "the entries of $M^2$, row by row (16 values)"
+      }
+    },
+    "48c": {
+      "kind": "list",
+      "show": "de la $A$ la $D$: $1$ traseu ($A$–$C$–$D$); de la $C$ la $D$: $0$",
+      "accept": [
+        "1; 0"
+      ],
+      "hint": {
+        "ro": "numărul de trasee de la $A$ la $D$; de la $C$ la $D$",
+        "en": "routes from $A$ to $D$; from $C$ to $D$"
+      }
+    },
+    "49a": {
+      "kind": "list",
+      "show": "$T=\\begin{pmatrix}0{,}8&0{,}4\\\\0{,}2&0{,}6\\end{pmatrix}$",
+      "accept": [
+        "0,8; 0,4; 0,2; 0,6"
+      ],
+      "hint": {
+        "ro": "elementele lui $T$, pe linii",
+        "en": "the entries of $T$, row by row"
+      }
+    },
+    "49b": {
+      "kind": "list",
+      "show": "$X_2=\\begin{pmatrix}360\\\\240\\end{pmatrix}$, $X_3=\\begin{pmatrix}384\\\\216\\end{pmatrix}$",
+      "accept": [
+        "360; 240; 384; 216"
+      ],
+      "hint": {
+        "ro": "$c_2$; $m_2$; $c_3$; $m_3$",
+        "en": "$c_2$; $m_2$; $c_3$; $m_3$"
+      }
+    },
+    "49c": {
+      "check": false,
+      "why": "proof",
+      "show": "$T\\begin{pmatrix}400\\\\200\\end{pmatrix}=\\begin{pmatrix}400\\\\200\\end{pmatrix}$"
+    },
+    "49d": {
+      "check": false,
+      "why": "proof",
+      "show": "$c_{n+1}=0{,}4\\,c_n+240$"
+    },
+    "50a": {
+      "check": false,
+      "why": "proof",
+      "show": "$AX=XA\\iff 2z=3y$ și $x=t+\\frac{y}{2}$, adică $X=tI_2+\\frac{y}{2}A$"
+    },
+    "50b": {
+      "check": false,
+      "why": "proof",
+      "show": "$A^2=\\begin{pmatrix}7&2\\\\3&6\\end{pmatrix}=A+6I_2$"
+    },
+    "50c": {
+      "check": false,
+      "why": "proof",
+      "show": "$X^2=(\\alpha^2+6\\beta^2)I_2+(2\\alpha\\beta+\\beta^2)A=O_2\\Rightarrow\\alpha=\\beta=0$"
+    }
+  }
+}

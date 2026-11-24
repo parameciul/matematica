@@ -8972,6 +8972,496 @@ For each situation
 
 ---
 
+### Fișă recapitulativă: matrice
+- Source (RO): https://lauramiron.mqgrader.ro/materiale/fisa-recapitulativa-matrice-1040
+- Source (EN): https://lauramiron.mqgrader.ro/en/materiale/fisa-recapitulativa-matrice-1040
+- Author: Laura Miron. License: CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/).
+- Published: 2026-11-24. Updated: 2026-11-24.
+- Fișă recapitulativă pentru clasa a XI-a: tipuri de matrice, egalitate, operații, ecuații matriceale simple și puterile unei matrice, 50 de probleme.
+- Rezumat: Fișa recapitulează capitolul despre matrice: tipurile de matrice și transpusa, egalitatea a două matrice, adunarea, înmulțirea cu un număr și înmulțirea matricelor, cu proprietățile lor. Urmează ecuații matriceale rezolvate prin egalitatea matricelor, puterile unei matrice pătratice și două aplicații practice.
+- Întrebări frecvente:
+  - Q: Când există produsul AB a două matrice?
+  - A: Produsul AB există numai dacă numărul de coloane ale lui A este egal cu numărul de linii ale lui B. Dacă A are m linii și n coloane, iar B are n linii și p coloane, atunci AB are m linii și p coloane. De aceea se poate întâmpla ca AB să existe, iar BA nu.
+  - Q: De ce (A + B)² nu este, în general, A² + 2AB + B²?
+  - A: Înmulțirea matricelor nu este comutativă. Desfăcând parantezele obținem (A + B)² = A² + AB + BA + B², iar AB și BA pot fi diferite. Formula cu 2AB, ca și binomul lui Newton, este adevărată numai pentru matrice care comută, adică AB = BA.
+  - Q: Cum rezolv o ecuație matriceală ca AX = B fără inversa matricei?
+  - A: Scrii necunoscuta cu elementele ei, de exemplu X cu elementele x, y, z, t, și calculezi produsul AX. Din egalitatea matricelor AX = B obții un sistem de ecuații cu numere, pe care îl rezolvi. Sistemul poate avea o soluție, o infinitate de soluții sau niciuna. La final verifici prin înmulțire.
+
+La finalul fișei vei ști să:
+- asociezi unui tabel de date o matrice și recunoști tipurile de matrice (pătratică, diagonală, unitate, nulă, transpusă);
+- folosești egalitatea a două matrice pentru a determina parametri;
+- aduni matrice, înmulțești o matrice cu un număr, înmulțești două matrice și verifici când produsul există;
+- rezolvi ecuații matriceale simple, scriind necunoscuta $X$ cu elementele ei;
+- calculezi puterile unei matrice pătratice, alegând metoda potrivită.
+1. Matrice. Tipuri de matrice
+Definiții
+O matrice de tipul $(m,n)$ este un tabel cu $m$ linii și $n$ coloane: $A=(a_{ij})$, unde $a_{ij}$ este elementul de pe linia $i$ și coloana $j$. Mulțimea lor se notează $\mathcal{M}_{m,n}(\mathbb{R})$. Dacă $m=n$, matricea este pătratică de ordinul $n$ și scriem $A\in\mathcal{M}_n(\mathbb{R})$.
+- Diagonala principală a unei matrice pătratice: $a_{11},a_{22},\ldots,a_{nn}$. Diagonala secundară: $a_{1n},a_{2,n-1},\ldots,a_{n1}$.
+- Matricea nulă $O_{m,n}$ (sau $O_n$) are toate elementele $0$. Matricea unitate $I_n$ are $1$ pe diagonala principală și $0$ în rest. O matrice pătratică este diagonală dacă toate elementele din afara diagonalei principale sunt $0$.
+- Transpusa lui $A\in\mathcal{M}_{m,n}(\mathbb{R})$ este ${}^tA\in\mathcal{M}_{n,m}(\mathbb{R})$: liniile lui $A$ devin coloanele lui ${}^tA$. Matricea $A$ este simetrică dacă ${}^tA=A$ și antisimetrică dacă ${}^tA=-A$.
+Egalitatea a două matrice
+Două matrice sunt egale dacă au același tip și elementele de pe aceleași poziții sunt egale. O egalitate de matrice $2\times 2$ înseamnă patru egalități de numere: le scrii pe toate și verifici că valorile găsite le respectă pe fiecare.
+2. Operații cu matrice
+Adunarea și înmulțirea cu un număr
+Adunarea se face numai pentru matrice de același tip, element cu element: $A+B=(a_{ij}+b_{ij})$. Înmulțirea cu un număr: $kA=(k\,a_{ij})$.
+Înmulțirea matricelor
+Produsul $AB$ există numai dacă numărul de coloane ale lui $A$ este egal cu numărul de linii ale lui $B$: dacă $A\in\mathcal{M}_{m,n}(\mathbb{R})$ și $B\in\mathcal{M}_{n,p}(\mathbb{R})$, atunci $AB\in\mathcal{M}_{m,p}(\mathbb{R})$. Elementul de pe linia $i$ și coloana $j$ al lui $AB$ se obține înmulțind linia $i$ a lui $A$ cu coloana $j$ a lui $B$:
+$$\begin{pmatrix}a&b\\c&d\end{pmatrix}\begin{pmatrix}x&y\\z&t\end{pmatrix}=\begin{pmatrix}ax+bz&ay+bt\\cx+dz&cy+dt\end{pmatrix}.$$
+Proprietăți
+- $A+B=B+A$ și $(A+B)+C=A+(B+C)$.
+- $(AB)C=A(BC)$; $A(B+C)=AB+AC$; $(B+C)A=BA+CA$.
+- $I_nA=AI_n=A$.
+- ${}^t(A+B)={}^tA+{}^tB$ și ${}^t(AB)={}^tB\,{}^tA$.
+Atenție la înmulțirea matricelor!
+- În general $AB\ne BA$. De aceea $(A+B)^2=A^2+AB+BA+B^2$, iar $(AB)^n\ne A^nB^n$ în general.
+- Formulele de calcul prescurtat și binomul lui Newton se folosesc numai pentru matrice care comută ($AB=BA$). Matricea $I_n$ comută cu orice matrice pătratică de ordinul $n$.
+- Din $AB=O_n$ nu rezultă că $A=O_n$ sau $B=O_n$.
+3. Ecuații matriceale
+★ Metodă
+Rezolvăm o ecuație matriceală prin egalitatea matricelor
+- Stabilim tipul necunoscutei $X$, astfel încât produsele din ecuație să existe.
+- Scriem $X$ cu elementele ei, de exemplu $X=\begin{pmatrix}x&y\\z&t\end{pmatrix}$.
+- Calculăm membrul stâng și egalăm elementele de pe aceleași poziții.
+- Rezolvăm sistemul obținut: poate avea o soluție, o infinitate de soluții sau niciuna.
+- Verificăm soluția prin înmulțire.
+Exemplul 1
+Determinăm $X\in\mathcal{M}_2(\mathbb{R})$ pentru care $\begin{pmatrix}1&1\\0&1\end{pmatrix}X=\begin{pmatrix}3&5\\1&2\end{pmatrix}$.
+Scriem $X=\begin{pmatrix}x&y\\z&t\end{pmatrix}$ și calculăm produsul: $\begin{pmatrix}x+z&y+t\\z&t\end{pmatrix}=\begin{pmatrix}3&5\\1&2\end{pmatrix}$. Din egalitatea matricelor: $z=1$, $t=2$, $x+z=3$, $y+t=5$, deci $x=2$, $y=3$ și $X=\begin{pmatrix}2&3\\1&2\end{pmatrix}$.
+Ecuațiile de tipul $X+A=B$ sau $2X-3A=B$ se rezolvă ca ecuațiile cu numere: $X=B-A$, respectiv $X=\frac{1}{2}(B+3A)$. Un sistem de două ecuații în $X$ și $Y$ se rezolvă prin adunare sau prin substituție.
+4. Puterile unei matrice pătratice
+Definiție
+Pentru $A\in\mathcal{M}_n(\mathbb{R})$: $A^1=A$, $A^{k+1}=A^k\cdot A$ și, prin convenție, $A^0=I_n$.
+★ Cel mai important
+Cum aleg metoda pentru $A^n$? Începe mereu cu $A^2$.
+- Inducția matematică: calculez $A^2$, $A^3$, intuiesc forma lui $A^n$ și o demonstrez.
+- Puteri care se repetă: dacă $A^k=I_n$, atunci $A^n=A^r$, unde $r$ este restul împărțirii lui $n$ la $k$; dacă $A^2=O_n$, atunci $A^n=O_n$ pentru $n\ge 2$; dacă $A^2=kA$, atunci $A^n=k^{n-1}A$.
+- Binomul lui Newton: $A=aI_n+B$, cu $B^2=O_n$, dă $A^n=a^nI_n+n\,a^{n-1}B$.
+- Relația Hamilton–Cayley: pentru $A=\begin{pmatrix}a&b\\c&d\end{pmatrix}$ avem $A^2-(a+d)A+(ad-bc)I_2=O_2$.
+- Matricea de rotație $R(t)=\begin{pmatrix}\cos t&-\sin t\\\sin t&\cos t\end{pmatrix}$: $R(t)R(u)=R(t+u)$ și $R(t)^n=R(nt)$.
+Exerciții
+A. Noțiunea de matrice. Tipuri de matrice. Transpusa
+-
+Fie $A=\begin{pmatrix}3&-1&0&2\\5&4&-2&7\\1&0&6&-3\end{pmatrix}$.
+a) Precizați tipul matricei $A$.
+b) Scrieți elementele $a_{12}$, $a_{23}$, $a_{31}$ și $a_{34}$.
+c) Calculați suma elementelor de pe linia a doua și produsul elementelor de pe coloana a treia.
+d) Scrieți matricea ${}^tA$ și precizați tipul ei.
+-
+Scrieți matricea $A=(a_{ij})\in\mathcal{M}_{2,3}(\mathbb{R})$, cu $a_{ij}=2i-j$.
+-
+Fie matricea $A=(a_{ij})\in\mathcal{M}_3(\mathbb{R})$, cu $a_{ij}=(-1)^{i+j}\cdot\min(i,j)$.
+a) Scrieți matricea $A$.
+b) Calculați suma elementelor de pe diagonala principală și suma elementelor de pe diagonala secundară.
+c) Arătați că matricea $A$ este simetrică.
+-
+Se consideră matricele
+$$A=\begin{pmatrix}2&0\\0&-5\end{pmatrix},\ B=\begin{pmatrix}1&0&0\\0&1&0\\0&0&1\end{pmatrix},\quad C=\begin{pmatrix}0&0&0\\0&0&0\end{pmatrix},$$
+$$D=\begin{pmatrix}1&4&-2\end{pmatrix},\ E=\begin{pmatrix}3\\-1\end{pmatrix},\ F=\begin{pmatrix}1&2&3\\0&4&5\\0&0&6\end{pmatrix}.$$
+Precizați tipul fiecărei matrice. Care dintre ele sunt matrice pătratice? Dar matrice diagonale, matrice unitate, matrice nule, matrice linie, matrice coloană?
+-
+Determinarea unor parametri din transpusă.
+a) Determinați numerele reale $x$, $y$, $z$ pentru care matricea $A=\begin{pmatrix}1&x&3\\4&5&y\\z&-2&0\end{pmatrix}$ este simetrică.
+b) Determinați numerele reale $a$, $b$, $c$ pentru care matricea $B=\begin{pmatrix}0&a&-1\\2&0&b\\c&3&0\end{pmatrix}$ verifică ${}^tB=-B$.
+-
+O librărie are două filiale, $F_1$ și $F_2$. Într-o săptămână, filiala $F_1$ a vândut $40$ de caiete, $25$ de pixuri și $10$ rucsacuri, iar filiala $F_2$ a vândut $35$ de caiete, $30$ de pixuri și $10$ rucsacuri. Un caiet costă $5$ lei, un pix $3$ lei, iar un rucsac $120$ de lei.
+a) Scrieți matricea $V\in\mathcal{M}_{2,3}(\mathbb{R})$ a vânzărilor (liniile corespund filialelor, coloanele produselor) și matricea coloană $P$ a prețurilor.
+b) Calculați $VP$ și explicați ce reprezintă elementele acestei matrice.
+c) În săptămâna următoare, vânzările fiecărui produs cresc cu $20\%$, la ambele filiale. Scrieți matricea $W$ a vânzărilor din această săptămână ca produs dintre un număr și $V$, apoi calculați $V+W$.
+-
+O matrice $A$ are $12$ elemente, iar matricea ${}^tA$ are cu o linie mai mult decât $A$. Determinați tipul matricei $A$.
+B. Egalitatea matricelor
+-
+Determinați numerele reale $x$ și $y$ pentru care $\begin{pmatrix}x+2&3\\-1&2y\end{pmatrix}=\begin{pmatrix}5&3\\-1&-8\end{pmatrix}$.
+-
+Determinați numerele reale $x$ și $y$ pentru care $\begin{pmatrix}x+y&2\\1&x-y\end{pmatrix}=\begin{pmatrix}7&2\\1&1\end{pmatrix}$.
+-
+Determinați numerele reale $x$, $y$ și $z>0$ pentru care $\begin{pmatrix}x^2&2^y\\\log_3{z}&5\end{pmatrix}=\begin{pmatrix}9&8\\2&5\end{pmatrix}$.
+-
+Determinați numerele reale $x$ și $y$ pentru care $\begin{pmatrix}x^2-3x&y+1\\y^2&4\end{pmatrix}=\begin{pmatrix}-2&0\\1&x+2\end{pmatrix}$.
+-
+Determinați, dacă există, numărul real $x$ pentru care:
+a) $\begin{pmatrix}x^2&x\\1&2\end{pmatrix}=\begin{pmatrix}4&-2\\1&x+4\end{pmatrix}$;
+b) $\begin{pmatrix}x^2&1\\x&3\end{pmatrix}=\begin{pmatrix}1&1\\-1&x+2\end{pmatrix}$.
+-
+Determinați numerele reale $a$, $b$, $c$ pentru care $2\begin{pmatrix}a&1\\b&3\end{pmatrix}-\begin{pmatrix}1&b\\a&c\end{pmatrix}=\begin{pmatrix}5&-1\\3&2\end{pmatrix}$.
+C. Adunarea, înmulțirea cu un număr, transpusa. Ecuații simple
+-
+Fie $A=\begin{pmatrix}2&-1&0\\3&1&4\end{pmatrix}$ și $B=\begin{pmatrix}1&0&-2\\-1&5&3\end{pmatrix}$.
+a) Calculați $A+B$, $A-B$ și $3A-2B$.
+b) Verificați egalitatea ${}^t(A+B)={}^tA+{}^tB$.
+-
+Fie $A=\begin{pmatrix}1&2\\-3&0\end{pmatrix}$.
+a) Calculați $A+{}^tA$ și $A-{}^tA$. Ce observați?
+b) Scrieți matricea $A$ ca sumă dintre o matrice simetrică și o matrice antisimetrică.
+-
+Determinați matricea $X\in\mathcal{M}_2(\mathbb{R})$ pentru care $X+\begin{pmatrix}1&-2\\3&0\end{pmatrix}=\begin{pmatrix}4&1\\-1&5\end{pmatrix}$.
+-
+Fie $A=\begin{pmatrix}1&0\\-1&2\end{pmatrix}$ și $B=\begin{pmatrix}1&4\\3&-2\end{pmatrix}$. Determinați matricea $X\in\mathcal{M}_2(\mathbb{R})$ pentru care $2X-3A=B$.
+-
+Determinați matricele $X,Y\in\mathcal{M}_2(\mathbb{R})$ care verifică simultan egalitățile
+$$X+Y=\begin{pmatrix}3&1\\0&5\end{pmatrix}\quad\text{și}\quad X-Y=\begin{pmatrix}1&-3\\4&1\end{pmatrix}.$$
+-
+Determinați matricele $X,Y\in\mathcal{M}_2(\mathbb{R})$ care verifică simultan egalitățile
+$$2X+Y=I_2\quad\text{și}\quad X-Y=\begin{pmatrix}2&3\\-3&2\end{pmatrix}.$$
+-
+Determinați matricea $X\in\mathcal{M}_2(\mathbb{R})$ pentru care $X+2\,{}^tX=\begin{pmatrix}3&5\\4&6\end{pmatrix}$.
+-
+Fie $E=\begin{pmatrix}1&2\\0&1\end{pmatrix}$ și $F=\begin{pmatrix}0&1\\1&0\end{pmatrix}$.
+a) Determinați numerele reale $a$ și $b$ pentru care $aE+bF=\begin{pmatrix}3&4\\-2&3\end{pmatrix}$.
+b) Arătați că nu există numere reale $a$ și $b$ pentru care $aE+bF=\begin{pmatrix}1&0\\0&2\end{pmatrix}$.
+D. Înmulțirea matricelor. Proprietăți
+-
+Fie $A\in\mathcal{M}_{2,3}(\mathbb{R})$, $B\in\mathcal{M}_{3,2}(\mathbb{R})$, $C\in\mathcal{M}_3(\mathbb{R})$ și $D\in\mathcal{M}_2(\mathbb{R})$. Precizați care dintre produsele $AB$, $BA$, $AC$, $CA$, $BC$, $CB$, $AD$, $DA$, $ABD$ există și, pentru acestea, tipul matricei obținute.
+-
+Calculați:
+a) $\begin{pmatrix}1&2\\3&4\end{pmatrix}\begin{pmatrix}0&-1\\2&1\end{pmatrix}$;
+b) $\begin{pmatrix}1&-1&2\end{pmatrix}\begin{pmatrix}3\\0\\-1\end{pmatrix}$;
+c) $\begin{pmatrix}3\\0\\-1\end{pmatrix}\begin{pmatrix}1&-1&2\end{pmatrix}$;
+d) $\begin{pmatrix}2&0&1\\-1&3&2\end{pmatrix}\begin{pmatrix}1&2\\0&-1\\3&1\end{pmatrix}$.
+-
+Fie $A=\begin{pmatrix}1&2\\0&1\end{pmatrix}$ și $B=\begin{pmatrix}1&0\\3&1\end{pmatrix}$.
+a) Calculați $AB$ și $BA$. Ce observați?
+b) Verificați că $(A+B)^2\ne A^2+2AB+B^2$.
+c) Arătați că, pentru orice matrice $X,Y\in\mathcal{M}_2(\mathbb{R})$, egalitatea $(X+Y)^2=X^2+2XY+Y^2$ are loc dacă și numai dacă $XY=YX$.
+-
+Fie $A=\begin{pmatrix}1&1\\1&1\end{pmatrix}$ și $B=\begin{pmatrix}1&-2\\-1&2\end{pmatrix}$. Arătați că $AB=O_2$, deși $A\ne O_2$ și $B\ne O_2$. Calculați $BA$.
+-
+Fie $A=\begin{pmatrix}1&1\\0&1\end{pmatrix}$. Determinați matricele $X\in\mathcal{M}_2(\mathbb{R})$ pentru care $AX=XA$.
+-
+Fie $A=\begin{pmatrix}1&0\\2&-1\end{pmatrix}$, $B=\begin{pmatrix}0&1\\1&1\end{pmatrix}$ și $C=\begin{pmatrix}2&-1\\0&3\end{pmatrix}$. Verificați că:
+a) $(AB)C=A(BC)$;
+b) $A(B+C)=AB+AC$.
+-
+Fie $A=\begin{pmatrix}1&2&0\\-1&1&3\end{pmatrix}$ și $B=\begin{pmatrix}2&1\\0&-1\\1&4\end{pmatrix}$.
+a) Calculați $AB$ și verificați că ${}^t(AB)={}^tB\cdot{}^tA$.
+b) Precizați tipul matricei ${}^tA\cdot{}^tB$. Este egală cu ${}^t(AB)$?
+-
+Fie $A=\begin{pmatrix}2&1\\-1&0\end{pmatrix}$.
+a) Arătați că $A^2-2A+I_2=O_2$.
+b) Scrieți $A^3$ sub forma $xA+yI_2$, cu $x,y\in\mathbb{R}$.
+-
+Determinați numărul real $x$ pentru care matricea $A=\begin{pmatrix}x&2\\1&1\end{pmatrix}$ verifică $A^2=\begin{pmatrix}6&6\\3&3\end{pmatrix}$.
+-
+Pentru fiecare număr real $a$ se consideră matricea $M(a)=\begin{pmatrix}1+2a&-a\\4a&1-2a\end{pmatrix}$.
+a) Arătați că $M(a)\cdot M(b)=M(a+b)$, pentru orice $a,b\in\mathbb{R}$.
+b) Calculați produsul $M(1)\cdot M(2)\cdot M(3)\cdot\ldots\cdot M(20)$.
+c) Arătați că $\bigl(M(1)\bigr)^n=M(n)$, pentru orice $n\in\mathbb{N}^*$.
+E. Ecuații matriceale
+-
+Determinați matricea $X\in\mathcal{M}_2(\mathbb{R})$ pentru care $\begin{pmatrix}1&2\\0&1\end{pmatrix}X=\begin{pmatrix}5&4\\2&1\end{pmatrix}$.
+-
+Determinați matricea $X\in\mathcal{M}_2(\mathbb{R})$ pentru care $X\begin{pmatrix}1&1\\0&2\end{pmatrix}=\begin{pmatrix}3&5\\-1&1\end{pmatrix}$.
+-
+Precizați tipul matricei $X$, apoi rezolvați ecuația:
+a) $\begin{pmatrix}2&1\\1&-1\end{pmatrix}X=\begin{pmatrix}4\\5\end{pmatrix}$;
+b) $X\begin{pmatrix}1&1\\1&2\end{pmatrix}=\begin{pmatrix}2&3\end{pmatrix}$.
+-
+Determinați matricele de forma $X=\begin{pmatrix}a&b\\0&a\end{pmatrix}$, cu $a,b\in\mathbb{R}$, pentru care
+$$X^2=\begin{pmatrix}4&12\\0&4\end{pmatrix}.$$
+-
+Determinați matricele diagonale $X\in\mathcal{M}_2(\mathbb{R})$ pentru care $X^2-3X+2I_2=O_2$.
+-
+Fie $A=\begin{pmatrix}1&2\\2&4\end{pmatrix}$. Arătați că ecuația $AX=I_2$ nu are soluții în $\mathcal{M}_2(\mathbb{R})$.
+Indicație: comparați liniile matricei $AX$.
+-
+Determinați toate matricele $X\in\mathcal{M}_2(\mathbb{R})$ pentru care $\begin{pmatrix}1&1\\1&1\end{pmatrix}X=\begin{pmatrix}2&3\\2&3\end{pmatrix}$. Are ecuația o singură soluție?
+F. Puterile unei matrice pătratice
+-
+Fie $A=\begin{pmatrix}1&0\\2&1\end{pmatrix}$. Calculați $A^2$ și $A^3$, intuiți forma lui $A^n$ și demonstrați-o prin inducție matematică.
+-
+Fie $A=\begin{pmatrix}0&1\\-1&0\end{pmatrix}$.
+a) Calculați $A^2$, $A^3$ și $A^4$.
+b) Calculați $A^{2026}$ și $A^{2027}$.
+c) Calculați suma $A+A^2+A^3+\ldots+A^{2028}$.
+-
+Fie $A=\begin{pmatrix}2&-4\\1&-2\end{pmatrix}$.
+a) Calculați $A^2$ și deduceți $A^n$, pentru $n\ge 2$.
+b) Calculați $(I_2+A)^{10}$.
+-
+Fie $A=\begin{pmatrix}1&-1\\-2&2\end{pmatrix}$. Arătați că $A^2=3A$ și deduceți $A^n$, $n\in\mathbb{N}^*$.
+-
+Fie $A=\begin{pmatrix}1&0&0\\2&1&0\\3&2&1\end{pmatrix}$ și $B=A-I_3$.
+a) Calculați $B^2$ și $B^3$.
+b) Folosind binomul lui Newton, calculați $A^n$, $n\in\mathbb{N}^*$.
+-
+Fie $A=\begin{pmatrix}4&-1\\1&2\end{pmatrix}$.
+a) Arătați că $(A-3I_2)^2=O_2$.
+b) Calculați $A^n$, $n\in\mathbb{N}^*$.
+-
+Fie $A=\begin{pmatrix}3&1\\2&2\end{pmatrix}$.
+a) Verificați că $A^2-5A+4I_2=O_2$.
+b) Determinați numerele reale $x$ și $y$ pentru care $A^3=xA+yI_2$.
+c) Demonstrați prin inducție matematică că, pentru orice $n\in\mathbb{N}^*$,
+$$A^n=\frac{4^n-1}{3}\,A+\frac{4-4^n}{3}\,I_2.$$
+-
+Fie $A=\begin{pmatrix}\cos\frac{\pi}{6}&-\sin\frac{\pi}{6}\\\sin\frac{\pi}{6}&\cos\frac{\pi}{6}\end{pmatrix}$.
+a) Determinați cel mai mic număr natural nenul $n$ pentru care $A^n=I_2$.
+b) Calculați $A^{2026}$.
+-
+Fie $A=\begin{pmatrix}1&1\\0&1\end{pmatrix}$ și $B=\begin{pmatrix}1&0\\1&1\end{pmatrix}$. Calculați $(AB)^2$ și $A^2B^2$. Ce observați?
+G. Aplicații practice
+-
+Patru localități, $A$, $B$, $C$ și $D$, sunt legate prin drumuri directe astfel: $A$–$B$, $A$–$C$, $B$–$C$ și $C$–$D$ (fiecare drum se poate parcurge în ambele sensuri). Notăm $M=(m_{ij})\in\mathcal{M}_4(\mathbb{R})$, unde $m_{ij}=1$ dacă există drum direct între localitatea $i$ și localitatea $j$ și $m_{ij}=0$ în caz contrar (localitățile sunt numerotate în ordinea $A$, $B$, $C$, $D$).
+a) Scrieți matricea $M$. De ce este simetrică?
+b) Calculați $M^2$.
+c) Elementul de pe linia $i$ și coloana $j$ al matricei $M^2$ este numărul traseelor de la localitatea $i$ la localitatea $j$ care trec prin exact o localitate intermediară. Câte astfel de trasee există de la $A$ la $D$? Dar de la $C$ la $D$?
+-
+Cei $600$ de elevi ai unei școli iau prânzul fie la cantina școlii ($C$), fie la un magazin din apropiere ($M$). Dintre elevii care au mâncat la cantină într-o săptămână, $80\%$ mănâncă tot la cantină în săptămâna următoare, iar $20\%$ trec la magazin. Dintre elevii care au mâncat la magazin, $40\%$ trec la cantină, iar $60\%$ rămân la magazin. În prima săptămână, $300$ de elevi au mâncat la cantină și $300$ la magazin.
+a) Notăm $X_n=\begin{pmatrix}c_n\\m_n\end{pmatrix}$, unde $c_n$ și $m_n$ sunt numerele de elevi care mănâncă la cantină, respectiv la magazin, în săptămâna $n$. Determinați matricea $T\in\mathcal{M}_2(\mathbb{R})$ pentru care $X_{n+1}=TX_n$.
+b) Calculați $X_2$ și $X_3$.
+c) Arătați că, dacă într-o săptămână $400$ de elevi mănâncă la cantină și $200$ la magazin, atunci distribuția rămâne aceeași și în săptămâna următoare.
+d) Demonstrați prin inducție matematică că $c_n=400-100\cdot {0{,}4}^{n-1}$, pentru orice $n\in\mathbb{N}^*$.
+Pentru cei care vor mai mult
+-
+Fie $A=\begin{pmatrix}1&2\\3&0\end{pmatrix}$.
+a) Arătați că o matrice $X\in\mathcal{M}_2(\mathbb{R})$ verifică $AX=XA$ dacă și numai dacă $X=\alpha I_2+\beta A$, cu $\alpha,\beta\in\mathbb{R}$.
+b) Verificați că $A^2=A+6I_2$.
+c) Arătați că singura matrice $X\in\mathcal{M}_2(\mathbb{R})$ care comută cu $A$ și verifică $X^2=O_2$ este $X=O_2$.
+
+--- EN ---
+
+The worksheet reviews the chapter on matrices: the types of matrices and the transpose, equality of two matrices, addition, multiplication by a number and matrix multiplication, with their properties. Then come matrix equations solved through equality of matrices, powers of a square matrix and two real-life applications.
+
+Q: When does the product AB of two matrices exist?
+A: The product AB exists only if the number of columns of A equals the number of rows of B. If A has m rows and n columns and B has n rows and p columns, then AB has m rows and p columns. That is why AB may exist while BA does not.
+Q: Why is (A + B)² not A² + 2AB + B² in general?
+A: Matrix multiplication is not commutative. Expanding the brackets gives (A + B)² = A² + AB + BA + B², and AB and BA can be different. The formula with 2AB, like Newton's binomial formula, holds only for matrices that commute, that is AB = BA.
+Q: How do I solve a matrix equation like AX = B without the inverse matrix?
+A: Write the unknown with its entries, for example X with the entries x, y, z, t, and work out the product AX. Equality of the matrices AX = B gives a system of equations with numbers, which you solve. The system can have one solution, infinitely many or none. At the end check by multiplying.
+
+By the end of this worksheet you will be able to:
+- match a data table with a matrix and recognise the types of matrices (square, diagonal, identity, zero, transpose);
+- use the equality of two matrices to find parameters;
+- add matrices, multiply a matrix by a number, multiply two matrices and check when the product exists;
+- solve simple matrix equations by writing the unknown $X$ with its entries;
+- work out the powers of a square matrix, choosing the right method.
+1. Matrices. Types of matrices
+Definitions
+A matrix of type $(m,n)$ is a table with $m$ rows and $n$ columns: $A=(a_{ij})$, where $a_{ij}$ is the entry in row $i$ and column $j$. The set of these matrices is written $\mathcal{M}_{m,n}(\mathbb{R})$. If $m=n$, the matrix is square of order $n$ and we write $A\in\mathcal{M}_n(\mathbb{R})$.
+- The main diagonal of a square matrix: $a_{11},a_{22},\ldots,a_{nn}$. The secondary diagonal: $a_{1n},a_{2,n-1},\ldots,a_{n1}$.
+- The zero matrix $O_{m,n}$ (or $O_n$) has all entries $0$. The identity matrix $I_n$ has $1$ on the main diagonal and $0$ everywhere else. A square matrix is diagonal if all the entries off the main diagonal are $0$.
+- The transpose of $A\in\mathcal{M}_{m,n}(\mathbb{R})$ is ${}^tA\in\mathcal{M}_{n,m}(\mathbb{R})$: the rows of $A$ become the columns of ${}^tA$. The matrix $A$ is symmetric if ${}^tA=A$ and antisymmetric if ${}^tA=-A$.
+Equality of two matrices
+Two matrices are equal if they have the same type and the entries in the same positions are equal. An equality of $2\times 2$ matrices means four equalities of numbers: write all of them and check that the values you find satisfy each one.
+2. Operations with matrices
+Addition and multiplication by a number
+Only matrices of the same type can be added, entry by entry: $A+B=(a_{ij}+b_{ij})$. Multiplication by a number: $kA=(k\,a_{ij})$.
+Matrix multiplication
+The product $AB$ exists only if the number of columns of $A$ equals the number of rows of $B$: if $A\in\mathcal{M}_{m,n}(\mathbb{R})$ and $B\in\mathcal{M}_{n,p}(\mathbb{R})$, then $AB\in\mathcal{M}_{m,p}(\mathbb{R})$. The entry in row $i$ and column $j$ of $AB$ is found by multiplying row $i$ of $A$ by column $j$ of $B$:
+$$\begin{pmatrix}a&b\\c&d\end{pmatrix}\begin{pmatrix}x&y\\z&t\end{pmatrix}=\begin{pmatrix}ax+bz&ay+bt\\cx+dz&cy+dt\end{pmatrix}.$$
+Properties
+- $A+B=B+A$ and $(A+B)+C=A+(B+C)$.
+- $(AB)C=A(BC)$; $A(B+C)=AB+AC$; $(B+C)A=BA+CA$.
+- $I_nA=AI_n=A$.
+- ${}^t(A+B)={}^tA+{}^tB$ and ${}^t(AB)={}^tB\,{}^tA$.
+Be careful with matrix multiplication!
+- In general $AB\ne BA$. That is why $(A+B)^2=A^2+AB+BA+B^2$, and $(AB)^n\ne A^nB^n$ in general.
+- The short multiplication formulas and Newton's binomial formula work only for matrices that commute ($AB=BA$). The matrix $I_n$ commutes with every square matrix of order $n$.
+- $AB=O_n$ does not mean that $A=O_n$ or $B=O_n$.
+3. Matrix equations
+★ Method
+We solve a matrix equation through equality of matrices
+- Find the type of the unknown $X$, so that the products in the equation exist.
+- Write $X$ with its entries, for example $X=\begin{pmatrix}x&y\\z&t\end{pmatrix}$.
+- Work out the left-hand side and set the entries in the same positions equal.
+- Solve the system you get: it can have one solution, infinitely many or none.
+- Check the solution by multiplying.
+Example 1
+We find $X\in\mathcal{M}_2(\mathbb{R})$ such that $\begin{pmatrix}1&1\\0&1\end{pmatrix}X=\begin{pmatrix}3&5\\1&2\end{pmatrix}$.
+Write $X=\begin{pmatrix}x&y\\z&t\end{pmatrix}$ and work out the product: $\begin{pmatrix}x+z&y+t\\z&t\end{pmatrix}=\begin{pmatrix}3&5\\1&2\end{pmatrix}$. From the equality of the matrices: $z=1$, $t=2$, $x+z=3$, $y+t=5$, so $x=2$, $y=3$ and $X=\begin{pmatrix}2&3\\1&2\end{pmatrix}$.
+Equations such as $X+A=B$ or $2X-3A=B$ are solved like equations with numbers: $X=B-A$ and $X=\frac{1}{2}(B+3A)$. A system of two equations in $X$ and $Y$ is solved by adding the equations or by substitution.
+4. Powers of a square matrix
+Definition
+For $A\in\mathcal{M}_n(\mathbb{R})$: $A^1=A$, $A^{k+1}=A^k\cdot A$ and, by convention, $A^0=I_n$.
+★ Most important
+How do I choose the method for $A^n$? Always start with $A^2$.
+- Mathematical induction: work out $A^2$, $A^3$, guess the form of $A^n$ and prove it.
+- Repeating powers: if $A^k=I_n$, then $A^n=A^r$, where $r$ is the remainder of $n$ divided by $k$; if $A^2=O_n$, then $A^n=O_n$ for $n\ge 2$; if $A^2=kA$, then $A^n=k^{n-1}A$.
+- Newton's binomial formula: $A=aI_n+B$, with $B^2=O_n$, gives $A^n=a^nI_n+n\,a^{n-1}B$.
+- The Hamilton–Cayley relation: for $A=\begin{pmatrix}a&b\\c&d\end{pmatrix}$ we have $A^2-(a+d)A+(ad-bc)I_2=O_2$.
+- The rotation matrix $R(t)=\begin{pmatrix}\cos t&-\sin t\\\sin t&\cos t\end{pmatrix}$: $R(t)R(u)=R(t+u)$ and $R(t)^n=R(nt)$.
+Exercises
+A. Matrices. Types of matrices. The transpose
+-
+Let $A=\begin{pmatrix}3&-1&0&2\\5&4&-2&7\\1&0&6&-3\end{pmatrix}$.
+a) Give the type of the matrix $A$.
+b) Write the entries $a_{12}$, $a_{23}$, $a_{31}$ and $a_{34}$.
+c) Work out the sum of the entries in the second row and the product of the entries in the third column.
+d) Write the matrix ${}^tA$ and give its type.
+-
+Write the matrix $A=(a_{ij})\in\mathcal{M}_{2,3}(\mathbb{R})$, with $a_{ij}=2i-j$.
+-
+Let $A=(a_{ij})\in\mathcal{M}_3(\mathbb{R})$, with $a_{ij}=(-1)^{i+j}\cdot\min(i,j)$.
+a) Write the matrix $A$.
+b) Work out the sum of the entries on the main diagonal and the sum of the entries on the secondary diagonal.
+c) Show that the matrix $A$ is symmetric.
+-
+Consider the matrices
+$$A=\begin{pmatrix}2&0\\0&-5\end{pmatrix},\ B=\begin{pmatrix}1&0&0\\0&1&0\\0&0&1\end{pmatrix},\quad C=\begin{pmatrix}0&0&0\\0&0&0\end{pmatrix},$$
+$$D=\begin{pmatrix}1&4&-2\end{pmatrix},\ E=\begin{pmatrix}3\\-1\end{pmatrix},\ F=\begin{pmatrix}1&2&3\\0&4&5\\0&0&6\end{pmatrix}.$$
+Give the type of each matrix. Which of them are square matrices? Which are diagonal matrices, identity matrices, zero matrices, row matrices, column matrices?
+-
+Finding parameters from the transpose.
+a) Find the real numbers $x$, $y$, $z$ for which the matrix $A=\begin{pmatrix}1&x&3\\4&5&y\\z&-2&0\end{pmatrix}$ is symmetric.
+b) Find the real numbers $a$, $b$, $c$ for which the matrix $B=\begin{pmatrix}0&a&-1\\2&0&b\\c&3&0\end{pmatrix}$ satisfies ${}^tB=-B$.
+-
+A bookshop has two branches, $F_1$ and $F_2$. In one week, branch $F_1$ sold $40$ notebooks, $25$ pens and $10$ backpacks, and branch $F_2$ sold $35$ notebooks, $30$ pens and $10$ backpacks. A notebook costs $5$ lei, a pen $3$ lei and a backpack $120$ lei.
+a) Write the sales matrix $V\in\mathcal{M}_{2,3}(\mathbb{R})$ (the rows stand for the branches, the columns for the products) and the column matrix $P$ of the prices.
+b) Work out $VP$ and explain what its entries mean.
+c) The next week, the sales of each product go up by $20\%$ at both branches. Write the sales matrix $W$ for that week as a number times $V$, then work out $V+W$.
+-
+A matrix $A$ has $12$ entries, and the matrix ${}^tA$ has one row more than $A$. Find the type of the matrix $A$.
+B. Equality of matrices
+-
+Find the real numbers $x$ and $y$ for which $\begin{pmatrix}x+2&3\\-1&2y\end{pmatrix}=\begin{pmatrix}5&3\\-1&-8\end{pmatrix}$.
+-
+Find the real numbers $x$ and $y$ for which $\begin{pmatrix}x+y&2\\1&x-y\end{pmatrix}=\begin{pmatrix}7&2\\1&1\end{pmatrix}$.
+-
+Find the real numbers $x$, $y$ and $z>0$ for which $\begin{pmatrix}x^2&2^y\\\log_3{z}&5\end{pmatrix}=\begin{pmatrix}9&8\\2&5\end{pmatrix}$.
+-
+Find the real numbers $x$ and $y$ for which $\begin{pmatrix}x^2-3x&y+1\\y^2&4\end{pmatrix}=\begin{pmatrix}-2&0\\1&x+2\end{pmatrix}$.
+-
+Find the real number $x$, if it exists, for which:
+a) $\begin{pmatrix}x^2&x\\1&2\end{pmatrix}=\begin{pmatrix}4&-2\\1&x+4\end{pmatrix}$;
+b) $\begin{pmatrix}x^2&1\\x&3\end{pmatrix}=\begin{pmatrix}1&1\\-1&x+2\end{pmatrix}$.
+-
+Find the real numbers $a$, $b$, $c$ for which $2\begin{pmatrix}a&1\\b&3\end{pmatrix}-\begin{pmatrix}1&b\\a&c\end{pmatrix}=\begin{pmatrix}5&-1\\3&2\end{pmatrix}$.
+C. Addition, multiplication by a number, the transpose. Simple equations
+-
+Let $A=\begin{pmatrix}2&-1&0\\3&1&4\end{pmatrix}$ and $B=\begin{pmatrix}1&0&-2\\-1&5&3\end{pmatrix}$.
+a) Work out $A+B$, $A-B$ and $3A-2B$.
+b) Check the equality ${}^t(A+B)={}^tA+{}^tB$.
+-
+Let $A=\begin{pmatrix}1&2\\-3&0\end{pmatrix}$.
+a) Work out $A+{}^tA$ and $A-{}^tA$. What do you notice?
+b) Write the matrix $A$ as the sum of a symmetric matrix and an antisymmetric matrix.
+-
+Find the matrix $X\in\mathcal{M}_2(\mathbb{R})$ for which $X+\begin{pmatrix}1&-2\\3&0\end{pmatrix}=\begin{pmatrix}4&1\\-1&5\end{pmatrix}$.
+-
+Let $A=\begin{pmatrix}1&0\\-1&2\end{pmatrix}$ and $B=\begin{pmatrix}1&4\\3&-2\end{pmatrix}$. Find the matrix $X\in\mathcal{M}_2(\mathbb{R})$ for which $2X-3A=B$.
+-
+Find the matrices $X,Y\in\mathcal{M}_2(\mathbb{R})$ that satisfy both equalities
+$$X+Y=\begin{pmatrix}3&1\\0&5\end{pmatrix}\quad\text{and}\quad X-Y=\begin{pmatrix}1&-3\\4&1\end{pmatrix}.$$
+-
+Find the matrices $X,Y\in\mathcal{M}_2(\mathbb{R})$ that satisfy both equalities
+$$2X+Y=I_2\quad\text{and}\quad X-Y=\begin{pmatrix}2&3\\-3&2\end{pmatrix}.$$
+-
+Find the matrix $X\in\mathcal{M}_2(\mathbb{R})$ for which $X+2\,{}^tX=\begin{pmatrix}3&5\\4&6\end{pmatrix}$.
+-
+Let $E=\begin{pmatrix}1&2\\0&1\end{pmatrix}$ and $F=\begin{pmatrix}0&1\\1&0\end{pmatrix}$.
+a) Find the real numbers $a$ and $b$ for which $aE+bF=\begin{pmatrix}3&4\\-2&3\end{pmatrix}$.
+b) Show that there are no real numbers $a$ and $b$ for which $aE+bF=\begin{pmatrix}1&0\\0&2\end{pmatrix}$.
+D. Matrix multiplication. Properties
+-
+Let $A\in\mathcal{M}_{2,3}(\mathbb{R})$, $B\in\mathcal{M}_{3,2}(\mathbb{R})$, $C\in\mathcal{M}_3(\mathbb{R})$ and $D\in\mathcal{M}_2(\mathbb{R})$. Say which of the products $AB$, $BA$, $AC$, $CA$, $BC$, $CB$, $AD$, $DA$, $ABD$ exist and, for those, give the type of the result.
+-
+Work out:
+a) $\begin{pmatrix}1&2\\3&4\end{pmatrix}\begin{pmatrix}0&-1\\2&1\end{pmatrix}$;
+b) $\begin{pmatrix}1&-1&2\end{pmatrix}\begin{pmatrix}3\\0\\-1\end{pmatrix}$;
+c) $\begin{pmatrix}3\\0\\-1\end{pmatrix}\begin{pmatrix}1&-1&2\end{pmatrix}$;
+d) $\begin{pmatrix}2&0&1\\-1&3&2\end{pmatrix}\begin{pmatrix}1&2\\0&-1\\3&1\end{pmatrix}$.
+-
+Let $A=\begin{pmatrix}1&2\\0&1\end{pmatrix}$ and $B=\begin{pmatrix}1&0\\3&1\end{pmatrix}$.
+a) Work out $AB$ and $BA$. What do you notice?
+b) Check that $(A+B)^2\ne A^2+2AB+B^2$.
+c) Show that, for any matrices $X,Y\in\mathcal{M}_2(\mathbb{R})$, the equality $(X+Y)^2=X^2+2XY+Y^2$ holds if and only if $XY=YX$.
+-
+Let $A=\begin{pmatrix}1&1\\1&1\end{pmatrix}$ and $B=\begin{pmatrix}1&-2\\-1&2\end{pmatrix}$. Show that $AB=O_2$, although $A\ne O_2$ and $B\ne O_2$. Work out $BA$.
+-
+Let $A=\begin{pmatrix}1&1\\0&1\end{pmatrix}$. Find the matrices $X\in\mathcal{M}_2(\mathbb{R})$ for which $AX=XA$.
+-
+Let $A=\begin{pmatrix}1&0\\2&-1\end{pmatrix}$, $B=\begin{pmatrix}0&1\\1&1\end{pmatrix}$ and $C=\begin{pmatrix}2&-1\\0&3\end{pmatrix}$. Check that:
+a) $(AB)C=A(BC)$;
+b) $A(B+C)=AB+AC$.
+-
+Let $A=\begin{pmatrix}1&2&0\\-1&1&3\end{pmatrix}$ and $B=\begin{pmatrix}2&1\\0&-1\\1&4\end{pmatrix}$.
+a) Work out $AB$ and check that ${}^t(AB)={}^tB\cdot{}^tA$.
+b) Give the type of the matrix ${}^tA\cdot{}^tB$. Is it equal to ${}^t(AB)$?
+-
+Let $A=\begin{pmatrix}2&1\\-1&0\end{pmatrix}$.
+a) Show that $A^2-2A+I_2=O_2$.
+b) Write $A^3$ in the form $xA+yI_2$, with $x,y\in\mathbb{R}$.
+-
+Find the real number $x$ for which the matrix $A=\begin{pmatrix}x&2\\1&1\end{pmatrix}$ satisfies $A^2=\begin{pmatrix}6&6\\3&3\end{pmatrix}$.
+-
+For every real number $a$ consider the matrix $M(a)=\begin{pmatrix}1+2a&-a\\4a&1-2a\end{pmatrix}$.
+a) Show that $M(a)\cdot M(b)=M(a+b)$, for all $a,b\in\mathbb{R}$.
+b) Work out the product $M(1)\cdot M(2)\cdot M(3)\cdot\ldots\cdot M(20)$.
+c) Show that $\bigl(M(1)\bigr)^n=M(n)$, for every $n\in\mathbb{N}^*$.
+E. Matrix equations
+-
+Find the matrix $X\in\mathcal{M}_2(\mathbb{R})$ for which $\begin{pmatrix}1&2\\0&1\end{pmatrix}X=\begin{pmatrix}5&4\\2&1\end{pmatrix}$.
+-
+Find the matrix $X\in\mathcal{M}_2(\mathbb{R})$ for which $X\begin{pmatrix}1&1\\0&2\end{pmatrix}=\begin{pmatrix}3&5\\-1&1\end{pmatrix}$.
+-
+Give the type of the matrix $X$, then solve the equation:
+a) $\begin{pmatrix}2&1\\1&-1\end{pmatrix}X=\begin{pmatrix}4\\5\end{pmatrix}$;
+b) $X\begin{pmatrix}1&1\\1&2\end{pmatrix}=\begin{pmatrix}2&3\end{pmatrix}$.
+-
+Find the matrices of the form $X=\begin{pmatrix}a&b\\0&a\end{pmatrix}$, with $a,b\in\mathbb{R}$, for which
+$$X^2=\begin{pmatrix}4&12\\0&4\end{pmatrix}.$$
+-
+Find the diagonal matrices $X\in\mathcal{M}_2(\mathbb{R})$ for which $X^2-3X+2I_2=O_2$.
+-
+Let $A=\begin{pmatrix}1&2\\2&4\end{pmatrix}$. Show that the equation $AX=I_2$ has no solutions in $\mathcal{M}_2(\mathbb{R})$.
+Hint: compare the rows of the matrix $AX$.
+-
+Find all the matrices $X\in\mathcal{M}_2(\mathbb{R})$ for which $\begin{pmatrix}1&1\\1&1\end{pmatrix}X=\begin{pmatrix}2&3\\2&3\end{pmatrix}$. Does the equation have only one solution?
+F. Powers of a square matrix
+-
+Let $A=\begin{pmatrix}1&0\\2&1\end{pmatrix}$. Work out $A^2$ and $A^3$, guess the form of $A^n$ and prove it by mathematical induction.
+-
+Let $A=\begin{pmatrix}0&1\\-1&0\end{pmatrix}$.
+a) Work out $A^2$, $A^3$ and $A^4$.
+b) Work out $A^{2026}$ and $A^{2027}$.
+c) Work out the sum $A+A^2+A^3+\ldots+A^{2028}$.
+-
+Let $A=\begin{pmatrix}2&-4\\1&-2\end{pmatrix}$.
+a) Work out $A^2$ and deduce $A^n$, for $n\ge 2$.
+b) Work out $(I_2+A)^{10}$.
+-
+Let $A=\begin{pmatrix}1&-1\\-2&2\end{pmatrix}$. Show that $A^2=3A$ and deduce $A^n$, $n\in\mathbb{N}^*$.
+-
+Let $A=\begin{pmatrix}1&0&0\\2&1&0\\3&2&1\end{pmatrix}$ and $B=A-I_3$.
+a) Work out $B^2$ and $B^3$.
+b) Using Newton's binomial formula, work out $A^n$, $n\in\mathbb{N}^*$.
+-
+Let $A=\begin{pmatrix}4&-1\\1&2\end{pmatrix}$.
+a) Show that $(A-3I_2)^2=O_2$.
+b) Work out $A^n$, $n\in\mathbb{N}^*$.
+-
+Let $A=\begin{pmatrix}3&1\\2&2\end{pmatrix}$.
+a) Check that $A^2-5A+4I_2=O_2$.
+b) Find the real numbers $x$ and $y$ for which $A^3=xA+yI_2$.
+c) Prove by mathematical induction that, for every $n\in\mathbb{N}^*$,
+$$A^n=\frac{4^n-1}{3}\,A+\frac{4-4^n}{3}\,I_2.$$
+-
+Let $A=\begin{pmatrix}\cos\frac{\pi}{6}&-\sin\frac{\pi}{6}\\\sin\frac{\pi}{6}&\cos\frac{\pi}{6}\end{pmatrix}$.
+a) Find the smallest non-zero natural number $n$ for which $A^n=I_2$.
+b) Work out $A^{2026}$.
+-
+Let $A=\begin{pmatrix}1&1\\0&1\end{pmatrix}$ and $B=\begin{pmatrix}1&0\\1&1\end{pmatrix}$. Work out $(AB)^2$ and $A^2B^2$. What do you notice?
+G. Real-life applications
+-
+Four villages, $A$, $B$, $C$ and $D$, are linked by direct roads as follows: $A$–$B$, $A$–$C$, $B$–$C$ and $C$–$D$ (each road can be travelled both ways). Let $M=(m_{ij})\in\mathcal{M}_4(\mathbb{R})$, where $m_{ij}=1$ if there is a direct road between village $i$ and village $j$, and $m_{ij}=0$ otherwise (the villages are numbered in the order $A$, $B$, $C$, $D$).
+a) Write the matrix $M$. Why is it symmetric?
+b) Work out $M^2$.
+c) The entry in row $i$ and column $j$ of $M^2$ is the number of routes from village $i$ to village $j$ that pass through exactly one village in between. How many such routes are there from $A$ to $D$? And from $C$ to $D$?
+-
+The $600$ students of a school have lunch either at the school canteen ($C$) or at a shop nearby ($M$). Of the students who ate at the canteen in one week, $80\%$ eat at the canteen again the next week and $20\%$ switch to the shop. Of the students who ate at the shop, $40\%$ switch to the canteen and $60\%$ stay at the shop. In the first week, $300$ students ate at the canteen and $300$ at the shop.
+a) Let $X_n=\begin{pmatrix}c_n\\m_n\end{pmatrix}$, where $c_n$ and $m_n$ are the numbers of students who eat at the canteen and at the shop in week $n$. Find the matrix $T\in\mathcal{M}_2(\mathbb{R})$ for which $X_{n+1}=TX_n$.
+b) Work out $X_2$ and $X_3$.
+c) Show that if $400$ students eat at the canteen and $200$ at the shop in some week, the numbers stay the same the next week.
+d) Prove by mathematical induction that $c_n=400-100\cdot {0{,}4}^{n-1}$, for every $n\in\mathbb{N}^*$.
+For those who want more
+-
+Let $A=\begin{pmatrix}1&2\\3&0\end{pmatrix}$.
+a) Show that a matrix $X\in\mathcal{M}_2(\mathbb{R})$ satisfies $AX=XA$ if and only if $X=\alpha I_2+\beta A$, with $\alpha,\beta\in\mathbb{R}$.
+b) Check that $A^2=A+6I_2$.
+c) Show that the only matrix $X\in\mathcal{M}_2(\mathbb{R})$ that commutes with $A$ and satisfies $X^2=O_2$ is $X=O_2$.
+
+---
+
 ### Fișă de lucru: puterile unei matrice pătratice
 - Source (RO): https://lauramiron.mqgrader.ro/materiale/fisa-lucru-puterile-matrice-patratice-1034
 - Source (EN): https://lauramiron.mqgrader.ro/en/materiale/fisa-lucru-puterile-matrice-patratice-1034
