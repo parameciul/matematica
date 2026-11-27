@@ -1,0 +1,641 @@
+{
+  "uid": "1042",
+  "version": 1,
+  "items": {
+    "4": {
+      "kind": "number",
+      "show": "$5x^2-12x-9=0$: $x=3$ (numerele $2;\\ 6;\\ 18$, rația $3$) sau $x=-\\frac{3}{5}$ (numerele $-\\frac{8}{5};\\ \\frac{12}{5};\\ -\\frac{18}{5}$, rația $-\\frac{3}{2}$)",
+      "accept": [
+        "3",
+        "-3/5"
+      ],
+      "hint": {
+        "ro": "valorile lui $x$",
+        "en": "the values of $x$"
+      },
+      "solutions": 2
+    },
+    "5": {
+      "kind": "list",
+      "show": "$q^3=27$, $q=3$, $b_1=2$, $b_7=1458$",
+      "accept": [
+        "2; 3; 1458"
+      ],
+      "hint": {
+        "ro": "$b_1$; $q$; $b_7$",
+        "en": "$b_1$; $q$; $b_7$"
+      }
+    },
+    "7": {
+      "kind": "list",
+      "show": "$q^4=81$: $q=3$ dă $6;\\ 18;\\ 54$, iar $q=-3$ dă $-6;\\ 18;\\ -54$",
+      "accept": [
+        "6; 18; 54",
+        "-6; 18; -54"
+      ],
+      "hint": {
+        "ro": "cele trei numere inserate",
+        "en": "the three inserted numbers"
+      },
+      "solutions": 2
+    },
+    "10": {
+      "kind": "list",
+      "show": "$q=3$, $b_1=2$, $S_5=242$",
+      "accept": [
+        "2; 3; 242"
+      ],
+      "hint": {
+        "ro": "$b_1$; $q$; $S_5$",
+        "en": "$b_1$; $q$; $S_5$"
+      }
+    },
+    "11": {
+      "kind": "number",
+      "show": "$5(2^n-1)=1275\\Rightarrow 2^n=256$, $n=8$",
+      "accept": [
+        "8"
+      ]
+    },
+    "15": {
+      "kind": "list",
+      "show": "$x=6$, $q\\in\\{3;\\ \\frac{1}{3}\\}$: $2;\\ 6;\\ 18$",
+      "accept": [
+        "2; 6; 18",
+        "18; 6; 2"
+      ]
+    },
+    "16": {
+      "kind": "list",
+      "show": "$r=3$: $2;\\ 5;\\ 8$ (apoi $3;\\ 6;\\ 12$) sau $r=-6$: $11;\\ 5;\\ -1$ (apoi $12;\\ 6;\\ 3$)",
+      "accept": [
+        "2; 5; 8",
+        "11; 5; -1"
+      ],
+      "hint": {
+        "ro": "cele trei numere, în ordine",
+        "en": "the three numbers, in order"
+      },
+      "solutions": 2
+    },
+    "17": {
+      "kind": "number",
+      "show": "$x=0$ sau $x=3$; pentru $x=0$ al patrulea număr nu convine, deci $x=3$ ($2;\\ 4;\\ 8;\\ 16$)",
+      "accept": [
+        "3"
+      ]
+    },
+    "18": {
+      "kind": "list",
+      "show": "$b_n=2\\cdot 3^{n-1}$: $b_1=2$, $q=3$",
+      "accept": [
+        "2; 3"
+      ],
+      "hint": {
+        "ro": "$b_1$; $q$",
+        "en": "$b_1$; $q$"
+      }
+    },
+    "22": {
+      "kind": "text",
+      "show": "$\\frac{10^{n+1}-9n-10}{9}$",
+      "accept": [
+        "(10^(n+1)-10)/9-n",
+        "(10^(n+1)-9n-10)/9",
+        "10(10^n-1)/9-n",
+        "10*(10^n-1)/9-n",
+        "10·(10^n-1)/9-n",
+        "S=(10^(n+1)-10)/9-n",
+        "S=(10^(n+1)-9n-10)/9",
+        "S=10(10^n-1)/9-n",
+        "S=10*(10^n-1)/9-n",
+        "S=10·(10^n-1)/9-n",
+        "S_n=(10^(n+1)-10)/9-n",
+        "S_n=(10^(n+1)-9n-10)/9",
+        "S_n=10(10^n-1)/9-n",
+        "S_n=10*(10^n-1)/9-n",
+        "S_n=10·(10^n-1)/9-n",
+        "Sn=(10^(n+1)-10)/9-n",
+        "Sn=(10^(n+1)-9n-10)/9",
+        "Sn=10(10^n-1)/9-n",
+        "Sn=10*(10^n-1)/9-n",
+        "Sn=10·(10^n-1)/9-n",
+        "b_n=(10^(n+1)-10)/9-n",
+        "b_n=(10^(n+1)-9n-10)/9",
+        "b_n=10(10^n-1)/9-n",
+        "b_n=10*(10^n-1)/9-n",
+        "b_n=10·(10^n-1)/9-n",
+        "bn=(10^(n+1)-10)/9-n",
+        "bn=(10^(n+1)-9n-10)/9",
+        "bn=10(10^n-1)/9-n",
+        "bn=10*(10^n-1)/9-n",
+        "bn=10·(10^n-1)/9-n"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, de exemplu 5*3^(n-1)",
+        "en": "an expression in $n$, for example 5*3^(n-1)"
+      }
+    },
+    "23": {
+      "check": false,
+      "why": "proof",
+      "show": "$(a+c)^2-b^2=a^2+2ac+c^2-b^2$ și $ac=b^2$"
+    },
+    "1a": {
+      "kind": "list",
+      "show": "Da: $a_1=6$, $q=2$, strict crescătoare",
+      "accept": [
+        "6; 2"
+      ],
+      "hint": {
+        "ro": "$b_1$; $q$",
+        "en": "$b_1$; $q$"
+      }
+    },
+    "1b": {
+      "kind": "list",
+      "show": "Da: $b_1=\\frac{5}{3}$, $q=\\frac{1}{3}$, strict descrescătoare",
+      "accept": [
+        "5/3; 1/3"
+      ],
+      "hint": {
+        "ro": "$b_1$; $q$",
+        "en": "$b_1$; $q$"
+      }
+    },
+    "1c": {
+      "kind": "options",
+      "options": [
+        {
+          "value": "da",
+          "label": {
+            "ro": "Da",
+            "en": "Yes"
+          }
+        },
+        {
+          "value": "nu",
+          "label": {
+            "ro": "Nu",
+            "en": "No"
+          }
+        }
+      ],
+      "accept": [
+        "nu"
+      ],
+      "show": "Nu: $\\frac{c_2}{c_1}=4$, dar $\\frac{c_3}{c_2}=3$"
+    },
+    "1d": {
+      "kind": "list",
+      "show": "Da: $d_1=4$, $q=-2$, nu este monotonă",
+      "accept": [
+        "4; -2"
+      ],
+      "hint": {
+        "ro": "$b_1$; $q$",
+        "en": "$b_1$; $q$"
+      }
+    },
+    "1e": {
+      "kind": "options",
+      "options": [
+        {
+          "value": "da",
+          "label": {
+            "ro": "Da",
+            "en": "Yes"
+          }
+        },
+        {
+          "value": "nu",
+          "label": {
+            "ro": "Nu",
+            "en": "No"
+          }
+        }
+      ],
+      "accept": [
+        "nu"
+      ],
+      "show": "Nu: $\\frac{e_2}{e_1}=\\frac{5}{3}\\ne\\frac{9}{5}=\\frac{e_3}{e_2}$"
+    },
+    "1f": {
+      "kind": "list",
+      "show": "Da: $f_1=7$, $q=1$, șir constant",
+      "accept": [
+        "7; 1"
+      ],
+      "hint": {
+        "ro": "$b_1$; $q$",
+        "en": "$b_1$; $q$"
+      }
+    },
+    "2a": {
+      "kind": "list",
+      "show": "$b_2=6$, $b_3=12$, $b_6=96$, $b_{10}=1536$",
+      "accept": [
+        "6; 12; 96; 1536"
+      ],
+      "hint": {
+        "ro": "$b_2$; $b_3$; $b_6$; $b_{10}$",
+        "en": "$b_2$; $b_3$; $b_6$; $b_{10}$"
+      }
+    },
+    "2b": {
+      "kind": "text",
+      "show": "$b_n=3\\cdot 2^{n-1}$",
+      "accept": [
+        "(3/2)*2^n",
+        "(3/2)·2^n",
+        "1.5*2^n",
+        "1.5·2^n",
+        "3(2^(n-1))",
+        "3*(2^(n-1))",
+        "3*2^(n-1)",
+        "3*2^n/2",
+        "3·(2^(n-1))",
+        "3·2^(n-1)",
+        "3·2^n/2",
+        "S=(3/2)*2^n",
+        "S=(3/2)·2^n",
+        "S=1.5*2^n",
+        "S=1.5·2^n",
+        "S=3(2^(n-1))",
+        "S=3*(2^(n-1))",
+        "S=3*2^(n-1)",
+        "S=3*2^n/2",
+        "S=3·(2^(n-1))",
+        "S=3·2^(n-1)",
+        "S=3·2^n/2",
+        "S_n=(3/2)*2^n",
+        "S_n=(3/2)·2^n",
+        "S_n=1.5*2^n",
+        "S_n=1.5·2^n",
+        "S_n=3(2^(n-1))",
+        "S_n=3*(2^(n-1))",
+        "S_n=3*2^(n-1)",
+        "S_n=3*2^n/2",
+        "S_n=3·(2^(n-1))",
+        "S_n=3·2^(n-1)",
+        "S_n=3·2^n/2",
+        "Sn=(3/2)*2^n",
+        "Sn=(3/2)·2^n",
+        "Sn=1.5*2^n",
+        "Sn=1.5·2^n",
+        "Sn=3(2^(n-1))",
+        "Sn=3*(2^(n-1))",
+        "Sn=3*2^(n-1)",
+        "Sn=3*2^n/2",
+        "Sn=3·(2^(n-1))",
+        "Sn=3·2^(n-1)",
+        "Sn=3·2^n/2",
+        "b_n=(3/2)*2^n",
+        "b_n=(3/2)·2^n",
+        "b_n=1.5*2^n",
+        "b_n=1.5·2^n",
+        "b_n=3(2^(n-1))",
+        "b_n=3*(2^(n-1))",
+        "b_n=3*2^(n-1)",
+        "b_n=3*2^n/2",
+        "b_n=3·(2^(n-1))",
+        "b_n=3·2^(n-1)",
+        "b_n=3·2^n/2",
+        "bn=(3/2)*2^n",
+        "bn=(3/2)·2^n",
+        "bn=1.5*2^n",
+        "bn=1.5·2^n",
+        "bn=3(2^(n-1))",
+        "bn=3*(2^(n-1))",
+        "bn=3*2^(n-1)",
+        "bn=3*2^n/2",
+        "bn=3·(2^(n-1))",
+        "bn=3·2^(n-1)",
+        "bn=3·2^n/2"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, de exemplu 5*3^(n-1)",
+        "en": "an expression in $n$, for example 5*3^(n-1)"
+      }
+    },
+    "3a": {
+      "kind": "number",
+      "show": "$b_n=2^{n-3}$, deci $b_8=32$",
+      "accept": [
+        "32"
+      ]
+    },
+    "3b": {
+      "kind": "options",
+      "options": [
+        {
+          "value": "da",
+          "label": {
+            "ro": "Da",
+            "en": "Yes"
+          }
+        },
+        {
+          "value": "nu",
+          "label": {
+            "ro": "Nu",
+            "en": "No"
+          }
+        }
+      ],
+      "accept": [
+        "da; nu"
+      ],
+      "parts": [
+        {
+          "ro": "Primul număr",
+          "en": "The first number"
+        },
+        {
+          "ro": "Al doilea număr",
+          "en": "The second number"
+        }
+      ],
+      "show": "$512=2^9=b_{12}$ este termen; $1000$ nu este putere a lui $2$, deci nu este termen"
+    },
+    "6a": {
+      "kind": "number",
+      "show": "$S_8=3\\cdot(2^8-1)=765$",
+      "accept": [
+        "765"
+      ]
+    },
+    "6b": {
+      "kind": "number",
+      "show": "$11$ termeni: $2^{11}-1=2047$",
+      "accept": [
+        "2047"
+      ]
+    },
+    "6c": {
+      "kind": "number",
+      "show": "$7$ termeni: $3^7-1=2186$",
+      "accept": [
+        "2186"
+      ]
+    },
+    "8a": {
+      "kind": "list",
+      "show": "$2100$, $2205$ și $2315{,}25$ lei; după $n$ ani, $2000\\cdot 1{,}05^n$ lei",
+      "accept": [
+        "2100; 2205; 2315,25"
+      ],
+      "hint": {
+        "ro": "suma după 1 an; după 2 ani; după 3 ani",
+        "en": "the amount after 1 year; after 2 years; after 3 years"
+      }
+    },
+    "8b": {
+      "kind": "text",
+      "show": "$2000+100n$ lei",
+      "accept": [
+        "100(n+20)",
+        "100*(n+20)",
+        "100n+2000",
+        "100·(n+20)",
+        "2000+100n",
+        "S=100(n+20)",
+        "S=100*(n+20)",
+        "S=100n+2000",
+        "S=100·(n+20)",
+        "S=2000+100n",
+        "S_n=100(n+20)",
+        "S_n=100*(n+20)",
+        "S_n=100n+2000",
+        "S_n=100·(n+20)",
+        "S_n=2000+100n",
+        "Sn=100(n+20)",
+        "Sn=100*(n+20)",
+        "Sn=100n+2000",
+        "Sn=100·(n+20)",
+        "Sn=2000+100n",
+        "b_n=100(n+20)",
+        "b_n=100*(n+20)",
+        "b_n=100n+2000",
+        "b_n=100·(n+20)",
+        "b_n=2000+100n",
+        "bn=100(n+20)",
+        "bn=100*(n+20)",
+        "bn=100n+2000",
+        "bn=100·(n+20)",
+        "bn=2000+100n"
+      ],
+      "hint": {
+        "ro": "o expresie în $n$, de exemplu 500+20n",
+        "en": "an expression in $n$, for example 500+20n"
+      }
+    },
+    "8c": {
+      "kind": "list",
+      "show": "compusă: după $4$ ani ($2431{,}01$ lei); simplă: după $5$ ani (după $4$ ani are exact $2400$ de lei)",
+      "accept": [
+        "4; 5"
+      ],
+      "hint": {
+        "ro": "dobândă compusă; dobândă simplă",
+        "en": "compound interest; simple interest"
+      }
+    },
+    "9a": {
+      "kind": "list",
+      "show": "$3200$, $2560$ și $2048$ de lei",
+      "accept": [
+        "3200; 2560; 2048"
+      ]
+    },
+    "9b": {
+      "kind": "number",
+      "show": "$v_n=4000\\cdot 0{,}8^n$, rația $q=0{,}8$",
+      "accept": [
+        "0,8"
+      ],
+      "hint": {
+        "ro": "rația",
+        "en": "the common ratio"
+      }
+    },
+    "9c": {
+      "kind": "number",
+      "show": "după $3$ ani $2048$ lei, după $4$ ani $1638{,}40$ lei: după $4$ ani",
+      "accept": [
+        "4"
+      ]
+    },
+    "12a": {
+      "kind": "number",
+      "show": "$500\\cdot 2^n$; după $6$ ore, $32\\,000$",
+      "accept": [
+        "32000"
+      ]
+    },
+    "12b": {
+      "kind": "number",
+      "show": "$2^n>2000$: $2^{10}=1024$, $2^{11}=2048$, deci după $11$ ore",
+      "accept": [
+        "11"
+      ]
+    },
+    "12c": {
+      "check": false,
+      "why": "open",
+      "show": "$500\\cdot 2^{48}\\approx 1{,}4\\cdot 10^{17}$, nerealist: hrana și spațiul sunt limitate"
+    },
+    "13a": {
+      "kind": "list",
+      "show": "A: $460$, $420$, $380$ lei; B: $450$, $405$, $364{,}50$ lei",
+      "accept": [
+        "460; 420; 380; 450; 405; 364,5"
+      ],
+      "hint": {
+        "ro": "A după 1, 2, 3 săptămâni; apoi B după 1, 2, 3 săptămâni",
+        "en": "A after 1, 2, 3 weeks; then B after 1, 2, 3 weeks"
+      }
+    },
+    "13b": {
+      "check": false,
+      "why": "open",
+      "show": "A: $500-40n$ (progresie aritmetică); B: $500\\cdot 0{,}9^n$ (progresie geometrică)"
+    },
+    "13c": {
+      "kind": "number",
+      "show": "săptămâna $5$: A $300$, B $295{,}25$; săptămâna $6$: A $260$, B $265{,}72$: după $6$ săptămâni",
+      "accept": [
+        "6"
+      ],
+      "hint": {
+        "ro": "numărul de săptămâni",
+        "en": "the number of weeks"
+      }
+    },
+    "14a": {
+      "kind": "number",
+      "show": "$2^9=512$ bani $=5{,}12$ lei",
+      "accept": [
+        "5,12"
+      ],
+      "hint": {
+        "ro": "suma în lei",
+        "en": "the amount in lei"
+      }
+    },
+    "14b": {
+      "check": false,
+      "why": "open",
+      "show": "varianta 1: $100n$ lei; varianta 2: $2^n-1$ bani"
+    },
+    "14c": {
+      "kind": "number",
+      "show": "după $17$ zile $1310{,}71$ lei &lt; $1700$ lei; după $18$ zile $2621{,}43$ lei &gt; $1800$ lei: din ziua a $18$-a; $14$ zile: varianta 1; $30$ de zile: varianta 2",
+      "accept": [
+        "18"
+      ],
+      "hint": {
+        "ro": "ziua",
+        "en": "the day"
+      }
+    },
+    "19a": {
+      "check": false,
+      "why": "open",
+      "show": "$(x-1)(x^4+x^3+x^2+x+1)$; $(a-2)(a+2)(a^2+4)$"
+    },
+    "19b": {
+      "kind": "number",
+      "show": "$\\frac{3^5-2^5}{3-2}=211$",
+      "accept": [
+        "211"
+      ]
+    },
+    "19c": {
+      "check": false,
+      "why": "proof",
+      "show": "$2^{10}-1=4^5-1$ se divide cu $3$; $2^{10}-1=32^2-1$ se divide cu $31$"
+    },
+    "20a": {
+      "check": false,
+      "why": "proof",
+      "show": "$8^n-1^n=(8-1)(8^{n-1}+\\ldots+1)$"
+    },
+    "20b": {
+      "check": false,
+      "why": "proof",
+      "show": "$5^n-2^n=(5-2)(5^{n-1}+\\ldots+2^{n-1})$"
+    },
+    "20c": {
+      "check": false,
+      "why": "proof",
+      "show": "$6^{2026}-1=36^{1013}-1$ se divide cu $35$"
+    },
+    "21a": {
+      "kind": "number",
+      "show": "$2^{x+1}-1=1023\\Rightarrow x=9$",
+      "accept": [
+        "9"
+      ]
+    },
+    "21b": {
+      "kind": "number",
+      "show": "$x^6=1$, $x\\ne 1$, deci $x=-1$",
+      "accept": [
+        "-1"
+      ]
+    },
+    "24a": {
+      "kind": "list",
+      "show": "ariile $64;\\ 32;\\ 16;\\ \\ldots$: $A_1=64$, $q=\\frac{1}{2}$",
+      "accept": [
+        "64; 1/2"
+      ],
+      "hint": {
+        "ro": "primul termen; rația",
+        "en": "first term; common ratio"
+      }
+    },
+    "24b": {
+      "kind": "number",
+      "show": "$64\\cdot\\left(\\frac{1}{2}\\right)^5=2\\ \\text{cm}^2$",
+      "accept": [
+        "2"
+      ]
+    },
+    "24c": {
+      "kind": "number",
+      "show": "$128\\left(1-\\frac{1}{1024}\\right)=\\frac{1023}{8}=127{,}875\\ \\text{cm}^2$",
+      "accept": [
+        "1023/8"
+      ]
+    },
+    "24d": {
+      "check": false,
+      "why": "proof",
+      "show": "$S_n=128\\left(1-\\frac{1}{2^n}\\right)&lt;128$"
+    },
+    "25a": {
+      "kind": "number",
+      "show": "$2^{63}$ boabe",
+      "accept": [
+        "2^63"
+      ]
+    },
+    "25b": {
+      "check": false,
+      "why": "proof",
+      "show": "$1+2+\\ldots+2^{63}=2^{64}-1$"
+    },
+    "25c": {
+      "check": false,
+      "why": "proof",
+      "show": "$2^{64}-1=16\\cdot 1024^6-1&gt;16\\cdot 1000^6=1{,}6\\cdot 10^{19}$"
+    },
+    "25d": {
+      "check": false,
+      "why": "open",
+      "show": "peste $8\\cdot 10^{11}$ tone, adică peste $1000$ de ani (aproximativ $1150$)"
+    }
+  }
+}

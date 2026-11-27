@@ -3469,8 +3469,100 @@
         "version": 2,
         "checks": 55
       }
+    },
+    {
+      "slug": "fisa-lucru-progresii-geometrice",
+      "uid": "1042",
+      "topic": "siruri-progresii",
+      "kind": "fisa-lucru",
+      "alsoKind": "teorie",
+      "title": {
+        "ro": "Fișă de lucru: progresii geometrice",
+        "en": "Worksheet: geometric progressions"
+      },
+      "seoTitle": {
+        "ro": "Progresii geometrice: rație, termen general, sumă",
+        "en": "Geometric progressions: general term and sum"
+      },
+      "published": "2026-11-27",
+      "description": {
+        "ro": "Fișă de lucru pentru clasa a IX-a: progresii geometrice, rația, termenul general, trei termeni consecutivi, suma primilor n termeni și aⁿ − bⁿ.",
+        "en": "Grade 9 worksheet: geometric progressions, the common ratio, the general term, three consecutive terms, the sum of the first n terms and aⁿ − bⁿ."
+      },
+      "pdf": "materiale/pdf/fisa-lucru-progresii-geometrice-1042.pdf",
+      "youtube": null,
+      "import": {
+        "date": "2026-11-27",
+        "workflow": 5,
+        "pdf": "generated"
+      },
+      "summary": {
+        "ro": "Fișa începe cu teoria pe scurt: definiția progresiei geometrice, rația, termenul general, trei termeni consecutivi, suma primilor n termeni și formula pentru aⁿ − bⁿ, cu o comparație cu progresiile aritmetice. Urmează 25 de probleme pe niveluri: dobândă, reduceri de preț, bacterii, divizibilități.",
+        "en": "The worksheet opens with a short theory part: the definition of a geometric progression, the common ratio, the general term, three consecutive terms, the sum of the first n terms and the formula for aⁿ − bⁿ, compared with arithmetic progressions. Then come 25 problems on levels: interest, discounts, bacteria, divisibility."
+      },
+      "faq": [
+        {
+          "q": {
+            "ro": "Cum recunosc că un șir este o progresie geometrică?",
+            "en": "How do I recognise that a sequence is a geometric progression?"
+          },
+          "a": {
+            "ro": "Termenii trebuie să fie nenuli. Calculezi raportul bₙ₊₁ / bₙ dintre doi termeni consecutivi. Dacă el este același pentru orice n, șirul este o progresie geometrică, iar acest raport este rația q. De exemplu, bₙ = 3·2ⁿ dă raportul 2, dar bₙ = 2ⁿ + 1 nu are raport constant.",
+            "en": "The terms must be non-zero. You compute the ratio bₙ₊₁ / bₙ of two consecutive terms. If it is the same for every n, the sequence is a geometric progression and this ratio is the common ratio q. For example, bₙ = 3·2ⁿ gives the ratio 2, but bₙ = 2ⁿ + 1 has no constant ratio."
+          }
+        },
+        {
+          "q": {
+            "ro": "Care este diferența dintre o progresie aritmetică și una geometrică?",
+            "en": "What is the difference between an arithmetic and a geometric progression?"
+          },
+          "a": {
+            "ro": "Într-o progresie aritmetică treci la termenul următor adunând mereu același număr, rația r. Într-o progresie geometrică treci la termenul următor înmulțind mereu cu același număr, rația q. De aceea o creștere cu o sumă fixă dă o progresie aritmetică, iar o creștere cu un procent fix, ca la dobânda compusă, dă o progresie geometrică.",
+            "en": "In an arithmetic progression you get the next term by always adding the same number, the common difference r. In a geometric progression you get the next term by always multiplying by the same number, the common ratio q. That is why growth by a fixed amount gives an arithmetic progression, while growth by a fixed percentage, as with compound interest, gives a geometric progression."
+          }
+        },
+        {
+          "q": {
+            "ro": "De unde vine formula sumei primilor n termeni ai unei progresii geometrice?",
+            "en": "Where does the formula for the sum of the first n terms of a geometric progression come from?"
+          },
+          "a": {
+            "ro": "Înmulțești suma Sₙ = b₁ + b₂ + … + bₙ cu rația q și obții b₂ + b₃ + … + bₙ₊₁. Scazi cele două sume: aproape toți termenii se reduc și rămâne q·Sₙ − Sₙ = bₙ₊₁ − b₁ = b₁(qⁿ − 1). Pentru q ≠ 1 rezultă Sₙ = b₁(qⁿ − 1)/(q − 1).",
+            "en": "You multiply the sum Sₙ = b₁ + b₂ + … + bₙ by the common ratio q and get b₂ + b₃ + … + bₙ₊₁. Subtract the two sums: almost all terms cancel and you are left with q·Sₙ − Sₙ = bₙ₊₁ − b₁ = b₁(qⁿ − 1). For q ≠ 1 this gives Sₙ = b₁(qⁿ − 1)/(q − 1)."
+          }
+        }
+      ],
+      "keywords": {
+        "ro": [
+          "progresii geometrice",
+          "rația unei progresii geometrice",
+          "termenul general",
+          "suma primilor n termeni",
+          "trei termeni consecutivi",
+          "media geometrică",
+          "formula a la n minus b la n",
+          "dobândă compusă",
+          "clasa a 9-a",
+          "clasa a IX-a"
+        ],
+        "en": [
+          "geometric progressions",
+          "common ratio",
+          "general term",
+          "sum of the first n terms",
+          "three consecutive terms",
+          "geometric mean",
+          "a to the n minus b to the n",
+          "compound interest",
+          "grade 9"
+        ]
+      },
+      "results": {
+        "version": 1,
+        "checks": 42
+      }
     }
   ],
-  "nextUid": 1042,
+  "nextUid": 1043,
   "retired": []
 }

@@ -3,28 +3,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://lauramiron.mqgrader.ro/</loc>
-    <lastmod>2026-11-24</lastmod>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="ro" href="https://lauramiron.mqgrader.ro/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://lauramiron.mqgrader.ro/en/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://lauramiron.mqgrader.ro/"/>
   </url>
   <url>
     <loc>https://lauramiron.mqgrader.ro/en/</loc>
-    <lastmod>2026-11-24</lastmod>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="ro" href="https://lauramiron.mqgrader.ro/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://lauramiron.mqgrader.ro/en/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://lauramiron.mqgrader.ro/"/>
   </url>
   <url>
     <loc>https://lauramiron.mqgrader.ro/despre</loc>
-    <lastmod>2026-11-24</lastmod>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="ro" href="https://lauramiron.mqgrader.ro/despre"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://lauramiron.mqgrader.ro/en/despre"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://lauramiron.mqgrader.ro/despre"/>
   </url>
   <url>
     <loc>https://lauramiron.mqgrader.ro/en/despre</loc>
-    <lastmod>2026-11-24</lastmod>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="ro" href="https://lauramiron.mqgrader.ro/despre"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://lauramiron.mqgrader.ro/en/despre"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://lauramiron.mqgrader.ro/despre"/>
@@ -73,14 +73,14 @@
   </url>
   <url>
     <loc>https://lauramiron.mqgrader.ro/clasa-9</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="ro" href="https://lauramiron.mqgrader.ro/clasa-9"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://lauramiron.mqgrader.ro/en/clasa-9"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://lauramiron.mqgrader.ro/clasa-9"/>
   </url>
   <url>
     <loc>https://lauramiron.mqgrader.ro/en/clasa-9</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-27</lastmod>
     <xhtml:link rel="alternate" hreflang="ro" href="https://lauramiron.mqgrader.ro/clasa-9"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://lauramiron.mqgrader.ro/en/clasa-9"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://lauramiron.mqgrader.ro/clasa-9"/>
@@ -652,5 +652,19 @@
     <xhtml:link rel="alternate" hreflang="ro" href="https://lauramiron.mqgrader.ro/materiale/fisa-lucru-criterii-convergenta-numarul-e-1041"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://lauramiron.mqgrader.ro/en/materiale/fisa-lucru-criterii-convergenta-numarul-e-1041"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://lauramiron.mqgrader.ro/materiale/fisa-lucru-criterii-convergenta-numarul-e-1041"/>
+  </url>
+  <url>
+    <loc>https://lauramiron.mqgrader.ro/materiale/fisa-lucru-progresii-geometrice-1042</loc>
+    <lastmod>2026-11-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://lauramiron.mqgrader.ro/materiale/fisa-lucru-progresii-geometrice-1042"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lauramiron.mqgrader.ro/en/materiale/fisa-lucru-progresii-geometrice-1042"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lauramiron.mqgrader.ro/materiale/fisa-lucru-progresii-geometrice-1042"/>
+  </url>
+  <url>
+    <loc>https://lauramiron.mqgrader.ro/en/materiale/fisa-lucru-progresii-geometrice-1042</loc>
+    <lastmod>2026-11-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://lauramiron.mqgrader.ro/materiale/fisa-lucru-progresii-geometrice-1042"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lauramiron.mqgrader.ro/en/materiale/fisa-lucru-progresii-geometrice-1042"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lauramiron.mqgrader.ro/materiale/fisa-lucru-progresii-geometrice-1042"/>
   </url>
 </urlset>

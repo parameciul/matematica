@@ -2296,6 +2296,390 @@ b) Calculate the length of segment $AC$ and the distance from point $O$ to the l
 
 ## Clasa a IX-a / Grade 9
 
+### Fișă de lucru: progresii geometrice
+- Source (RO): https://lauramiron.mqgrader.ro/materiale/fisa-lucru-progresii-geometrice-1042
+- Source (EN): https://lauramiron.mqgrader.ro/en/materiale/fisa-lucru-progresii-geometrice-1042
+- Author: Laura Miron. License: CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/).
+- Published: 2026-11-27. Updated: 2026-11-27.
+- Fișă de lucru pentru clasa a IX-a: progresii geometrice, rația, termenul general, trei termeni consecutivi, suma primilor n termeni și aⁿ − bⁿ.
+- Rezumat: Fișa începe cu teoria pe scurt: definiția progresiei geometrice, rația, termenul general, trei termeni consecutivi, suma primilor n termeni și formula pentru aⁿ − bⁿ, cu o comparație cu progresiile aritmetice. Urmează 25 de probleme pe niveluri: dobândă, reduceri de preț, bacterii, divizibilități.
+- Întrebări frecvente:
+  - Q: Cum recunosc că un șir este o progresie geometrică?
+  - A: Termenii trebuie să fie nenuli. Calculezi raportul bₙ₊₁ / bₙ dintre doi termeni consecutivi. Dacă el este același pentru orice n, șirul este o progresie geometrică, iar acest raport este rația q. De exemplu, bₙ = 3·2ⁿ dă raportul 2, dar bₙ = 2ⁿ + 1 nu are raport constant.
+  - Q: Care este diferența dintre o progresie aritmetică și una geometrică?
+  - A: Într-o progresie aritmetică treci la termenul următor adunând mereu același număr, rația r. Într-o progresie geometrică treci la termenul următor înmulțind mereu cu același număr, rația q. De aceea o creștere cu o sumă fixă dă o progresie aritmetică, iar o creștere cu un procent fix, ca la dobânda compusă, dă o progresie geometrică.
+  - Q: De unde vine formula sumei primilor n termeni ai unei progresii geometrice?
+  - A: Înmulțești suma Sₙ = b₁ + b₂ + … + bₙ cu rația q și obții b₂ + b₃ + … + bₙ₊₁. Scazi cele două sume: aproape toți termenii se reduc și rămâne q·Sₙ − Sₙ = bₙ₊₁ − b₁ = b₁(qⁿ − 1). Pentru q ≠ 1 rezultă Sₙ = b₁(qⁿ − 1)/(q − 1).
+
+La finalul fișei vei ști să:
+- recunoști o progresie geometrică și îi afli rația;
+- calculezi orice termen al unei progresii geometrice și determini progresia din două informații;
+- verifici dacă trei sau mai multe numere sunt termeni consecutivi ai unei progresii geometrice;
+- calculezi suma primilor $n$ termeni și folosești formula pentru $a^n-b^n$;
+- deosebești o creștere cu o valoare constantă de o creștere cu un procent constant și iei decizii pe baza lor.
+1. Progresia geometrică. Rația
+Definiție
+Șirul de numere reale nenule $(b_n)_{n\ge 1}$ este o progresie geometrică dacă există un număr real $q$ astfel încât
+$$b_{n+1}=b_n\cdot q,\ \text{pentru orice}\ n\ge 1.$$
+Numărul $q=\frac{b_{n+1}}{b_n}$ se numește rația progresiei ($q\ne 0$). Scriem $\mathrel{\div\kern-0.5em\div}\ b_1;\ b_2;\ b_3;\ \ldots$
+- Un șir de numere nenule este progresie geometrică dacă raportul $\frac{b_{n+1}}{b_n}$ este același pentru orice $n$ (nu depinde de $n$).
+- Monotonia, pentru $b_1>0$: dacă $q>1$, progresia este strict crescătoare; dacă $0<q<1$, este strict descrescătoare. Pentru $b_1<0$ este invers. Dacă $q=1$, este constantă. Dacă $q<0$, termenii își schimbă semnul pe rând și progresia nu este monotonă.
+2. Termenul general
+Formula termenului general
+$$b_n=b_1\cdot q^{n-1},\ \text{pentru orice}\ n\ge 1.$$
+Mai general, pentru orice ranguri $n$ și $k$: $b_n=b_k\cdot q^{n-k}$. De exemplu, $b_{10}=b_4\cdot q^6$.
+Demonstrație (inducție). Pentru $n=1$: $b_1=b_1\cdot q^0$, adevărat. Dacă $b_k=b_1\cdot q^{k-1}$, atunci $b_{k+1}=b_k\cdot q=b_1\cdot q^{k}$.
+3. Trei termeni consecutivi
+Proprietate
+Șirul de numere nenule $(b_n)_{n\ge 1}$ este progresie geometrică dacă și numai dacă
+$$b_n^2=b_{n-1}\cdot b_{n+1},\ \text{pentru orice}\ n\ge 2.$$
+Dacă termenii sunt pozitivi, $b_n=\sqrt{b_{n-1}\cdot b_{n+1}}$: fiecare termen este media geometrică a vecinilor săi.
+- Numerele nenule $a;\ b;\ c$ sunt, în această ordine, termeni consecutivi ai unei progresii geometrice dacă și numai dacă $b^2=ac$.
+- Numerele nenule $x_1;\ x_2;\ \ldots;\ x_n$ ($n\ge 3$) sunt, în această ordine, în progresie geometrică dacă și numai dacă $\frac{x_2}{x_1}=\frac{x_3}{x_2}=\ldots=\frac{x_n}{x_{n-1}}$, adică $x_k^2=x_{k-1}\cdot x_{k+1}$ pentru $k=2;\ 3;\ \ldots;\ n-1$.
+- Dacă o valoare a necunoscutei face ca un termen să fie $0$, ea nu convine.
+4. Suma primilor $n$ termeni
+Formula sumei
+Pentru $S_n=b_1+b_2+\ldots+b_n$:
+$$S_n=b_1\cdot\frac{q^n-1}{q-1},\ \text{dacă}\ q\ne 1;\qquad S_n=n\cdot b_1,\ \text{dacă}\ q=1.$$
+Caz particular: $1+2+2^2+\ldots+2^{n-1}=2^n-1$.
+De unde vine: $q\cdot S_n=b_2+b_3+\ldots+b_{n+1}$. Scădem: $q\cdot S_n-S_n=b_{n+1}-b_1=b_1\left(q^n-1\right)$, deci $(q-1)S_n=b_1\left(q^n-1\right)$.
+5. Aplicație: formula pentru $a^n-b^n$
+Formula
+Pentru orice numere reale $a$, $b$ și orice $n\ge 2$:
+$$a^n-b^n=(a-b)\left(a^{n-1}+a^{n-2}b+\ldots+ab^{n-2}+b^{n-1}\right).$$
+De unde vine: suma progresiei geometrice $1;\ q;\ \ldots;\ q^{n-1}$ dă
+$$q^n-1=(q-1)\left(1+q+q^2+\ldots+q^{n-1}\right),$$
+egalitate adevărată și pentru $q=1$ (ambii membri sunt $0$). Pentru $b\ne 0$ punem $q=\frac{a}{b}$ și înmulțim cu $b^n=b\cdot b^{n-1}$: membrul stâng devine $a^n-b^n$, iar $b\left(\frac{a}{b}-1\right)=a-b$ și $b^{n-1}\left(1+\frac{a}{b}+\ldots+\frac{a^{n-1}}{b^{n-1}}\right)=b^{n-1}+ab^{n-2}+\ldots+a^{n-1}$. Pentru $b=0$ formula devine $a^n=a\cdot a^{n-1}$, adevărat.
+Consecință: dacă $a$ și $b$ sunt numere întregi, atunci $a^n-b^n$ se divide cu $a-b$. De exemplu, $8^n-1=8^n-1^n$ se divide cu $8-1=7$.
+6. Progresia aritmetică și progresia geometrică
+Progresie aritmetică
+Progresie geometrică
+Trecerea la termenul următor
+se adună rația: $a_{n+1}=a_n+r$
+se înmulțește cu rația: $b_{n+1}=b_n\cdot q$
+Termenul general
+$a_n=a_1+(n-1)r$
+$b_n=b_1\cdot q^{n-1}$
+Trei termeni consecutivi
+$2b=a+c$ (media aritmetică)
+$b^2=ac$ (media geometrică)
+Suma primilor $n$ termeni
+$S_n=\frac{(a_1+a_n)\cdot n}{2}$
+$S_n=b_1\cdot\frac{q^n-1}{q-1}$
+Exemple din viața de zi cu zi
+o sumă fixă pusă deoparte lunar, dobânda simplă
+dobânda compusă, o reducere cu un procent fix, înmulțirea bacteriilor
+De reținut
+- O progresie geometrică este complet determinată de primul termen $b_1$ și de rație $q$. Din două informații despre progresie scriem un sistem cu necunoscutele $b_1$ și $q$. De obicei împărțim cele două ecuații.
+- O creștere cu $p\%$ înseamnă înmulțirea cu $1+\frac{p}{100}$. O scădere cu $p\%$ înseamnă înmulțirea cu $1-\frac{p}{100}$. De exemplu, o scumpire cu $5\%$ înseamnă înmulțirea cu $1{,}05$.
+- Din $q^2=9$ rezultă $q=3$ sau $q=-3$: verificați ambele cazuri.
+- Trei numere în progresie geometrică le notăm convenabil $\frac{x}{q};\ x;\ xq$. Produsul lor este $x^3$.
+7. Exemple rezolvate
+Exemplul 1
+Într-o progresie geometrică, $b_2=6$ și $b_5=48$. Aflăm $b_1$, $q$ și $S_6$.
+$b_5=b_2\cdot q^3$, deci $48=6q^3$, $q^3=8$ și $q=2$. Apoi $b_1=\frac{b_2}{q}=3$.
+$S_6=3\cdot\frac{2^6-1}{2-1}=3\cdot 63=189$.
+Exemplul 2
+Aflăm $x$ pentru care numerele $x;\ x+3;\ 4x$ sunt, în această ordine, în progresie geometrică.
+$(x+3)^2=x\cdot 4x$, adică $x+3=2x$ sau $x+3=-2x$, deci $x=3$ sau $x=-1$. Niciun termen nu este $0$, deci ambele valori convin.
+Pentru $x=3$: $3;\ 6;\ 12$, cu rația $2$. Pentru $x=-1$: $-1;\ 2;\ -4$, cu rația $-2$.
+Exerciții
+Nivel de bază
+-
+Stabiliți care dintre șirurile următoare sunt progresii geometrice. Pentru acestea, precizați primul termen, rația și monotonia.
+a) $a_n=3\cdot 2^n$;
+b) $b_n=\frac{5}{3^n}$;
+c) $c_n=n\cdot 2^n$;
+d) $d_n=(-2)^{n+1}$;
+e) $e_n=2^n+1$;
+f) $f_n=7$.
+-
+O progresie geometrică are $b_1=3$ și rația $q=2$.
+a) Calculați $b_2$, $b_3$, $b_6$ și $b_{10}$.
+b) Scrieți formula termenului general $b_n$.
+-
+Se consideră progresia geometrică $\frac{1}{4};\ \frac{1}{2};\ 1;\ 2;\ \ldots$
+a) Calculați $b_8$.
+b) Este $512$ termen al progresiei? Dar $1000$? Justificați.
+-
+Aflați numărul real $x$ pentru care numerele $x-1;\ x+3;\ 6x$ sunt, în această ordine, termeni consecutivi ai unei progresii geometrice. Pentru fiecare valoare găsită, scrieți cele trei numere și rația.
+-
+Într-o progresie geometrică, $b_2=6$ și $b_5=162$. Aflați $b_1$, rația și $b_7$.
+-
+Calculați sumele:
+a) suma primilor $8$ termeni ai progresiei geometrice cu $b_1=3$ și $q=2$;
+b) $1+2+2^2+\ldots+2^{10}$;
+c) $2+6+18+\ldots+1458$.
+-
+Între numerele $2$ și $162$ inserați trei numere, astfel încât cele cinci numere să fie, în această ordine, în progresie geometrică. Găsiți toate posibilitățile.
+-
+Ioana depune $2000$ de lei la o bancă, pe $5$ ani, cu o dobândă de $5\%$ pe an.
+a) Cu dobândă compusă, la sfârșitul fiecărui an dobânda se adaugă la sumă și produce și ea dobândă. Ce sumă are Ioana după $1$, $2$ și $3$ ani? Scrieți formula sumei după $n$ ani.
+b) Cu dobândă simplă, dobânda se calculează în fiecare an doar la suma depusă inițial. Ce sumă are Ioana după $n$ ani?
+c) După câți ani suma depășește $2400$ de lei, cu fiecare tip de dobândă? Ce observați?
+-
+Un laptop costă $4000$ de lei. În fiecare an, valoarea lui scade cu $20\%$ față de valoarea de la începutul anului.
+a) Ce valoare are laptopul după $1$, $2$ și $3$ ani?
+b) Arătați că valorile după $1;\ 2;\ 3;\ \ldots$ ani formează o progresie geometrică. Precizați rația.
+c) După câți ani valoarea laptopului scade sub jumătate din prețul inițial?
+Nivel consolidat
+-
+Determinați progresia geometrică $(b_n)_{n\ge 1}$ pentru care $b_1+b_3=20$ și $b_2+b_4=60$. Calculați apoi $S_5$.
+-
+Câți termeni ai progresiei geometrice $5;\ 10;\ 20;\ \ldots$ trebuie adunați, începând cu primul, pentru a obține suma $1275$?
+-
+O colonie are $500$ de bacterii. În condiții de laborator, numărul bacteriilor se dublează în fiecare oră.
+a) Câte bacterii sunt după $6$ ore? Scrieți numărul bacteriilor după $n$ ore.
+b) După câte ore numărul bacteriilor depășește pentru prima dată $1\,000\,000$?
+c) Ce număr de bacterii ar prezice modelul după $2$ zile? Este realist? Explicați de ce modelul nu mai descrie bine situația după un timp.
+-
+Un produs costă $500$ de lei. Magazinul A îi scade prețul cu $40$ de lei în fiecare săptămână. Magazinul B îi scade prețul cu $10\%$ în fiecare săptămână, față de prețul din săptămâna precedentă.
+a) Calculați prețul în fiecare magazin după $1$, $2$ și $3$ săptămâni.
+b) Scrieți prețul după $n$ săptămâni în fiecare magazin. Ce fel de progresie formează prețurile din fiecare magazin?
+c) După câte săptămâni produsul devine pentru prima dată mai ieftin în magazinul A? Explicați de ce la început este mai ieftin în magazinul B, iar mai târziu în magazinul A.
+Rotunjiți prețurile la bani.
+-
+Unui elev i se propun două variante de plată pentru o activitate de $30$ de zile.
+- Varianta 1: $100$ de lei în fiecare zi.
+- Varianta 2: $1$ ban în prima zi, $2$ bani în a doua zi, $4$ bani în a treia zi și așa mai departe, de fiecare dată dublu față de ziua precedentă ($1$ leu $=100$ de bani).
+a) Cât primește elevul în ziua a $10$-a cu varianta 2?
+b) Cât primește elevul, în total, în primele $n$ zile, cu fiecare variantă?
+c) Din ce zi suma totală primită cu varianta 2 o depășește pe cea primită cu varianta 1? Ce variantă alegeți pentru o activitate de $14$ zile? Dar pentru una de $30$ de zile?
+-
+Trei numere sunt în progresie geometrică. Suma lor este $26$, iar produsul lor este $216$. Aflați numerele.
+-
+Trei numere sunt în progresie aritmetică, iar suma lor este $15$. Dacă adunăm $1$ la primul număr, $1$ la al doilea și $4$ la al treilea, obținem, în această ordine, trei numere în progresie geometrică. Aflați numerele.
+-
+Determinați numărul real $x$ pentru care numerele $x-1;\ x+1;\ 3x-1;\ 6x-2$ sunt, în această ordine, termeni consecutivi ai unei progresii geometrice.
+Indicație: aflați întâi valorile lui $x$ pentru primii trei termeni, apoi verificați al patrulea.
+-
+Suma primilor $n$ termeni ai unui șir $(b_n)_{n\ge 1}$ este $S_n=3^n-1$, pentru orice $n\ge 1$. Arătați că șirul este o progresie geometrică și aflați primul termen și rația.
+Indicație: $b_1=S_1$ și $b_n=S_n-S_{n-1}$, pentru $n\ge 2$.
+Nivel avansat
+-
+Folosiți formula pentru $a^n-b^n$.
+a) Scrieți ca produs: $x^5-1$ și $a^4-16$.
+b) Calculați: $3^4+3^3\cdot 2+3^2\cdot 2^2+3\cdot 2^3+2^4$.
+c) Arătați că numărul $2^{10}-1$ se divide cu $3$ și cu $31$.
+-
+Arătați că:
+a) $8^n-1$ se divide cu $7$, pentru orice număr natural nenul $n$;
+b) $5^n-2^n$ se divide cu $3$, pentru orice număr natural nenul $n$;
+c) $6^{2026}-1$ se divide cu $35$.
+-
+Rezolvați ecuațiile:
+a) $1+2+2^2+\ldots+2^x=1023$, unde $x$ este număr natural;
+b) $1+x+x^2+x^3+x^4+x^5=0$, unde $x$ este număr real.
+-
+Calculați suma $9+99+999+\ldots+99\ldots9$, în care ultimul termen are $n$ cifre, toate egale cu $9$.
+Indicație: numărul format din $k$ cifre de $9$ este egal cu $10^k-1$.
+-
+Numerele nenule $a;\ b;\ c$ sunt, în această ordine, în progresie geometrică. Arătați că $(a+b+c)(a-b+c)=a^2+b^2+c^2$.
+-
+Se desenează un pătrat cu latura de $8$ cm. Unind mijloacele laturilor lui, se obține al doilea pătrat. Unind mijloacele laturilor celui de-al doilea pătrat, se obține al treilea și așa mai departe.
+a) Arătați că ariile pătratelor formează o progresie geometrică. Precizați primul termen și rația.
+b) Calculați aria celui de-al $6$-lea pătrat.
+c) Calculați suma ariilor primelor $10$ pătrate.
+d) Arătați că, oricâte pătrate am desena, suma ariilor lor este mai mică de $128\ \text{cm}^2$.
+Pentru cei care vor mai mult
+-
+O legendă spune că inventatorul jocului de șah a cerut ca recompensă un bob de grâu pe primul pătrat al tablei, $2$ boabe pe al doilea, $4$ boabe pe al treilea și așa mai departe, de fiecare dată dublu față de pătratul precedent. Tabla are $64$ de pătrate.
+a) Câte boabe se pun pe ultimul pătrat?
+b) Arătați că numărul total de boabe este $2^{64}-1$.
+c) Folosind $2^{10}>1000$, arătați că numărul total de boabe este mai mare decât $1{,}6\cdot 10^{19}$.
+d) Considerăm că un bob de grâu cântărește aproximativ $0{,}05$ g și că, în lume, se produc aproximativ $800$ de milioane de tone de grâu pe an. Estimați câți ani ar trebui să se strângă întreaga producție de grâu a lumii pentru a plăti recompensa.
+
+--- EN ---
+
+The worksheet opens with a short theory part: the definition of a geometric progression, the common ratio, the general term, three consecutive terms, the sum of the first n terms and the formula for aⁿ − bⁿ, compared with arithmetic progressions. Then come 25 problems on levels: interest, discounts, bacteria, divisibility.
+
+Q: How do I recognise that a sequence is a geometric progression?
+A: The terms must be non-zero. You compute the ratio bₙ₊₁ / bₙ of two consecutive terms. If it is the same for every n, the sequence is a geometric progression and this ratio is the common ratio q. For example, bₙ = 3·2ⁿ gives the ratio 2, but bₙ = 2ⁿ + 1 has no constant ratio.
+Q: What is the difference between an arithmetic and a geometric progression?
+A: In an arithmetic progression you get the next term by always adding the same number, the common difference r. In a geometric progression you get the next term by always multiplying by the same number, the common ratio q. That is why growth by a fixed amount gives an arithmetic progression, while growth by a fixed percentage, as with compound interest, gives a geometric progression.
+Q: Where does the formula for the sum of the first n terms of a geometric progression come from?
+A: You multiply the sum Sₙ = b₁ + b₂ + … + bₙ by the common ratio q and get b₂ + b₃ + … + bₙ₊₁. Subtract the two sums: almost all terms cancel and you are left with q·Sₙ − Sₙ = bₙ₊₁ − b₁ = b₁(qⁿ − 1). For q ≠ 1 this gives Sₙ = b₁(qⁿ − 1)/(q − 1).
+
+By the end of this worksheet you will be able to:
+- recognise a geometric progression and find its common ratio;
+- calculate any term of a geometric progression and find the progression from two pieces of information;
+- check whether three or more numbers are consecutive terms of a geometric progression;
+- calculate the sum of the first $n$ terms and use the formula for $a^n-b^n$;
+- tell growth by a constant amount from growth by a constant percentage and make decisions based on them.
+1. The geometric progression. The common ratio
+Definition
+The sequence of non-zero real numbers $(b_n)_{n\ge 1}$ is a geometric progression if there is a real number $q$ such that
+$$b_{n+1}=b_n\cdot q,\ \text{for every}\ n\ge 1.$$
+The number $q=\frac{b_{n+1}}{b_n}$ is called the common ratio of the progression ($q\ne 0$). We write $\mathrel{\div\kern-0.5em\div}\ b_1;\ b_2;\ b_3;\ \ldots$
+- A sequence of non-zero numbers is a geometric progression if the ratio $\frac{b_{n+1}}{b_n}$ is the same for every $n$ (it does not depend on $n$).
+- Monotonicity, for $b_1>0$: if $q>1$, the progression is strictly increasing; if $0<q<1$, it is strictly decreasing. For $b_1<0$ it is the other way round. If $q=1$, it is constant. If $q<0$, the terms change sign in turn and the progression is not monotonic.
+2. The general term
+The general term formula
+$$b_n=b_1\cdot q^{n-1},\ \text{for every}\ n\ge 1.$$
+More generally, for any positions $n$ and $k$: $b_n=b_k\cdot q^{n-k}$. For example, $b_{10}=b_4\cdot q^6$.
+Proof (induction). For $n=1$: $b_1=b_1\cdot q^0$, true. If $b_k=b_1\cdot q^{k-1}$, then $b_{k+1}=b_k\cdot q=b_1\cdot q^{k}$.
+3. Three consecutive terms
+Property
+The sequence of non-zero numbers $(b_n)_{n\ge 1}$ is a geometric progression if and only if
+$$b_n^2=b_{n-1}\cdot b_{n+1},\ \text{for every}\ n\ge 2.$$
+If the terms are positive, $b_n=\sqrt{b_{n-1}\cdot b_{n+1}}$: every term is the geometric mean of its neighbours.
+- The non-zero numbers $a;\ b;\ c$ are, in this order, consecutive terms of a geometric progression if and only if $b^2=ac$.
+- The non-zero numbers $x_1;\ x_2;\ \ldots;\ x_n$ ($n\ge 3$) are, in this order, in geometric progression if and only if $\frac{x_2}{x_1}=\frac{x_3}{x_2}=\ldots=\frac{x_n}{x_{n-1}}$, that is, $x_k^2=x_{k-1}\cdot x_{k+1}$ for $k=2;\ 3;\ \ldots;\ n-1$.
+- If a value of the unknown makes a term equal to $0$, that value does not work.
+4. The sum of the first $n$ terms
+The sum formula
+For $S_n=b_1+b_2+\ldots+b_n$:
+$$S_n=b_1\cdot\frac{q^n-1}{q-1},\ \text{if}\ q\ne 1;\qquad S_n=n\cdot b_1,\ \text{if}\ q=1.$$
+Special case: $1+2+2^2+\ldots+2^{n-1}=2^n-1$.
+Where it comes from: $q\cdot S_n=b_2+b_3+\ldots+b_{n+1}$. Subtracting: $q\cdot S_n-S_n=b_{n+1}-b_1=b_1\left(q^n-1\right)$, so $(q-1)S_n=b_1\left(q^n-1\right)$.
+5. Application: the formula for $a^n-b^n$
+The formula
+For any real numbers $a$, $b$ and any $n\ge 2$:
+$$a^n-b^n=(a-b)\left(a^{n-1}+a^{n-2}b+\ldots+ab^{n-2}+b^{n-1}\right).$$
+Where it comes from: the sum of the geometric progression $1;\ q;\ \ldots;\ q^{n-1}$ gives
+$$q^n-1=(q-1)\left(1+q+q^2+\ldots+q^{n-1}\right),$$
+an equality that also holds for $q=1$ (both sides are $0$). For $b\ne 0$ we put $q=\frac{a}{b}$ and multiply by $b^n=b\cdot b^{n-1}$: the left side becomes $a^n-b^n$, while $b\left(\frac{a}{b}-1\right)=a-b$ and $b^{n-1}\left(1+\frac{a}{b}+\ldots+\frac{a^{n-1}}{b^{n-1}}\right)=b^{n-1}+ab^{n-2}+\ldots+a^{n-1}$. For $b=0$ the formula becomes $a^n=a\cdot a^{n-1}$, which is true.
+Consequence: if $a$ and $b$ are integers, then $a^n-b^n$ is divisible by $a-b$. For example, $8^n-1=8^n-1^n$ is divisible by $8-1=7$.
+6. Arithmetic and geometric progressions
+Arithmetic progression
+Geometric progression
+Moving to the next term
+add the common difference: $a_{n+1}=a_n+r$
+multiply by the common ratio: $b_{n+1}=b_n\cdot q$
+General term
+$a_n=a_1+(n-1)r$
+$b_n=b_1\cdot q^{n-1}$
+Three consecutive terms
+$2b=a+c$ (arithmetic mean)
+$b^2=ac$ (geometric mean)
+Sum of the first $n$ terms
+$S_n=\frac{(a_1+a_n)\cdot n}{2}$
+$S_n=b_1\cdot\frac{q^n-1}{q-1}$
+Everyday examples
+a fixed amount saved every month, simple interest
+compound interest, a discount by a fixed percentage, bacteria multiplying
+Remember
+- A geometric progression is completely determined by its first term $b_1$ and its common ratio $q$. From two pieces of information about the progression we write a system with the unknowns $b_1$ and $q$. Usually we divide the two equations.
+- An increase by $p\%$ means multiplying by $1+\frac{p}{100}$. A decrease by $p\%$ means multiplying by $1-\frac{p}{100}$. For example, a price rise of $5\%$ means multiplying by $1{,}05$.
+- From $q^2=9$ we get $q=3$ or $q=-3$: check both cases.
+- Three numbers in geometric progression are conveniently written as $\frac{x}{q};\ x;\ xq$. Their product is $x^3$.
+7. Worked examples
+Example 1
+In a geometric progression, $b_2=6$ and $b_5=48$. We find $b_1$, $q$ and $S_6$.
+$b_5=b_2\cdot q^3$, so $48=6q^3$, $q^3=8$ and $q=2$. Then $b_1=\frac{b_2}{q}=3$.
+$S_6=3\cdot\frac{2^6-1}{2-1}=3\cdot 63=189$.
+Example 2
+We find $x$ for which the numbers $x;\ x+3;\ 4x$ are, in this order, in geometric progression.
+$(x+3)^2=x\cdot 4x$, that is, $x+3=2x$ or $x+3=-2x$, so $x=3$ or $x=-1$. No term is $0$, so both values work.
+For $x=3$: $3;\ 6;\ 12$, with common ratio $2$. For $x=-1$: $-1;\ 2;\ -4$, with common ratio $-2$.
+Exercises
+Basic level
+-
+Decide which of the following sequences are geometric progressions. For those that are, give the first term, the common ratio and the monotonicity.
+a) $a_n=3\cdot 2^n$;
+b) $b_n=\frac{5}{3^n}$;
+c) $c_n=n\cdot 2^n$;
+d) $d_n=(-2)^{n+1}$;
+e) $e_n=2^n+1$;
+f) $f_n=7$.
+-
+A geometric progression has $b_1=3$ and common ratio $q=2$.
+a) Calculate $b_2$, $b_3$, $b_6$ and $b_{10}$.
+b) Write the formula of the general term $b_n$.
+-
+Consider the geometric progression $\frac{1}{4};\ \frac{1}{2};\ 1;\ 2;\ \ldots$
+a) Calculate $b_8$.
+b) Is $512$ a term of the progression? What about $1000$? Justify your answer.
+-
+Find the real number $x$ for which the numbers $x-1;\ x+3;\ 6x$ are, in this order, consecutive terms of a geometric progression. For each value you find, write the three numbers and the common ratio.
+-
+In a geometric progression, $b_2=6$ and $b_5=162$. Find $b_1$, the common ratio and $b_7$.
+-
+Calculate the sums:
+a) the sum of the first $8$ terms of the geometric progression with $b_1=3$ and $q=2$;
+b) $1+2+2^2+\ldots+2^{10}$;
+c) $2+6+18+\ldots+1458$.
+-
+Insert three numbers between $2$ and $162$ so that the five numbers are, in this order, in geometric progression. Find all the possibilities.
+-
+Ioana deposits $2000$ lei in a bank for $5$ years, at an interest rate of $5\%$ per year.
+a) With compound interest, at the end of every year the interest is added to the amount and earns interest too. How much money does Ioana have after $1$, $2$ and $3$ years? Write the formula for the amount after $n$ years.
+b) With simple interest, the interest is calculated every year only on the amount deposited at the start. How much money does Ioana have after $n$ years?
+c) After how many years does the amount exceed $2400$ lei, with each type of interest? What do you notice?
+-
+A laptop costs $4000$ lei. Every year, its value drops by $20\%$ of its value at the start of that year.
+a) What is the laptop worth after $1$, $2$ and $3$ years?
+b) Show that the values after $1;\ 2;\ 3;\ \ldots$ years form a geometric progression. Give the common ratio.
+c) After how many years does the value of the laptop fall below half of its original price?
+Consolidation level
+-
+Find the geometric progression $(b_n)_{n\ge 1}$ for which $b_1+b_3=20$ and $b_2+b_4=60$. Then calculate $S_5$.
+-
+How many terms of the geometric progression $5;\ 10;\ 20;\ \ldots$ must be added, starting with the first one, to get the sum $1275$?
+-
+A colony has $500$ bacteria. Under laboratory conditions, the number of bacteria doubles every hour.
+a) How many bacteria are there after $6$ hours? Write the number of bacteria after $n$ hours.
+b) After how many hours does the number of bacteria exceed $1\,000\,000$ for the first time?
+c) What number of bacteria would the model predict after $2$ days? Is it realistic? Explain why the model stops describing the situation well after a while.
+-
+A product costs $500$ lei. Shop A lowers its price by $40$ lei every week. Shop B lowers its price by $10\%$ every week, compared with the price of the week before.
+a) Calculate the price in each shop after $1$, $2$ and $3$ weeks.
+b) Write the price after $n$ weeks in each shop. What kind of progression do the prices in each shop form?
+c) After how many weeks does the product become cheaper in shop A for the first time? Explain why at first it is cheaper in shop B, and later in shop A.
+Round the prices to the nearest ban.
+-
+A student is offered two ways of being paid for an activity that lasts $30$ days.
+- Option 1: $100$ lei every day.
+- Option 2: $1$ ban on the first day, $2$ bani on the second day, $4$ bani on the third day and so on, each time double the day before ($1$ leu $=100$ bani).
+a) How much does the student get on day $10$ with option 2?
+b) How much does the student get in total in the first $n$ days, with each option?
+c) From which day is the total received with option 2 greater than the total received with option 1? Which option do you choose for an activity of $14$ days? And for one of $30$ days?
+-
+Three numbers are in geometric progression. Their sum is $26$ and their product is $216$. Find the numbers.
+-
+Three numbers are in arithmetic progression and their sum is $15$. If we add $1$ to the first number, $1$ to the second and $4$ to the third, we get, in this order, three numbers in geometric progression. Find the numbers.
+-
+Find the real number $x$ for which the numbers $x-1;\ x+1;\ 3x-1;\ 6x-2$ are, in this order, consecutive terms of a geometric progression.
+Hint: first find the values of $x$ for the first three terms, then check the fourth one.
+-
+The sum of the first $n$ terms of a sequence $(b_n)_{n\ge 1}$ is $S_n=3^n-1$, for every $n\ge 1$. Show that the sequence is a geometric progression and find its first term and common ratio.
+Hint: $b_1=S_1$ and $b_n=S_n-S_{n-1}$, for $n\ge 2$.
+Advanced level
+-
+Use the formula for $a^n-b^n$.
+a) Write as a product: $x^5-1$ and $a^4-16$.
+b) Calculate: $3^4+3^3\cdot 2+3^2\cdot 2^2+3\cdot 2^3+2^4$.
+c) Show that the number $2^{10}-1$ is divisible by $3$ and by $31$.
+-
+Show that:
+a) $8^n-1$ is divisible by $7$, for every non-zero natural number $n$;
+b) $5^n-2^n$ is divisible by $3$, for every non-zero natural number $n$;
+c) $6^{2026}-1$ is divisible by $35$.
+-
+Solve the equations:
+a) $1+2+2^2+\ldots+2^x=1023$, where $x$ is a natural number;
+b) $1+x+x^2+x^3+x^4+x^5=0$, where $x$ is a real number.
+-
+Calculate the sum $9+99+999+\ldots+99\ldots9$, where the last term has $n$ digits, all equal to $9$.
+Hint: the number made of $k$ nines is equal to $10^k-1$.
+-
+The non-zero numbers $a;\ b;\ c$ are, in this order, in geometric progression. Show that $(a+b+c)(a-b+c)=a^2+b^2+c^2$.
+-
+A square with side $8$ cm is drawn. Joining the midpoints of its sides gives a second square. Joining the midpoints of the sides of the second square gives a third one, and so on.
+a) Show that the areas of the squares form a geometric progression. Give the first term and the common ratio.
+b) Calculate the area of the $6$th square.
+c) Calculate the sum of the areas of the first $10$ squares.
+d) Show that, however many squares we draw, the sum of their areas is less than $128\ \text{cm}^2$.
+For those who want more
+-
+A legend says that the inventor of chess asked, as a reward, for one grain of wheat on the first square of the board, $2$ grains on the second, $4$ grains on the third and so on, each time double the square before. The board has $64$ squares.
+a) How many grains go on the last square?
+b) Show that the total number of grains is $2^{64}-1$.
+c) Using $2^{10}>1000$, show that the total number of grains is greater than $1{,}6\cdot 10^{19}$.
+d) Assume that a grain of wheat weighs about $0{,}05$ g and that about $800$ million tonnes of wheat are produced in the world every year. Estimate how many years the whole world's wheat harvest would have to be collected to pay the reward.
+
+---
+
 ### Fișă de lucru: progresii aritmetice
 - Source (RO): https://lauramiron.mqgrader.ro/materiale/fisa-lucru-progresii-aritmetice-1037
 - Source (EN): https://lauramiron.mqgrader.ro/en/materiale/fisa-lucru-progresii-aritmetice-1037

@@ -48,6 +48,7 @@
 - Grade 9: https://lauramiron.mqgrader.ro/en/clasa-9
 
 ### Șiruri și progresii / Sequences and progressions
+- [Fișă de lucru: progresii geometrice](https://lauramiron.mqgrader.ro/materiale/fisa-lucru-progresii-geometrice-1042) ([EN](https://lauramiron.mqgrader.ro/en/materiale/fisa-lucru-progresii-geometrice-1042)): Fișă de lucru pentru clasa a IX-a: progresii geometrice, rația, termenul general, trei termeni consecutivi, suma primilor n termeni și aⁿ − bⁿ. (fisa-lucru, clasa a 9-a / grade 9, updated 2026-11-27)
 - [Fișă de lucru: progresii aritmetice](https://lauramiron.mqgrader.ro/materiale/fisa-lucru-progresii-aritmetice-1037) ([EN](https://lauramiron.mqgrader.ro/en/materiale/fisa-lucru-progresii-aritmetice-1037)): Fișă de lucru pentru clasa a IX-a: progresii aritmetice, rația, termenul general, trei termeni consecutivi și suma primilor n termeni. (fisa-lucru, clasa a 9-a / grade 9, updated 2026-11-17)
 - [Fișă de lucru: șiruri, noțiuni introductive](https://lauramiron.mqgrader.ro/materiale/fisa-lucru-siruri-notiuni-introductive-1036) ([EN](https://lauramiron.mqgrader.ro/en/materiale/fisa-lucru-siruri-notiuni-introductive-1036)): Fișă de lucru pentru clasa a IX-a: șiruri, moduri de definire, sume parțiale, termenul general din recurențe și monotonia șirurilor. (fisa-lucru, clasa a 9-a / grade 9, updated 2026-11-15)
 
